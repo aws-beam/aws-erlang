@@ -2,12 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon VPC Lattice is a fully managed application networking service
-%% that you use to connect, secure, and monitor all of your services across
-%% multiple accounts and virtual private clouds (VPCs).
+%% that you use to connect, secure,
+%% and monitor all of your services across multiple accounts and virtual
+%% private clouds (VPCs).
 %%
 %% Amazon VPC Lattice interconnects your microservices and legacy services
-%% within a logical boundary, so that you can discover and manage them more
-%% efficiently. For more information, see the Amazon VPC Lattice User Guide:
+%% within a logical boundary, so that
+%% you can discover and manage them more efficiently. For more information,
+%% see the Amazon VPC Lattice User Guide:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/
 -module(aws_vpc_lattice).
 
@@ -143,18 +145,21 @@
 
 %% @doc Updates the listener rules in a batch.
 %%
-%% You can use this operation to change the priority of listener rules. This
-%% can be useful when bulk updating or swapping rule priority.
+%% You can use this operation to change the priority of
+%% listener rules. This can be useful when bulk updating or swapping rule
+%% priority.
 batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -170,23 +175,29 @@ batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options
 %% @doc Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and
 %% Amazon Kinesis Data Firehose.
 %%
-%% The service network owner can use the access logs to audit the services in
-%% the network. The service network owner will only see access logs from
-%% clients and services that are associated with their service network.
-%% Access log entries represent traffic originated from VPCs associated with
-%% that network. For more information, see Access logs:
+%% The service network owner
+%% can use the access logs to audit the services in the network. The service
+%% network owner will only
+%% see access logs from clients and services that are associated with their
+%% service network. Access
+%% log entries represent traffic originated from VPCs associated with that
+%% network. For more
+%% information, see Access logs:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html
-%% in the Amazon VPC Lattice User Guide.
+%% in the
+%% Amazon VPC Lattice User Guide.
 create_access_log_subscription(Client, Input) ->
     create_access_log_subscription(Client, Input, []).
 create_access_log_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accesslogsubscriptions"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -201,9 +212,10 @@ create_access_log_subscription(Client, Input0, Options0) ->
 
 %% @doc Creates a listener for a service.
 %%
-%% Before you start using your Amazon VPC Lattice service, you must add one
-%% or more listeners. A listener is a process that checks for connection
-%% requests to your services. For more information, see Listeners:
+%% Before you start using your Amazon VPC Lattice service, you must
+%% add one or more listeners. A listener is a process that checks for
+%% connection requests to your
+%% services. For more information, see Listeners:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html in the
 %% Amazon VPC Lattice User Guide.
 create_listener(Client, ServiceIdentifier, Input) ->
@@ -212,10 +224,12 @@ create_listener(Client, ServiceIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -230,22 +244,25 @@ create_listener(Client, ServiceIdentifier, Input0, Options0) ->
 
 %% @doc Creates a listener rule.
 %%
-%% Each listener has a default rule for checking connection requests, but you
-%% can define additional rules. Each rule consists of a priority, one or more
-%% actions, and one or more conditions. For more information, see Listener
-%% rules:
+%% Each listener has a default rule for checking connection requests,
+%% but you can define additional rules. Each rule consists of a priority, one
+%% or more actions, and
+%% one or more conditions. For more information, see Listener rules:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
-%% in the Amazon VPC Lattice User Guide.
+%% in the
+%% Amazon VPC Lattice User Guide.
 create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -273,10 +290,12 @@ create_service(Client, Input0, Options0) ->
     Method = post,
     Path = ["/services"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -291,22 +310,25 @@ create_service(Client, Input0, Options0) ->
 
 %% @doc Creates a service network.
 %%
-%% A service network is a logical boundary for a collection of services. You
-%% can associate services and VPCs with a service network.
+%% A service network is a logical boundary for a collection of
+%% services. You can associate services and VPCs with a service network.
 %%
 %% For more information, see Service networks:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html in
-%% the Amazon VPC Lattice User Guide.
+%% the
+%% Amazon VPC Lattice User Guide.
 create_service_network(Client, Input) ->
     create_service_network(Client, Input, []).
 create_service_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/servicenetworks"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -322,25 +344,30 @@ create_service_network(Client, Input0, Options0) ->
 %% @doc Associates a service with a service network.
 %%
 %% You can't use this operation if the service and service network are
-%% already associated or if there is a disassociation or deletion in
-%% progress. If the association fails, you can retry the operation by
-%% deleting the association and recreating it.
+%% already associated or if
+%% there is a disassociation or deletion in progress. If the association
+%% fails, you can retry the
+%% operation by deleting the association and recreating it.
 %%
 %% You cannot associate a service and service network that are shared with a
-%% caller. The caller must own either the service or the service network.
+%% caller. The caller
+%% must own either the service or the service network.
 %%
 %% As a result of this operation, the association is created in the service
-%% network account and the association owner account.
+%% network account and
+%% the association owner account.
 create_service_network_service_association(Client, Input) ->
     create_service_network_service_association(Client, Input, []).
 create_service_network_service_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/servicenetworkserviceassociations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -355,34 +382,38 @@ create_service_network_service_association(Client, Input0, Options0) ->
 
 %% @doc Associates a VPC with a service network.
 %%
-%% When you associate a VPC with the service network, it enables all the
-%% resources within that VPC to be clients and communicate with other
-%% services in the service network. For more information, see Manage VPC
-%% associations:
+%% When you associate a VPC with the service network,
+%% it enables all the resources within that VPC to be clients and communicate
+%% with other services in
+%% the service network. For more information, see Manage VPC associations:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-vpc-associations
 %% in the Amazon VPC Lattice User Guide.
 %%
 %% You can't use this operation if there is a disassociation in progress.
-%% If the association fails, retry by deleting the association and recreating
-%% it.
+%% If the association
+%% fails, retry by deleting the association and recreating it.
 %%
 %% As a result of this operation, the association gets created in the service
-%% network account and the VPC owner account.
+%% network account
+%% and the VPC owner account.
 %%
 %% Once a security group is added to the VPC association it cannot be
-%% removed. You can add or update the security groups being used for the VPC
-%% association once a security group is attached. To remove all security
-%% groups you must reassociate the VPC.
+%% removed. You can add or
+%% update the security groups being used for the VPC association once a
+%% security group is attached.
+%% To remove all security groups you must reassociate the VPC.
 create_service_network_vpc_association(Client, Input) ->
     create_service_network_vpc_association(Client, Input, []).
 create_service_network_vpc_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/servicenetworkvpcassociations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -397,23 +428,26 @@ create_service_network_vpc_association(Client, Input0, Options0) ->
 
 %% @doc Creates a target group.
 %%
-%% A target group is a collection of targets, or compute resources, that run
-%% your application or service. A target group can only be used by a single
-%% service.
+%% A target group is a collection of targets, or compute resources,
+%% that run your application or service. A target group can only be used by a
+%% single service.
 %%
 %% For more information, see Target groups:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/target-groups.html in
-%% the Amazon VPC Lattice User Guide.
+%% the
+%% Amazon VPC Lattice User Guide.
 create_target_group(Client, Input) ->
     create_target_group(Client, Input, []).
 create_target_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -433,10 +467,12 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
     Method = delete,
     Path = ["/accesslogsubscriptions/", aws_util:encode_uri(AccessLogSubscriptionIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -451,21 +487,25 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 
 %% @doc Deletes the specified auth policy.
 %%
-%% If an auth is set to `Amazon Web Services_IAM' and the auth policy is
-%% deleted, all requests will be denied by default. If you are trying to
+%% If an auth is set to `Amazon Web Services_IAM'
+%% and the auth policy is deleted, all requests will be denied by default. If
+%% you are trying to
 %% remove the auth policy completely, you must set the auth_type to
-%% `NONE'. If auth is enabled on the resource, but no auth policy is set,
-%% all requests will be denied.
+%% `NONE'. If auth is
+%% enabled on the resource, but no auth policy is set, all requests will be
+%% denied.
 delete_auth_policy(Client, ResourceIdentifier, Input) ->
     delete_auth_policy(Client, ResourceIdentifier, Input, []).
 delete_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/authpolicy/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -485,10 +525,12 @@ delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
     Method = delete,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -508,10 +550,12 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -526,24 +570,29 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Deletes a listener rule.
 %%
-%% Each listener has a default rule for checking connection requests, but you
-%% can define additional rules. Each rule consists of a priority, one or more
-%% actions, and one or more conditions. You can delete additional listener
-%% rules, but you cannot delete the default rule.
+%% Each listener has a default rule for checking connection requests,
+%% but you can define additional rules. Each rule consists of a priority, one
+%% or more actions, and
+%% one or more conditions. You can delete additional listener rules, but you
+%% cannot delete the
+%% default rule.
 %%
 %% For more information, see Listener rules:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
-%% in the Amazon VPC Lattice User Guide.
+%% in the
+%% Amazon VPC Lattice User Guide.
 delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input) ->
     delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input, []).
 delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules/", aws_util:encode_uri(RuleIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -559,22 +608,27 @@ delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input
 %% @doc Deletes a service.
 %%
 %% A service can't be deleted if it's associated with a service
-%% network. If you delete a service, all resources related to the service,
-%% such as the resource policy, auth policy, listeners, listener rules, and
-%% access log subscriptions, are also deleted. For more information, see
-%% Delete a service:
+%% network. If
+%% you delete a service, all resources related to the service, such as the
+%% resource policy, auth
+%% policy, listeners, listener rules, and access log subscriptions, are also
+%% deleted. For more
+%% information, see Delete a service:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html#delete-service
-%% in the Amazon VPC Lattice User Guide.
+%% in the
+%% Amazon VPC Lattice User Guide.
 delete_service(Client, ServiceIdentifier, Input) ->
     delete_service(Client, ServiceIdentifier, Input, []).
 delete_service(Client, ServiceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -589,11 +643,13 @@ delete_service(Client, ServiceIdentifier, Input0, Options0) ->
 
 %% @doc Deletes a service network.
 %%
-%% You can only delete the service network if there is no service or VPC
-%% associated with it. If you delete a service network, all resources related
-%% to the service network, such as the resource policy, auth policy, and
-%% access log subscriptions, are also deleted. For more information, see
-%% Delete a service network:
+%% You can only delete the service network if there is no service or
+%% VPC associated with it. If you delete a service network, all resources
+%% related to the service
+%% network, such as the resource policy, auth policy, and access log
+%% subscriptions, are also
+%% deleted. For more information, see Delete a service
+%% network:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html#delete-service-network
 %% in the Amazon VPC Lattice User Guide.
 delete_service_network(Client, ServiceNetworkIdentifier, Input) ->
@@ -602,10 +658,12 @@ delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/servicenetworks/", aws_util:encode_uri(ServiceNetworkIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -621,17 +679,20 @@ delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 %% @doc Deletes the association between a specified service and the specific
 %% service network.
 %%
-%% This request will fail if an association is still in progress.
+%% This
+%% request will fail if an association is still in progress.
 delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input) ->
     delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input, []).
 delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/servicenetworkserviceassociations/", aws_util:encode_uri(ServiceNetworkServiceAssociationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -646,18 +707,20 @@ delete_service_network_service_association(Client, ServiceNetworkServiceAssociat
 
 %% @doc Disassociates the VPC from the service network.
 %%
-%% You can't disassociate the VPC if there is a create or update
-%% association in progress.
+%% You can't disassociate the VPC if there is a
+%% create or update association in progress.
 delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input) ->
     delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input, []).
 delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/servicenetworkvpcassociations/", aws_util:encode_uri(ServiceNetworkVpcAssociationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -672,18 +735,20 @@ delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdent
 
 %% @doc Deletes a target group.
 %%
-%% You can't delete a target group if it is used in a listener rule or if
-%% the target group creation is in progress.
+%% You can't delete a target group if it is used in a listener rule or
+%% if the target group creation is in progress.
 delete_target_group(Client, TargetGroupIdentifier, Input) ->
     delete_target_group(Client, TargetGroupIdentifier, Input, []).
 delete_target_group(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -703,10 +768,12 @@ deregister_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), "/deregistertargets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -732,9 +799,11 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accesslogsubscriptions/", aws_util:encode_uri(AccessLogSubscriptionIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -743,7 +812,8 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the auth policy for the specified service
-%% or service network.
+%% or service
+%% network.
 get_auth_policy(Client, ResourceIdentifier)
   when is_map(Client) ->
     get_auth_policy(Client, ResourceIdentifier, #{}, #{}).
@@ -756,9 +826,11 @@ get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/authpolicy/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -780,9 +852,11 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -792,8 +866,9 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
 
 %% @doc Retrieves information about the resource policy.
 %%
-%% The resource policy is an IAM policy created by AWS RAM on behalf of the
-%% resource owner when they share a resource.
+%% The resource policy is an IAM policy
+%% created by AWS RAM on behalf of the resource owner when they share a
+%% resource.
 get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
@@ -806,9 +881,11 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -818,10 +895,11 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about listener rules.
 %%
-%% You can also retrieve information about the default listener rule. For
-%% more information, see Listener rules:
+%% You can also retrieve information about the
+%% default listener rule. For more information, see Listener rules:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
-%% in the Amazon VPC Lattice User Guide.
+%% in the
+%% Amazon VPC Lattice User Guide.
 get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, #{}, #{}).
@@ -834,9 +912,11 @@ get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules/", aws_util:encode_uri(RuleIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -857,9 +937,11 @@ get_service(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -880,9 +962,11 @@ get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, Opti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworks/", aws_util:encode_uri(ServiceNetworkIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -891,7 +975,8 @@ get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified association between a
-%% service network and a service.
+%% service network and a
+%% service.
 get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier)
   when is_map(Client) ->
     get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, #{}, #{}).
@@ -904,9 +989,11 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkserviceassociations/", aws_util:encode_uri(ServiceNetworkServiceAssociationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -928,9 +1015,11 @@ get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifi
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkvpcassociations/", aws_util:encode_uri(ServiceNetworkVpcAssociationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -951,9 +1040,11 @@ get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -975,9 +1066,11 @@ list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accesslogsubscriptions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1004,9 +1097,11 @@ list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1032,9 +1127,11 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1049,15 +1146,20 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, 
 
 %% @doc Lists the associations between the service network and the service.
 %%
-%% You can filter the list either by service or service network. You must
-%% provide either the service network identifier or the service identifier.
+%% You can filter the list
+%% either by service or service network. You must provide either the service
+%% network identifier or
+%% the service identifier.
 %%
 %% Every association in Amazon VPC Lattice is given a unique Amazon Resource
-%% Name (ARN), such as when a service network is associated with a VPC or
-%% when a service is associated with a service network. If the association is
-%% for a resource that is shared with another account, the association will
+%% Name (ARN), such as when a
+%% service network is associated with a VPC or when a service is associated
+%% with a service network.
+%% If the association is for a resource that is shared with another account,
+%% the association will
 %% include the local account ID as the prefix in the ARN for each account the
-%% resource is shared with.
+%% resource is shared
+%% with.
 list_service_network_service_associations(Client)
   when is_map(Client) ->
     list_service_network_service_associations(Client, #{}, #{}).
@@ -1070,9 +1172,11 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkserviceassociations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1089,8 +1193,10 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap, Options0
 
 %% @doc Lists the service network and VPC associations.
 %%
-%% You can filter the list either by VPC or service network. You must provide
-%% either the service network identifier or the VPC identifier.
+%% You can filter the list either by VPC or
+%% service network. You must provide either the service network identifier or
+%% the VPC
+%% identifier.
 list_service_network_vpc_associations(Client)
   when is_map(Client) ->
     list_service_network_vpc_associations(Client, #{}, #{}).
@@ -1103,9 +1209,11 @@ list_service_network_vpc_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworkvpcassociations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1137,9 +1245,11 @@ list_service_networks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/servicenetworks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1166,9 +1276,11 @@ list_services(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1194,9 +1306,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1206,7 +1320,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists your target groups.
 %%
-%% You can narrow your search by using the filters below in your request.
+%% You can narrow your search by using the filters below in your
+%% request.
 list_target_groups(Client)
   when is_map(Client) ->
     list_target_groups(Client, #{}, #{}).
@@ -1219,9 +1334,11 @@ list_target_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/targetgroups"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1238,18 +1355,21 @@ list_target_groups(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the targets for the target group.
 %%
-%% By default, all targets are included. You can use this API to check the
-%% health status of targets. You can also ﬁlter the results by target.
+%% By default, all targets are included. You can use
+%% this API to check the health status of targets. You can also ﬁlter the
+%% results by target.
 list_targets(Client, TargetGroupIdentifier, Input) ->
     list_targets(Client, TargetGroupIdentifier, Input, []).
 list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), "/listtargets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1271,10 +1391,12 @@ put_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/authpolicy/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1290,19 +1412,22 @@ put_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
 %% @doc Attaches a resource-based permission policy to a service or service
 %% network.
 %%
-%% The policy must contain the same actions and condition statements as the
-%% Amazon Web Services Resource Access Manager permission for sharing
-%% services and service networks.
+%% The policy must
+%% contain the same actions and condition statements as the Amazon Web
+%% Services Resource Access
+%% Manager permission for sharing services and service networks.
 put_resource_policy(Client, ResourceArn, Input) ->
     put_resource_policy(Client, ResourceArn, Input, []).
 put_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1317,18 +1442,20 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Registers the targets with the target group.
 %%
-%% If it's a Lambda target, you can only have one target in a target
-%% group.
+%% If it's a Lambda target, you can only have one
+%% target in a target group.
 register_targets(Client, TargetGroupIdentifier, Input) ->
     register_targets(Client, TargetGroupIdentifier, Input, []).
 register_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), "/registertargets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1348,10 +1475,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1371,10 +1500,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1395,10 +1526,12 @@ update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
     Method = patch,
     Path = ["/accesslogsubscriptions/", aws_util:encode_uri(AccessLogSubscriptionIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1418,10 +1551,12 @@ update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1436,18 +1571,20 @@ update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
 
 %% @doc Updates a rule for the listener.
 %%
-%% You can't modify a default listener rule. To modify a default listener
-%% rule, use `UpdateListener'.
+%% You can't modify a default listener rule. To modify a
+%% default listener rule, use `UpdateListener'.
 update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input) ->
     update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input, []).
 update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), "/listeners/", aws_util:encode_uri(ListenerIdentifier), "/rules/", aws_util:encode_uri(RuleIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1467,10 +1604,12 @@ update_service(Client, ServiceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/services/", aws_util:encode_uri(ServiceIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1490,10 +1629,12 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/servicenetworks/", aws_util:encode_uri(ServiceNetworkIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1508,17 +1649,20 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 
 %% @doc Updates the service network and VPC association.
 %%
-%% Once you add a security group, it cannot be removed.
+%% Once you add a security group, it cannot be
+%% removed.
 update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input) ->
     update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input, []).
 update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/servicenetworkvpcassociations/", aws_util:encode_uri(ServiceNetworkVpcAssociationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1538,10 +1682,12 @@ update_target_group(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1557,6 +1703,11 @@ update_target_group(Client, TargetGroupIdentifier, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -146,10 +146,12 @@ batch_associate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -169,10 +171,12 @@ batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -192,10 +196,12 @@ create_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/clusters"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -208,18 +214,19 @@ create_cluster(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Amazon MSK cluster of either the provisioned or the
-%% serverless type.
+%% @doc Creates a new MSK cluster.
 create_cluster_v2(Client, Input) ->
     create_cluster_v2(Client, Input, []).
 create_cluster_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v2/clusters"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -239,10 +246,12 @@ create_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -255,17 +264,19 @@ create_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Kafka Replicator.
+%% @doc Creates the replicator.
 create_replicator(Client, Input) ->
     create_replicator(Client, Input, []).
 create_replicator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/replication/v1/replicators"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -278,17 +289,19 @@ create_replicator(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Amazon MSK VPC connection.
+%% @doc Creates a new MSK VPC connection.
 create_vpc_connection(Client, Input) ->
     create_vpc_connection(Client, Input, []).
 create_vpc_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/vpc-connection"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -309,10 +322,12 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -327,17 +342,19 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the MSK cluster policy specified by the Amazon Resource Name
-%% (ARN) in your request.
+%% (ARN) in the request.
 delete_cluster_policy(Client, ClusterArn, Input) ->
     delete_cluster_policy(Client, ClusterArn, Input, []).
 delete_cluster_policy(Client, ClusterArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -350,19 +367,19 @@ delete_cluster_policy(Client, ClusterArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified MSK configuration.
-%%
-%% The configuration must be in the ACTIVE or DELETE_FAILED state.
+%% @doc Deletes an MSK Configuration.
 delete_configuration(Client, Arn, Input) ->
     delete_configuration(Client, Arn, Input, []).
 delete_configuration(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -382,10 +399,12 @@ delete_replicator(Client, ReplicatorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/replication/v1/replicators/", aws_util:encode_uri(ReplicatorArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -399,17 +418,19 @@ delete_replicator(Client, ReplicatorArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Amazon MSK VPC connection specified in your request.
+%% @doc Deletes a MSK VPC connection.
 delete_vpc_connection(Client, Arn, Input) ->
     delete_vpc_connection(Client, Arn, Input, []).
 delete_vpc_connection(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/vpc-connection/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -436,9 +457,11 @@ describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -459,9 +482,11 @@ describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, Op
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/operations/", aws_util:encode_uri(ClusterOperationArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -482,9 +507,11 @@ describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v2/operations/", aws_util:encode_uri(ClusterOperationArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -492,9 +519,8 @@ describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a description of the MSK cluster of either the provisioned or
-%% the serverless type whose Amazon Resource Name (ARN) is specified in the
-%% request.
+%% @doc Returns a description of the MSK cluster whose Amazon Resource Name
+%% (ARN) is specified in the request.
 describe_cluster_v2(Client, ClusterArn)
   when is_map(Client) ->
     describe_cluster_v2(Client, ClusterArn, #{}, #{}).
@@ -507,9 +533,11 @@ describe_cluster_v2(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v2/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -530,9 +558,11 @@ describe_configuration(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -553,9 +583,11 @@ describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions/", aws_util:encode_uri(Revision), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -563,8 +595,7 @@ describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a description of the Kafka Replicator whose Amazon Resource
-%% Name (ARN) is specified in the request.
+%% @doc Describes a replicator.
 describe_replicator(Client, ReplicatorArn)
   when is_map(Client) ->
     describe_replicator(Client, ReplicatorArn, #{}, #{}).
@@ -577,9 +608,11 @@ describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/replication/v1/replicators/", aws_util:encode_uri(ReplicatorArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -587,7 +620,7 @@ describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Displays information about the specified Amazon MSK VPC connection.
+%% @doc Returns a description of this MSK VPC connection.
 describe_vpc_connection(Client, Arn)
   when is_map(Client) ->
     describe_vpc_connection(Client, Arn, #{}, #{}).
@@ -600,9 +633,11 @@ describe_vpc_connection(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/vpc-connection/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -623,9 +658,11 @@ get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/bootstrap-brokers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -633,7 +670,8 @@ get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the contents of the specified MSK cluster policy.
+%% @doc Get the MSK cluster policy specified by the Amazon Resource Name
+%% (ARN) in the request.
 get_cluster_policy(Client, ClusterArn)
   when is_map(Client) ->
     get_cluster_policy(Client, ClusterArn, #{}, #{}).
@@ -646,9 +684,11 @@ get_cluster_policy(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -670,9 +710,11 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/compatible-kafka-versions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -684,7 +726,7 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Displays a list of client VPC connections.
+%% @doc Returns a list of all the VPC connections in this Region.
 list_client_vpc_connections(Client, ClusterArn)
   when is_map(Client) ->
     list_client_vpc_connections(Client, ClusterArn, #{}, #{}).
@@ -697,9 +739,11 @@ list_client_vpc_connections(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/client-vpc-connections"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -726,9 +770,11 @@ list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/operations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -755,9 +801,11 @@ list_cluster_operations_v2(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v2/clusters/", aws_util:encode_uri(ClusterArn), "/operations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -783,9 +831,11 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -812,9 +862,11 @@ list_clusters_v2(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v2/clusters"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -829,7 +881,7 @@ list_clusters_v2(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all the revisions of an MSK configuration.
+%% @doc Returns a list of all the MSK configurations in this Region.
 list_configuration_revisions(Client, Arn)
   when is_map(Client) ->
     list_configuration_revisions(Client, Arn, #{}, #{}).
@@ -842,9 +894,11 @@ list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -870,9 +924,11 @@ list_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -898,9 +954,11 @@ list_kafka_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/kafka-versions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -926,9 +984,11 @@ list_nodes(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -954,9 +1014,11 @@ list_replicators(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/replication/v1/replicators"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -984,9 +1046,11 @@ list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1012,9 +1076,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1022,7 +1088,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Displays a list of Amazon MSK VPC connections.
+%% @doc Returns a list of all the VPC connections in this Region.
 list_vpc_connections(Client)
   when is_map(Client) ->
     list_vpc_connections(Client, #{}, #{}).
@@ -1035,9 +1101,11 @@ list_vpc_connections(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/vpc-connections"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1050,20 +1118,20 @@ list_vpc_connections(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates or updates the specified MSK cluster policy.
-%%
-%% If updating the policy, the currentVersion field is required in the
-%% request payload.
+%% @doc Creates or updates the MSK cluster policy specified by the cluster
+%% Amazon Resource Name (ARN) in the request.
 put_cluster_policy(Client, ClusterArn, Input) ->
     put_cluster_policy(Client, ClusterArn, Input, []).
 put_cluster_policy(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1076,17 +1144,19 @@ put_cluster_policy(Client, ClusterArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Executes a reboot on a broker.
+%% @doc Reboots brokers.
 reboot_broker(Client, ClusterArn, Input) ->
     reboot_broker(Client, ClusterArn, Input, []).
 reboot_broker(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/reboot-broker"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1099,17 +1169,19 @@ reboot_broker(Client, ClusterArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Returns empty response.
 reject_client_vpc_connection(Client, ClusterArn, Input) ->
     reject_client_vpc_connection(Client, ClusterArn, Input, []).
 reject_client_vpc_connection(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/client-vpc-connection"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1129,10 +1201,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1153,10 +1227,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1171,19 +1247,18 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the number of broker nodes in the cluster.
-%%
-%% You can use this operation to increase the number of brokers in an
-%% existing cluster. You can't decrease the number of brokers.
 update_broker_count(Client, ClusterArn, Input) ->
     update_broker_count(Client, ClusterArn, Input, []).
 update_broker_count(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/count"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1203,10 +1278,12 @@ update_broker_storage(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/storage"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1219,17 +1296,19 @@ update_broker_storage(Client, ClusterArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates all the brokers in the cluster to the specified type.
+%% @doc Updates EC2 instance type.
 update_broker_type(Client, ClusterArn, Input) ->
     update_broker_type(Client, ClusterArn, Input, []).
 update_broker_type(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/type"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1250,10 +1329,12 @@ update_cluster_configuration(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1273,10 +1354,12 @@ update_cluster_kafka_version(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/version"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1289,19 +1372,19 @@ update_cluster_kafka_version(Client, ClusterArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing MSK configuration.
-%%
-%% The configuration must be in the Active state.
+%% @doc Updates an MSK configuration.
 update_configuration(Client, Arn, Input) ->
     update_configuration(Client, Arn, Input, []).
 update_configuration(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1314,17 +1397,19 @@ update_configuration(Client, Arn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the connectivity configuration for the MSK cluster.
+%% @doc Updates the cluster's connectivity configuration.
 update_connectivity(Client, ClusterArn, Input) ->
     update_connectivity(Client, ClusterArn, Input, []).
 update_connectivity(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/connectivity"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1348,10 +1433,12 @@ update_monitoring(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/monitoring"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1371,10 +1458,12 @@ update_replication_info(Client, ReplicatorArn, Input0, Options0) ->
     Method = put,
     Path = ["/replication/v1/replicators/", aws_util:encode_uri(ReplicatorArn), "/replication-info"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1387,18 +1476,22 @@ update_replication_info(Client, ReplicatorArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc You can use this operation to update the encrypting and
-%% authentication settings for an existing cluster.
+%% @doc Updates the security settings for the cluster.
+%%
+%% You can use this operation to specify encryption and authentication on
+%% existing clusters.
 update_security(Client, ClusterArn, Input) ->
     update_security(Client, ClusterArn, Input, []).
 update_security(Client, ClusterArn, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/security"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1419,10 +1512,12 @@ update_storage(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/storage"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1438,6 +1533,11 @@ update_storage(Client, ClusterArn, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

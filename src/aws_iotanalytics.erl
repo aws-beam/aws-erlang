@@ -5,29 +5,36 @@
 %% process messages, and store them.
 %%
 %% You can then query the data and run sophisticated analytics on it. IoT
-%% Analytics enables advanced data exploration through integration with
-%% Jupyter Notebooks and data visualization through integration with Amazon
-%% QuickSight.
+%% Analytics enables advanced
+%% data exploration through integration with Jupyter Notebooks and data
+%% visualization through integration
+%% with Amazon QuickSight.
 %%
 %% Traditional analytics and business intelligence tools are designed to
-%% process structured data. IoT data often comes from devices that record
-%% noisy processes (such as temperature, motion, or sound). As a result the
-%% data from these devices can have significant gaps, corrupted messages, and
-%% false readings that must be cleaned up before analysis can occur. Also,
-%% IoT data is often only meaningful in the context of other data from
-%% external sources.
+%% process structured data. IoT data
+%% often comes from devices that record noisy processes (such as temperature,
+%% motion, or sound). As a result
+%% the data from these devices can have significant gaps, corrupted messages,
+%% and false readings that must be
+%% cleaned up before analysis can occur. Also, IoT data is often only
+%% meaningful in the context of other data
+%% from external sources.
 %%
 %% IoT Analytics automates the steps required to analyze data from IoT
-%% devices. IoT Analytics filters, transforms, and enriches IoT data before
-%% storing it in a time-series data store for analysis. You can set up the
-%% service to collect only the data you need from your devices, apply
-%% mathematical transforms to process the data, and enrich the data with
-%% device-specific metadata such as device type and location before storing
-%% it. Then, you can analyze your data by running queries using the built-in
-%% SQL query engine, or perform more complex analytics and machine learning
-%% inference. IoT Analytics includes pre-built models for common IoT use
-%% cases so you can answer questions like which devices are about to fail or
-%% which customers are at risk of abandoning their wearable devices.
+%% devices. IoT Analytics
+%% filters, transforms, and enriches IoT data before storing it in a
+%% time-series data store for analysis. You
+%% can set up the service to collect only the data you need from your
+%% devices, apply mathematical transforms
+%% to process the data, and enrich the data with device-specific metadata
+%% such as device type and location
+%% before storing it. Then, you can analyze your data by running queries
+%% using the built-in SQL query engine,
+%% or perform more complex analytics and machine learning inference. IoT
+%% Analytics includes pre-built models
+%% for common IoT use cases so you can answer questions like which devices
+%% are about to fail or which customers
+%% are at risk of abandoning their wearable devices.
 -module(aws_iotanalytics).
 
 -export([batch_put_message/2,
@@ -125,10 +132,12 @@ batch_put_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/messages/batch"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -147,11 +156,13 @@ cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input) ->
 cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Options0) ->
     Method = delete,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing/", aws_util:encode_uri(ReprocessingId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -174,10 +185,12 @@ create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -195,19 +208,22 @@ create_channel(Client, Input0, Options0) ->
 %% A dataset stores data retrieved from a data store by applying a
 %% `queryAction' (a SQL query) or a `containerAction' (executing a
 %% containerized application). This operation creates the skeleton of a
-%% dataset. The dataset can be populated manually by calling
-%% `CreateDatasetContent' or automatically according to a trigger you
-%% specify.
+%% dataset. The dataset can
+%% be populated manually by calling `CreateDatasetContent' or
+%% automatically according
+%% to a trigger you specify.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
 create_dataset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasets"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -221,18 +237,20 @@ create_dataset(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates the content of a dataset by applying a `queryAction' (a
-%% SQL query) or a `containerAction' (executing a containerized
-%% application).
+%% SQL query) or a
+%% `containerAction' (executing a containerized application).
 create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
 create_dataset_content(Client, DatasetName, Input0, Options0) ->
     Method = post,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -252,10 +270,12 @@ create_datastore(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datastores"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -270,20 +290,24 @@ create_datastore(Client, Input0, Options0) ->
 
 %% @doc Creates a pipeline.
 %%
-%% A pipeline consumes messages from a channel and allows you to process the
-%% messages before storing them in a data store. You must specify both a
-%% `channel' and a `datastore' activity and, optionally, as many as
-%% 23 additional activities in the `pipelineActivities' array.
+%% A pipeline consumes messages from a channel and allows you to process
+%% the messages before storing them in a data store. You must specify both a
+%% `channel'
+%% and a `datastore' activity and, optionally, as many as 23 additional
+%% activities in
+%% the `pipelineActivities' array.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pipelines"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -303,10 +327,12 @@ delete_channel(Client, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -322,17 +348,20 @@ delete_channel(Client, ChannelName, Input0, Options0) ->
 %% @doc Deletes the specified dataset.
 %%
 %% You do not have to delete the content of the dataset before you perform
-%% this operation.
+%% this
+%% operation.
 delete_dataset(Client, DatasetName, Input) ->
     delete_dataset(Client, DatasetName, Input, []).
 delete_dataset(Client, DatasetName, Input0, Options0) ->
     Method = delete,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -352,10 +381,12 @@ delete_dataset_content(Client, DatasetName, Input0, Options0) ->
     Method = delete,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -376,10 +407,12 @@ delete_datastore(Client, DatastoreName, Input0, Options0) ->
     Method = delete,
     Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -399,10 +432,12 @@ delete_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = delete,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -427,10 +462,12 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap)
 describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -454,10 +491,12 @@ describe_dataset(Client, DatasetName, QueryMap, HeadersMap)
 describe_dataset(Client, DatasetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -477,10 +516,12 @@ describe_datastore(Client, DatastoreName, QueryMap, HeadersMap)
 describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -504,10 +545,12 @@ describe_logging_options(Client, QueryMap, HeadersMap)
 describe_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -527,10 +570,12 @@ describe_pipeline(Client, PipelineName, QueryMap, HeadersMap)
 describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -550,10 +595,12 @@ get_dataset_content(Client, DatasetName, QueryMap, HeadersMap)
 get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/content"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -577,10 +624,12 @@ list_channels(Client, QueryMap, HeadersMap)
 list_channels(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -605,10 +654,12 @@ list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap)
 list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), "/contents"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -635,10 +686,12 @@ list_datasets(Client, QueryMap, HeadersMap)
 list_datasets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -663,10 +716,12 @@ list_datastores(Client, QueryMap, HeadersMap)
 list_datastores(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastores"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -691,10 +746,12 @@ list_pipelines(Client, QueryMap, HeadersMap)
 list_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/pipelines"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -719,10 +776,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -737,20 +796,24 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Sets or updates the IoT Analytics logging options.
 %%
 %% If you update the value of any `loggingOptions' field, it takes up to
-%% one minute for the change to take effect. Also, if you change the policy
-%% attached to the role you specified in the `roleArn' field (for
-%% example, to correct an invalid policy), it takes up to five minutes for
-%% that change to take effect.
+%% one
+%% minute for the change to take effect. Also, if you change the policy
+%% attached to the role you
+%% specified in the `roleArn' field (for example, to correct an invalid
+%% policy), it
+%% takes up to five minutes for that change to take effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -770,11 +833,13 @@ run_pipeline_activity(Client, Input) ->
 run_pipeline_activity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pipelineactivities/run"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -788,7 +853,8 @@ run_pipeline_activity(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a sample of messages from the specified channel ingested
-%% during the specified timeframe.
+%% during the specified
+%% timeframe.
 %%
 %% Up to 10 messages can be retrieved.
 sample_channel_data(Client, ChannelName)
@@ -802,10 +868,12 @@ sample_channel_data(Client, ChannelName, QueryMap, HeadersMap)
 sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelName), "/sample"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -825,11 +893,13 @@ start_pipeline_reprocessing(Client, PipelineName, Input) ->
 start_pipeline_reprocessing(Client, PipelineName, Input0, Options0) ->
     Method = post,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), "/reprocessing"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -844,17 +914,20 @@ start_pipeline_reprocessing(Client, PipelineName, Input0, Options0) ->
 
 %% @doc Adds to or modifies the tags of the given resource.
 %%
-%% Tags are metadata that can be used to manage a resource.
+%% Tags are metadata that can be used to
+%% manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -875,10 +948,12 @@ untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -899,11 +974,13 @@ update_channel(Client, ChannelName, Input) ->
 update_channel(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -922,11 +999,13 @@ update_dataset(Client, DatasetName, Input) ->
 update_dataset(Client, DatasetName, Input0, Options0) ->
     Method = put,
     Path = ["/datasets/", aws_util:encode_uri(DatasetName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -945,11 +1024,13 @@ update_datastore(Client, DatastoreName, Input) ->
 update_datastore(Client, DatastoreName, Input0, Options0) ->
     Method = put,
     Path = ["/datastores/", aws_util:encode_uri(DatastoreName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -964,19 +1045,22 @@ update_datastore(Client, DatastoreName, Input0, Options0) ->
 
 %% @doc Updates the settings of a pipeline.
 %%
-%% You must specify both a `channel' and a `datastore' activity and,
-%% optionally, as many as 23 additional activities in the
+%% You must specify both a `channel' and a
+%% `datastore' activity and, optionally, as many as 23 additional
+%% activities in the
 %% `pipelineActivities' array.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 update_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/pipelines/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -992,6 +1076,11 @@ update_pipeline(Client, PipelineName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

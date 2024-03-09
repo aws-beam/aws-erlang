@@ -42,7 +42,8 @@
 %% @doc Get a specific recommendation within an AWS Organizations
 %% organization.
 %%
-%% This API supports only prioritized recommendations.
+%% This API supports only prioritized
+%% recommendations.
 get_organization_recommendation(Client, OrganizationRecommendationIdentifier)
   when is_map(Client) ->
     get_organization_recommendation(Client, OrganizationRecommendationIdentifier, #{}, #{}).
@@ -55,9 +56,11 @@ get_organization_recommendation(Client, OrganizationRecommendationIdentifier, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -78,9 +81,11 @@ get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommendations/", aws_util:encode_uri(RecommendationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -101,9 +106,11 @@ list_checks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/checks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -123,7 +130,8 @@ list_checks(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the accounts that own the resources for an organization
 %% aggregate recommendation.
 %%
-%% This API only supports prioritized recommendations.
+%% This API only
+%% supports prioritized recommendations.
 list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier)
   when is_map(Client) ->
     list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier, #{}, #{}).
@@ -136,9 +144,11 @@ list_organization_recommendation_accounts(Client, OrganizationRecommendationIden
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), "/accounts"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -154,7 +164,8 @@ list_organization_recommendation_accounts(Client, OrganizationRecommendationIden
 
 %% @doc List Resources of a Recommendation within an Organization.
 %%
-%% This API only supports prioritized recommendations.
+%% This API only supports prioritized
+%% recommendations.
 list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier)
   when is_map(Client) ->
     list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier, #{}, #{}).
@@ -167,9 +178,11 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), "/resources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -187,7 +200,8 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
 
 %% @doc List a filterable set of Recommendations within an Organization.
 %%
-%% This API only supports prioritized recommendations.
+%% This API only supports prioritized
+%% recommendations.
 list_organization_recommendations(Client)
   when is_map(Client) ->
     list_organization_recommendations(Client, #{}, #{}).
@@ -200,9 +214,11 @@ list_organization_recommendations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -236,9 +252,11 @@ list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommendations/", aws_util:encode_uri(RecommendationIdentifier), "/resources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -266,9 +284,11 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -291,17 +311,20 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Update the lifecyle of a Recommendation within an Organization.
 %%
-%% This API only supports prioritized recommendations.
+%% This API only supports prioritized
+%% recommendations.
 update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input) ->
     update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input, []).
 update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), "/lifecycle"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -323,10 +346,12 @@ update_recommendation_lifecycle(Client, RecommendationIdentifier, Input0, Option
     Method = put,
     Path = ["/v1/recommendations/", aws_util:encode_uri(RecommendationIdentifier), "/lifecycle"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -342,6 +367,11 @@ update_recommendation_lifecycle(Client, RecommendationIdentifier, Input0, Option
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

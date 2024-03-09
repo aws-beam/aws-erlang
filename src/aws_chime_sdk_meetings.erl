@@ -6,8 +6,8 @@
 %% Services Regions for meetings, create and manage users, and send and
 %% receive meeting notifications.
 %%
-%% For more information about the meeting APIs, see Amazon Chime SDK
-%% meetings:
+%% For more information about the meeting APIs, see
+%% Amazon Chime SDK meetings:
 %% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Meetings.html.
 -module(aws_chime_sdk_meetings).
 
@@ -56,19 +56,22 @@
 
 %% @doc Creates up to 100 attendees for an active Amazon Chime SDK meeting.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
-%% in the Amazon Chime Developer Guide.
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% Amazon Chime Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -86,52 +89,53 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %%
 %% You use the capabilities with a set of values that control what the
 %% capabilities can do, such as `SendReceive' data. For more information
-%% about those values, see .
+%% about those values, see
+%% .
 %%
 %% When using capabilities, be aware of these corner cases:
 %%
-%% <ul> <li> If you specify `MeetingFeatures:Video:MaxResolution:None'
-%% when you create a meeting, all API requests that include
-%% `SendReceive', `Send', or `Receive' for
+%% If you specify `MeetingFeatures:Video:MaxResolution:None' when you
+%% create a meeting, all API requests
+%% that include `SendReceive', `Send', or `Receive' for
 %% `AttendeeCapabilities:Video' will be rejected with `ValidationError
 %% 400'.
 %%
-%% </li> <li> If you specify `MeetingFeatures:Content:MaxResolution:None'
-%% when you create a meeting, all API requests that include
-%% `SendReceive', `Send', or `Receive' for
-%% `AttendeeCapabilities:Content' will be rejected with `ValidationError
-%% 400'.
+%% If you specify `MeetingFeatures:Content:MaxResolution:None' when you
+%% create a meeting, all API requests that include `SendReceive',
+%% `Send', or
+%% `Receive' for `AttendeeCapabilities:Content' will be rejected with
+%% `ValidationError 400'.
 %%
-%% </li> <li> You can't set `content' capabilities to
-%% `SendReceive' or `Receive' unless you also set `video'
-%% capabilities to `SendReceive' or `Receive'. If you don't set
-%% the `video' capability to receive, the response will contain an HTTP
-%% 400 Bad Request status code. However, you can set your `video'
-%% capability to receive and you set your `content' capability to not
-%% receive.
+%% You can't set `content' capabilities to `SendReceive' or
+%% `Receive' unless you also set `video' capabilities to
+%% `SendReceive'
+%% or `Receive'. If you don't set the `video' capability to
+%% receive, the response will contain an HTTP 400 Bad Request status code.
+%% However, you can set your `video' capability
+%% to receive and you set your `content' capability to not receive.
 %%
-%% </li> <li> When you change an `audio' capability from `None' or
-%% `Receive' to `Send' or `SendReceive' , and if the attendee
-%% left their microphone unmuted, audio will flow from the attendee to the
-%% other meeting participants.
+%% When you change an `audio' capability from `None' or `Receive'
+%% to `Send' or `SendReceive' ,
+%% and if the attendee left their microphone unmuted, audio will flow from
+%% the attendee to the other meeting participants.
 %%
-%% </li> <li> When you change a `video' or `content' capability from
-%% `None' or `Receive' to `Send' or `SendReceive' , and if
-%% the attendee turned on their video or content streams, remote attendees
-%% can receive those streams, but only after media renegotiation between the
-%% client and the Amazon Chime back-end server.
-%%
-%% </li> </ul>
+%% When you change a `video' or `content' capability from `None'
+%% or `Receive' to `Send' or `SendReceive' ,
+%% and if the attendee turned on their video or content streams, remote
+%% attendees can receive those streams, but only after media renegotiation
+%% between the client and the Amazon Chime back-end server.
 batch_update_attendee_capabilities_except(Client, MeetingId, Input) ->
     batch_update_attendee_capabilities_except(Client, MeetingId, Input, []).
 batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) ->
     Method = put,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/capabilities?operation=batch-update-except"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -144,21 +148,26 @@ batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new attendee for an active Amazon Chime SDK meeting.
+%% @doc
+%% Creates a new attendee for an active Amazon Chime SDK meeting.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
-%% in the Amazon Chime Developer Guide.
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the
+%% Amazon Chime Developer Guide.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -174,23 +183,27 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
 %% @doc Creates a new Amazon Chime SDK meeting in the specified media Region
 %% with no initial attendees.
 %%
-%% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions:
+%% For more information about specifying media Regions, see
+%% Amazon Chime SDK Media Regions:
 %% https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html
 %% in the Amazon Chime Developer Guide. For more information about the Amazon
-%% Chime SDK, see Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the
 %% Amazon Chime Developer Guide.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 create_meeting(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -203,26 +216,30 @@ create_meeting(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Amazon Chime SDK meeting in the specified media Region,
-%% with attendees.
+%% @doc
+%% Creates a new Amazon Chime SDK meeting in the specified media Region, with
+%% attendees.
 %%
-%% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions:
+%% For more information about specifying media Regions, see
+%% Amazon Chime SDK Media Regions:
 %% https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html
 %% in the Amazon Chime Developer Guide. For more information about the Amazon
-%% Chime SDK, see Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
-%% Amazon Chime Developer Guide.
+%% Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the Amazon Chime Developer Guide.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 create_meeting_with_attendees(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings?operation=create-attendees"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -236,23 +253,26 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an attendee from the specified Amazon Chime SDK meeting and
-%% deletes their `JoinToken'.
+%% deletes their
+%% `JoinToken'.
 %%
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
-%% deleted. For more information about the Amazon Chime SDK, see Using the
-%% Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
-%% Amazon Chime Developer Guide.
+%% deleted. For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the Amazon Chime Developer Guide.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -268,8 +288,9 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% @doc Deletes the specified Amazon Chime SDK meeting.
 %%
 %% The operation deletes all attendees, disconnects all clients, and prevents
-%% new clients from joining the meeting. For more information about the
-%% Amazon Chime SDK, see Using the Amazon Chime SDK:
+%% new clients from
+%% joining the meeting. For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
 %% Amazon Chime Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
@@ -278,10 +299,12 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -294,11 +317,13 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the Amazon Chime SDK attendee details for a specified meeting ID
-%% and attendee ID.
+%% @doc
+%% Gets the Amazon Chime SDK attendee details for a specified meeting ID and
+%% attendee ID.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
@@ -311,10 +336,12 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
 get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -325,8 +352,9 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 %% @doc Gets the Amazon Chime SDK meeting details for the specified meeting
 %% ID.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
@@ -339,10 +367,12 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap)
 get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -350,10 +380,12 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the attendees for the specified Amazon Chime SDK meeting.
+%% @doc
+%% Lists the attendees for the specified Amazon Chime SDK meeting.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
@@ -367,9 +399,11 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -395,9 +429,11 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -411,40 +447,49 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts transcription for the specified `meetingId'.
 %%
-%% For more information, refer to Using Amazon Chime SDK live transcription :
+%% For more information, refer to
+%% Using Amazon Chime SDK live transcription
+%% :
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meeting-transcription.html
 %% in the Amazon Chime SDK Developer Guide.
 %%
 %% If you specify an invalid configuration, a `TranscriptFailed' event
 %% will be sent with the contents of the `BadRequestException' generated
-%% by Amazon Transcribe. For more information on each parameter and which
-%% combinations are valid, refer to the StartStreamTranscription:
+%% by Amazon Transcribe.
+%% For more information on each parameter and which combinations are valid,
+%% refer to the
+%% StartStreamTranscription:
 %% https://docs.aws.amazon.com/transcribe/latest/APIReference/API_streaming_StartStreamTranscription.html
-%% API in the Amazon Transcribe Developer Guide.
+%% API in the
+%% Amazon Transcribe Developer Guide.
 %%
 %% By default, Amazon Transcribe may use and store audio content processed by
 %% the service to develop and improve Amazon Web Services AI/ML services as
 %% further described in section 50 of the Amazon Web Services Service Terms:
-%% https://aws.amazon.com/service-terms/. Using Amazon Transcribe may be
-%% subject to federal and state laws or regulations regarding the recording
-%% or interception of electronic communications. It is your and your end
-%% users’ responsibility to comply with all applicable laws regarding the
-%% recording, including properly notifying all participants in a recorded
-%% session or communication that the session or communication is being
-%% recorded, and obtaining all necessary consents. You can opt out from
-%% Amazon Web Services using audio content to develop and improve AWS AI/ML
-%% services by configuring an AI services opt out policy using Amazon Web
-%% Services Organizations.
+%% https://aws.amazon.com/service-terms/. Using Amazon Transcribe
+%% may be subject to federal and state laws or regulations regarding the
+%% recording or interception of electronic communications. It is your and
+%% your end users’
+%% responsibility to comply with all applicable laws regarding the recording,
+%% including properly notifying all participants in a recorded session or
+%% communication
+%% that the session or communication is being recorded, and obtaining all
+%% necessary consents. You can opt out from Amazon Web Services using audio
+%% content to develop and
+%% improve AWS AI/ML services by configuring an AI services opt out policy
+%% using Amazon Web Services Organizations.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -459,33 +504,39 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 
 %% @doc Stops transcription for the specified `meetingId'.
 %%
-%% For more information, refer to Using Amazon Chime SDK live transcription :
+%% For more information, refer to
+%% Using Amazon Chime SDK live transcription
+%% :
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meeting-transcription.html
 %% in the Amazon Chime SDK Developer Guide.
 %%
 %% By default, Amazon Transcribe may use and store audio content processed by
 %% the service to develop and improve Amazon Web Services AI/ML services as
 %% further described in section 50 of the Amazon Web Services Service Terms:
-%% https://aws.amazon.com/service-terms/. Using Amazon Transcribe may be
-%% subject to federal and state laws or regulations regarding the recording
-%% or interception of electronic communications. It is your and your end
-%% users’ responsibility to comply with all applicable laws regarding the
-%% recording, including properly notifying all participants in a recorded
-%% session or communication that the session or communication is being
-%% recorded, and obtaining all necessary consents. You can opt out from
-%% Amazon Web Services using audio content to develop and improve Amazon Web
-%% Services AI/ML services by configuring an AI services opt out policy using
-%% Amazon Web Services Organizations.
+%% https://aws.amazon.com/service-terms/. Using Amazon Transcribe
+%% may be subject to federal and state laws or regulations regarding the
+%% recording or interception of electronic communications. It is your and
+%% your end users’
+%% responsibility to comply with all applicable laws regarding the recording,
+%% including properly notifying all participants in a recorded session or
+%% communication
+%% that the session or communication is being recorded, and obtaining all
+%% necessary consents. You can opt out from Amazon Web Services using audio
+%% content to develop and
+%% improve Amazon Web Services AI/ML services by configuring an AI services
+%% opt out policy using Amazon Web Services Organizations.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -505,10 +556,12 @@ tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -524,24 +577,26 @@ tag_resource(Client, Input0, Options0) ->
 %% @doc Removes the specified tags from the specified resources.
 %%
 %% When you specify a tag key, the action removes both that key and its
-%% associated value. The operation succeeds even if you attempt to remove
-%% tags from a resource that were already removed. Note the following:
+%% associated value. The operation succeeds even if you
+%% attempt to remove tags from a resource that were already removed. Note the
+%% following:
 %%
-%% <ul> <li> To remove tags from a resource, you need the necessary
-%% permissions for the service that the resource belongs to as well as
-%% permissions for removing tags. For more information, see the documentation
-%% for the service whose resource you want to untag.
+%% To remove tags from a resource, you need the necessary permissions for the
+%% service that the resource belongs to as well as permissions for removing
+%% tags. For more information,
+%% see the documentation for the service whose resource you want to untag.
 %%
-%% </li> <li> You can only tag resources that are located in the specified
-%% Amazon Web Services Region for the calling Amazon Web Services account.
+%% You can only tag resources that are located in the specified Amazon Web
+%% Services Region for the calling Amazon Web Services account.
 %%
-%% </li> </ul> Minimum permissions
+%% Minimum permissions
 %%
 %% In addition to the `tag:UntagResources' permission required by this
 %% operation, you must also have the remove tags permission defined by the
-%% service that created the resource. For example, to remove the tags from an
-%% Amazon EC2 instance using the `UntagResources' operation, you must
-%% have both of the following permissions:
+%% service that created the resource.
+%% For example, to remove the tags from an Amazon EC2 instance using the
+%% `UntagResources' operation, you must have both of the following
+%% permissions:
 %%
 %% `tag:UntagResource'
 %%
@@ -552,10 +607,12 @@ untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -572,52 +629,53 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% You use the capabilities with a set of values that control what the
 %% capabilities can do, such as `SendReceive' data. For more information
-%% about those values, see .
+%% about those values, see
+%% .
 %%
 %% When using capabilities, be aware of these corner cases:
 %%
-%% <ul> <li> If you specify `MeetingFeatures:Video:MaxResolution:None'
-%% when you create a meeting, all API requests that include
-%% `SendReceive', `Send', or `Receive' for
+%% If you specify `MeetingFeatures:Video:MaxResolution:None' when you
+%% create a meeting, all API requests
+%% that include `SendReceive', `Send', or `Receive' for
 %% `AttendeeCapabilities:Video' will be rejected with `ValidationError
 %% 400'.
 %%
-%% </li> <li> If you specify `MeetingFeatures:Content:MaxResolution:None'
-%% when you create a meeting, all API requests that include
-%% `SendReceive', `Send', or `Receive' for
-%% `AttendeeCapabilities:Content' will be rejected with `ValidationError
-%% 400'.
+%% If you specify `MeetingFeatures:Content:MaxResolution:None' when you
+%% create a meeting, all API requests that include `SendReceive',
+%% `Send', or
+%% `Receive' for `AttendeeCapabilities:Content' will be rejected with
+%% `ValidationError 400'.
 %%
-%% </li> <li> You can't set `content' capabilities to
-%% `SendReceive' or `Receive' unless you also set `video'
-%% capabilities to `SendReceive' or `Receive'. If you don't set
-%% the `video' capability to receive, the response will contain an HTTP
-%% 400 Bad Request status code. However, you can set your `video'
-%% capability to receive and you set your `content' capability to not
-%% receive.
+%% You can't set `content' capabilities to `SendReceive' or
+%% `Receive' unless you also set `video' capabilities to
+%% `SendReceive'
+%% or `Receive'. If you don't set the `video' capability to
+%% receive, the response will contain an HTTP 400 Bad Request status code.
+%% However, you can set your `video' capability
+%% to receive and you set your `content' capability to not receive.
 %%
-%% </li> <li> When you change an `audio' capability from `None' or
-%% `Receive' to `Send' or `SendReceive' , and if the attendee
-%% left their microphone unmuted, audio will flow from the attendee to the
-%% other meeting participants.
+%% When you change an `audio' capability from `None' or `Receive'
+%% to `Send' or `SendReceive' ,
+%% and if the attendee left their microphone unmuted, audio will flow from
+%% the attendee to the other meeting participants.
 %%
-%% </li> <li> When you change a `video' or `content' capability from
-%% `None' or `Receive' to `Send' or `SendReceive' , and if
-%% the attendee turned on their video or content streams, remote attendees
-%% can receive those streams, but only after media renegotiation between the
-%% client and the Amazon Chime back-end server.
-%%
-%% </li> </ul>
+%% When you change a `video' or `content' capability from `None'
+%% or `Receive' to `Send' or `SendReceive' ,
+%% and if the attendee turned on their video or content streams, remote
+%% attendees can receive those streams, but only after media renegotiation
+%% between the client and the Amazon Chime back-end server.
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input) ->
     update_attendee_capabilities(Client, AttendeeId, MeetingId, Input, []).
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = put,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/capabilities"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -633,6 +691,11 @@ update_attendee_capabilities(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

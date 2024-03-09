@@ -2,14 +2,19 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon AppIntegrations service enables you to configure and reuse
-%% connections to external applications.
+%% connections to external
+%% applications.
 %%
 %% For information about how you can use external applications with Amazon
-%% Connect, see Set up pre-built integrations:
+%% Connect, see
+%% Set up pre-built
+%% integrations:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/crm.html and Deliver
-%% information to agents using Amazon Connect Wisdom:
+%% information to agents
+%% using Amazon Connect Wisdom:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-wisdom.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 -module(aws_appintegrations).
 
 -export([create_application/2,
@@ -79,11 +84,13 @@ create_application(Client, Input) ->
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -99,18 +106,22 @@ create_application(Client, Input0, Options0) ->
 %% @doc Creates and persists a DataIntegration resource.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
-%% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the `CreateDataIntegration' API.
+%% has been
+%% previously associated. Use a different DataIntegration, or recreate the
+%% DataIntegration
+%% using the `CreateDataIntegration' API.
 create_data_integration(Client, Input) ->
     create_data_integration(Client, Input, []).
 create_data_integration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dataIntegrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -124,21 +135,26 @@ create_data_integration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an EventIntegration, given a specified name, description, and
-%% a reference to an Amazon EventBridge bus in your account and a partner
-%% event source that pushes events to that bus.
+%% a reference to an
+%% Amazon EventBridge bus in your account and a partner event source that
+%% pushes events to
+%% that bus.
 %%
 %% No objects are created in the your account, only metadata that is
-%% persisted on the EventIntegration control plane.
+%% persisted on the
+%% EventIntegration control plane.
 create_event_integration(Client, Input) ->
     create_event_integration(Client, Input, []).
 create_event_integration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/eventIntegrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -160,11 +176,13 @@ delete_application(Client, Arn, Input) ->
 delete_application(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Arn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -179,13 +197,15 @@ delete_application(Client, Arn, Input0, Options0) ->
 
 %% @doc Deletes the DataIntegration.
 %%
-%% Only DataIntegrations that don't have any DataIntegrationAssociations
-%% can be deleted. Deleting a DataIntegration also deletes the underlying
-%% Amazon AppFlow flow and service linked role.
+%% Only DataIntegrations that don't have any
+%% DataIntegrationAssociations can be deleted. Deleting a DataIntegration
+%% also deletes the
+%% underlying Amazon AppFlow flow and service linked role.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
-%% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration:
+%% has been previously associated.
+%% Use a different DataIntegration, or recreate the DataIntegration using the
+%% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
 delete_data_integration(Client, DataIntegrationIdentifier, Input) ->
@@ -193,11 +213,13 @@ delete_data_integration(Client, DataIntegrationIdentifier, Input) ->
 delete_data_integration(Client, DataIntegrationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -212,18 +234,20 @@ delete_data_integration(Client, DataIntegrationIdentifier, Input0, Options0) ->
 
 %% @doc Deletes the specified existing event integration.
 %%
-%% If the event integration is associated with clients, the request is
-%% rejected.
+%% If the event integration is associated
+%% with clients, the request is rejected.
 delete_event_integration(Client, Name, Input) ->
     delete_event_integration(Client, Name, Input, []).
 delete_event_integration(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/eventIntegrations/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -250,10 +274,12 @@ get_application(Client, Arn, QueryMap, HeadersMap)
 get_application(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Arn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -264,8 +290,9 @@ get_application(Client, Arn, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about the DataIntegration.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
-%% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration:
+%% has been previously associated.
+%% Use a different DataIntegration, or recreate the DataIntegration using the
+%% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
 get_data_integration(Client, Identifier)
@@ -279,10 +306,12 @@ get_data_integration(Client, Identifier, QueryMap, HeadersMap)
 get_data_integration(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataIntegrations/", aws_util:encode_uri(Identifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -302,10 +331,12 @@ get_event_integration(Client, Name, QueryMap, HeadersMap)
 get_event_integration(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eventIntegrations/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -326,10 +357,12 @@ list_application_associations(Client, ApplicationId, QueryMap, HeadersMap)
 list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -356,10 +389,12 @@ list_applications(Client, QueryMap, HeadersMap)
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -376,8 +411,9 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
-%% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration:
+%% has been previously associated.
+%% Use a different DataIntegration, or recreate the DataIntegration using the
+%% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
 list_data_integration_associations(Client, DataIntegrationIdentifier)
@@ -391,10 +427,12 @@ list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, 
 list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), "/associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -410,8 +448,9 @@ list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, 
 %% @doc Returns a paginated list of DataIntegrations in the account.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
-%% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration:
+%% has been previously associated.
+%% Use a different DataIntegration, or recreate the DataIntegration using the
+%% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
 list_data_integrations(Client)
@@ -425,10 +464,12 @@ list_data_integrations(Client, QueryMap, HeadersMap)
 list_data_integrations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataIntegrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -454,10 +495,12 @@ list_event_integration_associations(Client, EventIntegrationName, QueryMap, Head
 list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eventIntegrations/", aws_util:encode_uri(EventIntegrationName), "/associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -482,10 +525,12 @@ list_event_integrations(Client, QueryMap, HeadersMap)
 list_event_integrations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/eventIntegrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -510,10 +555,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -527,11 +574,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -550,11 +599,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -576,11 +627,13 @@ update_application(Client, Arn, Input) ->
 update_application(Client, Arn, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(Arn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -596,8 +649,9 @@ update_application(Client, Arn, Input0, Options0) ->
 %% @doc Updates the description of a DataIntegration.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
-%% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration:
+%% has been previously associated.
+%% Use a different DataIntegration, or recreate the DataIntegration using the
+%% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
 update_data_integration(Client, Identifier, Input) ->
@@ -605,11 +659,13 @@ update_data_integration(Client, Identifier, Input) ->
 update_data_integration(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/dataIntegrations/", aws_util:encode_uri(Identifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -628,11 +684,13 @@ update_event_integration(Client, Name, Input) ->
 update_event_integration(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/eventIntegrations/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -648,6 +706,11 @@ update_event_integration(Client, Name, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

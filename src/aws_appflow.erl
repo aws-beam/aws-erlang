@@ -3,43 +3,53 @@
 
 %% @doc Welcome to the Amazon AppFlow API reference.
 %%
-%% This guide is for developers who need detailed information about the
-%% Amazon AppFlow API operations, data types, and errors.
+%% This guide is for developers who need
+%% detailed information about the Amazon AppFlow API operations, data types,
+%% and errors.
 %%
 %% Amazon AppFlow is a fully managed integration service that enables you to
-%% securely transfer data between software as a service (SaaS) applications
-%% like Salesforce, Marketo, Slack, and ServiceNow, and Amazon Web Services
-%% like Amazon S3 and Amazon Redshift.
+%% securely
+%% transfer data between software as a service (SaaS) applications like
+%% Salesforce, Marketo,
+%% Slack, and ServiceNow, and Amazon Web Services like Amazon S3 and Amazon
+%% Redshift.
 %%
 %% Use the following links to get started on the Amazon AppFlow API:
 %%
-%% <ul> <li> Actions:
+%% Actions:
 %% https://docs.aws.amazon.com/appflow/1.0/APIReference/API_Operations.html:
 %% An alphabetical list of all Amazon AppFlow API operations.
 %%
-%% </li> <li> Data types:
+%% Data
+%% types:
 %% https://docs.aws.amazon.com/appflow/1.0/APIReference/API_Types.html: An
 %% alphabetical list of all Amazon AppFlow data types.
 %%
-%% </li> <li> Common parameters:
+%% Common parameters:
 %% https://docs.aws.amazon.com/appflow/1.0/APIReference/CommonParameters.html:
 %% Parameters that all Query operations can use.
 %%
-%% </li> <li> Common errors:
+%% Common
+%% errors:
 %% https://docs.aws.amazon.com/appflow/1.0/APIReference/CommonErrors.html:
 %% Client and server errors that all operations can return.
 %%
-%% </li> </ul> If you're new to Amazon AppFlow, we recommend that you
-%% review the Amazon AppFlow User Guide:
+%% If you're new to Amazon AppFlow, we recommend that you review the
+%% Amazon AppFlow
+%% User Guide:
 %% https://docs.aws.amazon.com/appflow/latest/userguide/what-is-appflow.html.
 %%
 %% Amazon AppFlow API users can use vendor-specific mechanisms for OAuth, and
-%% include applicable OAuth attributes (such as `auth-code' and
-%% `redirecturi') with the connector-specific
-%% `ConnectorProfileProperties' when creating a new connector profile
-%% using Amazon AppFlow API operations. For example, Salesforce users can
-%% refer to the Authorize Apps with OAuth :
-%% https://help.salesforce.com/articleView?id=remoteaccess_authenticate.htm
+%% include
+%% applicable OAuth attributes (such as `auth-code' and
+%% `redirecturi') with
+%% the connector-specific `ConnectorProfileProperties' when creating a
+%% new connector
+%% profile using Amazon AppFlow API operations. For example, Salesforce users
+%% can refer to
+%% the
+%% Authorize Apps with OAuth
+%% : https://help.salesforce.com/articleView?id=remoteaccess_authenticate.htm
 %% documentation.
 -module(aws_appflow).
 
@@ -104,39 +114,47 @@
 %% @doc Cancels active runs for a flow.
 %%
 %% You can cancel all of the active runs for a flow, or you can cancel
-%% specific runs by providing their IDs.
+%% specific runs by
+%% providing their IDs.
 %%
 %% You can cancel a flow run only when the run is in progress. You can't
-%% cancel a run that has already completed or failed. You also can't
-%% cancel a run that's scheduled to occur but hasn't started yet. To
-%% prevent a scheduled run, you can deactivate the flow with the
+%% cancel a run that
+%% has already completed or failed. You also can't cancel a run
+%% that's scheduled to occur but
+%% hasn't started yet. To prevent a scheduled run, you can deactivate the
+%% flow with the
 %% `StopFlow' action.
 %%
 %% You cannot resume a run after you cancel it.
 %%
 %% When you send your request, the status for each run becomes
-%% `CancelStarted'. When the cancellation completes, the status becomes
-%% `Canceled'.
+%% `CancelStarted'.
+%% When the cancellation completes, the status becomes `Canceled'.
 %%
 %% When you cancel a run, you still incur charges for any data that the run
-%% already processed before the cancellation. If the run had already written
-%% some data to the flow destination, then that data remains in the
-%% destination. If you configured the flow to use a batch API (such as the
-%% Salesforce Bulk API 2.0), then the run will finish reading or writing its
-%% entire batch of data after the cancellation. For these operations, the
-%% data processing charges for Amazon AppFlow apply. For the pricing
-%% information, see Amazon AppFlow pricing:
-%% http://aws.amazon.com/appflow/pricing/.
+%% already
+%% processed before the cancellation. If the run had already written some
+%% data to the flow
+%% destination, then that data remains in the destination. If you configured
+%% the flow to use a
+%% batch API (such as the Salesforce Bulk API 2.0), then the run will finish
+%% reading or writing
+%% its entire batch of data after the cancellation. For these operations, the
+%% data processing
+%% charges for Amazon AppFlow apply. For the pricing information, see Amazon
+%% AppFlow pricing: http://aws.amazon.com/appflow/pricing/.
 cancel_flow_executions(Client, Input) ->
     cancel_flow_executions(Client, Input, []).
 cancel_flow_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancel-flow-executions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -152,21 +170,27 @@ cancel_flow_executions(Client, Input0, Options0) ->
 %% @doc Creates a new connector profile associated with your Amazon Web
 %% Services account.
 %%
-%% There is a soft quota of 100 connector profiles per Amazon Web Services
-%% account. If you need more connector profiles than this quota allows, you
-%% can submit a request to the Amazon AppFlow team through the Amazon AppFlow
-%% support channel. In each connector profile that you create, you can
-%% provide the credentials and properties for only one connector.
+%% There is
+%% a soft quota of 100 connector profiles per Amazon Web Services account. If
+%% you need more
+%% connector profiles than this quota allows, you can submit a request to the
+%% Amazon AppFlow
+%% team through the Amazon AppFlow support channel. In each connector profile
+%% that you
+%% create, you can provide the credentials and properties for only one
+%% connector.
 create_connector_profile(Client, Input) ->
     create_connector_profile(Client, Input, []).
 create_connector_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-connector-profile"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -181,21 +205,26 @@ create_connector_profile(Client, Input0, Options0) ->
 
 %% @doc Enables your application to create a new flow using Amazon AppFlow.
 %%
-%% You must create a connector profile before calling this API. Please note
-%% that the Request Syntax below shows syntax for multiple destinations,
-%% however, you can only transfer data to one item in this list at a time.
-%% Amazon AppFlow does not currently support flows to multiple destinations
-%% at once.
+%% You must create
+%% a connector profile before calling this API. Please note that the Request
+%% Syntax below shows
+%% syntax for multiple destinations, however, you can only transfer data to
+%% one item in this list
+%% at a time. Amazon AppFlow does not currently support flows to multiple
+%% destinations at
+%% once.
 create_flow(Client, Input) ->
     create_flow(Client, Input, []).
 create_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -214,11 +243,13 @@ delete_connector_profile(Client, Input) ->
 delete_connector_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-connector-profile"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -234,17 +265,20 @@ delete_connector_profile(Client, Input0, Options0) ->
 %% @doc Enables your application to delete an existing flow.
 %%
 %% Before deleting the flow, Amazon AppFlow validates the request by checking
-%% the flow configuration and status. You can delete flows one at a time.
+%% the flow configuration and status. You can
+%% delete flows one at a time.
 delete_flow(Client, Input) ->
     delete_flow(Client, Input, []).
 delete_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -260,18 +294,22 @@ delete_flow(Client, Input0, Options0) ->
 %% @doc Describes the given custom connector registered in your Amazon Web
 %% Services account.
 %%
-%% This API can be used for custom connectors that are registered in your
-%% account and also for Amazon authored connectors.
+%% This
+%% API can be used for custom connectors that are registered in your account
+%% and also for Amazon
+%% authored connectors.
 describe_connector(Client, Input) ->
     describe_connector(Client, Input, []).
 describe_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-connector"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -285,17 +323,20 @@ describe_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides details regarding the entity used with the connector, with a
-%% description of the data model for each field in that entity.
+%% description of the
+%% data model for each field in that entity.
 describe_connector_entity(Client, Input) ->
     describe_connector_entity(Client, Input, []).
 describe_connector_entity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-connector-entity"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -309,23 +350,28 @@ describe_connector_entity(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `connector-profile' details matching the
-%% provided `connector-profile' names and `connector-types'.
+%% provided
+%% `connector-profile' names and `connector-types'.
 %%
-%% Both input lists are optional, and you can use them to filter the result.
+%% Both input lists are
+%% optional, and you can use them to filter the result.
 %%
 %% If no names or `connector-types' are provided, returns all connector
-%% profiles in a paginated form. If there is no match, this operation returns
-%% an empty list.
+%% profiles
+%% in a paginated form. If there is no match, this operation returns an empty
+%% list.
 describe_connector_profiles(Client, Input) ->
     describe_connector_profiles(Client, Input, []).
 describe_connector_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-connector-profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -341,21 +387,25 @@ describe_connector_profiles(Client, Input0, Options0) ->
 %% @doc Describes the connectors vended by Amazon AppFlow for specified
 %% connector types.
 %%
-%% If you don't specify a connector type, this operation describes all
+%% If
+%% you don't specify a connector type, this operation describes all
 %% connectors vended by Amazon AppFlow. If there are more connectors than can
-%% be returned in one page, the response contains a `nextToken' object,
-%% which can be be passed in to the next call to the `DescribeConnectors'
-%% API operation to retrieve the next page.
+%% be returned in one page, the response
+%% contains a `nextToken' object, which can be be passed in to the next
+%% call to the
+%% `DescribeConnectors' API operation to retrieve the next page.
 describe_connectors(Client, Input) ->
     describe_connectors(Client, Input, []).
 describe_connectors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-connectors"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -374,11 +424,13 @@ describe_flow(Client, Input) ->
 describe_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -397,11 +449,13 @@ describe_flow_execution_records(Client, Input) ->
 describe_flow_execution_records(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-flow-execution-records"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -417,18 +471,22 @@ describe_flow_execution_records(Client, Input0, Options0) ->
 %% @doc Returns the list of available connector entities supported by Amazon
 %% AppFlow.
 %%
-%% For example, you can query Salesforce for Account and Opportunity
-%% entities, or query ServiceNow for the Incident entity.
+%% For
+%% example, you can query Salesforce for Account and
+%% Opportunity entities, or query ServiceNow for the
+%% Incident entity.
 list_connector_entities(Client, Input) ->
     list_connector_entities(Client, Input, []).
 list_connector_entities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-connector-entities"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -445,17 +503,20 @@ list_connector_entities(Client, Input0, Options0) ->
 %% Web Services account.
 %%
 %% This API lists only custom connectors registered in this account, not the
-%% Amazon Web Services authored connectors.
+%% Amazon Web Services
+%% authored connectors.
 list_connectors(Client, Input) ->
     list_connectors(Client, Input, []).
 list_connectors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-connectors"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -474,11 +535,13 @@ list_flows(Client, Input) ->
 list_flows(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-flows"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -503,10 +566,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -517,18 +582,22 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Registers a new custom connector with your Amazon Web Services
 %% account.
 %%
-%% Before you can register the connector, you must deploy the associated AWS
-%% lambda function in your account.
+%% Before you can
+%% register the connector, you must deploy the associated AWS lambda function
+%% in your
+%% account.
 register_connector(Client, Input) ->
     register_connector(Client, Input, []).
 register_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/register-connector"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -542,27 +611,33 @@ register_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Resets metadata about your connector entities that Amazon AppFlow
-%% stored in its cache.
+%% stored in its
+%% cache.
 %%
 %% Use this action when you want Amazon AppFlow to return the latest
-%% information about the data that you have in a source application.
+%% information
+%% about the data that you have in a source application.
 %%
 %% Amazon AppFlow returns metadata about your entities when you use the
 %% ListConnectorEntities or DescribeConnectorEntities actions. Following
 %% these actions, Amazon AppFlow caches the metadata to reduce the number of
-%% API requests that it must send to the source application. Amazon AppFlow
-%% automatically resets the cache once every hour, but you can use this
-%% action when you want to get the latest metadata right away.
+%% API requests that it must send to
+%% the source application. Amazon AppFlow automatically resets the cache once
+%% every hour,
+%% but you can use this action when you want to get the latest metadata right
+%% away.
 reset_connector_metadata_cache(Client, Input) ->
     reset_connector_metadata_cache(Client, Input, []).
 reset_connector_metadata_cache(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reset-connector-metadata-cache"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -577,18 +652,21 @@ reset_connector_metadata_cache(Client, Input0, Options0) ->
 
 %% @doc Activates an existing flow.
 %%
-%% For on-demand flows, this operation runs the flow immediately. For
-%% schedule and event-triggered flows, this operation activates the flow.
+%% For on-demand flows, this operation runs the flow
+%% immediately. For schedule and event-triggered flows, this operation
+%% activates the flow.
 start_flow(Client, Input) ->
     start_flow(Client, Input, []).
 start_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -605,17 +683,20 @@ start_flow(Client, Input0, Options0) ->
 %%
 %% For on-demand flows, this operation returns an
 %% `unsupportedOperationException' error message. For schedule and
-%% event-triggered flows, this operation deactivates the flow.
+%% event-triggered
+%% flows, this operation deactivates the flow.
 stop_flow(Client, Input) ->
     stop_flow(Client, Input, []).
 stop_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stop-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -634,11 +715,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -652,17 +735,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Unregisters the custom connector registered in your account that
-%% matches the connector label provided in the request.
+%% matches the connector
+%% label provided in the request.
 unregister_connector(Client, Input) ->
     unregister_connector(Client, Input, []).
 unregister_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/unregister-connector"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -681,11 +767,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -705,11 +793,13 @@ update_connector_profile(Client, Input) ->
 update_connector_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-connector-profile"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -724,24 +814,25 @@ update_connector_profile(Client, Input0, Options0) ->
 
 %% @doc Updates a custom connector that you've previously registered.
 %%
-%% This operation updates the connector with one of the following:
+%% This operation updates the
+%% connector with one of the following:
 %%
-%% <ul> <li> The latest version of the AWS Lambda function that's
-%% assigned to the connector
+%% The latest version of the AWS Lambda function that's assigned to the
+%% connector
 %%
-%% </li> <li> A new AWS Lambda function that you specify
-%%
-%% </li> </ul>
+%% A new AWS Lambda function that you specify
 update_connector_registration(Client, Input) ->
     update_connector_registration(Client, Input, []).
 update_connector_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-connector-registration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -760,11 +851,13 @@ update_flow(Client, Input) ->
 update_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -780,6 +873,11 @@ update_flow(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

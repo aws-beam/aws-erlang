@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AppSync provides API actions for creating and interacting with data
-%% sources using GraphQL from your application.
+%% sources using GraphQL
+%% from your application.
 -module(aws_appsync).
 
 -export([associate_api/3,
@@ -170,11 +171,13 @@ associate_api(Client, DomainName, Input) ->
 associate_api(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -194,11 +197,13 @@ associate_merged_graphql_api(Client, SourceApiIdentifier, Input) ->
 associate_merged_graphql_api(Client, SourceApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/sourceApis/", aws_util:encode_uri(SourceApiIdentifier), "/mergedApiAssociations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -218,11 +223,13 @@ associate_source_graphql_api(Client, MergedApiIdentifier, Input) ->
 associate_source_graphql_api(Client, MergedApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -241,11 +248,13 @@ create_api_cache(Client, ApiId, Input) ->
 create_api_cache(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -265,11 +274,13 @@ create_api_key(Client, ApiId, Input) ->
 create_api_key(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -288,11 +299,13 @@ create_data_source(Client, ApiId, Input) ->
 create_data_source(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -311,11 +324,13 @@ create_domain_name(Client, Input) ->
 create_domain_name(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domainnames"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -337,11 +352,13 @@ create_function(Client, ApiId, Input) ->
 create_function(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -360,11 +377,13 @@ create_graphql_api(Client, Input) ->
 create_graphql_api(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -380,17 +399,20 @@ create_graphql_api(Client, Input0, Options0) ->
 %% @doc Creates a `Resolver' object.
 %%
 %% A resolver converts incoming requests into a format that a data source can
-%% understand, and converts the data source's responses into GraphQL.
+%% understand, and converts the data
+%% source's responses into GraphQL.
 create_resolver(Client, ApiId, TypeName, Input) ->
     create_resolver(Client, ApiId, TypeName, Input, []).
 create_resolver(Client, ApiId, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -409,11 +431,13 @@ create_type(Client, ApiId, Input) ->
 create_type(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -432,11 +456,13 @@ delete_api_cache(Client, ApiId, Input) ->
 delete_api_cache(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -455,11 +481,13 @@ delete_api_key(Client, ApiId, Id, Input) ->
 delete_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -478,11 +506,13 @@ delete_data_source(Client, ApiId, Name, Input) ->
 delete_data_source(Client, ApiId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -501,11 +531,13 @@ delete_domain_name(Client, DomainName, Input) ->
 delete_domain_name(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -524,11 +556,13 @@ delete_function(Client, ApiId, FunctionId, Input) ->
 delete_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -547,11 +581,13 @@ delete_graphql_api(Client, ApiId, Input) ->
 delete_graphql_api(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -570,11 +606,13 @@ delete_resolver(Client, ApiId, FieldName, TypeName, Input) ->
 delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -593,11 +631,13 @@ delete_type(Client, ApiId, TypeName, Input) ->
 delete_type(Client, ApiId, TypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -616,11 +656,13 @@ disassociate_api(Client, DomainName, Input) ->
 disassociate_api(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -634,17 +676,20 @@ disassociate_api(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an association between a Merged API and source API using the
-%% source API's identifier and the association ID.
+%% source API's identifier and the
+%% association ID.
 disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input) ->
     disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input, []).
 disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/sourceApis/", aws_util:encode_uri(SourceApiIdentifier), "/mergedApiAssociations/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -658,17 +703,20 @@ disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an association between a Merged API and source API using the
-%% Merged API's identifier and the association ID.
+%% Merged API's identifier and the
+%% association ID.
 disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input) ->
     disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input, []).
 disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -683,23 +731,26 @@ disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Inpu
 
 %% @doc Evaluates the given code and returns the response.
 %%
-%% The code definition requirements depend on the specified runtime. For
-%% `APPSYNC_JS' runtimes, the code defines the request and response
-%% functions. The request function takes the incoming request after a GraphQL
-%% operation is parsed and converts it into a request configuration for the
-%% selected data source operation. The response function interprets responses
-%% from the data source and maps it to the shape of the GraphQL field output
-%% type.
+%% The code definition requirements depend on the specified
+%% runtime. For `APPSYNC_JS' runtimes, the code defines the request and
+%% response functions. The request
+%% function takes the incoming request after a GraphQL operation is parsed
+%% and converts it into a request
+%% configuration for the selected data source operation. The response
+%% function interprets responses from the data
+%% source and maps it to the shape of the GraphQL field output type.
 evaluate_code(Client, Input) ->
     evaluate_code(Client, Input, []).
 evaluate_code(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/dataplane-evaluatecode"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -714,12 +765,14 @@ evaluate_code(Client, Input0, Options0) ->
 
 %% @doc Evaluates a given template and returns the response.
 %%
-%% The mapping template can be a request or response template.
+%% The mapping template can be a request or response
+%% template.
 %%
 %% Request templates take the incoming request after a GraphQL operation is
-%% parsed and convert it into a request configuration for the selected data
-%% source operation. Response templates interpret responses from the data
-%% source and map it to the shape of the GraphQL field output type.
+%% parsed and convert it into a
+%% request configuration for the selected data source operation. Response
+%% templates interpret responses from the
+%% data source and map it to the shape of the GraphQL field output type.
 %%
 %% Mapping templates are written in the Apache Velocity Template Language
 %% (VTL).
@@ -728,11 +781,13 @@ evaluate_mapping_template(Client, Input) ->
 evaluate_mapping_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/dataplane-evaluatetemplate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -751,11 +806,13 @@ flush_api_cache(Client, ApiId, Input) ->
 flush_api_cache(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/FlushCache"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -780,10 +837,12 @@ get_api_association(Client, DomainName, QueryMap, HeadersMap)
 get_api_association(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -803,10 +862,12 @@ get_api_cache(Client, ApiId, QueryMap, HeadersMap)
 get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -826,10 +887,12 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap)
 get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -839,9 +902,10 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the record of an existing introspection.
 %%
-%% If the retrieval is successful, the result of the instrospection will also
-%% be returned. If the retrieval fails the operation, an error message will
-%% be returned instead.
+%% If the retrieval is successful, the result of the
+%% instrospection will also be returned. If the retrieval fails the
+%% operation, an error message will be returned
+%% instead.
 get_data_source_introspection(Client, IntrospectionId)
   when is_map(Client) ->
     get_data_source_introspection(Client, IntrospectionId, #{}, #{}).
@@ -853,10 +917,12 @@ get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap)
 get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datasources/introspections/", aws_util:encode_uri(IntrospectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -882,10 +948,12 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap)
 get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -905,10 +973,12 @@ get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
 get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -928,10 +998,12 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap)
 get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -952,10 +1024,12 @@ get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap)
 get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/environmentVariables"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -975,10 +1049,12 @@ get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap)
 get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schema"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1003,10 +1079,12 @@ get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap)
 get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1026,10 +1104,12 @@ get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap)
 get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1049,10 +1129,12 @@ get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap,
 get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1072,10 +1154,12 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap)
 get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1090,9 +1174,10 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options0)
 %% @doc Lists the API keys for a given API.
 %%
 %% API keys are deleted automatically 60 days after they expire. However,
-%% they may still be included in the response until they have actually been
-%% deleted. You can safely call `DeleteApiKey' to manually delete a key
-%% before it's automatically deleted.
+%% they may still be included in the
+%% response until they have actually been deleted. You can safely call
+%% `DeleteApiKey' to manually
+%% delete a key before it's automatically deleted.
 list_api_keys(Client, ApiId)
   when is_map(Client) ->
     list_api_keys(Client, ApiId, #{}, #{}).
@@ -1104,10 +1189,12 @@ list_api_keys(Client, ApiId, QueryMap, HeadersMap)
 list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1132,10 +1219,12 @@ list_data_sources(Client, ApiId, QueryMap, HeadersMap)
 list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1160,10 +1249,12 @@ list_domain_names(Client, QueryMap, HeadersMap)
 list_domain_names(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domainnames"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1188,10 +1279,12 @@ list_functions(Client, ApiId, QueryMap, HeadersMap)
 list_functions(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1216,10 +1309,12 @@ list_graphql_apis(Client, QueryMap, HeadersMap)
 list_graphql_apis(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1246,10 +1341,12 @@ list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap)
 list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1274,10 +1371,12 @@ list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
 list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), "/resolvers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1302,10 +1401,12 @@ list_source_api_associations(Client, ApiId, QueryMap, HeadersMap)
 list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/sourceApiAssociations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1330,10 +1431,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1353,10 +1456,12 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap)
 list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1382,10 +1487,12 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
 list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), "/types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1404,53 +1511,56 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
 %% When creating an environmental variable, it must follow the constraints
 %% below:
 %%
-%% <ul> <li> Both JavaScript and VTL templates support environmental
-%% variables.
+%% Both JavaScript and VTL templates support environmental variables.
 %%
-%% </li> <li> Environmental variables are not evaluated before function
-%% invocation.
+%% Environmental variables are not evaluated before function invocation.
 %%
-%% </li> <li> Environmental variables only support string values.
+%% Environmental variables only support string values.
 %%
-%% </li> <li> Any defined value in an environmental variable is considered a
-%% string literal and not expanded.
+%% Any defined value in an environmental variable is considered a string
+%% literal and not
+%% expanded.
 %%
-%% </li> <li> Variable evaluations should ideally be performed in the
-%% function code.
+%% Variable evaluations should ideally be performed in the function code.
 %%
-%% </li> </ul> When creating an environmental variable key-value pair, it
-%% must follow the additional constraints below:
+%% When creating an environmental variable key-value pair, it must follow the
+%% additional constraints
+%% below:
 %%
-%% <ul> <li> Keys must begin with a letter.
+%% Keys must begin with a letter.
 %%
-%% </li> <li> Keys must be at least two characters long.
+%% Keys must be at least two characters long.
 %%
-%% </li> <li> Keys can only contain letters, numbers, and the underscore
-%% character (_).
+%% Keys can only contain letters, numbers, and the underscore character (_).
 %%
-%% </li> <li> Values can be up to 512 characters long.
+%% Values can be up to 512 characters long.
 %%
-%% </li> <li> You can configure up to 50 key-value pairs in a GraphQL API.
+%% You can configure up to 50 key-value pairs in a GraphQL API.
 %%
-%% </li> </ul> You can create a list of environmental variables by adding it
-%% to the `environmentVariables' payload as a list in the format
+%% You can create a list of environmental variables by adding it to the
+%% `environmentVariables'
+%% payload as a list in the format
 %% `{&quot;key1&quot;:&quot;value1&quot;,&quot;key2&quot;:&quot;value2&quot;,
 %% …}'. Note that each call of the
 %% `PutGraphqlApiEnvironmentVariables' action will result in the
-%% overwriting of the existing environmental variable list of that API. This
-%% means the existing environmental variables will be lost. To avoid this,
-%% you must include all existing and new environmental variables in the list
-%% each time you call this action.
+%% overwriting of the existing
+%% environmental variable list of that API. This means the existing
+%% environmental variables will be lost. To avoid
+%% this, you must include all existing and new environmental variables in the
+%% list each time you call this
+%% action.
 put_graphql_api_environment_variables(Client, ApiId, Input) ->
     put_graphql_api_environment_variables(Client, ApiId, Input, []).
 put_graphql_api_environment_variables(Client, ApiId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/environmentVariables"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1472,11 +1582,13 @@ start_data_source_introspection(Client, Input) ->
 start_data_source_introspection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datasources/introspections"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1491,17 +1603,20 @@ start_data_source_introspection(Client, Input0, Options0) ->
 
 %% @doc Adds a new schema to your GraphQL API.
 %%
-%% This operation is asynchronous. Use to determine when it has completed.
+%% This operation is asynchronous. Use to determine when it has
+%% completed.
 start_schema_creation(Client, ApiId, Input) ->
     start_schema_creation(Client, ApiId, Input, []).
 start_schema_creation(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1522,11 +1637,13 @@ start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input) ->
 start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), "/merge"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1545,11 +1662,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1568,11 +1687,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1592,11 +1713,13 @@ update_api_cache(Client, ApiId, Input) ->
 update_api_cache(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1617,11 +1740,13 @@ update_api_key(Client, ApiId, Id, Input) ->
 update_api_key(Client, ApiId, Id, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1640,11 +1765,13 @@ update_data_source(Client, ApiId, Name, Input) ->
 update_data_source(Client, ApiId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1663,11 +1790,13 @@ update_domain_name(Client, DomainName, Input) ->
 update_domain_name(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1686,11 +1815,13 @@ update_function(Client, ApiId, FunctionId, Input) ->
 update_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1709,11 +1840,13 @@ update_graphql_api(Client, ApiId, Input) ->
 update_graphql_api(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1732,11 +1865,13 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input) ->
 update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1756,11 +1891,13 @@ update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input)
 update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1779,11 +1916,13 @@ update_type(Client, ApiId, TypeName, Input) ->
 update_type(Client, ApiId, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1799,6 +1938,11 @@ update_type(Client, ApiId, TypeName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -3,22 +3,24 @@
 
 %% @doc This is the Resource Access Manager API Reference.
 %%
-%% This documentation provides descriptions and syntax for each of the
-%% actions and data types in RAM. RAM is a service that helps you securely
-%% share your Amazon Web Services resources to other Amazon Web Services
-%% accounts. If you use Organizations to manage your accounts, then you can
-%% share your resources with your entire organization or to organizational
-%% units (OUs). For supported resource types, you can also share resources
-%% with individual Identity and Access Management (IAM) roles and users.
+%% This documentation provides
+%% descriptions and syntax for each of the actions and data types in RAM. RAM
+%% is a
+%% service that helps you securely share your Amazon Web Services resources
+%% to other Amazon Web Services accounts. If
+%% you use Organizations to manage your accounts, then you can share your
+%% resources with your
+%% entire organization or to organizational units (OUs). For supported
+%% resource types, you
+%% can also share resources with individual Identity and Access Management
+%% (IAM) roles and users.
 %%
 %% To learn more about RAM, see the following resources:
 %%
-%% <ul> <li> Resource Access Manager product page: http://aws.amazon.com/ram
+%% Resource Access Manager product page: http://aws.amazon.com/ram
 %%
-%% </li> <li> Resource Access Manager User Guide:
-%% https://docs.aws.amazon.com/ram/latest/userguide/
-%%
-%% </li> </ul>
+%% Resource Access Manager User
+%% Guide: https://docs.aws.amazon.com/ram/latest/userguide/
 -module(aws_ram).
 
 -export([accept_resource_share_invitation/2,
@@ -99,19 +101,22 @@
 %% @doc Accepts an invitation to a resource share from another Amazon Web
 %% Services account.
 %%
-%% After you accept the invitation, the resources included in the resource
-%% share are available to interact with in the relevant Amazon Web Services
-%% Management Consoles and tools.
+%% After you accept the
+%% invitation, the resources included in the resource share are available to
+%% interact with in the
+%% relevant Amazon Web Services Management Consoles and tools.
 accept_resource_share_invitation(Client, Input) ->
     accept_resource_share_invitation(Client, Input, []).
 accept_resource_share_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/acceptresourceshareinvitation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -127,19 +132,23 @@ accept_resource_share_invitation(Client, Input0, Options0) ->
 %% @doc Adds the specified list of principals and list of resources to a
 %% resource share.
 %%
-%% Principals that already have access to this resource share immediately
-%% receive access to the added resources. Newly added principals immediately
-%% receive access to the resources shared in this resource share.
+%% Principals that
+%% already have access to this resource share immediately receive access to
+%% the added resources.
+%% Newly added principals immediately receive access to the resources shared
+%% in this resource share.
 associate_resource_share(Client, Input) ->
     associate_resource_share(Client, Input, []).
 associate_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateresourceshare"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -155,20 +164,24 @@ associate_resource_share(Client, Input0, Options0) ->
 %% @doc Adds or replaces the RAM permission for a resource type included in a
 %% resource share.
 %%
-%% You can have exactly one permission associated with each resource type in
-%% the resource share. You can add a new RAM permission only if there are
-%% currently no resources of that resource type currently in the resource
-%% share.
+%% You can
+%% have exactly one permission associated with each resource type in the
+%% resource share. You can add
+%% a new RAM permission only if there are currently no resources of that
+%% resource type
+%% currently in the resource share.
 associate_resource_share_permission(Client, Input) ->
     associate_resource_share_permission(Client, Input, []).
 associate_resource_share_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateresourcesharepermission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -191,11 +204,13 @@ create_permission(Client, Input) ->
 create_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createpermission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -210,25 +225,29 @@ create_permission(Client, Input0, Options0) ->
 
 %% @doc Creates a new version of the specified customer managed permission.
 %%
-%% The new version is automatically set as the default version of the
-%% customer managed permission. New resource shares automatically use the
-%% default permission. Existing resource shares continue to use their
-%% original permission versions, but you can use
-%% `ReplacePermissionAssociations' to update them.
+%% The new version is automatically set as
+%% the default version of the customer managed permission. New resource
+%% shares automatically use the default
+%% permission. Existing resource shares continue to use their original
+%% permission versions,
+%% but you can use `ReplacePermissionAssociations' to update them.
 %%
 %% If the specified customer managed permission already has the maximum of 5
-%% versions, then you must delete one of the existing versions before you can
-%% create a new one.
+%% versions, then
+%% you must delete one of the existing versions before you can create a new
+%% one.
 create_permission_version(Client, Input) ->
     create_permission_version(Client, Input, []).
 create_permission_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createpermissionversion"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -245,23 +264,27 @@ create_permission_version(Client, Input0, Options0) ->
 %%
 %% You can provide a list of the Amazon Resource Names (ARNs):
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-%% for the resources that you want to share, a list of principals you want to
-%% share the resources with, and the permissions to grant those principals.
+%% for the resources that you
+%% want to share, a list of principals you want to share the resources with,
+%% and the
+%% permissions to grant those principals.
 %%
 %% Sharing a resource makes it available for use by principals outside of the
 %% Amazon Web Services account that created the resource. Sharing doesn't
-%% change any permissions or quotas that apply to the resource in the account
-%% that created it.
+%% change any permissions or
+%% quotas that apply to the resource in the account that created it.
 create_resource_share(Client, Input) ->
     create_resource_share(Client, Input, []).
 create_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createresourceshare"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -277,19 +300,22 @@ create_resource_share(Client, Input0, Options0) ->
 %% @doc Deletes the specified customer managed permission in the Amazon Web
 %% Services Region in which you call this operation.
 %%
-%% You can delete a customer managed permission only if it isn't attached
-%% to any resource share. The operation deletes all versions associated with
-%% the customer managed permission.
+%% You
+%% can delete a customer managed permission only if it isn't attached to
+%% any resource share. The operation deletes all
+%% versions associated with the customer managed permission.
 delete_permission(Client, Input) ->
     delete_permission(Client, Input, []).
 delete_permission(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deletepermission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -306,21 +332,24 @@ delete_permission(Client, Input0, Options0) ->
 
 %% @doc Deletes one version of a customer managed permission.
 %%
-%% The version you specify must not be attached to any resource share and
-%% must not be the default version for the permission.
+%% The version you specify must not be attached to any
+%% resource share and must not be the default version for the permission.
 %%
 %% If a customer managed permission has the maximum of 5 versions, then you
-%% must delete at least one version before you can create another.
+%% must delete at
+%% least one version before you can create another.
 delete_permission_version(Client, Input) ->
     delete_permission_version(Client, Input, []).
 delete_permission_version(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deletepermissionversion"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -339,18 +368,20 @@ delete_permission_version(Client, Input0, Options0) ->
 %% @doc Deletes the specified resource share.
 %%
 %% This doesn't delete any of the resources that were associated with the
-%% resource share; it only stops the sharing of those resources through this
-%% resource share.
+%% resource share; it
+%% only stops the sharing of those resources through this resource share.
 delete_resource_share(Client, Input) ->
     delete_resource_share(Client, Input, []).
 delete_resource_share(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deleteresourceshare"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -366,17 +397,20 @@ delete_resource_share(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified principals or resources from participating in
-%% the specified resource share.
+%% the specified
+%% resource share.
 disassociate_resource_share(Client, Input) ->
     disassociate_resource_share(Client, Input, []).
 disassociate_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateresourceshare"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -391,19 +425,22 @@ disassociate_resource_share(Client, Input0, Options0) ->
 
 %% @doc Removes a managed permission from a resource share.
 %%
-%% Permission changes take effect immediately. You can remove a managed
-%% permission from a resource share only if there are currently no resources
-%% of the relevant resource type currently attached to the resource share.
+%% Permission changes take effect immediately. You can
+%% remove a managed permission from a resource share only if there are
+%% currently no resources of the relevant
+%% resource type currently attached to the resource share.
 disassociate_resource_share_permission(Client, Input) ->
     disassociate_resource_share_permission(Client, Input, []).
 disassociate_resource_share_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateresourcesharepermission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -418,29 +455,36 @@ disassociate_resource_share_permission(Client, Input0, Options0) ->
 
 %% @doc Enables resource sharing within your organization in Organizations.
 %%
-%% This operation creates a service-linked role called
-%% `AWSServiceRoleForResourceAccessManager' that has the IAM managed
-%% policy named AWSResourceAccessManagerServiceRolePolicy attached. This role
-%% permits RAM to retrieve information about the organization and its
-%% structure. This lets you share resources with all of the accounts in the
-%% calling account's organization by specifying the organization ID, or
-%% all of the accounts in an organizational unit (OU) by specifying the OU
-%% ID. Until you enable sharing within the organization, you can specify only
-%% individual Amazon Web Services accounts, or for supported resource types,
-%% IAM roles and users.
+%% This operation creates
+%% a service-linked role called `AWSServiceRoleForResourceAccessManager'
+%% that has the IAM managed policy
+%% named AWSResourceAccessManagerServiceRolePolicy attached. This role
+%% permits RAM to retrieve information about
+%% the organization and its structure. This lets you share resources with all
+%% of the
+%% accounts in the calling account's organization by specifying the
+%% organization ID, or all
+%% of the accounts in an organizational unit (OU) by specifying the OU ID.
+%% Until you enable
+%% sharing within the organization, you can specify only individual Amazon
+%% Web Services accounts, or for
+%% supported resource types, IAM roles and users.
 %%
 %% You must call this operation from an IAM role or user in the
-%% organization's management account.
+%% organization's
+%% management account.
 enable_sharing_with_aws_organization(Client, Input) ->
     enable_sharing_with_aws_organization(Client, Input, []).
 enable_sharing_with_aws_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enablesharingwithawsorganization"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -459,11 +503,13 @@ get_permission(Client, Input) ->
 get_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getpermission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -477,17 +523,20 @@ get_permission(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the resource policies for the specified resources that you
-%% own and have shared.
+%% own and have
+%% shared.
 get_resource_policies(Client, Input) ->
     get_resource_policies(Client, Input, []).
 get_resource_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourcepolicies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -501,17 +550,20 @@ get_resource_policies(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the lists of resources and principals that associated for
-%% resource shares that you own.
+%% resource shares that you
+%% own.
 get_resource_share_associations(Client, Input) ->
     get_resource_share_associations(Client, Input, []).
 get_resource_share_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshareassociations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -531,11 +583,13 @@ get_resource_share_invitations(Client, Input) ->
 get_resource_share_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshareinvitations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -555,11 +609,13 @@ get_resource_shares(Client, Input) ->
 get_resource_shares(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getresourceshares"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -573,20 +629,23 @@ get_resource_shares(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the resources in a resource share that is shared with you but
-%% for which the invitation is still `PENDING'.
+%% for which the invitation is
+%% still `PENDING'.
 %%
-%% That means that you haven't accepted or rejected the invitation and
-%% the invitation hasn't expired.
+%% That means that you haven't accepted or rejected the
+%% invitation and the invitation hasn't expired.
 list_pending_invitation_resources(Client, Input) ->
     list_pending_invitation_resources(Client, Input, []).
 list_pending_invitation_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpendinginvitationresources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -600,20 +659,24 @@ list_pending_invitation_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists information about the managed permission and its associations
-%% to any resource shares that use this managed permission.
+%% to any resource shares that use
+%% this managed permission.
 %%
 %% This lets you see which resource shares use which versions of the
-%% specified managed permission.
+%% specified
+%% managed permission.
 list_permission_associations(Client, Input) ->
     list_permission_associations(Client, Input, []).
 list_permission_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpermissionassociations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -632,11 +695,13 @@ list_permission_versions(Client, Input) ->
 list_permission_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpermissionversions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -650,17 +715,20 @@ list_permission_versions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of available RAM permissions that you can use for
-%% the supported resource types.
+%% the supported
+%% resource types.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 list_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listpermissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -674,17 +742,20 @@ list_permissions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the principals that you are sharing resources with or that are
-%% sharing resources with you.
+%% sharing resources
+%% with you.
 list_principals(Client, Input) ->
     list_principals(Client, Input, []).
 list_principals(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listprincipals"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -698,18 +769,20 @@ list_principals(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current status of the asynchronous tasks performed by
-%% RAM when you perform the `ReplacePermissionAssociationsWork'
-%% operation.
+%% RAM when you
+%% perform the `ReplacePermissionAssociationsWork' operation.
 list_replace_permission_associations_work(Client, Input) ->
     list_replace_permission_associations_work(Client, Input, []).
 list_replace_permission_associations_work(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listreplacepermissionassociationswork"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -728,11 +801,13 @@ list_resource_share_permissions(Client, Input) ->
 list_resource_share_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresourcesharepermissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -751,11 +826,13 @@ list_resource_types(Client, Input) ->
 list_resource_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresourcetypes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -769,17 +846,20 @@ list_resource_types(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the resources that you added to a resource share or the
-%% resources that are shared with you.
+%% resources that are shared with
+%% you.
 list_resources(Client, Input) ->
     list_resources(Client, Input, []).
 list_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listresources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -793,48 +873,57 @@ list_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When you attach a resource-based policy to a resource, RAM
-%% automatically creates a resource share of
-%% `featureSet'=`CREATED_FROM_POLICY' with a managed permission that
+%% automatically creates
+%% a resource share of `featureSet'=`CREATED_FROM_POLICY' with a
+%% managed permission that
 %% has the same IAM permissions as the original resource-based policy.
 %%
-%% However, this type of managed permission is visible to only the resource
-%% share owner, and the associated resource share can't be modified by
+%% However, this type
+%% of managed permission is visible to only the resource share owner, and the
+%% associated resource share can't be modified by
 %% using RAM.
 %%
 %% This operation creates a separate, fully manageable customer managed
-%% permission that has the same IAM permissions as the original
-%% resource-based policy. You can associate this customer managed permission
-%% to any resource shares.
+%% permission that has the same IAM
+%% permissions as the original resource-based policy. You can associate this
+%% customer managed permission to any
+%% resource shares.
 %%
 %% Before you use `PromoteResourceShareCreatedFromPolicy', you should
 %% first run this operation to ensure that you have an appropriate customer
-%% managed permission that can be associated with the promoted resource
-%% share.
+%% managed permission that can be
+%% associated with the promoted resource share.
 %%
 %% The original `CREATED_FROM_POLICY' policy isn't deleted, and
 %% resource shares using that original policy aren't automatically
 %% updated.
 %%
 %% You can't modify a `CREATED_FROM_POLICY' resource share so you
-%% can't associate the new customer managed permission by using
+%% can't
+%% associate the new customer managed permission by using
 %% `ReplacePermsissionAssociations'. However, if you use
-%% `PromoteResourceShareCreatedFromPolicy', that operation automatically
-%% associates the fully manageable customer managed permission to the newly
-%% promoted `STANDARD' resource share.
+%% `PromoteResourceShareCreatedFromPolicy', that operation
+%% automatically associates the fully manageable customer managed permission
+%% to the newly promoted
+%% `STANDARD' resource share.
 %%
 %% After you promote a resource share, if the original
-%% `CREATED_FROM_POLICY' managed permission has no other associations to
-%% A resource share, then RAM automatically deletes it.
+%% `CREATED_FROM_POLICY'
+%% managed permission has no other associations to A resource share, then RAM
+%% automatically deletes
+%% it.
 promote_permission_created_from_policy(Client, Input) ->
     promote_permission_created_from_policy(Client, Input, []).
 promote_permission_created_from_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/promotepermissioncreatedfrompolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -848,35 +937,41 @@ promote_permission_created_from_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When you attach a resource-based policy to a resource, RAM
-%% automatically creates a resource share of
-%% `featureSet'=`CREATED_FROM_POLICY' with a managed permission that
+%% automatically creates
+%% a resource share of `featureSet'=`CREATED_FROM_POLICY' with a
+%% managed permission that
 %% has the same IAM permissions as the original resource-based policy.
 %%
-%% However, this type of managed permission is visible to only the resource
-%% share owner, and the associated resource share can't be modified by
+%% However, this type
+%% of managed permission is visible to only the resource share owner, and the
+%% associated resource share can't be modified by
 %% using RAM.
 %%
 %% This operation promotes the resource share to a `STANDARD' resource
-%% share that is fully manageable in RAM. When you promote a resource share,
-%% you can then manage the resource share in RAM and it becomes visible to
-%% all of the principals you shared it with.
+%% share that is fully
+%% manageable in RAM. When you promote a resource share, you can then manage
+%% the resource share in RAM and
+%% it becomes visible to all of the principals you shared it with.
 %%
 %% Before you perform this operation, you should first run
 %% `PromotePermissionCreatedFromPolicy'to ensure that you have an
 %% appropriate customer managed permission that can be associated with this
-%% resource share after its is promoted. If this operation can't find a
-%% managed permission that exactly matches the existing
+%% resource share after its is promoted. If
+%% this operation can't find a managed permission that exactly matches
+%% the existing
 %% `CREATED_FROM_POLICY' permission, then this operation fails.
 promote_resource_share_created_from_policy(Client, Input) ->
     promote_resource_share_created_from_policy(Client, Input, []).
 promote_resource_share_created_from_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/promoteresourcesharecreatedfrompolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -897,11 +992,13 @@ reject_resource_share_invitation(Client, Input) ->
 reject_resource_share_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/rejectresourceshareinvitation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -915,34 +1012,42 @@ reject_resource_share_invitation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates all resource shares that use a managed permission to a
-%% different managed permission.
+%% different managed
+%% permission.
 %%
 %% This operation always applies the default version of the target managed
 %% permission. You can optionally specify that the update applies to only
-%% resource shares that currently use a specified version. This enables you
-%% to update to the latest version, without changing the which managed
-%% permission is used.
+%% resource shares that
+%% currently use a specified version. This enables you to update to the
+%% latest version,
+%% without changing the which managed permission is used.
 %%
 %% You can use this operation to update all of your resource shares to use
-%% the current default version of the permission by specifying the same value
-%% for the `fromPermissionArn' and `toPermissionArn' parameters.
+%% the current
+%% default version of the permission by specifying the same value for the
+%% `fromPermissionArn' and `toPermissionArn' parameters.
 %%
 %% You can use the optional `fromPermissionVersion' parameter to update
-%% only those resources that use a specified version of the managed
-%% permission to the new managed permission.
+%% only
+%% those resources that use a specified version of the managed permission to
+%% the new managed
+%% permission.
 %%
 %% To successfully perform this operation, you must have permission to update
-%% the resource-based policy on all affected resource types.
+%% the
+%% resource-based policy on all affected resource types.
 replace_permission_associations(Client, Input) ->
     replace_permission_associations(Client, Input, []).
 replace_permission_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/replacepermissionassociations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -956,22 +1061,25 @@ replace_permission_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Designates the specified version number as the default version for
-%% the specified customer managed permission.
+%% the specified
+%% customer managed permission.
 %%
 %% New resource shares automatically use this new default permission.
-%% Existing resource shares continue to use their original permission
-%% version, but you can use `ReplacePermissionAssociations' to update
-%% them.
+%% Existing
+%% resource shares continue to use their original permission version, but you
+%% can use `ReplacePermissionAssociations' to update them.
 set_default_permission_version(Client, Input) ->
     set_default_permission_version(Client, Input, []).
 set_default_permission_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/setdefaultpermissionversion"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -987,8 +1095,9 @@ set_default_permission_version(Client, Input0, Options0) ->
 %% @doc Adds the specified tag keys and values to a resource share or managed
 %% permission.
 %%
-%% If you choose a resource share, the tags are attached to only the resource
-%% share, not to the resources that are in the resource share.
+%% If you choose a resource share, the
+%% tags are attached to only the resource share, not to the resources that
+%% are in the resource share.
 %%
 %% The tags on a managed permission are the same for all versions of the
 %% managed permission.
@@ -997,11 +1106,13 @@ tag_resource(Client, Input) ->
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagresource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1021,11 +1132,13 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagresource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1044,11 +1157,13 @@ update_resource_share(Client, Input) ->
 update_resource_share(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateresourceshare"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1064,6 +1179,11 @@ update_resource_share(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

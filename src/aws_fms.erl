@@ -3,14 +3,17 @@
 
 %% @doc This is the Firewall Manager API Reference.
 %%
-%% This guide is for developers who need detailed information about the
-%% Firewall Manager API actions, data types, and errors. For detailed
-%% information about Firewall Manager features, see the Firewall Manager
-%% Developer Guide:
+%% This guide is for
+%% developers who need detailed information about the Firewall Manager API
+%% actions, data
+%% types, and errors. For detailed information about Firewall Manager
+%% features, see the
+%% Firewall Manager Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html.
 %%
 %% Some API actions require explicit resource permissions. For information,
-%% see the developer guide topic Service roles for Firewall Manager:
+%% see the developer guide topic
+%% Service roles for Firewall Manager:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service.
 -module(aws_fms).
 
@@ -161,8 +164,9 @@ delete_apps_list(Client, Input, Options)
     request(Client, <<"DeleteAppsList">>, Input, Options).
 
 %% @doc Deletes an Firewall Manager association with the IAM role and the
-%% Amazon Simple Notification Service (SNS) topic that is used to record
-%% Firewall Manager SNS logs.
+%% Amazon Simple
+%% Notification Service (SNS) topic that is used to record Firewall Manager
+%% SNS logs.
 delete_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification_channel(Client, Input, []).
@@ -226,7 +230,8 @@ disassociate_third_party_firewall(Client, Input, Options)
     request(Client, <<"DisassociateThirdPartyFirewall">>, Input, Options).
 
 %% @doc Returns the Organizations account that is associated with Firewall
-%% Manager as the Firewall Manager default administrator.
+%% Manager
+%% as the Firewall Manager default administrator.
 get_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_admin_account(Client, Input, []).
@@ -258,28 +263,31 @@ get_apps_list(Client, Input, Options)
 %% @doc Returns detailed compliance information about the specified member
 %% account.
 %%
-%% Details include resources that are in and out of compliance with the
-%% specified policy.
+%% Details
+%% include resources that are in and out of compliance with the specified
+%% policy.
 %%
-%% <ul> <li> Resources are considered noncompliant for WAF and Shield
-%% Advanced policies if the specified policy has not been applied to them.
+%% Resources are
+%% considered noncompliant for WAF and Shield Advanced policies if the
+%% specified policy has
+%% not been applied to them.
 %%
-%% </li> <li> Resources are considered noncompliant for security group
-%% policies if they are in scope of the policy, they violate one or more of
-%% the policy rules, and remediation is disabled or not possible.
+%% Resources are considered noncompliant for security group policies if
+%% they are in scope of the policy, they violate one or more of the policy
+%% rules, and remediation
+%% is disabled or not possible.
 %%
-%% </li> <li> Resources are considered noncompliant for Network Firewall
-%% policies if a firewall is missing in the VPC, if the firewall endpoint
-%% isn't set up in an expected Availability Zone and subnet, if a subnet
-%% created by the Firewall Manager doesn't have the expected route table,
+%% Resources are considered noncompliant for Network Firewall policies
+%% if a firewall is missing in the VPC, if the firewall endpoint isn't
+%% set up in an expected Availability Zone and subnet,
+%% if a subnet created by the Firewall Manager doesn't have the expected
+%% route table,
 %% and for modifications to a firewall policy that violate the Firewall
 %% Manager policy's rules.
 %%
-%% </li> <li> Resources are considered noncompliant for DNS Firewall policies
+%% Resources are considered noncompliant for DNS Firewall policies
 %% if a DNS Firewall rule group is missing from the rule group associations
 %% for the VPC.
-%%
-%% </li> </ul>
 get_compliance_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_detail(Client, Input, []).
@@ -287,8 +295,9 @@ get_compliance_detail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceDetail">>, Input, Options).
 
-%% @doc Information about the Amazon Simple Notification Service (SNS) topic
-%% that is used to record Firewall Manager SNS logs.
+%% @doc Information
+%% about the Amazon Simple Notification Service (SNS) topic that is used to
+%% record Firewall Manager SNS logs.
 get_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_notification_channel(Client, Input, []).
@@ -305,7 +314,8 @@ get_policy(Client, Input, Options)
     request(Client, <<"GetPolicy">>, Input, Options).
 
 %% @doc If you created a Shield Advanced policy, returns policy-level attack
-%% summary information in the event of a potential DDoS attack.
+%% summary information
+%% in the event of a potential DDoS attack.
 %%
 %% Other policy types are currently unsupported.
 get_protection_status(Client, Input)
@@ -387,8 +397,10 @@ list_apps_lists(Client, Input, Options)
 
 %% @doc Returns an array of `PolicyComplianceStatus' objects.
 %%
-%% Use `PolicyComplianceStatus' to get a summary of which member accounts
-%% are protected by the specified policy.
+%% Use
+%% `PolicyComplianceStatus' to get a summary of which member accounts are
+%% protected
+%% by the specified policy.
 list_compliance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_status(Client, Input, []).
@@ -406,7 +418,8 @@ list_discovered_resources(Client, Input, Options)
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
 
 %% @doc Returns a `MemberAccounts' object that lists the member accounts
-%% in the administrator's Amazon Web Services organization.
+%% in the
+%% administrator's Amazon Web Services organization.
 %%
 %% Either an Firewall Manager administrator or the organization's
 %% management account can make this request.
@@ -478,8 +491,8 @@ list_third_party_firewall_firewall_policies(Client, Input, Options)
 %% administrator within Organizations. If the account isn't a delegated
 %% administrator, Firewall Manager calls Organizations to delegate the
 %% account within Organizations. For more information about administrator
-%% accounts within Organizations, see Managing the Amazon Web Services
-%% Accounts in Your Organization:
+%% accounts within Organizations, see
+%% Managing the Amazon Web Services Accounts in Your Organization:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html.
 put_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -497,7 +510,8 @@ put_apps_list(Client, Input, Options)
     request(Client, <<"PutAppsList">>, Input, Options).
 
 %% @doc Designates the IAM role and Amazon Simple Notification Service (SNS)
-%% topic that Firewall Manager uses to record SNS logs.
+%% topic that
+%% Firewall Manager uses to record SNS logs.
 %%
 %% To perform this action outside of the console, you must first configure
 %% the SNS topic's access policy to allow the `SnsRoleName' to
@@ -505,8 +519,8 @@ put_apps_list(Client, Input, Options)
 %% the `AWSServiceRoleForFMS' service-linked role, this role must have a
 %% trust relationship configured to allow the Firewall Manager service
 %% principal `fms.amazonaws.com' to assume this role. For information
-%% about configuring an SNS access policy, see Service roles for Firewall
-%% Manager:
+%% about configuring an SNS access policy, see
+%% Service roles for Firewall Manager:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service
 %% in the Firewall Manager Developer Guide.
 put_notification_channel(Client, Input)
@@ -519,45 +533,49 @@ put_notification_channel(Client, Input, Options)
 %% @doc Creates an Firewall Manager policy.
 %%
 %% A Firewall Manager policy is specific to the individual policy type. If
-%% you want to enforce multiple policy types across accounts, you can create
-%% multiple policies. You can create more than one policy for each type.
+%% you want to enforce multiple
+%% policy types across accounts, you can create multiple policies. You can
+%% create more than one
+%% policy for each type.
 %%
 %% If you add a new account to an organization that you created with
-%% Organizations, Firewall Manager automatically applies the policy to the
-%% resources in that account that are within scope of the policy.
+%% Organizations, Firewall Manager
+%% automatically applies the policy to the resources in that account that are
+%% within scope of
+%% the policy.
 %%
 %% Firewall Manager provides the following types of policies:
 %%
-%% <ul> <li> Shield Advanced policy - This policy applies Shield Advanced
+%% Shield Advanced policy - This policy applies Shield Advanced
 %% protection to specified accounts and resources.
 %%
-%% </li> <li> Security Groups policy - This type of policy gives you control
-%% over security groups that are in use throughout your organization in
+%% Security Groups policy - This type of policy gives you
+%% control over security groups that are in use throughout your organization
+%% in
 %% Organizations and lets you enforce a baseline set of rules across your
 %% organization.
 %%
-%% </li> <li> Network Firewall policy - This policy applies Network Firewall
-%% protection to your organization's VPCs.
+%% Network Firewall policy - This policy applies
+%% Network Firewall protection to your organization's VPCs.
 %%
-%% </li> <li> DNS Firewall policy - This policy applies Amazon Route 53
-%% Resolver DNS Firewall protections to your organization's VPCs.
+%% DNS Firewall policy - This policy applies
+%% Amazon Route 53 Resolver DNS Firewall protections to your
+%% organization's VPCs.
 %%
-%% </li> <li> Third-party firewall policy - This policy applies third-party
-%% firewall protections. Third-party firewalls are available by subscription
-%% through the Amazon Web Services Marketplace console at Amazon Web Services
+%% Third-party firewall policy - This policy applies third-party firewall
+%% protections. Third-party firewalls are available by subscription through
+%% the Amazon Web Services Marketplace console at Amazon Web Services
 %% Marketplace: https://aws.amazon.com/marketplace.
 %%
-%% <ul> <li> Palo Alto Networks Cloud NGFW policy - This policy applies Palo
-%% Alto Networks Cloud Next Generation Firewall (NGFW) protections and Palo
-%% Alto Networks Cloud NGFW rulestacks to your organization's VPCs.
+%% Palo Alto Networks Cloud NGFW policy - This policy applies Palo Alto
+%% Networks Cloud Next Generation Firewall (NGFW) protections and Palo Alto
+%% Networks Cloud NGFW rulestacks to your organization's VPCs.
 %%
-%% </li> <li> Fortigate CNF policy - This policy applies Fortigate Cloud
-%% Native Firewall (CNF) protections. Fortigate CNF is a cloud-centered
-%% solution that blocks Zero-Day threats and secures cloud infrastructures
-%% with industry-leading advanced threat prevention, smart web application
-%% firewalls (WAF), and API protection.
-%%
-%% </li> </ul> </li> </ul>
+%% Fortigate CNF policy - This policy applies
+%% Fortigate Cloud Native Firewall (CNF) protections. Fortigate CNF is a
+%% cloud-centered solution that blocks Zero-Day threats and secures cloud
+%% infrastructures with industry-leading advanced threat prevention, smart
+%% web application firewalls (WAF), and API protection.
 put_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_policy(Client, Input, []).

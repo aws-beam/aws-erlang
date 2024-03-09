@@ -2,10 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc EC2 Image Builder is a fully managed Amazon Web Services service that
-%% makes it easier to automate the creation, management, and deployment of
-%% customized, secure, and up-to-date &quot;golden&quot; server images that
-%% are pre-installed and pre-configured with software and settings to meet
-%% specific IT standards.
+%% makes it easier to automate the
+%% creation, management, and deployment of customized, secure, and up-to-date
+%% &quot;golden&quot; server images that are pre-installed and pre-configured
+%% with software
+%% and settings to meet specific IT standards.
 -module(aws_imagebuilder).
 
 -export([cancel_image_creation/2,
@@ -180,17 +181,20 @@
 
 %% @doc CancelImageCreation cancels the creation of Image.
 %%
-%% This operation can only be used on images in a non-terminal state.
+%% This operation can only be used on
+%% images in a non-terminal state.
 cancel_image_creation(Client, Input) ->
     cancel_image_creation(Client, Input, []).
 cancel_image_creation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CancelImageCreation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -209,11 +213,13 @@ cancel_lifecycle_execution(Client, Input) ->
 cancel_lifecycle_execution(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CancelLifecycleExecution"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -227,27 +233,29 @@ cancel_lifecycle_execution(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new component that can be used to build, validate, test,
-%% and assess your image.
+%% and assess your
+%% image.
 %%
 %% The component is based on a YAML document that you specify using exactly
-%% one of the following methods:
+%% one of
+%% the following methods:
 %%
-%% <ul> <li> Inline, using the `data' property in the request body.
+%% Inline, using the `data' property in the request body.
 %%
-%% </li> <li> A URL that points to a YAML document file stored in Amazon S3,
-%% using the `uri' property in the request body.
-%%
-%% </li> </ul>
+%% A URL that points to a YAML document file stored in Amazon S3, using the
+%% `uri' property in the request body.
 create_component(Client, Input) ->
     create_component(Client, Input, []).
 create_component(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateComponent"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -262,17 +270,20 @@ create_component(Client, Input0, Options0) ->
 
 %% @doc Creates a new container recipe.
 %%
-%% Container recipes define how images are configured, tested, and assessed.
+%% Container recipes define how images are configured,
+%% tested, and assessed.
 create_container_recipe(Client, Input) ->
     create_container_recipe(Client, Input, []).
 create_container_recipe(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateContainerRecipe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -287,18 +298,20 @@ create_container_recipe(Client, Input0, Options0) ->
 
 %% @doc Creates a new distribution configuration.
 %%
-%% Distribution configurations define and configure the outputs of your
-%% pipeline.
+%% Distribution configurations define and
+%% configure the outputs of your pipeline.
 create_distribution_configuration(Client, Input) ->
     create_distribution_configuration(Client, Input, []).
 create_distribution_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateDistributionConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -313,20 +326,23 @@ create_distribution_configuration(Client, Input0, Options0) ->
 
 %% @doc Creates a new image.
 %%
-%% This request will create a new image along with all of the configured
-%% output resources defined in the distribution configuration. You must
-%% specify exactly one recipe for your image, using either a
-%% ContainerRecipeArn or an ImageRecipeArn.
+%% This request will create a new image along with all of the
+%% configured output resources defined in the distribution configuration. You
+%% must specify
+%% exactly one recipe for your image, using either a ContainerRecipeArn or an
+%% ImageRecipeArn.
 create_image(Client, Input) ->
     create_image(Client, Input, []).
 create_image(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -341,18 +357,20 @@ create_image(Client, Input0, Options0) ->
 
 %% @doc Creates a new image pipeline.
 %%
-%% Image pipelines enable you to automate the creation and distribution of
-%% images.
+%% Image pipelines enable you to automate the creation and
+%% distribution of images.
 create_image_pipeline(Client, Input) ->
     create_image_pipeline(Client, Input, []).
 create_image_pipeline(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImagePipeline"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -367,17 +385,20 @@ create_image_pipeline(Client, Input0, Options0) ->
 
 %% @doc Creates a new image recipe.
 %%
-%% Image recipes define how images are configured, tested, and assessed.
+%% Image recipes define how images are configured, tested,
+%% and assessed.
 create_image_recipe(Client, Input) ->
     create_image_recipe(Client, Input, []).
 create_image_recipe(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImageRecipe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -392,18 +413,20 @@ create_image_recipe(Client, Input0, Options0) ->
 
 %% @doc Creates a new infrastructure configuration.
 %%
-%% An infrastructure configuration defines the environment in which your
-%% image will be built and tested.
+%% An infrastructure configuration defines
+%% the environment in which your image will be built and tested.
 create_infrastructure_configuration(Client, Input) ->
     create_infrastructure_configuration(Client, Input, []).
 create_infrastructure_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateInfrastructureConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -422,11 +445,13 @@ create_lifecycle_policy(Client, Input) ->
 create_lifecycle_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateLifecyclePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -445,11 +470,13 @@ create_workflow(Client, Input) ->
 create_workflow(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateWorkflow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -468,11 +495,13 @@ delete_component(Client, Input) ->
 delete_component(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteComponent"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -492,11 +521,13 @@ delete_container_recipe(Client, Input) ->
 delete_container_recipe(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteContainerRecipe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -516,11 +547,13 @@ delete_distribution_configuration(Client, Input) ->
 delete_distribution_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteDistributionConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -536,36 +569,43 @@ delete_distribution_configuration(Client, Input0, Options0) ->
 
 %% @doc Deletes an Image Builder image resource.
 %%
-%% This does not delete any EC2 AMIs or ECR container images that are created
-%% during the image build process. You must clean those up separately, using
-%% the appropriate Amazon EC2 or Amazon ECR console actions, or API or CLI
+%% This does not delete any EC2 AMIs or ECR container
+%% images that are created during the image build process. You must clean
+%% those up
+%% separately, using the appropriate Amazon EC2 or Amazon ECR console
+%% actions, or API or CLI
 %% commands.
 %%
-%% <ul> <li> To deregister an EC2 Linux AMI, see Deregister your Linux AMI:
+%% To deregister an EC2 Linux AMI, see Deregister your
+%% Linux AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html in
-%% the Amazon EC2 User Guide .
+%% the
+%% Amazon EC2 User Guide
+%% .
 %%
-%% </li> <li> To deregister an EC2 Windows AMI, see Deregister your Windows
-%% AMI:
+%% To deregister an EC2 Windows AMI, see Deregister your
+%% Windows AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/deregister-ami.html
-%% in the Amazon EC2 Windows Guide .
+%% in the
+%% Amazon EC2 Windows Guide
+%% .
 %%
-%% </li> <li> To delete a container image from Amazon ECR, see Deleting an
-%% image:
+%% To delete a container image from Amazon ECR, see Deleting
+%% an image:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/delete_image.html
 %% in the Amazon ECR User Guide.
-%%
-%% </li> </ul>
 delete_image(Client, Input) ->
     delete_image(Client, Input, []).
 delete_image(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -585,11 +625,13 @@ delete_image_pipeline(Client, Input) ->
 delete_image_pipeline(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImagePipeline"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -609,11 +651,13 @@ delete_image_recipe(Client, Input) ->
 delete_image_recipe(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImageRecipe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -633,11 +677,13 @@ delete_infrastructure_configuration(Client, Input) ->
 delete_infrastructure_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteInfrastructureConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -657,11 +703,13 @@ delete_lifecycle_policy(Client, Input) ->
 delete_lifecycle_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteLifecyclePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -681,11 +729,13 @@ delete_workflow(Client, Input) ->
 delete_workflow(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteWorkflow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -711,10 +761,12 @@ get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap)
 get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetComponent"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -738,10 +790,12 @@ get_component_policy(Client, ComponentArn, QueryMap, HeadersMap)
 get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetComponentPolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -765,10 +819,12 @@ get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap)
 get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetContainerRecipe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -792,10 +848,12 @@ get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap)
 get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetContainerRecipePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -819,10 +877,12 @@ get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, H
 get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetDistributionConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -846,10 +906,12 @@ get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap)
 get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -873,10 +935,12 @@ get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap)
 get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImagePipeline"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -900,10 +964,12 @@ get_image_policy(Client, ImageArn, QueryMap, HeadersMap)
 get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImagePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -927,10 +993,12 @@ get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap)
 get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImageRecipe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -954,10 +1022,12 @@ get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap)
 get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImageRecipePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -981,10 +1051,12 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
 get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetInfrastructureConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1009,10 +1081,12 @@ get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap)
 get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetLifecycleExecution"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1036,10 +1110,12 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap)
 get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetLifecyclePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1063,10 +1139,12 @@ get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap)
 get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetWorkflow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1079,7 +1157,8 @@ get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the runtime information that was logged for a specific runtime
-%% instance of the workflow.
+%% instance
+%% of the workflow.
 get_workflow_execution(Client, WorkflowExecutionId)
   when is_map(Client) ->
     get_workflow_execution(Client, WorkflowExecutionId, #{}, #{}).
@@ -1091,10 +1170,12 @@ get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap)
 get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetWorkflowExecution"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1107,7 +1188,8 @@ get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the runtime information that was logged for a specific runtime
-%% instance of the workflow step.
+%% instance of
+%% the workflow step.
 get_workflow_step_execution(Client, StepExecutionId)
   when is_map(Client) ->
     get_workflow_step_execution(Client, StepExecutionId, #{}, #{}).
@@ -1119,10 +1201,12 @@ get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap)
 get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetWorkflowStepExecution"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1141,11 +1225,13 @@ import_component(Client, Input) ->
 import_component(Client, Input0, Options0) ->
     Method = put,
     Path = ["/ImportComponent"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1159,27 +1245,33 @@ import_component(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When you export your virtual machine (VM) from its virtualization
-%% environment, that process creates a set of one or more disk container
-%% files that act as snapshots of your VM’s environment, settings, and data.
+%% environment, that
+%% process creates a set of one or more disk container files that act as
+%% snapshots of your
+%% VM’s environment, settings, and data.
 %%
 %% The Amazon EC2 API ImportImage:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html
 %% action uses those files to import your VM and create an AMI. To import
-%% using the CLI command, see import-image:
+%% using the CLI
+%% command, see import-image:
 %% https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html
 %%
 %% You can reference the task ID from the VM import to pull in the AMI that
-%% the import created as the base image for your Image Builder recipe.
+%% the import
+%% created as the base image for your Image Builder recipe.
 import_vm_image(Client, Input) ->
     import_vm_image(Client, Input, []).
 import_vm_image(Client, Input0, Options0) ->
     Method = put,
     Path = ["/ImportVmImage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1193,27 +1285,31 @@ import_vm_image(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of component build versions for the specified
-%% semantic version.
+%% semantic
+%% version.
 %%
-%% The semantic version has four nodes:
-%% &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;/&lt;build&gt;. You can assign
-%% values for the first three, and can filter on all of them.
+%% The semantic version has four nodes: ../.
+%% You can assign values for the first three, and can filter on all of them.
 %%
 %% Filtering: With semantic versioning, you have the flexibility to use
-%% wildcards (x) to specify the most recent versions or nodes when selecting
-%% the base image or components for your recipe. When you use a wildcard in
-%% any node, all nodes to the right of the first wildcard must also be
+%% wildcards (x)
+%% to specify the most recent versions or nodes when selecting the base image
+%% or components for your
+%% recipe. When you use a wildcard in any node, all nodes to the right of the
+%% first wildcard must also be
 %% wildcards.
 list_component_build_versions(Client, Input) ->
     list_component_build_versions(Client, Input, []).
 list_component_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListComponentBuildVersions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1227,30 +1323,34 @@ list_component_build_versions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of components that can be filtered by name, or by
-%% using the listed `filters' to streamline results.
+%% using the listed
+%% `filters' to streamline results.
 %%
-%% Newly created components can take up to two minutes to appear in the
-%% ListComponents API Results.
+%% Newly created components can take up to
+%% two minutes to appear in the ListComponents API Results.
 %%
-%% The semantic version has four nodes:
-%% &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;/&lt;build&gt;. You can assign
-%% values for the first three, and can filter on all of them.
+%% The semantic version has four nodes: ../.
+%% You can assign values for the first three, and can filter on all of them.
 %%
 %% Filtering: With semantic versioning, you have the flexibility to use
-%% wildcards (x) to specify the most recent versions or nodes when selecting
-%% the base image or components for your recipe. When you use a wildcard in
-%% any node, all nodes to the right of the first wildcard must also be
+%% wildcards (x)
+%% to specify the most recent versions or nodes when selecting the base image
+%% or components for your
+%% recipe. When you use a wildcard in any node, all nodes to the right of the
+%% first wildcard must also be
 %% wildcards.
 list_components(Client, Input) ->
     list_components(Client, Input, []).
 list_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListComponents"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1269,11 +1369,13 @@ list_container_recipes(Client, Input) ->
 list_container_recipes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListContainerRecipes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1292,11 +1394,13 @@ list_distribution_configurations(Client, Input) ->
 list_distribution_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListDistributionConfigurations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1315,11 +1419,13 @@ list_image_build_versions(Client, Input) ->
 list_image_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageBuildVersions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1333,17 +1439,20 @@ list_image_build_versions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List the Packages that are associated with an Image Build Version, as
-%% determined by Amazon Web Services Systems Manager Inventory at build time.
+%% determined by
+%% Amazon Web Services Systems Manager Inventory at build time.
 list_image_packages(Client, Input) ->
     list_image_packages(Client, Input, []).
 list_image_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePackages"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1362,11 +1471,13 @@ list_image_pipeline_images(Client, Input) ->
 list_image_pipeline_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePipelineImages"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1385,11 +1496,13 @@ list_image_pipelines(Client, Input) ->
 list_image_pipelines(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePipelines"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1408,11 +1521,13 @@ list_image_recipes(Client, Input) ->
 list_image_recipes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageRecipes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1427,33 +1542,36 @@ list_image_recipes(Client, Input0, Options0) ->
 
 %% @doc Returns a list of image scan aggregations for your account.
 %%
-%% You can filter by the type of key that Image Builder uses to group
-%% results. For example, if you want to get a list of findings by severity
-%% level for one of your pipelines, you might specify your pipeline with the
-%% `imagePipelineArn' filter. If you don't specify a filter, Image
-%% Builder returns an aggregation for your account.
+%% You can filter by the type
+%% of key that Image Builder uses to group results. For example, if you want
+%% to get a list of
+%% findings by severity level for one of your pipelines, you might specify
+%% your pipeline
+%% with the `imagePipelineArn' filter. If you don't specify a filter,
+%% Image Builder
+%% returns an aggregation for your account.
 %%
 %% To streamline results, you can use the following filters in your request:
 %%
-%% <ul> <li> `accountId'
+%% `accountId'
 %%
-%% </li> <li> `imageBuildVersionArn'
+%% `imageBuildVersionArn'
 %%
-%% </li> <li> `imagePipelineArn'
+%% `imagePipelineArn'
 %%
-%% </li> <li> `vulnerabilityId'
-%%
-%% </li> </ul>
+%% `vulnerabilityId'
 list_image_scan_finding_aggregations(Client, Input) ->
     list_image_scan_finding_aggregations(Client, Input, []).
 list_image_scan_finding_aggregations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageScanFindingAggregations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1472,11 +1590,13 @@ list_image_scan_findings(Client, Input) ->
 list_image_scan_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageScanFindings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1491,18 +1611,20 @@ list_image_scan_findings(Client, Input0, Options0) ->
 
 %% @doc Returns the list of images that you have access to.
 %%
-%% Newly created images can take up to two minutes to appear in the
-%% ListImages API Results.
+%% Newly created images can take up
+%% to two minutes to appear in the ListImages API Results.
 list_images(Client, Input) ->
     list_images(Client, Input, []).
 list_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImages"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1521,11 +1643,13 @@ list_infrastructure_configurations(Client, Input) ->
 list_infrastructure_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListInfrastructureConfigurations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1545,11 +1669,13 @@ list_lifecycle_execution_resources(Client, Input) ->
 list_lifecycle_execution_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLifecycleExecutionResources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1568,11 +1694,13 @@ list_lifecycle_executions(Client, Input) ->
 list_lifecycle_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLifecycleExecutions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1591,11 +1719,13 @@ list_lifecycle_policies(Client, Input) ->
 list_lifecycle_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLifecyclePolicies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1620,10 +1750,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1632,17 +1764,20 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a list of workflow steps that are waiting for action for
-%% workflows in your Amazon Web Services account.
+%% workflows
+%% in your Amazon Web Services account.
 list_waiting_workflow_steps(Client, Input) ->
     list_waiting_workflow_steps(Client, Input, []).
 list_waiting_workflow_steps(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWaitingWorkflowSteps"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1661,11 +1796,13 @@ list_workflow_build_versions(Client, Input) ->
 list_workflow_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflowBuildVersions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1679,17 +1816,20 @@ list_workflow_build_versions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of workflow runtime instance metadata objects for a
-%% specific image build version.
+%% specific image build
+%% version.
 list_workflow_executions(Client, Input) ->
     list_workflow_executions(Client, Input, []).
 list_workflow_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflowExecutions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1703,17 +1843,20 @@ list_workflow_executions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns runtime data for each step in a runtime instance of the
-%% workflow that you specify in the request.
+%% workflow
+%% that you specify in the request.
 list_workflow_step_executions(Client, Input) ->
     list_workflow_step_executions(Client, Input, []).
 list_workflow_step_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflowStepExecutions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1732,11 +1875,13 @@ list_workflows(Client, Input) ->
 list_workflows(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflows"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1757,18 +1902,20 @@ list_workflows(Client, Input0, Options0) ->
 %% `PutComponentPolicy', you must also call the RAM API
 %% PromoteResourceShareCreatedFromPolicy:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
-%% in order for the resource to be visible to all principals with whom the
-%% resource is shared.
+%% in order for the resource to be
+%% visible to all principals with whom the resource is shared.
 put_component_policy(Client, Input) ->
     put_component_policy(Client, Input, []).
 put_component_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutComponentPolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1783,24 +1930,30 @@ put_component_policy(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to a container image.
 %%
-%% We recommend that you call the RAM API CreateResourceShare
+%% We recommend that you call the RAM API
+%% CreateResourceShare
 %% (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html)
-%% to share resources. If you call the Image Builder API
-%% `PutContainerImagePolicy', you must also call the RAM API
-%% PromoteResourceShareCreatedFromPolicy
+%% to share
+%% resources. If you call the Image Builder API
+%% `PutContainerImagePolicy', you must also
+%% call the RAM API PromoteResourceShareCreatedFromPolicy
 %% (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+%%
 %% in order for the resource to be visible to all principals with whom the
-%% resource is shared.
+%% resource is
+%% shared.
 put_container_recipe_policy(Client, Input) ->
     put_container_recipe_policy(Client, Input, []).
 put_container_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutContainerRecipePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1821,18 +1974,20 @@ put_container_recipe_policy(Client, Input0, Options0) ->
 %% `PutImagePolicy', you must also call the RAM API
 %% PromoteResourceShareCreatedFromPolicy:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
-%% in order for the resource to be visible to all principals with whom the
-%% resource is shared.
+%% in order for the resource to be
+%% visible to all principals with whom the resource is shared.
 put_image_policy(Client, Input) ->
     put_image_policy(Client, Input, []).
 put_image_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImagePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1853,18 +2008,20 @@ put_image_policy(Client, Input0, Options0) ->
 %% `PutImageRecipePolicy', you must also call the RAM API
 %% PromoteResourceShareCreatedFromPolicy:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
-%% in order for the resource to be visible to all principals with whom the
-%% resource is shared.
+%% in order for the resource to be
+%% visible to all principals with whom the resource is shared.
 put_image_recipe_policy(Client, Input) ->
     put_image_recipe_policy(Client, Input, []).
 put_image_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImageRecipePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1884,11 +2041,13 @@ send_workflow_step_action(Client, Input) ->
 send_workflow_step_action(Client, Input0, Options0) ->
     Method = put,
     Path = ["/SendWorkflowStepAction"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1907,11 +2066,13 @@ start_image_pipeline_execution(Client, Input) ->
 start_image_pipeline_execution(Client, Input0, Options0) ->
     Method = put,
     Path = ["/StartImagePipelineExecution"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1931,11 +2092,13 @@ start_resource_state_update(Client, Input) ->
 start_resource_state_update(Client, Input0, Options0) ->
     Method = put,
     Path = ["/StartResourceStateUpdate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1954,11 +2117,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1977,11 +2142,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1997,18 +2164,20 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a new distribution configuration.
 %%
-%% Distribution configurations define and configure the outputs of your
-%% pipeline.
+%% Distribution configurations define and
+%% configure the outputs of your pipeline.
 update_distribution_configuration(Client, Input) ->
     update_distribution_configuration(Client, Input, []).
 update_distribution_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateDistributionConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2023,23 +2192,27 @@ update_distribution_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates an image pipeline.
 %%
-%% Image pipelines enable you to automate the creation and distribution of
-%% images. You must specify exactly one recipe for your image, using either a
-%% `containerRecipeArn' or an `imageRecipeArn'.
+%% Image pipelines enable you to automate the creation and
+%% distribution of images. You must specify exactly one recipe for your
+%% image, using either
+%% a `containerRecipeArn' or an `imageRecipeArn'.
 %%
 %% UpdateImagePipeline does not support selective updates for the pipeline.
-%% You must specify all of the required properties in the update request, not
-%% just the properties that have changed.
+%% You must
+%% specify all of the required properties in the update request, not just the
+%% properties that have changed.
 update_image_pipeline(Client, Input) ->
     update_image_pipeline(Client, Input, []).
 update_image_pipeline(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateImagePipeline"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2054,18 +2227,20 @@ update_image_pipeline(Client, Input0, Options0) ->
 
 %% @doc Updates a new infrastructure configuration.
 %%
-%% An infrastructure configuration defines the environment in which your
-%% image will be built and tested.
+%% An infrastructure configuration defines
+%% the environment in which your image will be built and tested.
 update_infrastructure_configuration(Client, Input) ->
     update_infrastructure_configuration(Client, Input, []).
 update_infrastructure_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateInfrastructureConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2084,11 +2259,13 @@ update_lifecycle_policy(Client, Input) ->
 update_lifecycle_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateLifecyclePolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2104,6 +2281,11 @@ update_lifecycle_policy(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

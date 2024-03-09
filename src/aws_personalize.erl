@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Personalize is a machine learning service that makes it easy
-%% to add individualized recommendations to customers.
+%% to add individualized
+%% recommendations to customers.
 -module(aws_personalize).
 
 -export([create_batch_inference_job/2,
@@ -147,26 +148,31 @@
 %%====================================================================
 
 %% @doc Generates batch recommendations based on a list of items or users
-%% stored in Amazon S3 and exports the recommendations to an Amazon S3
-%% bucket.
+%% stored in Amazon S3
+%% and exports the recommendations to an Amazon S3 bucket.
 %%
 %% To generate batch recommendations, specify the ARN of a solution version
-%% and an Amazon S3 URI for the input and output data. For user
-%% personalization, popular items, and personalized ranking solutions, the
-%% batch inference job generates a list of recommended items for each user ID
-%% in the input file. For related items solutions, the job generates a list
-%% of recommended items for each item ID in the input file.
+%% and an Amazon S3 URI for the input and output data.
+%% For user personalization, popular items, and personalized ranking
+%% solutions, the batch inference job generates a list of
+%% recommended items for each user ID in the input file. For related items
+%% solutions, the job generates a list of recommended
+%% items for each item ID in the input file.
 %%
-%% For more information, see Creating a batch inference job :
+%% For more information, see Creating a batch inference job
+%% :
 %% https://docs.aws.amazon.com/personalize/latest/dg/getting-batch-recommendations.html.
 %%
 %% If you use the Similar-Items recipe, Amazon Personalize can add
-%% descriptive themes to batch recommendations. To generate themes, set the
-%% job's mode to `THEME_GENERATION' and specify the name of the field
-%% that contains item names in the input data.
+%% descriptive themes to batch recommendations.
+%% To generate themes, set the job's mode to
+%% `THEME_GENERATION' and specify the name of the field that contains
+%% item names in the
+%% input data.
 %%
 %% For more information about generating themes, see Batch recommendations
-%% with themes from Content Generator :
+%% with themes from Content Generator
+%% :
 %% https://docs.aws.amazon.com/personalize/latest/dg/themed-batch-recommendations.html.
 %%
 %% You can't get batch recommendations with the Trending-Now or
@@ -180,9 +186,9 @@ create_batch_inference_job(Client, Input, Options)
 
 %% @doc Creates a batch segment job.
 %%
-%% The operation can handle up to 50 million records and the input file must
-%% be in JSON format. For more information, see Getting batch recommendations
-%% and user segments:
+%% The operation can handle up to 50 million records and the
+%% input file must be in JSON format. For more information, see
+%% Getting batch recommendations and user segments:
 %% https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html.
 create_batch_segment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -193,39 +199,45 @@ create_batch_segment_job(Client, Input, Options)
 
 %% @doc Creates a campaign that deploys a solution version.
 %%
-%% When a client calls the GetRecommendations:
+%% When a client calls the
+%% GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
-%% and GetPersonalizedRanking:
+%% and
+%% GetPersonalizedRanking:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetPersonalizedRanking.html
 %% APIs, a campaign is specified in the request.
 %%
 %% Minimum Provisioned TPS and Auto-Scaling
 %%
 %% A high `minProvisionedTPS' will increase your cost. We recommend
-%% starting with 1 for `minProvisionedTPS' (the default). Track your
-%% usage using Amazon CloudWatch metrics, and increase the
-%% `minProvisionedTPS' as necessary.
+%% starting with 1 for `minProvisionedTPS' (the default). Track
+%% your usage using Amazon CloudWatch metrics, and increase the
+%% `minProvisionedTPS'
+%% as necessary.
 %%
 %% When you create an Amazon Personalize campaign, you can specify the
-%% minimum provisioned transactions per second (`minProvisionedTPS') for
-%% the campaign. This is the baseline transaction throughput for the campaign
-%% provisioned by Amazon Personalize. It sets the minimum billing charge for
-%% the campaign while it is active. A transaction is a single
-%% `GetRecommendations' or `GetPersonalizedRanking' request. The
-%% default `minProvisionedTPS' is 1.
+%% minimum provisioned transactions per second
+%% (`minProvisionedTPS') for the campaign. This is the baseline
+%% transaction throughput for the campaign provisioned by
+%% Amazon Personalize. It sets the minimum billing charge for the campaign
+%% while it is active. A transaction is a single `GetRecommendations' or
+%% `GetPersonalizedRanking' request. The default `minProvisionedTPS'
+%% is 1.
 %%
 %% If your TPS increases beyond the `minProvisionedTPS', Amazon
-%% Personalize auto-scales the provisioned capacity up and down, but never
-%% below `minProvisionedTPS'. There's a short time delay while the
-%% capacity is increased that might cause loss of transactions. When your
-%% traffic reduces, capacity returns to the `minProvisionedTPS'.
+%% Personalize auto-scales the provisioned capacity up
+%% and down, but never below `minProvisionedTPS'.
+%% There's a short time delay while the capacity is increased
+%% that might cause loss of transactions. When your traffic reduces, capacity
+%% returns to the `minProvisionedTPS'.
 %%
-%% You are charged for the the minimum provisioned TPS or, if your requests
-%% exceed the `minProvisionedTPS', the actual TPS. The actual TPS is the
-%% total number of recommendation requests you make. We recommend starting
-%% with a low `minProvisionedTPS', track your usage using Amazon
-%% CloudWatch metrics, and then increase the `minProvisionedTPS' as
-%% necessary.
+%% You are charged for the
+%% the minimum provisioned TPS or, if your requests exceed the
+%% `minProvisionedTPS', the actual TPS.
+%% The actual TPS is the total number of recommendation requests you make.
+%% We recommend starting with a low `minProvisionedTPS', track
+%% your usage using Amazon CloudWatch metrics, and then increase the
+%% `minProvisionedTPS' as necessary.
 %%
 %% For more information about campaign costs, see Amazon Personalize pricing:
 %% https://aws.amazon.com/personalize/pricing/.
@@ -234,32 +246,29 @@ create_batch_segment_job(Client, Input, Options)
 %%
 %% A campaign can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-%% FAILED
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED
 %%
-%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
+%% DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the campaign status, call DescribeCampaign:
+%% To get the campaign status, call DescribeCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeCampaign.html.
 %%
-%% Wait until the `status' of the campaign is `ACTIVE' before asking
-%% the campaign for recommendations.
+%% Wait until the `status' of the campaign
+%% is `ACTIVE' before asking the campaign for recommendations.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> ListCampaigns:
+%% ListCampaigns:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListCampaigns.html
 %%
-%% </li> <li> DescribeCampaign:
+%% DescribeCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeCampaign.html
 %%
-%% </li> <li> UpdateCampaign:
+%% UpdateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_UpdateCampaign.html
 %%
-%% </li> <li> DeleteCampaign:
+%% DeleteCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteCampaign.html
-%%
-%% </li> </ul>
 create_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_campaign(Client, Input, []).
@@ -271,49 +280,48 @@ create_campaign(Client, Input, Options)
 %%
 %% Use CreateDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetImportJob.html
-%% to import your training data to a dataset.
+%% to import your training data to a
+%% dataset.
 %%
 %% There are 5 types of datasets:
 %%
-%% <ul> <li> Item interactions
+%% Item interactions
 %%
-%% </li> <li> Items
+%% Items
 %%
-%% </li> <li> Users
+%% Users
 %%
-%% </li> <li> Action interactions
+%% Action interactions
 %%
-%% </li> <li> Actions
+%% Actions
 %%
-%% </li> </ul> Each dataset type has an associated schema with required field
-%% types. Only the `Item interactions' dataset is required in order to
-%% train a model (also referred to as creating a solution).
+%% Each dataset type has an associated schema with required field types.
+%% Only the `Item interactions' dataset is required in order to train a
+%% model (also referred to as creating a solution).
 %%
 %% A dataset can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 %% FAILED
 %%
-%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
+%% DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the status of the dataset, call DescribeDataset:
+%% To get the status of the dataset, call DescribeDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDataset.html.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> CreateDatasetGroup:
+%% CreateDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetGroup.html
 %%
-%% </li> <li> ListDatasets:
+%% ListDatasets:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListDatasets.html
 %%
-%% </li> <li> DescribeDataset:
+%% DescribeDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDataset.html
 %%
-%% </li> <li> DeleteDataset:
+%% DeleteDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteDataset.html
-%%
-%% </li> </ul>
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -325,7 +333,8 @@ create_dataset(Client, Input, Options)
 %% bucket.
 %%
 %% To allow Amazon Personalize to export the training data, you must specify
-%% an service-linked IAM role that gives Amazon Personalize `PutObject'
+%% an
+%% service-linked IAM role that gives Amazon Personalize `PutObject'
 %% permissions for your Amazon S3 bucket. For information, see Exporting a
 %% dataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/export-data.html in the
@@ -335,16 +344,16 @@ create_dataset(Client, Input, Options)
 %%
 %% A dataset export job can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 %% FAILED
 %%
-%% </li> </ul> To get the status of the export job, call
-%% DescribeDatasetExportJob:
+%% To get the status of the export job, call DescribeDatasetExportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDatasetExportJob.html,
-%% and specify the Amazon Resource Name (ARN) of the dataset export job. The
-%% dataset export is complete when the status shows as ACTIVE. If the status
-%% shows as CREATE FAILED, the response includes a `failureReason' key,
-%% which describes why the job failed.
+%% and specify the Amazon Resource Name
+%% (ARN) of the dataset export job. The dataset export is complete when the
+%% status shows as ACTIVE. If the status shows as CREATE FAILED, the response
+%% includes a `failureReason' key, which describes why the job
+%% failed.
 create_dataset_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_export_job(Client, Input, []).
@@ -354,21 +363,23 @@ create_dataset_export_job(Client, Input, Options)
 
 %% @doc Creates an empty dataset group.
 %%
-%% A dataset group is a container for Amazon Personalize resources. A dataset
-%% group can contain at most three datasets, one for each type of dataset:
+%% A dataset group is a container for
+%% Amazon Personalize resources. A dataset group can contain at most three
+%% datasets, one
+%% for each type of dataset:
 %%
-%% <ul> <li> Item interactions
+%% Item interactions
 %%
-%% </li> <li> Items
+%% Items
 %%
-%% </li> <li> Users
+%% Users
 %%
-%% </li> <li> Actions
+%% Actions
 %%
-%% </li> <li> Action interactions
+%% Action interactions
 %%
-%% </li> </ul> A dataset group can be a Domain dataset group, where you
-%% specify a domain and use pre-configured resources like recommenders, or a
+%% A dataset group can be a Domain dataset group, where you specify a
+%% domain and use pre-configured resources like recommenders, or a
 %% Custom dataset group, where you use custom resources, such as a solution
 %% with a solution version, that you deploy with a campaign. If you start
 %% with a Domain dataset group, you can still add custom resources such as
@@ -377,48 +388,47 @@ create_dataset_export_job(Client, Input, Options)
 %%
 %% A dataset group can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 %% FAILED
 %%
-%% </li> <li> DELETE PENDING
+%% DELETE PENDING
 %%
-%% </li> </ul> To get the status of the dataset group, call
-%% DescribeDatasetGroup:
+%% To get the status of the dataset group, call DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDatasetGroup.html.
-%% If the status shows as CREATE FAILED, the response includes a
-%% `failureReason' key, which describes why the creation failed.
+%% If the status shows as CREATE FAILED, the
+%% response includes a `failureReason' key, which describes why
+%% the creation failed.
 %%
-%% You must wait until the `status' of the dataset group is `ACTIVE'
-%% before adding a dataset to the group.
+%% You must wait until the `status' of the dataset group is
+%% `ACTIVE' before adding a dataset to the group.
 %%
 %% You can specify an Key Management Service (KMS) key to encrypt the
-%% datasets in the group. If you specify a KMS key, you must also include an
-%% Identity and Access Management (IAM) role that has permission to access
-%% the key.
+%% datasets in
+%% the group. If you specify a KMS key, you must also include an Identity and
+%% Access Management
+%% (IAM) role that has permission to access the key.
 %%
 %% == APIs that require a dataset group ARN in the request ==
 %%
-%% <ul> <li> CreateDataset:
+%% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html
 %%
-%% </li> <li> CreateEventTracker:
+%% CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html
 %%
-%% </li> <li> CreateSolution:
+%% CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html
 %%
-%% </li> </ul> == Related APIs ==
+%% == Related APIs ==
 %%
-%% <ul> <li> ListDatasetGroups:
+%% ListDatasetGroups:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListDatasetGroups.html
 %%
-%% </li> <li> DescribeDatasetGroup:
+%% DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDatasetGroup.html
 %%
-%% </li> <li> DeleteDatasetGroup:
+%% DeleteDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteDatasetGroup.html
-%%
-%% </li> </ul>
 create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_group(Client, Input, []).
@@ -429,51 +439,53 @@ create_dataset_group(Client, Input, Options)
 %% @doc Creates a job that imports training data from your data source (an
 %% Amazon S3 bucket) to an Amazon Personalize dataset.
 %%
-%% To allow Amazon Personalize to import the training data, you must specify
-%% an IAM service role that has permission to read from the data source, as
-%% Amazon Personalize makes a copy of your data and processes it internally.
-%% For information on granting access to your Amazon S3 bucket, see Giving
+%% To allow Amazon Personalize to import the
+%% training data, you must specify an IAM service role that has permission to
+%% read from the data source, as Amazon Personalize makes a copy of your data
+%% and
+%% processes it internally. For information on granting access to your Amazon
+%% S3
+%% bucket, see Giving
 %% Amazon Personalize Access to Amazon S3 Resources:
 %% https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html.
 %%
 %% If you already created a recommender or deployed a custom solution version
-%% with a campaign, how new bulk records influence recommendations depends on
-%% the domain use case or recipe that you use. For more information, see How
-%% new data influences real-time recommendations:
+%% with a campaign, how new bulk records
+%% influence recommendations depends on the domain use case or recipe that
+%% you use. For more information, see How new data influences
+%% real-time recommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/how-new-data-influences-recommendations.html.
 %%
-%% By default, a dataset import job replaces any existing data in the dataset
-%% that you imported in bulk. To add new records without replacing existing
-%% data, specify INCREMENTAL for the import mode in the
+%% By default, a dataset import job replaces any existing data in the
+%% dataset that you imported in bulk. To add new records without replacing
+%% existing data, specify INCREMENTAL for the import mode in the
 %% CreateDatasetImportJob operation.
 %%
 %% Status
 %%
 %% A dataset import job can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 %% FAILED
 %%
-%% </li> </ul> To get the status of the import job, call
-%% DescribeDatasetImportJob:
+%% To get the status of the import job, call DescribeDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDatasetImportJob.html,
-%% providing the Amazon Resource Name (ARN) of the dataset import job. The
-%% dataset import is complete when the status shows as ACTIVE. If the status
-%% shows as CREATE FAILED, the response includes a `failureReason' key,
-%% which describes why the job failed.
+%% providing the Amazon Resource Name
+%% (ARN) of the dataset import job. The dataset import is complete when the
+%% status shows as ACTIVE. If the status shows as CREATE FAILED, the response
+%% includes a `failureReason' key, which describes why the job
+%% failed.
 %%
 %% Importing takes time. You must wait until the status shows as ACTIVE
 %% before training a model using the dataset.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> ListDatasetImportJobs:
+%% ListDatasetImportJobs:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListDatasetImportJobs.html
 %%
-%% </li> <li> DescribeDatasetImportJob:
+%% DescribeDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDatasetImportJob.html
-%%
-%% </li> </ul>
 create_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_import_job(Client, Input, []).
@@ -482,30 +494,34 @@ create_dataset_import_job(Client, Input, Options)
     request(Client, <<"CreateDatasetImportJob">>, Input, Options).
 
 %% @doc Creates an event tracker that you use when adding event data to a
-%% specified dataset group using the PutEvents:
+%% specified dataset
+%% group using the
+%% PutEvents:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html
 %% API.
 %%
 %% Only one event tracker can be associated with a dataset group. You will
-%% get an error if you call `CreateEventTracker' using the same dataset
-%% group as an existing event tracker.
+%% get
+%% an error if you call `CreateEventTracker' using the same dataset group
+%% as an
+%% existing event tracker.
 %%
 %% When you create an event tracker, the response includes a tracking ID,
-%% which you pass as a parameter when you use the PutEvents:
+%% which you pass as a parameter when you use the
+%% PutEvents:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html
-%% operation. Amazon Personalize then appends the event data to the Item
-%% interactions dataset of the dataset group you specify in your event
-%% tracker.
+%% operation.
+%% Amazon Personalize then appends the event data to the Item interactions
+%% dataset of the dataset group you specify
+%% in your event tracker.
 %%
 %% The event tracker can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-%% FAILED
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED
 %%
-%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
+%% DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the status of the event tracker, call
-%% DescribeEventTracker:
+%% To get the status of the event tracker, call DescribeEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeEventTracker.html.
 %%
 %% The event tracker must be in the ACTIVE state before using the tracking
@@ -513,16 +529,14 @@ create_dataset_import_job(Client, Input, Options)
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> ListEventTrackers:
+%% ListEventTrackers:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListEventTrackers.html
 %%
-%% </li> <li> DescribeEventTracker:
+%% DescribeEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeEventTracker.html
 %%
-%% </li> <li> DeleteEventTracker:
+%% DeleteEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteEventTracker.html
-%%
-%% </li> </ul>
 create_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_tracker(Client, Input, []).
@@ -545,8 +559,8 @@ create_filter(Client, Input, Options)
 %%
 %% A metric attribution creates reports on the data that you import into
 %% Amazon Personalize. Depending on how you imported the data, you can view
-%% reports in Amazon CloudWatch or Amazon S3. For more information, see
-%% Measuring impact of recommendations:
+%% reports in Amazon CloudWatch or Amazon S3.
+%% For more information, see Measuring impact of recommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/measuring-recommendation-impact.html.
 create_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -568,66 +582,72 @@ create_metric_attribution(Client, Input, Options)
 %%
 %% A high `minRecommendationRequestsPerSecond' will increase your bill.
 %% We recommend starting with 1 for `minRecommendationRequestsPerSecond'
-%% (the default). Track your usage using Amazon CloudWatch metrics, and
-%% increase the `minRecommendationRequestsPerSecond' as necessary.
+%% (the default). Track
+%% your usage using Amazon CloudWatch metrics, and increase the
+%% `minRecommendationRequestsPerSecond'
+%% as necessary.
 %%
 %% When you create a recommender, you can configure the recommender's
 %% minimum recommendation requests per second. The minimum recommendation
-%% requests per second (`minRecommendationRequestsPerSecond') specifies
-%% the baseline recommendation request throughput provisioned by Amazon
-%% Personalize. The default minRecommendationRequestsPerSecond is `1'. A
-%% recommendation request is a single `GetRecommendations' operation.
+%% requests per second
+%% (`minRecommendationRequestsPerSecond') specifies the baseline
+%% recommendation request throughput provisioned by
+%% Amazon Personalize. The default minRecommendationRequestsPerSecond is
+%% `1'. A recommendation request is a single `GetRecommendations'
+%% operation.
 %% Request throughput is measured in requests per second and Amazon
-%% Personalize uses your requests per second to derive your requests per hour
-%% and the price of your recommender usage.
+%% Personalize uses your requests per second to derive
+%% your requests per hour and the price of your recommender usage.
 %%
 %% If your requests per second increases beyond
 %% `minRecommendationRequestsPerSecond', Amazon Personalize auto-scales
-%% the provisioned capacity up and down, but never below
-%% `minRecommendationRequestsPerSecond'. There's a short time delay
-%% while the capacity is increased that might cause loss of requests.
+%% the provisioned capacity up and down,
+%% but never below `minRecommendationRequestsPerSecond'.
+%% There's a short time delay while the capacity is increased that might
+%% cause loss of
+%% requests.
 %%
 %% Your bill is the greater of either the minimum requests per hour (based on
-%% minRecommendationRequestsPerSecond) or the actual number of requests. The
-%% actual request throughput used is calculated as the average
-%% requests/second within a one-hour window. We recommend starting with the
-%% default `minRecommendationRequestsPerSecond', track your usage using
-%% Amazon CloudWatch metrics, and then increase the
-%% `minRecommendationRequestsPerSecond' as necessary.
+%% minRecommendationRequestsPerSecond)
+%% or the actual number of requests. The actual request throughput used is
+%% calculated as the average requests/second within a one-hour window.
+%%
+%% We recommend starting with the default
+%% `minRecommendationRequestsPerSecond', track
+%% your usage using Amazon CloudWatch metrics, and then increase the
+%% `minRecommendationRequestsPerSecond'
+%% as necessary.
 %%
 %% Status
 %%
 %% A recommender can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-%% FAILED
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED
 %%
-%% </li> <li> STOP PENDING &gt; STOP IN_PROGRESS &gt; INACTIVE &gt; START
-%% PENDING &gt; START IN_PROGRESS &gt; ACTIVE
+%% STOP PENDING &gt; STOP IN_PROGRESS &gt; INACTIVE &gt; START PENDING &gt;
+%% START IN_PROGRESS &gt; ACTIVE
 %%
-%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
+%% DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the recommender status, call DescribeRecommender:
+%% To get the recommender status, call DescribeRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeRecommender.html.
 %%
-%% Wait until the `status' of the recommender is `ACTIVE' before
-%% asking the recommender for recommendations.
+%% Wait until the `status' of the recommender
+%% is `ACTIVE' before asking the recommender for recommendations.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> ListRecommenders:
+%% ListRecommenders:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListRecommenders.html
 %%
-%% </li> <li> DescribeRecommender:
+%% DescribeRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeRecommender.html
 %%
-%% </li> <li> UpdateRecommender:
+%% UpdateRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_UpdateRecommender.html
 %%
-%% </li> <li> DeleteRecommender:
+%% DeleteRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteRecommender.html
-%%
-%% </li> </ul>
 create_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_recommender(Client, Input, []).
@@ -638,27 +658,27 @@ create_recommender(Client, Input, Options)
 %% @doc Creates an Amazon Personalize schema from the specified schema
 %% string.
 %%
-%% The schema you create must be in Avro JSON format.
+%% The schema you create
+%% must be in Avro JSON format.
 %%
 %% Amazon Personalize recognizes three schema variants. Each schema is
-%% associated with a dataset type and has a set of required field and
-%% keywords. If you are creating a schema for a dataset in a Domain dataset
-%% group, you provide the domain of the Domain dataset group. You specify a
-%% schema when you call CreateDataset:
+%% associated with a dataset
+%% type and has a set of required field and keywords. If you are creating a
+%% schema for a dataset in a Domain dataset group, you
+%% provide the domain of the Domain dataset group.
+%% You specify a schema when you call CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> ListSchemas:
+%% ListSchemas:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListSchemas.html
 %%
-%% </li> <li> DescribeSchema:
+%% DescribeSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSchema.html
 %%
-%% </li> <li> DeleteSchema:
+%% DeleteSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteSchema.html
-%%
-%% </li> </ul>
 create_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_schema(Client, Input, []).
@@ -668,29 +688,33 @@ create_schema(Client, Input, Options)
 
 %% @doc Creates the configuration for training a model.
 %%
-%% A trained model is known as a solution version. After the configuration is
-%% created, you train the model (create a solution version) by calling the
-%% CreateSolutionVersion:
+%% A trained model is known as
+%% a solution version. After the configuration is created, you train the
+%% model (create a solution version)
+%% by calling the CreateSolutionVersion:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolutionVersion.html
-%% operation. Every time you call `CreateSolutionVersion', a new version
-%% of the solution is created.
+%% operation. Every time you call
+%% `CreateSolutionVersion', a new version of the solution is created.
 %%
 %% After creating a solution version, you check its accuracy by calling
 %% GetSolutionMetrics:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_GetSolutionMetrics.html.
-%% When you are satisfied with the version, you deploy it using
-%% CreateCampaign:
+%% When you are satisfied with the version, you
+%% deploy it using CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
-%% The campaign provides recommendations to a client through the
+%% The campaign provides recommendations
+%% to a client through the
 %% GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
 %% API.
 %%
 %% To train a model, Amazon Personalize requires training data and a recipe.
-%% The training data comes from the dataset group that you provide in the
-%% request. A recipe specifies the training algorithm and a feature
-%% transformation. You can specify one of the predefined recipes provided by
-%% Amazon Personalize.
+%% The training data
+%% comes from the dataset group that you provide in the request. A recipe
+%% specifies
+%% the training algorithm and a feature transformation. You can specify one
+%% of the predefined
+%% recipes provided by Amazon Personalize.
 %%
 %% Amazon Personalize doesn't support configuring the `hpoObjective'
 %% for solution hyperparameter optimization at this time.
@@ -699,37 +723,35 @@ create_schema(Client, Input, Options)
 %%
 %% A solution can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-%% FAILED
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED
 %%
-%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
+%% DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the status of the solution, call DescribeSolution:
+%% To get the status of the solution, call DescribeSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolution.html.
-%% Wait until the status shows as ACTIVE before calling
+%% Wait
+%% until the status shows as ACTIVE before calling
 %% `CreateSolutionVersion'.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> ListSolutions:
+%% ListSolutions:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListSolutions.html
 %%
-%% </li> <li> CreateSolutionVersion:
+%% CreateSolutionVersion:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolutionVersion.html
 %%
-%% </li> <li> DescribeSolution:
+%% DescribeSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolution.html
 %%
-%% </li> <li> DeleteSolution:
+%% DeleteSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteSolution.html
 %%
-%% </li> </ul> <ul> <li> ListSolutionVersions:
+%% ListSolutionVersions:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListSolutionVersions.html
 %%
-%% </li> <li> DescribeSolutionVersion:
+%% DescribeSolutionVersion:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolutionVersion.html
-%%
-%% </li> </ul>
 create_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_solution(Client, Input, []).
@@ -743,53 +765,53 @@ create_solution(Client, Input, Options)
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html
 %% operation and must be in the ACTIVE state before calling
 %% `CreateSolutionVersion'. A new version of the solution is created
-%% every time you call this operation.
+%% every time you
+%% call this operation.
 %%
 %% Status
 %%
 %% A solution version can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING
+%% CREATE PENDING
 %%
-%% </li> <li> CREATE IN_PROGRESS
+%% CREATE IN_PROGRESS
 %%
-%% </li> <li> ACTIVE
+%% ACTIVE
 %%
-%% </li> <li> CREATE FAILED
+%% CREATE FAILED
 %%
-%% </li> <li> CREATE STOPPING
+%% CREATE STOPPING
 %%
-%% </li> <li> CREATE STOPPED
+%% CREATE STOPPED
 %%
-%% </li> </ul> To get the status of the version, call
-%% DescribeSolutionVersion:
+%% To get the status of the version, call DescribeSolutionVersion:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolutionVersion.html.
-%% Wait until the status shows as ACTIVE before calling `CreateCampaign'.
+%% Wait
+%% until the status shows as ACTIVE before calling `CreateCampaign'.
 %%
 %% If the status shows as CREATE FAILED, the response includes a
-%% `failureReason' key, which describes why the job failed.
+%% `failureReason'
+%% key, which describes why the job failed.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> ListSolutionVersions:
+%% ListSolutionVersions:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListSolutionVersions.html
 %%
-%% </li> <li> DescribeSolutionVersion:
+%% DescribeSolutionVersion:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolutionVersion.html
 %%
-%% </li> <li> ListSolutions:
+%% ListSolutions:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListSolutions.html
 %%
-%% </li> <li> CreateSolution:
+%% CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html
 %%
-%% </li> <li> DescribeSolution:
+%% DescribeSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolution.html
 %%
-%% </li> <li> DeleteSolution:
+%% DeleteSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteSolution.html
-%%
-%% </li> </ul>
 create_solution_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_solution_version(Client, Input, []).
@@ -799,11 +821,14 @@ create_solution_version(Client, Input, Options)
 
 %% @doc Removes a campaign by deleting the solution deployment.
 %%
-%% The solution that the campaign is based on is not deleted and can be
-%% redeployed when needed. A deleted campaign can no longer be specified in a
+%% The solution that
+%% the campaign is based on is not deleted and can be redeployed when needed.
+%% A deleted campaign can no
+%% longer be specified in a
 %% GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
-%% request. For information on creating campaigns, see CreateCampaign:
+%% request.
+%% For information on creating campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
 delete_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -814,9 +839,10 @@ delete_campaign(Client, Input, Options)
 
 %% @doc Deletes a dataset.
 %%
-%% You can't delete a dataset if an associated `DatasetImportJob' or
-%% `SolutionVersion' is in the CREATE PENDING or IN PROGRESS state. For
-%% more information on datasets, see CreateDataset:
+%% You can't delete a dataset if an associated
+%% `DatasetImportJob' or `SolutionVersion' is in the
+%% CREATE PENDING or IN PROGRESS state. For more information on datasets, see
+%% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -827,15 +853,14 @@ delete_dataset(Client, Input, Options)
 
 %% @doc Deletes a dataset group.
 %%
-%% Before you delete a dataset group, you must delete the following:
+%% Before you delete a dataset group, you must
+%% delete the following:
 %%
-%% <ul> <li> All associated event trackers.
+%% All associated event trackers.
 %%
-%% </li> <li> All associated solutions.
+%% All associated solutions.
 %%
-%% </li> <li> All datasets in the dataset group.
-%%
-%% </li> </ul>
+%% All datasets in the dataset group.
 delete_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_group(Client, Input, []).
@@ -845,8 +870,9 @@ delete_dataset_group(Client, Input, Options)
 
 %% @doc Deletes the event tracker.
 %%
-%% Does not delete the dataset from the dataset group. For more information
-%% on event trackers, see CreateEventTracker:
+%% Does not delete the dataset from
+%% the dataset group. For more
+%% information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
 delete_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -885,8 +911,9 @@ delete_recommender(Client, Input, Options)
 
 %% @doc Deletes a schema.
 %%
-%% Before deleting a schema, you must delete all datasets referencing the
-%% schema. For more information on schemas, see CreateSchema:
+%% Before deleting a schema, you must delete all
+%% datasets referencing the schema. For more information on schemas, see
+%% CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
 delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -898,14 +925,15 @@ delete_schema(Client, Input, Options)
 %% @doc Deletes all versions of a solution and the `Solution' object
 %% itself.
 %%
-%% Before deleting a solution, you must delete all campaigns based on the
-%% solution. To determine what campaigns are using the solution, call
+%% Before deleting a solution, you must delete all campaigns based on
+%% the solution. To determine what campaigns are using the solution, call
 %% ListCampaigns:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_ListCampaigns.html
-%% and supply the Amazon Resource Name (ARN) of the solution. You can't
-%% delete a solution if an associated `SolutionVersion' is in the CREATE
-%% PENDING or IN PROGRESS state. For more information on solutions, see
-%% CreateSolution:
+%% and supply the Amazon Resource Name (ARN) of the solution.
+%% You can't delete a solution if an associated `SolutionVersion' is
+%% in the
+%% CREATE PENDING or IN PROGRESS state.
+%% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
 delete_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -923,8 +951,10 @@ describe_algorithm(Client, Input, Options)
     request(Client, <<"DescribeAlgorithm">>, Input, Options).
 
 %% @doc Gets the properties of a batch inference job including name, Amazon
-%% Resource Name (ARN), status, input and output configurations, and the ARN
-%% of the solution version used to generate the recommendations.
+%% Resource Name (ARN),
+%% status, input and output configurations, and the ARN of the solution
+%% version used to generate
+%% the recommendations.
 describe_batch_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_inference_job(Client, Input, []).
@@ -933,8 +963,10 @@ describe_batch_inference_job(Client, Input, Options)
     request(Client, <<"DescribeBatchInferenceJob">>, Input, Options).
 
 %% @doc Gets the properties of a batch segment job including name, Amazon
-%% Resource Name (ARN), status, input and output configurations, and the ARN
-%% of the solution version used to generate segments.
+%% Resource Name (ARN),
+%% status, input and output configurations, and the ARN of the solution
+%% version used to generate
+%% segments.
 describe_batch_segment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_segment_job(Client, Input, []).
@@ -946,13 +978,12 @@ describe_batch_segment_job(Client, Input, Options)
 %%
 %% A campaign can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-%% FAILED
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED
 %%
-%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
+%% DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> When the `status' is `CREATE FAILED', the response
-%% includes the `failureReason' key, which describes why.
+%% When the `status' is `CREATE FAILED', the response includes the
+%% `failureReason' key, which describes why.
 %%
 %% For more information on campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
@@ -965,7 +996,8 @@ describe_campaign(Client, Input, Options)
 
 %% @doc Describes the given dataset.
 %%
-%% For more information on datasets, see CreateDataset:
+%% For more information on datasets, see
+%% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -986,7 +1018,8 @@ describe_dataset_export_job(Client, Input, Options)
 
 %% @doc Describes the given dataset group.
 %%
-%% For more information on dataset groups, see CreateDatasetGroup:
+%% For more information on dataset
+%% groups, see CreateDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetGroup.html.
 describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1007,8 +1040,9 @@ describe_dataset_import_job(Client, Input, Options)
 
 %% @doc Describes an event tracker.
 %%
-%% The response includes the `trackingId' and `status' of the event
-%% tracker. For more information on event trackers, see CreateEventTracker:
+%% The response includes the `trackingId' and
+%% `status' of the event tracker.
+%% For more information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
 describe_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1045,19 +1079,23 @@ describe_metric_attribution(Client, Input, Options)
 %%
 %% A recipe contains three items:
 %%
-%% <ul> <li> An algorithm that trains a model.
+%% An algorithm that trains a model.
 %%
-%% </li> <li> Hyperparameters that govern the training.
+%% Hyperparameters that govern the training.
 %%
-%% </li> <li> Feature transformation information for modifying the input data
-%% before training.
+%% Feature transformation information for modifying the input data before
+%% training.
 %%
-%% </li> </ul> Amazon Personalize provides a set of predefined recipes. You
-%% specify a recipe when you create a solution with the CreateSolution:
+%% Amazon Personalize provides a set of predefined recipes. You specify a
+%% recipe when you create a
+%% solution with the CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html
-%% API. `CreateSolution' trains a model by using the algorithm in the
-%% specified recipe and a training dataset. The solution, when deployed as a
-%% campaign, can provide recommendations using the GetRecommendations:
+%% API.
+%% `CreateSolution' trains a model by using the algorithm
+%% in the specified recipe and a training dataset. The solution, when
+%% deployed as a campaign,
+%% can provide recommendations using the
+%% GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
 %% API.
 describe_recipe(Client, Input)
@@ -1071,19 +1109,18 @@ describe_recipe(Client, Input, Options)
 %%
 %% A recommender can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-%% FAILED
+%% CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE FAILED
 %%
-%% </li> <li> STOP PENDING &gt; STOP IN_PROGRESS &gt; INACTIVE &gt; START
-%% PENDING &gt; START IN_PROGRESS &gt; ACTIVE
+%% STOP PENDING &gt; STOP IN_PROGRESS &gt; INACTIVE &gt; START PENDING &gt;
+%% START IN_PROGRESS &gt; ACTIVE
 %%
-%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
+%% DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> When the `status' is `CREATE FAILED', the response
-%% includes the `failureReason' key, which describes why.
+%% When the `status' is `CREATE FAILED', the response includes the
+%% `failureReason' key, which describes why.
 %%
-%% The `modelMetrics' key is null when the recommender is being created
-%% or deleted.
+%% The `modelMetrics' key is null when
+%% the recommender is being created or deleted.
 %%
 %% For more information on recommenders, see CreateRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateRecommender.html.
@@ -1096,7 +1133,8 @@ describe_recommender(Client, Input, Options)
 
 %% @doc Describes a schema.
 %%
-%% For more information on schemas, see CreateSchema:
+%% For more information on schemas, see
+%% CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
 describe_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1136,7 +1174,8 @@ get_solution_metrics(Client, Input, Options)
     request(Client, <<"GetSolutionMetrics">>, Input, Options).
 
 %% @doc Gets a list of the batch inference jobs that have been performed off
-%% of a solution version.
+%% of a solution
+%% version.
 list_batch_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_inference_jobs(Client, Input, []).
@@ -1145,7 +1184,8 @@ list_batch_inference_jobs(Client, Input, Options)
     request(Client, <<"ListBatchInferenceJobs">>, Input, Options).
 
 %% @doc Gets a list of the batch segment jobs that have been performed off of
-%% a solution version that you specify.
+%% a solution
+%% version that you specify.
 list_batch_segment_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_segment_jobs(Client, Input, []).
@@ -1156,9 +1196,10 @@ list_batch_segment_jobs(Client, Input, Options)
 %% @doc Returns a list of campaigns that use the given solution.
 %%
 %% When a solution is not specified, all the campaigns associated with the
-%% account are listed. The response provides the properties for each
-%% campaign, including the Amazon Resource Name (ARN). For more information
-%% on campaigns, see CreateCampaign:
+%% account are listed.
+%% The response provides the properties for each campaign, including the
+%% Amazon Resource Name (ARN).
+%% For more information on campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
 list_campaigns(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1169,12 +1210,14 @@ list_campaigns(Client, Input, Options)
 
 %% @doc Returns a list of dataset export jobs that use the given dataset.
 %%
-%% When a dataset is not specified, all the dataset export jobs associated
-%% with the account are listed. The response provides the properties for each
+%% When
+%% a dataset is not specified, all the dataset export jobs associated with
+%% the account are listed. The response provides the properties for each
 %% dataset export job, including the Amazon Resource Name (ARN). For more
 %% information on dataset export jobs, see CreateDatasetExportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetExportJob.html.
-%% For more information on datasets, see CreateDataset:
+%% For more information on datasets, see
+%% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
 list_dataset_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1185,9 +1228,9 @@ list_dataset_export_jobs(Client, Input, Options)
 
 %% @doc Returns a list of dataset groups.
 %%
-%% The response provides the properties for each dataset group, including the
-%% Amazon Resource Name (ARN). For more information on dataset groups, see
-%% CreateDatasetGroup:
+%% The response provides the properties
+%% for each dataset group, including the Amazon Resource Name (ARN). For more
+%% information on dataset groups, see CreateDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetGroup.html.
 list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1198,12 +1241,14 @@ list_dataset_groups(Client, Input, Options)
 
 %% @doc Returns a list of dataset import jobs that use the given dataset.
 %%
-%% When a dataset is not specified, all the dataset import jobs associated
-%% with the account are listed. The response provides the properties for each
+%% When
+%% a dataset is not specified, all the dataset import jobs associated with
+%% the account are listed. The response provides the properties for each
 %% dataset import job, including the Amazon Resource Name (ARN). For more
 %% information on dataset import jobs, see CreateDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetImportJob.html.
-%% For more information on datasets, see CreateDataset:
+%% For more information on datasets, see
+%% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
 list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1214,9 +1259,9 @@ list_dataset_import_jobs(Client, Input, Options)
 
 %% @doc Returns the list of datasets contained in the given dataset group.
 %%
-%% The response provides the properties for each dataset, including the
-%% Amazon Resource Name (ARN). For more information on datasets, see
-%% CreateDataset:
+%% The
+%% response provides the properties for each dataset, including the Amazon
+%% Resource Name (ARN). For more information on datasets, see CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1228,8 +1273,9 @@ list_datasets(Client, Input, Options)
 %% @doc Returns the list of event trackers associated with the account.
 %%
 %% The response provides the properties for each event tracker, including the
-%% Amazon Resource Name (ARN) and tracking ID. For more information on event
-%% trackers, see CreateEventTracker:
+%% Amazon Resource
+%% Name (ARN) and tracking ID. For more
+%% information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
 list_event_trackers(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1264,8 +1310,8 @@ list_metric_attributions(Client, Input, Options)
 
 %% @doc Returns a list of available recipes.
 %%
-%% The response provides the properties for each recipe, including the
-%% recipe's Amazon Resource Name (ARN).
+%% The response provides the properties
+%% for each recipe, including the recipe's Amazon Resource Name (ARN).
 list_recipes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recipes(Client, Input, []).
@@ -1276,8 +1322,9 @@ list_recipes(Client, Input, Options)
 %% @doc Returns a list of recommenders in a given Domain dataset group.
 %%
 %% When a Domain dataset group is not specified, all the recommenders
-%% associated with the account are listed. The response provides the
-%% properties for each recommender, including the Amazon Resource Name (ARN).
+%% associated with the account are listed.
+%% The response provides the properties for each recommender, including the
+%% Amazon Resource Name (ARN).
 %% For more information on recommenders, see CreateRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateRecommender.html.
 list_recommenders(Client, Input)
@@ -1289,8 +1336,9 @@ list_recommenders(Client, Input, Options)
 
 %% @doc Returns the list of schemas associated with the account.
 %%
-%% The response provides the properties for each schema, including the Amazon
-%% Resource Name (ARN). For more information on schemas, see CreateSchema:
+%% The response provides the
+%% properties for each schema, including the Amazon Resource Name (ARN).
+%% For more information on schemas, see CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1301,9 +1349,11 @@ list_schemas(Client, Input, Options)
 
 %% @doc Returns a list of solution versions for the given solution.
 %%
-%% When a solution is not specified, all the solution versions associated
-%% with the account are listed. The response provides the properties for each
-%% solution version, including the Amazon Resource Name (ARN).
+%% When a solution is not
+%% specified, all the solution versions associated with the account are
+%% listed. The response
+%% provides the properties for each solution version, including the Amazon
+%% Resource Name (ARN).
 list_solution_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_solution_versions(Client, Input, []).
@@ -1314,9 +1364,10 @@ list_solution_versions(Client, Input, Options)
 %% @doc Returns a list of solutions that use the given dataset group.
 %%
 %% When a dataset group is not specified, all the solutions associated with
-%% the account are listed. The response provides the properties for each
-%% solution, including the Amazon Resource Name (ARN). For more information
-%% on solutions, see CreateSolution:
+%% the account are listed.
+%% The response provides the properties for each solution, including the
+%% Amazon Resource Name (ARN).
+%% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
 list_solutions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1337,8 +1388,9 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Starts a recommender that is INACTIVE.
 %%
-%% Starting a recommender does not create any new models, but resumes billing
-%% and automatic retraining for the recommender.
+%% Starting a recommender does not
+%% create any new models, but resumes billing and automatic retraining for
+%% the recommender.
 start_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_recommender(Client, Input, []).
@@ -1363,15 +1415,15 @@ stop_recommender(Client, Input, Options)
 %% Depending on the current state of the solution version, the solution
 %% version state changes as follows:
 %%
-%% <ul> <li> CREATE_PENDING &gt; CREATE_STOPPED
+%% CREATE_PENDING &gt; CREATE_STOPPED
 %%
 %% or
 %%
-%% </li> <li> CREATE_IN_PROGRESS &gt; CREATE_STOPPING &gt; CREATE_STOPPED
+%% CREATE_IN_PROGRESS &gt; CREATE_STOPPING &gt; CREATE_STOPPED
 %%
-%% </li> </ul> You are billed for all of the training completed up until you
-%% stop the solution version creation. You cannot resume creating a solution
-%% version once it has been stopped.
+%% You are billed for all of the training completed up
+%% until you stop the solution version creation. You cannot resume creating a
+%% solution version once it has been stopped.
 stop_solution_version_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_solution_version_creation(Client, Input, []).
@@ -1397,9 +1449,10 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates a campaign to deploy a retrained solution version with an
-%% existing campaign, change your campaign's `minProvisionedTPS', or
-%% modify your campaign's configuration, such as the exploration
+%% @doc
+%% Updates a campaign to deploy a retrained solution version with an existing
+%% campaign, change your campaign's `minProvisionedTPS',
+%% or modify your campaign's configuration, such as the exploration
 %% configuration.
 %%
 %% To update a campaign, the campaign status must be ACTIVE or CREATE FAILED.
@@ -1408,7 +1461,8 @@ untag_resource(Client, Input, Options)
 %% operation.
 %%
 %% You can still get recommendations from a campaign while an update is in
-%% progress. The campaign will use the previous solution version and campaign
+%% progress.
+%% The campaign will use the previous solution version and campaign
 %% configuration to generate recommendations until the latest campaign update
 %% status is `Active'.
 %%
@@ -1446,12 +1500,12 @@ update_metric_attribution(Client, Input, Options)
 %% @doc Updates the recommender to modify the recommender configuration.
 %%
 %% If you update the recommender to modify the columns used in training,
-%% Amazon Personalize automatically starts a full retraining of the models
-%% backing your recommender. While the update completes, you can still get
-%% recommendations from the recommender. The recommender uses the previous
-%% configuration until the update completes. To track the status of this
-%% update, use the `latestRecommenderUpdate' returned in the
-%% DescribeRecommender:
+%% Amazon Personalize automatically starts a full retraining of
+%% the models backing your recommender. While the update completes, you can
+%% still get recommendations from the recommender. The recommender
+%% uses the previous configuration until the update completes.
+%% To track the status of this update,
+%% use the `latestRecommenderUpdate' returned in the DescribeRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeRecommender.html
 %% operation.
 update_recommender(Client, Input)

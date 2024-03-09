@@ -1,162 +1,168 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Introduction
+%% @doc
+%% Introduction
 %%
 %% The Amazon Interactive Video Service (IVS) real-time API is REST
-%% compatible, using a standard HTTP API and an AWS EventBridge event stream
-%% for responses.
+%% compatible, using a standard HTTP
+%% API and an AWS EventBridge event stream for responses.
 %%
-%% JSON is used for both requests and responses, including errors.
+%% JSON is used for both requests and responses,
+%% including errors.
 %%
 %% Terminology:
 %%
-%% <ul> <li> A stage is a virtual space where participants can exchange video
-%% in real time.
+%% A stage is a virtual space where participants can exchange video in real
+%% time.
 %%
-%% </li> <li> A participant token is a token that authenticates a participant
-%% when they join a stage.
+%% A participant token is a token that authenticates a participant when they
+%% join a stage.
 %%
-%% </li> <li> A participant object represents participants (people) in the
-%% stage and contains information about them. When a token is created, it
-%% includes a participant ID; when a participant uses that token to join a
-%% stage, the participant is associated with that participant ID. There is a
-%% 1:1 mapping between participant tokens and participants.
+%% A participant object represents participants (people) in the stage and
+%% contains information about them. When a token is created, it includes a
+%% participant ID;
+%% when a participant uses that token to join a stage, the participant is
+%% associated with
+%% that participant ID. There is a 1:1 mapping between participant tokens and
+%% participants.
 %%
-%% </li> <li> Server-side composition: The composition process composites
-%% participants of a stage into a single video and forwards it to a set of
-%% outputs (e.g., IVS channels). Composition endpoints support this process.
+%% Server-side composition: The composition process composites participants
+%% of a stage into a single video and forwards it to a set of outputs (e.g.,
+%% IVS channels).
+%% Composition endpoints support this process.
 %%
-%% </li> <li> Server-side composition: A composition controls the look of the
-%% outputs, including how participants are positioned in the video.
+%% Server-side composition: A composition controls the look of the outputs,
+%% including how participants are positioned in the video.
 %%
-%% </li> </ul> Resources
+%% Resources
 %%
 %% The following resources contain information about your IVS live stream
 %% (see Getting Started with Amazon IVS Real-Time Streaming:
 %% https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html):
 %%
-%% <ul> <li> Stage — A stage is a virtual space where participants can
-%% exchange video in real time.
+%% Stage — A stage is a virtual space where participants can exchange video
+%% in real time.
 %%
-%% </li> </ul> Tagging
+%% Tagging
 %%
 %% A tag is a metadata label that you assign to an AWS resource. A tag
-%% comprises a key and a value, both set by you. For example, you might set a
-%% tag as `topic:nature' to label a particular video category. See
-%% Tagging AWS Resources:
+%% comprises a key and a value, both set by you. For
+%% example, you might set a tag as `topic:nature' to label a particular
+%% video
+%% category. See Tagging AWS Resources:
 %% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for more
-%% information, including restrictions that apply to tags and &quot;Tag
-%% naming limits and requirements&quot;; Amazon IVS stages has no
-%% service-specific constraints beyond what is documented there.
+%% information, including restrictions that apply to
+%% tags and &quot;Tag naming limits and requirements&quot;; Amazon IVS stages
+%% has no service-specific
+%% constraints beyond what is documented there.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
-%% you can use the same tag for different resources to indicate that they are
-%% related. You can also use tags to manage access (see Access Tags:
+%% you can use the
+%% same tag for different resources to indicate that they are related. You
+%% can also use tags to
+%% manage access (see Access Tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
 %% The Amazon IVS real-time API has these tag-related endpoints:
-%% `TagResource', `UntagResource', and `ListTagsForResource'. The
-%% following resource supports tagging: Stage.
+%% `TagResource', `UntagResource', and
+%% `ListTagsForResource'. The following resource supports tagging: Stage.
 %%
 %% At most 50 tags can be applied to a resource.
 %%
 %% Stages Endpoints
 %%
-%% <ul> <li> `CreateParticipantToken' — Creates an additional token for a
-%% specified stage. This can be done after stage creation or when tokens
-%% expire.
+%% `CreateParticipantToken' — Creates an additional token for a specified
+%% stage. This can be done after stage creation or when tokens expire.
 %%
-%% </li> <li> `CreateStage' — Creates a new stage (and optionally
-%% participant tokens).
+%% `CreateStage' — Creates a new stage (and optionally participant
+%% tokens).
 %%
-%% </li> <li> `DeleteStage' — Shuts down and deletes the specified stage
+%% `DeleteStage' — Shuts down and deletes the specified stage
 %% (disconnecting all participants).
 %%
-%% </li> <li> `DisconnectParticipant' — Disconnects a specified
-%% participant and revokes the participant permanently from a specified
-%% stage.
+%% `DisconnectParticipant' — Disconnects a specified participant and
+%% revokes the participant permanently from a specified stage.
 %%
-%% </li> <li> `GetParticipant' — Gets information about the specified
+%% `GetParticipant' — Gets information about the specified
 %% participant token.
 %%
-%% </li> <li> `GetStage' — Gets information for the specified stage.
+%% `GetStage' — Gets information for the specified stage.
 %%
-%% </li> <li> `GetStageSession' — Gets information for the specified
-%% stage session.
+%% `GetStageSession' — Gets information for the specified stage
+%% session.
 %%
-%% </li> <li> `ListParticipantEvents' — Lists events for a specified
+%% `ListParticipantEvents' — Lists events for a specified
 %% participant that occurred during a specified stage session.
 %%
-%% </li> <li> `ListParticipants' — Lists all participants in a specified
-%% stage session.
+%% `ListParticipants' — Lists all participants in a specified stage
+%% session.
 %%
-%% </li> <li> `ListStages' — Gets summary information about all stages in
-%% your account, in the AWS region where the API request is processed.
+%% `ListStages' — Gets summary information about all stages in your
+%% account, in the AWS region where the API request is processed.
 %%
-%% </li> <li> `ListStageSessions' — Gets all sessions for a specified
-%% stage.
+%% `ListStageSessions' — Gets all sessions for a specified stage.
 %%
-%% </li> <li> `UpdateStage' — Updates a stage’s configuration.
+%% `UpdateStage' — Updates a stage’s configuration.
 %%
-%% </li> </ul> Composition Endpoints
+%% Composition Endpoints
 %%
-%% <ul> <li> `GetComposition' — Gets information about the specified
+%% `GetComposition' — Gets information about the specified
 %% Composition resource.
 %%
-%% </li> <li> `ListCompositions' — Gets summary information about all
+%% `ListCompositions' — Gets summary information about all
 %% Compositions in your account, in the AWS region where the API request is
 %% processed.
 %%
-%% </li> <li> `StartComposition' — Starts a Composition from a stage
-%% based on the configuration provided in the request.
+%% `StartComposition' — Starts a Composition from a stage based on
+%% the configuration provided in the request.
 %%
-%% </li> <li> `StopComposition' — Stops and deletes a Composition
-%% resource. Any broadcast from the Composition resource is stopped.
+%% `StopComposition' — Stops and deletes a Composition resource.
+%% Any broadcast from the Composition resource is stopped.
 %%
-%% </li> </ul> EncoderConfiguration Endpoints
+%% EncoderConfiguration Endpoints
 %%
-%% <ul> <li> `CreateEncoderConfiguration' — Creates an
-%% EncoderConfiguration object.
+%% `CreateEncoderConfiguration' — Creates an EncoderConfiguration object.
 %%
-%% </li> <li> `DeleteEncoderConfiguration' — Deletes an
-%% EncoderConfiguration resource. Ensures that no Compositions are using this
-%% template; otherwise, returns an error.
+%% `DeleteEncoderConfiguration' — Deletes an EncoderConfiguration
+%% resource. Ensures that no Compositions are using this template; otherwise,
+%% returns an
+%% error.
 %%
-%% </li> <li> `GetEncoderConfiguration' — Gets information about the
-%% specified EncoderConfiguration resource.
+%% `GetEncoderConfiguration' — Gets information about the specified
+%% EncoderConfiguration resource.
 %%
-%% </li> <li> `ListEncoderConfigurations' — Gets summary information
-%% about all EncoderConfigurations in your account, in the AWS region where
-%% the API request is processed.
+%% `ListEncoderConfigurations' — Gets summary information about all
+%% EncoderConfigurations in your account, in the AWS region where the API
+%% request is
+%% processed.
 %%
-%% </li> </ul> StorageConfiguration Endpoints
+%% StorageConfiguration Endpoints
 %%
-%% <ul> <li> `CreateStorageConfiguration' — Creates a new storage
-%% configuration, used to enable recording to Amazon S3.
+%% `CreateStorageConfiguration' — Creates a new storage configuration,
+%% used to enable
+%% recording to Amazon S3.
 %%
-%% </li> <li> `DeleteStorageConfiguration' — Deletes the storage
-%% configuration for the specified ARN.
-%%
-%% </li> <li> `GetStorageConfiguration' — Gets the storage configuration
-%% for the specified ARN.
-%%
-%% </li> <li> `ListStorageConfigurations' — Gets summary information
-%% about all storage configurations in your account, in the AWS region where
-%% the API request is processed.
-%%
-%% </li> </ul> Tags Endpoints
-%%
-%% <ul> <li> `ListTagsForResource' — Gets information about AWS tags for
+%% `DeleteStorageConfiguration' — Deletes the storage configuration for
 %% the specified ARN.
 %%
-%% </li> <li> `TagResource' — Adds or updates tags for the AWS resource
-%% with the specified ARN.
-%%
-%% </li> <li> `UntagResource' — Removes tags from the resource with the
+%% `GetStorageConfiguration' — Gets the storage configuration for the
 %% specified ARN.
 %%
-%% </li> </ul>
+%% `ListStorageConfigurations' — Gets summary information about all
+%% storage configurations in your
+%% account, in the AWS region where the API request is processed.
+%%
+%% Tags Endpoints
+%%
+%% `ListTagsForResource' — Gets information about AWS tags for the
+%% specified ARN.
+%%
+%% `TagResource' — Adds or updates tags for the AWS resource with
+%% the specified ARN.
+%%
+%% `UntagResource' — Removes tags from the resource with the
+%% specified ARN.
 -module(aws_ivs_realtime).
 
 -export([create_encoder_configuration/2,
@@ -228,10 +234,12 @@ create_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateEncoderConfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -246,8 +254,10 @@ create_encoder_configuration(Client, Input0, Options0) ->
 
 %% @doc Creates an additional token for a specified stage.
 %%
-%% This can be done after stage creation or when tokens expire. Tokens always
-%% are scoped to the stage for which they are created.
+%% This can be done after stage creation
+%% or when tokens expire. Tokens always are scoped to the stage for which
+%% they are
+%% created.
 %%
 %% Encryption keys are owned by Amazon IVS and never used directly by your
 %% application.
@@ -257,10 +267,12 @@ create_participant_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateParticipantToken"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -280,10 +292,12 @@ create_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateStage"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -300,18 +314,21 @@ create_stage(Client, Input0, Options0) ->
 %% Amazon S3.
 %%
 %% When a StorageConfiguration is created, IVS will modify the S3
-%% bucketPolicy of the provided bucket. This will ensure that IVS has
-%% sufficient permissions to write content to the provided bucket.
+%% bucketPolicy of the provided bucket.
+%% This will ensure that IVS has sufficient permissions to write content to
+%% the provided bucket.
 create_storage_configuration(Client, Input) ->
     create_storage_configuration(Client, Input, []).
 create_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateStorageConfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -326,18 +343,20 @@ create_storage_configuration(Client, Input0, Options0) ->
 
 %% @doc Deletes an EncoderConfiguration resource.
 %%
-%% Ensures that no Compositions are using this template; otherwise, returns
-%% an error.
+%% Ensures that no Compositions are using this
+%% template; otherwise, returns an error.
 delete_encoder_configuration(Client, Input) ->
     delete_encoder_configuration(Client, Input, []).
 delete_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteEncoderConfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -358,10 +377,12 @@ delete_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteStage"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -377,20 +398,23 @@ delete_stage(Client, Input0, Options0) ->
 %% @doc Deletes the storage configuration for the specified ARN.
 %%
 %% If you try to delete a storage configuration that is used by a
-%% Composition, you will get an error (409 ConflictException). To avoid this,
-%% for all Compositions that reference the storage configuration, first use
-%% `StopComposition' and wait for it to complete, then use
-%% DeleteStorageConfiguration.
+%% Composition, you will get an error (409 ConflictException).
+%% To avoid this, for all Compositions that reference the storage
+%% configuration, first use `StopComposition' and wait for it to
+%% complete,
+%% then use DeleteStorageConfiguration.
 delete_storage_configuration(Client, Input) ->
     delete_storage_configuration(Client, Input, []).
 delete_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteStorageConfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -404,17 +428,20 @@ delete_storage_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disconnects a specified participant and revokes the participant
-%% permanently from a specified stage.
+%% permanently from a
+%% specified stage.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
 disconnect_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectParticipant"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -434,10 +461,12 @@ get_composition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetComposition"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -457,10 +486,12 @@ get_encoder_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetEncoderConfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -480,10 +511,12 @@ get_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetParticipant"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -503,10 +536,12 @@ get_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStage"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -526,10 +561,12 @@ get_stage_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStageSession"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -549,10 +586,12 @@ get_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStorageConfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -566,17 +605,20 @@ get_storage_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all Compositions in your account, in
-%% the AWS region where the API request is processed.
+%% the AWS region
+%% where the API request is processed.
 list_compositions(Client, Input) ->
     list_compositions(Client, Input, []).
 list_compositions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListCompositions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -590,17 +632,20 @@ list_compositions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all EncoderConfigurations in your
-%% account, in the AWS region where the API request is processed.
+%% account, in the AWS
+%% region where the API request is processed.
 list_encoder_configurations(Client, Input) ->
     list_encoder_configurations(Client, Input, []).
 list_encoder_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListEncoderConfigurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -614,17 +659,20 @@ list_encoder_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists events for a specified participant that occurred during a
-%% specified stage session.
+%% specified stage
+%% session.
 list_participant_events(Client, Input) ->
     list_participant_events(Client, Input, []).
 list_participant_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListParticipantEvents"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -644,10 +692,12 @@ list_participants(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListParticipants"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -667,10 +717,12 @@ list_stage_sessions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStageSessions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -684,17 +736,20 @@ list_stage_sessions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all stages in your account, in the AWS
-%% region where the API request is processed.
+%% region where the
+%% API request is processed.
 list_stages(Client, Input) ->
     list_stages(Client, Input, []).
 list_stages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStages"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -708,17 +763,20 @@ list_stages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all storage configurations in your
-%% account, in the AWS region where the API request is processed.
+%% account,
+%% in the AWS region where the API request is processed.
 list_storage_configurations(Client, Input) ->
     list_storage_configurations(Client, Input, []).
 list_storage_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStorageConfigurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -744,9 +802,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -755,36 +815,37 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts a Composition from a stage based on the configuration provided
-%% in the request.
+%% in the
+%% request.
 %%
 %% A Composition is an ephemeral resource that exists after this endpoint
-%% returns successfully. Composition stops and the resource is deleted:
+%% returns
+%% successfully. Composition stops and the resource is deleted:
 %%
-%% <ul> <li> When `StopComposition' is called.
+%% When `StopComposition' is called.
 %%
-%% </li> <li> After a 1-minute timeout, when all participants are
-%% disconnected from the stage.
+%% After a 1-minute timeout, when all participants are disconnected from the
+%% stage.
 %%
-%% </li> <li> After a 1-minute timeout, if there are no participants in the
-%% stage when StartComposition is called.
+%% After a 1-minute timeout, if there are no participants in the stage when
+%% StartComposition is called.
 %%
-%% </li> <li> When broadcasting to the IVS channel fails and all retries are
+%% When broadcasting to the IVS channel fails and all retries are exhausted.
+%%
+%% When broadcasting is disconnected and all attempts to reconnect are
 %% exhausted.
-%%
-%% </li> <li> When broadcasting is disconnected and all attempts to reconnect
-%% are exhausted.
-%%
-%% </li> </ul>
 start_composition(Client, Input) ->
     start_composition(Client, Input, []).
 start_composition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartComposition"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -799,17 +860,20 @@ start_composition(Client, Input0, Options0) ->
 
 %% @doc Stops and deletes a Composition resource.
 %%
-%% Any broadcast from the Composition resource is stopped.
+%% Any broadcast from the Composition resource
+%% is stopped.
 stop_composition(Client, Input) ->
     stop_composition(Client, Input, []).
 stop_composition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopComposition"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -829,10 +893,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -852,10 +918,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -876,10 +944,12 @@ update_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateStage"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -895,6 +965,11 @@ update_stage(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

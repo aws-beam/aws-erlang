@@ -2,15 +2,19 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Contact Lens for Amazon Connect enables you to analyze conversations
-%% between customer and agents, by using speech transcription, natural
-%% language processing, and intelligent search capabilities.
+%% between customer and agents,
+%% by using speech transcription, natural language processing, and
+%% intelligent search
+%% capabilities.
 %%
 %% It performs sentiment analysis, detects issues, and enables you to
-%% automatically categorize contacts.
+%% automatically
+%% categorize contacts.
 %%
 %% Contact Lens for Amazon Connect provides both real-time and post-call
-%% analytics of customer-agent conversations. For more information, see
-%% Analyze conversations using Contact Lens:
+%% analytics of customer-agent
+%% conversations. For more information, see Analyze conversations using
+%% Contact Lens:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/analyze-conversations.html
 %% in the Amazon Connect Administrator Guide.
 -module(aws_connect_contact_lens).
@@ -31,11 +35,13 @@ list_realtime_contact_analysis_segments(Client, Input) ->
 list_realtime_contact_analysis_segments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/realtime-contact-analysis/analysis-segments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -51,6 +57,11 @@ list_realtime_contact_analysis_segments(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

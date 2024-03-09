@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon EKS Auth API and the `AssumeRoleForPodIdentity' action
-%% are only used by the EKS Pod Identity Agent.
+%% are only
+%% used by the EKS Pod Identity Agent.
 -module(aws_eks_auth).
 
 -export([assume_role_for_pod_identity/3,
@@ -15,22 +16,26 @@
 %%====================================================================
 
 %% @doc The Amazon EKS Auth API and the `AssumeRoleForPodIdentity' action
-%% are only used by the EKS Pod Identity Agent.
+%% are only used
+%% by the EKS Pod Identity Agent.
 %%
 %% We recommend that applications use the Amazon Web Services SDKs to connect
-%% to Amazon Web Services services; if credentials from an EKS Pod Identity
-%% association are available in the pod, the latest versions of the SDKs use
-%% them automatically.
+%% to Amazon Web Services services; if
+%% credentials from an EKS Pod Identity association are available in the pod,
+%% the latest versions of the
+%% SDKs use them automatically.
 assume_role_for_pod_identity(Client, ClusterName, Input) ->
     assume_role_for_pod_identity(Client, ClusterName, Input, []).
 assume_role_for_pod_identity(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/assume-role-for-pod-identity"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -46,6 +51,11 @@ assume_role_for_pod_identity(Client, ClusterName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

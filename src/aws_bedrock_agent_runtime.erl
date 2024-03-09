@@ -22,44 +22,41 @@
 %%
 %% The CLI doesn't support `InvokeAgent'.
 %%
-%% <ul> <li> To continue the same conversation with an agent, use the same
+%% To continue the same conversation with an agent, use the same
 %% `sessionId' value in the request.
 %%
-%% </li> <li> To activate trace enablement, turn `enableTrace' to
-%% `true'. Trace enablement helps you follow the agent's reasoning
-%% process that led it to the information it processed, the actions it took,
-%% and the final result it yielded. For more information, see Trace
-%% enablement:
+%% To activate trace enablement, turn `enableTrace' to `true'. Trace
+%% enablement helps you follow the agent's reasoning process that led it
+%% to the information it processed, the actions it took, and the final result
+%% it yielded. For more information, see Trace enablement:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events.
 %%
-%% </li> <li> End a conversation by setting `endSession' to `true'.
+%% End a conversation by setting `endSession' to `true'.
 %%
-%% </li> <li> Include attributes for the session or prompt in the
-%% `sessionState' object.
+%% Include attributes for the session or prompt in the `sessionState'
+%% object.
 %%
-%% </li> </ul> The response is returned in the `bytes' field of the
-%% `chunk' object.
+%% The response is returned in the `bytes' field of the `chunk'
+%% object.
 %%
-%% <ul> <li> The `attribution' object contains citations for parts of the
-%% response.
+%% The `attribution' object contains citations for parts of the response.
 %%
-%% </li> <li> If you set `enableTrace' to `true' in the request, you
-%% can trace the agent's steps and reasoning process that led it to the
-%% response.
+%% If you set `enableTrace' to `true' in the request, you can trace
+%% the agent's steps and reasoning process that led it to the response.
 %%
-%% </li> <li> Errors are also surfaced in the response.
-%%
-%% </li> </ul>
+%% Errors are also surfaced in the response.
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input) ->
     invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input, []).
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentAliases/", aws_util:encode_uri(AgentAliasId), "/sessions/", aws_util:encode_uri(SessionId), "/text"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -96,10 +93,12 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/retrieve"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -129,10 +128,12 @@ retrieve_and_generate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/retrieveAndGenerate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -148,6 +149,11 @@ retrieve_and_generate(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

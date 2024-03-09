@@ -4,9 +4,10 @@
 %% @doc Amazon Kinesis Data Analytics is a fully managed service that you can
 %% use to process and analyze streaming data using Java, SQL, or Scala.
 %%
-%% The service enables you to quickly author and run Java, SQL, or Scala code
-%% against streaming sources to perform time series analytics, feed real-time
-%% dashboards, and create real-time metrics.
+%% The service
+%% enables you to quickly author and run Java, SQL, or Scala code against
+%% streaming sources to perform time
+%% series analytics, feed real-time dashboards, and create real-time metrics.
 -module(aws_kinesis_analytics_v2).
 
 -export([add_application_cloud_watch_logging_option/2,
@@ -87,17 +88,21 @@ add_application_cloud_watch_logging_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationCloudWatchLoggingOption">>, Input, Options).
 
-%% @doc Adds a streaming source to your SQL-based Kinesis Data Analytics
+%% @doc
+%% Adds a streaming source to your SQL-based Kinesis Data Analytics
 %% application.
 %%
 %% You can add a streaming source when you create an application, or you can
-%% use this operation to add a streaming source after you create an
-%% application. For more information, see `CreateApplication'.
+%% use this
+%% operation to add a streaming source after you create an application. For
+%% more information, see
+%% `CreateApplication'.
 %%
 %% Any configuration update, including adding a streaming source using this
-%% operation, results in a new version of the application. You can use the
-%% `DescribeApplication' operation to find the current application
-%% version.
+%% operation,
+%% results in a new version of the application. You can use the
+%% `DescribeApplication' operation
+%% to find the current application version.
 add_application_input(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input(Client, Input, []).
@@ -108,7 +113,8 @@ add_application_input(Client, Input, Options)
 %% @doc Adds an `InputProcessingConfiguration' to a SQL-based Kinesis
 %% Data Analytics application.
 %%
-%% An input processor pre-processes records on the input stream before the
+%% An input processor pre-processes records
+%% on the input stream before the
 %% application's SQL code executes. Currently, the only input processor
 %% available is Amazon Lambda: https://docs.aws.amazon.com/lambda/.
 add_application_input_processing_configuration(Client, Input)
@@ -122,16 +128,21 @@ add_application_input_processing_configuration(Client, Input, Options)
 %% application.
 %%
 %% If you want Kinesis Data Analytics to deliver data from an in-application
-%% stream within your application to an external destination (such as an
-%% Kinesis data stream, a Kinesis Data Firehose delivery stream, or an Amazon
-%% Lambda function), you add the relevant configuration to your application
-%% using this operation. You can configure one or more outputs for your
+%% stream within
+%% your application to an external destination (such as an Kinesis data
+%% stream, a Kinesis Data
+%% Firehose delivery stream, or an Amazon Lambda function), you add the
+%% relevant configuration to
+%% your application using this operation. You can configure one or more
+%% outputs for your
 %% application. Each output configuration maps an in-application stream and
-%% an external destination.
+%% an external
+%% destination.
 %%
 %% You can use one of the output configurations to deliver data from your
 %% in-application error stream to an external destination so that you can
-%% analyze the errors.
+%% analyze the
+%% errors.
 %%
 %% Any configuration update, including adding a streaming source using this
 %% operation, results in a new version of the application. You can use the
@@ -148,10 +159,13 @@ add_application_output(Client, Input, Options)
 %% Analytics application.
 %%
 %% Kinesis Data Analytics reads reference data (that is, an Amazon S3 object)
-%% and creates an in-application table within your application. In the
-%% request, you provide the source (S3 bucket name and object key name), name
-%% of the in-application table to create, and the necessary mapping
-%% information that describes how data in an Amazon S3 object maps to columns
+%% and creates an
+%% in-application table within your application. In the request, you provide
+%% the source (S3
+%% bucket name and object key name), name of the in-application table to
+%% create, and the
+%% necessary mapping information that describes how data in an Amazon S3
+%% object maps to columns
 %% in the resulting in-application table.
 add_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -162,19 +176,18 @@ add_application_reference_data_source(Client, Input, Options)
 
 %% @doc Adds a Virtual Private Cloud (VPC) configuration to the application.
 %%
-%% Applications can use VPCs to store and access resources securely.
+%% Applications can use VPCs to store
+%% and access resources securely.
 %%
 %% Note the following about VPC configurations for Kinesis Data Analytics
 %% applications:
 %%
-%% <ul> <li> VPC configurations are not supported for SQL applications.
+%% VPC configurations are not supported for SQL applications.
 %%
-%% </li> <li> When a VPC is added to a Kinesis Data Analytics application,
-%% the application can no longer be accessed from the Internet directly. To
-%% enable Internet access to the application, add an Internet gateway to your
-%% VPC.
-%%
-%% </li> </ul>
+%% When a VPC is added to a Kinesis Data Analytics application, the
+%% application can no longer be accessed from the
+%% Internet directly. To enable Internet access to the application, add an
+%% Internet gateway to your VPC.
 add_application_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_vpc_configuration(Client, Input, []).
@@ -184,8 +197,9 @@ add_application_vpc_configuration(Client, Input, Options)
 
 %% @doc Creates a Kinesis Data Analytics application.
 %%
-%% For information about creating a Kinesis Data Analytics application, see
-%% Creating an Application:
+%% For information about creating a
+%% Kinesis Data Analytics application, see Creating an
+%% Application:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -194,23 +208,27 @@ create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
 
-%% @doc Creates and returns a URL that you can use to connect to an
-%% application's extension.
+%% @doc Creates and returns a URL that you can use to connect to
+%% an application's extension.
 %%
 %% The IAM role or user used to call this API defines the permissions to
-%% access the extension. After the presigned URL is created, no additional
-%% permission is required to access this URL. IAM authorization policies for
-%% this API are also enforced for every HTTP request that attempts to connect
-%% to the extension.
+%% access the
+%% extension. After the presigned URL is created, no additional permission is
+%% required to access
+%% this URL. IAM authorization policies for this API are also enforced for
+%% every HTTP request
+%% that attempts to connect to the extension.
 %%
 %% You control the amount of time that the URL will be valid using the
-%% `SessionExpirationDurationInSeconds' parameter. If you do not provide
-%% this parameter, the returned URL is valid for twelve hours.
+%% `SessionExpirationDurationInSeconds'
+%% parameter. If you do not provide this parameter, the returned URL is valid
+%% for twelve hours.
 %%
 %% The URL that you get from a call to CreateApplicationPresignedUrl must be
-%% used within 3 minutes to be valid. If you first try to use the URL after
-%% the 3-minute limit expires, the service returns an HTTP 403 Forbidden
-%% error.
+%% used within 3 minutes
+%% to be valid.
+%% If you first try to use the URL after the 3-minute limit expires, the
+%% service returns an HTTP 403 Forbidden error.
 create_application_presigned_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_presigned_url(Client, Input, []).
@@ -257,8 +275,9 @@ delete_application_input_processing_configuration(Client, Input, Options)
 %% @doc Deletes the output destination configuration from your SQL-based
 %% Kinesis Data Analytics application's configuration.
 %%
-%% Kinesis Data Analytics will no longer write data from the corresponding
-%% in-application stream to the external output destination.
+%% Kinesis Data Analytics will no longer write data from
+%% the corresponding in-application stream to the external output
+%% destination.
 delete_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_output(Client, Input, []).
@@ -270,8 +289,9 @@ delete_application_output(Client, Input, Options)
 %% SQL-based Kinesis Data Analytics application's configuration.
 %%
 %% If the application is running, Kinesis Data Analytics immediately removes
-%% the in-application table that you created using the
-%% `AddApplicationReferenceDataSource' operation.
+%% the in-application table
+%% that you created using the `AddApplicationReferenceDataSource'
+%% operation.
 delete_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_reference_data_source(Client, Input, []).
@@ -299,8 +319,8 @@ delete_application_vpc_configuration(Client, Input, Options)
 %% @doc Returns information about a specific Kinesis Data Analytics
 %% application.
 %%
-%% If you want to retrieve a list of all applications in your account, use
-%% the `ListApplications' operation.
+%% If you want to retrieve a list of all applications in your account,
+%% use the `ListApplications' operation.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
@@ -332,16 +352,20 @@ describe_application_version(Client, Input, Options)
     request(Client, <<"DescribeApplicationVersion">>, Input, Options).
 
 %% @doc Infers a schema for a SQL-based Kinesis Data Analytics application by
-%% evaluating sample records on the specified streaming source (Kinesis data
-%% stream or Kinesis Data Firehose delivery stream) or Amazon S3 object.
+%% evaluating
+%% sample records on the specified streaming source (Kinesis data stream or
+%% Kinesis Data Firehose
+%% delivery stream) or Amazon S3 object.
 %%
-%% In the response, the operation returns the inferred schema and also the
-%% sample records that the operation used to infer the schema.
+%% In the response, the operation returns the inferred
+%% schema and also the sample records that the operation used to infer the
+%% schema.
 %%
 %% You can use the inferred schema when configuring a streaming source for
-%% your application. When you create an application using the Kinesis Data
-%% Analytics console, the console uses this operation to infer a schema and
-%% show it in the console user interface.
+%% your application.
+%% When you create an application using the Kinesis Data Analytics console,
+%% the console uses this
+%% operation to infer a schema and show it in the console user interface.
 discover_input_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_input_schema(Client, Input, []).
@@ -360,8 +384,8 @@ list_application_snapshots(Client, Input, Options)
 %% @doc Lists all the versions for the specified application, including
 %% versions that were rolled back.
 %%
-%% The response also includes a summary of the configuration associated with
-%% each version.
+%% The response also includes a summary of the configuration
+%% associated with each version.
 %%
 %% To get the complete description of a specific application version, invoke
 %% the `DescribeApplicationVersion' operation.
@@ -378,8 +402,10 @@ list_application_versions(Client, Input, Options)
 %% @doc Returns a list of Kinesis Data Analytics applications in your
 %% account.
 %%
-%% For each application, the response includes the application name, Amazon
-%% Resource Name (ARN), and status.
+%% For each
+%% application, the response includes the application name, Amazon Resource
+%% Name (ARN), and
+%% status.
 %%
 %% If you want detailed information about a specific application, use
 %% `DescribeApplication'.
@@ -392,7 +418,8 @@ list_applications(Client, Input, Options)
 
 %% @doc Retrieves the list of key-value tags assigned to the application.
 %%
-%% For more information, see Using Tagging:
+%% For more information, see
+%% Using Tagging:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -403,15 +430,16 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Reverts the application to the previous running version.
 %%
-%% You can roll back an application if you suspect it is stuck in a transient
-%% status.
+%% You can
+%% roll back an application if you suspect it is stuck in a transient status.
 %%
-%% You can roll back an application only if it is in the `UPDATING' or
-%% `AUTOSCALING' status.
+%% You can roll back an application only if it is in the `UPDATING'
+%% or `AUTOSCALING' status.
 %%
 %% When you rollback an application, it loads state data from the last
-%% successful snapshot. If the application has no snapshots, Kinesis Data
-%% Analytics rejects the rollback request.
+%% successful snapshot.
+%% If the application has no snapshots, Kinesis Data Analytics rejects the
+%% rollback request.
 %%
 %% This action is not supported for Kinesis Data Analytics for SQL
 %% applications.
@@ -435,14 +463,17 @@ start_application(Client, Input, Options)
 
 %% @doc Stops the application from processing data.
 %%
-%% You can stop an application only if it is in the running status, unless
-%% you set the `Force' parameter to `true'.
+%% You can stop
+%% an application only if it is in the running status, unless you set the
+%% `Force'
+%% parameter to `true'.
 %%
 %% You can use the `DescribeApplication' operation to find the
 %% application status.
 %%
 %% Kinesis Data Analytics takes a snapshot when the application is stopped,
-%% unless `Force' is set to `true'.
+%% unless `Force' is set
+%% to `true'.
 stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_application(Client, Input, []).
@@ -453,9 +484,10 @@ stop_application(Client, Input, Options)
 %% @doc Adds one or more key-value tags to a Kinesis Data Analytics
 %% application.
 %%
-%% Note that the maximum number of application tags includes system tags. The
-%% maximum number of user-defined application tags is 50. For more
-%% information, see Using Tagging:
+%% Note that the maximum number of application
+%% tags includes system tags. The maximum number of user-defined application
+%% tags is 50.
+%% For more information, see Using Tagging:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -466,7 +498,8 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes one or more tags from a Kinesis Data Analytics application.
 %%
-%% For more information, see Using Tagging:
+%% For more information, see
+%% Using Tagging:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -477,15 +510,19 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an existing Kinesis Data Analytics application.
 %%
-%% Using this operation, you can update application code, input
-%% configuration, and output configuration.
+%% Using this operation, you
+%% can update application code, input configuration, and output
+%% configuration.
 %%
 %% Kinesis Data Analytics updates the `ApplicationVersionId' each time
-%% you update your application.
+%% you update
+%% your application.
 %%
 %% You cannot update the `RuntimeEnvironment' of an existing application.
-%% If you need to update an application's `RuntimeEnvironment', you
-%% must delete the application and create it again.
+%% If you
+%% need to update an application's `RuntimeEnvironment', you must
+%% delete the application
+%% and create it again.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -497,19 +534,26 @@ update_application(Client, Input, Options)
 %% application.
 %%
 %% You can invoke this operation on an application that is in one of the two
-%% following states: `READY' or `RUNNING'. If you invoke it when the
-%% application is in a state other than these two states, it throws a
-%% `ResourceInUseException'. The service makes use of the updated
-%% configuration the next time it schedules maintenance for the application.
-%% If you invoke this operation after the service schedules maintenance, the
-%% service will apply the configuration update the next time it schedules
-%% maintenance for the application. This means that you might not see the
-%% maintenance configuration update applied to the maintenance process that
-%% follows a successful invocation of this operation, but to the following
-%% maintenance process instead.
+%% following
+%% states: `READY' or `RUNNING'. If you invoke it when the
+%% application is
+%% in a state other than these two states, it throws a
+%% `ResourceInUseException'. The
+%% service makes use of the updated configuration the next time it schedules
+%% maintenance for the
+%% application. If you invoke this operation after the service schedules
+%% maintenance, the service
+%% will apply the configuration update the next time it schedules maintenance
+%% for the
+%% application. This means that you might not see the maintenance
+%% configuration update applied to
+%% the maintenance process that follows a successful invocation of this
+%% operation, but to the
+%% following maintenance process instead.
 %%
 %% To see the current maintenance configuration of your application, invoke
-%% the `DescribeApplication' operation.
+%% the
+%% `DescribeApplication' operation.
 %%
 %% For information about application maintenance, see Kinesis Data Analytics
 %% for Apache Flink Maintenance:

@@ -3,13 +3,12 @@
 
 %% @doc You can use the Data Exports API to create customized exports from
 %% multiple Amazon Web Services cost management and billing datasets, such as
-%% cost and usage data and cost optimization recommendations.
+%% cost and usage data and cost
+%% optimization recommendations.
 %%
 %% The Data Exports API provides the following endpoint:
 %%
-%% <ul> <li> https://bcm-data-exports.us-east-1.api.aws
-%%
-%% </li> </ul>
+%% https://bcm-data-exports.us-east-1.api.aws
 -module(aws_bcm_data_exports).
 
 -export([create_export/2,
@@ -44,14 +43,16 @@
 %%====================================================================
 
 %% @doc Creates a data export and specifies the data query, the delivery
-%% preference, and any optional resource tags.
+%% preference, and any
+%% optional resource tags.
 %%
 %% A `DataQuery' consists of both a `QueryStatement' and
 %% `TableConfigurations'.
 %%
 %% The `QueryStatement' is an SQL statement. Data Exports only supports a
-%% limited subset of the SQL syntax. For more information on the SQL syntax
-%% that is supported, see Data query:
+%% limited
+%% subset of the SQL syntax. For more information on the SQL syntax that is
+%% supported, see Data query:
 %% https://docs.aws.amazon.com/cur/latest/userguide/de-data-query.html. To
 %% view the available tables and columns, see the Data Exports table
 %% dictionary:
@@ -59,18 +60,21 @@
 %%
 %% The `TableConfigurations' is a collection of specified
 %% `TableProperties' for the table being queried in the
-%% `QueryStatement'. TableProperties are additional configurations you
-%% can provide to change the data and schema of a table. Each table can have
-%% different TableProperties. However, tables are not required to have any
-%% TableProperties. Each table property has a default value that it assumes
-%% if not specified. For more information on table configurations, see Data
-%% query:
+%% `QueryStatement'.
+%% TableProperties are additional configurations you can provide to change
+%% the data and schema of
+%% a table. Each table can have different TableProperties. However, tables
+%% are not required to
+%% have any TableProperties. Each table property has a default value that it
+%% assumes if not
+%% specified. For more information on table configurations, see Data query:
 %% https://docs.aws.amazon.com/cur/latest/userguide/de-data-query.html. To
 %% view the table properties available for each table, see the Data Exports
-%% table dictionary:
+%% table
+%% dictionary:
 %% https://docs.aws.amazon.com/cur/latest/userguide/de-table-dictionary.html
-%% or use the `ListTables' API to get a response of all tables and their
-%% available properties.
+%% or use the `ListTables' API to get a response of all tables
+%% and their available properties.
 create_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export(Client, Input, []).
@@ -104,8 +108,8 @@ get_export(Client, Input, Options)
 
 %% @doc Returns the metadata for the specified table and table properties.
 %%
-%% This includes the list of columns in the table schema, their data types,
-%% and column descriptions.
+%% This includes the list
+%% of columns in the table schema, their data types, and column descriptions.
 get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
@@ -163,7 +167,8 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an existing data export by overwriting all export parameters.
 %%
-%% All export parameters must be provided in the UpdateExport request.
+%% All export
+%% parameters must be provided in the UpdateExport request.
 update_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_export(Client, Input, []).

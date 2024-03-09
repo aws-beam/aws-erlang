@@ -57,19 +57,22 @@
 %% @doc The CancelJob operation cancels an unfinished job.
 %%
 %% You can only cancel a job that has a status of `Submitted'. To prevent
-%% a pipeline from starting to process a job while you're getting the job
-%% identifier, use `UpdatePipelineStatus' to temporarily pause the
-%% pipeline.
+%% a
+%% pipeline from starting to process a job while you're getting the job
+%% identifier, use
+%% `UpdatePipelineStatus' to temporarily pause the pipeline.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 cancel_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -83,23 +86,26 @@ cancel_job(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When you create a job, Elastic Transcoder returns JSON data that
-%% includes the values that you specified plus information about the job that
-%% is created.
+%% includes the values that you specified
+%% plus information about the job that is created.
 %%
 %% If you have specified more than one output for your jobs (for example, one
-%% output for the Kindle Fire and another output for the Apple iPhone 4s),
-%% you currently must use the Elastic Transcoder API to list the jobs (as
-%% opposed to the AWS Console).
+%% output for the
+%% Kindle Fire and another output for the Apple iPhone 4s), you currently
+%% must use the Elastic Transcoder API to
+%% list the jobs (as opposed to the AWS Console).
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/jobs"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -120,10 +126,12 @@ create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -140,31 +148,38 @@ create_pipeline(Client, Input0, Options0) ->
 %% specify.
 %%
 %% Elastic Transcoder checks the CreatePreset settings to ensure that they
-%% meet Elastic Transcoder requirements and to determine whether they comply
-%% with H.264 standards. If your settings are not valid for Elastic
-%% Transcoder, Elastic Transcoder returns an HTTP 400 response
-%% (`ValidationException') and does not create the preset. If the
-%% settings are valid for Elastic Transcoder but aren't strictly
+%% meet Elastic Transcoder requirements
+%% and to determine whether they comply with H.264 standards. If your
+%% settings are not
+%% valid for Elastic Transcoder, Elastic Transcoder returns an HTTP 400
+%% response (`ValidationException') and
+%% does not create the preset. If the settings are valid for Elastic
+%% Transcoder but aren't strictly
 %% compliant with the H.264 standard, Elastic Transcoder creates the preset
-%% and returns a warning message in the response. This helps you determine
-%% whether your settings comply with the H.264 standard while giving you
-%% greater flexibility with respect to the video that Elastic Transcoder
+%% and returns a warning message
+%% in the response. This helps you determine whether your settings comply
+%% with the H.264
+%% standard while giving you greater flexibility with respect to the video
+%% that Elastic Transcoder
 %% produces.
 %%
 %% Elastic Transcoder uses the H.264 video-compression format. For more
-%% information, see the International Telecommunication Union publication
-%% Recommendation ITU-T H.264: Advanced video coding for generic audiovisual
-%% services.
+%% information, see the International
+%% Telecommunication Union publication Recommendation ITU-T H.264: Advanced
+%% video coding
+%% for generic audiovisual services.
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
 create_preset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/presets"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -180,18 +195,22 @@ create_preset(Client, Input0, Options0) ->
 %% @doc The DeletePipeline operation removes a pipeline.
 %%
 %% You can only delete a pipeline that has never been used or that is not
-%% currently in use (doesn't contain any active jobs). If the pipeline is
-%% currently in use, `DeletePipeline' returns an error.
+%% currently in use
+%% (doesn't contain any active jobs). If the pipeline is currently in
+%% use,
+%% `DeletePipeline' returns an error.
 delete_pipeline(Client, Id, Input) ->
     delete_pipeline(Client, Id, Input, []).
 delete_pipeline(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -215,10 +234,12 @@ delete_preset(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -235,8 +256,8 @@ delete_preset(Client, Id, Input0, Options0) ->
 %% a pipeline.
 %%
 %% Elastic Transcoder returns all of the jobs currently in the specified
-%% pipeline. The response body contains one element for each job that
-%% satisfies the search criteria.
+%% pipeline. The response body contains
+%% one element for each job that satisfies the search criteria.
 list_jobs_by_pipeline(Client, PipelineId)
   when is_map(Client) ->
     list_jobs_by_pipeline(Client, PipelineId, #{}, #{}).
@@ -248,10 +269,12 @@ list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap)
 list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByPipeline/", aws_util:encode_uri(PipelineId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -267,8 +290,8 @@ list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options0)
 %% @doc The ListJobsByStatus operation gets a list of jobs that have a
 %% specified status.
 %%
-%% The response body contains one element for each job that satisfies the
-%% search criteria.
+%% The response
+%% body contains one element for each job that satisfies the search criteria.
 list_jobs_by_status(Client, Status)
   when is_map(Client) ->
     list_jobs_by_status(Client, Status, #{}, #{}).
@@ -280,10 +303,12 @@ list_jobs_by_status(Client, Status, QueryMap, HeadersMap)
 list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByStatus/", aws_util:encode_uri(Status), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -309,10 +334,12 @@ list_pipelines(Client, QueryMap, HeadersMap)
 list_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -326,8 +353,8 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ListPresets operation gets a list of the default presets included
-%% with Elastic Transcoder and the presets that you've added in an AWS
-%% region.
+%% with Elastic Transcoder and the presets that
+%% you've added in an AWS region.
 list_presets(Client)
   when is_map(Client) ->
     list_presets(Client, #{}, #{}).
@@ -339,10 +366,12 @@ list_presets(Client, QueryMap, HeadersMap)
 list_presets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -367,10 +396,12 @@ read_job(Client, Id, QueryMap, HeadersMap)
 read_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -391,10 +422,12 @@ read_pipeline(Client, Id, QueryMap, HeadersMap)
 read_pipeline(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -414,10 +447,12 @@ read_preset(Client, Id, QueryMap, HeadersMap)
 read_preset(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -429,21 +464,26 @@ read_preset(Client, Id, QueryMap, HeadersMap, Options0)
 %% pipeline.
 %%
 %% The `TestRole' action lets you determine whether the IAM role you are
-%% using has sufficient permissions to let Elastic Transcoder perform tasks
-%% associated with the transcoding process. The action attempts to assume the
-%% specified IAM role, checks read access to the input and output buckets,
-%% and tries to send a test notification to Amazon SNS topics that you
-%% specify.
+%% using
+%% has sufficient permissions to let Elastic Transcoder perform tasks
+%% associated with the transcoding
+%% process. The action attempts to assume the specified IAM role, checks read
+%% access to the
+%% input and output buckets, and tries to send a test notification to Amazon
+%% SNS topics
+%% that you specify.
 test_role(Client, Input) ->
     test_role(Client, Input, []).
 test_role(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/roleTests"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -461,18 +501,20 @@ test_role(Client, Input0, Options0) ->
 %%
 %% When you change pipeline settings, your changes take effect immediately.
 %% Jobs that you have already submitted and that Elastic Transcoder has not
-%% started to process are affected in addition to jobs that you submit after
-%% you change settings.
+%% started to process are
+%% affected in addition to jobs that you submit after you change settings.
 update_pipeline(Client, Id, Input) ->
     update_pipeline(Client, Id, Input, []).
 update_pipeline(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -495,11 +537,13 @@ update_pipeline_notifications(Client, Id, Input) ->
 update_pipeline_notifications(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/notifications"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -513,23 +557,28 @@ update_pipeline_notifications(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The UpdatePipelineStatus operation pauses or reactivates a pipeline,
-%% so that the pipeline stops or restarts the processing of jobs.
+%% so that the pipeline
+%% stops or restarts the processing of jobs.
 %%
 %% Changing the pipeline status is useful if you want to cancel one or more
-%% jobs. You can't cancel jobs after Elastic Transcoder has started
-%% processing them; if you pause the pipeline to which you submitted the
-%% jobs, you have more time to get the job IDs for the jobs that you want to
-%% cancel, and to send a `CancelJob' request.
+%% jobs. You can't
+%% cancel jobs after Elastic Transcoder has started processing them; if you
+%% pause the pipeline to which
+%% you submitted the jobs, you have more time to get the job IDs for the jobs
+%% that you want
+%% to cancel, and to send a `CancelJob' request.
 update_pipeline_status(Client, Id, Input) ->
     update_pipeline_status(Client, Id, Input, []).
 update_pipeline_status(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -545,6 +594,11 @@ update_pipeline_status(Client, Id, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

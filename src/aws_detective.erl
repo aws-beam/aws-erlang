@@ -2,82 +2,99 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Detective uses machine learning and purpose-built visualizations to
-%% help you to analyze and investigate security issues across your Amazon Web
-%% Services (Amazon Web Services) workloads.
+%% help you to
+%% analyze and investigate security issues across your Amazon Web Services
+%% (Amazon Web Services) workloads.
 %%
-%% Detective automatically extracts time-based events such as login attempts,
-%% API calls, and network traffic from CloudTrail and Amazon Virtual Private
-%% Cloud (Amazon VPC) flow logs. It also extracts findings detected by Amazon
-%% GuardDuty.
+%% Detective automatically extracts time-based events such
+%% as login attempts, API calls, and network traffic from CloudTrail and
+%% Amazon Virtual Private Cloud (Amazon VPC) flow logs. It also extracts
+%% findings detected by
+%% Amazon GuardDuty.
 %%
 %% The Detective API primarily supports the creation and management of
-%% behavior graphs. A behavior graph contains the extracted data from a set
-%% of member accounts, and is created and managed by an administrator
-%% account.
+%% behavior
+%% graphs. A behavior graph contains the extracted data from a set of member
+%% accounts, and is
+%% created and managed by an administrator account.
 %%
 %% To add a member account to the behavior graph, the administrator account
-%% sends an invitation to the account. When the account accepts the
-%% invitation, it becomes a member account in the behavior graph.
+%% sends an
+%% invitation to the account. When the account accepts the invitation, it
+%% becomes a member
+%% account in the behavior graph.
 %%
 %% Detective is also integrated with Organizations. The organization
 %% management account designates the Detective administrator account for the
 %% organization. That account becomes the administrator account for the
-%% organization behavior graph. The Detective administrator account is also
-%% the delegated administrator account for Detective in Organizations.
+%% organization behavior
+%% graph. The Detective administrator account is also the delegated
+%% administrator
+%% account for Detective in Organizations.
 %%
 %% The Detective administrator account can enable any organization account as
-%% a member account in the organization behavior graph. The organization
-%% accounts do not receive invitations. The Detective administrator account
-%% can also invite other accounts to the organization behavior graph.
+%% a
+%% member account in the organization behavior graph. The organization
+%% accounts do not receive
+%% invitations. The Detective administrator account can also invite other
+%% accounts to
+%% the organization behavior graph.
 %%
 %% Every behavior graph is specific to a Region. You can only use the API to
-%% manage behavior graphs that belong to the Region that is associated with
-%% the currently selected endpoint.
+%% manage
+%% behavior graphs that belong to the Region that is associated with the
+%% currently selected
+%% endpoint.
 %%
 %% The administrator account for a behavior graph can use the Detective API
-%% to do the following:
+%% to do
+%% the following:
 %%
-%% <ul> <li> Enable and disable Detective. Enabling Detective creates a new
+%% Enable and disable Detective. Enabling Detective creates a new
 %% behavior graph.
 %%
-%% </li> <li> View the list of member accounts in a behavior graph.
+%% View the list of member accounts in a behavior graph.
 %%
-%% </li> <li> Add member accounts to a behavior graph.
+%% Add member accounts to a behavior graph.
 %%
-%% </li> <li> Remove member accounts from a behavior graph.
+%% Remove member accounts from a behavior graph.
 %%
-%% </li> <li> Apply tags to a behavior graph.
+%% Apply tags to a behavior graph.
 %%
-%% </li> </ul> The organization management account can use the Detective API
-%% to select the delegated administrator for Detective.
+%% The organization management account can use the Detective API to select
+%% the
+%% delegated administrator for Detective.
 %%
 %% The Detective administrator account for an organization can use the
 %% Detective API to do the following:
 %%
-%% <ul> <li> Perform all of the functions of an administrator account.
+%% Perform all of the functions of an administrator account.
 %%
-%% </li> <li> Determine whether to automatically enable new organization
-%% accounts as member accounts in the organization behavior graph.
+%% Determine whether to automatically enable new organization accounts as
+%% member
+%% accounts in the organization behavior graph.
 %%
-%% </li> </ul> An invited member account can use the Detective API to do the
-%% following:
+%% An invited member account can use the Detective API to do the following:
 %%
-%% <ul> <li> View the list of behavior graphs that they are invited to.
+%% View the list of behavior graphs that they are invited to.
 %%
-%% </li> <li> Accept an invitation to contribute to a behavior graph.
+%% Accept an invitation to contribute to a behavior graph.
 %%
-%% </li> <li> Decline an invitation to contribute to a behavior graph.
+%% Decline an invitation to contribute to a behavior graph.
 %%
-%% </li> <li> Remove their account from a behavior graph.
+%% Remove their account from a behavior graph.
 %%
-%% </li> </ul> All API actions are logged as CloudTrail events. See Logging
-%% Detective API Calls with CloudTrail:
+%% All API actions are logged as CloudTrail events. See Logging Detective API
+%% Calls with CloudTrail:
 %% https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html.
 %%
 %% We replaced the term &quot;master account&quot; with the term
-%% &quot;administrator account&quot;. An administrator account is used to
-%% centrally manage multiple accounts. In the case of Detective, the
-%% administrator account manages the accounts in their behavior graph.
+%% &quot;administrator account&quot;. An
+%% administrator account is used to centrally manage multiple accounts. In
+%% the case of
+%% Detective, the administrator account manages the accounts in their
+%% behavior
+%% graph.
 -module(aws_detective).
 
 -export([accept_invitation/2,
@@ -159,11 +176,13 @@ accept_invitation(Client, Input) ->
 accept_invitation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/invitation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -182,11 +201,13 @@ batch_get_graph_member_datasources(Client, Input) ->
 batch_get_graph_member_datasources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -205,11 +226,13 @@ batch_get_membership_datasources(Client, Input) ->
 batch_get_membership_datasources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/membership/datasources/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -223,30 +246,37 @@ batch_get_membership_datasources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new behavior graph for the calling account, and sets that
-%% account as the administrator account.
+%% account as the
+%% administrator account.
 %%
 %% This operation is called by the account that is enabling Detective.
 %%
 %% The operation also enables Detective for the calling account in the
-%% currently selected Region. It returns the ARN of the new behavior graph.
+%% currently
+%% selected Region. It returns the ARN of the new behavior graph.
 %%
 %% `CreateGraph' triggers a process to create the corresponding data
-%% tables for the new behavior graph.
+%% tables for
+%% the new behavior graph.
 %%
 %% An account can only be the administrator account for one behavior graph
-%% within a Region. If the same account calls `CreateGraph' with the same
-%% administrator account, it always returns the same behavior graph ARN. It
-%% does not create a new behavior graph.
+%% within a Region.
+%% If the same account calls `CreateGraph' with the same administrator
+%% account, it
+%% always returns the same behavior graph ARN. It does not create a new
+%% behavior graph.
 create_graph(Client, Input) ->
     create_graph(Client, Input, []).
 create_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -259,52 +289,62 @@ create_graph(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc `CreateMembers' is used to send invitations to accounts.
+%% @doc
+%% `CreateMembers' is used to send invitations to accounts.
 %%
-%% For the organization behavior graph, the Detective administrator account
-%% uses `CreateMembers' to enable organization accounts as member
-%% accounts.
+%% For the organization
+%% behavior graph, the Detective administrator account uses
+%% `CreateMembers' to enable organization accounts as member accounts.
 %%
 %% For invited accounts, `CreateMembers' sends a request to invite the
-%% specified Amazon Web Services accounts to be member accounts in the
-%% behavior graph. This operation can only be called by the administrator
-%% account for a behavior graph.
+%% specified
+%% Amazon Web Services accounts to be member accounts in the behavior graph.
+%% This operation
+%% can only be called by the administrator account for a behavior graph.
 %%
 %% `CreateMembers' verifies the accounts and then invites the verified
-%% accounts. The administrator can optionally specify to not send invitation
-%% emails to the member accounts. This would be used when the administrator
-%% manages their member accounts centrally.
+%% accounts.
+%% The administrator can optionally specify to not send invitation emails to
+%% the member
+%% accounts. This would be used when the administrator manages their member
+%% accounts
+%% centrally.
 %%
 %% For organization accounts in the organization behavior graph,
-%% `CreateMembers' attempts to enable the accounts. The organization
-%% accounts do not receive invitations.
+%% `CreateMembers'
+%% attempts to enable the accounts. The organization accounts do not receive
+%% invitations.
 %%
 %% The request provides the behavior graph ARN and the list of accounts to
-%% invite or to enable.
+%% invite or to
+%% enable.
 %%
 %% The response separates the requested accounts into two lists:
 %%
-%% <ul> <li> The accounts that `CreateMembers' was able to process. For
-%% invited accounts, includes member accounts that are being verified, that
-%% have passed verification and are to be invited, and that have failed
-%% verification. For organization accounts in the organization behavior
-%% graph, includes accounts that can be enabled and that cannot be enabled.
+%% The accounts that `CreateMembers' was able to process. For invited
+%% accounts, includes member accounts that are being verified, that have
+%% passed
+%% verification and are to be invited, and that have failed verification. For
+%% organization accounts in the organization behavior graph, includes
+%% accounts that can
+%% be enabled and that cannot be enabled.
 %%
-%% </li> <li> The accounts that `CreateMembers' was unable to process.
-%% This list includes accounts that were already invited to be member
-%% accounts in the behavior graph.
-%%
-%% </li> </ul>
+%% The accounts that `CreateMembers' was unable to process. This list
+%% includes accounts that were already invited to be member accounts in the
+%% behavior
+%% graph.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
 create_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -319,21 +359,25 @@ create_members(Client, Input0, Options0) ->
 
 %% @doc Disables the specified behavior graph and queues it to be deleted.
 %%
-%% This operation removes the behavior graph from each member account's
-%% list of behavior graphs.
+%% This operation
+%% removes the behavior graph from each member account's list of behavior
+%% graphs.
 %%
 %% `DeleteGraph' can only be called by the administrator account for a
-%% behavior graph.
+%% behavior
+%% graph.
 delete_graph(Client, Input) ->
     delete_graph(Client, Input, []).
 delete_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/removal"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -348,33 +392,41 @@ delete_graph(Client, Input0, Options0) ->
 
 %% @doc Removes the specified member accounts from the behavior graph.
 %%
-%% The removed accounts no longer contribute data to the behavior graph. This
-%% operation can only be called by the administrator account for the behavior
-%% graph.
+%% The removed accounts no
+%% longer contribute data to the behavior graph. This operation can only be
+%% called by the
+%% administrator account for the behavior graph.
 %%
 %% For invited accounts, the removed accounts are deleted from the list of
-%% accounts in the behavior graph. To restore the account, the administrator
-%% account must send another invitation.
+%% accounts in the
+%% behavior graph. To restore the account, the administrator account must
+%% send another
+%% invitation.
 %%
 %% For organization accounts in the organization behavior graph, the
-%% Detective administrator account can always enable the organization account
-%% again. Organization accounts that are not enabled as member accounts are
-%% not included in the `ListMembers' results for the organization
-%% behavior graph.
+%% Detective
+%% administrator account can always enable the organization account again.
+%% Organization
+%% accounts that are not enabled as member accounts are not included in the
+%% `ListMembers' results for the organization behavior graph.
 %%
 %% An administrator account cannot use `DeleteMembers' to remove their
-%% own account from the behavior graph. To disable a behavior graph, the
-%% administrator account uses the `DeleteGraph' API method.
+%% own
+%% account from the behavior graph. To disable a behavior graph, the
+%% administrator account
+%% uses the `DeleteGraph' API method.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 delete_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/removal"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -391,7 +443,8 @@ delete_members(Client, Input0, Options0) ->
 %% behavior graph.
 %%
 %% Currently indicates whether to automatically enable new organization
-%% accounts as member accounts.
+%% accounts as member
+%% accounts.
 %%
 %% Can only be called by the Detective administrator account for the
 %% organization.
@@ -400,11 +453,13 @@ describe_organization_configuration(Client, Input) ->
 describe_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/describeOrganizationConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -419,7 +474,8 @@ describe_organization_configuration(Client, Input0, Options0) ->
 
 %% @doc Removes the Detective administrator account in the current Region.
 %%
-%% Deletes the organization behavior graph.
+%% Deletes the
+%% organization behavior graph.
 %%
 %% Can only be called by the organization management account.
 %%
@@ -436,11 +492,13 @@ disable_organization_admin_account(Client, Input) ->
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/disableAdminAccount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -455,23 +513,28 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 
 %% @doc Removes the member account from the specified behavior graph.
 %%
-%% This operation can only be called by an invited member account that has
-%% the `ENABLED' status.
+%% This operation can only be
+%% called by an invited member account that has the `ENABLED' status.
 %%
 %% `DisassociateMembership' cannot be called by an organization account
-%% in the organization behavior graph. For the organization behavior graph,
-%% the Detective administrator account determines which organization accounts
-%% to enable or disable as member accounts.
+%% in the
+%% organization behavior graph. For the organization behavior graph, the
+%% Detective
+%% administrator account determines which organization accounts to enable or
+%% disable as member
+%% accounts.
 disassociate_membership(Client, Input) ->
     disassociate_membership(Client, Input, []).
 disassociate_membership(Client, Input0, Options0) ->
     Method = post,
     Path = ["/membership/removal"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -485,33 +548,38 @@ disassociate_membership(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Designates the Detective administrator account for the organization
-%% in the current Region.
+%% in the
+%% current Region.
 %%
-%% If the account does not have Detective enabled, then enables Detective for
-%% that account and creates a new behavior graph.
+%% If the account does not have Detective enabled, then enables Detective
+%% for that account and creates a new behavior graph.
 %%
 %% Can only be called by the organization management account.
 %%
 %% If the organization has a delegated administrator account in
-%% Organizations, then the Detective administrator account must be either the
-%% delegated administrator account or the organization management account.
+%% Organizations, then the
+%% Detective administrator account must be either the delegated administrator
+%% account or the organization management account.
 %%
 %% If the organization does not have a delegated administrator account in
 %% Organizations, then you can choose any account in the organization. If you
-%% choose an account other than the organization management account,
-%% Detective calls Organizations to make that account the delegated
-%% administrator account for Detective. The organization management account
-%% cannot be the delegated administrator account.
+%% choose an account other
+%% than the organization management account, Detective calls Organizations to
+%% make that account the delegated administrator account for Detective. The
+%% organization management account cannot be the delegated administrator
+%% account.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/enableAdminAccount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -537,11 +605,13 @@ get_investigation(Client, Input) ->
 get_investigation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/getInvestigation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -555,17 +625,20 @@ get_investigation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the membership details for specified member accounts for a
-%% behavior graph.
+%% behavior
+%% graph.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -584,11 +657,13 @@ list_datasource_packages(Client, Input) ->
 list_datasource_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -602,22 +677,26 @@ list_datasource_packages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of behavior graphs that the calling account is an
-%% administrator account of.
+%% administrator account
+%% of.
 %%
 %% This operation can only be called by an administrator account.
 %%
 %% Because an account can currently only be the administrator of one behavior
-%% graph within a Region, the results always contain a single behavior graph.
+%% graph within
+%% a Region, the results always contain a single behavior graph.
 list_graphs(Client, Input) ->
     list_graphs(Client, Input, []).
 list_graphs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graphs/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -640,11 +719,13 @@ list_indicators(Client, Input) ->
 list_indicators(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/listIndicators"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -657,23 +738,28 @@ list_indicators(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Detective investigations lets you investigate IAM users and IAM roles
-%% using indicators of compromise.
+%% @doc Detective investigations lets you investigate IAM users and
+%% IAM roles using indicators of compromise.
 %%
-%% An indicator of compromise (IOC) is an artifact observed in or on a
-%% network, system, or environment that can (with a high level of confidence)
-%% identify malicious activity or a security incident.
-%% `ListInvestigations' lists all active Detective investigations.
+%% An indicator of compromise
+%% (IOC) is an artifact observed in or on a network, system, or environment
+%% that can (with a
+%% high level of confidence) identify malicious activity or a security
+%% incident.
+%% `ListInvestigations' lists all active Detective
+%% investigations.
 list_investigations(Client, Input) ->
     list_investigations(Client, Input, []).
 list_investigations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/listInvestigations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -687,7 +773,8 @@ list_investigations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of open and accepted behavior graph invitations
-%% for the member account.
+%% for the member
+%% account.
 %%
 %% This operation can only be called by an invited member account.
 %%
@@ -695,18 +782,22 @@ list_investigations(Client, Input0, Options0) ->
 %% to.
 %%
 %% The results do not include behavior graphs for which the member account
-%% declined the invitation. The results also do not include behavior graphs
-%% that the member account resigned from or was removed from.
+%% declined the
+%% invitation. The results also do not include behavior graphs that the
+%% member account
+%% resigned from or was removed from.
 list_invitations(Client, Input) ->
     list_invitations(Client, Input, []).
 list_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -722,21 +813,25 @@ list_invitations(Client, Input0, Options0) ->
 %% @doc Retrieves the list of member accounts for a behavior graph.
 %%
 %% For invited accounts, the results do not include member accounts that were
-%% removed from the behavior graph.
+%% removed from
+%% the behavior graph.
 %%
 %% For the organization behavior graph, the results do not include
-%% organization accounts that the Detective administrator account has not
-%% enabled as member accounts.
+%% organization accounts
+%% that the Detective administrator account has not enabled as member
+%% accounts.
 list_members(Client, Input) ->
     list_members(Client, Input, []).
 list_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -758,11 +853,13 @@ list_organization_admin_accounts(Client, Input) ->
 list_organization_admin_accounts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/adminAccountslist"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -788,9 +885,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -801,22 +900,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Rejects an invitation to contribute the account data to a behavior
 %% graph.
 %%
-%% This operation must be called by an invited member account that has the
-%% `INVITED' status.
+%% This operation
+%% must be called by an invited member account that has the `INVITED'
+%% status.
 %%
 %% `RejectInvitation' cannot be called by an organization account in the
 %% organization behavior graph. In the organization behavior graph,
-%% organization accounts do not receive an invitation.
+%% organization accounts do
+%% not receive an invitation.
 reject_invitation(Client, Input) ->
     reject_invitation(Client, Input, []).
 reject_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/removal"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -842,11 +945,13 @@ start_investigation(Client, Input) ->
 start_investigation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/startInvestigation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -860,27 +965,28 @@ start_investigation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends a request to enable data ingest for a member account that has a
-%% status of `ACCEPTED_BUT_DISABLED'.
+%% status of
+%% `ACCEPTED_BUT_DISABLED'.
 %%
 %% For valid member accounts, the status is updated as follows.
 %%
-%% <ul> <li> If Detective enabled the member account, then the new status is
+%% If Detective enabled the member account, then the new status is
 %% `ENABLED'.
 %%
-%% </li> <li> If Detective cannot enable the member account, the status
-%% remains `ACCEPTED_BUT_DISABLED'.
-%%
-%% </li> </ul>
+%% If Detective cannot enable the member account, the status remains
+%% `ACCEPTED_BUT_DISABLED'.
 start_monitoring_member(Client, Input) ->
     start_monitoring_member(Client, Input, []).
 start_monitoring_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/member/monitoringstate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -900,10 +1006,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -923,10 +1031,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -946,11 +1056,13 @@ update_datasource_packages(Client, Input) ->
 update_datasource_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -969,11 +1081,13 @@ update_investigation_state(Client, Input) ->
 update_investigation_state(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/updateInvestigationState"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -996,11 +1110,13 @@ update_organization_configuration(Client, Input) ->
 update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/updateOrganizationConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1016,6 +1132,11 @@ update_organization_configuration(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

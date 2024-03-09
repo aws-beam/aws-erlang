@@ -2,13 +2,16 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Web Services Outposts is a fully managed service that extends
-%% Amazon Web Services infrastructure, APIs, and tools to customer premises.
+%% Amazon Web Services infrastructure, APIs, and tools to
+%% customer premises.
 %%
 %% By providing local access to Amazon Web Services managed infrastructure,
-%% Amazon Web Services Outposts enables customers to build and run
-%% applications on premises using the same programming interfaces as in
-%% Amazon Web Services Regions, while using local compute and storage
-%% resources for lower latency and local data processing needs.
+%% Amazon Web Services Outposts enables
+%% customers to build and run applications on premises using the same
+%% programming interfaces as
+%% in Amazon Web Services Regions, while using local compute and storage
+%% resources for lower latency and local
+%% data processing needs.
 -module(aws_outposts).
 
 -export([cancel_order/3,
@@ -89,11 +92,13 @@ cancel_order(Client, OrderId, Input) ->
 cancel_order(Client, OrderId, Input0, Options0) ->
     Method = post,
     Path = ["/orders/", aws_util:encode_uri(OrderId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -112,11 +117,13 @@ create_order(Client, Input) ->
 create_order(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orders"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -137,11 +144,13 @@ create_outpost(Client, Input) ->
 create_outpost(Client, Input0, Options0) ->
     Method = post,
     Path = ["/outposts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -160,11 +169,13 @@ create_site(Client, Input) ->
 create_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sites"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -183,11 +194,13 @@ delete_outpost(Client, OutpostId, Input) ->
 delete_outpost(Client, OutpostId, Input0, Options0) ->
     Method = delete,
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -206,11 +219,13 @@ delete_site(Client, SiteId, Input) ->
 delete_site(Client, SiteId, Input0, Options0) ->
     Method = delete,
     Path = ["/sites/", aws_util:encode_uri(SiteId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -235,10 +250,12 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap)
 get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/catalog/item/", aws_util:encode_uri(CatalogItemId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -246,17 +263,20 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Amazon Web Services uses this action to install Outpost servers.
+%% @doc
+%%
+%% Amazon Web Services uses this action to install Outpost servers.
 %%
 %% Gets information about the specified connection.
 %%
 %% Use CloudTrail to monitor this action or Amazon Web Services managed
-%% policy for Amazon Web Services Outposts to secure it. For more
-%% information, see Amazon Web Services managed policies for Amazon Web
-%% Services Outposts:
+%% policy for Amazon Web Services Outposts to secure it. For
+%% more information, see
+%% Amazon Web Services managed policies for Amazon Web Services Outposts:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/security-iam-awsmanpol.html
-%% and Logging Amazon Web Services Outposts API calls with Amazon Web
-%% Services CloudTrail:
+%% and
+%% Logging Amazon Web Services Outposts API calls with Amazon Web Services
+%% CloudTrail:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html
 %% in the Amazon Web Services Outposts User Guide.
 get_connection(Client, ConnectionId)
@@ -270,10 +290,12 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap)
 get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connections/", aws_util:encode_uri(ConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -293,10 +315,12 @@ get_order(Client, OrderId, QueryMap, HeadersMap)
 get_order(Client, OrderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/orders/", aws_util:encode_uri(OrderId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -316,10 +340,12 @@ get_outpost(Client, OutpostId, QueryMap, HeadersMap)
 get_outpost(Client, OutpostId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -339,10 +365,12 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap)
 get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), "/instanceTypes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -367,10 +395,12 @@ get_site(Client, SiteId, QueryMap, HeadersMap)
 get_site(Client, SiteId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sites/", aws_util:encode_uri(SiteId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -390,10 +420,12 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap)
 get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sites/", aws_util:encode_uri(SiteId), "/address"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -408,10 +440,10 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
 %% @doc Lists the hardware assets for the specified Outpost.
 %%
 %% Use filters to return specific results. If you specify multiple filters,
-%% the results include only the resources that match all of the specified
-%% filters. For a filter where you can specify multiple values, the results
-%% include items that match any of the values that you specify for the
-%% filter.
+%% the results include only the resources that match
+%% all of the specified filters. For a filter where you can specify multiple
+%% values, the results include
+%% items that match any of the values that you specify for the filter.
 list_assets(Client, OutpostIdentifier)
   when is_map(Client) ->
     list_assets(Client, OutpostIdentifier, #{}, #{}).
@@ -423,10 +455,12 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap)
 list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/assets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -444,10 +478,10 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
 %% @doc Lists the items in the catalog.
 %%
 %% Use filters to return specific results. If you specify multiple filters,
-%% the results include only the resources that match all of the specified
-%% filters. For a filter where you can specify multiple values, the results
-%% include items that match any of the values that you specify for the
-%% filter.
+%% the results include only the resources that match
+%% all of the specified filters. For a filter where you can specify multiple
+%% values, the results include
+%% items that match any of the values that you specify for the filter.
 list_catalog_items(Client)
   when is_map(Client) ->
     list_catalog_items(Client, #{}, #{}).
@@ -459,10 +493,12 @@ list_catalog_items(Client, QueryMap, HeadersMap)
 list_catalog_items(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/catalog/items"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -490,10 +526,12 @@ list_orders(Client, QueryMap, HeadersMap)
 list_orders(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-orders"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -510,10 +548,10 @@ list_orders(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Outposts for your Amazon Web Services account.
 %%
 %% Use filters to return specific results. If you specify multiple filters,
-%% the results include only the resources that match all of the specified
-%% filters. For a filter where you can specify multiple values, the results
-%% include items that match any of the values that you specify for the
-%% filter.
+%% the results include only the resources that match
+%% all of the specified filters. For a filter where you can specify multiple
+%% values, the results include
+%% items that match any of the values that you specify for the filter.
 list_outposts(Client)
   when is_map(Client) ->
     list_outposts(Client, #{}, #{}).
@@ -525,10 +563,12 @@ list_outposts(Client, QueryMap, HeadersMap)
 list_outposts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/outposts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -546,13 +586,14 @@ list_outposts(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Outpost sites for your Amazon Web Services account.
 %%
-%% Use filters to return specific results.
+%% Use filters to return specific
+%% results.
 %%
 %% Use filters to return specific results. If you specify multiple filters,
-%% the results include only the resources that match all of the specified
-%% filters. For a filter where you can specify multiple values, the results
-%% include items that match any of the values that you specify for the
-%% filter.
+%% the results include only the resources that match
+%% all of the specified filters. For a filter where you can specify multiple
+%% values, the results include
+%% items that match any of the values that you specify for the filter.
 list_sites(Client)
   when is_map(Client) ->
     list_sites(Client, #{}, #{}).
@@ -564,10 +605,12 @@ list_sites(Client, QueryMap, HeadersMap)
 list_sites(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sites"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -595,10 +638,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -606,17 +651,20 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Amazon Web Services uses this action to install Outpost servers.
+%% @doc
+%%
+%% Amazon Web Services uses this action to install Outpost servers.
 %%
 %% Starts the connection required for Outpost server installation.
 %%
 %% Use CloudTrail to monitor this action or Amazon Web Services managed
-%% policy for Amazon Web Services Outposts to secure it. For more
-%% information, see Amazon Web Services managed policies for Amazon Web
-%% Services Outposts:
+%% policy for Amazon Web Services Outposts to secure it. For
+%% more information, see
+%% Amazon Web Services managed policies for Amazon Web Services Outposts:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/security-iam-awsmanpol.html
-%% and Logging Amazon Web Services Outposts API calls with Amazon Web
-%% Services CloudTrail:
+%% and
+%% Logging Amazon Web Services Outposts API calls with Amazon Web Services
+%% CloudTrail:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html
 %% in the Amazon Web Services Outposts User Guide.
 start_connection(Client, Input) ->
@@ -624,11 +672,13 @@ start_connection(Client, Input) ->
 start_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connections"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -647,11 +697,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -670,11 +722,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -694,11 +748,13 @@ update_outpost(Client, OutpostId, Input) ->
 update_outpost(Client, OutpostId, Input0, Options0) ->
     Method = patch,
     Path = ["/outposts/", aws_util:encode_uri(OutpostId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -717,11 +773,13 @@ update_site(Client, SiteId, Input) ->
 update_site(Client, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/sites/", aws_util:encode_uri(SiteId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -737,20 +795,24 @@ update_site(Client, SiteId, Input0, Options0) ->
 %% @doc Updates the address of the specified site.
 %%
 %% You can't update a site address if there is an order in progress. You
-%% must wait for the order to complete or cancel the order.
+%% must wait for the
+%% order to complete or cancel the order.
 %%
 %% You can update the operating address before you place an order at the
-%% site, or after all Outposts that belong to the site have been deactivated.
+%% site, or after all
+%% Outposts that belong to the site have been deactivated.
 update_site_address(Client, SiteId, Input) ->
     update_site_address(Client, SiteId, Input, []).
 update_site_address(Client, SiteId, Input0, Options0) ->
     Method = put,
     Path = ["/sites/", aws_util:encode_uri(SiteId), "/address"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -765,23 +827,27 @@ update_site_address(Client, SiteId, Input0, Options0) ->
 
 %% @doc Update the physical and logistical details for a rack at a site.
 %%
-%% For more information about hardware requirements for racks, see Network
+%% For more information
+%% about hardware requirements for racks, see Network
 %% readiness checklist:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/outposts-requirements.html#checklist
 %% in the Amazon Web Services Outposts User Guide.
 %%
 %% To update a rack at a site with an order of `IN_PROGRESS', you must
-%% wait for the order to complete or cancel the order.
+%% wait for
+%% the order to complete or cancel the order.
 update_site_rack_physical_properties(Client, SiteId, Input) ->
     update_site_rack_physical_properties(Client, SiteId, Input, []).
 update_site_rack_physical_properties(Client, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/sites/", aws_util:encode_uri(SiteId), "/rackPhysicalProperties"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -797,6 +863,11 @@ update_site_rack_physical_properties(Client, SiteId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

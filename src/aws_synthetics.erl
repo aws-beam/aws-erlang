@@ -6,21 +6,28 @@
 %% You can use Amazon CloudWatch Synthetics to continually monitor your
 %% services.
 %%
-%% You can create and manage canaries, which are modular, lightweight scripts
-%% that monitor your endpoints and APIs from the outside-in. You can set up
-%% your canaries to run 24 hours a day, once per minute. The canaries help
-%% you check the availability and latency of your web services and
-%% troubleshoot anomalies by investigating load time data, screenshots of the
-%% UI, logs, and metrics. The canaries seamlessly integrate with CloudWatch
+%% You can
+%% create and manage canaries, which are modular, lightweight scripts
+%% that monitor your endpoints and APIs
+%% from the outside-in. You can set up your canaries to run
+%% 24 hours a day, once per minute. The canaries help you check the
+%% availability and latency
+%% of your web services and troubleshoot anomalies by investigating load time
+%% data,
+%% screenshots of the UI, logs, and metrics. The canaries seamlessly
+%% integrate with CloudWatch
 %% ServiceLens to help you trace the causes of impacted nodes in your
-%% applications. For more information, see Using ServiceLens to Monitor the
-%% Health of Your Applications:
+%% applications. For more
+%% information, see Using ServiceLens to Monitor
+%% the Health of Your Applications:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html
-%% in the Amazon CloudWatch User Guide.
+%% in the Amazon CloudWatch User
+%% Guide.
 %%
 %% Before you create and manage canaries, be aware of the security
-%% considerations. For more information, see Security Considerations for
-%% Synthetics Canaries:
+%% considerations. For more
+%% information, see Security
+%% Considerations for Synthetics Canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html.
 -module(aws_synthetics).
 
@@ -78,9 +85,10 @@
 
 %% @doc Associates a canary with a group.
 %%
-%% Using groups can help you with managing and automating your canaries, and
-%% you can also view aggregated run results and statistics for all canaries
-%% in a group.
+%% Using groups can help you with
+%% managing and automating your canaries, and you can also view aggregated
+%% run results and statistics
+%% for all canaries in a group.
 %%
 %% You must run this operation in the Region where the canary exists.
 associate_resource(Client, GroupIdentifier, Input) ->
@@ -88,11 +96,13 @@ associate_resource(Client, GroupIdentifier, Input) ->
 associate_resource(Client, GroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/associate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -109,9 +119,10 @@ associate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %%
 %% Canaries are scripts that monitor your endpoints and APIs from the
 %% outside-in. Canaries help you check the availability and latency of your
-%% web services and troubleshoot anomalies by investigating load time data,
-%% screenshots of the UI, logs, and metrics. You can set up a canary to run
-%% continuously or just once.
+%% web services and
+%% troubleshoot anomalies by investigating load time data, screenshots of the
+%% UI, logs, and
+%% metrics. You can set up a canary to run continuously or just once.
 %%
 %% Do not use `CreateCanary' to modify an existing canary. Use
 %% UpdateCanary:
@@ -119,27 +130,33 @@ associate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% instead.
 %%
 %% To create canaries, you must have the `CloudWatchSyntheticsFullAccess'
-%% policy. If you are creating a new IAM role for the canary, you also need
-%% the `iam:CreateRole', `iam:CreatePolicy' and
+%% policy.
+%% If you are creating a new IAM role for the canary, you also need the
+%% `iam:CreateRole', `iam:CreatePolicy' and
 %% `iam:AttachRolePolicy' permissions. For more information, see
-%% Necessary Roles and Permissions:
+%% Necessary
+%% Roles and Permissions:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles.
 %%
 %% Do not include secrets or proprietary information in your canary names.
-%% The canary name makes up part of the Amazon Resource Name (ARN) for the
-%% canary, and the ARN is included in outbound calls over the internet. For
-%% more information, see Security Considerations for Synthetics Canaries:
+%% The canary name
+%% makes up part of the Amazon Resource Name (ARN) for the canary, and the
+%% ARN is included in
+%% outbound calls over the internet. For more information, see Security
+%% Considerations for Synthetics Canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html.
 create_canary(Client, Input) ->
     create_canary(Client, Input, []).
 create_canary(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canary"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -153,38 +170,43 @@ create_canary(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a group which you can use to associate canaries with each
-%% other, including cross-Region canaries.
+%% other, including cross-Region
+%% canaries.
 %%
-%% Using groups can help you with managing and automating your canaries, and
-%% you can also view aggregated run results and statistics for all canaries
-%% in a group.
+%% Using groups can help you with
+%% managing and automating your canaries, and you can also view aggregated
+%% run results and statistics
+%% for all canaries in a group.
 %%
 %% Groups are global resources. When you create a group, it is replicated
-%% across Amazon Web Services Regions, and you can view it and add canaries
-%% to it from any Region. Although the group ARN format reflects the Region
-%% name where it was created, a group is not constrained to any Region. This
-%% means that you can put canaries from multiple Regions into the same group,
-%% and then use that group to view and manage all of those canaries in a
-%% single view.
+%% across Amazon Web Services Regions, and
+%% you can view it and add canaries to it from any Region.
+%% Although the group ARN format reflects the Region name where it was
+%% created, a group is not constrained to any Region.
+%% This means that you can put canaries from multiple Regions into the same
+%% group, and then use
+%% that group to view and manage all of those canaries in a single view.
 %%
 %% Groups are supported in all Regions except the Regions that are disabled
-%% by default. For more information about these Regions, see Enabling a
-%% Region:
+%% by default. For more information
+%% about these Regions, see Enabling a Region:
 %% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable.
 %%
 %% Each group can contain as many as 10 canaries. You can have as many as 20
-%% groups in your account. Any single canary can be a member of up to 10
-%% groups.
+%% groups in your account. Any single canary
+%% can be a member of up to 10 groups.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/group"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -200,39 +222,52 @@ create_group(Client, Input0, Options0) ->
 %% @doc Permanently deletes the specified canary.
 %%
 %% If you specify `DeleteLambda' to `true', CloudWatch Synthetics
-%% also deletes the Lambda functions and layers that are used by the canary.
+%% also deletes
+%% the Lambda functions and layers that are used by the canary.
 %%
 %% Other resources used and created by the canary are not automatically
-%% deleted. After you delete a canary that you do not intend to use again,
-%% you should also delete the following:
+%% deleted.
+%% After you delete a canary that you do not intend to
+%% use again, you
+%% should also delete the following:
 %%
-%% <ul> <li> The CloudWatch alarms created for this canary. These alarms have
-%% a name of `Synthetics-SharpDrop-Alarm-MyCanaryName '.
+%% The CloudWatch alarms created for this canary. These alarms have a name of
 %%
-%% </li> <li> Amazon S3 objects and buckets, such as the canary's
-%% artifact location.
+%% ```
+%% Synthetics-SharpDrop-Alarm-MyCanaryName '''.
 %%
-%% </li> <li> IAM roles created for the canary. If they were created in the
-%% console, these roles have the name `
-%% role/service-role/CloudWatchSyntheticsRole-MyCanaryName '.
+%% Amazon S3 objects and buckets, such as the canary's artifact location.
 %%
-%% </li> <li> CloudWatch Logs log groups created for the canary. These logs
-%% groups have the name `/aws/lambda/cwsyn-MyCanaryName '.
+%% IAM roles created for the canary. If they were created in the console,
+%% these roles
+%% have the name
+%% ```
+%% role/service-role/CloudWatchSyntheticsRole-MyCanaryName '''.
 %%
-%% </li> </ul> Before you delete a canary, you might want to use
-%% `GetCanary' to display the information about this canary. Make note of
-%% the information returned by this operation so that you can delete these
-%% resources after you delete the canary.
+%% CloudWatch Logs log groups created for the canary. These logs groups have
+%% the name
+%%
+%% ```
+%% /aws/lambda/cwsyn-MyCanaryName '''.
+%%
+%% Before you delete a canary, you might want to use `GetCanary' to
+%% display
+%% the information about this canary. Make
+%% note of the information returned by this operation so that you can delete
+%% these resources
+%% after you delete the canary.
 delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
 delete_canary(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -249,21 +284,25 @@ delete_canary(Client, Name, Input0, Options0) ->
 %% @doc Deletes a group.
 %%
 %% The group doesn't need to be empty to be deleted. If there are
-%% canaries in the group, they are not deleted when you delete the group.
+%% canaries in the group,
+%% they are not deleted when you delete the group.
 %%
 %% Groups are a global resource that appear in all Regions, but the request
-%% to delete a group must be made from its home Region. You can find the home
-%% Region of a group within its ARN.
+%% to delete a group
+%% must be made from its home Region. You can find the home Region of a group
+%% within its ARN.
 delete_group(Client, GroupIdentifier, Input) ->
     delete_group(Client, GroupIdentifier, Input, []).
 delete_group(Client, GroupIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -277,29 +316,36 @@ delete_group(Client, GroupIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation returns a list of the canaries in your account, along
-%% with full details about each canary.
+%% with full details
+%% about each canary.
 %%
 %% This operation supports resource-level authorization using an IAM policy
-%% and the `Names' parameter. If you specify the `Names' parameter,
-%% the operation is successful only if you have authorization to view all the
-%% canaries that you specify in your request. If you do not have permission
-%% to view any of the canaries, the request fails with a 403 response.
+%% and
+%% the `Names' parameter. If you specify the `Names' parameter, the
+%% operation is successful only if you have authorization to view
+%% all the canaries that you specify in your request. If you do not have
+%% permission to view any of
+%% the canaries, the request fails with a 403 response.
 %%
 %% You are required to use the `Names' parameter if you are logged on to
-%% a user or role that has an IAM policy that restricts which canaries that
-%% you are allowed to view. For more information, see Limiting a user to
-%% viewing specific canaries:
+%% a user or role that has an
+%% IAM policy that restricts which canaries that you are allowed to view. For
+%% more information,
+%% see
+%% Limiting a user to viewing specific canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
 describe_canaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -316,26 +362,32 @@ describe_canaries(Client, Input0, Options0) ->
 %% each canary that you have created.
 %%
 %% This operation supports resource-level authorization using an IAM policy
-%% and the `Names' parameter. If you specify the `Names' parameter,
-%% the operation is successful only if you have authorization to view all the
-%% canaries that you specify in your request. If you do not have permission
-%% to view any of the canaries, the request fails with a 403 response.
+%% and
+%% the `Names' parameter. If you specify the `Names' parameter, the
+%% operation is successful only if you have authorization to view
+%% all the canaries that you specify in your request. If you do not have
+%% permission to view any of
+%% the canaries, the request fails with a 403 response.
 %%
 %% You are required to use the `Names' parameter if you are logged on to
-%% a user or role that has an IAM policy that restricts which canaries that
-%% you are allowed to view. For more information, see Limiting a user to
-%% viewing specific canaries:
+%% a user or role that has an
+%% IAM policy that restricts which canaries that you are allowed to view. For
+%% more information,
+%% see
+%% Limiting a user to viewing specific canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
 describe_canaries_last_run(Client, Input) ->
     describe_canaries_last_run(Client, Input, []).
 describe_canaries_last_run(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries/last-run"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -350,18 +402,22 @@ describe_canaries_last_run(Client, Input0, Options0) ->
 
 %% @doc Returns a list of Synthetics canary runtime versions.
 %%
-%% For more information, see Canary Runtime Versions:
+%% For more information,
+%% see
+%% Canary Runtime Versions:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html.
 describe_runtime_versions(Client, Input) ->
     describe_runtime_versions(Client, Input, []).
 describe_runtime_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/runtime-versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -382,11 +438,13 @@ disassociate_resource(Client, GroupIdentifier, Input) ->
 disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/disassociate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -401,8 +459,9 @@ disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
 
 %% @doc Retrieves complete information about one canary.
 %%
-%% You must specify the name of the canary that you want. To get a list of
-%% canaries and their names, use DescribeCanaries:
+%% You must specify
+%% the name of the canary that you want. To get a list of canaries
+%% and their names, use DescribeCanaries:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html.
 get_canary(Client, Name)
   when is_map(Client) ->
@@ -415,10 +474,12 @@ get_canary(Client, Name, QueryMap, HeadersMap)
 get_canary(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -432,11 +493,13 @@ get_canary_runs(Client, Name, Input) ->
 get_canary_runs(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/runs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -451,8 +514,8 @@ get_canary_runs(Client, Name, Input0, Options0) ->
 
 %% @doc Returns information about one group.
 %%
-%% Groups are a global resource, so you can use this operation from any
-%% Region.
+%% Groups are a global resource, so you can use this operation from
+%% any Region.
 get_group(Client, GroupIdentifier)
   when is_map(Client) ->
     get_group(Client, GroupIdentifier, #{}, #{}).
@@ -464,10 +527,12 @@ get_group(Client, GroupIdentifier, QueryMap, HeadersMap)
 get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -478,17 +543,20 @@ get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of the groups that the specified canary is associated
 %% with.
 %%
-%% The canary that you specify must be in the current Region.
+%% The canary
+%% that you specify must be in the current Region.
 list_associated_groups(Client, ResourceArn, Input) ->
     list_associated_groups(Client, ResourceArn, Input, []).
 list_associated_groups(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resource/", aws_util:encode_uri(ResourceArn), "/groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -508,11 +576,13 @@ list_group_resources(Client, GroupIdentifier, Input) ->
 list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/resources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -528,17 +598,20 @@ list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
 %% @doc Returns a list of all groups in the account, displaying their names,
 %% unique IDs, and ARNs.
 %%
-%% The groups from all Regions are returned.
+%% The groups
+%% from all Regions are returned.
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
 list_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -563,10 +636,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -577,19 +652,21 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Use this operation to run a canary that has already been created.
 %%
 %% The frequency of the canary runs is determined by the value of the
-%% canary's `Schedule'. To see a canary's schedule, use
-%% GetCanary:
+%% canary's `Schedule'. To see a canary's schedule,
+%% use GetCanary:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 start_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/start"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -604,22 +681,25 @@ start_canary(Client, Name, Input0, Options0) ->
 
 %% @doc Stops the canary to prevent all future runs.
 %%
-%% If the canary is currently running,the run that is in progress completes
-%% on its own, publishes metrics, and uploads artifacts, but it is not
-%% recorded in Synthetics as a completed run.
+%% If the canary is currently running,the
+%% run that is in progress completes on its own, publishes metrics, and
+%% uploads artifacts, but
+%% it is not recorded in Synthetics as a completed run.
 %%
-%% You can use `StartCanary' to start it running again with the canary’s
-%% current schedule at any point in the future.
+%% You can use `StartCanary' to start it running again
+%% with the canary’s current schedule at any point in the future.
 stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
 stop_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/stop"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -635,18 +715,22 @@ stop_canary(Client, Name, Input0, Options0) ->
 %% @doc Assigns one or more tags (key-value pairs) to the specified canary or
 %% group.
 %%
-%% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions, by granting a user permission to access or
-%% change only resources with certain tag values.
+%% Tags can help you organize and categorize your
+%% resources. You can also use them to scope user permissions, by granting a
+%% user permission to access or change only resources with
+%% certain tag values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
 %% You can use the `TagResource' action with a resource that already has
-%% tags. If you specify a new tag key for the resource, this tag is appended
-%% to the list of tags associated with the resource. If you specify a tag key
-%% that is already associated with the resource, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% tags. If you specify a new
+%% tag key for the resource,
+%% this tag is appended to the list of tags associated
+%% with the resource. If you specify a tag key that is already associated
+%% with the resource, the new tag
+%% value that you specify replaces
+%% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a canary or group.
 tag_resource(Client, ResourceArn, Input) ->
@@ -654,11 +738,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -677,11 +763,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -695,21 +783,26 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration of a canary that has already been created.
+%% @doc Updates the configuration of a canary that has
+%% already been created.
 %%
 %% You can't use this operation to update the tags of an existing canary.
-%% To change the tags of an existing canary, use TagResource:
+%% To
+%% change the tags of an existing canary, use
+%% TagResource:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
 update_canary(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -725,6 +818,11 @@ update_canary(Client, Name, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

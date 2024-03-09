@@ -4,20 +4,21 @@
 %% @doc AWS Marketplace Entitlement Service
 %%
 %% This reference provides descriptions of the AWS Marketplace Entitlement
-%% Service API.
+%% Service
+%% API.
 %%
 %% AWS Marketplace Entitlement Service is used to determine the entitlement
-%% of a customer to a given product. An entitlement represents capacity in a
-%% product owned by the customer. For example, a customer might own some
-%% number of users or seats in an SaaS application or some amount of data
-%% capacity in a multi-tenant database.
+%% of a customer to
+%% a given product. An entitlement represents capacity in a product owned by
+%% the customer. For
+%% example, a customer might own some number of users or seats in an SaaS
+%% application or some
+%% amount of data capacity in a multi-tenant database.
 %%
 %% Getting Entitlement Records
 %%
-%% <ul> <li> GetEntitlements- Gets the entitlements for a Marketplace
+%% GetEntitlements- Gets the entitlements for a Marketplace
 %% product.
-%%
-%% </li> </ul>
 -module(aws_marketplace_entitlement).
 
 -export([get_entitlements/2,
@@ -31,8 +32,8 @@
 
 %% @doc GetEntitlements retrieves entitlement values for a given product.
 %%
-%% The results can be filtered based on customer identifier or product
-%% dimensions.
+%% The results can be
+%% filtered based on customer identifier or product dimensions.
 get_entitlements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entitlements(Client, Input, []).
@@ -55,7 +56,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"aws-marketplace">>},
+    Client1 = Client#{service => <<"entitlement.marketplace">>},
     Host = build_host(<<"entitlement.marketplace">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

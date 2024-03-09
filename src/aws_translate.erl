@@ -51,11 +51,14 @@
 %%====================================================================
 
 %% @doc Creates a parallel data resource in Amazon Translate by importing an
-%% input file from Amazon S3.
+%% input file from
+%% Amazon S3.
 %%
 %% Parallel data files contain examples that show how you want segments of
-%% text to be translated. By adding parallel data, you can influence the
-%% style, tone, and word choice in your translation output.
+%% text to be
+%% translated. By adding parallel data, you can influence the style, tone,
+%% and word choice in
+%% your translation output.
 create_parallel_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parallel_data(Client, Input, []).
@@ -80,8 +83,9 @@ delete_terminology(Client, Input, Options)
     request(Client, <<"DeleteTerminology">>, Input, Options).
 
 %% @doc Gets the properties associated with an asynchronous batch translation
-%% job including name, ID, status, source and target languages, input/output
-%% S3 buckets, and so on.
+%% job including name,
+%% ID, status, source and target languages, input/output S3 buckets, and so
+%% on.
 describe_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_text_translation_job(Client, Input, []).
@@ -106,16 +110,21 @@ get_terminology(Client, Input, Options)
     request(Client, <<"GetTerminology">>, Input, Options).
 
 %% @doc Creates or updates a custom terminology, depending on whether one
-%% already exists for the given terminology name.
+%% already exists for the
+%% given terminology name.
 %%
-%% Importing a terminology with the same name as an existing one will merge
-%% the terminologies based on the chosen merge strategy. The only supported
-%% merge strategy is OVERWRITE, where the imported terminology overwrites the
-%% existing terminology of the same name.
+%% Importing a terminology with the same name as an existing one will
+%% merge the terminologies based on the chosen merge strategy. The only
+%% supported merge strategy
+%% is OVERWRITE, where the imported terminology overwrites the existing
+%% terminology of the same
+%% name.
 %%
 %% If you import a terminology that overwrites an existing one, the new
-%% terminology takes up to 10 minutes to fully propagate. After that,
-%% translations have access to the new terminology.
+%% terminology takes up
+%% to 10 minutes to fully propagate. After that, translations have access to
+%% the new
+%% terminology.
 import_terminology(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_terminology(Client, Input, []).
@@ -142,7 +151,8 @@ list_parallel_data(Client, Input, Options)
 
 %% @doc Lists all tags associated with a given Amazon Translate resource.
 %%
-%% For more information, see Tagging your resources:
+%% For more information, see
+%% Tagging your resources:
 %% https://docs.aws.amazon.com/translate/latest/dg/tagging.html.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -169,12 +179,15 @@ list_text_translation_jobs(Client, Input, Options)
 
 %% @doc Starts an asynchronous batch translation job.
 %%
-%% Use batch translation jobs to translate large volumes of text across
-%% multiple documents at once. For batch translation, you can input documents
-%% with different source languages (specify `auto' as the source
-%% language). You can specify one or more target languages. Batch translation
-%% translates each input document into each of the target languages. For more
-%% information, see Asynchronous batch processing:
+%% Use batch translation jobs to
+%% translate large volumes of text across multiple documents at once.
+%% For batch translation, you can input documents with different source
+%% languages (specify `auto'
+%% as the source language). You can specify one
+%% or more target languages. Batch translation translates each input document
+%% into each of the target languages.
+%% For more information, see
+%% Asynchronous batch processing:
 %% https://docs.aws.amazon.com/translate/latest/dg/async.html.
 %%
 %% Batch translation jobs can be described with the
@@ -191,9 +204,12 @@ start_text_translation_job(Client, Input, Options)
 %% @doc Stops an asynchronous batch translation job that is in progress.
 %%
 %% If the job's state is `IN_PROGRESS', the job will be marked for
-%% termination and put into the `STOP_REQUESTED' state. If the job
-%% completes before it can be stopped, it is put into the `COMPLETED'
-%% state. Otherwise, the job is put into the `STOPPED' state.
+%% termination and
+%% put into the `STOP_REQUESTED' state. If the job completes before it
+%% can be stopped,
+%% it is put into the `COMPLETED' state. Otherwise, the job is put into
+%% the
+%% `STOPPED' state.
 %%
 %% Asynchronous batch translation jobs are started with the
 %% `StartTextTranslationJob' operation. You can use the
@@ -208,8 +224,10 @@ stop_text_translation_job(Client, Input, Options)
 
 %% @doc Associates a specific tag with a resource.
 %%
-%% A tag is a key-value pair that adds as a metadata to a resource. For more
-%% information, see Tagging your resources:
+%% A tag is a key-value pair
+%% that adds as a metadata to a resource.
+%% For more information, see
+%% Tagging your resources:
 %% https://docs.aws.amazon.com/translate/latest/dg/tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -222,14 +240,19 @@ tag_resource(Client, Input, Options)
 %% language.
 %%
 %% This synchronous operation supports text, HTML, or Word documents as the
-%% input document. `TranslateDocument' supports translations from English
-%% to any supported language, and from any supported language to English.
-%% Therefore, specify either the source language code or the target language
-%% code as “en” (English).
+%% input document.
+%%
+%% `TranslateDocument' supports translations from English to any
+%% supported language,
+%% and from any supported language to English. Therefore, specify either the
+%% source language code
+%% or the target language code as “en” (English).
 %%
 %% If you set the `Formality' parameter, the request will fail if the
-%% target language does not support formality. For a list of target languages
-%% that support formality, see Setting formality:
+%% target language does
+%% not support formality. For a list of target languages that support
+%% formality, see
+%% Setting formality:
 %% https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html.
 translate_document(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -241,8 +264,8 @@ translate_document(Client, Input, Options)
 %% @doc Translates input text from the source language to the target
 %% language.
 %%
-%% For a list of available languages and language codes, see Supported
-%% languages:
+%% For a list of
+%% available languages and language codes, see Supported languages:
 %% https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html.
 translate_text(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -253,7 +276,8 @@ translate_text(Client, Input, Options)
 
 %% @doc Removes a specific tag associated with an Amazon Translate resource.
 %%
-%% For more information, see Tagging your resources:
+%% For more information, see
+%% Tagging your resources:
 %% https://docs.aws.amazon.com/translate/latest/dg/tagging.html.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -263,7 +287,8 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates a previously created parallel data resource by importing a
-%% new input file from Amazon S3.
+%% new input file from
+%% Amazon S3.
 update_parallel_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_parallel_data(Client, Input, []).

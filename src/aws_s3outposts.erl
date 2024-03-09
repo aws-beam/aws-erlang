@@ -30,23 +30,23 @@
 %%
 %% Related actions include:
 %%
-%% <ul> <li> DeleteEndpoint:
+%% DeleteEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
 %%
-%% </li> <li> ListEndpoints:
+%% ListEndpoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
-%%
-%% </li> </ul>
 create_endpoint(Client, Input) ->
     create_endpoint(Client, Input, []).
 create_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/S3Outposts/CreateEndpoint"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -65,23 +65,23 @@ create_endpoint(Client, Input0, Options0) ->
 %%
 %% Related actions include:
 %%
-%% <ul> <li> CreateEndpoint:
+%% CreateEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html
 %%
-%% </li> <li> ListEndpoints:
+%% ListEndpoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
-%%
-%% </li> </ul>
 delete_endpoint(Client, Input) ->
     delete_endpoint(Client, Input, []).
 delete_endpoint(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/S3Outposts/DeleteEndpoint"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -100,13 +100,11 @@ delete_endpoint(Client, Input0, Options0) ->
 %%
 %% Related actions include:
 %%
-%% <ul> <li> CreateEndpoint:
+%% CreateEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html
 %%
-%% </li> <li> DeleteEndpoint:
+%% DeleteEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
-%%
-%% </li> </ul>
 list_endpoints(Client)
   when is_map(Client) ->
     list_endpoints(Client, #{}, #{}).
@@ -118,10 +116,12 @@ list_endpoints(Client, QueryMap, HeadersMap)
 list_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/S3Outposts/ListEndpoints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -138,7 +138,8 @@ list_endpoints(Client, QueryMap, HeadersMap, Options0)
 %% Services account.
 %%
 %% Includes S3 on Outposts that you have access to as the Outposts owner, or
-%% as a shared user from Resource Access Manager (RAM).
+%% as a shared user
+%% from Resource Access Manager (RAM).
 list_outposts_with_s3(Client)
   when is_map(Client) ->
     list_outposts_with_s3(Client, #{}, #{}).
@@ -150,10 +151,12 @@ list_outposts_with_s3(Client, QueryMap, HeadersMap)
 list_outposts_with_s3(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/S3Outposts/ListOutpostsWithS3"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -171,13 +174,11 @@ list_outposts_with_s3(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Related actions include:
 %%
-%% <ul> <li> CreateEndpoint:
+%% CreateEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html
 %%
-%% </li> <li> DeleteEndpoint:
+%% DeleteEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
-%%
-%% </li> </ul>
 list_shared_endpoints(Client, OutpostId)
   when is_map(Client) ->
     list_shared_endpoints(Client, OutpostId, #{}, #{}).
@@ -189,10 +190,12 @@ list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap)
 list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/S3Outposts/ListSharedEndpoints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -209,6 +212,11 @@ list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, Options0)
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

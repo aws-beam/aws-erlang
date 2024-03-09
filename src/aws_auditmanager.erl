@@ -3,41 +3,51 @@
 
 %% @doc Welcome to the Audit Manager API reference.
 %%
-%% This guide is for developers who need detailed information about the Audit
-%% Manager API operations, data types, and errors.
+%% This guide is for developers who
+%% need detailed information about the Audit Manager API operations, data
+%% types, and
+%% errors.
 %%
 %% Audit Manager is a service that provides automated evidence collection so
-%% that you can continually audit your Amazon Web Services usage. You can use
-%% it to assess the effectiveness of your controls, manage risk, and simplify
-%% compliance.
+%% that you
+%% can continually audit your Amazon Web Services usage. You can use it to
+%% assess the
+%% effectiveness of your controls, manage risk, and simplify compliance.
 %%
 %% Audit Manager provides prebuilt frameworks that structure and automate
-%% assessments for a given compliance standard. Frameworks include a prebuilt
-%% collection of controls with descriptions and testing procedures. These
-%% controls are grouped according to the requirements of the specified
-%% compliance standard or regulation. You can also customize frameworks and
-%% controls to support internal audits with specific requirements.
+%% assessments
+%% for a given compliance standard. Frameworks include a prebuilt collection
+%% of controls with
+%% descriptions and testing procedures. These controls are grouped according
+%% to the
+%% requirements of the specified compliance standard or regulation. You can
+%% also customize
+%% frameworks and controls to support internal audits with specific
+%% requirements.
 %%
 %% Use the following links to get started with the Audit Manager API:
 %%
-%% <ul> <li> Actions:
+%% Actions:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Operations.html:
-%% An alphabetical list of all Audit Manager API operations.
+%% An
+%% alphabetical list of all Audit Manager API operations.
 %%
-%% </li> <li> Data types:
+%% Data types:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Types.html:
-%% An alphabetical list of all Audit Manager data types.
+%% An alphabetical list of all Audit Manager data
+%% types.
 %%
-%% </li> <li> Common parameters:
+%% Common
+%% parameters:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonParameters.html:
 %% Parameters that all operations can use.
 %%
-%% </li> <li> Common errors:
+%% Common errors:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonErrors.html:
 %% Client and server errors that all operations can return.
 %%
-%% </li> </ul> If you're new to Audit Manager, we recommend that you
-%% review the Audit Manager User Guide:
+%% If you're new to Audit Manager, we recommend that you review the
+%% Audit Manager User Guide:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/what-is.html.
 -module(aws_auditmanager).
 
@@ -203,17 +213,20 @@
 %%====================================================================
 
 %% @doc Associates an evidence folder to an assessment report in an Audit
-%% Manager assessment.
+%% Manager
+%% assessment.
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     associate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/associateToAssessmentReport"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -227,17 +240,20 @@ associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a list of evidence to an assessment report in an Audit
-%% Manager assessment.
+%% Manager
+%% assessment.
 batch_associate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_associate_assessment_report_evidence(Client, AssessmentId, Input, []).
 batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchAssociateToAssessmentReport"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -256,11 +272,13 @@ batch_create_delegation_by_assessment(Client, AssessmentId, Input) ->
 batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -279,11 +297,13 @@ batch_delete_delegation_by_assessment(Client, AssessmentId, Input) ->
 batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -303,11 +323,13 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input) ->
 batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchDisassociateFromAssessmentReport"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -324,36 +346,41 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 %% assessment.
 %%
 %% You can import manual evidence from any S3 bucket by specifying the S3 URI
-%% of the object. You can also upload a file from your browser, or enter
-%% plain text in response to a risk assessment question.
+%% of the
+%% object. You can also upload a file from your browser, or enter plain text
+%% in response to a
+%% risk assessment question.
 %%
 %% The following restrictions apply to this action:
 %%
-%% <ul> <li> `manualEvidence' can be only one of the following:
-%% `evidenceFileName', `s3ResourcePath', or `textResponse'
+%% `manualEvidence' can be only one of the following:
+%% `evidenceFileName', `s3ResourcePath', or
+%% `textResponse'
 %%
-%% </li> <li> Maximum size of an individual evidence file: 100 MB
+%% Maximum size of an individual evidence file: 100 MB
 %%
-%% </li> <li> Number of daily manual evidence uploads per control: 100
+%% Number of daily manual evidence uploads per control: 100
 %%
-%% </li> <li> Supported file formats: See Supported file types for manual
-%% evidence:
+%% Supported file formats: See Supported file types for manual evidence:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files
 %% in the Audit Manager User Guide
 %%
-%% </li> </ul> For more information about Audit Manager service restrictions,
-%% see Quotas and restrictions for Audit Manager:
+%% For more information about Audit Manager service restrictions, see Quotas
+%% and
+%% restrictions for Audit Manager:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), "/evidence"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -372,11 +399,13 @@ create_assessment(Client, Input) ->
 create_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -395,11 +424,13 @@ create_assessment_framework(Client, Input) ->
 create_assessment_framework(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentFrameworks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -418,11 +449,13 @@ create_assessment_report(Client, AssessmentId, Input) ->
 create_assessment_report(Client, AssessmentId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -441,11 +474,13 @@ create_control(Client, Input) ->
 create_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/controls"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -464,11 +499,13 @@ delete_assessment(Client, AssessmentId, Input) ->
 delete_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -487,11 +524,13 @@ delete_assessment_framework(Client, FrameworkId, Input) ->
 delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -510,11 +549,13 @@ delete_assessment_framework_share(Client, RequestId, Input) ->
 delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -533,38 +574,47 @@ delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
 %% When you run the `DeleteAssessmentReport' operation, Audit Manager
 %% attempts to delete the following data:
 %%
-%% <ol> <li> The specified assessment report that’s stored in your S3 bucket
+%% The specified assessment report that’s stored in your S3 bucket
 %%
-%% </li> <li> The associated metadata that’s stored in Audit Manager
+%% The associated metadata that’s stored in Audit Manager
 %%
-%% </li> </ol> If Audit Manager can’t access the assessment report in your S3
-%% bucket, the report isn’t deleted. In this event, the
-%% `DeleteAssessmentReport' operation doesn’t fail. Instead, it proceeds
-%% to delete the associated metadata only. You must then delete the
+%% If Audit Manager can’t access the assessment report in your S3 bucket, the
+%% report
+%% isn’t deleted. In this event, the `DeleteAssessmentReport' operation
+%% doesn’t
+%% fail. Instead, it proceeds to delete the associated metadata only. You
+%% must then delete the
 %% assessment report from the S3 bucket yourself.
 %%
 %% This scenario happens when Audit Manager receives a `403 (Forbidden)'
-%% or `404 (Not Found)' error from Amazon S3. To avoid this, make sure
-%% that your S3 bucket is available, and that you configured the correct
+%% or
+%% `404 (Not Found)' error from Amazon S3. To avoid this, make sure that
+%% your S3 bucket is available, and that you configured the correct
 %% permissions for Audit Manager to delete resources in your S3 bucket. For
-%% an example permissions policy that you can use, see Assessment report
-%% destination permissions:
+%% an example permissions policy that
+%% you can use, see Assessment report destination permissions:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/security_iam_id-based-policy-examples.html#full-administrator-access-assessment-report-destination
 %% in the Audit Manager User Guide. For information about the issues that
-%% could cause a `403 (Forbidden)' or `404 (Not Found') error from
-%% Amazon S3, see List of Error Codes:
+%% could cause a
+%% ```
+%% 403 (Forbidden)''' or `404 (Not Found') error from Amazon
+%% S3, see
+%% List of Error Codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList
-%% in the Amazon Simple Storage Service API Reference.
+%% in the Amazon Simple Storage Service API
+%% Reference.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input) ->
     delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input, []).
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -580,20 +630,25 @@ delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Optio
 %% @doc Deletes a custom control in Audit Manager.
 %%
 %% When you invoke this operation, the custom control is deleted from any
-%% frameworks or assessments that it’s currently part of. As a result, Audit
-%% Manager will stop collecting evidence for that custom control in all of
-%% your assessments. This includes assessments that you previously created
-%% before you deleted the custom control.
+%% frameworks or
+%% assessments that it’s currently part of. As a result, Audit Manager will
+%% stop
+%% collecting evidence for that custom control in all of your assessments.
+%% This includes
+%% assessments that you previously created before you deleted the custom
+%% control.
 delete_control(Client, ControlId, Input) ->
     delete_control(Client, ControlId, Input, []).
 delete_control(Client, ControlId, Input0, Options0) ->
     Method = delete,
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -610,12 +665,15 @@ delete_control(Client, ControlId, Input0, Options0) ->
 %%
 %% Before you deregister, you can use the UpdateSettings:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateSettings.html
-%% API operation to set your preferred data retention policy. By default,
-%% Audit Manager retains your data. If you want to delete your data, you can
+%% API operation to set your preferred data retention policy. By
+%% default, Audit Manager retains your data. If you want to delete your data,
+%% you can
 %% use the `DeregistrationPolicy' attribute to request the deletion of
-%% your data.
+%% your
+%% data.
 %%
-%% For more information about data retention, see Data Protection:
+%% For more information about data retention, see Data
+%% Protection:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/data-protection.html
 %% in the Audit Manager User Guide.
 deregister_account(Client, Input) ->
@@ -623,11 +681,13 @@ deregister_account(Client, Input) ->
 deregister_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/deregisterAccount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -641,87 +701,113 @@ deregister_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified Amazon Web Services account as a delegated
-%% administrator for Audit Manager.
+%% administrator for
+%% Audit Manager.
 %%
 %% When you remove a delegated administrator from your Audit Manager
-%% settings, you continue to have access to the evidence that you previously
-%% collected under that account. This is also the case when you deregister a
-%% delegated administrator from Organizations. However, Audit Manager stops
-%% collecting and attaching evidence to that delegated administrator account
-%% moving forward.
+%% settings, you
+%% continue to have access to the evidence that you previously collected
+%% under that account.
+%% This is also the case when you deregister a delegated administrator from
+%% Organizations. However, Audit Manager stops collecting and attaching
+%% evidence to
+%% that delegated administrator account moving forward.
 %%
 %% Keep in mind the following cleanup task if you use evidence finder:
 %%
 %% Before you use your management account to remove a delegated
-%% administrator, make sure that the current delegated administrator account
-%% signs in to Audit Manager and disables evidence finder first. Disabling
-%% evidence finder automatically deletes the event data store that was
-%% created in their account when they enabled evidence finder. If this task
-%% isn’t completed, the event data store remains in their account. In this
-%% case, we recommend that the original delegated administrator goes to
-%% CloudTrail Lake and manually deletes the event data store:
+%% administrator, make sure
+%% that the current delegated administrator account signs in to Audit Manager
+%% and
+%% disables evidence finder first. Disabling evidence finder automatically
+%% deletes the
+%% event data store that was created in their account when they enabled
+%% evidence finder. If
+%% this task isn’t completed, the event data store remains in their account.
+%% In this case,
+%% we recommend that the original delegated administrator goes to CloudTrail
+%% Lake
+%% and manually deletes the
+%% event data store:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-eds-disable-termination.html.
 %%
 %% This cleanup task is necessary to ensure that you don't end up with
-%% multiple event data stores. Audit Manager ignores an unused event data
-%% store after you remove or change a delegated administrator account.
-%% However, the unused event data store continues to incur storage costs from
-%% CloudTrail Lake if you don't delete it.
+%% multiple event
+%% data stores. Audit Manager ignores an unused event data store after you
+%% remove or
+%% change a delegated administrator account. However, the unused event data
+%% store continues
+%% to incur storage costs from CloudTrail Lake if you don't delete it.
 %%
 %% When you deregister a delegated administrator account for Audit Manager,
-%% the data for that account isn’t deleted. If you want to delete resource
-%% data for a delegated administrator account, you must perform that task
-%% separately before you deregister the account. Either, you can do this in
-%% the Audit Manager console. Or, you can use one of the delete API
-%% operations that are provided by Audit Manager.
+%% the data
+%% for that account isn’t deleted. If you want to delete resource data for a
+%% delegated
+%% administrator account, you must perform that task separately before you
+%% deregister the
+%% account. Either, you can do this in the Audit Manager console. Or, you can
+%% use one of
+%% the delete API operations that are provided by Audit Manager.
 %%
 %% To delete your Audit Manager resource data, see the following
 %% instructions:
 %%
-%% <ul> <li> DeleteAssessment:
+%% DeleteAssessment:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessment.html
-%% (see also: Deleting an assessment:
+%% (see also: Deleting an
+%% assessment:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-assessment.html
-%% in the Audit Manager User Guide)
+%% in the Audit Manager User
+%% Guide)
 %%
-%% </li> <li> DeleteAssessmentFramework:
+%% DeleteAssessmentFramework:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentFramework.html
-%% (see also: Deleting a custom framework:
+%% (see also: Deleting a
+%% custom framework:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-custom-framework.html
-%% in the Audit Manager User Guide)
+%% in the Audit Manager User
+%% Guide)
 %%
-%% </li> <li> DeleteAssessmentFrameworkShare:
+%% DeleteAssessmentFrameworkShare:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentFrameworkShare.html
 %% (see also: Deleting a share request:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/deleting-shared-framework-requests.html
-%% in the Audit Manager User Guide)
+%% in the Audit Manager User
+%% Guide)
 %%
-%% </li> <li> DeleteAssessmentReport:
+%% DeleteAssessmentReport:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentReport.html
 %% (see also: Deleting an assessment report:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#delete-assessment-report-steps
-%% in the Audit Manager User Guide)
+%% in the Audit Manager User
+%% Guide)
 %%
-%% </li> <li> DeleteControl:
+%% DeleteControl:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteControl.html
-%% (see also: Deleting a custom control:
+%% (see also: Deleting a custom
+%% control:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-controls.html
-%% in the Audit Manager User Guide)
+%% in the Audit Manager User
+%% Guide)
 %%
-%% </li> </ul> At this time, Audit Manager doesn't provide an option to
-%% delete evidence for a specific delegated administrator. Instead, when your
-%% management account deregisters Audit Manager, we perform a cleanup for the
-%% current delegated administrator account at the time of deregistration.
+%% At this time, Audit Manager doesn't provide an option to delete
+%% evidence for a
+%% specific delegated administrator. Instead, when your management account
+%% deregisters Audit Manager, we perform a cleanup for the current delegated
+%% administrator account at the
+%% time of deregistration.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
 deregister_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/deregisterOrganizationAdminAccount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -741,11 +827,13 @@ disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
 disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/disassociateFromAssessmentReport"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -770,10 +858,12 @@ get_account_status(Client, QueryMap, HeadersMap)
 get_account_status(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -793,10 +883,12 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap)
 get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -816,10 +908,12 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap)
 get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -839,10 +933,12 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
 get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), "/url"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -862,10 +958,12 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap)
 get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/changelogs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -892,10 +990,12 @@ get_control(Client, ControlId, QueryMap, HeadersMap)
 get_control(Client, ControlId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -915,10 +1015,12 @@ get_delegations(Client, QueryMap, HeadersMap)
 get_delegations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/delegations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -943,10 +1045,12 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
 get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence/", aws_util:encode_uri(EvidenceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -966,10 +1070,12 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -983,26 +1089,28 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates a presigned Amazon S3 URL that can be used to upload a file
-%% as manual evidence.
+%% as manual
+%% evidence.
 %%
 %% For instructions on how to use this operation, see Upload a file from your
 %% browser :
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#how-to-upload-manual-evidence-files
-%% in the Audit Manager User Guide.
+%% in the Audit Manager User
+%% Guide.
 %%
 %% The following restrictions apply to this operation:
 %%
-%% <ul> <li> Maximum size of an individual evidence file: 100 MB
+%% Maximum size of an individual evidence file: 100 MB
 %%
-%% </li> <li> Number of daily manual evidence uploads per control: 100
+%% Number of daily manual evidence uploads per control: 100
 %%
-%% </li> <li> Supported file formats: See Supported file types for manual
-%% evidence:
+%% Supported file formats: See Supported file types for manual evidence:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files
 %% in the Audit Manager User Guide
 %%
-%% </li> </ul> For more information about Audit Manager service restrictions,
-%% see Quotas and restrictions for Audit Manager:
+%% For more information about Audit Manager service restrictions, see Quotas
+%% and
+%% restrictions for Audit Manager:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html.
 get_evidence_file_upload_url(Client, FileName)
   when is_map(Client) ->
@@ -1015,10 +1123,12 @@ get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap)
 get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evidenceFileUploadUrl"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1042,10 +1152,12 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
 get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1066,10 +1178,12 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
 get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1083,7 +1197,8 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of evidence folders that are associated with a specified
-%% control in an Audit Manager assessment.
+%% control in an
+%% Audit Manager assessment.
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId)
   when is_map(Client) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, #{}, #{}).
@@ -1095,10 +1210,12 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders-by-assessment-control/", aws_util:encode_uri(ControlSetId), "/", aws_util:encode_uri(ControlId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1124,10 +1241,12 @@ get_insights(Client, QueryMap, HeadersMap)
 get_insights(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1147,10 +1266,12 @@ get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
 get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/assessments/", aws_util:encode_uri(AssessmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1159,7 +1280,8 @@ get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the name of the delegated Amazon Web Services administrator
-%% account for a specified organization.
+%% account for a specified
+%% organization.
 get_organization_admin_account(Client)
   when is_map(Client) ->
     get_organization_admin_account(Client, #{}, #{}).
@@ -1171,10 +1293,12 @@ get_organization_admin_account(Client, QueryMap, HeadersMap)
 get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/organizationAdminAccount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1183,12 +1307,13 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of all of the Amazon Web Services that you can choose to
-%% include in your assessment.
+%% include in
+%% your assessment.
 %%
 %% When you create an assessment:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html,
-%% specify which of these services you want to include to narrow the
-%% assessment's scope:
+%% specify which of these services you want to include to
+%% narrow the assessment's scope:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html.
 get_services_in_scope(Client)
   when is_map(Client) ->
@@ -1201,10 +1326,12 @@ get_services_in_scope(Client, QueryMap, HeadersMap)
 get_services_in_scope(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1224,10 +1351,12 @@ get_settings(Client, Attribute, QueryMap, HeadersMap)
 get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/", aws_util:encode_uri(Attribute), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1236,13 +1365,15 @@ get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the latest analytics data for controls within a specific
-%% control domain and a specific active assessment.
+%% control domain and a
+%% specific active assessment.
 %%
 %% Control insights are listed only if the control belongs to the control
-%% domain and assessment that was specified. Moreover, the control must have
-%% collected evidence on the `lastUpdated' date of
-%% `controlInsightsByAssessment'. If neither of these conditions are met,
-%% no data is listed for that control.
+%% domain and
+%% assessment that was specified. Moreover, the control must have collected
+%% evidence on the
+%% `lastUpdated' date of `controlInsightsByAssessment'. If neither
+%% of these conditions are met, no data is listed for that control.
 list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId)
   when is_map(Client) ->
     list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, #{}, #{}).
@@ -1254,10 +1385,12 @@ list_assessment_control_insights_by_control_domain(Client, AssessmentId, Control
 list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/controls-by-assessment"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1285,10 +1418,12 @@ list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersM
 list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworkShareRequests"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1303,7 +1438,8 @@ list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the frameworks that are available in the Audit
-%% Manager framework library.
+%% Manager framework
+%% library.
 list_assessment_frameworks(Client, FrameworkType)
   when is_map(Client) ->
     list_assessment_frameworks(Client, FrameworkType, #{}, #{}).
@@ -1315,10 +1451,12 @@ list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap)
 list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1344,10 +1482,12 @@ list_assessment_reports(Client, QueryMap, HeadersMap)
 list_assessment_reports(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentReports"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1372,10 +1512,12 @@ list_assessments(Client, QueryMap, HeadersMap)
 list_assessments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1390,12 +1532,15 @@ list_assessments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the latest analytics data for control domains across all of
-%% your active assessments.
+%% your active
+%% assessments.
 %%
 %% A control domain is listed only if at least one of the controls within
-%% that domain collected evidence on the `lastUpdated' date of
+%% that domain
+%% collected evidence on the `lastUpdated' date of
 %% `controlDomainInsights'. If this condition isn’t met, no data is
-%% listed for that control domain.
+%% listed
+%% for that control domain.
 list_control_domain_insights(Client)
   when is_map(Client) ->
     list_control_domain_insights(Client, #{}, #{}).
@@ -1407,10 +1552,12 @@ list_control_domain_insights(Client, QueryMap, HeadersMap)
 list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/control-domains"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1427,9 +1574,11 @@ list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
 %% assessment.
 %%
 %% A control domain is listed only if at least one of the controls within
-%% that domain collected evidence on the `lastUpdated' date of
+%% that domain
+%% collected evidence on the `lastUpdated' date of
 %% `controlDomainInsights'. If this condition isn’t met, no data is
-%% listed for that domain.
+%% listed
+%% for that domain.
 list_control_domain_insights_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     list_control_domain_insights_by_assessment(Client, AssessmentId, #{}, #{}).
@@ -1441,10 +1590,12 @@ list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, Heade
 list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/control-domains-by-assessment"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1459,12 +1610,16 @@ list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the latest analytics data for controls within a specific
-%% control domain across all active assessments.
+%% control domain across all
+%% active assessments.
 %%
 %% Control insights are listed only if the control belongs to the control
-%% domain that was specified and the control collected evidence on the
-%% `lastUpdated' date of `controlInsightsMetadata'. If neither of
-%% these conditions are met, no data is listed for that control.
+%% domain that
+%% was specified and the control collected evidence on the `lastUpdated'
+%% date of
+%% `controlInsightsMetadata'. If neither of these conditions are met, no
+%% data
+%% is listed for that control.
 list_control_insights_by_control_domain(Client, ControlDomainId)
   when is_map(Client) ->
     list_control_insights_by_control_domain(Client, ControlDomainId, #{}, #{}).
@@ -1476,10 +1631,12 @@ list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, Heade
 list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/controls"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1505,10 +1662,12 @@ list_controls(Client, ControlType, QueryMap, HeadersMap)
 list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/controls"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1535,10 +1694,12 @@ list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap)
 list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataSourceKeywords"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1564,10 +1725,12 @@ list_notifications(Client, QueryMap, HeadersMap)
 list_notifications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/notifications"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1592,10 +1755,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1609,11 +1774,13 @@ register_account(Client, Input) ->
 register_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/registerAccount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1627,17 +1794,20 @@ register_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables an Amazon Web Services account within the organization as the
-%% delegated administrator for Audit Manager.
+%% delegated
+%% administrator for Audit Manager.
 register_organization_admin_account(Client, Input) ->
     register_organization_admin_account(Client, Input, []).
 register_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/registerOrganizationAdminAccount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1653,55 +1823,69 @@ register_organization_admin_account(Client, Input0, Options0) ->
 %% @doc Creates a share request for a custom framework in Audit Manager.
 %%
 %% The share request specifies a recipient and notifies them that a custom
-%% framework is available. Recipients have 120 days to accept or decline the
-%% request. If no action is taken, the share request expires.
+%% framework is
+%% available. Recipients have 120 days to accept or decline the request. If
+%% no action is
+%% taken, the share request expires.
 %%
 %% When you create a share request, Audit Manager stores a snapshot of your
-%% custom framework in the US East (N. Virginia) Amazon Web Services Region.
-%% Audit Manager also stores a backup of the same snapshot in the US West
-%% (Oregon) Amazon Web Services Region.
+%% custom
+%% framework in the US East (N. Virginia) Amazon Web Services Region. Audit
+%% Manager also
+%% stores a backup of the same snapshot in the US West (Oregon) Amazon Web
+%% Services Region.
 %%
 %% Audit Manager deletes the snapshot and the backup snapshot when one of the
-%% following events occurs:
+%% following
+%% events occurs:
 %%
-%% <ul> <li> The sender revokes the share request.
+%% The sender revokes the share request.
 %%
-%% </li> <li> The recipient declines the share request.
+%% The recipient declines the share request.
 %%
-%% </li> <li> The recipient encounters an error and doesn't successfully
-%% accept the share request.
-%%
-%% </li> <li> The share request expires before the recipient responds to the
+%% The recipient encounters an error and doesn't successfully accept the
+%% share
 %% request.
 %%
-%% </li> </ul> When a sender resends a share request:
+%% The share request expires before the recipient responds to the request.
+%%
+%% When a sender resends a share request:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/framework-sharing.html#framework-sharing-resend,
-%% the snapshot is replaced with an updated version that corresponds with the
-%% latest version of the custom framework.
+%% the snapshot is replaced with an updated version that
+%% corresponds with the latest version of the custom framework.
 %%
 %% When a recipient accepts a share request, the snapshot is replicated into
 %% their Amazon Web Services account under the Amazon Web Services Region
-%% that was specified in the share request.
+%% that was specified in the share
+%% request.
 %%
 %% When you invoke the `StartAssessmentFrameworkShare' API, you are about
-%% to share a custom framework with another Amazon Web Services account. You
-%% may not share a custom framework that is derived from a standard framework
-%% if the standard framework is designated as not eligible for sharing by
-%% Amazon Web Services, unless you have obtained permission to do so from the
-%% owner of the standard framework. To learn more about which standard
-%% frameworks are eligible for sharing, see Framework sharing eligibility:
+%% to
+%% share a custom framework with another Amazon Web Services account. You may
+%% not share a
+%% custom framework that is derived from a standard framework if the standard
+%% framework is
+%% designated as not eligible for sharing by Amazon Web Services, unless you
+%% have obtained
+%% permission to do so from the owner of the standard framework. To learn
+%% more about which
+%% standard frameworks are eligible for sharing, see Framework sharing
+%% eligibility:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/share-custom-framework-concepts-and-terminology.html#eligibility
-%% in the Audit Manager User Guide.
+%% in the Audit Manager User
+%% Guide.
 start_assessment_framework_share(Client, FrameworkId, Input) ->
     start_assessment_framework_share(Client, FrameworkId, Input, []).
 start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), "/shareRequests"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1720,11 +1904,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1743,11 +1929,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1767,11 +1955,13 @@ update_assessment(Client, AssessmentId, Input) ->
 update_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1790,11 +1980,13 @@ update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) 
 update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1813,11 +2005,13 @@ update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input) 
 update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1836,11 +2030,13 @@ update_assessment_framework(Client, FrameworkId, Input) ->
 update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Method = put,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1859,11 +2055,13 @@ update_assessment_framework_share(Client, RequestId, Input) ->
 update_assessment_framework_share(Client, RequestId, Input0, Options0) ->
     Method = put,
     Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1882,11 +2080,13 @@ update_assessment_status(Client, AssessmentId, Input) ->
 update_assessment_status(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1905,11 +2105,13 @@ update_control(Client, ControlId, Input) ->
 update_control(Client, ControlId, Input0, Options0) ->
     Method = put,
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1928,11 +2130,13 @@ update_settings(Client, Input) ->
 update_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1951,11 +2155,13 @@ validate_assessment_report_integrity(Client, Input) ->
 validate_assessment_report_integrity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentReports/integrity"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1971,6 +2177,11 @@ validate_assessment_report_integrity(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

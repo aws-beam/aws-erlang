@@ -2,18 +2,21 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Systems Manager Incident Manager is an incident management console
-%% designed to help users mitigate and recover from incidents affecting their
-%% Amazon Web Services-hosted applications.
+%% designed to help users
+%% mitigate and recover from incidents affecting their Amazon Web
+%% Services-hosted applications.
 %%
 %% An incident is any unplanned interruption or reduction in quality of
 %% services.
 %%
 %% Incident Manager increases incident resolution by notifying responders of
 %% impact, highlighting relevant troubleshooting data, and providing
-%% collaboration tools to get services back up and running. To achieve the
-%% primary goal of reducing the time-to-resolution of critical incidents,
-%% Incident Manager automates response plans and enables responder team
-%% escalation.
+%% collaboration tools to
+%% get services back up and running. To achieve the primary goal of reducing
+%% the
+%% time-to-resolution of critical incidents, Incident Manager automates
+%% response plans
+%% and enables responder team escalation.
 -module(aws_ssm_contacts).
 
 -export([accept_page/2,
@@ -112,8 +115,8 @@ accept_page(Client, Input, Options)
 
 %% @doc Activates a contact's contact channel.
 %%
-%% Incident Manager can't engage a contact until the contact channel has
-%% been activated.
+%% Incident Manager can't engage a contact until the
+%% contact channel has been activated.
 activate_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_contact_channel(Client, Input, []).
@@ -122,8 +125,10 @@ activate_contact_channel(Client, Input, Options)
     request(Client, <<"ActivateContactChannel">>, Input, Options).
 
 %% @doc Contacts are either the contacts that Incident Manager engages during
-%% an incident or the escalation plans that Incident Manager uses to engage
-%% contacts in phases during an incident.
+%% an incident or the
+%% escalation plans that Incident Manager uses to engage contacts in phases
+%% during an
+%% incident.
 create_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact(Client, Input, []).
@@ -157,7 +162,8 @@ create_rotation_override(Client, Input, Options)
     request(Client, <<"CreateRotationOverride">>, Input, Options).
 
 %% @doc To no longer receive Incident Manager engagements to a contact
-%% channel, you can deactivate the channel.
+%% channel, you can deactivate
+%% the channel.
 deactivate_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_contact_channel(Client, Input, []).
@@ -168,10 +174,12 @@ deactivate_contact_channel(Client, Input, Options)
 %% @doc To remove a contact from Incident Manager, you can delete the
 %% contact.
 %%
-%% Deleting a contact removes them from all escalation plans and related
-%% response plans. Deleting an escalation plan removes it from all related
-%% response plans. You will have to recreate the contact and its contact
-%% channels before you can use it again.
+%% Deleting a contact
+%% removes them from all escalation plans and related response plans.
+%% Deleting an escalation
+%% plan removes it from all related response plans. You will have to recreate
+%% the contact and
+%% its contact channels before you can use it again.
 delete_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact(Client, Input, []).
@@ -180,11 +188,14 @@ delete_contact(Client, Input, Options)
     request(Client, <<"DeleteContact">>, Input, Options).
 
 %% @doc To no longer receive engagements on a contact channel, you can delete
-%% the channel from a contact.
+%% the channel from a
+%% contact.
 %%
 %% Deleting the contact channel removes it from the contact's engagement
-%% plan. If you delete the only contact channel for a contact, you won't
-%% be able to engage that contact during an incident.
+%% plan. If you
+%% delete the only contact channel for a contact, you won't be able to
+%% engage that contact
+%% during an incident.
 delete_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact_channel(Client, Input, []).
@@ -194,8 +205,8 @@ delete_contact_channel(Client, Input, Options)
 
 %% @doc Deletes a rotation from the system.
 %%
-%% If a rotation belongs to more than one on-call schedule, this operation
-%% deletes it from all of them.
+%% If a rotation belongs to more than one on-call
+%% schedule, this operation deletes it from all of them.
 delete_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rotation(Client, Input, []).
@@ -248,7 +259,8 @@ get_contact_channel(Client, Input, Options)
     request(Client, <<"GetContactChannel">>, Input, Options).
 
 %% @doc Retrieves the resource policies attached to the specified contact or
-%% escalation plan.
+%% escalation
+%% plan.
 get_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_policy(Client, Input, []).
@@ -307,9 +319,11 @@ list_page_receipts(Client, Input, Options)
 
 %% @doc Returns the resolution path of an engagement.
 %%
-%% For example, the escalation plan engaged in an incident might target an
-%% on-call schedule that includes several contacts in a rotation, but just
-%% one contact on-call when the incident starts. The resolution path
+%% For example, the escalation plan engaged
+%% in an incident might target an on-call schedule that includes several
+%% contacts in a
+%% rotation, but just one contact on-call when the incident starts. The
+%% resolution path
 %% indicates the hierarchy of escalation plan &gt; on-call schedule &gt;
 %% contact.
 list_page_resolutions(Client, Input)
@@ -383,9 +397,11 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Adds a resource policy to the specified contact or escalation plan.
 %%
-%% The resource policy is used to share the contact or escalation plan using
-%% Resource Access Manager (RAM). For more information about cross-account
-%% sharing, see Setting up cross-account functionality:
+%% The resource policy
+%% is used to share the contact or escalation plan using Resource Access
+%% Manager (RAM). For more information about cross-account sharing, see
+%% Setting up
+%% cross-account functionality:
 %% https://docs.aws.amazon.com/incident-manager/latest/userguide/xa.html.
 put_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -396,9 +412,11 @@ put_contact_policy(Client, Input, Options)
 
 %% @doc Sends an activation code to a contact channel.
 %%
-%% The contact can use this code to activate the contact channel in the
-%% console or with the `ActivateChannel' operation. Incident Manager
-%% can't engage a contact channel until it has been activated.
+%% The contact can use this code to activate
+%% the contact channel in the console or with the `ActivateChannel'
+%% operation.
+%% Incident Manager can't engage a contact channel until it has been
+%% activated.
 send_activation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_activation_code(Client, Input, []).
@@ -408,7 +426,8 @@ send_activation_code(Client, Input, Options)
 
 %% @doc Starts an engagement to a contact or escalation plan.
 %%
-%% The engagement engages each contact specified in the incident.
+%% The engagement engages each
+%% contact specified in the incident.
 start_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_engagement(Client, Input, []).
@@ -417,7 +436,8 @@ start_engagement(Client, Input, Options)
     request(Client, <<"StartEngagement">>, Input, Options).
 
 %% @doc Stops an engagement before it finishes the final stage of the
-%% escalation plan or engagement plan.
+%% escalation plan or
+%% engagement plan.
 %%
 %% Further contacts aren't engaged.
 stop_engagement(Client, Input)
@@ -429,8 +449,8 @@ stop_engagement(Client, Input, Options)
 
 %% @doc Tags a contact or escalation plan.
 %%
-%% You can tag only contacts and escalation plans in the first region of your
-%% replication set.
+%% You can tag only contacts and escalation plans in the
+%% first region of your replication set.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

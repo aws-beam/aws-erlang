@@ -1,28 +1,30 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Product update
+%% @doc
+%%
+%% Product update
 %%
 %% We recommend Amazon Web Services Application Migration Service:
 %% http://aws.amazon.com/application-migration-service (Amazon Web Services
 %% MGN) as the primary migration service for lift-and-shift migrations.
 %%
-%% If Amazon Web Services MGN is unavailable in a specific Amazon Web
-%% Services Region, you can use the Server Migration Service APIs through
-%% March 2023.
+%% If Amazon Web Services MGN is
+%% unavailable in a specific Amazon Web Services Region, you can use the
+%% Server Migration Service APIs through March
+%% 2023.
 %%
 %% Server Migration Service (Server Migration Service) makes it easier and
-%% faster for you to migrate your on-premises workloads to Amazon Web
-%% Services. To learn more about Server Migration Service, see the following
+%% faster for you to migrate your
+%% on-premises workloads to Amazon Web Services. To learn more about Server
+%% Migration Service, see the following
 %% resources:
 %%
-%% <ul> <li> Server Migration Service product page:
-%% http://aws.amazon.com/server-migration-service/
+%% Server Migration Service
+%% product page: http://aws.amazon.com/server-migration-service/
 %%
-%% </li> <li> Server Migration Service User Guide:
+%% Server Migration Service User Guide:
 %% https://docs.aws.amazon.com/server-migration-service/latest/userguide/
-%%
-%% </li> </ul>
 -module(aws_sms).
 
 -export([create_app/2,
@@ -104,8 +106,8 @@
 
 %% @doc Creates an application.
 %%
-%% An application consists of one or more server groups. Each server group
-%% contain one or more servers.
+%% An application consists of one or more server groups. Each
+%% server group contain one or more servers.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
@@ -115,9 +117,10 @@ create_app(Client, Input, Options)
 
 %% @doc Creates a replication job.
 %%
-%% The replication job schedules periodic replication runs to replicate your
-%% server to Amazon Web Services. Each replication run creates an Amazon
-%% Machine Image (AMI).
+%% The replication job schedules periodic replication runs
+%% to replicate your server to Amazon Web Services. Each replication run
+%% creates an Amazon Machine Image
+%% (AMI).
 create_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_job(Client, Input, []).
@@ -127,9 +130,9 @@ create_replication_job(Client, Input, Options)
 
 %% @doc Deletes the specified application.
 %%
-%% Optionally deletes the launched stack associated with the application and
-%% all Server Migration Service replication jobs for servers in the
-%% application.
+%% Optionally deletes the launched stack associated with
+%% the application and all Server Migration Service replication jobs for
+%% servers in the application.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
@@ -164,9 +167,10 @@ delete_app_validation_configuration(Client, Input, Options)
 %% @doc Deletes the specified replication job.
 %%
 %% After you delete a replication job, there are no further replication runs.
-%% Amazon Web Services deletes the contents of the Amazon S3 bucket used to
-%% store Server Migration Service artifacts. The AMIs created by the
-%% replication runs are not deleted.
+%% Amazon Web Services
+%% deletes the contents of the Amazon S3 bucket used to store Server
+%% Migration Service artifacts. The AMIs created
+%% by the replication runs are not deleted.
 delete_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_job(Client, Input, []).
@@ -194,7 +198,8 @@ disassociate_connector(Client, Input, Options)
     request(Client, <<"DisassociateConnector">>, Input, Options).
 
 %% @doc Generates a target change set for a currently launched stack and
-%% writes it to an Amazon S3 object in the customer’s Amazon S3 bucket.
+%% writes it to an Amazon S3
+%% object in the customer’s Amazon S3 bucket.
 generate_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_change_set(Client, Input, []).
@@ -203,8 +208,8 @@ generate_change_set(Client, Input, Options)
     request(Client, <<"GenerateChangeSet">>, Input, Options).
 
 %% @doc Generates an CloudFormation template based on the current launch
-%% configuration and writes it to an Amazon S3 object in the customer’s
-%% Amazon S3 bucket.
+%% configuration and writes it to
+%% an Amazon S3 object in the customer’s Amazon S3 bucket.
 generate_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_template(Client, Input, []).
@@ -230,7 +235,8 @@ get_app_launch_configuration(Client, Input, Options)
     request(Client, <<"GetAppLaunchConfiguration">>, Input, Options).
 
 %% @doc Retrieves the application replication configuration associated with
-%% the specified application.
+%% the specified
+%% application.
 get_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_replication_configuration(Client, Input, []).
@@ -302,10 +308,12 @@ import_app_catalog(Client, Input, Options)
 
 %% @doc Gathers a complete list of on-premises servers.
 %%
-%% Connectors must be installed and monitoring all servers to import.
+%% Connectors must be installed and
+%% monitoring all servers to import.
 %%
 %% This call returns immediately, but might take additional time to retrieve
-%% all the servers.
+%% all the
+%% servers.
 import_server_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_server_catalog(Client, Input, []).
@@ -366,7 +374,8 @@ put_app_validation_configuration(Client, Input, Options)
     request(Client, <<"PutAppValidationConfiguration">>, Input, Options).
 
 %% @doc Starts replicating the specified application by creating replication
-%% jobs for each server in the application.
+%% jobs for each server in the
+%% application.
 start_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_app_replication(Client, Input, []).
@@ -385,11 +394,14 @@ start_on_demand_app_replication(Client, Input, Options)
 %% @doc Starts an on-demand replication run for the specified replication
 %% job.
 %%
-%% This replication run starts immediately. This replication run is in
-%% addition to the ones already scheduled.
+%% This
+%% replication run starts immediately. This replication run is in addition to
+%% the ones
+%% already scheduled.
 %%
 %% There is a limit on the number of on-demand replications runs that you can
-%% request in a 24-hour period.
+%% request
+%% in a 24-hour period.
 start_on_demand_replication_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_on_demand_replication_run(Client, Input, []).
@@ -398,7 +410,8 @@ start_on_demand_replication_run(Client, Input, Options)
     request(Client, <<"StartOnDemandReplicationRun">>, Input, Options).
 
 %% @doc Stops replicating the specified application by deleting the
-%% replication job for each server in the application.
+%% replication job for each server in
+%% the application.
 stop_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_app_replication(Client, Input, []).

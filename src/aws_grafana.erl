@@ -2,17 +2,22 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Managed Grafana is a fully managed and secure data
-%% visualization service that you can use to instantly query, correlate, and
-%% visualize operational metrics, logs, and traces from multiple sources.
+%% visualization service that
+%% you can use to instantly query, correlate, and visualize operational
+%% metrics, logs, and
+%% traces from multiple sources.
 %%
-%% Amazon Managed Grafana makes it easy to deploy, operate, and scale
-%% Grafana, a widely deployed data visualization tool that is popular for its
+%% Amazon Managed Grafana makes it easy to deploy, operate, and
+%% scale Grafana, a widely deployed data visualization tool that is popular
+%% for its
 %% extensible data support.
 %%
 %% With Amazon Managed Grafana, you create logically isolated Grafana servers
-%% called workspaces. In a workspace, you can create Grafana dashboards and
-%% visualizations to analyze your metrics, logs, and traces without having to
-%% build, package, or deploy any hardware to run Grafana servers.
+%% called
+%% workspaces. In a workspace, you can create Grafana dashboards
+%% and visualizations to analyze your metrics, logs, and traces without
+%% having to build,
+%% package, or deploy any hardware to run Grafana servers.
 -module(aws_grafana).
 
 -export([associate_license/4,
@@ -69,8 +74,9 @@
 
 %% @doc Assigns a Grafana Enterprise license to a workspace.
 %%
-%% Upgrading to Grafana Enterprise incurs additional fees. For more
-%% information, see Upgrade a workspace to Grafana Enterprise:
+%% Upgrading to Grafana Enterprise
+%% incurs additional fees. For more information, see Upgrade a
+%% workspace to Grafana Enterprise:
 %% https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html.
 associate_license(Client, LicenseType, WorkspaceId, Input) ->
     associate_license(Client, LicenseType, WorkspaceId, Input, []).
@@ -78,10 +84,12 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/licenses/", aws_util:encode_uri(LicenseType), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Grafana-Token">>, <<"grafanaToken">>}
@@ -98,12 +106,14 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 
 %% @doc Creates a workspace.
 %%
-%% In a workspace, you can create Grafana dashboards and visualizations to
-%% analyze your metrics, logs, and traces. You don't have to build,
-%% package, or deploy any hardware to run the Grafana server.
+%% In a workspace, you can create Grafana
+%% dashboards and visualizations to analyze your metrics, logs, and traces.
+%% You don't have
+%% to build, package, or deploy any hardware to run the Grafana server.
 %%
 %% Don't use `CreateWorkspace' to modify an existing workspace.
-%% Instead, use UpdateWorkspace:
+%% Instead, use
+%% UpdateWorkspace:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspace.html.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
@@ -111,10 +121,12 @@ create_workspace(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -129,8 +141,8 @@ create_workspace(Client, Input0, Options0) ->
 
 %% @doc Creates a Grafana API key for the workspace.
 %%
-%% This key can be used to authenticate requests sent to the workspace's
-%% HTTP API. See
+%% This key can be used to authenticate
+%% requests sent to the workspace's HTTP API. See
 %% [https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
 %% for available APIs and example requests.
 create_workspace_api_key(Client, WorkspaceId, Input) ->
@@ -139,10 +151,12 @@ create_workspace_api_key(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/apikeys"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -162,10 +176,12 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -185,10 +201,12 @@ delete_workspace_api_key(Client, KeyName, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/apikeys/", aws_util:encode_uri(KeyName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -214,9 +232,11 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -225,7 +245,8 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays information about the authentication methods used in one
-%% Amazon Managed Grafana workspace.
+%% Amazon Managed Grafana
+%% workspace.
 describe_workspace_authentication(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace_authentication(Client, WorkspaceId, #{}, #{}).
@@ -238,9 +259,11 @@ describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/authentication"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -261,9 +284,11 @@ describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Opti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -278,10 +303,12 @@ disassociate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/licenses/", aws_util:encode_uri(LicenseType), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -297,11 +324,12 @@ disassociate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% @doc Lists the users and groups who have the Grafana `Admin' and
 %% `Editor' roles in this workspace.
 %%
-%% If you use this operation without specifying `userId' or
-%% `groupId', the operation returns the roles of all users and groups. If
-%% you specify a `userId' or a `groupId', only the roles for that
-%% user or group are returned. If you do this, you can specify only one
-%% `userId' or one `groupId'.
+%% If you use this operation without
+%% specifying `userId' or `groupId', the operation returns the roles
+%% of all users and groups. If you specify a `userId' or a `groupId',
+%% only the roles for that user or group are returned. If you do this, you
+%% can specify only
+%% one `userId' or one `groupId'.
 list_permissions(Client, WorkspaceId)
   when is_map(Client) ->
     list_permissions(Client, WorkspaceId, #{}, #{}).
@@ -314,9 +342,11 @@ list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/permissions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -333,10 +363,12 @@ list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `ListTagsForResource' operation returns the tags that are
-%% associated with the Amazon Managed Service for Grafana resource specified
-%% by the `resourceArn'.
+%% associated
+%% with the Amazon Managed Service for Grafana resource specified by the
+%% `resourceArn'.
 %%
-%% Currently, the only resource that can be tagged is a workspace.
+%% Currently, the only resource that can be tagged is a
+%% workspace.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -349,9 +381,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -361,8 +395,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists available versions of Grafana.
 %%
-%% These are available when calling `CreateWorkspace'. Optionally,
-%% include a workspace to list the versions to which it can be upgraded.
+%% These are available when calling
+%% `CreateWorkspace'. Optionally, include a workspace to list the
+%% versions
+%% to which it can be upgraded.
 list_versions(Client)
   when is_map(Client) ->
     list_versions(Client, #{}, #{}).
@@ -375,9 +411,11 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/versions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -392,7 +430,8 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Amazon Managed Grafana workspaces in the account,
-%% with some information about each workspace.
+%% with some information
+%% about each workspace.
 %%
 %% For more complete information about one workspace, use DescribeWorkspace:
 %% https://docs.aws.amazon.com/AAMG/latest/APIReference/API_DescribeWorkspace.html.
@@ -408,9 +447,11 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -424,24 +465,30 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `TagResource' operation associates tags with an Amazon
-%% Managed Grafana resource.
+%% Managed Grafana
+%% resource.
 %%
 %% Currently, the only resource that can be tagged is workspaces.
 %%
 %% If you specify a new tag key for the resource, this tag is appended to the
-%% list of tags associated with the resource. If you specify a tag key that
-%% is already associated with the resource, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% list of
+%% tags associated with the resource. If you specify a tag key that is
+%% already associated
+%% with the resource, the new tag value that you specify replaces the
+%% previous value for
+%% that tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -455,17 +502,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `UntagResource' operation removes the association of the tag
-%% with the Amazon Managed Grafana resource.
+%% with the
+%% Amazon Managed Grafana resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -487,10 +537,12 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
     Method = patch,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/permissions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -505,11 +557,13 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Modifies an existing Amazon Managed Grafana workspace.
 %%
-%% If you use this operation and omit any optional parameters, the existing
-%% values of those parameters are not changed.
+%% If you use this operation and omit
+%% any optional parameters, the existing values of those parameters are not
+%% changed.
 %%
 %% To modify the user authentication methods that the workspace uses, such as
-%% SAML or IAM Identity Center, use UpdateWorkspaceAuthentication:
+%% SAML or
+%% IAM Identity Center, use UpdateWorkspaceAuthentication:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspaceAuthentication.html.
 %%
 %% To modify which users in the workspace have the `Admin' and
@@ -521,10 +575,12 @@ update_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -538,24 +594,29 @@ update_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to define the identity provider (IdP) that this
-%% workspace authenticates users from, using SAML.
+%% workspace
+%% authenticates users from, using SAML.
 %%
-%% You can also map SAML assertion attributes to workspace user information
-%% and define which groups in the assertion attribute are to have the
-%% `Admin' and `Editor' roles in the workspace.
+%% You can also map SAML assertion attributes to
+%% workspace user information and define which groups in the assertion
+%% attribute are to
+%% have the `Admin' and `Editor' roles in the workspace.
 %%
 %% Changes to the authentication method for a workspace may take a few
-%% minutes to take effect.
+%% minutes to
+%% take effect.
 update_workspace_authentication(Client, WorkspaceId, Input) ->
     update_workspace_authentication(Client, WorkspaceId, Input, []).
 update_workspace_authentication(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/authentication"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -575,10 +636,12 @@ update_workspace_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -594,6 +657,11 @@ update_workspace_configuration(Client, WorkspaceId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

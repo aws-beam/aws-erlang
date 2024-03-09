@@ -6,10 +6,12 @@
 %% This is the Shield Advanced API Reference.
 %%
 %% This guide is for developers who need detailed information about the
-%% Shield Advanced API actions, data types, and errors. For detailed
-%% information about WAF and Shield Advanced features and an overview of how
-%% to use the WAF and Shield Advanced APIs, see the WAF and Shield Developer
-%% Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
+%% Shield Advanced API actions,
+%% data types, and errors. For detailed information about WAF and Shield
+%% Advanced features and an overview of how to use the WAF and Shield
+%% Advanced APIs, see the
+%% WAF and Shield Developer Guide:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/.
 -module(aws_shield).
 
 -export([associate_drt_log_bucket/2,
@@ -206,9 +208,11 @@ associate_proactive_engagement_details(Client, Input, Options)
 %%
 %% You can add protection to only a single resource with each
 %% `CreateProtection' request. You can add protection to multiple
-%% resources at once through the Shield Advanced console at
-%% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information
-%% see Getting Started with Shield Advanced:
+%% resources
+%% at once through the Shield Advanced console at
+%% [https://console.aws.amazon.com/wafv2/shieldv2#/].
+%% For more information see
+%% Getting Started with Shield Advanced:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html
 %% and Adding Shield Advanced protection to Amazon Web Services resources:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html.
@@ -235,7 +239,8 @@ create_protection_group(Client, Input, Options)
 %%
 %% For accounts that are members of an Organizations organization, Shield
 %% Advanced subscriptions are billed against the organization's payer
-%% account, regardless of whether the payer account itself is subscribed.
+%% account,
+%% regardless of whether the payer account itself is subscribed.
 %%
 %% When you initially create a subscription, your subscription is set to be
 %% automatically renewed at the end of the existing subscription period. You
@@ -353,8 +358,9 @@ describe_subscription(Client, Input, Options)
 %% @doc Disable the Shield Advanced automatic application layer DDoS
 %% mitigation feature for the protected resource.
 %%
-%% This stops Shield Advanced from creating, verifying, and applying WAF
-%% rules for attacks that it detects for the resource.
+%% This
+%% stops Shield Advanced from creating, verifying, and applying WAF rules for
+%% attacks that it detects for the resource.
 disable_application_layer_automatic_response(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_application_layer_automatic_response(Client, Input, []).
@@ -416,11 +422,12 @@ disassociate_health_check(Client, Input, Options)
 %% Application Load Balancers only.
 %%
 %% This causes Shield Advanced to create, verify, and apply WAF rules for
-%% DDoS attacks that it detects for the resource. Shield Advanced applies the
-%% rules in a Shield rule group inside the web ACL that you've associated
+%% DDoS attacks that it detects for the
+%% resource. Shield Advanced applies the rules in a Shield rule group inside
+%% the web ACL that you've associated
 %% with the resource. For information about how automatic mitigation works
-%% and the requirements for using it, see Shield Advanced automatic
-%% application layer DDoS mitigation:
+%% and the requirements for using it, see
+%% Shield Advanced automatic application layer DDoS mitigation:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-automatic-app-layer-response.html.
 %%
 %% Don't use this action to make changes to automatic mitigation settings
@@ -429,14 +436,16 @@ disassociate_health_check(Client, Input, Options)
 %%
 %% To use this feature, you must associate a web ACL with the protected
 %% resource. The web ACL must be created using the latest version of WAF
-%% (v2). You can associate the web ACL through the Shield Advanced console at
-%% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information,
+%% (v2). You can associate the web ACL through the Shield Advanced console
+%% at [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more
+%% information,
 %% see Getting Started with Shield Advanced:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html.
 %% You can also associate the web ACL to the resource through the WAF console
 %% or the WAF API, but you must manage Shield Advanced automatic mitigation
-%% through Shield Advanced. For information about WAF, see WAF Developer
-%% Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
+%% through Shield Advanced. For information about WAF, see
+%% WAF Developer Guide:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/.
 enable_application_layer_automatic_response(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_application_layer_automatic_response(Client, Input, []).
@@ -464,7 +473,8 @@ get_subscription_state(Client, Input, Options)
     request(Client, <<"GetSubscriptionState">>, Input, Options).
 
 %% @doc Returns all ongoing DDoS attacks or all DDoS attacks during a
-%% specified time period.
+%% specified time
+%% period.
 list_attacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attacks(Client, Input, []).
@@ -474,9 +484,9 @@ list_attacks(Client, Input, Options)
 
 %% @doc Retrieves `ProtectionGroup' objects for the account.
 %%
-%% You can retrieve all protection groups or you can provide filtering
-%% criteria and retrieve just the subset of protection groups that match the
-%% criteria.
+%% You can retrieve all protection groups or you can provide
+%% filtering criteria and retrieve just the subset of protection groups that
+%% match the criteria.
 list_protection_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protection_groups(Client, Input, []).
@@ -486,8 +496,9 @@ list_protection_groups(Client, Input, Options)
 
 %% @doc Retrieves `Protection' objects for the account.
 %%
-%% You can retrieve all protections or you can provide filtering criteria and
-%% retrieve just the subset of protections that match the criteria.
+%% You can retrieve all protections or you can provide
+%% filtering criteria and retrieve just the subset of protections that match
+%% the criteria.
 list_protections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protections(Client, Input, []).
@@ -567,7 +578,8 @@ update_protection_group(Client, Input, Options)
 %%
 %% For accounts that are members of an Organizations organization, Shield
 %% Advanced subscriptions are billed against the organization's payer
-%% account, regardless of whether the payer account itself is subscribed.
+%% account,
+%% regardless of whether the payer account itself is subscribed.
 update_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscription(Client, Input, []).

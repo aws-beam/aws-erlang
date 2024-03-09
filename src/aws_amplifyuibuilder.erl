@@ -2,22 +2,25 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amplify UI Builder API provides a programmatic interface for
-%% creating and configuring user interface (UI) component libraries and
-%% themes for use in your Amplify applications.
+%% creating
+%% and configuring user interface (UI) component libraries and themes for use
+%% in your Amplify applications.
 %%
-%% You can then connect these UI components to an application's backend
-%% Amazon Web Services resources.
+%% You can then connect these UI components to an application's
+%% backend Amazon Web Services resources.
 %%
 %% You can also use the Amplify Studio visual designer to create UI
-%% components and model data for an app. For more information, see
-%% Introduction: https://docs.amplify.aws/console/adminui/intro in the
+%% components
+%% and model data for an app. For more information, see Introduction:
+%% https://docs.amplify.aws/console/adminui/intro in the
 %% Amplify Docs.
 %%
 %% The Amplify Framework is a comprehensive set of SDKs, libraries, tools,
-%% and documentation for client app development. For more information, see
-%% the Amplify Framework: https://docs.amplify.aws/. For more information
-%% about deploying an Amplify application to Amazon Web Services, see the
-%% Amplify User Guide:
+%% and
+%% documentation for client app development. For more information, see the
+%% Amplify Framework: https://docs.amplify.aws/. For more information about
+%% deploying an Amplify application to Amazon Web Services, see the Amplify
+%% User Guide:
 %% https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html.
 -module(aws_amplifyuibuilder).
 
@@ -104,10 +107,12 @@ create_component(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -128,10 +133,12 @@ create_form(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -152,10 +159,12 @@ create_theme(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -176,10 +185,12 @@ delete_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -199,10 +210,12 @@ delete_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -222,10 +235,12 @@ delete_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -238,7 +253,8 @@ delete_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This is for internal use.
+%% @doc
+%% This is for internal use.
 %%
 %% Amplify uses this action to exchange an access code for a token.
 exchange_code_for_token(Client, Provider, Input) ->
@@ -247,10 +263,12 @@ exchange_code_for_token(Client, Provider, Input0, Options0) ->
     Method = post,
     Path = ["/tokens/", aws_util:encode_uri(Provider), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -277,9 +295,11 @@ export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/export/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -305,9 +325,11 @@ export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/export/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -333,9 +355,11 @@ export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/export/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -360,9 +384,11 @@ get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -383,9 +409,11 @@ get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -406,9 +434,11 @@ get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -429,9 +459,11 @@ get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/metadata"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -452,9 +484,11 @@ get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -476,9 +510,11 @@ list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -492,7 +528,8 @@ list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of components for a specified Amplify app and
-%% backend environment.
+%% backend
+%% environment.
 list_components(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_components(Client, AppId, EnvironmentName, #{}, #{}).
@@ -505,9 +542,11 @@ list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -534,9 +573,11 @@ list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -562,9 +603,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -586,9 +629,11 @@ list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -608,10 +653,12 @@ put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0)
     Method = put,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/metadata/features/", aws_util:encode_uri(FeatureName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -624,7 +671,8 @@ put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This is for internal use.
+%% @doc
+%% This is for internal use.
 %%
 %% Amplify uses this action to refresh a previously issued access token that
 %% might have expired.
@@ -634,10 +682,12 @@ refresh_token(Client, Provider, Input0, Options0) ->
     Method = post,
     Path = ["/tokens/", aws_util:encode_uri(Provider), "/refresh"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -658,10 +708,12 @@ start_codegen_job(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -682,10 +734,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -705,10 +759,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -729,10 +785,12 @@ update_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -753,10 +811,12 @@ update_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -777,10 +837,12 @@ update_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/themes/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -797,6 +859,11 @@ update_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

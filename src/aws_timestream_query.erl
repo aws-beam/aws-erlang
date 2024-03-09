@@ -39,11 +39,13 @@
 
 %% @doc Cancels a query that has been issued.
 %%
-%% Cancellation is provided only if the query has not completed running
-%% before the cancellation request was issued. Because cancellation is an
-%% idempotent operation, subsequent cancellation requests will return a
+%% Cancellation is provided only if the query has
+%% not completed running before the cancellation request was issued. Because
+%% cancellation
+%% is an idempotent operation, subsequent cancellation requests will return a
 %% `CancellationMessage', indicating that the query has already been
-%% canceled. See code sample:
+%% canceled. See code
+%% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.cancel-query.html
 %% for details.
 cancel_query(Client, Input)
@@ -58,8 +60,10 @@ cancel_query(Client, Input, Options)
 %%
 %% Timestream assumes the execution role provided as part of the
 %% `ScheduledQueryExecutionRoleArn' parameter to run the query. You can
-%% use the `NotificationConfiguration' parameter to configure
-%% notification for your scheduled query operations.
+%% use
+%% the `NotificationConfiguration' parameter to configure notification
+%% for your
+%% scheduled query operations.
 create_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_query(Client, Input, []).
@@ -78,25 +82,29 @@ delete_scheduled_query(Client, Input, Options)
     request(Client, <<"DeleteScheduledQuery">>, Input, Options).
 
 %% @doc DescribeEndpoints returns a list of available endpoints to make
-%% Timestream API calls against.
+%% Timestream
+%% API calls against.
 %%
 %% This API is available through both Write and Query.
 %%
 %% Because the Timestream SDKs are designed to transparently work with the
 %% service’s architecture, including the management and mapping of the
-%% service endpoints, it is not recommended that you use this API unless:
+%% service endpoints,
+%% it is not recommended that you use this API unless:
 %%
-%% <ul> <li> You are using VPC endpoints (Amazon Web Services PrivateLink)
-%% with Timestream :
+%% You are using VPC endpoints (Amazon Web Services PrivateLink) with
+%% Timestream
+%% :
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints
 %%
-%% </li> <li> Your application uses a programming language that does not yet
-%% have SDK support
+%% Your application uses a programming language that does not yet have SDK
+%% support
 %%
-%% </li> <li> You require better control over the client-side implementation
+%% You require better control over the client-side implementation
 %%
-%% </li> </ul> For detailed information on how and when to use and implement
-%% DescribeEndpoints, see The Endpoint Discovery Pattern:
+%% For detailed information on how and when to use and implement
+%% DescribeEndpoints, see
+%% The Endpoint Discovery Pattern:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -141,7 +149,8 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc A synchronous operation that allows you to submit a query with
-%% parameters to be stored by Timestream for later running.
+%% parameters to be stored
+%% by Timestream for later running.
 %%
 %% Timestream only supports using this operation with the
 %% `PrepareQueryRequest$ValidateOnly' set to `true'.
@@ -152,35 +161,42 @@ prepare_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PrepareQuery">>, Input, Options).
 
-%% @doc `Query' is a synchronous operation that enables you to run a
-%% query against your Amazon Timestream data.
+%% @doc
+%% `Query' is a synchronous operation that enables you to run a query
+%% against
+%% your Amazon Timestream data.
 %%
-%% `Query' will time out after 60 seconds. You must update the default
-%% timeout in the SDK to support a timeout of 60 seconds. See the code
+%% `Query' will time out after 60 seconds.
+%% You must update the default timeout in the SDK to support a timeout of 60
+%% seconds. See
+%% the code
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.run-query.html
 %% for details.
 %%
 %% Your query request will fail in the following cases:
 %%
-%% <ul> <li> If you submit a `Query' request with the same client token
-%% outside of the 5-minute idempotency window.
+%% If you submit a `Query' request with the same client token outside
+%% of the 5-minute idempotency window.
 %%
-%% </li> <li> If you submit a `Query' request with the same client token,
-%% but change other parameters, within the 5-minute idempotency window.
+%% If you submit a `Query' request with the same client token, but
+%% change other parameters, within the 5-minute idempotency window.
 %%
-%% </li> <li> If the size of the row (including the query metadata) exceeds 1
-%% MB, then the query will fail with the following error message:
+%% If the size of the row (including the query metadata) exceeds 1 MB, then
+%% the
+%% query will fail with the following error message:
 %%
-%% `Query aborted as max page response size has been exceeded by the output
-%% result row'
+%% ```
+%% Query aborted as max page response size has been exceeded by the output
+%% result row'''
 %%
-%% </li> <li> If the IAM principal of the query initiator and the result
-%% reader are not the same and/or the query initiator and the result reader
-%% do not have the same query string in the query requests, the query will
-%% fail with an `Invalid pagination token' error.
-%%
-%% </li> </ul>
+%% If the IAM principal of the query initiator and the result reader are not
+%% the
+%% same and/or the query initiator and the result reader do not have the same
+%% query
+%% string in the query requests, the query will fail with an
+%% ```
+%% Invalid pagination token''' error.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
@@ -190,8 +206,10 @@ query(Client, Input, Options)
 
 %% @doc Associate a set of tags with a Timestream resource.
 %%
-%% You can then activate these user-defined tags so that they appear on the
-%% Billing and Cost Management console for cost allocation tracking.
+%% You can then activate these
+%% user-defined tags so that they appear on the Billing and Cost Management
+%% console for
+%% cost allocation tracking.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -230,7 +248,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"timestream">>},
+    Client1 = Client#{service => <<"query.timestream">>},
     Host = build_host(<<"query.timestream">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

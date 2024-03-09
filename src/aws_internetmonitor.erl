@@ -2,34 +2,42 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon CloudWatch Internet Monitor provides visibility into how
-%% internet issues impact the performance and availability between your
-%% applications hosted on Amazon Web Services and your end users.
+%% internet issues impact the performance and availability
+%% between your applications hosted on Amazon Web Services and your end
+%% users.
 %%
-%% It can reduce the time it takes for you to diagnose internet issues from
-%% days to minutes. Internet Monitor uses the connectivity data that Amazon
-%% Web Services captures from its global networking footprint to calculate a
-%% baseline of performance and availability for internet traffic. This is the
-%% same data that Amazon Web Services uses to monitor internet uptime and
-%% availability. With those measurements as a baseline, Internet Monitor
-%% raises awareness for you when there are significant problems for your end
-%% users in the different geographic locations where your application runs.
+%% It can reduce the time it takes for you to diagnose
+%% internet issues from days to minutes. Internet Monitor uses the
+%% connectivity data that Amazon Web Services captures from its global
+%% networking footprint to calculate a baseline of performance and
+%% availability for internet traffic. This
+%% is the same data that Amazon Web Services uses to monitor internet uptime
+%% and availability. With those measurements
+%% as a baseline, Internet Monitor raises awareness for you when there are
+%% significant problems for your
+%% end users in the different geographic locations where your application
+%% runs.
 %%
 %% Internet Monitor publishes internet measurements to CloudWatch Logs and
-%% CloudWatch Metrics, to easily support using CloudWatch tools with health
-%% information for geographies and networks specific to your application.
+%% CloudWatch Metrics,
+%% to easily support using CloudWatch tools with health information for
+%% geographies and networks specific to your application.
 %% Internet Monitor sends health events to Amazon EventBridge so that you can
 %% set up notifications. If an issue is caused by the Amazon Web Services
-%% network, you also automatically receive an Amazon Web Services Health
-%% Dashboard notification with the steps that Amazon Web Services is taking
-%% to mitigate the problem.
+%% network,
+%% you also automatically receive an Amazon Web Services Health Dashboard
+%% notification with the steps that Amazon Web Services is taking to mitigate
+%% the problem.
 %%
 %% To use Internet Monitor, you create a monitor and associate your
-%% application's resources with it - VPCs, NLBs, CloudFront
-%% distributions, or WorkSpaces directories - so Internet Monitor can
-%% determine where your application's internet traffic is. Internet
-%% Monitor then provides internet measurements from Amazon Web Services that
-%% are specific to the locations and ASNs (typically, internet service
-%% providers or ISPs) that communicate with your application.
+%% application's resources
+%% with it - VPCs, NLBs, CloudFront distributions, or WorkSpaces directories
+%% - so Internet Monitor can determine
+%% where your application's internet traffic is. Internet Monitor then
+%% provides internet measurements from Amazon Web Services that are specific
+%% to
+%% the locations and ASNs (typically, internet service providers or ISPs)
+%% that communicate with your application.
 %%
 %% For more information, see Using Amazon CloudWatch Internet Monitor:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html
@@ -81,23 +89,27 @@
 %% @doc Creates a monitor in Amazon CloudWatch Internet Monitor.
 %%
 %% A monitor is built based on information from the application resources
-%% that you add: VPCs, Network Load Balancers (NLBs), Amazon CloudFront
-%% distributions, and Amazon WorkSpaces directories. Internet Monitor then
-%% publishes internet measurements from Amazon Web Services that are specific
-%% to the city-networks. That is, the locations and ASNs (typically internet
-%% service providers or ISPs), where clients access your application. For
-%% more information, see Using Amazon CloudWatch Internet Monitor:
+%% that you add: VPCs,
+%% Network Load Balancers (NLBs), Amazon CloudFront distributions, and Amazon
+%% WorkSpaces directories. Internet Monitor then publishes internet
+%% measurements from Amazon Web Services
+%% that are specific to the city-networks. That is, the locations and ASNs
+%% (typically internet service providers or ISPs),
+%% where clients access your application. For more information, see Using
+%% Amazon CloudWatch Internet Monitor:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html
-%% in the Amazon CloudWatch User Guide.
+%% in the Amazon CloudWatch User
+%% Guide.
 %%
 %% When you create a monitor, you choose the percentage of traffic that you
-%% want to monitor. You can also set a maximum limit for the number of
-%% city-networks where client traffic is monitored, that caps the total
-%% traffic that Internet Monitor monitors. A city-network maximum is the
-%% limit of city-networks, but you only pay for the number of city-networks
-%% that are actually monitored. You can update your monitor at any time to
-%% change the percentage of traffic to monitor or the city-networks maximum.
-%% For more information, see Choosing a city-network maximum value:
+%% want to monitor. You can also set a maximum limit for the
+%% number of city-networks where client traffic is monitored, that caps the
+%% total traffic that Internet Monitor monitors. A city-network
+%% maximum is the limit of city-networks, but you only pay for the number of
+%% city-networks that are actually monitored. You can update your monitor
+%% at any time to change the percentage of traffic to monitor or the
+%% city-networks maximum. For more information, see Choosing a city-network
+%% maximum value:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
 %% in the Amazon CloudWatch User Guide.
 create_monitor(Client, Input) ->
@@ -106,10 +118,12 @@ create_monitor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20210603/Monitors"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -129,10 +143,12 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -148,12 +164,12 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 %% @doc Gets information the Amazon CloudWatch Internet Monitor has created
 %% and stored about a health event for a specified monitor.
 %%
-%% This information includes the impacted locations, and all the information
-%% related to the event, by location.
+%% This information includes the impacted locations,
+%% and all the information related to the event, by location.
 %%
 %% The information returned includes the impact on performance, availability,
-%% and round-trip time, information about the network providers (ASNs), the
-%% event type, and so on.
+%% and round-trip time, information about the network providers (ASNs),
+%% the event type, and so on.
 %%
 %% Information rolled up at the global traffic level is also returned,
 %% including the impact type and total traffic impact.
@@ -169,9 +185,11 @@ get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/HealthEvents/", aws_util:encode_uri(EventId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -183,8 +201,8 @@ get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, Options0)
 %% Monitor based on a monitor name.
 %%
 %% The information returned includes the Amazon Resource Name (ARN), create
-%% time, modified time, resources included in the monitor, and status
-%% information.
+%% time,
+%% modified time, resources included in the monitor, and status information.
 get_monitor(Client, MonitorName)
   when is_map(Client) ->
     get_monitor(Client, MonitorName, #{}, #{}).
@@ -197,9 +215,11 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -210,11 +230,12 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% @doc Return the data for a query with the Amazon CloudWatch Internet
 %% Monitor query interface.
 %%
-%% Specify the query that you want to return results for by providing a
-%% `QueryId' and a monitor name.
+%% Specify the query that you want to return results for by providing
+%% a `QueryId' and a monitor name.
 %%
 %% For more information about using the query interface, including examples,
-%% see Using the Amazon CloudWatch Internet Monitor query interface:
+%% see
+%% Using the Amazon CloudWatch Internet Monitor query interface:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
 %% in the Amazon CloudWatch Internet Monitor User Guide.
 get_query_results(Client, MonitorName, QueryId)
@@ -229,9 +250,11 @@ get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), "/Results"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -250,17 +273,15 @@ get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
 %% When you run a query, check the status to make sure that the query has
 %% `SUCCEEDED' before you review the results.
 %%
-%% <ul> <li> `QUEUED': The query is scheduled to run.
+%% `QUEUED': The query is scheduled to run.
 %%
-%% </li> <li> `RUNNING': The query is in progress but not complete.
+%% `RUNNING': The query is in progress but not complete.
 %%
-%% </li> <li> `SUCCEEDED': The query completed sucessfully.
+%% `SUCCEEDED': The query completed sucessfully.
 %%
-%% </li> <li> `FAILED': The query failed due to an error.
+%% `FAILED': The query failed due to an error.
 %%
-%% </li> <li> `CANCELED': The query was canceled.
-%%
-%% </li> </ul>
+%% `CANCELED': The query was canceled.
 get_query_status(Client, MonitorName, QueryId)
   when is_map(Client) ->
     get_query_status(Client, MonitorName, QueryId, #{}, #{}).
@@ -273,9 +294,11 @@ get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), "/Status"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -287,7 +310,8 @@ get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
 %% Monitor.
 %%
 %% Returns information for health events including the event start and end
-%% time and the status.
+%% time and
+%% the status.
 %%
 %% Health events that have start times during the time frame that is
 %% requested are not included in the list of health events.
@@ -303,9 +327,11 @@ list_health_events(Client, MonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/HealthEvents"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -336,9 +362,11 @@ list_monitors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -368,9 +396,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -381,12 +411,15 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Start a query to return data for a specific query type for the Amazon
 %% CloudWatch Internet Monitor query interface.
 %%
-%% Specify a time period for the data that you want returned by using
-%% `StartTime' and `EndTime'. You filter the query results to return
-%% by providing parameters that you specify with `FilterParameters'.
+%% Specify a time period
+%% for the data that you want returned by using `StartTime' and
+%% `EndTime'. You filter the query
+%% results to return by providing parameters that you specify with
+%% `FilterParameters'.
 %%
 %% For more information about using the query interface, including examples,
-%% see Using the Amazon CloudWatch Internet Monitor query interface:
+%% see
+%% Using the Amazon CloudWatch Internet Monitor query interface:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
 %% in the Amazon CloudWatch Internet Monitor User Guide.
 start_query(Client, MonitorName, Input) ->
@@ -395,10 +428,12 @@ start_query(Client, MonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -418,10 +453,12 @@ stop_query(Client, MonitorName, QueryId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -447,10 +484,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -470,10 +509,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -490,13 +531,13 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates a monitor.
 %%
 %% You can update a monitor to change the percentage of traffic to monitor or
-%% the maximum number of city-networks (locations and ASNs), to add or remove
-%% resources, or to change the status of the monitor. Note that you can't
-%% change the name of a monitor.
+%% the maximum number of city-networks
+%% (locations and ASNs), to add or remove resources, or to change the status
+%% of the monitor. Note that you can't change the name of a monitor.
 %%
 %% The city-network maximum that you choose is the limit, but you only pay
-%% for the number of city-networks that are actually monitored. For more
-%% information, see Choosing a city-network maximum value:
+%% for the number of city-networks that are actually monitored.
+%% For more information, see Choosing a city-network maximum value:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
 %% in the Amazon CloudWatch User Guide.
 update_monitor(Client, MonitorName, Input) ->
@@ -505,10 +546,12 @@ update_monitor(Client, MonitorName, Input0, Options0) ->
     Method = patch,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -524,6 +567,11 @@ update_monitor(Client, MonitorName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

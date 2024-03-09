@@ -2,35 +2,45 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc WorkMail is a secure, managed business email and calendaring service
-%% with support for existing desktop and mobile email clients.
+%% with support for
+%% existing desktop and mobile email clients.
 %%
-%% You can access your email, contacts, and calendars using Microsoft
-%% Outlook, your browser, or other native iOS and Android email applications.
-%% You can integrate WorkMail with your existing corporate directory and
-%% control both the keys that encrypt your data and the location in which
-%% your data is stored.
+%% You can access your email, contacts, and
+%% calendars using Microsoft Outlook, your browser, or other native iOS and
+%% Android email
+%% applications. You can integrate WorkMail with your existing corporate
+%% directory and control
+%% both the keys that encrypt your data and the location in which your data
+%% is
+%% stored.
 %%
 %% The WorkMail API is designed for the following scenarios:
 %%
-%% <ul> <li> Listing and describing organizations
+%% Listing and describing organizations
 %%
-%% </li> </ul> <ul> <li> Managing users
+%% Managing users
 %%
-%% </li> </ul> <ul> <li> Managing groups
+%% Managing groups
 %%
-%% </li> </ul> <ul> <li> Managing resources
+%% Managing resources
 %%
-%% </li> </ul> All WorkMail API operations are Amazon-authenticated and
-%% certificate-signed. They not only require the use of the AWS SDK, but also
-%% allow for the exclusive use of AWS Identity and Access Management users
-%% and roles to help facilitate access, trust, and permission policies. By
-%% creating a role and allowing an IAM user to access the WorkMail site, the
-%% IAM user gains full administrative visibility into the entire WorkMail
-%% organization (or as set in the IAM policy). This includes, but is not
-%% limited to, the ability to create, update, and delete users, groups, and
-%% resources. This allows developers to perform the scenarios listed above,
+%% All WorkMail API operations are Amazon-authenticated and
+%% certificate-signed. They not
+%% only require the use of the AWS SDK, but also allow for the exclusive use
+%% of AWS Identity and Access Management
+%% users and roles to help facilitate access, trust, and permission policies.
+%% By creating a
+%% role and allowing an IAM user to access the WorkMail site, the IAM user
+%% gains full
+%% administrative visibility into the entire WorkMail organization (or as set
+%% in the IAM
+%% policy). This includes, but is not limited to, the ability to create,
+%% update, and delete
+%% users, groups, and resources. This allows developers to perform the
+%% scenarios listed above,
 %% as well as give users the ability to grant access on a selective basis
-%% using the IAM model.
+%% using the IAM
+%% model.
 -module(aws_workmail).
 
 -export([associate_delegate_to_resource/2,
@@ -226,8 +236,8 @@ associate_member_to_group(Client, Input, Options)
 
 %% @doc Assumes an impersonation role for the given WorkMail organization.
 %%
-%% This method returns an authentication token you can use to make
-%% impersonated calls.
+%% This method returns an
+%% authentication token you can use to make impersonated calls.
 assume_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_impersonation_role(Client, Input, []).
@@ -238,7 +248,8 @@ assume_impersonation_role(Client, Input, Options)
 %% @doc Cancels a mailbox export job.
 %%
 %% If the mailbox export job is near completion, it might not be possible to
-%% cancel it.
+%% cancel
+%% it.
 cancel_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_mailbox_export_job(Client, Input, []).
@@ -275,10 +286,12 @@ create_group(Client, Input, Options)
 
 %% @doc Creates an impersonation role for the given WorkMail organization.
 %%
-%% Idempotency ensures that an API request completes no more than one time.
-%% With an idempotent request, if the original request completes
-%% successfully, any subsequent retries also complete successfully without
-%% performing any further actions.
+%% Idempotency ensures that an API request completes no more than one
+%% time. With an idempotent request, if the original request completes
+%% successfully, any
+%% subsequent retries also complete successfully without performing any
+%% further
+%% actions.
 create_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_impersonation_role(Client, Input, []).
@@ -307,18 +320,22 @@ create_mobile_device_access_rule(Client, Input, Options)
 %% in the WorkMail Administrator Guide.
 %%
 %% You can associate multiple email domains with an organization, then choose
-%% your default email domain from the WorkMail console. You can also
-%% associate a domain that is managed in an Amazon Route 53 public hosted
-%% zone. For more information, see Adding a domain:
+%% your
+%% default email domain from the WorkMail console. You can also associate a
+%% domain that is managed
+%% in an Amazon Route 53 public hosted zone. For more information, see Adding
+%% a
+%% domain:
 %% https://docs.aws.amazon.com/workmail/latest/adminguide/add_domain.html and
 %% Choosing the default domain:
 %% https://docs.aws.amazon.com/workmail/latest/adminguide/default_domain.html
 %% in the WorkMail Administrator Guide.
 %%
 %% Optionally, you can use a customer managed key from AWS Key Management
-%% Service (AWS KMS) to encrypt email for your organization. If you don't
-%% associate an AWS KMS key, WorkMail creates a default, AWS managed key for
-%% you.
+%% Service (AWS
+%% KMS) to encrypt email for your organization. If you don't associate an
+%% AWS KMS key, WorkMail
+%% creates a default, AWS managed key for you.
 create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
@@ -357,7 +374,8 @@ delete_access_control_rule(Client, Input, Options)
     request(Client, <<"DeleteAccessControlRule">>, Input, Options).
 
 %% @doc Remove one or more specified aliases from a set of aliases for a
-%% given user.
+%% given
+%% user.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -466,11 +484,13 @@ delete_retention_policy(Client, Input, Options)
 
 %% @doc Deletes a user from WorkMail and all subsequent systems.
 %%
-%% Before you can delete a user, the user state must be `DISABLED'. Use
-%% the `DescribeUser' action to confirm the user state.
+%% Before you can delete a
+%% user, the user state must be `DISABLED'. Use the `DescribeUser'
+%% action to confirm the user state.
 %%
 %% Deleting a user is permanent and cannot be undone. WorkMail archives user
-%% mailboxes for 30 days before they are permanently removed.
+%% mailboxes for
+%% 30 days before they are permanently removed.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -480,9 +500,11 @@ delete_user(Client, Input, Options)
 
 %% @doc Mark a user, group, or resource as no longer used in WorkMail.
 %%
-%% This action disassociates the mailbox and schedules it for clean-up.
-%% WorkMail keeps mailboxes for 30 days before they are permanently removed.
-%% The functionality in the console is Disable.
+%% This action
+%% disassociates the mailbox and schedules it for clean-up. WorkMail keeps
+%% mailboxes for 30 days
+%% before they are permanently removed. The functionality in the console is
+%% Disable.
 deregister_from_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_from_work_mail(Client, Input, []).
@@ -586,8 +608,9 @@ disassociate_member_from_group(Client, Input, Options)
     request(Client, <<"DisassociateMemberFromGroup">>, Input, Options).
 
 %% @doc Gets the effects of an organization's access control rules as
-%% they apply to a specified IPv4 address, access protocol action, and user
-%% ID or impersonation role ID.
+%% they apply to a
+%% specified IPv4 address, access protocol action, and user ID or
+%% impersonation role ID.
 %%
 %% You must provide either the user ID or impersonation role ID.
 %% Impersonation role ID can only be used with Action EWS.
@@ -647,7 +670,8 @@ get_mailbox_details(Client, Input, Options)
 %% attributes of a sample access event.
 %%
 %% Use this method to test the effects of the current set of mobile device
-%% access rules for the WorkMail organization for a particular user's
+%% access
+%% rules for the WorkMail organization for a particular user's
 %% attributes.
 get_mobile_device_access_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -693,7 +717,8 @@ list_availability_configurations(Client, Input, Options)
 
 %% @doc Returns an overview of the members of a group.
 %%
-%% Users and groups can be members of a group.
+%% Users and groups can be members of a
+%% group.
 list_group_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_members(Client, Input, []).
@@ -735,7 +760,8 @@ list_mail_domains(Client, Input, Options)
     request(Client, <<"ListMailDomains">>, Input, Options).
 
 %% @doc Lists the mailbox export jobs started for the specified organization
-%% within the last seven days.
+%% within the last
+%% seven days.
 list_mailbox_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mailbox_export_jobs(Client, Input, []).
@@ -744,7 +770,8 @@ list_mailbox_export_jobs(Client, Input, Options)
     request(Client, <<"ListMailboxExportJobs">>, Input, Options).
 
 %% @doc Lists the mailbox permissions associated with a user, group, or
-%% resource mailbox.
+%% resource
+%% mailbox.
 list_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mailbox_permissions(Client, Input, []).
@@ -780,8 +807,8 @@ list_organizations(Client, Input, Options)
 
 %% @doc Lists the delegates associated with a resource.
 %%
-%% Users and groups can be resource delegates and answer requests on behalf
-%% of the resource.
+%% Users and groups can be resource
+%% delegates and answer requests on behalf of the resource.
 list_resource_delegates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_delegates(Client, Input, []).
@@ -815,10 +842,12 @@ list_users(Client, Input, Options)
 
 %% @doc Adds a new access control rule for the specified organization.
 %%
-%% The rule allows or denies access to the organization for the specified
-%% IPv4 addresses, access protocol actions, user IDs and impersonation IDs.
-%% Adding a new rule with the same name as an existing rule replaces the
-%% older rule.
+%% The rule allows or
+%% denies access to the organization for the specified IPv4 addresses, access
+%% protocol
+%% actions, user IDs and impersonation IDs. Adding a new rule with the same
+%% name as an existing rule replaces
+%% the older rule.
 put_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_access_control_rule(Client, Input, []).
@@ -845,7 +874,8 @@ put_inbound_dmarc_settings(Client, Input, Options)
 
 %% @doc Sets permissions for a user, group, or resource.
 %%
-%% This replaces any pre-existing permissions.
+%% This replaces any pre-existing
+%% permissions.
 put_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_mailbox_permissions(Client, Input, []).
@@ -874,8 +904,9 @@ put_retention_policy(Client, Input, Options)
 %% by WorkMail.
 %%
 %% Emails received by SES for this domain are routed to the specified
-%% WorkMail organization, and WorkMail has permanent permission to use the
-%% specified domain for sending your users' emails.
+%% WorkMail organization, and WorkMail has
+%% permanent permission to use the specified domain for sending your
+%% users' emails.
 register_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_mail_domain(Client, Input, []).
@@ -884,12 +915,14 @@ register_mail_domain(Client, Input, Options)
     request(Client, <<"RegisterMailDomain">>, Input, Options).
 
 %% @doc Registers an existing and disabled user, group, or resource for
-%% WorkMail use by associating a mailbox and calendaring capabilities.
+%% WorkMail use by
+%% associating a mailbox and calendaring capabilities.
 %%
-%% It performs no change if the user, group, or resource is enabled and fails
-%% if the user, group, or resource is deleted. This operation results in the
-%% accumulation of costs. For more information, see Pricing:
-%% https://aws.amazon.com/workmail/pricing. The equivalent console
+%% It performs no change if the user,
+%% group, or resource is enabled and fails if the user, group, or resource is
+%% deleted. This
+%% operation results in the accumulation of costs. For more information, see
+%% Pricing: https://aws.amazon.com/workmail/pricing. The equivalent console
 %% functionality for this operation is Enable.
 %%
 %% Users can either be created by calling the `CreateUser' API operation
@@ -911,8 +944,10 @@ reset_password(Client, Input, Options)
     request(Client, <<"ResetPassword">>, Input, Options).
 
 %% @doc Starts a mailbox export job to export MIME-format email messages and
-%% calendar items from the specified mailbox to the specified Amazon Simple
-%% Storage Service (Amazon S3) bucket.
+%% calendar items
+%% from the specified mailbox to the specified Amazon Simple Storage Service
+%% (Amazon S3)
+%% bucket.
 %%
 %% For more information, see Exporting mailbox content:
 %% https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html in
@@ -938,12 +973,14 @@ tag_resource(Client, Input, Options)
 %%
 %% For EWS, it verifies the provided credentials can be used to successfully
 %% log in. For Lambda, it verifies that the Lambda function can be invoked
-%% and that the resource access policy was configured to deny anonymous
-%% access. An anonymous invocation is one done without providing either a
-%% `SourceArn' or `SourceAccount' header.
+%% and that the resource access
+%% policy was configured to deny anonymous access. An anonymous invocation is
+%% one done without providing either a `SourceArn' or `SourceAccount'
+%% header.
 %%
 %% The request must contain either one provider definition (`EwsProvider'
-%% or `LambdaProvider') or the `DomainName' parameter. If the
+%% or
+%% `LambdaProvider') or the `DomainName' parameter. If the
 %% `DomainName' parameter is provided, the configuration stored under the
 %% `DomainName' will be tested.
 test_availability_configuration(Client, Input)
@@ -963,7 +1000,8 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates an existing `AvailabilityConfiguration' for the given
-%% WorkMail organization and domain.
+%% WorkMail
+%% organization and domain.
 update_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_availability_configuration(Client, Input, []).
@@ -1000,7 +1038,8 @@ update_impersonation_role(Client, Input, Options)
     request(Client, <<"UpdateImpersonationRole">>, Input, Options).
 
 %% @doc Updates a user's current mailbox quota for a specified
-%% organization and user.
+%% organization and
+%% user.
 update_mailbox_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_mailbox_quota(Client, Input, []).
@@ -1019,9 +1058,10 @@ update_mobile_device_access_rule(Client, Input, Options)
 
 %% @doc Updates the primary email for a user, group, or resource.
 %%
-%% The current email is moved into the list of aliases (or swapped between an
-%% existing alias and the current primary email), and the email provided in
-%% the input is promoted as the primary.
+%% The current email is moved
+%% into the list of aliases (or swapped between an existing alias and the
+%% current primary
+%% email), and the email provided in the input is promoted as the primary.
 update_primary_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_email_address(Client, Input, []).
@@ -1031,8 +1071,9 @@ update_primary_email_address(Client, Input, Options)
 
 %% @doc Updates data for the resource.
 %%
-%% To have the latest information, it must be preceded by a
-%% `DescribeResource' call. The dataset in the request should be the one
+%% To have the latest information, it must be preceded by
+%% a `DescribeResource' call. The dataset in the request should be the
+%% one
 %% expected when performing another `DescribeResource' call.
 update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->

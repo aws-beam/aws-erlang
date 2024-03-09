@@ -2,21 +2,27 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc SimSpace Weaver (SimSpace Weaver) is a service that you can use to
-%% build and run large-scale spatial simulations in the Amazon Web Services
-%% Cloud.
+%% build and run
+%% large-scale spatial simulations in the Amazon Web Services Cloud.
 %%
-%% For example, you can create crowd simulations, large real-world
-%% environments, and immersive and interactive experiences. For more
-%% information about SimSpace Weaver, see the SimSpace Weaver User Guide:
-%% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/ .
+%% For example, you can create
+%% crowd simulations, large real-world environments, and immersive and
+%% interactive experiences.
+%% For more information about SimSpace Weaver, see the
+%% SimSpace Weaver User Guide:
+%% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/
+%% .
 %%
 %% This API reference describes the API operations and data types that you
-%% can use to communicate directly with SimSpace Weaver.
+%% can use to
+%% communicate directly with SimSpace Weaver.
 %%
 %% SimSpace Weaver also provides the SimSpace Weaver app SDK, which you use
-%% for app development. The SimSpace Weaver app SDK API reference is included
-%% in the SimSpace Weaver app SDK documentation. This documentation is part
-%% of the SimSpace Weaver app SDK distributable package.
+%% for app development. The
+%% SimSpace Weaver app SDK API reference is included in the SimSpace Weaver
+%% app SDK documentation. This
+%% documentation is part of the SimSpace Weaver app SDK distributable
+%% package.
 -module(aws_simspaceweaver).
 
 -export([create_snapshot/2,
@@ -66,46 +72,58 @@
 %% @doc Creates a snapshot of the specified simulation.
 %%
 %% A snapshot is a file that contains simulation state data at a specific
-%% time. The state data saved in a snapshot includes entity data from the
-%% State Fabric, the simulation configuration specified in the schema, and
-%% the clock tick number. You can use the snapshot to initialize a new
-%% simulation. For more information about snapshots, see Snapshots:
+%% time.
+%% The state data saved in a snapshot includes entity data from the State
+%% Fabric,
+%% the simulation configuration specified in the schema, and the clock tick
+%% number.
+%% You can use the snapshot to initialize a new simulation.
+%% For more information about snapshots, see Snapshots:
 %% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/working-with_snapshots.html
 %% in the SimSpace Weaver User Guide.
 %%
-%% You specify a `Destination' when you create a snapshot. The
-%% `Destination' is the name of an Amazon S3 bucket and an optional
-%% `ObjectKeyPrefix'. The `ObjectKeyPrefix' is usually the name of a
-%% folder in the bucket. SimSpace Weaver creates a `snapshot' folder
-%% inside the `Destination' and places the snapshot file there.
+%% You specify a `Destination' when you create a snapshot.
+%% The `Destination' is the name of an Amazon S3 bucket and an optional
+%% `ObjectKeyPrefix'. The `ObjectKeyPrefix' is
+%% usually the name of a folder in the bucket. SimSpace Weaver creates a
+%% `snapshot' folder inside the `Destination' and
+%% places the snapshot file there.
 %%
 %% The snapshot file is an Amazon S3 object. It has an object key with the
-%% form: `
-%% object-key-prefix/snapshot/simulation-name-YYMMdd-HHmm-ss.zip', where:
+%% form:
+%% ```
+%% object-key-prefix/snapshot/simulation-name-YYMMdd-HHmm-ss.zip''',
+%% where:
 %%
-%% <ul> <li> ` YY ' is the 2-digit year
+%% ```
+%% YY ''' is the 2-digit year
 %%
-%% </li> <li> ` MM ' is the 2-digit month
+%% ```
+%% MM ''' is the 2-digit month
 %%
-%% </li> <li> ` dd ' is the 2-digit day of the month
+%% ```
+%% dd ''' is the 2-digit day of the month
 %%
-%% </li> <li> ` HH ' is the 2-digit hour (24-hour clock)
+%% ```
+%% HH ''' is the 2-digit hour (24-hour clock)
 %%
-%% </li> <li> ` mm ' is the 2-digit minutes
+%% ```
+%% mm ''' is the 2-digit minutes
 %%
-%% </li> <li> ` ss ' is the 2-digit seconds
-%%
-%% </li> </ul>
+%% ```
+%% ss ''' is the 2-digit seconds
 create_snapshot(Client, Input) ->
     create_snapshot(Client, Input, []).
 create_snapshot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createsnapshot"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -125,10 +143,12 @@ delete_app(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deleteapp"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -148,17 +168,20 @@ delete_app(Client, Input0, Options0) ->
 %% simulation.
 %%
 %% Your simulation uses resources in other Amazon Web Services. This API
-%% operation doesn't delete resources in other Amazon Web Services.
+%% operation doesn't delete
+%% resources in other Amazon Web Services.
 delete_simulation(Client, Input) ->
     delete_simulation(Client, Input, []).
 delete_simulation(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deletesimulation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -185,9 +208,11 @@ describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/describeapp"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -214,9 +239,11 @@ describe_simulation(Client, Simulation, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/describesimulation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -242,9 +269,11 @@ list_apps(Client, Simulation, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listapps"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -273,9 +302,11 @@ list_simulations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listsimulations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -301,9 +332,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -319,10 +352,12 @@ start_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startapp"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -342,10 +377,12 @@ start_clock(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startclock"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -360,11 +397,12 @@ start_clock(Client, Input0, Options0) ->
 
 %% @doc Starts a simulation with the given name.
 %%
-%% You must choose to start your simulation from a schema or from a snapshot.
+%% You must choose to start your
+%% simulation from a schema or from a snapshot.
 %% For more information about the schema, see the schema reference:
 %% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/schema-reference.html
-%% in the SimSpace Weaver User Guide. For more information about snapshots,
-%% see Snapshots:
+%% in the SimSpace Weaver User Guide.
+%% For more information about snapshots, see Snapshots:
 %% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/working-with_snapshots.html
 %% in the SimSpace Weaver User Guide.
 start_simulation(Client, Input) ->
@@ -373,10 +411,12 @@ start_simulation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startsimulation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -397,10 +437,12 @@ stop_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stopapp"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -420,10 +462,12 @@ stop_clock(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stopclock"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -439,18 +483,20 @@ stop_clock(Client, Input0, Options0) ->
 %% @doc Stops the given simulation.
 %%
 %% You can't restart a simulation after you stop it. If you want to
-%% restart a simulation, then you must stop it, delete it, and start a new
-%% instance of it.
+%% restart a simulation, then
+%% you must stop it, delete it, and start a new instance of it.
 stop_simulation(Client, Input) ->
     stop_simulation(Client, Input, []).
 stop_simulation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stopsimulation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -467,17 +513,20 @@ stop_simulation(Client, Input0, Options0) ->
 %%
 %% For more information about tags, see Tagging Amazon Web Services
 %% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
-%% in the Amazon Web Services General Reference.
+%% in the
+%% Amazon Web Services General Reference.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -494,17 +543,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% For more information about tags, see Tagging Amazon Web Services
 %% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
-%% in the Amazon Web Services General Reference.
+%% in the
+%% Amazon Web Services General Reference.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -521,6 +573,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

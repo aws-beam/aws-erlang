@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With License Manager, you can discover and track your commercial
-%% Linux subscriptions on running Amazon EC2 instances.
+%% Linux subscriptions on running
+%% Amazon EC2 instances.
 -module(aws_license_manager_linux_subscriptions).
 
 -export([get_service_settings/2,
@@ -27,10 +28,12 @@ get_service_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/GetServiceSettings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -44,17 +47,20 @@ get_service_settings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the running Amazon EC2 instances that were discovered with
-%% commercial Linux subscriptions.
+%% commercial Linux
+%% subscriptions.
 list_linux_subscription_instances(Client, Input) ->
     list_linux_subscription_instances(Client, Input, []).
 list_linux_subscription_instances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/ListLinuxSubscriptionInstances"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -69,18 +75,22 @@ list_linux_subscription_instances(Client, Input0, Options0) ->
 
 %% @doc Lists the Linux subscriptions that have been discovered.
 %%
-%% If you have linked your organization, the returned results will include
-%% data aggregated across your accounts in Organizations.
+%% If you have linked your
+%% organization, the returned results will include data aggregated across
+%% your accounts in
+%% Organizations.
 list_linux_subscriptions(Client, Input) ->
     list_linux_subscriptions(Client, Input, []).
 list_linux_subscriptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/ListLinuxSubscriptions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -100,10 +110,12 @@ update_service_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscription/UpdateServiceSettings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -119,6 +131,11 @@ update_service_settings(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

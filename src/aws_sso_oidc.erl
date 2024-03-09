@@ -2,11 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc IAM Identity Center OpenID Connect (OIDC) is a web service that
-%% enables a client (such as CLI or a native application) to register with
-%% IAM Identity Center.
+%% enables a client (such as CLI
+%% or a native application) to register with IAM Identity Center.
 %%
-%% The service also enables the client to fetch the user’s access token upon
-%% successful authentication and authorization with IAM Identity Center.
+%% The service also enables the client to
+%% fetch the user’s access token upon successful authentication and
+%% authorization with
+%% IAM Identity Center.
 %%
 %% IAM Identity Center uses the `sso' and `identitystore' API
 %% namespaces.
@@ -14,36 +16,43 @@
 %% Considerations for Using This Guide
 %%
 %% Before you begin using this guide, we recommend that you first review the
-%% following important information about how the IAM Identity Center OIDC
-%% service works.
+%% following
+%% important information about how the IAM Identity Center OIDC service
+%% works.
 %%
-%% <ul> <li> The IAM Identity Center OIDC service currently implements only
-%% the portions of the OAuth 2.0 Device Authorization Grant standard
-%% ([https://tools.ietf.org/html/rfc8628]) that are necessary to enable
-%% single sign-on authentication with the CLI.
+%% The IAM Identity Center OIDC service currently implements only the
+%% portions of the OAuth 2.0 Device
+%% Authorization Grant standard ([https://tools.ietf.org/html/rfc8628]) that
+%% are necessary to enable single
+%% sign-on authentication with the CLI.
 %%
-%% </li> <li> With older versions of the CLI, the service only emits OIDC
-%% access tokens, so to obtain a new token, users must explicitly
-%% re-authenticate. To access the OIDC flow that supports token refresh and
-%% doesn’t require re-authentication, update to the latest CLI version
-%% (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for OIDC token
-%% refresh and configurable IAM Identity Center session durations. For more
-%% information, see Configure Amazon Web Services access portal session
-%% duration :
+%% With older versions of the CLI, the service only emits OIDC access tokens,
+%% so to
+%% obtain a new token, users must explicitly re-authenticate. To access the
+%% OIDC flow that
+%% supports token refresh and doesn’t require re-authentication, update to
+%% the latest CLI
+%% version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for OIDC
+%% token refresh and
+%% configurable IAM Identity Center session durations. For more information,
+%% see Configure Amazon Web Services access portal session duration :
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html.
 %%
-%% </li> <li> The access tokens provided by this service grant access to all
-%% Amazon Web Services account entitlements assigned to an IAM Identity
-%% Center user, not just a particular application.
+%% The access tokens provided by this service grant access to all Amazon Web
+%% Services account
+%% entitlements assigned to an IAM Identity Center user, not just a
+%% particular application.
 %%
-%% </li> <li> The documentation in this guide does not describe the mechanism
-%% to convert the access token into Amazon Web Services Auth (“sigv4”)
-%% credentials for use with IAM-protected Amazon Web Services service
+%% The documentation in this guide does not describe the mechanism to convert
+%% the access
+%% token into Amazon Web Services Auth (“sigv4”) credentials for use with
+%% IAM-protected Amazon Web Services service
 %% endpoints. For more information, see GetRoleCredentials:
 %% https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html
-%% in the IAM Identity Center Portal API Reference Guide.
+%% in the IAM Identity Center Portal API Reference
+%% Guide.
 %%
-%% </li> </ul> For general information about IAM Identity Center, see What is
+%% For general information about IAM Identity Center, see What is
 %% IAM Identity Center?:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html in
 %% the IAM Identity Center User Guide.
@@ -65,21 +74,25 @@
 %%====================================================================
 
 %% @doc Creates and returns access and refresh tokens for clients that are
-%% authenticated using client secrets.
+%% authenticated using
+%% client secrets.
 %%
 %% The access token can be used to fetch short-term credentials for the
-%% assigned AWS accounts or to access application APIs using `bearer'
+%% assigned
+%% AWS accounts or to access application APIs using `bearer'
 %% authentication.
 create_token(Client, Input) ->
     create_token(Client, Input, []).
 create_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/token"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -93,21 +106,25 @@ create_token(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and returns access and refresh tokens for clients and
-%% applications that are authenticated using IAM entities.
+%% applications that are
+%% authenticated using IAM entities.
 %%
-%% The access token can be used to fetch short-term credentials for the
-%% assigned AWS accounts or to access application APIs using `bearer'
+%% The access token can be used to fetch short-term credentials
+%% for the assigned AWS accounts or to access application APIs using
+%% `bearer'
 %% authentication.
 create_token_with_iam(Client, Input) ->
     create_token_with_iam(Client, Input, []).
 create_token_with_iam(Client, Input0, Options0) ->
     Method = post,
     Path = ["/token?aws_iam=t"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -122,18 +139,21 @@ create_token_with_iam(Client, Input0, Options0) ->
 
 %% @doc Registers a client with IAM Identity Center.
 %%
-%% This allows clients to initiate device authorization. The output should be
-%% persisted for reuse through many authentication requests.
+%% This allows clients to initiate device authorization.
+%% The output should be persisted for reuse through many authentication
+%% requests.
 register_client(Client, Input) ->
     register_client(Client, Input, []).
 register_client(Client, Input0, Options0) ->
     Method = post,
     Path = ["/client/register"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -147,17 +167,20 @@ register_client(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Initiates device authorization by requesting a pair of verification
-%% codes from the authorization service.
+%% codes from the
+%% authorization service.
 start_device_authorization(Client, Input) ->
     start_device_authorization(Client, Input, []).
 start_device_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/device_authorization"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -173,6 +196,11 @@ start_device_authorization(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

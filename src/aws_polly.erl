@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Polly is a web service that makes it easy to synthesize speech
-%% from text.
+%% from
+%% text.
 %%
 %% The Amazon Polly service provides API operations for synthesizing
 %% high-quality speech from plain text and Speech Synthesis Markup Language
@@ -43,9 +44,9 @@
 %% @doc Deletes the specified pronunciation lexicon stored in an Amazon Web
 %% Services Region.
 %%
-%% A lexicon which has been deleted is not available for speech synthesis,
-%% nor is it possible to retrieve it using either the `GetLexicon' or
-%% `ListLexicon' APIs.
+%% A lexicon which has been deleted is not available for
+%% speech synthesis, nor is it possible to retrieve it using either the
+%% `GetLexicon' or `ListLexicon' APIs.
 %%
 %% For more information, see Managing Lexicons:
 %% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
@@ -55,10 +56,12 @@ delete_lexicon(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -71,24 +74,25 @@ delete_lexicon(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the list of voices that are available for use when requesting
-%% speech synthesis.
+%% @doc Returns the list of voices that are available for use when
+%% requesting speech synthesis.
 %%
-%% Each voice speaks a specified language, is either male or female, and is
-%% identified by an ID, which is the ASCII version of the voice name.
+%% Each voice speaks a specified language, is
+%% either male or female, and is identified by an ID, which is the ASCII
+%% version of the voice name.
 %%
-%% When synthesizing speech ( `SynthesizeSpeech' ), you provide the voice
-%% ID for the voice you want from the list of voices returned by
-%% `DescribeVoices'.
+%% When synthesizing speech ( `SynthesizeSpeech' ), you
+%% provide the voice ID for the voice you want from the list of voices
+%% returned by `DescribeVoices'.
 %%
-%% For example, you want your news reader application to read news in a
-%% specific language, but giving a user the option to choose the voice. Using
-%% the `DescribeVoices' operation you can provide the user with a list of
-%% available voices to select from.
+%% For example, you want your news reader application to read news in
+%% a specific language, but giving a user the option to choose the voice.
+%% Using the `DescribeVoices' operation you can provide the user
+%% with a list of available voices to select from.
 %%
-%% You can optionally specify a language code to filter the available voices.
-%% For example, if you specify `en-US', the operation returns a list of
-%% all available US English voices.
+%% You can optionally specify a language code to filter the available
+%% voices. For example, if you specify `en-US', the operation
+%% returns a list of all available US English voices.
 %%
 %% This operation requires permissions to perform the
 %% `polly:DescribeVoices' action.
@@ -104,9 +108,11 @@ describe_voices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/voices"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -121,8 +127,8 @@ describe_voices(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the content of the specified pronunciation lexicon stored in
-%% an Amazon Web Services Region.
+%% @doc Returns the content of the specified pronunciation lexicon stored
+%% in an Amazon Web Services Region.
 %%
 %% For more information, see Managing Lexicons:
 %% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
@@ -138,9 +144,11 @@ get_lexicon(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -165,9 +173,11 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/synthesisTasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -192,9 +202,11 @@ list_lexicons(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/lexicons"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -209,8 +221,8 @@ list_lexicons(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of SpeechSynthesisTask objects ordered by their
 %% creation date.
 %%
-%% This operation can filter the tasks by their status, for example, allowing
-%% users to list only tasks that are completed.
+%% This operation can filter the tasks by their status, for
+%% example, allowing users to list only tasks that are completed.
 list_speech_synthesis_tasks(Client)
   when is_map(Client) ->
     list_speech_synthesis_tasks(Client, #{}, #{}).
@@ -223,9 +235,11 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/synthesisTasks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -241,7 +255,8 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Stores a pronunciation lexicon in an Amazon Web Services Region.
 %%
-%% If a lexicon with the same name already exists in the region, it is
+%% If
+%% a lexicon with the same name already exists in the region, it is
 %% overwritten by the new lexicon. Lexicon operations have eventual
 %% consistency, therefore, it might take some time before the lexicon is
 %% available to the SynthesizeSpeech operation.
@@ -254,10 +269,12 @@ put_lexicon(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v1/lexicons/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -273,24 +290,27 @@ put_lexicon(Client, Name, Input0, Options0) ->
 %% @doc Allows the creation of an asynchronous synthesis task, by starting a
 %% new `SpeechSynthesisTask'.
 %%
-%% This operation requires all the standard information needed for speech
-%% synthesis, plus the name of an Amazon S3 bucket for the service to store
-%% the output of the synthesis task and two optional parameters
-%% (`OutputS3KeyPrefix' and `SnsTopicArn'). Once the synthesis task
-%% is created, this operation will return a `SpeechSynthesisTask' object,
-%% which will include an identifier of this task as well as the current
-%% status. The `SpeechSynthesisTask' object is available for 72 hours
-%% after starting the asynchronous synthesis task.
+%% This operation requires all the
+%% standard information needed for speech synthesis, plus the name of an
+%% Amazon S3 bucket for the service to store the output of the synthesis task
+%% and two optional parameters (`OutputS3KeyPrefix' and
+%% `SnsTopicArn'). Once the synthesis task is created, this
+%% operation will return a `SpeechSynthesisTask' object, which
+%% will include an identifier of this task as well as the current status. The
+%% `SpeechSynthesisTask' object is available for 72 hours after
+%% starting the asynchronous synthesis task.
 start_speech_synthesis_task(Client, Input) ->
     start_speech_synthesis_task(Client, Input, []).
 start_speech_synthesis_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/synthesisTasks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -316,10 +336,12 @@ synthesize_speech(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/speech"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -352,6 +374,11 @@ synthesize_speech(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

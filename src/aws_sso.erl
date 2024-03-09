@@ -2,28 +2,32 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS IAM Identity Center (successor to AWS Single Sign-On) Portal is a
-%% web service that makes it easy for you to assign user access to IAM
-%% Identity Center resources such as the AWS access portal.
+%% web service that makes it easy for you to assign user access to
+%% IAM Identity Center resources such as the AWS access portal.
 %%
-%% Users can get AWS account applications and roles assigned to them and get
-%% federated into the application.
+%% Users can get AWS account applications and roles
+%% assigned to them and get federated into the application.
 %%
 %% Although AWS Single Sign-On was renamed, the `sso' and
 %% `identitystore' API namespaces will continue to retain their original
-%% name for backward compatibility purposes. For more information, see IAM
-%% Identity Center rename:
+%% name for
+%% backward compatibility purposes. For more information, see IAM Identity
+%% Center rename:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed.
 %%
 %% This reference guide describes the IAM Identity Center Portal operations
-%% that you can call programatically and includes detailed information on
-%% data types and errors.
+%% that you can call
+%% programatically and includes detailed information on data types and
+%% errors.
 %%
 %% AWS provides SDKs that consist of libraries and sample code for various
-%% programming languages and platforms, such as Java, Ruby, .Net, iOS, or
-%% Android. The SDKs provide a convenient way to create programmatic access
-%% to IAM Identity Center and other AWS services. For more information about
-%% the AWS SDKs, including how to download and install them, see Tools for
-%% Amazon Web Services: http://aws.amazon.com/tools/.
+%% programming
+%% languages and platforms, such as Java, Ruby, .Net, iOS, or Android. The
+%% SDKs provide a
+%% convenient way to create programmatic access to IAM Identity Center and
+%% other AWS services. For more
+%% information about the AWS SDKs, including how to download and install
+%% them, see Tools for Amazon Web Services: http://aws.amazon.com/tools/.
 -module(aws_sso).
 
 -export([get_role_credentials/4,
@@ -45,7 +49,8 @@
 %%====================================================================
 
 %% @doc Returns the STS short-term credentials for a given role name that is
-%% assigned to the user.
+%% assigned to the
+%% user.
 get_role_credentials(Client, AccountId, RoleName, AccessToken)
   when is_map(Client) ->
     get_role_credentials(Client, AccountId, RoleName, AccessToken, #{}, #{}).
@@ -57,10 +62,12 @@ get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, Headers
 get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/federation/credentials"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -90,10 +97,12 @@ list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap)
 list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assignment/roles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -113,11 +122,12 @@ list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options
 
 %% @doc Lists all AWS accounts assigned to the user.
 %%
-%% These AWS accounts are assigned by the administrator of the account. For
-%% more information, see Assign User Access:
+%% These AWS accounts are assigned by the
+%% administrator of the account. For more information, see Assign User
+%% Access:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers
-%% in the IAM Identity Center User Guide. This operation returns a paginated
-%% response.
+%% in the IAM Identity Center User Guide. This operation
+%% returns a paginated response.
 list_accounts(Client, AccessToken)
   when is_map(Client) ->
     list_accounts(Client, AccessToken, #{}, #{}).
@@ -129,10 +139,12 @@ list_accounts(Client, AccessToken, QueryMap, HeadersMap)
 list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assignment/accounts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -150,32 +162,41 @@ list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Removes the locally stored SSO tokens from the client-side cache and
-%% sends an API call to the IAM Identity Center service to invalidate the
-%% corresponding server-side IAM Identity Center sign in session.
+%% sends an API call to
+%% the IAM Identity Center service to invalidate the corresponding
+%% server-side IAM Identity Center sign in
+%% session.
 %%
 %% If a user uses IAM Identity Center to access the AWS CLI, the user’s IAM
-%% Identity Center sign in session is used to obtain an IAM session, as
-%% specified in the corresponding IAM Identity Center permission set. More
-%% specifically, IAM Identity Center assumes an IAM role in the target
-%% account on behalf of the user, and the corresponding temporary AWS
-%% credentials are returned to the client.
+%% Identity Center sign in session is
+%% used to obtain an IAM session, as specified in the corresponding IAM
+%% Identity Center permission set.
+%% More specifically, IAM Identity Center assumes an IAM role in the target
+%% account on behalf of the user,
+%% and the corresponding temporary AWS credentials are returned to the
+%% client.
 %%
 %% After user logout, any existing IAM role sessions that were created by
-%% using IAM Identity Center permission sets continue based on the duration
-%% configured in the permission set. For more information, see User
+%% using IAM Identity Center
+%% permission sets continue based on the duration configured in the
+%% permission set.
+%% For more information, see User
 %% authentications:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/authconcept.html
-%% in the IAM Identity Center User Guide.
+%% in the IAM Identity Center User
+%% Guide.
 logout(Client, Input) ->
     logout(Client, Input, []).
 logout(Client, Input0, Options0) ->
     Method = post,
     Path = ["/logout"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-sso_bearer_token">>, <<"accessToken">>}
@@ -193,6 +214,11 @@ logout(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

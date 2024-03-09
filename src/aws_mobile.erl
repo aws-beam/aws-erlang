@@ -1,10 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Mobile Service provides mobile app and website developers with
-%% capabilities required to configure AWS resources and bootstrap their
-%% developer desktop projects with the necessary SDKs, constants, tools and
-%% samples to make use of those resources.
+%% @doc
+%% AWS Mobile Service provides mobile app and website developers with
+%% capabilities
+%% required to configure AWS resources and bootstrap their developer desktop
+%% projects
+%% with the necessary SDKs, constants, tools and samples to make use of those
+%% resources.
 -module(aws_mobile).
 
 -export([create_project/2,
@@ -36,17 +39,20 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an AWS Mobile Hub project.
+%% @doc
+%% Creates an AWS Mobile Hub project.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -62,17 +68,20 @@ create_project(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delets a project in AWS Mobile Hub.
+%% @doc
+%% Delets a project in AWS Mobile Hub.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 delete_project(Client, ProjectId, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -85,7 +94,8 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get the bundle details for the requested bundle id.
+%% @doc
+%% Get the bundle details for the requested bundle id.
 describe_bundle(Client, BundleId)
   when is_map(Client) ->
     describe_bundle(Client, BundleId, #{}, #{}).
@@ -97,10 +107,12 @@ describe_bundle(Client, BundleId, QueryMap, HeadersMap)
 describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -108,7 +120,8 @@ describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets details about a project in AWS Mobile Hub.
+%% @doc
+%% Gets details about a project in AWS Mobile Hub.
 describe_project(Client, ProjectId)
   when is_map(Client) ->
     describe_project(Client, ProjectId, #{}, #{}).
@@ -120,10 +133,12 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap)
 describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/project"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -136,19 +151,22 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Generates customized software development kit (SDK) and or tool
-%% packages used to integrate mobile web or mobile app clients with backend
-%% AWS resources.
+%% @doc
+%% Generates customized software development kit (SDK) and or tool packages
+%% used to integrate mobile web or mobile app clients with backend AWS
+%% resources.
 export_bundle(Client, BundleId, Input) ->
     export_bundle(Client, BundleId, Input, []).
 export_bundle(Client, BundleId, Input0, Options0) ->
     Method = post,
     Path = ["/bundles/", aws_util:encode_uri(BundleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -163,21 +181,25 @@ export_bundle(Client, BundleId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Exports project configuration to a snapshot which can be downloaded
-%% and shared.
+%% @doc
+%% Exports project configuration to a snapshot which can be downloaded and
+%% shared.
 %%
 %% Note that mobile app push credentials are encrypted in exported projects,
-%% so they can only be shared successfully within the same AWS account.
+%% so they
+%% can only be shared successfully within the same AWS account.
 export_project(Client, ProjectId, Input) ->
     export_project(Client, ProjectId, Input, []).
 export_project(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/exports/", aws_util:encode_uri(ProjectId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -190,7 +212,8 @@ export_project(Client, ProjectId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List all available bundles.
+%% @doc
+%% List all available bundles.
 list_bundles(Client)
   when is_map(Client) ->
     list_bundles(Client, #{}, #{}).
@@ -202,10 +225,12 @@ list_bundles(Client, QueryMap, HeadersMap)
 list_bundles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bundles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -218,7 +243,8 @@ list_bundles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists projects in AWS Mobile Hub.
+%% @doc
+%% Lists projects in AWS Mobile Hub.
 list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
@@ -230,10 +256,12 @@ list_projects(Client, QueryMap, HeadersMap)
 list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -246,17 +274,20 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Update an existing project.
+%% @doc
+%% Update an existing project.
 update_project(Client, Input) ->
     update_project(Client, Input, []).
 update_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -273,6 +304,11 @@ update_project(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -4,37 +4,48 @@
 %% @doc Amazon Web Services Resource Explorer is a resource search and
 %% discovery service.
 %%
-%% By using Resource Explorer, you can explore your resources using an
-%% internet search engine-like experience. Examples of resources include
-%% Amazon Relational Database Service (Amazon RDS) instances, Amazon Simple
-%% Storage Service (Amazon S3) buckets, or Amazon DynamoDB tables. You can
-%% search for your resources using resource metadata like names, tags, and
+%% By using Resource Explorer, you can
+%% explore your resources using an internet search engine-like experience.
+%% Examples of
+%% resources include Amazon Relational Database Service (Amazon RDS)
+%% instances, Amazon Simple Storage Service (Amazon S3) buckets, or Amazon
+%% DynamoDB
+%% tables. You can search for your resources using resource metadata like
+%% names, tags, and
 %% IDs. Resource Explorer can search across all of the Amazon Web Services
-%% Regions in your account in which you turn the service on, to simplify your
-%% cross-Region workloads.
+%% Regions in your account in which you turn
+%% the service on, to simplify your cross-Region workloads.
 %%
 %% Resource Explorer scans the resources in each of the Amazon Web Services
-%% Regions in your Amazon Web Services account in which you turn on Resource
-%% Explorer. Resource Explorer creates and maintains an index:
+%% Regions in your Amazon Web Services account in which
+%% you turn on Resource Explorer. Resource Explorer creates
+%% and maintains an index:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started-terms-and-concepts.html#term-index
-%% in each Region, with the details of that Region's resources.
+%% in each Region, with the details of that Region's
+%% resources.
 %%
-%% You can search across all of the indexed Regions in your account:
+%% You can search across all of the
+%% indexed Regions in your account:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
-%% by designating one of your Amazon Web Services Regions to contain the
-%% aggregator index for the account. When you promote a local index in a
-%% Region to become the aggregator index for the account:
+%% by designating one of your Amazon Web Services Regions to
+%% contain the aggregator index for the account. When you promote a local
+%% index
+%% in a Region to become the aggregator index for the account:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region-turn-on.html,
-%% Resource Explorer automatically replicates the index information from all
-%% local indexes in the other Regions to the aggregator index. Therefore, the
-%% Region with the aggregator index has a copy of all resource information
-%% for all Regions in the account where you turned on Resource Explorer. As a
-%% result, views in the aggregator index Region include resources from all of
-%% the indexed Regions in your account.
+%% Resource Explorer automatically
+%% replicates the index information from all local indexes in the other
+%% Regions to the
+%% aggregator index. Therefore, the Region with the aggregator index has a
+%% copy of all resource
+%% information for all Regions in the account where you turned on Resource
+%% Explorer. As a result,
+%% views in the aggregator index Region include resources from all of the
+%% indexed Regions in your
+%% account.
 %%
 %% For more information about Amazon Web Services Resource Explorer,
-%% including how to enable and configure the service, see the Amazon Web
-%% Services Resource Explorer User Guide:
+%% including how to enable and configure the
+%% service, see the Amazon Web Services Resource Explorer User Guide:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/.
 -module(aws_resource_explorer_2).
 
@@ -89,26 +100,30 @@
 %%====================================================================
 
 %% @doc Sets the specified view as the default for the Amazon Web Services
-%% Region in which you call this operation.
+%% Region in which you call this
+%% operation.
 %%
-%% When a user performs a `Search' that doesn't explicitly specify
-%% which view to use, then Amazon Web Services Resource Explorer
-%% automatically chooses this default view for searches performed in this
-%% Amazon Web Services Region.
+%% When a user performs a `Search' that doesn't explicitly
+%% specify which view to use, then Amazon Web Services Resource Explorer
+%% automatically chooses this default view for
+%% searches performed in this Amazon Web Services Region.
 %%
 %% If an Amazon Web Services Region doesn't have a default view
 %% configured, then users must explicitly specify a view with every
-%% `Search' operation performed in that Region.
+%% `Search'
+%% operation performed in that Region.
 associate_default_view(Client, Input) ->
     associate_default_view(Client, Input, []).
 associate_default_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AssociateDefaultView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -128,10 +143,12 @@ batch_get_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -145,73 +162,88 @@ batch_get_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Turns on Amazon Web Services Resource Explorer in the Amazon Web
-%% Services Region in which you called this operation by creating an index.
+%% Services Region in which you called this operation by creating
+%% an index.
 %%
 %% Resource Explorer begins discovering the resources in this Region and
-%% stores the details about the resources in the index so that they can be
-%% queried by using the `Search' operation. You can create only one index
-%% in a Region.
+%% stores the details
+%% about the resources in the index so that they can be queried by using the
+%% `Search' operation. You can create only one index in a Region.
 %%
-%% This operation creates only a local index. To promote the local index in
-%% one Amazon Web Services Region into the aggregator index for the Amazon
-%% Web Services account, use the `UpdateIndexType' operation. For more
-%% information, see Turning on cross-Region search by creating an aggregator
-%% index:
+%% This operation creates only a local index. To promote the
+%% local index in one Amazon Web Services Region into the aggregator index
+%% for the Amazon Web Services account, use the
+%% `UpdateIndexType' operation. For more information, see Turning on
+%% cross-Region search by creating an aggregator index:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
-%% in the Amazon Web Services Resource Explorer User Guide.
+%% in the
+%% Amazon Web Services Resource Explorer User Guide.
 %%
 %% For more details about what happens when you turn on Resource Explorer in
-%% an Amazon Web Services Region, see Turn on Resource Explorer to index your
-%% resources in an Amazon Web Services Region:
+%% an Amazon Web Services Region, see
+%% Turn
+%% on Resource Explorer to index your resources in an Amazon Web Services
+%% Region:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-service-activate.html
-%% in the Amazon Web Services Resource Explorer User Guide.
+%% in the
+%% Amazon Web Services Resource Explorer User Guide.
 %%
 %% If this is the first Amazon Web Services Region in which you've
-%% created an index for Resource Explorer, then this operation also creates a
+%% created an index for Resource Explorer, then
+%% this operation also creates a
 %% service-linked role:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html
 %% in your Amazon Web Services account that allows Resource Explorer to
-%% enumerate your resources to populate the index.
+%% enumerate
+%% your resources to populate the index.
 %%
-%% <ul> <li> Action: `resource-explorer-2:CreateIndex'
+%% Action:
+%% `resource-explorer-2:CreateIndex'
 %%
-%% Resource: The ARN of the index (as it will exist after the operation
-%% completes) in the Amazon Web Services Region and account in which
+%% Resource: The ARN of the index (as it will
+%% exist after the operation completes) in the Amazon Web Services Region and
+%% account in which
 %% you're trying to create the index. Use the wildcard character
-%% (`*') at the end of the string to match the eventual UUID. For
-%% example, the following `Resource' element restricts the role or user
-%% to creating an index in only the `us-east-2' Region of the specified
-%% account.
+%% (`*')
+%% at the end of the string to match the eventual UUID. For example, the
+%% following
+%% `Resource' element restricts the role or user to creating an
+%% index in only the `us-east-2' Region of the specified account.
 %%
-%% `&quot;Resource&quot;:
-%% &quot;arn:aws:resource-explorer-2:us-west-2:&lt;account-id&gt;:index/*&quot;'
+%% ```
+%% &quot;Resource&quot;:
+%% &quot;arn:aws:resource-explorer-2:us-west-2:&lt;account-id&gt;:index/*&quot;'''
 %%
 %% Alternatively, you can use `&quot;Resource&quot;: &quot;*&quot;' to
-%% allow the role or user to create an index in any Region.
+%% allow the role or
+%% user to create an index in any Region.
 %%
-%% </li> <li> Action: `iam:CreateServiceLinkedRole'
+%% Action:
+%% `iam:CreateServiceLinkedRole'
 %%
 %% Resource: No specific resource (*).
 %%
 %% This permission is required only the first time you create an index to
-%% turn on Resource Explorer in the account. Resource Explorer uses this to
-%% create the service-linked role needed to index the resources in your
-%% account:
+%% turn on
+%% Resource Explorer in the account. Resource Explorer uses this to create
+%% the service-linked
+%% role needed to index the resources in your account:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html.
-%% Resource Explorer uses the same service-linked role for all additional
-%% indexes you create afterwards.
-%%
-%% </li> </ul>
+%% Resource Explorer uses the
+%% same service-linked role for all additional indexes you create
+%% afterwards.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
 create_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateIndex"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -228,26 +260,32 @@ create_index(Client, Input0, Options0) ->
 %% operation.
 %%
 %% Results from queries that you make using this view include only resources
-%% that match the view's `Filters'. For more information about Amazon
-%% Web Services Resource Explorer views, see Managing views:
+%% that match the
+%% view's `Filters'. For more information about Amazon Web Services
+%% Resource Explorer views, see Managing views:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views.html
 %% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% Only the principals with an IAM identity-based policy that grants
-%% `Allow' to the `Search' action on a `Resource' with the Amazon
-%% resource name (ARN):
+%% `Allow'
+%% to the `Search' action on a `Resource' with the Amazon resource
+%% name (ARN):
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-%% of this view can `Search' using views you create with this operation.
+%% of
+%% this view can `Search' using views you create with this
+%% operation.
 create_view(Client, Input) ->
     create_view(Client, Input, []).
 create_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -264,26 +302,32 @@ create_view(Client, Input0, Options0) ->
 %% Resource Explorer in the specified Amazon Web Services Region.
 %%
 %% When you delete an index, Resource Explorer stops discovering and indexing
-%% resources in that Region. Resource Explorer also deletes all views in that
-%% Region. These actions occur as asynchronous background tasks. You can
-%% check to see when the actions are complete by using the `GetIndex'
-%% operation and checking the `Status' response value.
+%% resources in that
+%% Region. Resource Explorer also deletes all views in that Region. These
+%% actions occur as
+%% asynchronous background tasks. You can check to see when the actions are
+%% complete by
+%% using the `GetIndex' operation and checking the `Status'
+%% response value.
 %%
 %% If the index you delete is the aggregator index for the Amazon Web
-%% Services account, you must wait 24 hours before you can promote another
-%% local index to be the aggregator index for the account. Users can't
-%% perform account-wide searches using Resource Explorer until another
-%% aggregator index is configured.
+%% Services account, you must
+%% wait 24 hours before you can promote another local index to be the
+%% aggregator index for the account. Users can't perform account-wide
+%% searches using
+%% Resource Explorer until another aggregator index is configured.
 delete_index(Client, Input) ->
     delete_index(Client, Input, []).
 delete_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteIndex"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -300,18 +344,22 @@ delete_index(Client, Input0, Options0) ->
 %%
 %% If the specified view is the default view for its Amazon Web Services
 %% Region, then all `Search' operations in that Region must explicitly
-%% specify the view to use until you configure a new default by calling the
-%% `AssociateDefaultView' operation.
+%% specify the view to use
+%% until you configure a new default by calling the
+%% `AssociateDefaultView'
+%% operation.
 delete_view(Client, Input) ->
     delete_view(Client, Input, []).
 delete_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -328,22 +376,26 @@ delete_view(Client, Input0, Options0) ->
 %% Region no longer has a default view.
 %%
 %% All `Search' operations in that Region must explicitly specify a view
-%% or the operation fails. You can configure a new default by calling the
+%% or
+%% the operation fails. You can configure a new default by calling the
 %% `AssociateDefaultView' operation.
 %%
 %% If an Amazon Web Services Region doesn't have a default view
 %% configured, then users must explicitly specify a view with every
-%% `Search' operation performed in that Region.
+%% `Search'
+%% operation performed in that Region.
 disassociate_default_view(Client, Input) ->
     disassociate_default_view(Client, Input, []).
 disassociate_default_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisassociateDefaultView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -357,21 +409,25 @@ disassociate_default_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status of your account's Amazon Web Services
-%% service access, and validates the service linked role required to access
-%% the multi-account search feature.
+%% service access, and validates the service
+%% linked role required to access the multi-account search feature.
 %%
-%% Only the management account or a delegated administrator with service
-%% access enabled can invoke this API call.
+%% Only the management
+%% account or a delegated administrator with service access enabled can
+%% invoke this API
+%% call.
 get_account_level_service_configuration(Client, Input) ->
     get_account_level_service_configuration(Client, Input, []).
 get_account_level_service_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetAccountLevelServiceConfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -385,8 +441,8 @@ get_account_level_service_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the Amazon Resource Name (ARN) of the view that is the
-%% default for the Amazon Web Services Region in which you call this
-%% operation.
+%% default for the
+%% Amazon Web Services Region in which you call this operation.
 %%
 %% You can then call `GetView' to retrieve the details of that view.
 get_default_view(Client, Input) ->
@@ -395,10 +451,12 @@ get_default_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDefaultView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -412,18 +470,20 @@ get_default_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details about the Amazon Web Services Resource Explorer
-%% index in the Amazon Web Services Region in which you invoked the
-%% operation.
+%% index in the Amazon Web Services Region in which you invoked
+%% the operation.
 get_index(Client, Input) ->
     get_index(Client, Input, []).
 get_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetIndex"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -443,10 +503,12 @@ get_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -460,18 +522,20 @@ get_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all of the indexes in Amazon Web Services Regions
-%% that are currently collecting resource information for Amazon Web Services
-%% Resource Explorer.
+%% that are currently collecting
+%% resource information for Amazon Web Services Resource Explorer.
 list_indexes(Client, Input) ->
     list_indexes(Client, Input, []).
 list_indexes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListIndexes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -485,21 +549,24 @@ list_indexes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of a member's indexes in all Amazon Web Services
-%% Regions that are currently collecting resource information for Amazon Web
-%% Services Resource Explorer.
+%% Regions that are currently
+%% collecting resource information for Amazon Web Services Resource Explorer.
 %%
-%% Only the management account or a delegated administrator with service
-%% access enabled can invoke this API call.
+%% Only the management account or a
+%% delegated administrator with service access enabled can invoke this API
+%% call.
 list_indexes_for_members(Client, Input) ->
     list_indexes_for_members(Client, Input, []).
 list_indexes_for_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListIndexesForMembers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -520,10 +587,12 @@ list_supported_resource_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListSupportedResourceTypes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -549,9 +618,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -561,24 +632,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Amazon resource names (ARNs):
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-%% of the views available in the Amazon Web Services Region in which you call
-%% this operation.
+%% of the views available in the Amazon Web Services Region in which you
+%% call this operation.
 %%
-%% Always check the `NextToken' response parameter for a `null' value
-%% when calling a paginated operation. These operations can occasionally
-%% return an empty set of results even when there are more results available.
-%% The `NextToken' response parameter value is `null' only when there
-%% are no more results to display.
+%% Always check the `NextToken' response parameter
+%% for a `null' value when calling a paginated operation. These
+%% operations can
+%% occasionally return an empty set of results even when there are more
+%% results available. The
+%% `NextToken' response parameter value is `null'
+%% only
+%% when there are no more results to display.
 list_views(Client, Input) ->
     list_views(Client, Input, []).
 list_views(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListViews"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -592,23 +668,29 @@ list_views(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for resources and displays details about all resources that
-%% match the specified criteria.
+%% match the
+%% specified criteria.
 %%
 %% You must specify a query string.
 %%
 %% All search queries must use a view. If you don't explicitly specify a
-%% view, then Amazon Web Services Resource Explorer uses the default view for
-%% the Amazon Web Services Region in which you call this operation. The
-%% results are the logical intersection of the results that match both the
+%% view, then
+%% Amazon Web Services Resource Explorer uses the default view for the Amazon
+%% Web Services Region in which you call this operation.
+%% The results are the logical intersection of the results that match both
+%% the
 %% `QueryString' parameter supplied to this operation and the
 %% `SearchFilter' parameter attached to the view.
 %%
 %% For the complete syntax supported by the `QueryString' parameter, see
-%% Search query syntax reference for Resource Explorer:
+%% Search
+%% query syntax reference for Resource Explorer:
 %% https://docs.aws.amazon.com/resource-explorer/latest/APIReference/about-query-syntax.html.
 %%
 %% If your search results are empty, or are missing results that you think
-%% should be there, see Troubleshooting Resource Explorer search:
+%% should be
+%% there, see Troubleshooting Resource Explorer
+%% search:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/troubleshooting_search.html.
 search(Client, Input) ->
     search(Client, Input, []).
@@ -616,10 +698,12 @@ search(Client, Input0, Options0) ->
     Method = post,
     Path = ["/Search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -640,10 +724,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -664,10 +750,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -684,72 +772,89 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Changes the type of the index from one of the following types to the
 %% other.
 %%
-%% For more information about indexes and the role they perform in Amazon Web
-%% Services Resource Explorer, see Turning on cross-Region search by creating
-%% an aggregator index:
+%% For more
+%% information about indexes and the role they perform in Amazon Web Services
+%% Resource Explorer, see Turning on
+%% cross-Region search by creating an aggregator index:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
-%% in the Amazon Web Services Resource Explorer User Guide.
+%% in the
+%% Amazon Web Services Resource Explorer User Guide.
 %%
-%% <ul> <li> `AGGREGATOR' index type
+%% `AGGREGATOR' index type
 %%
 %% The index contains information about resources from all Amazon Web
-%% Services Regions in the Amazon Web Services account in which you've
-%% created a Resource Explorer index. Resource information from all other
-%% Regions is replicated to this Region's index.
+%% Services Regions in the
+%% Amazon Web Services account in which you've created a Resource
+%% Explorer index. Resource information from
+%% all other Regions is replicated to this Region's index.
 %%
 %% When you change the index type to `AGGREGATOR', Resource Explorer
-%% turns on replication of all discovered resource information from the other
-%% Amazon Web Services Regions in your account to this index. You can then,
-%% from this Region only, perform resource search queries that span all
-%% Amazon Web Services Regions in the Amazon Web Services account. Turning on
-%% replication from all other Regions is performed by asynchronous background
-%% tasks. You can check the status of the asynchronous tasks by using the
-%% `GetIndex' operation. When the asynchronous tasks complete, the
-%% `Status' response of that operation changes from `UPDATING' to
-%% `ACTIVE'. After that, you can start to see results from other Amazon
-%% Web Services Regions in query results. However, it can take several hours
-%% for replication from all other Regions to complete.
+%% turns on
+%% replication of all discovered resource information from the other Amazon
+%% Web Services Regions
+%% in your account to this index. You can then, from this Region only,
+%% perform
+%% resource search queries that span all Amazon Web Services Regions in the
+%% Amazon Web Services account.
+%% Turning on replication from all other Regions is performed by asynchronous
+%% background tasks. You can check the status of the asynchronous tasks by
+%% using
+%% the `GetIndex' operation. When the asynchronous tasks complete,
+%% the `Status' response of that operation changes from
+%% `UPDATING' to `ACTIVE'. After that, you can start to
+%% see results from other Amazon Web Services Regions in query results.
+%% However, it can take
+%% several hours for replication from all other Regions to complete.
 %%
 %% You can have only one aggregator index per Amazon Web Services account.
-%% Before you can promote a different index to be the aggregator index for
-%% the account, you must first demote the existing aggregator index to type
-%% `LOCAL'.
+%% Before you can
+%% promote a different index to be the aggregator index for the account, you
+%% must
+%% first demote the existing aggregator index to type `LOCAL'.
 %%
-%% </li> <li> `LOCAL' index type
+%% `LOCAL' index type
 %%
 %% The index contains information about resources in only the Amazon Web
-%% Services Region in which the index exists. If an aggregator index in
-%% another Region exists, then information in this local index is replicated
-%% to the aggregator index.
+%% Services Region in
+%% which the index exists. If an aggregator index in another Region exists,
+%% then
+%% information in this local index is replicated to the aggregator index.
 %%
 %% When you change the index type to `LOCAL', Resource Explorer turns off
-%% the replication of resource information from all other Amazon Web Services
-%% Regions in the Amazon Web Services account to this Region. The aggregator
-%% index remains in the `UPDATING' state until all replication with other
-%% Regions successfully stops. You can check the status of the asynchronous
-%% task by using the `GetIndex' operation. When Resource Explorer
-%% successfully stops all replication with other Regions, the `Status'
-%% response of that operation changes from `UPDATING' to `ACTIVE'.
-%% Separately, the resource information from other Regions that was
-%% previously stored in the index is deleted within 30 days by another
-%% background task. Until that asynchronous task completes, some results from
-%% other Regions can continue to appear in search results.
+%% the
+%% replication of resource information from all other Amazon Web Services
+%% Regions in the
+%% Amazon Web Services account to this Region. The aggregator index remains
+%% in the
+%% `UPDATING' state until all replication with other Regions
+%% successfully stops. You can check the status of the asynchronous task by
+%% using
+%% the `GetIndex' operation. When Resource Explorer successfully stops
+%% all
+%% replication with other Regions, the `Status' response of that
+%% operation changes from `UPDATING' to `ACTIVE'. Separately,
+%% the resource information from other Regions that was previously stored in
+%% the
+%% index is deleted within 30 days by another background task. Until that
+%% asynchronous task completes, some results from other Regions can continue
+%% to
+%% appear in search results.
 %%
-%% After you demote an aggregator index to a local index, you must wait 24
-%% hours before you can promote another index to be the new aggregator index
-%% for the account.
-%%
-%% </li> </ul>
+%% After you demote an aggregator index to a local index, you must wait
+%% 24 hours before you can promote another index to be the new
+%% aggregator index for the account.
 update_index_type(Client, Input) ->
     update_index_type(Client, Input, []).
 update_index_type(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateIndexType"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -764,18 +869,20 @@ update_index_type(Client, Input0, Options0) ->
 
 %% @doc Modifies some of the details of a view.
 %%
-%% You can change the filter string and the list of included properties. You
-%% can't change the name of the view.
+%% You can change the filter string and the list
+%% of included properties. You can't change the name of the view.
 update_view(Client, Input) ->
     update_view(Client, Input, []).
 update_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateView"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -791,6 +898,11 @@ update_view(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

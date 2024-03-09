@@ -2,45 +2,50 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc These interfaces allow you to apply the Amazon Web Services library
-%% of pre-defined controls to your organizational units, programmatically.
+%% of pre-defined
+%% controls to your organizational units, programmatically.
 %%
 %% In Amazon Web Services Control Tower, the terms &quot;control&quot; and
 %% &quot;guardrail&quot; are synonyms.
 %%
 %% To call these APIs, you'll need to know:
 %%
-%% <ul> <li> the `controlIdentifier' for the control--or guardrail--you
-%% are targeting.
+%% the `controlIdentifier' for the control--or guardrail--you are
+%% targeting.
 %%
-%% </li> <li> the ARN associated with the target organizational unit (OU),
-%% which we call the `targetIdentifier'.
+%% the ARN associated with the target organizational unit (OU), which we call
+%% the `targetIdentifier'.
 %%
-%% </li> <li> the ARN associated with a resource that you wish to tag or
-%% untag.
+%% the ARN associated with a resource that you wish to tag or untag.
 %%
-%% </li> </ul> To get the `controlIdentifier' for your Amazon Web
-%% Services Control Tower control:
+%% To get the `controlIdentifier' for your Amazon Web Services Control
+%% Tower
+%% control:
 %%
-%% The `controlIdentifier' is an ARN that is specified for each control.
-%% You can view the `controlIdentifier' in the console on the Control
-%% details page, as well as in the documentation.
+%% The `controlIdentifier' is an ARN that is specified for each
+%% control. You can view the `controlIdentifier' in the console on the
+%% Control details page, as well as in the documentation.
 %%
 %% The `controlIdentifier' is unique in each Amazon Web Services Region
-%% for each control. You can find the `controlIdentifier' for each Region
-%% and control in the Tables of control metadata:
+%% for each control. You can
+%% find the `controlIdentifier' for each Region and control in the Tables
+%% of control metadata:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html
 %% in the Amazon Web Services Control Tower User Guide.
 %%
 %% A quick-reference list of control identifers for the Amazon Web Services
-%% Control Tower legacy Strongly recommended and Elective controls is given
-%% in Resource identifiers for APIs and controls:
+%% Control Tower legacy Strongly recommended and
+%% Elective controls is given in Resource identifiers for
+%% APIs and controls:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html.html
 %% in the Controls reference guide section:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html
 %% of the Amazon Web Services Control Tower User Guide. Remember that
-%% Mandatory controls cannot be added or removed.
+%% Mandatory controls
+%% cannot be added or removed.
 %%
-%% ARN format: `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}'
+%% ARN format:
+%% `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}'
 %%
 %% Example:
 %%
@@ -59,49 +64,54 @@
 %%
 %% == Details and examples ==
 %%
-%% <ul> <li> Control API input and output examples with CLI:
+%% Control API input and output examples with CLI:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html
 %%
-%% </li> <li> Enable controls with CloudFormation:
+%% Enable controls with CloudFormation:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/enable-controls.html
 %%
-%% </li> <li> Control metadata tables:
+%% Control metadata tables:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html
 %%
-%% </li> <li> List of identifiers for legacy controls:
+%% List of identifiers for legacy controls:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html
 %%
-%% </li> <li> Controls reference guide:
+%% Controls reference guide:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/controls.html
 %%
-%% </li> <li> Controls library groupings:
+%% Controls library groupings:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/controls-reference.html
 %%
-%% </li> <li> Creating Amazon Web Services Control Tower resources with
-%% Amazon Web Services CloudFormation:
+%% Creating Amazon Web Services Control Tower resources with Amazon Web
+%% Services CloudFormation:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html
 %%
-%% </li> </ul> To view the open source resource repository on GitHub, see
+%% To view the open source resource repository on GitHub, see
 %% aws-cloudformation/aws-cloudformation-resource-providers-controltower:
 %% https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower
 %%
 %% Recording API Requests
 %%
 %% Amazon Web Services Control Tower supports Amazon Web Services CloudTrail,
-%% a service that records Amazon Web Services API calls for your Amazon Web
-%% Services account and delivers log files to an Amazon S3 bucket. By using
-%% information collected by CloudTrail, you can determine which requests the
-%% Amazon Web Services Control Tower service received, who made the request
-%% and when, and so on. For more about Amazon Web Services Control Tower and
-%% its support for CloudTrail, see Logging Amazon Web Services Control Tower
+%% a service that records Amazon Web Services API calls for your
+%% Amazon Web Services account and delivers log files to an Amazon S3 bucket.
+%% By using information collected by
+%% CloudTrail, you can determine which requests the Amazon Web Services
+%% Control Tower service received, who made
+%% the request and when, and so on. For more about Amazon Web Services
+%% Control Tower and its support for
+%% CloudTrail, see Logging Amazon Web Services Control Tower
 %% Actions with Amazon Web Services CloudTrail:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html
 %% in the Amazon Web Services Control Tower User Guide. To learn more about
 %% CloudTrail, including how to turn it on and find your log files, see the
-%% Amazon Web Services CloudTrail User Guide.
+%% Amazon Web Services CloudTrail User
+%% Guide.
 -module(aws_controltower).
 
--export([delete_landing_zone/2,
+-export([create_landing_zone/2,
+         create_landing_zone/3,
+         delete_landing_zone/2,
          delete_landing_zone/3,
          disable_baseline/2,
          disable_baseline/3,
@@ -121,6 +131,8 @@
          get_enabled_baseline/3,
          get_enabled_control/2,
          get_enabled_control/3,
+         get_landing_zone/2,
+         get_landing_zone/3,
          get_landing_zone_operation/2,
          get_landing_zone_operation/3,
          list_baselines/2,
@@ -143,7 +155,11 @@
          untag_resource/3,
          untag_resource/4,
          update_enabled_baseline/2,
-         update_enabled_baseline/3]).
+         update_enabled_baseline/3,
+         update_enabled_control/2,
+         update_enabled_control/3,
+         update_landing_zone/2,
+         update_landing_zone/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -151,21 +167,53 @@
 %% API
 %%====================================================================
 
+%% @doc Creates a new landing zone.
+%%
+%% This API call starts an asynchronous operation that creates and configures
+%% a landing zone,
+%% based on the parameters specified in the manifest JSON file.
+create_landing_zone(Client, Input) ->
+    create_landing_zone(Client, Input, []).
+create_landing_zone(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/create-landingzone"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Decommissions a landing zone.
 %%
 %% This API call starts an asynchronous operation that deletes Amazon Web
-%% Services Control Tower resources deployed in accounts managed by Amazon
-%% Web Services Control Tower.
+%% Services Control Tower
+%% resources deployed in accounts managed by Amazon Web Services Control
+%% Tower.
 delete_landing_zone(Client, Input) ->
     delete_landing_zone(Client, Input, []).
 delete_landing_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-landingzone"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -189,10 +237,12 @@ disable_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disable-baseline"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -207,10 +257,13 @@ disable_baseline(Client, Input0, Options0) ->
 
 %% @doc This API call turns off a control.
 %%
-%% It starts an asynchronous operation that deletes AWS resources on the
-%% specified organizational unit and the accounts it contains. The resources
+%% It starts an asynchronous operation that deletes AWS
+%% resources on the specified organizational unit and the accounts it
+%% contains. The resources
 %% will vary according to the control that you specify. For usage examples,
-%% see the Amazon Web Services Control Tower User Guide :
+%% see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 disable_control(Client, Input) ->
     disable_control(Client, Input, []).
@@ -218,10 +271,12 @@ disable_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disable-control"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -244,10 +299,12 @@ enable_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enable-baseline"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -264,9 +321,11 @@ enable_baseline(Client, Input0, Options0) ->
 %%
 %% It starts an asynchronous operation that creates Amazon Web Services
 %% resources on the specified organizational unit and the accounts it
-%% contains. The resources created will vary according to the control that
-%% you specify. For usage examples, see the Amazon Web Services Control Tower
-%% User Guide :
+%% contains. The resources
+%% created will vary according to the control that you specify. For usage
+%% examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 enable_control(Client, Input) ->
     enable_control(Client, Input, []).
@@ -274,10 +333,12 @@ enable_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enable-control"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -298,10 +359,12 @@ get_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-baseline"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -326,10 +389,12 @@ get_baseline_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-baseline-operation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -345,9 +410,10 @@ get_baseline_operation(Client, Input0, Options0) ->
 %% @doc Returns the status of a particular `EnableControl' or
 %% `DisableControl' operation.
 %%
-%% Displays a message in case of error. Details for an operation are
-%% available for 90 days. For usage examples, see the Amazon Web Services
-%% Control Tower User Guide :
+%% Displays a message in case of error. Details for an
+%% operation are available for 90 days. For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 get_control_operation(Client, Input) ->
     get_control_operation(Client, Input, []).
@@ -355,10 +421,12 @@ get_control_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-control-operation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -379,10 +447,12 @@ get_enabled_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-enabled-baseline"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -397,7 +467,9 @@ get_enabled_baseline(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about an enabled control.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 get_enabled_control(Client, Input) ->
     get_enabled_control(Client, Input, []).
@@ -405,10 +477,39 @@ get_enabled_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-enabled-control"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns details about the landing zone.
+%%
+%% Displays a message in case of error.
+get_landing_zone(Client, Input) ->
+    get_landing_zone(Client, Input, []).
+get_landing_zone(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-landingzone"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -423,17 +524,20 @@ get_enabled_control(Client, Input0, Options0) ->
 
 %% @doc Returns the status of the specified landing zone operation.
 %%
-%% Details for an operation are available for 60 days.
+%% Details for an operation are available for
+%% 60 days.
 get_landing_zone_operation(Client, Input) ->
     get_landing_zone_operation(Client, Input, []).
 get_landing_zone_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-landingzone-operation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -453,10 +557,12 @@ list_baselines(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-baselines"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -480,10 +586,12 @@ list_enabled_baselines(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-enabled-baselines"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -497,9 +605,12 @@ list_enabled_baselines(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the controls enabled by Amazon Web Services Control Tower on
-%% the specified organizational unit and the accounts it contains.
+%% the specified organizational unit and
+%% the accounts it contains.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 list_enabled_controls(Client, Input) ->
     list_enabled_controls(Client, Input, []).
@@ -507,10 +618,12 @@ list_enabled_controls(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-enabled-controls"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -526,8 +639,9 @@ list_enabled_controls(Client, Input0, Options0) ->
 %% @doc Returns the landing zone ARN for the landing zone deployed in your
 %% managed account.
 %%
-%% This API also creates an ARN for existing accounts that do not yet have a
-%% landing zone ARN.
+%% This API also
+%% creates an ARN for existing accounts that do not yet have a landing zone
+%% ARN.
 %%
 %% Returns one landing zone ARN.
 list_landing_zones(Client, Input) ->
@@ -536,10 +650,12 @@ list_landing_zones(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-landingzones"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -554,7 +670,9 @@ list_landing_zones(Client, Input0, Options0) ->
 
 %% @doc Returns a list of tags associated with the resource.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -568,9 +686,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -588,10 +708,12 @@ reset_enabled_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reset-enabled-baseline"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -606,18 +728,20 @@ reset_enabled_baseline(Client, Input0, Options0) ->
 
 %% @doc This API call resets a landing zone.
 %%
-%% It starts an asynchronous operation that resets the landing zone to the
-%% parameters specified in its original configuration.
+%% It starts an asynchronous operation that resets the
+%% landing zone to the parameters specified in its original configuration.
 reset_landing_zone(Client, Input) ->
     reset_landing_zone(Client, Input, []).
 reset_landing_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reset-landingzone"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -632,7 +756,9 @@ reset_landing_zone(Client, Input0, Options0) ->
 
 %% @doc Applies tags to a resource.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -640,10 +766,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -658,7 +786,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes tags from a resource.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
@@ -666,10 +796,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -691,10 +823,85 @@ update_enabled_baseline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-enabled-baseline"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Updates the configuration of an already enabled control.
+%%
+%% If the enabled control shows an `EnablementStatus' of SUCCEEDED,
+%% supply parameters that are different from the currently configured
+%% parameters. Otherwise, Amazon Web Services Control Tower will not accept
+%% the request.
+%%
+%% If the enabled control shows an `EnablementStatus' of FAILED, Amazon
+%% Web Services Control Tower will update the control to match any valid
+%% parameters that you supply.
+%%
+%% If the `DriftSummary' status for the control shows as DRIFTED, you
+%% cannot call this API. Instead, you can update the control by calling
+%% `DisableControl' and again calling `EnableControl', or you can run
+%% an extending governance operation. For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html
+update_enabled_control(Client, Input) ->
+    update_enabled_control(Client, Input, []).
+update_enabled_control(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-enabled-control"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API call updates the landing zone.
+%%
+%% It starts an asynchronous operation that updates the
+%% landing zone based on the new landing zone version, or on the changed
+%% parameters specified in the
+%% updated manifest file.
+update_landing_zone(Client, Input) ->
+    update_landing_zone(Client, Input, []).
+update_landing_zone(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-landingzone"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -710,6 +917,11 @@ update_enabled_baseline(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

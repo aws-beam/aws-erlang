@@ -75,20 +75,24 @@
 %%====================================================================
 
 %% @doc Associates an attribute group with an application to augment the
-%% application's metadata with the group's attributes.
+%% application's metadata
+%% with the group's attributes.
 %%
-%% This feature enables applications to be described with user-defined
-%% details that are machine-readable, such as third-party integrations.
+%% This feature enables applications to be described with
+%% user-defined details that are machine-readable, such as third-party
+%% integrations.
 associate_attribute_group(Client, Application, AttributeGroup, Input) ->
     associate_attribute_group(Client, Application, AttributeGroup, Input, []).
 associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -101,35 +105,36 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a resource with an application.
+%% @doc
+%% Associates a resource with an application.
 %%
-%% The resource can be specified by its ARN or name. The application can be
-%% specified by ARN, ID, or name.
+%% The resource can be specified by its ARN or name.
+%% The application can be specified by ARN, ID, or name.
 %%
 %% Minimum permissions
 %%
 %% You must have the following permissions to associate a resource using the
 %% `OPTIONS' parameter set to `APPLY_APPLICATION_TAG'.
 %%
-%% <ul> <li> `tag:GetResources'
+%% `tag:GetResources'
 %%
-%% </li> <li> `tag:TagResources'
+%% `tag:TagResources'
 %%
-%% </li> </ul> You must also have these additional permissions if you
-%% don't use the `AWSServiceCatalogAppRegistryFullAccess' policy. For
-%% more information, see AWSServiceCatalogAppRegistryFullAccess:
+%% You must also have these additional permissions if you don't use the
+%% `AWSServiceCatalogAppRegistryFullAccess' policy.
+%% For more information, see AWSServiceCatalogAppRegistryFullAccess:
 %% https://docs.aws.amazon.com/servicecatalog/latest/arguide/full.html in the
 %% AppRegistry Administrator Guide.
 %%
-%% <ul> <li> `resource-groups:AssociateResource'
+%% `resource-groups:AssociateResource'
 %%
-%% </li> <li> `cloudformation:UpdateStack'
+%% `cloudformation:UpdateStack'
 %%
-%% </li> <li> `cloudformation:DescribeStacks'
+%% `cloudformation:DescribeStacks'
 %%
-%% </li> </ul> In addition, you must have the tagging permission defined by
-%% the Amazon Web Services service that creates the resource. For more
-%% information, see TagResources:
+%% In addition, you must have the tagging permission defined by the Amazon
+%% Web Services service that creates the resource.
+%% For more information, see TagResources:
 %% https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_TagResources.html
 %% in the Resource Groups Tagging API Reference.
 associate_resource(Client, Application, Resource, ResourceType, Input) ->
@@ -137,11 +142,13 @@ associate_resource(Client, Application, Resource, ResourceType, Input) ->
 associate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -162,10 +169,12 @@ create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -181,19 +190,24 @@ create_application(Client, Input0, Options0) ->
 %% @doc Creates a new attribute group as a container for user-defined
 %% attributes.
 %%
-%% This feature enables users to have full control over their cloud
-%% application's metadata in a rich machine-readable format to facilitate
-%% integration with automated workflows and third-party tools.
+%% This feature
+%% enables users to have full control over their cloud application's
+%% metadata in a rich
+%% machine-readable format to facilitate integration with automated workflows
+%% and third-party
+%% tools.
 create_attribute_group(Client, Input) ->
     create_attribute_group(Client, Input, []).
 create_attribute_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/attribute-groups"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -216,11 +230,13 @@ delete_application(Client, Application, Input) ->
 delete_application(Client, Application, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -240,11 +256,13 @@ delete_attribute_group(Client, AttributeGroup, Input) ->
 delete_attribute_group(Client, AttributeGroup, Input0, Options0) ->
     Method = delete,
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -267,11 +285,13 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input) ->
 disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -284,7 +304,8 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a resource from application.
+%% @doc
+%% Disassociates a resource from application.
 %%
 %% Both the resource and the application can be specified either by ID or
 %% name.
@@ -296,25 +317,25 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 %% option for AssociateResource:
 %% https://docs.aws.amazon.com/servicecatalog/latest/dg/API_app-registry_AssociateResource.html.
 %%
-%% <ul> <li> `tag:GetResources'
+%% `tag:GetResources'
 %%
-%% </li> <li> `tag:UntagResources'
+%% `tag:UntagResources'
 %%
-%% </li> </ul> You must also have the following permissions if you don't
-%% use the `AWSServiceCatalogAppRegistryFullAccess' policy. For more
-%% information, see AWSServiceCatalogAppRegistryFullAccess:
+%% You must also have the following permissions if you don't use the
+%% `AWSServiceCatalogAppRegistryFullAccess' policy.
+%% For more information, see AWSServiceCatalogAppRegistryFullAccess:
 %% https://docs.aws.amazon.com/servicecatalog/latest/arguide/full.html in the
 %% AppRegistry Administrator Guide.
 %%
-%% <ul> <li> `resource-groups:DisassociateResource'
+%% `resource-groups:DisassociateResource'
 %%
-%% </li> <li> `cloudformation:UpdateStack'
+%% `cloudformation:UpdateStack'
 %%
-%% </li> <li> `cloudformation:DescribeStacks'
+%% `cloudformation:DescribeStacks'
 %%
-%% </li> </ul> In addition, you must have the tagging permission defined by
-%% the Amazon Web Services service that creates the resource. For more
-%% information, see UntagResources:
+%% In addition, you must have the tagging permission defined by the Amazon
+%% Web Services service that creates the resource.
+%% For more information, see UntagResources:
 %% https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_UntTagResources.html
 %% in the Resource Groups Tagging API Reference.
 disassociate_resource(Client, Application, Resource, ResourceType, Input) ->
@@ -322,11 +343,13 @@ disassociate_resource(Client, Application, Resource, ResourceType, Input) ->
 disassociate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -339,12 +362,25 @@ disassociate_resource(Client, Application, Resource, ResourceType, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves metadata information about one of your applications.
+%% @doc
+%% Retrieves metadata information
+%% about one
+%% of your applications.
 %%
-%% The application can be specified by its ARN, ID, or name (which is unique
-%% within one account in one region at a given point in time). Specify by ARN
-%% or ID in automated workflows if you want to make sure that the exact same
-%% application is returned or a `ResourceNotFoundException' is thrown,
+%% The application can be specified
+%% by its ARN, ID, or name
+%% (which is unique
+%% within one account
+%% in one region
+%% at a given point
+%% in time).
+%% Specify
+%% by ARN or ID
+%% in automated workflows
+%% if you want
+%% to make sure
+%% that the exact same application is returned or a
+%% `ResourceNotFoundException' is thrown,
 %% avoiding the ABA addressing problem.
 get_application(Client, Application)
   when is_map(Client) ->
@@ -357,10 +393,12 @@ get_application(Client, Application, QueryMap, HeadersMap)
 get_application(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -380,10 +418,12 @@ get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, H
 get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -397,9 +437,12 @@ get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves an attribute group by its ARN, ID, or name.
+%% @doc
+%% Retrieves an attribute group
+%% by its ARN, ID, or name.
 %%
-%% The attribute group can be specified by its ARN, ID, or name.
+%% The attribute group can be specified
+%% by its ARN, ID, or name.
 get_attribute_group(Client, AttributeGroup)
   when is_map(Client) ->
     get_attribute_group(Client, AttributeGroup, #{}, #{}).
@@ -411,10 +454,12 @@ get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap)
 get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -422,7 +467,9 @@ get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a `TagKey' configuration from an account.
+%% @doc
+%% Retrieves a `TagKey' configuration
+%% from an account.
 get_configuration(Client)
   when is_map(Client) ->
     get_configuration(Client, #{}, #{}).
@@ -434,10 +481,12 @@ get_configuration(Client, QueryMap, HeadersMap)
 get_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -459,10 +508,12 @@ list_applications(Client, QueryMap, HeadersMap)
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -490,10 +541,12 @@ list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap)
 list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -506,15 +559,24 @@ list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all of the resources that are associated with the specified
-%% application.
+%% @doc
+%% Lists all
+%% of the resources
+%% that are associated
+%% with the specified application.
 %%
 %% Results are paginated.
 %%
-%% If you share an application, and a consumer account associates a tag query
-%% to the application, all of the users who can access the application can
-%% also view the tag values in all accounts that are associated with it using
-%% this API.
+%% If you share an application,
+%% and a consumer account associates a tag query
+%% to the application,
+%% all of the users
+%% who can access the application
+%% can also view the tag values
+%% in all accounts
+%% that are associated
+%% with it
+%% using this API.
 list_associated_resources(Client, Application)
   when is_map(Client) ->
     list_associated_resources(Client, Application, #{}, #{}).
@@ -526,10 +588,12 @@ list_associated_resources(Client, Application, QueryMap, HeadersMap)
 list_associated_resources(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/resources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -556,10 +620,12 @@ list_attribute_groups(Client, QueryMap, HeadersMap)
 list_attribute_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attribute-groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -587,10 +653,12 @@ list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap)
 list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-group-details"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -615,10 +683,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -626,17 +696,21 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Associates a `TagKey' configuration to an account.
+%% @doc
+%% Associates a `TagKey' configuration
+%% to an account.
 put_configuration(Client, Input) ->
     put_configuration(Client, Input, []).
 put_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -660,11 +734,13 @@ sync_resource(Client, Resource, ResourceType, Input) ->
 sync_resource(Client, Resource, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/sync/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -689,11 +765,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -714,11 +792,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -738,11 +818,13 @@ update_application(Client, Application, Input) ->
 update_application(Client, Application, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(Application), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -761,11 +843,13 @@ update_attribute_group(Client, AttributeGroup, Input) ->
 update_attribute_group(Client, AttributeGroup, Input0, Options0) ->
     Method = patch,
     Path = ["/attribute-groups/", aws_util:encode_uri(AttributeGroup), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -781,6 +865,11 @@ update_attribute_group(Client, AttributeGroup, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

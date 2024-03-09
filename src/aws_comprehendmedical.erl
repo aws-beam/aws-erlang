@@ -73,7 +73,8 @@
 
 %% @doc Gets the properties associated with a medical entities detection job.
 %%
-%% Use this operation to get the status of a detection job.
+%% Use this operation
+%% to get the status of a detection job.
 describe_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entities_detection_v2_job(Client, Input, []).
@@ -83,7 +84,8 @@ describe_entities_detection_v2_job(Client, Input, Options)
 
 %% @doc Gets the properties associated with an InferICD10CM job.
 %%
-%% Use this operation to get the status of an inference job.
+%% Use this operation to get the
+%% status of an inference job.
 describe_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_icd10_cm_inference_job(Client, Input, []).
@@ -104,7 +106,8 @@ describe_phi_detection_job(Client, Input, Options)
 
 %% @doc Gets the properties associated with an InferRxNorm job.
 %%
-%% Use this operation to get the status of an inference job.
+%% Use this operation to get the
+%% status of an inference job.
 describe_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rx_norm_inference_job(Client, Input, []).
@@ -112,7 +115,8 @@ describe_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRxNormInferenceJob">>, Input, Options).
 
-%% @doc Gets the properties associated with an InferSNOMEDCT job.
+%% @doc
+%% Gets the properties associated with an InferSNOMEDCT job.
 %%
 %% Use this operation to get the status of an inference job.
 describe_s_n_o_m_e_d_c_t_inference_job(Client, Input)
@@ -127,8 +131,10 @@ describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
 %% You should use the `DetectEntitiesV2' operation instead.
 %%
 %% Inspects the clinical text for a variety of medical entities and returns
-%% specific information about them such as entity category, location, and
-%% confidence score on that information.
+%% specific
+%% information about them such as entity category, location, and confidence
+%% score on that
+%% information.
 detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
@@ -137,17 +143,21 @@ detect_entities(Client, Input, Options)
     request(Client, <<"DetectEntities">>, Input, Options).
 
 %% @doc Inspects the clinical text for a variety of medical entities and
-%% returns specific information about them such as entity category, location,
-%% and confidence score on that information.
+%% returns specific
+%% information about them such as entity category, location, and confidence
+%% score on that
+%% information.
 %%
 %% Amazon Comprehend Medical only detects medical entities in English
-%% language texts.
+%% language
+%% texts.
 %%
 %% The `DetectEntitiesV2' operation replaces the `DetectEntities'
 %% operation. This new action uses a different model for determining the
-%% entities in your medical text and changes the way that some entities are
-%% returned in the output. You should use the `DetectEntitiesV2'
-%% operation in all new applications.
+%% entities in your medical
+%% text and changes the way that some entities are returned in the output.
+%% You should use the
+%% `DetectEntitiesV2' operation in all new applications.
 %%
 %% The `DetectEntitiesV2' operation returns the `Acuity' and
 %% `Direction' entities as attributes instead of types.
@@ -159,10 +169,11 @@ detect_entities_v2(Client, Input, Options)
     request(Client, <<"DetectEntitiesV2">>, Input, Options).
 
 %% @doc Inspects the clinical text for protected health information (PHI)
-%% entities and returns the entity category, location, and confidence score
-%% for each entity.
+%% entities and returns
+%% the entity category, location, and confidence score for each entity.
 %%
-%% Amazon Comprehend Medical only detects entities in English language texts.
+%% Amazon Comprehend Medical
+%% only detects entities in English language texts.
 detect_phi(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_phi(Client, Input, []).
@@ -171,11 +182,13 @@ detect_phi(Client, Input, Options)
     request(Client, <<"DetectPHI">>, Input, Options).
 
 %% @doc InferICD10CM detects medical conditions as entities listed in a
-%% patient record and links those entities to normalized concept identifiers
-%% in the ICD-10-CM knowledge base from the Centers for Disease Control.
+%% patient record and links
+%% those entities to normalized concept identifiers in the ICD-10-CM
+%% knowledge base from the
+%% Centers for Disease Control.
 %%
-%% Amazon Comprehend Medical only detects medical entities in English
-%% language texts.
+%% Amazon Comprehend Medical only detects medical entities in
+%% English language texts.
 infer_icd10_cm(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_icd10_cm(Client, Input, []).
@@ -184,8 +197,9 @@ infer_icd10_cm(Client, Input, Options)
     request(Client, <<"InferICD10CM">>, Input, Options).
 
 %% @doc InferRxNorm detects medications as entities listed in a patient
-%% record and links to the normalized concept identifiers in the RxNorm
-%% database from the National Library of Medicine.
+%% record and links to the
+%% normalized concept identifiers in the RxNorm database from the National
+%% Library of Medicine.
 %%
 %% Amazon Comprehend Medical only detects medical entities in English
 %% language texts.
@@ -196,9 +210,10 @@ infer_rx_norm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InferRxNorm">>, Input, Options).
 
-%% @doc InferSNOMEDCT detects possible medical concepts as entities and links
-%% them to codes from the Systematized Nomenclature of Medicine, Clinical
-%% Terms (SNOMED-CT) ontology
+%% @doc
+%% InferSNOMEDCT detects possible medical concepts as entities and links them
+%% to codes from the Systematized Nomenclature of Medicine, Clinical Terms
+%% (SNOMED-CT) ontology
 infer_s_n_o_m_e_d_c_t(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_s_n_o_m_e_d_c_t(Client, Input, []).
@@ -223,7 +238,8 @@ list_icd10_cm_inference_jobs(Client, Input, Options)
     request(Client, <<"ListICD10CMInferenceJobs">>, Input, Options).
 
 %% @doc Gets a list of protected health information (PHI) detection jobs you
-%% have submitted.
+%% have
+%% submitted.
 list_phi_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phi_detection_jobs(Client, Input, []).
@@ -239,7 +255,8 @@ list_rx_norm_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRxNormInferenceJobs">>, Input, Options).
 
-%% @doc Gets a list of InferSNOMEDCT jobs a user has submitted.
+%% @doc
+%% Gets a list of InferSNOMEDCT jobs a user has submitted.
 list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, []).
@@ -250,8 +267,9 @@ list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, Options)
 %% @doc Starts an asynchronous medical entity detection job for a collection
 %% of documents.
 %%
-%% Use the `DescribeEntitiesDetectionV2Job' operation to track the status
-%% of a job.
+%% Use the
+%% `DescribeEntitiesDetectionV2Job' operation to track the status of a
+%% job.
 start_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_entities_detection_v2_job(Client, Input, []).
@@ -260,10 +278,12 @@ start_entities_detection_v2_job(Client, Input, Options)
     request(Client, <<"StartEntitiesDetectionV2Job">>, Input, Options).
 
 %% @doc Starts an asynchronous job to detect medical conditions and link them
-%% to the ICD-10-CM ontology.
+%% to the ICD-10-CM
+%% ontology.
 %%
 %% Use the `DescribeICD10CMInferenceJob' operation to track the status of
-%% a job.
+%% a
+%% job.
 start_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_icd10_cm_inference_job(Client, Input, []).
@@ -274,8 +294,8 @@ start_icd10_cm_inference_job(Client, Input, Options)
 %% @doc Starts an asynchronous job to detect protected health information
 %% (PHI).
 %%
-%% Use the `DescribePHIDetectionJob' operation to track the status of a
-%% job.
+%% Use the
+%% `DescribePHIDetectionJob' operation to track the status of a job.
 start_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_phi_detection_job(Client, Input, []).
@@ -284,10 +304,12 @@ start_phi_detection_job(Client, Input, Options)
     request(Client, <<"StartPHIDetectionJob">>, Input, Options).
 
 %% @doc Starts an asynchronous job to detect medication entities and link
-%% them to the RxNorm ontology.
+%% them to the RxNorm
+%% ontology.
 %%
 %% Use the `DescribeRxNormInferenceJob' operation to track the status of
-%% a job.
+%% a
+%% job.
 start_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_rx_norm_inference_job(Client, Input, []).
@@ -295,8 +317,9 @@ start_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRxNormInferenceJob">>, Input, Options).
 
-%% @doc Starts an asynchronous job to detect medical concepts and link them
-%% to the SNOMED-CT ontology.
+%% @doc
+%% Starts an asynchronous job to detect medical concepts and link them to the
+%% SNOMED-CT ontology.
 %%
 %% Use the DescribeSNOMEDCTInferenceJob operation to track the status of a
 %% job.
@@ -339,7 +362,8 @@ stop_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRxNormInferenceJob">>, Input, Options).
 
-%% @doc Stops an InferSNOMEDCT inference job in progress.
+%% @doc
+%% Stops an InferSNOMEDCT inference job in progress.
 stop_s_n_o_m_e_d_c_t_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).

@@ -2,26 +2,30 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon DevOps Guru is a fully managed service that helps you identify
-%% anomalous behavior in business critical operational applications.
+%% anomalous behavior in
+%% business critical operational applications.
 %%
-%% You specify the Amazon Web Services resources that you want DevOps Guru to
-%% cover, then the Amazon CloudWatch metrics and Amazon Web Services
-%% CloudTrail events related to those resources are analyzed. When anomalous
-%% behavior is detected, DevOps Guru creates an insight that includes
-%% recommendations, related events, and related metrics that can help you
-%% improve your operational applications. For more information, see What is
-%% Amazon DevOps Guru:
+%% You specify the Amazon Web Services resources that you
+%% want DevOps Guru to cover, then the Amazon CloudWatch metrics and Amazon
+%% Web Services CloudTrail events related to those
+%% resources are analyzed. When anomalous behavior is detected, DevOps Guru
+%% creates an
+%% insight that includes recommendations, related events, and
+%% related metrics that can help you improve your operational applications.
+%% For more
+%% information, see What is Amazon DevOps Guru:
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html.
 %%
 %% You can specify 1 or 2 Amazon Simple Notification Service topics so you
-%% are notified every time a new insight is created. You can also enable
-%% DevOps Guru to generate an OpsItem in Amazon Web Services Systems Manager
-%% for each insight to help you manage and track your work addressing
-%% insights.
+%% are notified every time a new insight
+%% is created. You can also enable DevOps Guru to generate an OpsItem in
+%% Amazon Web Services Systems Manager for each
+%% insight to help you manage and track your work addressing insights.
 %%
 %% To learn about the DevOps Guru workflow, see How DevOps Guru works:
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html#how-it-works.
-%% To learn about DevOps Guru concepts, see Concepts in DevOps Guru:
+%% To
+%% learn about DevOps Guru concepts, see Concepts in DevOps Guru:
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/concepts.html.
 -module(aws_devops_guru).
 
@@ -103,20 +107,23 @@
 
 %% @doc Adds a notification channel to DevOps Guru.
 %%
-%% A notification channel is used to notify you about important DevOps Guru
-%% events, such as when an insight is generated.
+%% A notification channel is used to notify you
+%% about important DevOps Guru events, such as when an insight is generated.
 %%
 %% If you use an Amazon SNS topic in another account, you must attach a
-%% policy to it that grants DevOps Guru permission to send it notifications.
-%% DevOps Guru adds the required policy on your behalf to send notifications
-%% using Amazon SNS in your account. DevOps Guru only supports standard SNS
-%% topics. For more information, see Permissions for Amazon SNS topics:
+%% policy to it that grants DevOps Guru permission
+%% to send it notifications. DevOps Guru adds the required policy on your
+%% behalf to send notifications using Amazon SNS in your account. DevOps Guru
+%% only supports standard SNS topics.
+%% For more information, see Permissions
+%% for Amazon SNS topics:
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/sns-required-permissions.html.
 %%
 %% If you use an Amazon SNS topic that is encrypted by an Amazon Web Services
 %% Key Management Service customer-managed key (CMK), then you must add
-%% permissions to the CMK. For more information, see Permissions for Amazon
-%% Web Services KMS–encrypted Amazon SNS topics:
+%% permissions
+%% to the CMK. For more information, see Permissions for
+%% Amazon Web Services KMS–encrypted Amazon SNS topics:
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/sns-kms-permissions.html.
 add_notification_channel(Client, Input) ->
     add_notification_channel(Client, Input, []).
@@ -124,10 +131,12 @@ add_notification_channel(Client, Input0, Options0) ->
     Method = put,
     Path = ["/channels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -148,10 +157,12 @@ delete_insight(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/insights/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -165,11 +176,11 @@ delete_insight(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the number of open reactive insights, the number of open
-%% proactive insights, and the number of metrics analyzed in your Amazon Web
-%% Services account.
+%% proactive insights,
+%% and the number of metrics analyzed in your Amazon Web Services account.
 %%
-%% Use these numbers to gauge the health of operations in your Amazon Web
-%% Services account.
+%% Use these numbers to gauge the
+%% health of operations in your Amazon Web Services account.
 describe_account_health(Client)
   when is_map(Client) ->
     describe_account_health(Client, #{}, #{}).
@@ -182,9 +193,11 @@ describe_account_health(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/health"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -193,19 +206,22 @@ describe_account_health(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc For the time range passed in, returns the number of open reactive
-%% insight that were created, the number of open proactive insights that were
-%% created, and the Mean Time to Recover (MTTR) for all closed reactive
-%% insights.
+%% insight that were
+%% created, the number of open proactive insights that were created, and the
+%% Mean Time to Recover (MTTR) for all
+%% closed reactive insights.
 describe_account_overview(Client, Input) ->
     describe_account_overview(Client, Input, []).
 describe_account_overview(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/overview"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -231,9 +247,11 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/anomalies/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -246,21 +264,25 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the integration status of services that are integrated with
-%% DevOps Guru as Consumer via EventBridge.
+%% DevOps Guru as Consumer
+%% via EventBridge.
 %%
 %% The one service that can be integrated with DevOps Guru is Amazon CodeGuru
 %% Profiler, which can produce proactive recommendations which can be stored
-%% and viewed in DevOps Guru.
+%% and viewed in
+%% DevOps Guru.
 describe_event_sources_config(Client, Input) ->
     describe_event_sources_config(Client, Input, []).
 describe_event_sources_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/event-sources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -281,10 +303,12 @@ describe_feedback(Client, Input0, Options0) ->
     Method = post,
     Path = ["/feedback"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -310,9 +334,11 @@ describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -325,17 +351,20 @@ describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns active insights, predictive insights, and resource hours
-%% analyzed in last hour.
+%% analyzed in last
+%% hour.
 describe_organization_health(Client, Input) ->
     describe_organization_health(Client, Input, []).
 describe_organization_health(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/health"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -358,10 +387,12 @@ describe_organization_overview(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/overview"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -376,18 +407,22 @@ describe_organization_overview(Client, Input0, Options0) ->
 
 %% @doc Provides an overview of your system's health.
 %%
-%% If additional member accounts are part of your organization, you can
-%% filter those accounts using the `AccountIds' field.
+%% If additional member accounts are part
+%% of your organization, you can filter those accounts using the
+%% `AccountIds'
+%% field.
 describe_organization_resource_collection_health(Client, Input) ->
     describe_organization_resource_collection_health(Client, Input, []).
 describe_organization_resource_collection_health(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/health/resource-collection"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -401,16 +436,18 @@ describe_organization_resource_collection_health(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the number of open proactive insights, open reactive
-%% insights, and the Mean Time to Recover (MTTR) for all closed insights in
-%% resource collections in your account.
+%% insights, and the Mean Time to Recover (MTTR)
+%% for all closed insights in resource collections in your account.
 %%
-%% You specify the type of Amazon Web Services resources collection. The two
-%% types of Amazon Web Services resource collections supported are Amazon Web
-%% Services CloudFormation stacks and Amazon Web Services resources that
-%% contain the same Amazon Web Services tag. DevOps Guru can be configured to
-%% analyze the Amazon Web Services resources that are defined in the stacks
-%% or that are tagged using the same tag key. You can specify up to 500
-%% Amazon Web Services CloudFormation stacks.
+%% You specify the type of
+%% Amazon Web Services resources collection. The two types of Amazon Web
+%% Services resource collections supported are Amazon Web Services
+%% CloudFormation stacks and
+%% Amazon Web Services resources that contain the same Amazon Web Services
+%% tag. DevOps Guru can be configured to analyze
+%% the Amazon Web Services resources that are defined in the stacks or that
+%% are tagged using the same tag key. You can specify up to 500 Amazon Web
+%% Services CloudFormation stacks.
 describe_resource_collection_health(Client, ResourceCollectionType)
   when is_map(Client) ->
     describe_resource_collection_health(Client, ResourceCollectionType, #{}, #{}).
@@ -423,9 +460,11 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/health/resource-collection/", aws_util:encode_uri(ResourceCollectionType), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -440,9 +479,9 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
 %% @doc Returns the integration status of services that are integrated with
 %% DevOps Guru.
 %%
-%% The one service that can be integrated with DevOps Guru is Amazon Web
-%% Services Systems Manager, which can be used to create an OpsItem for each
-%% generated insight.
+%% The one service that can be integrated with DevOps Guru
+%% is Amazon Web Services Systems Manager, which can be used to create an
+%% OpsItem for each generated insight.
 describe_service_integration(Client)
   when is_map(Client) ->
     describe_service_integration(Client, #{}, #{}).
@@ -455,9 +494,11 @@ describe_service_integration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/service-integrations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -468,10 +509,12 @@ describe_service_integration(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns an estimate of the monthly cost for DevOps Guru to analyze
 %% your Amazon Web Services resources.
 %%
-%% For more information, see Estimate your Amazon DevOps Guru costs:
+%% For more information,
+%% see Estimate your
+%% Amazon DevOps Guru costs:
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/cost-estimate.html
-%% and Amazon DevOps Guru pricing:
-%% http://aws.amazon.com/devops-guru/pricing/.
+%% and
+%% Amazon DevOps Guru pricing: http://aws.amazon.com/devops-guru/pricing/.
 get_cost_estimation(Client)
   when is_map(Client) ->
     get_cost_estimation(Client, #{}, #{}).
@@ -484,9 +527,11 @@ get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cost-estimation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -502,11 +547,12 @@ get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
 %% resource collection type.
 %%
 %% The two types of Amazon Web Services resource collections supported are
-%% Amazon Web Services CloudFormation stacks and Amazon Web Services
-%% resources that contain the same Amazon Web Services tag. DevOps Guru can
-%% be configured to analyze the Amazon Web Services resources that are
-%% defined in the stacks or that are tagged using the same tag key. You can
-%% specify up to 500 Amazon Web Services CloudFormation stacks.
+%% Amazon Web Services CloudFormation stacks and
+%% Amazon Web Services resources that contain the same Amazon Web Services
+%% tag. DevOps Guru can be configured to analyze
+%% the Amazon Web Services resources that are defined in the stacks or that
+%% are tagged using the same tag key. You can specify up to 500 Amazon Web
+%% Services CloudFormation stacks.
 get_resource_collection(Client, ResourceCollectionType)
   when is_map(Client) ->
     get_resource_collection(Client, ResourceCollectionType, #{}, #{}).
@@ -519,9 +565,11 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Op
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-collections/", aws_util:encode_uri(ResourceCollectionType), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -534,17 +582,20 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the anomalies that belong to an insight that you
-%% specify using its ID.
+%% specify using its
+%% ID.
 list_anomalies_for_insight(Client, InsightId, Input) ->
     list_anomalies_for_insight(Client, InsightId, Input, []).
 list_anomalies_for_insight(Client, InsightId, Input0, Options0) ->
     Method = post,
     Path = ["/anomalies/insight/", aws_util:encode_uri(InsightId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -557,17 +608,20 @@ list_anomalies_for_insight(Client, InsightId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the list of log groups that contain log anomalies.
+%% @doc
+%% Returns the list of log groups that contain log anomalies.
 list_anomalous_log_groups(Client, Input) ->
     list_anomalous_log_groups(Client, Input, []).
 list_anomalous_log_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-log-anomalies"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -590,10 +644,12 @@ list_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/events"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -608,18 +664,21 @@ list_events(Client, Input0, Options0) ->
 
 %% @doc Returns a list of insights in your Amazon Web Services account.
 %%
-%% You can specify which insights are returned by their start time and status
-%% (`ONGOING', `CLOSED', or `ANY').
+%% You can specify which insights are
+%% returned by their start time and status (`ONGOING', `CLOSED', or
+%% `ANY').
 list_insights(Client, Input) ->
     list_insights(Client, Input, []).
 list_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -632,18 +691,21 @@ list_insights(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the list of all log groups that are being monitored and
-%% tagged by DevOps Guru.
+%% @doc
+%% Returns the list of all log groups that are being monitored and tagged by
+%% DevOps Guru.
 list_monitored_resources(Client, Input) ->
     list_monitored_resources(Client, Input, []).
 list_monitored_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/monitoredResources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -658,20 +720,24 @@ list_monitored_resources(Client, Input0, Options0) ->
 
 %% @doc Returns a list of notification channels configured for DevOps Guru.
 %%
-%% Each notification channel is used to notify you when DevOps Guru generates
-%% an insight that contains information about how to improve your operations.
-%% The one supported notification channel is Amazon Simple Notification
-%% Service (Amazon SNS).
+%% Each notification
+%% channel is used to notify you when DevOps Guru generates an insight that
+%% contains information
+%% about how to improve your operations. The one
+%% supported notification channel is Amazon Simple Notification Service
+%% (Amazon SNS).
 list_notification_channels(Client, Input) ->
     list_notification_channels(Client, Input, []).
 list_notification_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -691,10 +757,12 @@ list_organization_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/insights"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -709,18 +777,20 @@ list_organization_insights(Client, Input0, Options0) ->
 
 %% @doc Returns a list of a specified insight's recommendations.
 %%
-%% Each recommendation includes a list of related metrics and a list of
-%% related events.
+%% Each recommendation includes
+%% a list of related metrics and a list of related events.
 list_recommendations(Client, Input) ->
     list_recommendations(Client, Input, []).
 list_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -740,10 +810,12 @@ put_feedback(Client, Input0, Options0) ->
     Method = put,
     Path = ["/feedback"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -758,18 +830,22 @@ put_feedback(Client, Input0, Options0) ->
 
 %% @doc Removes a notification channel from DevOps Guru.
 %%
-%% A notification channel is used to notify you when DevOps Guru generates an
-%% insight that contains information about how to improve your operations.
+%% A notification channel is used to notify
+%% you when DevOps Guru generates an insight that contains information about
+%% how to improve your
+%% operations.
 remove_notification_channel(Client, Id, Input) ->
     remove_notification_channel(Client, Id, Input, []).
 remove_notification_channel(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -784,10 +860,11 @@ remove_notification_channel(Client, Id, Input0, Options0) ->
 
 %% @doc Returns a list of insights in your Amazon Web Services account.
 %%
-%% You can specify which insights are returned by their start time, one or
-%% more statuses (`ONGOING' or `CLOSED'), one or more severities
-%% (`LOW', `MEDIUM', and `HIGH'), and type (`REACTIVE' or
-%% `PROACTIVE').
+%% You can specify which insights are
+%% returned by their start time, one or more statuses (`ONGOING' or
+%% `CLOSED'), one or more severities
+%% (`LOW', `MEDIUM', and `HIGH'), and type
+%% (`REACTIVE' or `PROACTIVE').
 %%
 %% Use the `Filters' parameter to specify status and severity search
 %% parameters. Use the `Type' parameter to specify `REACTIVE' or
@@ -798,10 +875,12 @@ search_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights/search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -816,9 +895,10 @@ search_insights(Client, Input0, Options0) ->
 
 %% @doc Returns a list of insights in your organization.
 %%
-%% You can specify which insights are returned by their start time, one or
-%% more statuses (`ONGOING', `CLOSED', and `CLOSED'), one or more
-%% severities (`LOW', `MEDIUM', and `HIGH'), and type
+%% You can specify which insights are
+%% returned by their start time, one or more statuses (`ONGOING',
+%% `CLOSED', and `CLOSED'), one or more severities
+%% (`LOW', `MEDIUM', and `HIGH'), and type
 %% (`REACTIVE' or `PROACTIVE').
 %%
 %% Use the `Filters' parameter to specify status and severity search
@@ -830,10 +910,12 @@ search_organization_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/insights/search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -847,17 +929,20 @@ search_organization_insights(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the creation of an estimate of the monthly cost to analyze
-%% your Amazon Web Services resources.
+%% your Amazon Web Services
+%% resources.
 start_cost_estimation(Client, Input) ->
     start_cost_estimation(Client, Input, []).
 start_cost_estimation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/cost-estimation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -873,19 +958,23 @@ start_cost_estimation(Client, Input0, Options0) ->
 %% @doc Enables or disables integration with a service that can be integrated
 %% with DevOps Guru.
 %%
-%% The one service that can be integrated with DevOps Guru is Amazon CodeGuru
-%% Profiler, which can produce proactive recommendations which can be stored
-%% and viewed in DevOps Guru.
+%% The
+%% one service that can be integrated with DevOps Guru is Amazon CodeGuru
+%% Profiler, which
+%% can produce proactive recommendations which can be stored and viewed in
+%% DevOps Guru.
 update_event_sources_config(Client, Input) ->
     update_event_sources_config(Client, Input, []).
 update_event_sources_config(Client, Input0, Options0) ->
     Method = put,
     Path = ["/event-sources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -901,22 +990,26 @@ update_event_sources_config(Client, Input0, Options0) ->
 %% @doc Updates the collection of resources that DevOps Guru analyzes.
 %%
 %% The two types of Amazon Web Services resource collections supported are
-%% Amazon Web Services CloudFormation stacks and Amazon Web Services
-%% resources that contain the same Amazon Web Services tag. DevOps Guru can
-%% be configured to analyze the Amazon Web Services resources that are
-%% defined in the stacks or that are tagged using the same tag key. You can
-%% specify up to 500 Amazon Web Services CloudFormation stacks. This method
-%% also creates the IAM role required for you to use DevOps Guru.
+%% Amazon Web Services CloudFormation stacks and
+%% Amazon Web Services resources that contain the same Amazon Web Services
+%% tag. DevOps Guru can be configured to analyze
+%% the Amazon Web Services resources that are defined in the stacks or that
+%% are tagged using the same tag key. You can specify up to 500 Amazon Web
+%% Services CloudFormation stacks. This method also creates the IAM role
+%% required for
+%% you to use DevOps Guru.
 update_resource_collection(Client, Input) ->
     update_resource_collection(Client, Input, []).
 update_resource_collection(Client, Input0, Options0) ->
     Method = put,
     Path = ["/resource-collections"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -932,19 +1025,22 @@ update_resource_collection(Client, Input0, Options0) ->
 %% @doc Enables or disables integration with a service that can be integrated
 %% with DevOps Guru.
 %%
-%% The one service that can be integrated with DevOps Guru is Amazon Web
-%% Services Systems Manager, which can be used to create an OpsItem for each
-%% generated insight.
+%% The
+%% one service that can be integrated with DevOps Guru is Amazon Web Services
+%% Systems Manager, which can be used to create
+%% an OpsItem for each generated insight.
 update_service_integration(Client, Input) ->
     update_service_integration(Client, Input, []).
 update_service_integration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/service-integrations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -960,6 +1056,11 @@ update_service_integration(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -4,10 +4,10 @@
 %% @doc Use the Amazon OpenSearch Ingestion API to create and manage
 %% ingestion pipelines.
 %%
-%% OpenSearch Ingestion is a fully managed data collector that delivers
-%% real-time log and trace data to OpenSearch Service domains. For more
-%% information, see Getting data into your cluster using OpenSearch
-%% Ingestion:
+%% OpenSearch Ingestion is a
+%% fully managed data collector that delivers real-time log and trace data to
+%% OpenSearch Service domains. For more information, see
+%% Getting data into your cluster using OpenSearch Ingestion:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ingestion.html.
 -module(aws_osis).
 
@@ -60,11 +60,13 @@ create_pipeline(Client, Input) ->
 create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/createPipeline"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -86,11 +88,13 @@ delete_pipeline(Client, PipelineName, Input) ->
 delete_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = delete,
     Path = ["/2022-01-01/osis/deletePipeline/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -115,10 +119,12 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap)
 get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipeline/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -129,9 +135,11 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about a specific blueprint for OpenSearch
 %% Ingestion.
 %%
-%% Blueprints are templates for the configuration needed for a
-%% `CreatePipeline' request. For more information, see Using blueprints
-%% to create a pipeline:
+%% Blueprints are
+%% templates for the configuration needed for a `CreatePipeline' request.
+%% For more
+%% information, see Using
+%% blueprints to create a pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
 get_pipeline_blueprint(Client, BlueprintName)
   when is_map(Client) ->
@@ -144,10 +152,12 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap)
 get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipelineBlueprint/", aws_util:encode_uri(BlueprintName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -156,10 +166,12 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns progress information for the current change happening on an
-%% OpenSearch Ingestion pipeline.
+%% OpenSearch Ingestion
+%% pipeline.
 %%
 %% Currently, this operation only returns information when a pipeline is
-%% being created.
+%% being
+%% created.
 %%
 %% For more information, see Tracking the status of pipeline creation:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#get-pipeline-progress.
@@ -174,10 +186,12 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap)
 get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipelineChangeProgress/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -187,18 +201,21 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options
 
 %% @doc Retrieves a list of all available blueprints for Data Prepper.
 %%
-%% For more information, see Using blueprints to create a pipeline:
+%% For more information, see
+%% Using blueprints to create a pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
 list_pipeline_blueprints(Client, Input) ->
     list_pipeline_blueprints(Client, Input, []).
 list_pipeline_blueprints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/listPipelineBlueprints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -214,7 +231,8 @@ list_pipeline_blueprints(Client, Input0, Options0) ->
 %% @doc Lists all OpenSearch Ingestion pipelines in the current Amazon Web
 %% Services account and Region.
 %%
-%% For more information, see Viewing Amazon OpenSearch Ingestion pipelines:
+%% For
+%% more information, see Viewing Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/list-pipeline.html.
 list_pipelines(Client)
   when is_map(Client) ->
@@ -227,10 +245,12 @@ list_pipelines(Client, QueryMap, HeadersMap)
 list_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/listPipelines"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -246,7 +266,8 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all resource tags associated with an OpenSearch Ingestion
 %% pipeline.
 %%
-%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
+%% For more information,
+%% see Tagging Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
@@ -258,11 +279,13 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
 
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/2022-01-01/osis/listTagsForResource/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/2022-01-01/osis/listTagsForResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -283,11 +306,13 @@ start_pipeline(Client, PipelineName, Input) ->
 start_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/startPipeline/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -309,11 +334,13 @@ stop_pipeline(Client, PipelineName, Input) ->
 stop_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/stopPipeline/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -334,12 +361,14 @@ tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/2022-01-01/osis/tagResource/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/2022-01-01/osis/tagResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -355,18 +384,21 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags from an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
+%% For more information, see Tagging Amazon
+%% OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/2022-01-01/osis/untagResource/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/2022-01-01/osis/untagResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -389,11 +421,13 @@ update_pipeline(Client, PipelineName, Input) ->
 update_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/updatePipeline/", aws_util:encode_uri(PipelineName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -409,18 +443,22 @@ update_pipeline(Client, PipelineName, Input0, Options0) ->
 %% @doc Checks whether an OpenSearch Ingestion pipeline configuration is
 %% valid prior to creation.
 %%
-%% For more information, see Creating Amazon OpenSearch Ingestion pipelines:
+%% For
+%% more information, see Creating Amazon OpenSearch
+%% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
 validate_pipeline(Client, Input) ->
     validate_pipeline(Client, Input, []).
 validate_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/validatePipeline"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -436,6 +474,11 @@ validate_pipeline(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

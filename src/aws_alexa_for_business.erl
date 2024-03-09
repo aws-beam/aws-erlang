@@ -200,8 +200,9 @@
 %% @doc Associates a skill with the organization under the customer's AWS
 %% account.
 %%
-%% If a skill is private, the user implicitly accepts access to this skill
-%% during enablement.
+%% If a skill
+%% is private, the user implicitly accepts access to this skill during
+%% enablement.
 approve_skill(Client, Input)
   when is_map(Client), is_map(Input) ->
     approve_skill(Client, Input, []).
@@ -227,9 +228,11 @@ associate_device_with_network_profile(Client, Input, Options)
 
 %% @doc Associates a device with a given room.
 %%
-%% This applies all the settings from the room profile to the device, and all
-%% the skills in any skill groups added to that room. This operation requires
-%% the device to be online, or else a manual sync is required.
+%% This applies all the settings from the room
+%% profile to the device, and all the skills in any skill groups added to
+%% that room. This
+%% operation requires the device to be online, or else a manual sync is
+%% required.
 associate_device_with_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_device_with_room(Client, Input, []).
@@ -239,8 +242,8 @@ associate_device_with_room(Client, Input, Options)
 
 %% @doc Associates a skill group with a given room.
 %%
-%% This enables all skills in the associated skill group on all devices in
-%% the room.
+%% This enables all skills in the associated
+%% skill group on all devices in the room.
 associate_skill_group_with_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_skill_group_with_room(Client, Input, []).
@@ -274,7 +277,8 @@ create_address_book(Client, Input, Options)
     request(Client, <<"CreateAddressBook">>, Input, Options).
 
 %% @doc Creates a recurring schedule for usage reports to deliver to the
-%% specified S3 location with a specified daily or weekly interval.
+%% specified S3
+%% location with a specified daily or weekly interval.
 create_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_business_report_schedule(Client, Input, []).
@@ -355,7 +359,8 @@ delete_address_book(Client, Input, Options)
     request(Client, <<"DeleteAddressBook">>, Input, Options).
 
 %% @doc Deletes the recurring report delivery schedule with the specified
-%% schedule ARN.
+%% schedule
+%% ARN.
 delete_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_business_report_schedule(Client, Input, []).
@@ -388,8 +393,10 @@ delete_device(Client, Input, Options)
     request(Client, <<"DeleteDevice">>, Input, Options).
 
 %% @doc When this action is called for a specified shared device, it allows
-%% authorized users to delete the device's entire previous history of
-%% voice input data and associated response data.
+%% authorized users to
+%% delete the device's entire previous history of voice input data and
+%% associated response
+%% data.
 %%
 %% This action can be called once every 24 hours for a specific shared
 %% device.
@@ -475,9 +482,10 @@ disassociate_contact_from_address_book(Client, Input, Options)
 
 %% @doc Disassociates a device from its current room.
 %%
-%% The device continues to be connected to the Wi-Fi network and is still
-%% registered to the account. The device settings and skills are removed from
-%% the room.
+%% The device continues to be connected to
+%% the Wi-Fi network and is still registered to the account. The device
+%% settings and skills
+%% are removed from the room.
 disassociate_device_from_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_device_from_room(Client, Input, []).
@@ -494,7 +502,8 @@ disassociate_skill_from_skill_group(Client, Input, Options)
     request(Client, <<"DisassociateSkillFromSkillGroup">>, Input, Options).
 
 %% @doc Makes a private skill unavailable for enrolled users and prevents
-%% them from enabling it on their devices.
+%% them from enabling it
+%% on their devices.
 disassociate_skill_from_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_from_users(Client, Input, []).
@@ -504,7 +513,8 @@ disassociate_skill_from_users(Client, Input, Options)
 
 %% @doc Disassociates a skill group from a specified room.
 %%
-%% This disables all skills in the skill group on all devices in the room.
+%% This disables all skills in the
+%% skill group on all devices in the room.
 disassociate_skill_group_from_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_group_from_room(Client, Input, []).
@@ -577,7 +587,8 @@ get_gateway_group(Client, Input, Options)
     request(Client, <<"GetGatewayGroup">>, Input, Options).
 
 %% @doc Retrieves the configured values for the user enrollment invitation
-%% email template.
+%% email
+%% template.
 get_invitation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_invitation_configuration(Client, Input, []).
@@ -647,7 +658,8 @@ list_conference_providers(Client, Input, Options)
     request(Client, <<"ListConferenceProviders">>, Input, Options).
 
 %% @doc Lists the device event history, including device connection status,
-%% for up to 30 days.
+%% for up to 30
+%% days.
 list_device_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_events(Client, Input, []).
@@ -657,7 +669,8 @@ list_device_events(Client, Input, Options)
 
 %% @doc Retrieves a list of gateway group summaries.
 %%
-%% Use GetGatewayGroup to retrieve details of a specific gateway group.
+%% Use GetGatewayGroup to retrieve details of
+%% a specific gateway group.
 list_gateway_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateway_groups(Client, Input, []).
@@ -667,9 +680,10 @@ list_gateway_groups(Client, Input, Options)
 
 %% @doc Retrieves a list of gateway summaries.
 %%
-%% Use GetGateway to retrieve details of a specific gateway. An optional
-%% gateway group ARN can be provided to only retrieve gateway summaries of
-%% gateways that are associated with that gateway group ARN.
+%% Use GetGateway to retrieve details of a specific
+%% gateway. An optional gateway group ARN can be provided to only retrieve
+%% gateway summaries
+%% of gateways that are associated with that gateway group ARN.
 list_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateways(Client, Input, []).
@@ -718,7 +732,8 @@ list_tags(Client, Input, Options)
     request(Client, <<"ListTags">>, Input, Options).
 
 %% @doc Sets the conference preferences on a specific conference provider at
-%% the account level.
+%% the account
+%% level.
 put_conference_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_conference_preference(Client, Input, []).
@@ -727,7 +742,8 @@ put_conference_preference(Client, Input, Options)
     request(Client, <<"PutConferencePreference">>, Input, Options).
 
 %% @doc Configures the email template for the user enrollment invitation with
-%% the specified attributes.
+%% the specified
+%% attributes.
 put_invitation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_invitation_configuration(Client, Input, []).
@@ -738,7 +754,8 @@ put_invitation_configuration(Client, Input, Options)
 %% @doc Updates room skill parameter details by room, skill, and parameter
 %% key ID.
 %%
-%% Not all skills have a room skill parameter.
+%% Not all
+%% skills have a room skill parameter.
 put_room_skill_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_room_skill_parameter(Client, Input, []).
@@ -748,9 +765,10 @@ put_room_skill_parameter(Client, Input, Options)
 
 %% @doc Links a user's account to a third-party skill provider.
 %%
-%% If this API operation is called by an assumed IAM role, the skill being
-%% linked must be a private skill. Also, the skill must be owned by the AWS
-%% account that assumed the IAM role.
+%% If this API operation is
+%% called by an assumed IAM role, the skill being linked must be a private
+%% skill. Also, the
+%% skill must be owned by the AWS account that assumed the IAM role.
 put_skill_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_skill_authorization(Client, Input, []).
@@ -759,7 +777,8 @@ put_skill_authorization(Client, Input, Options)
     request(Client, <<"PutSkillAuthorization">>, Input, Options).
 
 %% @doc Registers an Alexa-enabled device built by an Original Equipment
-%% Manufacturer (OEM) using Alexa Voice Service (AVS).
+%% Manufacturer (OEM)
+%% using Alexa Voice Service (AVS).
 register_avs_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_avs_device(Client, Input, []).
@@ -770,9 +789,10 @@ register_avs_device(Client, Input, Options)
 %% @doc Disassociates a skill from the organization under a user's AWS
 %% account.
 %%
-%% If the skill is a private skill, it moves to an AcceptStatus of PENDING.
-%% Any private or public skill that is rejected can be added later by calling
-%% the ApproveSkill API.
+%% If the skill
+%% is a private skill, it moves to an AcceptStatus of PENDING. Any private or
+%% public skill
+%% that is rejected can be added later by calling the ApproveSkill API.
 reject_skill(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_skill(Client, Input, []).
@@ -783,14 +803,19 @@ reject_skill(Client, Input, Options)
 %% @doc Determines the details for the room from which a skill request was
 %% invoked.
 %%
-%% This operation is used by skill developers.
+%% This
+%% operation is used by skill developers.
 %%
 %% To query ResolveRoom from an Alexa skill, the skill ID needs to be
-%% authorized. When the skill is using an AWS Lambda function, the skill is
-%% automatically authorized when you publish your skill as a private skill to
-%% your AWS account. Skills that are hosted using a custom web service must
-%% be manually authorized. To get your skill authorized, contact AWS Support
-%% with your AWS account ID that queries the ResolveRoom API and skill ID.
+%% authorized. When
+%% the skill is using an AWS Lambda function, the skill is automatically
+%% authorized when you
+%% publish your skill as a private skill to your AWS account. Skills that are
+%% hosted using a
+%% custom web service must be manually authorized. To get your skill
+%% authorized, contact AWS
+%% Support with your AWS account ID that queries the ResolveRoom API and
+%% skill ID.
 resolve_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_room(Client, Input, []).
@@ -807,7 +832,8 @@ revoke_invitation(Client, Input, Options)
     request(Client, <<"RevokeInvitation">>, Input, Options).
 
 %% @doc Searches address books and lists the ones that meet a set of filter
-%% and sort criteria.
+%% and sort
+%% criteria.
 search_address_books(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_address_books(Client, Input, []).
@@ -816,7 +842,8 @@ search_address_books(Client, Input, Options)
     request(Client, <<"SearchAddressBooks">>, Input, Options).
 
 %% @doc Searches contacts and lists the ones that meet a set of filter and
-%% sort criteria.
+%% sort
+%% criteria.
 search_contacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_contacts(Client, Input, []).
@@ -834,7 +861,8 @@ search_devices(Client, Input, Options)
     request(Client, <<"SearchDevices">>, Input, Options).
 
 %% @doc Searches network profiles and lists the ones that meet a set of
-%% filter and sort criteria.
+%% filter and sort
+%% criteria.
 search_network_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_network_profiles(Client, Input, []).
@@ -861,7 +889,8 @@ search_rooms(Client, Input, Options)
     request(Client, <<"SearchRooms">>, Input, Options).
 
 %% @doc Searches skill groups and lists the ones that meet a set of filter
-%% and sort criteria.
+%% and sort
+%% criteria.
 search_skill_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_skill_groups(Client, Input, []).
@@ -879,7 +908,8 @@ search_users(Client, Input, Options)
     request(Client, <<"SearchUsers">>, Input, Options).
 
 %% @doc Triggers an asynchronous flow to send text, SSML, or audio
-%% announcements to rooms that are identified by a search or filter.
+%% announcements to rooms that
+%% are identified by a search or filter.
 send_announcement(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_announcement(Client, Input, []).
@@ -889,8 +919,8 @@ send_announcement(Client, Input, Options)
 
 %% @doc Sends an enrollment invitation email with a URL to a user.
 %%
-%% The URL is valid for 30 days or until you call this operation again,
-%% whichever comes first.
+%% The URL is valid for 30
+%% days or until you call this operation again, whichever comes first.
 send_invitation(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_invitation(Client, Input, []).
@@ -900,25 +930,23 @@ send_invitation(Client, Input, Options)
 
 %% @doc Resets a device and its account to the known default settings.
 %%
-%% This clears all information and settings set by previous users in the
-%% following ways:
+%% This clears all
+%% information and settings set by previous users in the following ways:
 %%
-%% <ul> <li> Bluetooth - This unpairs all bluetooth devices paired with your
-%% echo device.
-%%
-%% </li> <li> Volume - This resets the echo device's volume to the
-%% default value.
-%%
-%% </li> <li> Notifications - This clears all notifications from your echo
+%% Bluetooth - This unpairs all bluetooth devices paired with your echo
 %% device.
 %%
-%% </li> <li> Lists - This clears all to-do items from your echo device.
+%% Volume - This resets the echo device's volume to the default value.
 %%
-%% </li> <li> Settings - This internally syncs the room's profile (if the
-%% device is assigned to a room), contacts, address books, delegation access
-%% for account linking, and communications (if enabled on the room profile).
+%% Notifications - This clears all notifications from your echo device.
 %%
-%% </li> </ul>
+%% Lists - This clears all to-do items from your echo device.
+%%
+%% Settings - This internally syncs the room's profile (if the device is
+%% assigned to
+%% a room), contacts, address books, delegation access for account linking,
+%% and
+%% communications (if enabled on the room profile).
 start_device_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_device_sync(Client, Input, []).
@@ -927,7 +955,8 @@ start_device_sync(Client, Input, Options)
     request(Client, <<"StartDeviceSync">>, Input, Options).
 
 %% @doc Initiates the discovery of any smart home appliances associated with
-%% the room.
+%% the
+%% room.
 start_smart_home_appliance_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_smart_home_appliance_discovery(Client, Input, []).
@@ -960,7 +989,8 @@ update_address_book(Client, Input, Options)
     request(Client, <<"UpdateAddressBook">>, Input, Options).
 
 %% @doc Updates the configuration of the report delivery schedule with the
-%% specified schedule ARN.
+%% specified schedule
+%% ARN.
 update_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_business_report_schedule(Client, Input, []).
@@ -994,8 +1024,8 @@ update_device(Client, Input, Options)
 
 %% @doc Updates the details of a gateway.
 %%
-%% If any optional field is not provided, the existing corresponding value is
-%% left unmodified.
+%% If any optional field is not provided, the existing
+%% corresponding value is left unmodified.
 update_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway(Client, Input, []).
@@ -1005,8 +1035,8 @@ update_gateway(Client, Input, Options)
 
 %% @doc Updates the details of a gateway group.
 %%
-%% If any optional field is not provided, the existing corresponding value is
-%% left unmodified.
+%% If any optional field is not provided, the
+%% existing corresponding value is left unmodified.
 update_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_group(Client, Input, []).

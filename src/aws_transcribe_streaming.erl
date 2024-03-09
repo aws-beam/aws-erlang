@@ -2,21 +2,24 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Transcribe streaming offers three main types of real-time
-%% transcription: Standard, Medical, and Call Analytics.
+%% transcription:
+%% Standard, Medical, and
+%% Call Analytics.
 %%
-%% <ul> <li> Standard transcriptions are the most common option. Refer to for
-%% details.
+%% Standard transcriptions are the most common option. Refer
+%% to for details.
 %%
-%% </li> <li> Medical transcriptions are tailored to medical professionals
+%% Medical transcriptions are tailored to medical professionals
 %% and incorporate medical terms. A common use case for this service is
-%% transcribing doctor-patient dialogue in real time, so doctors can focus on
-%% their patient instead of taking notes. Refer to for details.
+%% transcribing doctor-patient
+%% dialogue in real time, so doctors can focus on their patient instead of
+%% taking notes. Refer to
+%% for details.
 %%
-%% </li> <li> Call Analytics transcriptions are designed for use with call
+%% Call Analytics transcriptions are designed for use with call
 %% center audio on two different channels; if you're looking for insight
-%% into customer service calls, use this option. Refer to for details.
-%%
-%% </li> </ul>
+%% into customer service calls, use this
+%% option. Refer to for details.
 -module(aws_transcribe_streaming).
 
 -export([start_call_analytics_stream_transcription/2,
@@ -33,34 +36,38 @@
 %%====================================================================
 
 %% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
-%% streamed to Amazon Transcribe and the transcription results are streamed
-%% to your application.
+%% streamed to
+%% Amazon Transcribe and the transcription results are streamed to your
+%% application.
 %%
-%% Use this operation for Call Analytics:
+%% Use this operation
+%% for Call Analytics:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics.html
 %% transcriptions.
 %%
 %% The following parameters are required:
 %%
-%% <ul> <li> `language-code'
+%% `language-code'
 %%
-%% </li> <li> `media-encoding'
+%% `media-encoding'
 %%
-%% </li> <li> `sample-rate'
+%% `sample-rate'
 %%
-%% </li> </ul> For more information on streaming with Amazon Transcribe, see
-%% Transcribing streaming audio:
+%% For more information on streaming with Amazon Transcribe, see Transcribing
+%% streaming audio:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
 start_call_analytics_stream_transcription(Client, Input) ->
     start_call_analytics_stream_transcription(Client, Input, []).
 start_call_analytics_stream_transcription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/call-analytics-stream-transcription"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
@@ -117,30 +124,35 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
     end.
 
 %% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
-%% streamed to Amazon Transcribe Medical and the transcription results are
-%% streamed to your application.
+%% streamed to
+%% Amazon Transcribe Medical and the transcription results are streamed to
+%% your
+%% application.
 %%
 %% The following parameters are required:
 %%
-%% <ul> <li> `language-code'
+%% `language-code'
 %%
-%% </li> <li> `media-encoding'
+%% `media-encoding'
 %%
-%% </li> <li> `sample-rate'
+%% `sample-rate'
 %%
-%% </li> </ul> For more information on streaming with Amazon Transcribe
-%% Medical, see Transcribing streaming audio:
+%% For more information on streaming with Amazon Transcribe Medical, see
+%% Transcribing
+%% streaming audio:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
 start_medical_stream_transcription(Client, Input) ->
     start_medical_stream_transcription(Client, Input, []).
 start_medical_stream_transcription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/medical-stream-transcription"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
@@ -193,31 +205,34 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
     end.
 
 %% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
-%% streamed to Amazon Transcribe and the transcription results are streamed
-%% to your application.
+%% streamed to
+%% Amazon Transcribe and the transcription results are streamed to your
+%% application.
 %%
 %% The following parameters are required:
 %%
-%% <ul> <li> `language-code' or `identify-language' or
+%% `language-code' or `identify-language' or
 %% `identify-multiple-language'
 %%
-%% </li> <li> `media-encoding'
+%% `media-encoding'
 %%
-%% </li> <li> `sample-rate'
+%% `sample-rate'
 %%
-%% </li> </ul> For more information on streaming with Amazon Transcribe, see
-%% Transcribing streaming audio:
+%% For more information on streaming with Amazon Transcribe, see Transcribing
+%% streaming audio:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
 start_stream_transcription(Client, Input) ->
     start_stream_transcription(Client, Input, []).
 start_stream_transcription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stream-transcription"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
@@ -294,6 +309,11 @@ start_stream_transcription(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

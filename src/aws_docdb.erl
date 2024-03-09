@@ -5,9 +5,9 @@
 %% service.
 %%
 %% Amazon DocumentDB makes it easy to set up, operate, and scale
-%% MongoDB-compatible databases in the cloud. With Amazon DocumentDB, you can
-%% run the same application code and use the same drivers and tools that you
-%% use with MongoDB.
+%% MongoDB-compatible databases in the cloud.
+%% With Amazon DocumentDB, you can run the same application code and use the
+%% same drivers and tools that you use with MongoDB.
 -module(aws_docdb).
 
 -export([add_source_identifier_to_subscription/2,
@@ -134,10 +134,10 @@ add_source_identifier_to_subscription(Client, Input, Options)
 
 %% @doc Adds metadata tags to an Amazon DocumentDB resource.
 %%
-%% You can use these tags with cost allocation reporting to track costs that
-%% are associated with Amazon DocumentDB resources or in a `Condition'
-%% statement in an Identity and Access Management (IAM) policy for Amazon
-%% DocumentDB.
+%% You can use these tags
+%% with cost allocation reporting to track costs that are associated
+%% with Amazon DocumentDB resources or in a `Condition' statement in
+%% an Identity and Access Management (IAM) policy for Amazon DocumentDB.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -145,8 +145,8 @@ add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
 
-%% @doc Applies a pending maintenance action to a resource (for example, to
-%% an Amazon DocumentDB instance).
+%% @doc Applies a pending maintenance action to a resource (for example,
+%% to an Amazon DocumentDB instance).
 apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
@@ -165,14 +165,15 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% @doc Copies a snapshot of a cluster.
 %%
 %% To copy a cluster snapshot from a shared manual cluster snapshot,
-%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name
-%% (ARN) of the shared cluster snapshot. You can only copy a shared DB
-%% cluster snapshot, whether encrypted or not, in the same Amazon Web
-%% Services Region.
+%% `SourceDBClusterSnapshotIdentifier' must be the Amazon
+%% Resource Name (ARN) of the shared cluster snapshot. You can only
+%% copy a shared DB cluster snapshot, whether encrypted or not, in the
+%% same Amazon Web Services Region.
 %%
-%% To cancel the copy operation after it is in progress, delete the target
-%% cluster snapshot identified by `TargetDBClusterSnapshotIdentifier'
-%% while that cluster snapshot is in the copying status.
+%% To cancel the copy operation after it is in progress, delete the
+%% target cluster snapshot identified by
+%% `TargetDBClusterSnapshotIdentifier' while that cluster
+%% snapshot is in the copying status.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -190,23 +191,27 @@ create_db_cluster(Client, Input, Options)
 
 %% @doc Creates a new cluster parameter group.
 %%
-%% Parameters in a cluster parameter group apply to all of the instances in a
-%% cluster.
+%% Parameters in a cluster parameter group apply to all of the
+%% instances in a cluster.
 %%
-%% A cluster parameter group is initially created with the default parameters
-%% for the database engine used by instances in the cluster. In Amazon
-%% DocumentDB, you cannot make modifications directly to the
-%% `default.docdb3.6' cluster parameter group. If your Amazon DocumentDB
-%% cluster is using the default cluster parameter group and you want to
-%% modify a value in it, you must first create a new parameter group:
+%% A cluster parameter group is initially created with the default
+%% parameters for the database engine used by instances in the cluster.
+%% In Amazon DocumentDB, you cannot make modifications directly to the
+%% `default.docdb3.6' cluster parameter group. If your
+%% Amazon DocumentDB cluster is using the default cluster parameter group and
+%% you
+%% want to modify a value in it, you must first
+%% create a new parameter group:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-create.html
-%% or copy an existing parameter group:
+%% or
+%% copy an existing parameter group:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-copy.html,
-%% modify it, and then apply the modified parameter group to your cluster.
-%% For the new cluster parameter group and associated settings to take
-%% effect, you must then reboot the instances in the cluster without
-%% failover. For more information, see Modifying Amazon DocumentDB Cluster
-%% Parameter Groups:
+%% modify it, and then apply the modified parameter group to your
+%% cluster. For the new cluster parameter group and associated settings
+%% to take effect, you must then reboot the instances in the cluster
+%% without failover. For more information,
+%% see
+%% Modifying Amazon DocumentDB Cluster Parameter Groups:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-modify.html.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -233,8 +238,8 @@ create_db_instance(Client, Input, Options)
 
 %% @doc Creates a new subnet group.
 %%
-%% subnet groups must contain at least one subnet in at least two
-%% Availability Zones in the Amazon Web Services Region.
+%% subnet groups must contain at least one subnet in at
+%% least two Availability Zones in the Amazon Web Services Region.
 create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
@@ -392,7 +397,8 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
     request(Client, <<"DescribeDBClusterParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular cluster
-%% parameter group.
+%% parameter
+%% group.
 describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
@@ -401,7 +407,8 @@ describe_db_cluster_parameters(Client, Input, Options)
     request(Client, <<"DescribeDBClusterParameters">>, Input, Options).
 
 %% @doc Returns a list of cluster snapshot attribute names and values for a
-%% manual DB cluster snapshot.
+%% manual DB
+%% cluster snapshot.
 %%
 %% When you share snapshots with other Amazon Web Services accounts,
 %% `DescribeDBClusterSnapshotAttributes' returns the `restore'
@@ -429,11 +436,13 @@ describe_db_cluster_snapshots(Client, Input, Options)
 
 %% @doc Returns information about provisioned Amazon DocumentDB clusters.
 %%
-%% This API operation supports pagination. For certain management features
+%% This API
+%% operation supports pagination. For certain management features
 %% such as cluster and instance lifecycle management, Amazon DocumentDB
-%% leverages operational technology that is shared with Amazon RDS and Amazon
-%% Neptune. Use the `filterName=engine,Values=docdb' filter parameter to
-%% return only Amazon DocumentDB clusters.
+%% leverages
+%% operational technology that is shared with Amazon RDS and Amazon
+%% Neptune. Use the `filterName=engine,Values=docdb' filter
+%% parameter to return only Amazon DocumentDB clusters.
 describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_clusters(Client, Input, []).
@@ -461,7 +470,8 @@ describe_db_instances(Client, Input, Options)
 
 %% @doc Returns a list of `DBSubnetGroup' descriptions.
 %%
-%% If a `DBSubnetGroupName' is specified, the list will contain only the
+%% If a
+%% `DBSubnetGroupName' is specified, the list will contain only the
 %% descriptions of the specified `DBSubnetGroup'.
 describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -471,7 +481,8 @@ describe_db_subnet_groups(Client, Input, Options)
     request(Client, <<"DescribeDBSubnetGroups">>, Input, Options).
 
 %% @doc Returns the default engine and system parameter information for the
-%% cluster database engine.
+%% cluster database
+%% engine.
 describe_engine_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_cluster_parameters(Client, Input, []).
@@ -480,7 +491,8 @@ describe_engine_default_cluster_parameters(Client, Input, Options)
     request(Client, <<"DescribeEngineDefaultClusterParameters">>, Input, Options).
 
 %% @doc Displays a list of categories for all event source types, or, if
-%% specified, for a specified source type.
+%% specified, for a
+%% specified source type.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
@@ -538,7 +550,8 @@ describe_orderable_db_instance_options(Client, Input, Options)
     request(Client, <<"DescribeOrderableDBInstanceOptions">>, Input, Options).
 
 %% @doc Returns a list of resources (for example, instances) that have at
-%% least one pending maintenance action.
+%% least one pending
+%% maintenance action.
 describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
@@ -572,8 +585,10 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Modifies a setting for an Amazon DocumentDB cluster.
 %%
-%% You can change one or more database configuration parameters by specifying
-%% these parameters and the new values in the request.
+%% You can change one or more database
+%% configuration parameters by specifying these parameters and the new values
+%% in the
+%% request.
 modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
@@ -583,20 +598,26 @@ modify_db_cluster(Client, Input, Options)
 
 %% @doc Modifies the parameters of a cluster parameter group.
 %%
-%% To modify more than one parameter, submit a list of the following:
-%% `ParameterName', `ParameterValue', and `ApplyMethod'. A
-%% maximum of 20 parameters can be modified in a single request.
+%% To modify more than one
+%% parameter, submit a list of the following: `ParameterName',
+%% `ParameterValue', and `ApplyMethod'. A maximum of 20
+%% parameters can be modified in a single request.
 %%
 %% Changes to dynamic parameters are applied immediately. Changes to static
-%% parameters require a reboot or maintenance window before the change can
-%% take effect.
+%% parameters require a reboot or maintenance window
+%%
+%% before the change can take effect.
 %%
 %% After you create a cluster parameter group, you should wait at least 5
-%% minutes before creating your first cluster that uses that cluster
-%% parameter group as the default parameter group. This allows Amazon
-%% DocumentDB to fully complete the create action before the parameter group
-%% is used as the default for a new cluster. This step is especially
-%% important for parameters that are critical when creating the default
+%% minutes
+%% before creating your first cluster that uses that cluster parameter group
+%% as
+%% the default parameter group. This allows Amazon DocumentDB to fully
+%% complete the create action
+%% before the parameter group is used as the default for a new cluster. This
+%% step is
+%% especially important for parameters that are critical when creating the
+%% default
 %% database for a cluster, such as the character set for the default database
 %% defined by the `character_set_database' parameter.
 modify_db_cluster_parameter_group(Client, Input)
@@ -677,13 +698,17 @@ modify_global_cluster(Client, Input, Options)
 %% @doc You might need to reboot your instance, usually for maintenance
 %% reasons.
 %%
-%% For example, if you make certain changes, or if you change the cluster
-%% parameter group that is associated with the instance, you must reboot the
-%% instance for the changes to take effect.
+%% For
+%% example, if you make certain changes, or if you change the cluster
+%% parameter group
+%% that is associated with the instance, you must reboot the instance for the
+%% changes to
+%% take effect.
 %%
 %% Rebooting an instance restarts the database engine service. Rebooting an
-%% instance results in a momentary outage, during which the instance status
-%% is set to rebooting.
+%% instance
+%% results in a momentary outage, during which the instance status is set to
+%% rebooting.
 reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_instance(Client, Input, []).
@@ -707,7 +732,8 @@ remove_from_global_cluster(Client, Input, Options)
     request(Client, <<"RemoveFromGlobalCluster">>, Input, Options).
 
 %% @doc Removes a source identifier from an existing Amazon DocumentDB event
-%% notification subscription.
+%% notification
+%% subscription.
 remove_source_identifier_from_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_source_identifier_from_subscription(Client, Input, []).
@@ -726,14 +752,19 @@ remove_tags_from_resource(Client, Input, Options)
 %% @doc Modifies the parameters of a cluster parameter group to the default
 %% value.
 %%
-%% To reset specific parameters, submit a list of the following:
-%% `ParameterName' and `ApplyMethod'. To reset the entire cluster
-%% parameter group, specify the `DBClusterParameterGroupName' and
-%% `ResetAllParameters' parameters.
+%% To
+%% reset specific parameters, submit a list of the following:
+%% `ParameterName'
+%% and `ApplyMethod'. To reset the entire cluster parameter group,
+%% specify
+%% the `DBClusterParameterGroupName' and `ResetAllParameters'
+%% parameters.
 %%
 %% When you reset the entire group, dynamic parameters are updated
-%% immediately and static parameters are set to `pending-reboot' to take
-%% effect on the next DB instance reboot.
+%% immediately and
+%% static parameters are set to `pending-reboot' to take effect on the
+%% next DB
+%% instance reboot.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
@@ -759,11 +790,12 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 
 %% @doc Restores a cluster to an arbitrary point in time.
 %%
-%% Users can restore to any point in time before `LatestRestorableTime'
-%% for up to `BackupRetentionPeriod' days. The target cluster is created
-%% from the source cluster with the same configuration as the original
-%% cluster, except that the new cluster is created with the default security
-%% group.
+%% Users can restore to any point in
+%% time before `LatestRestorableTime' for up to
+%% `BackupRetentionPeriod' days. The target cluster is created from the
+%% source cluster with the same configuration as the original cluster, except
+%% that
+%% the new cluster is created with the default security group.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
@@ -774,8 +806,8 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %% @doc Restarts the stopped cluster that is specified by
 %% `DBClusterIdentifier'.
 %%
-%% For more information, see Stopping and Starting an Amazon DocumentDB
-%% Cluster:
+%% For more information, see Stopping and
+%% Starting an Amazon DocumentDB Cluster:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
 start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -787,8 +819,10 @@ start_db_cluster(Client, Input, Options)
 %% @doc Stops the running cluster that is specified by
 %% `DBClusterIdentifier'.
 %%
-%% The cluster must be in the available state. For more information, see
-%% Stopping and Starting an Amazon DocumentDB Cluster:
+%% The
+%% cluster must be in the available state. For more information, see
+%% Stopping and
+%% Starting an Amazon DocumentDB Cluster:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
 stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->

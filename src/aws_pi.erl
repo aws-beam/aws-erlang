@@ -7,38 +7,41 @@
 %% different dimensions of database load based on data captured from a
 %% running DB instance.
 %%
-%% The guide provides detailed information about Performance Insights data
-%% types, parameters and errors.
+%% The guide
+%% provides detailed information about Performance Insights data types,
+%% parameters and errors.
 %%
 %% When Performance Insights is enabled, the Amazon RDS Performance Insights
 %% API provides visibility into the performance of your DB instance. Amazon
-%% CloudWatch provides the authoritative source for Amazon Web Services
-%% service-vended monitoring metrics. Performance Insights offers a
-%% domain-specific view of DB load.
+%% CloudWatch provides the
+%% authoritative source for Amazon Web Services service-vended monitoring
+%% metrics. Performance Insights offers a domain-specific view of DB load.
 %%
 %% DB load is measured as average active sessions. Performance Insights
 %% provides the data to API consumers as a two-dimensional time-series
-%% dataset. The time dimension provides DB load data for each time point in
-%% the queried time range. Each time point decomposes overall load in
-%% relation to the requested dimensions, measured at that time point.
-%% Examples include SQL, Wait event, User, and Host.
+%% dataset. The time dimension
+%% provides DB load data for each time point in the queried time range. Each
+%% time point decomposes overall load in relation to the requested
+%% dimensions, measured at that time point. Examples include SQL, Wait event,
+%% User, and Host.
 %%
-%% <ul> <li> To learn more about Performance Insights and Amazon Aurora DB
-%% instances, go to the Amazon Aurora User Guide:
+%% To learn more about Performance Insights and Amazon Aurora DB instances,
+%% go to the
+%% Amazon Aurora User Guide:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html
 %% .
 %%
-%% </li> <li> To learn more about Performance Insights and Amazon RDS DB
-%% instances, go to the Amazon RDS User Guide:
+%% To learn more about Performance Insights and Amazon RDS DB instances, go
+%% to the
+%% Amazon RDS User Guide:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html
 %% .
 %%
-%% </li> <li> To learn more about Performance Insights and Amazon DocumentDB
-%% clusters, go to the Amazon DocumentDB Developer Guide:
+%% To learn more about Performance Insights and Amazon DocumentDB clusters,
+%% go to the
+%% Amazon DocumentDB Developer Guide:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html
 %% .
-%%
-%% </li> </ul>
 -module(aws_pi).
 
 -export([create_performance_analysis_report/2,
@@ -75,7 +78,8 @@
 %%====================================================================
 
 %% @doc Creates a new performance analysis report for a specific time period
-%% for the DB instance.
+%% for the
+%% DB instance.
 create_performance_analysis_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_performance_analysis_report(Client, Input, []).
@@ -95,7 +99,8 @@ delete_performance_analysis_report(Client, Input, Options)
 %% for a metric.
 %%
 %% Each response element returns a maximum of 500 bytes. For larger elements,
-%% such as SQL statements, only the first 500 bytes are returned.
+%% such as SQL statements,
+%% only the first 500 bytes are returned.
 describe_dimension_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dimension_keys(Client, Input, []).
@@ -106,11 +111,12 @@ describe_dimension_keys(Client, Input, Options)
 %% @doc Get the attributes of the specified dimension group for a DB instance
 %% or data source.
 %%
-%% For example, if you specify a SQL ID, `GetDimensionKeyDetails'
-%% retrieves the full text of the dimension `db.sql.statement' associated
-%% with this ID. This operation is useful because `GetResourceMetrics'
-%% and `DescribeDimensionKeys' don't support retrieval of large SQL
-%% statement text.
+%% For example, if you specify a SQL ID,
+%% `GetDimensionKeyDetails' retrieves the full text of the dimension
+%% `db.sql.statement' associated with this ID.
+%% This operation is useful because `GetResourceMetrics' and
+%% `DescribeDimensionKeys' don't support retrieval of large
+%% SQL statement text.
 get_dimension_key_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dimension_key_details(Client, Input, []).
@@ -119,11 +125,12 @@ get_dimension_key_details(Client, Input, Options)
     request(Client, <<"GetDimensionKeyDetails">>, Input, Options).
 
 %% @doc Retrieves the report including the report ID, status, time details,
-%% and the insights with recommendations.
+%% and the insights
+%% with recommendations.
 %%
-%% The report status can be `RUNNING', `SUCCEEDED', or `FAILED'.
-%% The insights include the `description' and `recommendation'
-%% fields.
+%% The report status can be `RUNNING',
+%% `SUCCEEDED', or `FAILED'. The insights include the
+%% `description' and `recommendation' fields.
 get_performance_analysis_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_performance_analysis_report(Client, Input, []).
@@ -133,8 +140,8 @@ get_performance_analysis_report(Client, Input, Options)
 
 %% @doc Retrieve the metadata for different features.
 %%
-%% For example, the metadata might indicate that a feature is turned on or
-%% off on a specific DB instance.
+%% For example, the metadata might indicate
+%% that a feature is turned on or off on a specific DB instance.
 get_resource_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_metadata(Client, Input, []).
@@ -145,11 +152,14 @@ get_resource_metadata(Client, Input, Options)
 %% @doc Retrieve Performance Insights metrics for a set of data sources over
 %% a time period.
 %%
-%% You can provide specific dimension groups and dimensions, and provide
-%% aggregation and filtering criteria for each group.
+%% You can provide
+%% specific dimension groups and dimensions, and provide aggregation and
+%% filtering criteria for
+%% each group.
 %%
 %% Each response element returns a maximum of 500 bytes. For larger elements,
-%% such as SQL statements, only the first 500 bytes are returned.
+%% such as SQL statements,
+%% only the first 500 bytes are returned.
 get_resource_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_metrics(Client, Input, []).

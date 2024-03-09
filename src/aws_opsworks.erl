@@ -5,14 +5,16 @@
 %%
 %% Welcome to the AWS OpsWorks Stacks API Reference.
 %%
-%% This guide provides descriptions, syntax, and usage examples for AWS
-%% OpsWorks Stacks actions and data types, including common parameters and
-%% error codes.
+%% This guide provides descriptions, syntax, and
+%% usage examples for AWS OpsWorks Stacks actions and data types, including
+%% common parameters and error
+%% codes.
 %%
 %% AWS OpsWorks Stacks is an application management service that provides an
-%% integrated experience for overseeing the complete application lifecycle.
-%% For information about this product, go to the AWS OpsWorks:
-%% http://aws.amazon.com/opsworks/ details page.
+%% integrated experience for
+%% overseeing the complete application lifecycle. For information about this
+%% product, go to the
+%% AWS OpsWorks: http://aws.amazon.com/opsworks/ details page.
 %%
 %% SDKs and CLI
 %%
@@ -20,70 +22,73 @@
 %% Command Line Interface (CLI) or by using one of the AWS SDKs to implement
 %% applications in your preferred language. For more information, see:
 %%
-%% <ul> <li> AWS CLI:
+%% AWS CLI:
 %% https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 %%
-%% </li> <li> AWS SDK for Java:
+%% AWS SDK for Java:
 %% https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html
 %%
-%% </li> <li> AWS SDK for .NET:
+%% AWS SDK for
+%% .NET:
 %% https://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm
 %%
-%% </li> <li> AWS SDK for PHP 2:
+%% AWS
+%% SDK for PHP 2:
 %% https://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html
 %%
-%% </li> <li> AWS SDK for Ruby: http://docs.aws.amazon.com/sdkforruby/api/
+%% AWS SDK for Ruby: http://docs.aws.amazon.com/sdkforruby/api/
 %%
-%% </li> <li> AWS SDK for Node.js:
-%% http://aws.amazon.com/documentation/sdkforjavascript/
+%% AWS SDK for Node.js: http://aws.amazon.com/documentation/sdkforjavascript/
 %%
-%% </li> <li> AWS SDK for Python(Boto):
-%% http://docs.pythonboto.org/en/latest/ref/opsworks.html
+%% AWS SDK for
+%% Python(Boto): http://docs.pythonboto.org/en/latest/ref/opsworks.html
 %%
-%% </li> </ul> Endpoints
+%% Endpoints
 %%
 %% AWS OpsWorks Stacks supports the following endpoints, all HTTPS. You must
-%% connect to one of the following endpoints. Stacks can only be accessed or
-%% managed within the endpoint in which they are created.
+%% connect to one of the following endpoints. Stacks
+%% can only be accessed or managed within the endpoint in which they are
+%% created.
 %%
-%% <ul> <li> opsworks.us-east-1.amazonaws.com
+%% opsworks.us-east-1.amazonaws.com
 %%
-%% </li> <li> opsworks.us-east-2.amazonaws.com
+%% opsworks.us-east-2.amazonaws.com
 %%
-%% </li> <li> opsworks.us-west-1.amazonaws.com
+%% opsworks.us-west-1.amazonaws.com
 %%
-%% </li> <li> opsworks.us-west-2.amazonaws.com
+%% opsworks.us-west-2.amazonaws.com
 %%
-%% </li> <li> opsworks.ca-central-1.amazonaws.com (API only; not available in
-%% the AWS console)
+%% opsworks.ca-central-1.amazonaws.com (API only; not available in the AWS
+%% console)
 %%
-%% </li> <li> opsworks.eu-west-1.amazonaws.com
+%% opsworks.eu-west-1.amazonaws.com
 %%
-%% </li> <li> opsworks.eu-west-2.amazonaws.com
+%% opsworks.eu-west-2.amazonaws.com
 %%
-%% </li> <li> opsworks.eu-west-3.amazonaws.com
+%% opsworks.eu-west-3.amazonaws.com
 %%
-%% </li> <li> opsworks.eu-central-1.amazonaws.com
+%% opsworks.eu-central-1.amazonaws.com
 %%
-%% </li> <li> opsworks.ap-northeast-1.amazonaws.com
+%% opsworks.ap-northeast-1.amazonaws.com
 %%
-%% </li> <li> opsworks.ap-northeast-2.amazonaws.com
+%% opsworks.ap-northeast-2.amazonaws.com
 %%
-%% </li> <li> opsworks.ap-south-1.amazonaws.com
+%% opsworks.ap-south-1.amazonaws.com
 %%
-%% </li> <li> opsworks.ap-southeast-1.amazonaws.com
+%% opsworks.ap-southeast-1.amazonaws.com
 %%
-%% </li> <li> opsworks.ap-southeast-2.amazonaws.com
+%% opsworks.ap-southeast-2.amazonaws.com
 %%
-%% </li> <li> opsworks.sa-east-1.amazonaws.com
+%% opsworks.sa-east-1.amazonaws.com
 %%
-%% </li> </ul> Chef Versions
+%% Chef Versions
 %%
 %% When you call `CreateStack', `CloneStack', or `UpdateStack' we
-%% recommend you use the `ConfigurationManager' parameter to specify the
-%% Chef version. The recommended and default value for Linux stacks is
-%% currently 12. Windows stacks use Chef 12.2. For more information, see Chef
-%% Versions:
+%% recommend you
+%% use the `ConfigurationManager' parameter to specify the Chef version.
+%% The recommended and default value for Linux stacks is currently 12.
+%% Windows stacks use Chef 12.2. For more information,
+%% see Chef Versions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html.
 %%
 %% You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We recommend
@@ -247,19 +252,20 @@
 
 %% @doc Assign a registered instance to a layer.
 %%
-%% <ul> <li> You can assign registered on-premises instances to any layer
-%% type.
+%% You can assign registered on-premises instances to any layer type.
 %%
-%% </li> <li> You can assign registered Amazon EC2 instances only to custom
-%% layers.
+%% You can assign registered Amazon EC2 instances only to custom layers.
 %%
-%% </li> <li> You cannot use this action with instances that were created
-%% with AWS OpsWorks Stacks.
+%% You cannot use this action with instances that were created with AWS
+%% OpsWorks Stacks.
 %%
-%% </li> </ul> Required Permissions: To use this action, an AWS Identity and
-%% Access Management (IAM) user must have a Manage permissions level for the
-%% stack or an attached policy that explicitly grants permissions. For more
-%% information on user permissions, see Managing User Permissions:
+%% Required Permissions: To use this action, an AWS Identity and Access
+%% Management
+%% (IAM) user must have a Manage permissions
+%% level for the stack or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 assign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -271,16 +277,20 @@ assign_instance(Client, Input, Options)
 %% @doc Assigns one of the stack's registered Amazon EBS volumes to a
 %% specified instance.
 %%
-%% The volume must first be registered with the stack by calling
-%% `RegisterVolume'. After you register the volume, you must call
-%% `UpdateVolume' to specify a mount point before calling
+%% The volume must
+%% first be registered with the stack by calling `RegisterVolume'. After
+%% you register the
+%% volume, you must call `UpdateVolume' to specify a mount point before
+%% calling
 %% `AssignVolume'. For more information, see Resource Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 assign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -292,14 +302,19 @@ assign_volume(Client, Input, Options)
 %% @doc Associates one of the stack's registered Elastic IP addresses
 %% with a specified instance.
 %%
-%% The address must first be registered with the stack by calling
-%% `RegisterElasticIp'. For more information, see Resource Management:
+%% The
+%% address must first be registered with the stack by calling
+%% `RegisterElasticIp'. For more
+%% information, see Resource
+%% Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 associate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -311,20 +326,25 @@ associate_elastic_ip(Client, Input, Options)
 %% @doc Attaches an Elastic Load Balancing load balancer to a specified
 %% layer.
 %%
-%% AWS OpsWorks Stacks does not support Application Load Balancer. You can
-%% only use Classic Load Balancer with AWS OpsWorks Stacks. For more
-%% information, see Elastic Load Balancing:
+%% AWS OpsWorks Stacks does not support
+%% Application Load Balancer. You can only use Classic Load Balancer with AWS
+%% OpsWorks Stacks.
+%% For more information, see Elastic Load
+%% Balancing:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html.
 %%
 %% You must create the Elastic Load Balancing instance separately, by using
-%% the Elastic Load Balancing console, API, or CLI. For more information, see
-%% Elastic Load Balancing Developer Guide:
+%% the Elastic Load Balancing console, API, or CLI. For
+%% more information, see Elastic
+%% Load Balancing Developer Guide:
 %% https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 attach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -335,13 +355,16 @@ attach_elastic_load_balancer(Client, Input, Options)
 
 %% @doc Creates a clone of a specified stack.
 %%
-%% For more information, see Clone a Stack:
+%% For more information, see Clone a
+%% Stack:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html.
 %% By default, all parameters are set to the values used by the parent stack.
 %%
 %% Required Permissions: To use this action, an IAM user must have an
-%% attached policy that explicitly grants permissions. For more information
-%% about user permissions, see Managing User Permissions:
+%% attached policy
+%% that explicitly grants permissions. For more information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 clone_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -352,13 +375,16 @@ clone_stack(Client, Input, Options)
 
 %% @doc Creates an app for a specified stack.
 %%
-%% For more information, see Creating Apps:
+%% For more information, see Creating
+%% Apps:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -369,15 +395,18 @@ create_app(Client, Input, Options)
 
 %% @doc Runs deployment or stack commands.
 %%
-%% For more information, see Deploying Apps:
+%% For more information, see Deploying
+%% Apps:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html
 %% and Run Stack Commands:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Deploy
-%% or Manage permissions level for the stack, or an attached policy that
-%% explicitly grants permissions. For more information on user permissions,
-%% see Managing User Permissions:
+%% or Manage
+%% permissions level for the stack, or an attached policy that explicitly
+%% grants permissions. For
+%% more information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 create_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -388,13 +417,16 @@ create_deployment(Client, Input, Options)
 
 %% @doc Creates an instance in a specified stack.
 %%
-%% For more information, see Adding an Instance to a Layer:
+%% For more information, see Adding an
+%% Instance to a Layer:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 create_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -405,20 +437,26 @@ create_instance(Client, Input, Options)
 
 %% @doc Creates a layer.
 %%
-%% For more information, see How to Create a Layer:
+%% For more information, see How to
+%% Create a Layer:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html.
 %%
 %% You should use CreateLayer for noncustom layer types such as PHP App
-%% Server only if the stack does not have an existing layer of that type. A
-%% stack can have at most one instance of each noncustom layer; if you
-%% attempt to create a second instance, CreateLayer fails. A stack can have
-%% an arbitrary number of custom layers, so you can call CreateLayer as many
-%% times as you like for that layer type.
+%% Server only if the stack
+%% does not have an existing layer of that type. A stack can have at most one
+%% instance of each
+%% noncustom layer; if you attempt to create a second instance, CreateLayer
+%% fails. A
+%% stack can have an arbitrary number of custom layers, so you can call
+%% CreateLayer as
+%% many times as you like for that layer type.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 create_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -429,12 +467,15 @@ create_layer(Client, Input, Options)
 
 %% @doc Creates a new stack.
 %%
-%% For more information, see Create a New Stack:
+%% For more information, see Create a New
+%% Stack:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have an
-%% attached policy that explicitly grants permissions. For more information
-%% about user permissions, see Managing User Permissions:
+%% attached policy
+%% that explicitly grants permissions. For more information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -446,8 +487,10 @@ create_stack(Client, Input, Options)
 %% @doc Creates a new user profile.
 %%
 %% Required Permissions: To use this action, an IAM user must have an
-%% attached policy that explicitly grants permissions. For more information
-%% about user permissions, see Managing User Permissions:
+%% attached policy
+%% that explicitly grants permissions. For more information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -459,9 +502,11 @@ create_user_profile(Client, Input, Options)
 %% @doc Deletes a specified app.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -475,13 +520,16 @@ delete_app(Client, Input, Options)
 %%
 %% You must stop an instance before you can delete it.
 %%
-%% For more information, see Deleting Instances:
+%% For more information, see Deleting
+%% Instances:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -492,14 +540,17 @@ delete_instance(Client, Input, Options)
 
 %% @doc Deletes a specified layer.
 %%
-%% You must first stop and then delete all associated instances or unassign
-%% registered instances. For more information, see How to Delete a Layer:
+%% You must first stop and then delete all associated instances or
+%% unassign registered instances. For more information, see How to
+%% Delete a Layer:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 delete_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -510,14 +561,17 @@ delete_layer(Client, Input, Options)
 
 %% @doc Deletes a specified stack.
 %%
-%% You must first delete all instances, layers, and apps or deregister
-%% registered instances. For more information, see Shut Down a Stack:
+%% You must first delete all instances, layers, and apps or
+%% deregister registered instances. For more information, see Shut Down a
+%% Stack:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -529,8 +583,10 @@ delete_stack(Client, Input, Options)
 %% @doc Deletes a user profile.
 %%
 %% Required Permissions: To use this action, an IAM user must have an
-%% attached policy that explicitly grants permissions. For more information
-%% about user permissions, see Managing User Permissions:
+%% attached policy
+%% that explicitly grants permissions. For more information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -541,12 +597,16 @@ delete_user_profile(Client, Input, Options)
 
 %% @doc Deregisters a specified Amazon ECS cluster from a stack.
 %%
-%% For more information, see Resource Management:
+%% For more information, see
+%%
+%% Resource Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see
+%% permissions
+%% level for the stack or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see
 %% [https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html].
 deregister_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -557,14 +617,16 @@ deregister_ecs_cluster(Client, Input, Options)
 
 %% @doc Deregisters a specified Elastic IP address.
 %%
-%% The address can then be registered by another stack. For more information,
-%% see Resource Management:
+%% The address can then be registered by another
+%% stack. For more information, see Resource Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 deregister_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -575,14 +637,17 @@ deregister_elastic_ip(Client, Input, Options)
 
 %% @doc Deregister a registered Amazon EC2 or on-premises instance.
 %%
-%% This action removes the instance from the stack and returns it to your
-%% control. This action cannot be used with instances that were created with
-%% AWS OpsWorks Stacks.
+%% This action removes the
+%% instance from the stack and returns it to your control. This action cannot
+%% be used with
+%% instances that were created with AWS OpsWorks Stacks.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -594,9 +659,11 @@ deregister_instance(Client, Input, Options)
 %% @doc Deregisters an Amazon RDS instance.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 deregister_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -607,14 +674,17 @@ deregister_rds_db_instance(Client, Input, Options)
 
 %% @doc Deregisters an Amazon EBS volume.
 %%
-%% The volume can then be registered by another stack. For more information,
-%% see Resource Management:
+%% The volume can then be registered by another stack. For more
+%% information, see Resource
+%% Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 deregister_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -625,9 +695,10 @@ deregister_volume(Client, Input, Options)
 
 %% @doc Describes the available AWS OpsWorks Stacks agent versions.
 %%
-%% You must specify a stack ID or a configuration manager.
-%% `DescribeAgentVersions' returns a list of available agent versions for
-%% the specified stack or configuration manager.
+%% You must specify a stack ID or a
+%% configuration manager. `DescribeAgentVersions' returns a list of
+%% available
+%% agent versions for the specified stack or configuration manager.
 describe_agent_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent_versions(Client, Input, []).
@@ -640,9 +711,12 @@ describe_agent_versions(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -656,9 +730,12 @@ describe_apps(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_commands(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -672,9 +749,12 @@ describe_commands(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -685,15 +765,19 @@ describe_deployments(Client, Input, Options)
 
 %% @doc Describes Amazon ECS clusters that are registered with a stack.
 %%
-%% If you specify only a stack ID, you can use the `MaxResults' and
-%% `NextToken' parameters to paginate the response. However, AWS OpsWorks
-%% Stacks currently supports only one cluster per layer, so the result set
-%% has a maximum of one element.
+%% If you specify only a stack ID,
+%% you can use the `MaxResults' and `NextToken' parameters to
+%% paginate the
+%% response. However, AWS OpsWorks Stacks currently supports only one cluster
+%% per layer, so the result
+%% set has a maximum of one element.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack or an attached policy
-%% that explicitly grants permission. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack or an attached policy that
+%% explicitly grants
+%% permission. For more information about user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
@@ -710,9 +794,12 @@ describe_ecs_clusters(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_elastic_ips(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -726,9 +813,12 @@ describe_elastic_ips(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_elastic_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -742,9 +832,12 @@ describe_elastic_load_balancers(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -758,9 +851,12 @@ describe_instances(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_layers(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -775,9 +871,12 @@ describe_layers(Client, Input, Options)
 %% You must specify at least one of the parameters.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -789,9 +888,11 @@ describe_load_based_auto_scaling(Client, Input, Options)
 %% @doc Describes a user's SSH information.
 %%
 %% Required Permissions: To use this action, an IAM user must have
-%% self-management enabled or an attached policy that explicitly grants
-%% permissions. For more information about user permissions, see Managing
-%% User Permissions:
+%% self-management
+%% enabled or an attached policy that explicitly grants permissions. For more
+%% information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_my_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -812,9 +913,11 @@ describe_operating_systems(Client, Input, Options)
 %% @doc Describes the permissions for a specified stack.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -828,9 +931,12 @@ describe_permissions(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_raid_arrays(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -842,9 +948,12 @@ describe_raid_arrays(Client, Input, Options)
 %% @doc Describes Amazon RDS instances.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
@@ -858,9 +967,12 @@ describe_rds_db_instances(Client, Input, Options)
 %% @doc Describes AWS OpsWorks Stacks service errors.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
@@ -874,9 +986,12 @@ describe_service_errors(Client, Input, Options)
 %% @doc Requests a description of a stack's provisioning parameters.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_stack_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -886,13 +1001,16 @@ describe_stack_provisioning_parameters(Client, Input, Options)
     request(Client, <<"DescribeStackProvisioningParameters">>, Input, Options).
 
 %% @doc Describes the number of layers and apps in a specified stack, and the
-%% number of instances in each state, such as `running_setup' or
-%% `online'.
+%% number of instances in
+%% each state, such as `running_setup' or `online'.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_stack_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -904,9 +1022,12 @@ describe_stack_summary(Client, Input, Options)
 %% @doc Requests a description of one or more stacks.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -921,9 +1042,12 @@ describe_stacks(Client, Input, Options)
 %% You must specify at least one of the parameters.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -935,8 +1059,10 @@ describe_time_based_auto_scaling(Client, Input, Options)
 %% @doc Describe specified users.
 %%
 %% Required Permissions: To use this action, an IAM user must have an
-%% attached policy that explicitly grants permissions. For more information
-%% about user permissions, see Managing User Permissions:
+%% attached policy
+%% that explicitly grants permissions. For more information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -950,9 +1076,12 @@ describe_user_profiles(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or Manage permissions level for the stack, or an attached policy
-%% that explicitly grants permissions. For more information about user
-%% permissions, see Managing User Permissions:
+%% Deploy, or
+%% Manage permissions level for the stack, or an attached policy that
+%% explicitly grants
+%% permissions. For more information about user permissions, see Managing
+%% User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -964,9 +1093,11 @@ describe_volumes(Client, Input, Options)
 %% @doc Detaches a specified Elastic Load Balancing instance from its layer.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 detach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -977,14 +1108,16 @@ detach_elastic_load_balancer(Client, Input, Options)
 
 %% @doc Disassociates an Elastic IP address from its instance.
 %%
-%% The address remains registered with the stack. For more information, see
-%% Resource Management:
+%% The address remains registered with
+%% the stack. For more information, see Resource Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 disassociate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -997,9 +1130,11 @@ disassociate_elastic_ip(Client, Input, Options)
 %% current host name theme.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 get_hostname_suggestion(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1008,7 +1143,8 @@ get_hostname_suggestion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHostnameSuggestion">>, Input, Options).
 
-%% @doc This action can be used only with Windows stacks.
+%% @doc
+%% This action can be used only with Windows stacks.
 %%
 %% Grants RDP access to a Windows instance for a specified time period.
 grant_access(Client, Input)
@@ -1029,13 +1165,16 @@ list_tags(Client, Input, Options)
 
 %% @doc Reboots a specified instance.
 %%
-%% For more information, see Starting, Stopping, and Rebooting Instances:
+%% For more information, see Starting,
+%% Stopping, and Rebooting Instances:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 reboot_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1046,15 +1185,20 @@ reboot_instance(Client, Input, Options)
 
 %% @doc Registers a specified Amazon ECS cluster with a stack.
 %%
-%% You can register only one cluster with a stack. A cluster can be
-%% registered with only one stack. For more information, see Resource
-%% Management:
+%% You can register only one
+%% cluster with a stack. A cluster can be registered with only one stack.
+%% For more information, see
+%%
+%% Resource Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see
+%%
+%% Managing User Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 register_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1065,15 +1209,19 @@ register_ecs_cluster(Client, Input, Options)
 
 %% @doc Registers an Elastic IP address with a specified stack.
 %%
-%% An address can be registered with only one stack at a time. If the address
-%% is already registered, you must first deregister it by calling
-%% `DeregisterElasticIp'. For more information, see Resource Management:
+%% An address can be registered with
+%% only one stack at a time. If the address is already registered, you must
+%% first deregister it
+%% by calling `DeregisterElasticIp'. For more information, see Resource
+%% Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 register_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1086,26 +1234,33 @@ register_elastic_ip(Client, Input, Options)
 %% with a specified stack.
 %%
 %% We do not recommend using this action to register instances. The complete
-%% registration operation includes two tasks: installing the AWS OpsWorks
-%% Stacks agent on the instance, and registering the instance with the stack.
-%% `RegisterInstance' handles only the second step. You should instead
-%% use the AWS CLI `register' command, which performs the entire
-%% registration operation. For more information, see Registering an Instance
-%% with an AWS OpsWorks Stacks Stack:
+%% registration
+%% operation includes two tasks: installing the AWS OpsWorks Stacks agent on
+%% the instance, and registering
+%% the instance with the stack. `RegisterInstance' handles only the
+%% second step. You
+%% should instead use the AWS CLI `register' command, which performs the
+%% entire
+%% registration operation. For more information,
+%% see
+%% Registering an Instance with an AWS OpsWorks Stacks Stack:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html.
 %%
 %% Registered instances have the same requirements as instances that are
-%% created by using the `CreateInstance' API. For example, registered
-%% instances must be running a supported Linux-based operating system, and
-%% they must have a supported instance type. For more information about
-%% requirements for instances that you want to register, see Preparing the
-%% Instance:
+%% created by using the `CreateInstance' API.
+%% For example, registered instances must be running a supported Linux-based
+%% operating system, and they must have a supported instance
+%% type. For more information about requirements for instances that you want
+%% to register, see
+%% Preparing the Instance:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1117,9 +1272,11 @@ register_instance(Client, Input, Options)
 %% @doc Registers an Amazon RDS instance with a stack.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 register_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1130,15 +1287,18 @@ register_rds_db_instance(Client, Input, Options)
 
 %% @doc Registers an Amazon EBS volume with a specified stack.
 %%
-%% A volume can be registered with only one stack at a time. If the volume is
-%% already registered, you must first deregister it by calling
+%% A volume can be registered with only one
+%% stack at a time. If the volume is already registered, you must first
+%% deregister it by calling
 %% `DeregisterVolume'. For more information, see Resource Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 register_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1150,8 +1310,9 @@ register_volume(Client, Input, Options)
 %% @doc Specify the load-based auto scaling configuration for a specified
 %% layer.
 %%
-%% For more information, see Managing Load with Time-based and Load-based
-%% Instances:
+%% For more
+%% information, see Managing
+%% Load with Time-based and Load-based Instances:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html.
 %%
 %% To use load-based auto scaling, you must create a set of load-based auto
@@ -1160,9 +1321,11 @@ register_volume(Client, Input, Options)
 %% to handle the maximum anticipated load.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 set_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1173,13 +1336,16 @@ set_load_based_auto_scaling(Client, Input, Options)
 
 %% @doc Specifies a user's permissions.
 %%
-%% For more information, see Security and Permissions:
+%% For more information, see Security and
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 set_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1191,14 +1357,17 @@ set_permission(Client, Input, Options)
 %% @doc Specify the time-based auto scaling configuration for a specified
 %% instance.
 %%
-%% For more information, see Managing Load with Time-based and Load-based
-%% Instances:
+%% For more
+%% information, see Managing
+%% Load with Time-based and Load-based Instances:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 set_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1209,13 +1378,16 @@ set_time_based_auto_scaling(Client, Input, Options)
 
 %% @doc Starts a specified instance.
 %%
-%% For more information, see Starting, Stopping, and Rebooting Instances:
+%% For more information, see Starting,
+%% Stopping, and Rebooting Instances:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 start_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1227,9 +1399,11 @@ start_instance(Client, Input, Options)
 %% @doc Starts a stack's instances.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 start_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1240,16 +1414,19 @@ start_stack(Client, Input, Options)
 
 %% @doc Stops a specified instance.
 %%
-%% When you stop a standard instance, the data disappears and must be
-%% reinstalled when you restart the instance. You can stop an Amazon
-%% EBS-backed instance without losing data. For more information, see
-%% Starting, Stopping, and Rebooting Instances:
+%% When you stop a standard instance, the data disappears and must
+%% be reinstalled when you restart the instance. You can stop an Amazon
+%% EBS-backed instance without
+%% losing data. For more information, see Starting,
+%% Stopping, and Rebooting Instances:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 stop_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1261,9 +1438,11 @@ stop_instance(Client, Input, Options)
 %% @doc Stops a specified stack.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 stop_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1289,13 +1468,17 @@ tag_resource(Client, Input, Options)
 %% instance.
 %%
 %% The instance remains in the stack as an unassigned instance, and can be
-%% assigned to another layer as needed. You cannot use this action with
-%% instances that were created with AWS OpsWorks Stacks.
+%% assigned to
+%% another layer as needed. You cannot use this action with instances that
+%% were created
+%% with AWS OpsWorks Stacks.
 %%
-%% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack or an attached policy that explicitly
+%% Required Permissions: To use this action, an IAM user must
+%% have a Manage permissions level for the stack or an attached policy that
+%% explicitly
 %% grants permissions. For more information about user permissions, see
-%% Managing User Permissions:
+%% Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 unassign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1306,14 +1489,17 @@ unassign_instance(Client, Input, Options)
 
 %% @doc Unassigns an assigned Amazon EBS volume.
 %%
-%% The volume remains registered with the stack. For more information, see
-%% Resource Management:
+%% The volume remains registered with the stack. For more
+%% information, see Resource
+%% Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 unassign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1333,9 +1519,11 @@ untag_resource(Client, Input, Options)
 %% @doc Updates a specified app.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Deploy
-%% or Manage permissions level for the stack, or an attached policy that
-%% explicitly grants permissions. For more information on user permissions,
-%% see Managing User Permissions:
+%% or Manage
+%% permissions level for the stack, or an attached policy that explicitly
+%% grants permissions. For
+%% more information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_app(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1350,9 +1538,11 @@ update_app(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1364,9 +1554,11 @@ update_elastic_ip(Client, Input, Options)
 %% @doc Updates a specified instance.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1378,9 +1570,11 @@ update_instance(Client, Input, Options)
 %% @doc Updates a specified layer.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1392,9 +1586,11 @@ update_layer(Client, Input, Options)
 %% @doc Updates a user's SSH public key.
 %%
 %% Required Permissions: To use this action, an IAM user must have
-%% self-management enabled or an attached policy that explicitly grants
-%% permissions. For more information about user permissions, see Managing
-%% User Permissions:
+%% self-management
+%% enabled or an attached policy that explicitly grants permissions. For more
+%% information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_my_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1406,9 +1602,11 @@ update_my_user_profile(Client, Input, Options)
 %% @doc Updates an Amazon RDS instance.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1420,9 +1618,11 @@ update_rds_db_instance(Client, Input, Options)
 %% @doc Updates a specified stack.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1434,8 +1634,10 @@ update_stack(Client, Input, Options)
 %% @doc Updates a specified user profile.
 %%
 %% Required Permissions: To use this action, an IAM user must have an
-%% attached policy that explicitly grants permissions. For more information
-%% about user permissions, see Managing User Permissions:
+%% attached policy
+%% that explicitly grants permissions. For more information about user
+%% permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1450,9 +1652,11 @@ update_user_profile(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions level for the stack, or an attached policy that explicitly
-%% grants permissions. For more information on user permissions, see Managing
-%% User Permissions:
+%% permissions
+%% level for the stack, or an attached policy that explicitly grants
+%% permissions. For more
+%% information on user permissions, see Managing User
+%% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->

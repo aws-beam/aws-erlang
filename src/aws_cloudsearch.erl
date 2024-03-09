@@ -7,13 +7,15 @@
 %% and manage search domains.
 %%
 %% Configuration service requests are submitted using the AWS Query protocol.
-%% AWS Query requests are HTTP or HTTPS requests submitted via HTTP GET or
-%% POST with a query parameter named Action.
+%% AWS Query requests
+%% are HTTP or HTTPS requests submitted via HTTP GET or POST with a query
+%% parameter named Action.
 %%
 %% The endpoint for configuration service requests is region-specific:
-%% cloudsearch.region.amazonaws.com. For example,
-%% cloudsearch.us-east-1.amazonaws.com. For a current list of supported
-%% regions and endpoints, see Regions and Endpoints:
+%% cloudsearch.region.amazonaws.com.
+%% For example, cloudsearch.us-east-1.amazonaws.com. For a current list of
+%% supported regions and endpoints,
+%% see Regions and Endpoints:
 %% http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region.
 -module(aws_cloudsearch).
 
@@ -90,7 +92,8 @@ build_suggesters(Client, Input, Options)
 
 %% @doc Creates a new search domain.
 %%
-%% For more information, see Creating a Search Domain:
+%% For more information,
+%% see Creating a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html
 %% in the Amazon CloudSearch Developer Guide.
 create_domain(Client, Input)
@@ -177,7 +180,8 @@ delete_analysis_scheme(Client, Input, Options)
 %% @doc Permanently deletes a search domain and all of its data.
 %%
 %% Once a domain has been deleted, it cannot be recovered. For more
-%% information, see Deleting a Search Domain:
+%% information,
+%% see Deleting a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html
 %% in the Amazon CloudSearch Developer Guide.
 delete_domain(Client, Input)
@@ -270,11 +274,12 @@ describe_domain_endpoint_options(Client, Input, Options)
 
 %% @doc Gets information about the search domains owned by this account.
 %%
-%% Can be limited to specific domains. Shows all domains by default. To get
-%% the number of searchable documents in a domain, use the console or submit
-%% a `matchall' request to your domain's search endpoint:
-%% `q=matchall&amp;amp;q.parser=structured&amp;amp;size=0'. For more
-%% information, see Getting Information about a Search Domain:
+%% Can be limited to specific domains. Shows
+%% all domains by default. To get the number of searchable documents in a
+%% domain, use the console or submit a `matchall' request to your
+%% domain's search endpoint:
+%% `q=matchall&amp;q.parser=structured&amp;size=0'. For more information,
+%% see Getting Information about a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html
 %% in the Amazon CloudSearch Developer Guide.
 describe_domains(Client, Input)
@@ -306,8 +311,8 @@ describe_expressions(Client, Input, Options)
 %% Can be limited to specific fields by name. By default, shows all fields
 %% and includes any pending changes to the configuration. Set the
 %% `Deployed' option to `true' to show the active configuration and
-%% exclude pending changes. For more information, see Getting Domain
-%% Information:
+%% exclude pending changes. For more information,
+%% see Getting Domain Information:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html
 %% in the Amazon CloudSearch Developer Guide.
 describe_index_fields(Client, Input)
@@ -336,8 +341,8 @@ describe_scaling_parameters(Client, Input, Options)
 %%
 %% By default, shows the configuration with any pending changes. Set the
 %% `Deployed' option to `true' to show the active configuration and
-%% exclude pending changes. For more information, see Configuring Access for
-%% a Search Domain:
+%% exclude pending changes. For more information,
+%% see Configuring Access for a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html
 %% in the Amazon CloudSearch Developer Guide.
 describe_service_access_policies(Client, Input)
@@ -433,8 +438,8 @@ update_scaling_parameters(Client, Input, Options)
 %% @doc Configures the access rules that control access to the domain's
 %% document and search endpoints.
 %%
-%% For more information, see Configuring Access for an Amazon CloudSearch
-%% Domain:
+%% For more information, see
+%% Configuring Access for an Amazon CloudSearch Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html.
 update_service_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->

@@ -2,22 +2,28 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Connect is a cloud-based contact center solution that you use
-%% to set up and manage a customer contact center and provide reliable
-%% customer engagement at any scale.
+%% to set up and
+%% manage a customer contact center and provide reliable customer engagement
+%% at any scale.
 %%
 %% Amazon Connect provides metrics and real-time reporting that enable you to
-%% optimize contact routing. You can also resolve customer issues more
-%% efficiently by getting customers in touch with the appropriate agents.
+%% optimize
+%% contact routing. You can also resolve customer issues more efficiently by
+%% getting customers in
+%% touch with the appropriate agents.
 %%
 %% There are limits to the number of Amazon Connect resources that you can
-%% create. There are also limits to the number of requests that you can make
-%% per second. For more information, see Amazon Connect Service Quotas:
+%% create. There
+%% are also limits to the number of requests that you can make per second.
+%% For more information, see
+%% Amazon Connect Service Quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
 %% You can connect programmatically to an Amazon Web Services service by
-%% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
-%% Connect Endpoints:
+%% using an endpoint. For
+%% a list of Amazon Connect endpoints, see Amazon Connect Endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -module(aws_connect).
 
@@ -588,18 +594,21 @@
 %% @doc Activates an evaluation form in the specified Amazon Connect
 %% instance.
 %%
-%% After the evaluation form is activated, it is available to start new
-%% evaluations based on the form.
+%% After the
+%% evaluation form is activated, it is available to start new evaluations
+%% based on the form.
 activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/activate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -616,17 +625,20 @@ activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0)
 %% change.
 %%
 %% Associates the specified dataset for a Amazon Connect instance with the
-%% target account. You can associate only one dataset in a single call.
+%% target account.
+%% You can associate only one dataset in a single call.
 associate_analytics_data_set(Client, InstanceId, Input) ->
     associate_analytics_data_set(Client, InstanceId, Input, []).
 associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -648,11 +660,13 @@ associate_approved_origin(Client, InstanceId, Input) ->
 associate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -669,17 +683,20 @@ associate_approved_origin(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Allows the specified Amazon Connect instance to access the specified
-%% Amazon Lex or Amazon Lex V2 bot.
+%% Amazon Lex
+%% or Amazon Lex V2 bot.
 associate_bot(Client, InstanceId, Input) ->
     associate_bot(Client, InstanceId, Input, []).
 associate_bot(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -694,18 +711,20 @@ associate_bot(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Associates an existing vocabulary as the default.
 %%
-%% Contact Lens for Amazon Connect uses the vocabulary in post-call and
-%% real-time analysis sessions for the given language.
+%% Contact Lens for Amazon Connect uses the vocabulary in post-call
+%% and real-time analysis sessions for the given language.
 associate_default_vocabulary(Client, InstanceId, LanguageCode, Input) ->
     associate_default_vocabulary(Client, InstanceId, LanguageCode, Input, []).
 associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0) ->
     Method = put,
     Path = ["/default-vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(LanguageCode), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -724,11 +743,13 @@ associate_flow(Client, InstanceId, Input) ->
 associate_flow(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -745,24 +766,28 @@ associate_flow(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Associates a storage resource type for the first time. You can only
-%% associate one type of storage configuration in a single call. This means,
-%% for example, that you can't define an instance with multiple S3
-%% buckets for storing chat transcripts.
+%% associate one type of
+%% storage configuration in a single call. This means, for example, that you
+%% can't define an
+%% instance with multiple S3 buckets for storing chat transcripts.
 %%
 %% This API does not create a resource that doesn't exist. It only
-%% associates it to the instance. Ensure that the resource being specified in
-%% the storage configuration, like an S3 bucket, exists when being used for
-%% association.
+%% associates it to the
+%% instance. Ensure that the resource being specified in the storage
+%% configuration, like an S3
+%% bucket, exists when being used for association.
 associate_instance_storage_config(Client, InstanceId, Input) ->
     associate_instance_storage_config(Client, InstanceId, Input, []).
 associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -779,17 +804,20 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Allows the specified Amazon Connect instance to access the specified
-%% Lambda function.
+%% Lambda
+%% function.
 associate_lambda_function(Client, InstanceId, Input) ->
     associate_lambda_function(Client, InstanceId, Input, []).
 associate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -806,18 +834,20 @@ associate_lambda_function(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Allows the specified Amazon Connect instance to access the specified
-%% Amazon Lex V1 bot. This API only supports the association of Amazon Lex V1
-%% bots.
+%% Amazon Lex
+%% V1 bot. This API only supports the association of Amazon Lex V1 bots.
 associate_lex_bot(Client, InstanceId, Input) ->
     associate_lex_bot(Client, InstanceId, Input, []).
 associate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -834,24 +864,31 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 %% instance.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
-%% calling this API using an instance in the Amazon Web Services Region where
-%% the traffic distribution group was created, you can use either a full
-%% phone number ARN or UUID value for the `PhoneNumberId' URI request
-%% parameter. However, if the number is claimed to a traffic distribution
-%% group and you are calling this API using an instance in the alternate
+%% calling this API using an instance in the
+%% Amazon Web Services Region where the traffic distribution group was
+%% created, you can use either a full phone number
+%% ARN or UUID value for the `PhoneNumberId' URI request parameter.
+%% However, if the
+%% number is claimed to a traffic distribution group and you are calling this
+%% API using an instance in the alternate
 %% Amazon Web Services Region associated with the traffic distribution group,
-%% you must provide a full phone number ARN. If a UUID is provided in this
-%% scenario, you will receive a `ResourceNotFoundException'.
+%% you must provide a full phone number ARN.
+%% If a UUID is provided
+%% in
+%% this scenario, you will receive a
+%% `ResourceNotFoundException'.
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     associate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -873,11 +910,13 @@ associate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
 associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/associate-quick-connects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -896,11 +935,13 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/associate-queues"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -922,11 +963,13 @@ associate_security_key(Client, InstanceId, Input) ->
 associate_security_key(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -945,11 +988,13 @@ associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, In
 associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -968,11 +1013,13 @@ associate_user_proficiencies(Client, InstanceId, UserId, Input) ->
 associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/associate-proficiencies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -989,18 +1036,20 @@ associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 %% change.
 %%
 %% Associates a list of analytics datasets for a given Amazon Connect
-%% instance to a target account. You can associate multiple datasets in a
-%% single call.
+%% instance to a target
+%% account. You can associate multiple datasets in a single call.
 batch_associate_analytics_data_set(Client, InstanceId, Input) ->
     batch_associate_analytics_data_set(Client, InstanceId, Input, []).
 batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1017,17 +1066,20 @@ batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Removes a list of analytics datasets associated with a given Amazon
-%% Connect instance. You can disassociate multiple datasets in a single call.
+%% Connect instance.
+%% You can disassociate multiple datasets in a single call.
 batch_disassociate_analytics_data_set(Client, InstanceId, Input) ->
     batch_disassociate_analytics_data_set(Client, InstanceId, Input, []).
 batch_disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1046,11 +1098,13 @@ batch_get_flow_association(Client, InstanceId, Input) ->
 batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/flow-associations-batch/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1063,26 +1117,33 @@ batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Only the Amazon Connect outbound campaigns service principal is
-%% allowed to assume a role in your account and call this API.
+%% @doc
+%% Only the Amazon Connect outbound campaigns service principal is allowed to
+%% assume a
+%% role in your account and call this API.
 %%
 %% Allows you to create a batch of contacts in Amazon Connect. The outbound
-%% campaigns capability ingests dial requests via the PutDialRequestBatch:
+%% campaigns
+%% capability ingests dial requests via the PutDialRequestBatch:
 %% https://docs.aws.amazon.com/connect-outbound/latest/APIReference/API_PutDialRequestBatch.html
-%% API. It then uses BatchPutContact to create contacts corresponding to
-%% those dial requests. If agents are available, the dial requests are dialed
-%% out, which results in a voice call. The resulting voice call uses the same
-%% contactId that was created by BatchPutContact.
+%% API. It then uses BatchPutContact to create contacts corresponding
+%% to those dial requests. If agents are available, the dial requests are
+%% dialed out, which results
+%% in a voice call. The resulting voice call uses the same contactId that was
+%% created by
+%% BatchPutContact.
 batch_put_contact(Client, InstanceId, Input) ->
     batch_put_contact(Client, InstanceId, Input, []).
 batch_put_contact(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact/batch/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1096,54 +1157,68 @@ batch_put_contact(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Claims an available phone number to your Amazon Connect instance or
-%% traffic distribution group.
+%% traffic distribution
+%% group.
 %%
 %% You can call this API only in the same Amazon Web Services Region where
 %% the Amazon Connect instance or traffic distribution group was created.
 %%
 %% For more information about how to use this operation, see Claim a phone
-%% number in your country:
+%% number in your
+%% country:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-number.html
-%% and Claim phone numbers to traffic distribution groups:
+%% and Claim phone
+%% numbers to traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-numbers-traffic-distribution-groups.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
 %% You can call the SearchAvailablePhoneNumbers:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchAvailablePhoneNumbers.html
-%% API for available phone numbers that you can claim. Call the
-%% DescribePhoneNumber:
+%% API for available phone numbers that you can claim. Call
+%% the DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
 %% API to verify the status of a previous ClaimPhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ClaimPhoneNumber.html
 %% operation.
 %%
 %% If you plan to claim and release numbers frequently during a 30 day
-%% period, contact us for a service quota exception. Otherwise, it is
-%% possible you will be blocked from claiming and releasing any more numbers
-%% until 30 days past the oldest number released has expired.
-%%
-%% By default you can claim and release up to 200% of your maximum number of
-%% active phone numbers during any 30 day period. If you claim and release
-%% phone numbers using the UI or API during a rolling 30 day cycle that
-%% exceeds 200% of your phone number service level quota, you will be blocked
-%% from claiming any more numbers until 30 days past the oldest number
+%% period,
+%% contact us for a service quota exception. Otherwise, it is possible you
+%% will be blocked from
+%% claiming and releasing any more numbers until 30 days past the oldest
+%% number
 %% released has expired.
 %%
+%% By default you can claim and release up to 200% of your maximum number of
+%% active
+%% phone numbers during any 30 day period. If you claim and release phone
+%% numbers using
+%% the UI or API during a rolling 30 day cycle that exceeds 200% of your
+%% phone number
+%% service level quota, you will be blocked from claiming any more numbers
+%% until 30
+%% days past the oldest number released has expired.
+%%
 %% For example, if you already have 99 claimed numbers and a service level
-%% quota of 99 phone numbers, and in any 30 day period you release 99, claim
-%% 99, and then release 99, you will have exceeded the 200% limit. At that
-%% point you are blocked from claiming any more numbers until you open an
-%% Amazon Web Services support ticket.
+%% quota of 99 phone numbers, and in any 30
+%% day period you release 99, claim 99, and then release 99, you will have
+%% exceeded the
+%% 200% limit. At that point you are blocked from claiming any more numbers
+%% until you
+%% open an Amazon Web Services support ticket.
 claim_phone_number(Client, Input) ->
     claim_phone_number(Client, Input, []).
 claim_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/claim"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1165,11 +1240,13 @@ create_agent_status(Client, InstanceId, Input) ->
 create_agent_status(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1184,19 +1261,21 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Creates a flow for the specified Amazon Connect instance.
 %%
-%% You can also create and update flows using the Amazon Connect Flow
-%% language:
+%% You can also create and update flows using the Amazon Connect
+%% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 create_contact_flow(Client, InstanceId, Input) ->
     create_contact_flow(Client, InstanceId, Input, []).
 create_contact_flow(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1215,11 +1294,13 @@ create_contact_flow_module(Client, InstanceId, Input) ->
 create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1234,19 +1315,24 @@ create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Creates an evaluation form in the specified Amazon Connect instance.
 %%
-%% The form can be used to define questions related to agent performance, and
-%% create sections to organize such questions. Question and section
-%% identifiers cannot be duplicated within the same evaluation form.
+%% The form can be
+%% used to define questions related to agent performance, and create sections
+%% to organize such
+%% questions. Question and section identifiers cannot be duplicated within
+%% the same evaluation
+%% form.
 create_evaluation_form(Client, InstanceId, Input) ->
     create_evaluation_form(Client, InstanceId, Input, []).
 create_evaluation_form(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1268,11 +1354,13 @@ create_hours_of_operation(Client, InstanceId, Input) ->
 create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1289,25 +1377,31 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Initiates an Amazon Connect instance with all the supported channels
-%% enabled. It does not attach any storage, such as Amazon Simple Storage
-%% Service (Amazon S3) or Amazon Kinesis. It also does not allow for any
-%% configurations on features, such as Contact Lens for Amazon Connect.
+%% enabled. It does
+%% not attach any storage, such as Amazon Simple Storage Service (Amazon S3)
+%% or Amazon Kinesis. It
+%% also does not allow for any configurations on features, such as Contact
+%% Lens for Amazon Connect.
 %%
 %% Amazon Connect enforces a limit on the total number of instances that you
-%% can create or delete in 30 days. If you exceed this limit, you will get an
-%% error message indicating there has been an excessive number of attempts at
-%% creating or deleting instances. You must wait 30 days before you can
-%% restart creating and deleting instances in your account.
+%% can create or delete in 30 days.
+%% If you exceed this limit, you will get an error message indicating there
+%% has been an excessive number of attempts at creating or deleting
+%% instances.
+%% You must wait 30 days before you can restart creating and deleting
+%% instances in your account.
 create_instance(Client, Input) ->
     create_instance(Client, Input, []).
 create_instance(Client, Input0, Options0) ->
     Method = put,
     Path = ["/instance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1321,17 +1415,20 @@ create_instance(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Web Services resource association with an Amazon
-%% Connect instance.
+%% Connect
+%% instance.
 create_integration_association(Client, InstanceId, Input) ->
     create_integration_association(Client, InstanceId, Input, []).
 create_integration_association(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1346,19 +1443,21 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Adds a new participant into an on-going chat contact.
 %%
-%% For more information, see Customize chat flow experiences by integrating
-%% custom participants:
+%% For more information, see Customize chat
+%% flow experiences by integrating custom participants:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html.
 create_participant(Client, Input) ->
     create_participant(Client, Input, []).
 create_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/create-participant"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1373,19 +1472,23 @@ create_participant(Client, Input0, Options0) ->
 
 %% @doc Enables rehydration of chats for the lifespan of a contact.
 %%
-%% For more information about chat rehydration, see Enable persistent chat:
+%% For more information about chat
+%% rehydration, see Enable persistent chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input) ->
     create_persistent_contact_association(Client, InitialContactId, InstanceId, Input, []).
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact/persistent-contact-association/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1405,11 +1508,13 @@ create_predefined_attribute(Client, InstanceId, Input) ->
 create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1427,17 +1532,20 @@ create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
 %% For more information about prompts, such as supported file types and
 %% maximum length, see Create prompts:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html in the
-%% Amazon Connect Administrator's Guide.
+%% Amazon Connect Administrator's
+%% Guide.
 create_prompt(Client, InstanceId, Input) ->
     create_prompt(Client, InstanceId, Input, []).
 create_prompt(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1456,19 +1564,24 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 %% Creates a new queue for the specified Amazon Connect instance.
 %%
 %% If the phone number is claimed to a traffic distribution group that was
-%% created in the same Region as the Amazon Connect instance where you are
-%% calling this API, then you can use a full phone number ARN or a UUID for
-%% `OutboundCallerIdNumberId'. However, if the phone number is claimed to
-%% a traffic distribution group that is in one Region, and you are calling
+%% created in the
+%% same Region as the Amazon Connect instance where you are calling this API,
+%% then you can use a
+%% full phone number ARN or a UUID for `OutboundCallerIdNumberId'.
+%% However, if the phone number is claimed
+%% to a traffic distribution group that is in one Region, and you are calling
 %% this API from an instance in another Amazon Web Services Region that is
 %% associated with the traffic distribution group, you must provide a full
-%% phone number ARN. If a UUID is provided in this scenario, you will receive
-%% a `ResourceNotFoundException'.
+%% phone number ARN. If a
+%% UUID is provided in this scenario, you will receive a
+%% `ResourceNotFoundException'.
 %%
 %% Only use the phone number ARN format that doesn't contain
-%% `instance' in the path, for example,
-%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
-%% same ARN format that is returned when you call the ListPhoneNumbersV2:
+%% `instance' in the
+%% path, for example,
+%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This
+%% is the same ARN format that is returned when you call the
+%% ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
 %% API.
 %%
@@ -1481,11 +1594,13 @@ create_queue(Client, InstanceId, Input) ->
 create_queue(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1504,11 +1619,13 @@ create_quick_connect(Client, InstanceId, Input) ->
 create_quick_connect(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1527,11 +1644,13 @@ create_routing_profile(Client, InstanceId, Input) ->
 create_routing_profile(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1548,17 +1667,20 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
 %%
 %% Use the Rules Function language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
-%% to code conditions for the rule.
+%% to
+%% code conditions for the rule.
 create_rule(Client, InstanceId, Input) ->
     create_rule(Client, InstanceId, Input, []).
 create_rule(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1577,11 +1699,13 @@ create_security_profile(Client, InstanceId, Input) ->
 create_security_profile(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1600,11 +1724,13 @@ create_task_template(Client, InstanceId, Input) ->
 create_task_template(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1620,28 +1746,33 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 %% @doc Creates a traffic distribution group given an Amazon Connect instance
 %% that has been replicated.
 %%
-%% The `SignInConfig' distribution is available only on a default
-%% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
+%% The `SignInConfig' distribution is available only on a
+%% default `TrafficDistributionGroup' (see the `IsDefault' parameter
+%% in the
 %% TrafficDistributionGroup:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_TrafficDistributionGroup.html
-%% data type). If you call `UpdateTrafficDistribution' with a modified
-%% `SignInConfig' and a non-default `TrafficDistributionGroup', an
-%% `InvalidRequestException' is returned.
+%% data type). If you call
+%% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
+%% non-default `TrafficDistributionGroup',
+%% an `InvalidRequestException' is returned.
 %%
 %% For more information about creating traffic distribution groups, see Set
 %% up traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-traffic-distribution-groups.html
-%% in the Amazon Connect Administrator Guide.
+%% in
+%% the Amazon Connect Administrator Guide.
 create_traffic_distribution_group(Client, Input) ->
     create_traffic_distribution_group(Client, Input, []).
 create_traffic_distribution_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution-group"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1660,11 +1791,13 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input) ->
 create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1681,10 +1814,12 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 %%
 %% Certain UserIdentityInfo:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UserIdentityInfo.html
-%% parameters are required in some situations. For example, `Email' is
-%% required if you are using SAML for identity management. `FirstName'
-%% and `LastName' are required if you are using Amazon Connect or SAML
-%% for identity management.
+%% parameters
+%% are required in some situations. For example, `Email' is required if
+%% you are using
+%% SAML for identity management. `FirstName' and `LastName' are
+%% required if
+%% you are using Amazon Connect or SAML for identity management.
 %%
 %% For information about how to create users using the Amazon Connect admin
 %% website, see Add Users:
@@ -1695,11 +1830,13 @@ create_user(Client, InstanceId, Input) ->
 create_user(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/users/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1718,11 +1855,13 @@ create_user_hierarchy_group(Client, InstanceId, Input) ->
 create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1741,21 +1880,26 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
 %% The views will have a unique name for each connect instance.
 %%
 %% It performs basic content validation if the status is `SAVED' or full
-%% content validation if the status is set to `PUBLISHED'. An error is
-%% returned if validation fails. It associates either the `$SAVED'
-%% qualifier or both of the `$SAVED' and `$LATEST' qualifiers with
-%% the provided view content based on the status. The view is idempotent if
-%% ClientToken is provided.
+%% content
+%% validation if the status is set to `PUBLISHED'. An error is returned
+%% if validation
+%% fails. It associates either the `$SAVED' qualifier or both of the
+%% `$SAVED'
+%% and `$LATEST' qualifiers with the provided view content based on the
+%% status. The view
+%% is idempotent if ClientToken is provided.
 create_view(Client, InstanceId, Input) ->
     create_view(Client, InstanceId, Input, []).
 create_view(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/views/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1773,18 +1917,22 @@ create_view(Client, InstanceId, Input0, Options0) ->
 %% Versions are immutable and monotonically increasing.
 %%
 %% It returns the highest version if there is no change in content compared
-%% to that version. An error is displayed if the supplied ViewContentSha256
-%% is different from the ViewContentSha256 of the `$LATEST' alias.
+%% to that version. An
+%% error is displayed if the supplied ViewContentSha256 is different from the
+%% ViewContentSha256 of
+%% the `$LATEST' alias.
 create_view_version(Client, InstanceId, ViewId, Input) ->
     create_view_version(Client, InstanceId, ViewId, Input, []).
 create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = put,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1800,19 +1948,23 @@ create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
 %% @doc Creates a custom vocabulary associated with your Amazon Connect
 %% instance.
 %%
-%% You can set a custom vocabulary to be your default vocabulary for a given
-%% language. Contact Lens for Amazon Connect uses the default vocabulary in
-%% post-call and real-time contact analysis sessions for that language.
+%% You can set a
+%% custom vocabulary to be your default vocabulary for a given language.
+%% Contact Lens for Amazon Connect uses the default
+%% vocabulary in post-call and real-time contact analysis sessions for that
+%% language.
 create_vocabulary(Client, InstanceId, Input) ->
     create_vocabulary(Client, InstanceId, Input, []).
 create_vocabulary(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1828,18 +1980,21 @@ create_vocabulary(Client, InstanceId, Input0, Options0) ->
 %% @doc Deactivates an evaluation form in the specified Amazon Connect
 %% instance.
 %%
-%% After a form is deactivated, it is no longer available for users to start
-%% new evaluations based on the form.
+%% After a form is deactivated,
+%% it is no longer available for users to start new evaluations based on the
+%% form.
 deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/deactivate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1859,11 +2014,13 @@ delete_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
 delete_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1882,11 +2039,13 @@ delete_contact_flow(Client, ContactFlowId, InstanceId, Input) ->
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1905,11 +2064,13 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input) ->
 delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1924,23 +2085,23 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
 
 %% @doc Deletes an evaluation form in the specified Amazon Connect instance.
 %%
-%% <ul> <li> If the version property is provided, only the specified version
-%% of the evaluation form is deleted.
-%%
-%% </li> <li> If no version is provided, then the full form (all versions) is
+%% If the version property is provided, only the specified version of the
+%% evaluation form is
 %% deleted.
 %%
-%% </li> </ul>
+%% If no version is provided, then the full form (all versions) is deleted.
 delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1963,11 +2124,13 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
 delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1986,20 +2149,24 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 %% Deletes the Amazon Connect instance.
 %%
 %% Amazon Connect enforces a limit on the total number of instances that you
-%% can create or delete in 30 days. If you exceed this limit, you will get an
-%% error message indicating there has been an excessive number of attempts at
-%% creating or deleting instances. You must wait 30 days before you can
-%% restart creating and deleting instances in your account.
+%% can create or delete in 30 days.
+%% If you exceed this limit, you will get an error message indicating there
+%% has been an excessive number of attempts at creating or deleting
+%% instances.
+%% You must wait 30 days before you can restart creating and deleting
+%% instances in your account.
 delete_instance(Client, InstanceId, Input) ->
     delete_instance(Client, InstanceId, Input, []).
 delete_instance(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2015,17 +2182,20 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
 %% @doc Deletes an Amazon Web Services resource association from an Amazon
 %% Connect instance.
 %%
-%% The association must not have any use cases associated with it.
+%% The
+%% association must not have any use cases associated with it.
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input) ->
     delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input, []).
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2045,11 +2215,13 @@ delete_predefined_attribute(Client, InstanceId, Name, Input) ->
 delete_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2068,11 +2240,13 @@ delete_prompt(Client, InstanceId, PromptId, Input) ->
 delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
     Method = delete,
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2091,11 +2265,13 @@ delete_queue(Client, InstanceId, QueueId, Input) ->
 delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = delete,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2114,11 +2290,13 @@ delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = delete,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2137,11 +2315,13 @@ delete_routing_profile(Client, InstanceId, RoutingProfileId, Input) ->
 delete_routing_profile(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2160,11 +2340,13 @@ delete_rule(Client, InstanceId, RuleId, Input) ->
 delete_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     Method = delete,
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2183,11 +2365,13 @@ delete_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2206,11 +2390,13 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input) ->
 delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2226,22 +2412,26 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% @doc Deletes a traffic distribution group.
 %%
 %% This API can be called only in the Region where the traffic distribution
-%% group is created.
+%% group is
+%% created.
 %%
 %% For more information about deleting traffic distribution groups, see
 %% Delete traffic distribution groups:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-traffic-distribution-groups.html
-%% in the Amazon Connect Administrator Guide.
+%% in
+%% the Amazon Connect Administrator Guide.
 delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input) ->
     delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input, []).
 delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2260,11 +2450,13 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input) 
 delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases/", aws_util:encode_uri(UseCaseId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2280,19 +2472,24 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% @doc Deletes a user account from the specified Amazon Connect instance.
 %%
 %% For information about what happens to a user's data when their account
-%% is deleted, see Delete Users from Your Amazon Connect Instance:
+%% is deleted, see
+%% Delete Users from
+%% Your Amazon Connect Instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html in
-%% the Amazon Connect Administrator Guide.
+%% the Amazon Connect Administrator
+%% Guide.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 delete_user(Client, InstanceId, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2307,17 +2504,20 @@ delete_user(Client, InstanceId, UserId, Input0, Options0) ->
 
 %% @doc Deletes an existing user hierarchy group.
 %%
-%% It must not be associated with any agents or have any active child groups.
+%% It must not be associated with any agents or have
+%% any active child groups.
 delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input) ->
     delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input, []).
 delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2332,17 +2532,20 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Option
 
 %% @doc Deletes the view entirely.
 %%
-%% It deletes the view and all associated qualifiers (versions and aliases).
+%% It deletes the view and all associated qualifiers (versions and
+%% aliases).
 delete_view(Client, InstanceId, ViewId, Input) ->
     delete_view(Client, InstanceId, ViewId, Input, []).
 delete_view(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = delete,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2362,11 +2565,13 @@ delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input) ->
 delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions/", aws_util:encode_uri(ViewVersion), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2385,11 +2590,13 @@ delete_vocabulary(Client, InstanceId, VocabularyId, Input) ->
 delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
     Method = post,
     Path = ["/vocabulary-remove/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2417,10 +2624,12 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap)
 describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2434,9 +2643,11 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %% Describes the specified contact.
 %%
 %% Contact information remains available in Amazon Connect for 24 months, and
-%% then it is deleted.
+%% then it is
+%% deleted.
 %%
-%% Only data from November 12, 2021, and later is returned by this API.
+%% Only data from November 12, 2021, and later is returned by this
+%% API.
 describe_contact(Client, ContactId, InstanceId)
   when is_map(Client) ->
     describe_contact(Client, ContactId, InstanceId, #{}, #{}).
@@ -2448,10 +2659,12 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap)
 describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2472,10 +2685,12 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2485,8 +2700,8 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 
 %% @doc Describes the specified flow.
 %%
-%% You can also create and update flows using the Amazon Connect Flow
-%% language:
+%% You can also create and update flows using the Amazon Connect
+%% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 describe_contact_flow(Client, ContactFlowId, InstanceId)
   when is_map(Client) ->
@@ -2499,10 +2714,12 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
 describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2522,10 +2739,12 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2536,8 +2755,9 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 %% @doc Describes an evaluation form in the specified Amazon Connect
 %% instance.
 %%
-%% If the version property is not provided, the latest version of the
-%% evaluation form is described.
+%% If the version
+%% property is not provided, the latest version of the evaluation form is
+%% described.
 describe_evaluation_form(Client, EvaluationFormId, InstanceId)
   when is_map(Client) ->
     describe_evaluation_form(Client, EvaluationFormId, InstanceId, #{}, #{}).
@@ -2549,10 +2769,12 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, Headers
 describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2579,10 +2801,12 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
 describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2594,13 +2818,14 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
 %% change.
 %%
 %% Returns the current state of the specified instance identifier. It tracks
-%% the instance while it is being created and returns an error status, if
-%% applicable.
+%% the instance while
+%% it is being created and returns an error status, if applicable.
 %%
 %% If an instance is not created successfully, the instance status reason
-%% field returns details relevant to the reason. The instance in a failed
-%% state is returned only for 24 hours after the CreateInstance API was
-%% invoked.
+%% field returns details
+%% relevant to the reason. The instance in a failed state is returned only
+%% for 24 hours after the
+%% CreateInstance API was invoked.
 describe_instance(Client, InstanceId)
   when is_map(Client) ->
     describe_instance(Client, InstanceId, #{}, #{}).
@@ -2612,10 +2837,12 @@ describe_instance(Client, InstanceId, QueryMap, HeadersMap)
 describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2638,10 +2865,12 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
 describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2653,7 +2882,8 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
 %% change.
 %%
 %% Retrieves the current storage configurations for the specified resource
-%% type, association ID, and instance ID.
+%% type, association
+%% ID, and instance ID.
 describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType)
   when is_map(Client) ->
     describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, #{}, #{}).
@@ -2665,10 +2895,12 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2681,16 +2913,21 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details and status of a phone number that’s claimed to your
-%% Amazon Connect instance or traffic distribution group.
+%% Amazon Connect instance
+%% or traffic distribution group.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
-%% calling in the Amazon Web Services Region where the traffic distribution
-%% group was created, you can use either a phone number ARN or UUID value for
-%% the `PhoneNumberId' URI request parameter. However, if the number is
-%% claimed to a traffic distribution group and you are calling this API in
-%% the alternate Amazon Web Services Region associated with the traffic
-%% distribution group, you must provide a full phone number ARN. If a UUID is
-%% provided in this scenario, you will receive a
+%% calling in the Amazon Web Services Region
+%% where the traffic distribution group was created, you can use either a
+%% phone number ARN or UUID value for the
+%% `PhoneNumberId' URI request parameter. However, if the number is
+%% claimed to a traffic distribution group
+%% and you are calling this API in the alternate Amazon Web Services Region
+%% associated with the
+%% traffic distribution group, you must provide a full phone number ARN. If a
+%% UUID is provided
+%% in
+%% this scenario, you will receive a
 %% `ResourceNotFoundException'.
 describe_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
@@ -2703,10 +2940,12 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
 describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2727,10 +2966,12 @@ describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap)
 describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2750,10 +2991,12 @@ describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap)
 describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2776,10 +3019,12 @@ describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap)
 describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2799,10 +3044,12 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap)
 describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2822,10 +3069,12 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
 describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2845,10 +3094,12 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap)
 describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2868,10 +3119,12 @@ describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, Heade
 describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2891,10 +3144,12 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2906,8 +3161,8 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 %%
 %% You can find the instance ID in the Amazon Connect console:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html
-%% (it’s the final part of the ARN). The console does not display the user
-%% IDs. Instead, list the users and note the IDs provided in the output.
+%% (it’s the final part of the ARN). The console does not display the
+%% user IDs. Instead, list the users and note the IDs provided in the output.
 describe_user(Client, InstanceId, UserId)
   when is_map(Client) ->
     describe_user(Client, InstanceId, UserId, #{}, #{}).
@@ -2919,10 +3174,12 @@ describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap)
 describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2942,10 +3199,12 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, He
 describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2966,10 +3225,12 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
 describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2985,11 +3246,13 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Opti
 %% `$SAVED' needs to be supplied if a view is unpublished.
 %%
 %% The view identifier can contain an optional qualifier, for example,
-%% `&lt;view-id&gt;:$SAVED', which is either an actual version number or
-%% an Amazon Connect managed qualifier `$SAVED | $LATEST'. If it is not
-%% supplied, then `$LATEST' is assumed for customer managed views and an
-%% error is returned if there is no published content available. Version 1 is
-%% assumed for Amazon Web Services managed views.
+%% `:$SAVED', which is either an actual version number or an Amazon
+%% Connect managed qualifier `$SAVED | $LATEST'. If it is not supplied,
+%% then
+%% `$LATEST' is assumed for customer managed views and an error is
+%% returned if there is
+%% no published content available. Version 1 is assumed for Amazon Web
+%% Services managed views.
 describe_view(Client, InstanceId, ViewId)
   when is_map(Client) ->
     describe_view(Client, InstanceId, ViewId, #{}, #{}).
@@ -3001,10 +3264,12 @@ describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap)
 describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3024,10 +3289,12 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap)
 describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3044,11 +3311,13 @@ disassociate_analytics_data_set(Client, InstanceId, Input) ->
 disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3070,11 +3339,13 @@ disassociate_approved_origin(Client, InstanceId, Input) ->
 disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3092,17 +3363,20 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Revokes authorization from the specified instance to access the specified
-%% Amazon Lex or Amazon Lex V2 bot.
+%% Amazon Lex or Amazon Lex V2
+%% bot.
 disassociate_bot(Client, InstanceId, Input) ->
     disassociate_bot(Client, InstanceId, Input, []).
 disassociate_bot(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3121,11 +3395,13 @@ disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input) ->
 disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0) ->
     Method = delete,
     Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ResourceId), "/", aws_util:encode_uri(ResourceType), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3142,17 +3418,20 @@ disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0
 %% change.
 %%
 %% Removes the storage type configurations for the specified resource type
-%% and association ID.
+%% and association
+%% ID.
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3170,17 +3449,20 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
 %% change.
 %%
 %% Remove the Lambda function from the dropdown options available in the
-%% relevant flow blocks.
+%% relevant
+%% flow blocks.
 disassociate_lambda_function(Client, InstanceId, Input) ->
     disassociate_lambda_function(Client, InstanceId, Input, []).
 disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3198,17 +3480,20 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Revokes authorization from the specified instance to access the specified
-%% Amazon Lex bot.
+%% Amazon Lex
+%% bot.
 disassociate_lex_bot(Client, InstanceId, Input) ->
     disassociate_lex_bot(Client, InstanceId, Input, []).
 disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3224,27 +3509,33 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the flow association from a phone number claimed to your
-%% Amazon Connect instance.
+%% Amazon Connect
+%% instance.
 %%
 %% If the number is claimed to a traffic distribution group, and you are
-%% calling this API using an instance in the Amazon Web Services Region where
-%% the traffic distribution group was created, you can use either a full
-%% phone number ARN or UUID value for the `PhoneNumberId' URI request
-%% parameter. However, if the number is claimed to a traffic distribution
-%% group and you are calling this API using an instance in the alternate
+%% calling this API using an instance in the
+%% Amazon Web Services Region where the traffic distribution group was
+%% created, you can use either a full phone number
+%% ARN or UUID value for the `PhoneNumberId' URI request parameter.
+%% However, if the
+%% number is claimed to a traffic distribution group and you are calling this
+%% API using an instance in the alternate
 %% Amazon Web Services Region associated with the traffic distribution group,
-%% you must provide a full phone number ARN. If a UUID is provided in this
-%% scenario, you will receive a `ResourceNotFoundException'.
+%% you must provide a full phone number ARN.
+%% If a UUID is provided in this scenario, you will receive a
+%% `ResourceNotFoundException'.
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3267,11 +3558,13 @@ disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
 disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/disassociate-quick-connects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3290,11 +3583,13 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input)
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/disassociate-queues"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3316,11 +3611,13 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input) ->
 disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3339,11 +3636,13 @@ disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId,
 disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3364,11 +3663,13 @@ disassociate_user_proficiencies(Client, InstanceId, UserId, Input) ->
 disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/disassociate-proficiencies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3382,21 +3683,26 @@ disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Dismisses contacts from an agent’s CCP and returns the agent to an
-%% available state, which allows the agent to receive a new routed contact.
+%% available state, which
+%% allows the agent to receive a new routed contact.
 %%
-%% Contacts can only be dismissed if they are in a `MISSED', `ERROR',
-%% `ENDED', or `REJECTED' state in the Agent Event Stream:
+%% Contacts can only be dismissed if they are in a
+%% `MISSED', `ERROR', `ENDED', or `REJECTED' state in
+%% the Agent
+%% Event Stream:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/about-contact-states.html.
 dismiss_user_contact(Client, InstanceId, UserId, Input) ->
     dismiss_user_contact(Client, InstanceId, UserId, Input, []).
 dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/contact"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3421,10 +3727,12 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3435,7 +3743,8 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %% @doc Gets the real-time metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For a description of each metric, see Real-time Metrics Definitions:
+%% For a description of each metric, see Real-time Metrics
+%% Definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html
 %% in the Amazon Connect Administrator Guide.
 get_current_metric_data(Client, InstanceId, Input) ->
@@ -3443,11 +3752,13 @@ get_current_metric_data(Client, InstanceId, Input) ->
 get_current_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/current/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3467,11 +3778,13 @@ get_current_user_data(Client, InstanceId, Input) ->
 get_current_user_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/userdata/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3486,21 +3799,24 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Supports SAML sign-in for Amazon Connect.
 %%
-%% Retrieves a token for federation. The token is for the Amazon Connect user
-%% which corresponds to the IAM credentials that were used to invoke this
-%% action.
+%% Retrieves a token for federation. The token is
+%% for the Amazon Connect user which corresponds to the IAM credentials that
+%% were
+%% used to invoke this action.
 %%
 %% For more information about how SAML sign-in works in Amazon Connect, see
-%% Configure SAML with IAM for Amazon Connect in the Amazon Connect
-%% Administrator Guide.:
+%% Configure SAML with
+%% IAM for Amazon Connect in the Amazon Connect Administrator
+%% Guide.:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/configure-saml.html
 %%
 %% This API doesn't support root users. If you try to invoke
-%% GetFederationToken with root credentials, an error message similar to the
-%% following one appears:
+%% GetFederationToken with root
+%% credentials, an error message similar to the following one appears:
 %%
-%% `Provided identity: Principal: (...). User: (...). cannot be used for
-%% federation with Amazon Connect'
+%% ```
+%% Provided identity: Principal: (...). User: (...). cannot be used for
+%% federation with Amazon Connect'''
 get_federation_token(Client, InstanceId)
   when is_map(Client) ->
     get_federation_token(Client, InstanceId, #{}, #{}).
@@ -3512,10 +3828,12 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap)
 get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user/federate/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3535,10 +3853,12 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ResourceId), "/", aws_util:encode_uri(ResourceType), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3556,23 +3876,30 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 %%
 %% We recommend using the GetMetricDataV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricDataV2.html
-%% API. It provides more flexibility, features, and the ability to query
-%% longer time ranges than `GetMetricData'. Use it to retrieve historical
-%% agent and contact metrics for the last 3 months, at varying intervals. You
-%% can also use it to build custom dashboards to measure historical queue and
-%% agent performance. For example, you can track the number of incoming
+%% API. It
+%% provides more flexibility, features, and the ability to query longer time
+%% ranges than
+%% `GetMetricData'. Use it to retrieve historical agent and contact
+%% metrics for the
+%% last 3 months, at varying intervals. You can also use it to build custom
+%% dashboards to measure
+%% historical queue and agent performance. For example, you can track the
+%% number of incoming
 %% contacts for the last 7 days, with data split by day, to see how contact
-%% volume changed per day of the week.
+%% volume changed per day
+%% of the week.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 get_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/historical/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3589,10 +3916,13 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %%
 %% `GetMetricDataV2' offers more features than GetMetricData:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricData.html,
-%% the previous version of this API. It has new metrics, offers filtering at
-%% a metric level, and offers the ability to filter and group data by
-%% channels, queues, routing profiles, agents, and agent hierarchy levels. It
-%% can retrieve historical data for the last 3 months, at varying intervals.
+%% the previous
+%% version of this API. It has new metrics, offers filtering at a metric
+%% level, and offers the
+%% ability to filter and group data by channels, queues, routing profiles,
+%% agents, and agent
+%% hierarchy levels. It can retrieve historical data for the last 3 months,
+%% at varying intervals.
 %%
 %% For a description of the historical metrics that are supported by
 %% `GetMetricDataV2' and `GetMetricData', see Historical metrics
@@ -3604,11 +3934,13 @@ get_metric_data_v2(Client, Input) ->
 get_metric_data_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/data"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3633,10 +3965,12 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap)
 get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), "/file"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3645,7 +3979,8 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a specific task template in the specified Amazon
-%% Connect instance.
+%% Connect
+%% instance.
 get_task_template(Client, InstanceId, TaskTemplateId)
   when is_map(Client) ->
     get_task_template(Client, InstanceId, TaskTemplateId, #{}, #{}).
@@ -3657,10 +3992,12 @@ get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap)
 get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3685,10 +4022,12 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap)
 get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3697,20 +4036,23 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Imports a claimed phone number from an external service, such as
-%% Amazon Pinpoint, into an Amazon Connect instance.
+%% Amazon Pinpoint, into an
+%% Amazon Connect instance.
 %%
-%% You can call this API only in the same Amazon Web Services Region where
-%% the Amazon Connect instance was created.
+%% You can call this API only in the same Amazon Web Services Region
+%% where the Amazon Connect instance was created.
 import_phone_number(Client, Input) ->
     import_phone_number(Client, Input, []).
 import_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/import"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3738,10 +4080,12 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap)
 list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3759,7 +4103,8 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Lists the association status of requested dataset ID for a given Amazon
-%% Connect instance.
+%% Connect
+%% instance.
 list_analytics_data_associations(Client, InstanceId)
   when is_map(Client) ->
     list_analytics_data_associations(Client, InstanceId, #{}, #{}).
@@ -3771,10 +4116,12 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap)
 list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3804,10 +4151,12 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap)
 list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origins"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3837,10 +4186,12 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap)
 list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bots"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3866,10 +4217,12 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap)
 list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3883,7 +4236,8 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the flow modules for the specified Amazon
-%% Connect instance.
+%% Connect
+%% instance.
 list_contact_flow_modules(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flow_modules(Client, InstanceId, #{}, #{}).
@@ -3895,10 +4249,12 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap)
 list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flow-modules-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3915,13 +4271,14 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Provides information about the flows for the specified Amazon Connect
 %% instance.
 %%
-%% You can also create and update flows using the Amazon Connect Flow
-%% language:
+%% You can also create and update flows using the Amazon Connect
+%% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 %%
 %% For more information about flows, see Flows:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 list_contact_flows(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flows(Client, InstanceId, #{}, #{}).
@@ -3933,10 +4290,12 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap)
 list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flows-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3954,7 +4313,8 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% For the specified `referenceTypes', returns a list of references
-%% associated with the contact.
+%% associated with
+%% the contact.
 list_contact_references(Client, ContactId, InstanceId, ReferenceTypes)
   when is_map(Client) ->
     list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, #{}, #{}).
@@ -3966,10 +4326,12 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap,
 list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/references/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3989,11 +4351,13 @@ list_default_vocabularies(Client, InstanceId, Input) ->
 list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/default-vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4019,10 +4383,12 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, He
 list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4047,10 +4413,12 @@ list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap)
 list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4075,10 +4443,12 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap)
 list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/flow-associations-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4093,10 +4463,12 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the hours of operation for the specified
-%% Amazon Connect instance.
+%% Amazon Connect
+%% instance.
 %%
 %% For more information about hours of operation, see Set the Hours of
-%% Operation for a Queue:
+%% Operation for a
+%% Queue:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-hours-operation.html
 %% in the Amazon Connect Administrator Guide.
 list_hours_of_operations(Client, InstanceId)
@@ -4110,10 +4482,12 @@ list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap)
 list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/hours-of-operations-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4141,10 +4515,12 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap)
 list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attributes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4161,7 +4537,8 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Returns a paginated list of storage configs for the identified instance
-%% and resource type.
+%% and resource
+%% type.
 list_instance_storage_configs(Client, InstanceId, ResourceType)
   when is_map(Client) ->
     list_instance_storage_configs(Client, InstanceId, ResourceType, #{}, #{}).
@@ -4173,10 +4550,12 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-configs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4194,9 +4573,10 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 %% change.
 %%
 %% Return a list of instances which are in active state, creation-in-progress
-%% state, and failed state. Instances that aren't successfully created
-%% (they are in a failed state) are returned only for 24 hours after the
-%% CreateInstance API was invoked.
+%% state, and failed
+%% state. Instances that aren't successfully created (they are in a
+%% failed state) are returned only
+%% for 24 hours after the CreateInstance API was invoked.
 list_instances(Client)
   when is_map(Client) ->
     list_instances(Client, #{}, #{}).
@@ -4208,10 +4588,12 @@ list_instances(Client, QueryMap, HeadersMap)
 list_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4225,7 +4607,8 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the Amazon Web Services resource
-%% associations for the specified Amazon Connect instance.
+%% associations for the
+%% specified Amazon Connect instance.
 list_integration_associations(Client, InstanceId)
   when is_map(Client) ->
     list_integration_associations(Client, InstanceId, #{}, #{}).
@@ -4237,10 +4620,12 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap)
 list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4259,7 +4644,8 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0
 %% change.
 %%
 %% Returns a paginated list of all Lambda functions that display in the
-%% dropdown options in the relevant flow blocks.
+%% dropdown options in the
+%% relevant flow blocks.
 list_lambda_functions(Client, InstanceId)
   when is_map(Client) ->
     list_lambda_functions(Client, InstanceId, #{}, #{}).
@@ -4271,10 +4657,12 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap)
 list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-functions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4291,8 +4679,8 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Returns a paginated list of all the Amazon Lex V1 bots currently
-%% associated with the instance. To return both Amazon Lex V1 and V2 bots,
-%% use the ListBots:
+%% associated with the
+%% instance. To return both Amazon Lex V1 and V2 bots, use the ListBots:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListBots.html
 %% API.
 list_lex_bots(Client, InstanceId)
@@ -4306,10 +4694,12 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap)
 list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bots"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4326,25 +4716,33 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Connect instance.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
-%% Your Contact Center:
+%% Your
+%% Contact Center:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
 %% We recommend using ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
-%% to return phone number types. ListPhoneNumbers doesn't support number
-%% types `UIFN', `SHARED', `THIRD_PARTY_TF', and
-%% `THIRD_PARTY_DID'. While it returns numbers of those types, it
-%% incorrectly lists them as `TOLL_FREE' or `DID'.
+%% to
+%% return phone number types. ListPhoneNumbers doesn't support number
+%% types `UIFN',
+%% `SHARED', `THIRD_PARTY_TF', and `THIRD_PARTY_DID'. While it
+%% returns numbers of those types, it incorrectly lists them as
+%% `TOLL_FREE' or
+%% `DID'.
 %%
 %% The phone number `Arn' value that is returned from each of the items
-%% in the PhoneNumberSummaryList:
+%% in the
+%% PhoneNumberSummaryList:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbers.html#connect-ListPhoneNumbers-response-PhoneNumberSummaryList
-%% cannot be used to tag phone number resources. It will fail with a
-%% `ResourceNotFoundException'. Instead, use the ListPhoneNumbersV2:
+%% cannot be used to tag phone number resources. It will fail
+%% with a `ResourceNotFoundException'. Instead, use the
+%% ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
-%% API. It returns the new phone number ARN that can be used to tag phone
-%% number resources.
+%% API.
+%% It returns the new phone number ARN that can be used to tag phone number
+%% resources.
 list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, #{}, #{}).
@@ -4356,10 +4754,12 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap)
 list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4377,30 +4777,37 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Lists phone numbers claimed to your Amazon Connect instance or
 %% traffic distribution group.
 %%
-%% If the provided `TargetArn' is a traffic distribution group, you can
-%% call this API in both Amazon Web Services Regions associated with traffic
-%% distribution group.
+%% If the provided
+%% `TargetArn' is a traffic distribution group, you can call this API in
+%% both Amazon Web Services Regions
+%% associated with traffic distribution group.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
-%% Your Contact Center:
+%% Your
+%% Contact Center:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
 %% When given an instance ARN, `ListPhoneNumbersV2' returns only the
-%% phone numbers claimed to the instance.
+%% phone
+%% numbers claimed to the instance.
 %%
 %% When given a traffic distribution group ARN `ListPhoneNumbersV2'
-%% returns only the phone numbers claimed to the traffic distribution group.
+%% returns only the phone numbers
+%% claimed to the traffic distribution group.
 list_phone_numbers_v2(Client, Input) ->
     list_phone_numbers_v2(Client, Input, []).
 list_phone_numbers_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4426,10 +4833,12 @@ list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap)
 list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4455,10 +4864,12 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap)
 list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4486,10 +4897,12 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap)
 list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/quick-connects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4505,12 +4918,15 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 %% @doc Provides information about the queues for the specified Amazon
 %% Connect instance.
 %%
-%% If you do not specify a `QueueTypes' parameter, both standard and
-%% agent queues are returned. This might cause an unexpected truncation of
-%% results if you have more than 1000 agents and you limit the number of
-%% results of the API call in code.
+%% If you do not specify a `QueueTypes'
+%% parameter, both standard and agent queues are returned. This might cause
+%% an unexpected truncation
+%% of results if you have more than 1000 agents and you limit the number of
+%% results of the API call
+%% in code.
 %%
-%% For more information about queues, see Queues: Standard and Agent:
+%% For more information about queues, see Queues: Standard and
+%% Agent:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html
 %% in the Amazon Connect Administrator Guide.
 list_queues(Client, InstanceId)
@@ -4524,10 +4940,12 @@ list_queues(Client, InstanceId, QueryMap, HeadersMap)
 list_queues(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4554,10 +4972,12 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap)
 list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4578,11 +4998,13 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input)
 list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact/list-real-time-analysis-segments-v2/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4607,10 +5029,12 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
 list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4624,11 +5048,13 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the routing profiles for the
-%% specified Amazon Connect instance.
+%% specified Amazon Connect
+%% instance.
 %%
 %% For more information about routing profiles, see Routing Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-routing.html
-%% and Create a Routing Profile:
+%% and Create a Routing
+%% Profile:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles.html
 %% in the Amazon Connect Administrator Guide.
 list_routing_profiles(Client, InstanceId)
@@ -4642,10 +5068,12 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap)
 list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4670,10 +5098,12 @@ list_rules(Client, InstanceId, QueryMap, HeadersMap)
 list_rules(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4704,10 +5134,12 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
 list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-keys"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4733,10 +5165,12 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
 list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-applications/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4761,10 +5195,12 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-permissions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4782,7 +5218,8 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 %%
 %% For more information about security profiles, see Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 list_security_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_security_profiles(Client, InstanceId, #{}, #{}).
@@ -4794,10 +5231,12 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap)
 list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4812,10 +5251,11 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags for the specified resource.
 %%
-%% For sample policies that use tags, see Amazon Connect Identity-Based
-%% Policy Examples:
+%% For sample policies that use tags, see Amazon Connect
+%% Identity-Based Policy Examples:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4827,10 +5267,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4850,10 +5292,12 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap)
 list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4880,10 +5324,12 @@ list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryM
 list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4908,10 +5354,12 @@ list_traffic_distribution_groups(Client, QueryMap, HeadersMap)
 list_traffic_distribution_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/traffic-distribution-groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4937,10 +5385,12 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
 list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4954,12 +5404,14 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the hierarchy groups for the
-%% specified Amazon Connect instance.
+%% specified Amazon Connect
+%% instance.
 %%
 %% For more information about agent hierarchies, see Set Up Agent
 %% Hierarchies:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html
-%% in the Amazon Connect Administrator Guide.
+%% in the
+%% Amazon Connect Administrator Guide.
 list_user_hierarchy_groups(Client, InstanceId)
   when is_map(Client) ->
     list_user_hierarchy_groups(Client, InstanceId, #{}, #{}).
@@ -4971,10 +5423,12 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap)
 list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-groups-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4999,10 +5453,12 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap)
 list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/proficiencies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5016,7 +5472,8 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides summary information about the users for the specified Amazon
-%% Connect instance.
+%% Connect
+%% instance.
 list_users(Client, InstanceId)
   when is_map(Client) ->
     list_users(Client, InstanceId, #{}, #{}).
@@ -5028,10 +5485,12 @@ list_users(Client, InstanceId, QueryMap, HeadersMap)
 list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5045,7 +5504,8 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns all the available versions for the specified Amazon Connect
-%% instance and view identifier.
+%% instance and view
+%% identifier.
 %%
 %% Results will be sorted from highest to lowest.
 list_view_versions(Client, InstanceId, ViewId)
@@ -5059,10 +5519,12 @@ list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap)
 list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5089,10 +5551,12 @@ list_views(Client, InstanceId, QueryMap, HeadersMap)
 list_views(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/views/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5108,18 +5572,21 @@ list_views(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Initiates silent monitoring of a contact.
 %%
-%% The Contact Control Panel (CCP) of the user specified by userId will be
-%% set to silent monitoring mode on the contact.
+%% The Contact Control Panel (CCP) of the user
+%% specified by userId will be set to silent monitoring mode on the
+%% contact.
 monitor_contact(Client, Input) ->
     monitor_contact(Client, Input, []).
 monitor_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/monitor"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5138,11 +5605,13 @@ pause_contact(Client, Input) ->
 pause_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/pause"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5157,12 +5626,13 @@ pause_contact(Client, Input0, Options0) ->
 
 %% @doc Changes the current status of a user or agent in Amazon Connect.
 %%
-%% If the agent is currently handling a contact, this sets the agent's
-%% next status.
+%% If the agent is
+%% currently handling a contact, this sets the agent's next status.
 %%
 %% For more information, see Agent status:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-agent-status.html
-%% and Set your next status:
+%% and Set your next
+%% status:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-next-status.html
 %% in the Amazon Connect Administrator Guide.
 put_user_status(Client, InstanceId, UserId, Input) ->
@@ -5170,11 +5640,13 @@ put_user_status(Client, InstanceId, UserId, Input) ->
 put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
     Method = put,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5190,44 +5662,57 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% @doc Releases a phone number previously claimed to an Amazon Connect
 %% instance or traffic distribution group.
 %%
-%% You can call this API only in the Amazon Web Services Region where the
-%% number was claimed.
+%% You
+%% can call this API only in the Amazon Web Services Region where the number
+%% was claimed.
 %%
 %% To release phone numbers from a traffic distribution group, use the
-%% `ReleasePhoneNumber' API, not the Amazon Connect admin website.
+%% `ReleasePhoneNumber' API, not the
+%% Amazon Connect admin website.
 %%
 %% After releasing a phone number, the phone number enters into a cooldown
-%% period of 30 days. It cannot be searched for or claimed again until the
-%% period has ended. If you accidentally release a phone number, contact
-%% Amazon Web Services Support.
+%% period of 30 days.
+%% It cannot be searched for or claimed again until the period has ended. If
+%% you accidentally
+%% release a phone number, contact Amazon Web Services Support.
 %%
 %% If you plan to claim and release numbers frequently during a 30 day
-%% period, contact us for a service quota exception. Otherwise, it is
-%% possible you will be blocked from claiming and releasing any more numbers
-%% until 30 days past the oldest number released has expired.
-%%
-%% By default you can claim and release up to 200% of your maximum number of
-%% active phone numbers during any 30 day period. If you claim and release
-%% phone numbers using the UI or API during a rolling 30 day cycle that
-%% exceeds 200% of your phone number service level quota, you will be blocked
-%% from claiming any more numbers until 30 days past the oldest number
+%% period,
+%% contact us for a service quota exception. Otherwise, it is possible you
+%% will be blocked from
+%% claiming and releasing any more numbers until 30 days past the oldest
+%% number
 %% released has expired.
 %%
+%% By default you can claim and release up to 200% of your maximum number of
+%% active
+%% phone numbers during any 30 day period. If you claim and release phone
+%% numbers using
+%% the UI or API during a rolling 30 day cycle that exceeds 200% of your
+%% phone number
+%% service level quota, you will be blocked from claiming any more numbers
+%% until 30
+%% days past the oldest number released has expired.
+%%
 %% For example, if you already have 99 claimed numbers and a service level
-%% quota of 99 phone numbers, and in any 30 day period you release 99, claim
-%% 99, and then release 99, you will have exceeded the 200% limit. At that
-%% point you are blocked from claiming any more numbers until you open an
-%% Amazon Web Services support ticket.
+%% quota of 99 phone numbers, and in any 30
+%% day period you release 99, claim 99, and then release 99, you will have
+%% exceeded the
+%% 200% limit. At that point you are blocked from claiming any more numbers
+%% until you
+%% open an Amazon Web Services support ticket.
 release_phone_number(Client, PhoneNumberId, Input) ->
     release_phone_number(Client, PhoneNumberId, Input, []).
 release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5242,23 +5727,28 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Replicates an Amazon Connect instance in the specified Amazon Web
-%% Services Region and copies configuration information for Amazon Connect
-%% resources across Amazon Web Services Regions.
+%% Services Region and
+%% copies configuration information for Amazon Connect resources across
+%% Amazon Web Services Regions.
 %%
 %% For more information about replicating an Amazon Connect instance, see
-%% Create a replica of your existing Amazon Connect instance:
+%% Create
+%% a replica of your existing Amazon Connect instance:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-replica-connect-instance.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect
+%% Administrator Guide.
 replicate_instance(Client, InstanceId, Input) ->
     replicate_instance(Client, InstanceId, Input, []).
 replicate_instance(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/replicate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5277,11 +5767,13 @@ resume_contact(Client, Input) ->
 resume_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/resume"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5295,12 +5787,13 @@ resume_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, and the recording has been
-%% suspended using SuspendContactRecording, this API resumes recording
-%% whatever recording is selected in the flow configuration: call, screen, or
-%% both.
+%% suspended using
+%% SuspendContactRecording, this API resumes recording whatever recording is
+%% selected in the flow
+%% configuration: call, screen, or both.
 %%
-%% If only call recording or only screen recording is enabled, then it would
-%% resume.
+%% If only call recording or only screen recording is enabled,
+%% then it would resume.
 %%
 %% Voice and screen recordings are supported.
 resume_contact_recording(Client, Input) ->
@@ -5308,11 +5801,13 @@ resume_contact_recording(Client, Input) ->
 resume_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/resume-recording"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5326,21 +5821,25 @@ resume_contact_recording(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for available phone numbers that you can claim to your
-%% Amazon Connect instance or traffic distribution group.
+%% Amazon Connect instance
+%% or traffic distribution group.
 %%
 %% If the provided `TargetArn' is a traffic distribution group, you can
-%% call this API in both Amazon Web Services Regions associated with the
-%% traffic distribution group.
+%% call this API in both
+%% Amazon Web Services Regions associated with the traffic distribution
+%% group.
 search_available_phone_numbers(Client, Input) ->
     search_available_phone_numbers(Client, Input, []).
 search_available_phone_numbers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/search-available"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5359,11 +5858,13 @@ search_contacts(Client, Input) ->
 search_contacts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-contacts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5377,17 +5878,20 @@ search_contacts(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches the hours of operation in an Amazon Connect instance, with
-%% optional filtering.
+%% optional
+%% filtering.
 search_hours_of_operations(Client, Input) ->
     search_hours_of_operations(Client, Input, []).
 search_hours_of_operations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-hours-of-operations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5406,11 +5910,13 @@ search_predefined_attributes(Client, Input) ->
 search_predefined_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-predefined-attributes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5430,11 +5936,13 @@ search_prompts(Client, Input) ->
 search_prompts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-prompts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5454,11 +5962,13 @@ search_queues(Client, Input) ->
 search_queues(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-queues"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5478,11 +5988,13 @@ search_quick_connects(Client, Input) ->
 search_quick_connects(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-quick-connects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5502,11 +6014,13 @@ search_resource_tags(Client, Input) ->
 search_resource_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-resource-tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5526,11 +6040,13 @@ search_routing_profiles(Client, Input) ->
 search_routing_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-routing-profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5544,17 +6060,20 @@ search_routing_profiles(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches security profiles in an Amazon Connect instance, with
-%% optional filtering.
+%% optional
+%% filtering.
 search_security_profiles(Client, Input) ->
     search_security_profiles(Client, Input, []).
 search_security_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-security-profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5576,11 +6095,13 @@ search_users(Client, Input) ->
 search_users(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-users"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5594,17 +6115,20 @@ search_users(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for vocabularies within a specific Amazon Connect instance
-%% using `State', `NameStartsWith', and `LanguageCode'.
+%% using
+%% `State', `NameStartsWith', and `LanguageCode'.
 search_vocabularies(Client, InstanceId, Input) ->
     search_vocabularies(Client, InstanceId, Input, []).
 search_vocabularies(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5618,32 +6142,39 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Processes chat integration events from Amazon Web Services or
-%% external integrations to Amazon Connect.
+%% external integrations to
+%% Amazon Connect.
 %%
 %% A chat integration event includes:
 %%
-%% <ul> <li> SourceId, DestinationId, and Subtype: a set of identifiers,
-%% uniquely representing a chat
+%% SourceId, DestinationId, and Subtype: a set of identifiers, uniquely
+%% representing a
+%% chat
 %%
-%% </li> <li> ChatEvent: details of the chat action to perform such as
-%% sending a message, event, or disconnecting from a chat
+%% ChatEvent: details of the chat action to perform such as sending a
+%% message, event, or
+%% disconnecting from a chat
 %%
-%% </li> </ul> When a chat integration event is sent with chat identifiers
-%% that do not map to an active chat contact, a new chat contact is also
-%% created before handling chat action.
+%% When a chat integration event is sent with chat identifiers that do not
+%% map to an active
+%% chat contact, a new chat contact is also created before handling chat
+%% action.
 %%
 %% Access to this API is currently restricted to Amazon Pinpoint for
-%% supporting SMS integration.
+%% supporting SMS
+%% integration.
 send_chat_integration_event(Client, Input) ->
     send_chat_integration_event(Client, Input, []).
 send_chat_integration_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/chat-integration-event"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5658,45 +6189,52 @@ send_chat_integration_event(Client, Input0, Options0) ->
 
 %% @doc Initiates a flow to start a new chat for the customer.
 %%
-%% Response of this API provides a token required to obtain credentials from
-%% the CreateParticipantConnection:
+%% Response of this API provides a token
+%% required to obtain credentials from the CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
 %% API in the Amazon Connect Participant Service.
 %%
 %% When a new chat contact is successfully created, clients must subscribe to
-%% the participant’s connection for the created chat within 5 minutes. This
-%% is achieved by invoking CreateParticipantConnection:
+%% the participant’s
+%% connection for the created chat within 5 minutes. This is achieved by
+%% invoking CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
 %% with WEBSOCKET and CONNECTION_CREDENTIALS.
 %%
 %% A 429 error occurs in the following situations:
 %%
-%% <ul> <li> API rate limit is exceeded. API TPS throttling returns a
-%% `TooManyRequests' exception.
+%% API rate limit is exceeded. API TPS throttling returns a
+%% `TooManyRequests'
+%% exception.
 %%
-%% </li> <li> The quota for concurrent active chats:
+%% The quota for concurrent active
+%% chats:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
 %% is exceeded. Active chat throttling returns a
 %% `LimitExceededException'.
 %%
-%% </li> </ul> If you use the `ChatDurationInMinutes' parameter and
-%% receive a 400 error, your account may not support the ability to configure
-%% custom chat durations. For more information, contact Amazon Web Services
-%% Support.
+%% If you use the `ChatDurationInMinutes' parameter and receive a 400
+%% error, your
+%% account may not support the ability to configure custom chat durations.
+%% For more information,
+%% contact Amazon Web Services Support.
 %%
 %% For more information about chat, see Chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat.html in the
-%% Amazon Connect Administrator Guide.
+%% Amazon Connect
+%% Administrator Guide.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 start_chat_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/chat"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5710,24 +6248,29 @@ start_chat_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an empty evaluation in the specified Amazon Connect instance,
-%% using the given evaluation form for the particular contact.
+%% using the given
+%% evaluation form for the particular contact.
 %%
-%% The evaluation form version used for the contact evaluation corresponds to
-%% the currently activated version. If no version is activated for the
+%% The evaluation form version used for the contact
+%% evaluation corresponds to the currently activated version. If no version
+%% is activated for the
 %% evaluation form, the contact evaluation cannot be started.
 %%
 %% Evaluations created through the public API do not contain answer values
-%% suggested from automation.
+%% suggested from
+%% automation.
 start_contact_evaluation(Client, InstanceId, Input) ->
     start_contact_evaluation(Client, InstanceId, Input, []).
 start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5742,21 +6285,25 @@ start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Starts recording the contact:
 %%
-%% <ul> <li> If the API is called before the agent joins the call, recording
+%% If the API is called before the agent joins the call, recording
 %% starts when the agent joins the call.
 %%
-%% </li> <li> If the API is called after the agent joins the call, recording
-%% starts at the time of the API call.
+%% If the API is called after the agent joins the call, recording starts
+%% at the time of the API call.
 %%
-%% </li> </ul> StartContactRecording is a one-time action. For example, if
-%% you use StopContactRecording to stop recording an ongoing call, you
-%% can't use StartContactRecording to restart it. For scenarios where the
-%% recording has started and you want to suspend and resume it, such as when
-%% collecting sensitive information (for example, a credit card number), use
-%% SuspendContactRecording and ResumeContactRecording.
+%% StartContactRecording is a one-time action. For example, if you use
+%% StopContactRecording to
+%% stop recording an ongoing call, you can't use StartContactRecording to
+%% restart it. For scenarios
+%% where the recording has started and you want to suspend and resume it,
+%% such as when collecting
+%% sensitive information (for example, a credit card number), use
+%% SuspendContactRecording and
+%% ResumeContactRecording.
 %%
 %% You can use this API to override the recording behavior configured in the
-%% Set recording behavior:
+%% Set recording
+%% behavior:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html
 %% block.
 %%
@@ -5766,11 +6313,13 @@ start_contact_recording(Client, Input) ->
 start_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/start-recording"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5786,7 +6335,8 @@ start_contact_recording(Client, Input0, Options0) ->
 %% @doc Initiates real-time message streaming for a new chat contact.
 %%
 %% For more information about message streaming, see Enable real-time chat
-%% message streaming:
+%% message
+%% streaming:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
 %% in the Amazon Connect Administrator Guide.
 start_contact_streaming(Client, Input) ->
@@ -5794,11 +6344,13 @@ start_contact_streaming(Client, Input) ->
 start_contact_streaming(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/start-streaming"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5813,37 +6365,45 @@ start_contact_streaming(Client, Input0, Options0) ->
 
 %% @doc Places an outbound call to a contact, and then initiates the flow.
 %%
-%% It performs the actions in the flow that's specified (in
-%% `ContactFlowId').
+%% It performs the actions
+%% in the flow that's specified (in `ContactFlowId').
 %%
 %% Agents do not initiate the outbound API, which means that they do not dial
-%% the contact. If the flow places an outbound call to a contact, and then
-%% puts the contact in queue, the call is then routed to the agent, like any
-%% other inbound case.
+%% the contact. If
+%% the flow places an outbound call to a contact, and then puts the contact
+%% in queue, the call is
+%% then routed to the agent, like any other inbound case.
 %%
 %% There is a 60-second dialing timeout for this operation. If the call is
-%% not connected after 60 seconds, it fails.
+%% not connected after
+%% 60 seconds, it fails.
 %%
 %% UK numbers with a 447 prefix are not allowed by default. Before you can
-%% dial these UK mobile numbers, you must submit a service quota increase
-%% request. For more information, see Amazon Connect Service Quotas:
+%% dial these UK
+%% mobile numbers, you must submit a service quota increase request. For more
+%% information, see
+%% Amazon Connect Service Quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
 %% Campaign calls are not allowed by default. Before you can make a call with
 %% `TrafficType' = `CAMPAIGN', you must submit a service quota
-%% increase request to the quota Amazon Connect campaigns:
+%% increase
+%% request to the quota Amazon Connect campaigns:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#outbound-communications-quotas.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 start_outbound_voice_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/outbound-voice"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5858,58 +6418,70 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 
 %% @doc Initiates a flow to start a new task contact.
 %%
-%% For more information about task contacts, see Concepts: Tasks in Amazon
-%% Connect: https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html
-%% in the Amazon Connect Administrator Guide.
+%% For more information about task contacts, see
+%% Concepts: Tasks in
+%% Amazon Connect:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html in the
+%% Amazon Connect Administrator Guide.
 %%
 %% When using `PreviousContactId' and `RelatedContactId' input
 %% parameters, note the following:
 %%
-%% <ul> <li> `PreviousContactId'
+%% `PreviousContactId'
 %%
-%% <ul> <li> Any updates to user-defined task contact attributes on any
-%% contact linked through the same `PreviousContactId' will affect every
-%% contact in the chain.
+%% Any updates to user-defined task contact attributes on any contact linked
+%% through the
+%% same `PreviousContactId' will affect every contact in the chain.
 %%
-%% </li> <li> There can be a maximum of 12 linked task contacts in a chain.
-%% That is, 12 task contacts can be created that share the same
-%% `PreviousContactId'.
+%% There can be a maximum of 12 linked task contacts in a chain. That is, 12
+%% task contacts
+%% can be created that share the same `PreviousContactId'.
 %%
-%% </li> </ul> </li> <li> `RelatedContactId'
+%% `RelatedContactId'
 %%
-%% <ul> <li> Copies contact attributes from the related task contact to the
-%% new contact.
+%% Copies contact attributes from the related task contact to the new
+%% contact.
 %%
-%% </li> <li> Any update on attributes in a new task contact does not update
-%% attributes on previous contact.
+%% Any update on attributes in a new task contact does not update attributes
+%% on previous
+%% contact.
 %%
-%% </li> <li> There’s no limit on the number of task contacts that can be
-%% created that use the same `RelatedContactId'.
+%% There’s no limit on the number of task contacts that can be created that
+%% use the same
+%% `RelatedContactId'.
 %%
-%% </li> </ul> </li> </ul> In addition, when calling StartTaskContact include
-%% only one of these parameters: `ContactFlowID', `QuickConnectID',
-%% or `TaskTemplateID'. Only one parameter is required as long as the
-%% task template has a flow configured to run it. If more than one parameter
-%% is specified, or only the `TaskTemplateID' is specified but it does
+%% In addition, when calling StartTaskContact include only one of these
+%% parameters:
+%% `ContactFlowID', `QuickConnectID', or `TaskTemplateID'. Only
+%% one parameter is required as long as the task template has a flow
+%% configured to run it. If more
+%% than one parameter is specified, or only the `TaskTemplateID' is
+%% specified but it does
 %% not have a flow configured, the request returns an error because Amazon
-%% Connect cannot identify the unique flow to run when the task is created.
+%% Connect cannot
+%% identify the unique flow to run when the task is created.
 %%
 %% A `ServiceQuotaExceededException' occurs when the number of open tasks
-%% exceeds the active tasks quota or there are already 12 tasks referencing
-%% the same `PreviousContactId'. For more information about service
-%% quotas for task contacts, see Amazon Connect service quotas:
+%% exceeds
+%% the active tasks quota or there are already 12 tasks referencing the same
+%% `PreviousContactId'. For more information about service quotas for
+%% task contacts, see
+%% Amazon Connect service quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 start_task_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/task"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5925,18 +6497,21 @@ start_task_contact(Client, Input0, Options0) ->
 %% @doc Places an inbound in-app, web, or video call to a contact, and then
 %% initiates the flow.
 %%
-%% It performs the actions in the flow that are specified (in ContactFlowId)
-%% and present in the Amazon Connect instance (specified as InstanceId).
+%% It
+%% performs the actions in the flow that are specified (in ContactFlowId) and
+%% present in the Amazon Connect instance (specified as InstanceId).
 start_web_r_t_c_contact(Client, Input) ->
     start_web_r_t_c_contact(Client, Input, []).
 start_web_r_t_c_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/webrtc"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5951,27 +6526,30 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 
 %% @doc Ends the specified contact.
 %%
-%% This call does not work for voice contacts that use the following
-%% initiation methods:
+%% This call does not work for voice contacts that use the
+%% following initiation methods:
 %%
-%% <ul> <li> DISCONNECT
+%% DISCONNECT
 %%
-%% </li> <li> TRANSFER
+%% TRANSFER
 %%
-%% </li> <li> QUEUE_TRANSFER
+%% QUEUE_TRANSFER
 %%
-%% </li> </ul> Chat and task contacts, however, can be terminated in any
-%% state, regardless of initiation method.
+%% Chat and task contacts, however, can be terminated in any state,
+%% regardless of initiation
+%% method.
 stop_contact(Client, Input) ->
     stop_contact(Client, Input, []).
 stop_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5986,12 +6564,14 @@ stop_contact(Client, Input0, Options0) ->
 
 %% @doc Stops recording a call when a contact is being recorded.
 %%
-%% StopContactRecording is a one-time action. If you use StopContactRecording
-%% to stop recording an ongoing call, you can't use StartContactRecording
-%% to restart it. For scenarios where the recording has started and you want
+%% StopContactRecording is a one-time
+%% action. If you use StopContactRecording to stop recording an ongoing call,
+%% you can't use
+%% StartContactRecording to restart it. For scenarios where the recording has
+%% started and you want
 %% to suspend it for sensitive information (for example, to collect a credit
-%% card number), and then restart it, use SuspendContactRecording and
-%% ResumeContactRecording.
+%% card number), and then
+%% restart it, use SuspendContactRecording and ResumeContactRecording.
 %%
 %% Only voice recordings are supported at this time.
 stop_contact_recording(Client, Input) ->
@@ -5999,11 +6579,13 @@ stop_contact_recording(Client, Input) ->
 stop_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop-recording"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6018,8 +6600,8 @@ stop_contact_recording(Client, Input0, Options0) ->
 
 %% @doc Ends message streaming on a specified contact.
 %%
-%% To restart message streaming on that contact, call the
-%% StartContactStreaming:
+%% To restart message streaming on that
+%% contact, call the StartContactStreaming:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html
 %% API.
 stop_contact_streaming(Client, Input) ->
@@ -6027,11 +6609,13 @@ stop_contact_streaming(Client, Input) ->
 stop_contact_streaming(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop-streaming"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6047,23 +6631,29 @@ stop_contact_streaming(Client, Input0, Options0) ->
 %% @doc Submits a contact evaluation in the specified Amazon Connect
 %% instance.
 %%
-%% Answers included in the request are merged with existing answers for the
-%% given evaluation. If no answers or notes are passed, the evaluation is
-%% submitted with the existing answers and notes. You can delete an answer or
-%% note by passing an empty object (`{}') to the question identifier.
+%% Answers included
+%% in the request are merged with existing answers for the given evaluation.
+%% If no answers or notes
+%% are passed, the evaluation is submitted with the existing answers and
+%% notes. You can delete an
+%% answer or note by passing an empty object (`{}') to the question
+%% identifier.
 %%
 %% If a contact evaluation is already in submitted state, this operation will
-%% trigger a resubmission.
+%% trigger a
+%% resubmission.
 submit_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     submit_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), "/submit"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6077,15 +6667,19 @@ submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, this API suspends recording
-%% whatever is selected in the flow configuration: call, screen, or both.
+%% whatever is selected in the
+%% flow configuration: call, screen, or both.
 %%
-%% If only call recording or only screen recording is enabled, then it would
-%% be suspended. For example, you might suspend the screen recording while
+%% If only call recording or only screen recording is
+%% enabled, then it would be suspended. For example, you might suspend the
+%% screen recording while
 %% collecting sensitive information, such as a credit card number. Then use
-%% ResumeContactRecording to restart recording the screen.
+%% ResumeContactRecording
+%% to restart recording the screen.
 %%
 %% The period of time that the recording is suspended is filled with silence
-%% in the final recording.
+%% in the final
+%% recording.
 %%
 %% Voice and screen recordings are supported.
 suspend_contact_recording(Client, Input) ->
@@ -6093,11 +6687,13 @@ suspend_contact_recording(Client, Input) ->
 suspend_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/suspend-recording"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6112,19 +6708,22 @@ suspend_contact_recording(Client, Input0, Options0) ->
 
 %% @doc Adds the specified tags to the contact resource.
 %%
-%% For more information about this API is used, see Set up granular billing
-%% for a detailed view of your Amazon Connect usage:
+%% For more information about this API is
+%% used, see Set
+%% up granular billing for a detailed view of your Amazon Connect usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 tag_contact(Client, Input) ->
     tag_contact(Client, Input, []).
 tag_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6140,25 +6739,29 @@ tag_contact(Client, Input0, Options0) ->
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% Some of the supported resource types are agents, routing profiles, queues,
-%% quick connects, contact flows, agent statuses, hours of operation, phone
-%% numbers, security profiles, and task templates. For a complete list, see
-%% Tagging resources in Amazon Connect:
+%% quick connects,
+%% contact flows, agent statuses, hours of operation, phone numbers, security
+%% profiles, and task
+%% templates. For a complete list, see Tagging resources in Amazon Connect:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html.
 %%
-%% For sample policies that use tags, see Amazon Connect Identity-Based
-%% Policy Examples:
+%% For sample policies that use tags, see Amazon Connect
+%% Identity-Based Policy Examples:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6172,39 +6775,41 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Transfers contacts from one agent or queue to another agent or queue
-%% at any point after a contact is created.
+%% at any point after a
+%% contact is created.
 %%
 %% You can transfer a contact to another queue by providing the flow which
 %% orchestrates the contact to the destination queue. This gives you more
-%% control over contact handling and helps you adhere to the service level
-%% agreement (SLA) guaranteed to your customers.
+%% control over contact
+%% handling and helps you adhere to the service level agreement (SLA)
+%% guaranteed to your
+%% customers.
 %%
 %% Note the following requirements:
 %%
-%% <ul> <li> Transfer is supported for only `TASK' contacts.
+%% Transfer is supported for only `TASK' contacts.
 %%
-%% </li> <li> Do not use both `QueueId' and `UserId' in the same
-%% call.
+%% Do not use both `QueueId' and `UserId' in the same call.
 %%
-%% </li> <li> The following flow types are supported: Inbound flow, Transfer
-%% to agent flow, and Transfer to queue flow.
+%% The following flow types are supported: Inbound flow, Transfer to agent
+%% flow, and Transfer
+%% to queue flow.
 %%
-%% </li> <li> The `TransferContact' API can be called only on active
-%% contacts.
+%% The `TransferContact' API can be called only on active contacts.
 %%
-%% </li> <li> A contact cannot be transferred more than 11 times.
-%%
-%% </li> </ul>
+%% A contact cannot be transferred more than 11 times.
 transfer_contact(Client, Input) ->
     transfer_contact(Client, Input, []).
 transfer_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/transfer"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6219,19 +6824,22 @@ transfer_contact(Client, Input0, Options0) ->
 
 %% @doc Removes the specified tags from the contact resource.
 %%
-%% For more information about this API is used, see Set up granular billing
-%% for a detailed view of your Amazon Connect usage:
+%% For more information about this API is
+%% used, see Set
+%% up granular billing for a detailed view of your Amazon Connect usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 untag_contact(Client, ContactId, InstanceId, Input) ->
     untag_contact(Client, ContactId, InstanceId, Input, []).
 untag_contact(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact/tags/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6251,11 +6859,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6278,11 +6888,13 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input) ->
 update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6299,21 +6911,24 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Adds or updates user-defined contact information associated with the
-%% specified contact. At least one field to be updated must be present in the
-%% request.
+%% specified contact. At
+%% least one field to be updated must be present in the request.
 %%
 %% You can add or update user-defined contact information for both ongoing
-%% and completed contacts.
+%% and completed
+%% contacts.
 update_contact(Client, ContactId, InstanceId, Input) ->
     update_contact(Client, ContactId, InstanceId, Input, []).
 update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6326,21 +6941,29 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates or updates user-defined contact attributes associated with
-%% the specified contact.
+%% @doc Creates or updates
+%% user-defined contact attributes
+%% associated with the specified contact.
 %%
 %% You can create or update user-defined attributes for both ongoing and
-%% completed contacts. For example, while the call is active, you can update
-%% the customer's name or the reason the customer called. You can add
-%% notes about steps that the agent took during the call that display to the
-%% next agent that takes the call. You can also update attributes for a
-%% contact using data from your CRM application and save the data with the
-%% contact in Amazon Connect. You could also flag calls for additional
-%% analysis, such as legal review or to identify abusive callers.
+%% completed contacts.
+%% For example, while the call is active, you can update the customer's
+%% name or the reason the
+%% customer called. You can add notes about steps that the agent took during
+%% the call that display
+%% to the next agent that takes the call. You can also update attributes for
+%% a contact using data
+%% from your CRM application and save the data with the contact in Amazon
+%% Connect. You could
+%% also flag calls for additional analysis, such as legal review or to
+%% identify abusive
+%% callers.
 %%
 %% Contact attributes are available in Amazon Connect for 24 months, and are
-%% then deleted. For information about contact record retention and the
-%% maximum size of the contact record attributes section, see Feature
+%% then deleted.
+%% For information about contact record retention and the maximum size of the
+%% contact record
+%% attributes section, see Feature
 %% specifications:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
 %% in the Amazon Connect Administrator Guide.
@@ -6349,11 +6972,13 @@ update_contact_attributes(Client, Input) ->
 update_contact_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/attributes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6369,20 +6994,24 @@ update_contact_attributes(Client, Input0, Options0) ->
 %% @doc Updates details about a contact evaluation in the specified Amazon
 %% Connect instance.
 %%
-%% A contact evaluation must be in draft state. Answers included in the
-%% request are merged with existing answers for the given evaluation. An
-%% answer or note can be deleted by passing an empty object (`{}') to the
-%% question identifier.
+%% A
+%% contact evaluation must be in draft state. Answers included in the request
+%% are merged with
+%% existing answers for the given evaluation. An answer or note can be
+%% deleted by passing an empty
+%% object (`{}') to the question identifier.
 update_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     update_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6397,19 +7026,21 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 
 %% @doc Updates the specified flow.
 %%
-%% You can also create and update flows using the Amazon Connect Flow
-%% language:
+%% You can also create and update flows using the Amazon Connect
+%% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/content"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6428,11 +7059,13 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input) ->
 update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6452,11 +7085,13 @@ update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Inpu
 update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/content"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6475,11 +7110,13 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
 update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6494,19 +7131,21 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
 
 %% @doc The name of the flow.
 %%
-%% You can also create and update flows using the Amazon Connect Flow
-%% language:
+%% You can also create and update flows using the Amazon Connect
+%% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/name"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6523,27 +7162,35 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Updates routing priority and age on the contact (QueuePriority and
-%% QueueTimeAdjustmentInSeconds). These properties can be used to change a
-%% customer's position in the queue. For example, you can move a contact
-%% to the back of the queue by setting a lower routing priority relative to
-%% other contacts in queue; or you can move a contact to the front of the
-%% queue by increasing the routing age which will make the contact look
-%% artificially older and therefore higher up in the first-in-first-out
-%% routing order. Note that adjusting the routing age of a contact affects
-%% only its position in queue, and not its actual queue wait time as reported
-%% through metrics. These properties can also be updated by using the Set
-%% routing priority / age flow block:
+%% QueueTimeAdjustmentInSeconds).
+%% These properties can be used to change a customer's position in the
+%% queue. For example, you can
+%% move a contact to the back of the queue by setting a lower routing
+%% priority relative to other
+%% contacts in queue; or you can move a contact to the front of the queue by
+%% increasing the routing
+%% age which will make the contact look artificially older and therefore
+%% higher up in the
+%% first-in-first-out routing order. Note that adjusting the routing age of a
+%% contact affects only
+%% its position in queue, and not its actual queue wait time as reported
+%% through metrics. These
+%% properties can also be updated by using the Set routing priority / age
+%% flow
+%% block:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/change-routing-priority.html.
 update_contact_routing_data(Client, ContactId, InstanceId, Input) ->
     update_contact_routing_data(Client, ContactId, InstanceId, Input, []).
 update_contact_routing_data(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), "/routing-data"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6563,11 +7210,13 @@ update_contact_schedule(Client, Input) ->
 update_contact_schedule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/schedule"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6581,23 +7230,28 @@ update_contact_schedule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates details about a specific evaluation form version in the
-%% specified Amazon Connect instance.
+%% specified Amazon Connect
+%% instance.
 %%
 %% Question and section identifiers cannot be duplicated within the same
-%% evaluation form.
+%% evaluation
+%% form.
 %%
 %% This operation does not support partial updates. Instead it does a full
-%% update of evaluation form content.
+%% update of evaluation
+%% form content.
 update_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     update_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 update_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6619,11 +7273,13 @@ update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
 update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6645,11 +7301,13 @@ update_instance_attribute(Client, AttributeType, InstanceId, Input) ->
 update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6672,11 +7330,13 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
 update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6691,32 +7351,34 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates timeouts for when human chat participants are to be
-%% considered idle, and when agents are automatically disconnected from a
-%% chat due to idleness.
+%% considered idle, and when agents
+%% are automatically disconnected from a chat due to idleness.
 %%
 %% You can set four timers:
 %%
-%% <ul> <li> Customer idle timeout
+%% Customer idle timeout
 %%
-%% </li> <li> Customer auto-disconnect timeout
+%% Customer auto-disconnect timeout
 %%
-%% </li> <li> Agent idle timeout
+%% Agent idle timeout
 %%
-%% </li> <li> Agent auto-disconnect timeout
+%% Agent auto-disconnect timeout
 %%
-%% </li> </ul> For more information about how chat timeouts work, see Set up
-%% chat timeouts for human participants:
+%% For more information about how chat timeouts work, see
+%% Set up chat timeouts for human participants:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-chat-timeouts.html.
 update_participant_role_config(Client, ContactId, InstanceId, Input) ->
     update_participant_role_config(Client, ContactId, InstanceId, Input, []).
 update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact/participant-role-config/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6730,18 +7392,22 @@ update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates your claimed phone number from its current Amazon Connect
-%% instance or traffic distribution group to another Amazon Connect instance
-%% or traffic distribution group in the same Amazon Web Services Region.
+%% instance or traffic distribution group to
+%% another Amazon Connect instance or traffic distribution group in the same
+%% Amazon Web Services Region.
 %%
 %% After using this API, you must verify that the phone number is attached to
-%% the correct flow in the target instance or traffic distribution group. You
-%% need to do this because the API switches only the phone number to a new
-%% instance or traffic distribution group. It doesn't migrate the flow
-%% configuration of the phone number, too.
+%% the correct flow
+%% in the target instance or traffic distribution group. You need to do this
+%% because the API
+%% switches only the phone number to a new instance or traffic distribution
+%% group. It doesn't
+%% migrate the flow configuration of the phone number, too.
 %%
 %% You can call DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
-%% API to verify the status of a previous UpdatePhoneNumber:
+%% API
+%% to verify the status of a previous UpdatePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePhoneNumber.html
 %% operation.
 update_phone_number(Client, PhoneNumberId, Input) ->
@@ -6749,11 +7415,13 @@ update_phone_number(Client, PhoneNumberId, Input) ->
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6777,11 +7445,13 @@ update_phone_number_metadata(Client, PhoneNumberId, Input) ->
 update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6801,11 +7471,13 @@ update_predefined_attribute(Client, InstanceId, Name, Input) ->
 update_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6824,11 +7496,13 @@ update_prompt(Client, InstanceId, PromptId, Input) ->
 update_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
     Method = post,
     Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6850,11 +7524,13 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input) ->
 update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/hours-of-operation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6871,17 +7547,20 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) -
 %% change.
 %%
 %% Updates the maximum number of contacts allowed in a queue before it is
-%% considered full.
+%% considered
+%% full.
 update_queue_max_contacts(Client, InstanceId, QueueId, Input) ->
     update_queue_max_contacts(Client, InstanceId, QueueId, Input, []).
 update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/max-contacts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6904,11 +7583,13 @@ update_queue_name(Client, InstanceId, QueueId, Input) ->
 update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/name"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6925,22 +7606,28 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %% change.
 %%
 %% Updates the outbound caller ID name, number, and outbound whisper flow for
-%% a specified queue.
+%% a specified
+%% queue.
 %%
 %% If the phone number is claimed to a traffic distribution group that was
-%% created in the same Region as the Amazon Connect instance where you are
-%% calling this API, then you can use a full phone number ARN or a UUID for
-%% `OutboundCallerIdNumberId'. However, if the phone number is claimed to
-%% a traffic distribution group that is in one Region, and you are calling
+%% created in the
+%% same Region as the Amazon Connect instance where you are calling this API,
+%% then you can use a
+%% full phone number ARN or a UUID for `OutboundCallerIdNumberId'.
+%% However, if the phone number is claimed
+%% to a traffic distribution group that is in one Region, and you are calling
 %% this API from an instance in another Amazon Web Services Region that is
 %% associated with the traffic distribution group, you must provide a full
-%% phone number ARN. If a UUID is provided in this scenario, you will receive
-%% a `ResourceNotFoundException'.
+%% phone number ARN. If a
+%% UUID is provided in this scenario, you will receive a
+%% `ResourceNotFoundException'.
 %%
 %% Only use the phone number ARN format that doesn't contain
-%% `instance' in the path, for example,
-%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
-%% same ARN format that is returned when you call the ListPhoneNumbersV2:
+%% `instance' in the
+%% path, for example,
+%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This
+%% is the same ARN format that is returned when you call the
+%% ListPhoneNumbersV2:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
 %% API.
 %%
@@ -6953,11 +7640,13 @@ update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/outbound-caller-config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6979,11 +7668,13 @@ update_queue_status(Client, InstanceId, QueueId, Input) ->
 update_queue_status(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7002,11 +7693,13 @@ update_quick_connect_config(Client, InstanceId, QuickConnectId, Input) ->
 update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = post,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7028,11 +7721,13 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input) ->
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = post,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/name"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7046,18 +7741,21 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Whether agents with this routing profile will have their routing
-%% order calculated based on time since their last inbound contact or longest
-%% idle time.
+%% order calculated based on
+%% time since their last inbound contact or longest idle
+%% time.
 update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/agent-availability-timer"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7071,17 +7769,20 @@ update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfi
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the channels that agents can handle in the Contact Control
-%% Panel (CCP) for a routing profile.
+%% Panel (CCP) for a routing
+%% profile.
 update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/concurrency"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7100,11 +7801,13 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/default-outbound-queue"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7119,18 +7822,20 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 
 %% @doc Updates the name and description of a routing profile.
 %%
-%% The request accepts the following data in JSON format. At least `Name'
-%% or `Description' must be provided.
+%% The request accepts the following data in JSON format.
+%% At least `Name' or `Description' must be provided.
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/name"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7150,11 +7855,13 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
 update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7171,17 +7878,20 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
 %%
 %% Use the Rules Function language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
-%% to code conditions for the rule.
+%% to
+%% code conditions for the rule.
 update_rule(Client, InstanceId, RuleId, Input) ->
     update_rule(Client, InstanceId, RuleId, Input, []).
 update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     Method = put,
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7200,11 +7910,13 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
 update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7221,17 +7933,20 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
 %% Amazon Connect instance.
 %%
 %% This operation does not support partial updates. Instead it does a full
-%% update of template content.
+%% update of template
+%% content.
 update_task_template(Client, InstanceId, TaskTemplateId, Input) ->
     update_task_template(Client, InstanceId, TaskTemplateId, Input, []).
 update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7247,16 +7962,20 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% @doc Updates the traffic distribution for a given traffic distribution
 %% group.
 %%
-%% The `SignInConfig' distribution is available only on a default
-%% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
+%% The `SignInConfig' distribution is available only on a
+%% default `TrafficDistributionGroup' (see the `IsDefault' parameter
+%% in the
 %% TrafficDistributionGroup:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_TrafficDistributionGroup.html
-%% data type). If you call `UpdateTrafficDistribution' with a modified
-%% `SignInConfig' and a non-default `TrafficDistributionGroup', an
-%% `InvalidRequestException' is returned.
+%% data type). If you call
+%% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
+%% non-default `TrafficDistributionGroup',
+%% an `InvalidRequestException' is returned.
 %%
 %% For more information about updating a traffic distribution group, see
-%% Update telephony traffic distribution across Amazon Web Services Regions :
+%% Update telephony
+%% traffic distribution across Amazon Web Services Regions
+%% :
 %% https://docs.aws.amazon.com/connect/latest/adminguide/update-telephony-traffic-distribution.html
 %% in the Amazon Connect Administrator Guide.
 update_traffic_distribution(Client, Id, Input) ->
@@ -7264,11 +7983,13 @@ update_traffic_distribution(Client, Id, Input) ->
 update_traffic_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7287,11 +8008,13 @@ update_user_hierarchy(Client, InstanceId, UserId, Input) ->
 update_user_hierarchy(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/hierarchy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7310,11 +8033,13 @@ update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input) ->
 update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), "/name"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7334,11 +8059,13 @@ update_user_hierarchy_structure(Client, InstanceId, Input) ->
 update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7355,23 +8082,28 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
 %%
 %% We strongly recommend limiting who has the ability to invoke
 %% `UpdateUserIdentityInfo'. Someone with that ability can change the
-%% login credentials of other users by changing their email address. This
-%% poses a security risk to your organization. They can change the email
-%% address of a user to the attacker's email address, and then reset the
+%% login credentials
+%% of other users by changing their email address. This poses a security risk
+%% to your organization.
+%% They can change the email address of a user to the attacker's email
+%% address, and then reset the
 %% password through email. For more information, see Best Practices for
 %% Security Profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/identity-info"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7390,11 +8122,13 @@ update_user_phone_config(Client, InstanceId, UserId, Input) ->
 update_user_phone_config(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/phone-config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7413,11 +8147,13 @@ update_user_proficiencies(Client, InstanceId, UserId, Input) ->
 update_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/proficiencies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7436,11 +8172,13 @@ update_user_routing_profile(Client, InstanceId, UserId, Input) ->
 update_user_routing_profile(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/routing-profile"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7459,11 +8197,13 @@ update_user_security_profiles(Client, InstanceId, UserId, Input) ->
 update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/security-profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7477,23 +8217,27 @@ update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the view content of the given view identifier in the
-%% specified Amazon Connect instance.
+%% specified Amazon Connect
+%% instance.
 %%
 %% It performs content validation if `Status' is set to `SAVED' and
 %% performs full content validation if `Status' is `PUBLISHED'. Note
-%% that the `$SAVED' alias' content will always be updated, but the
-%% `$LATEST' alias' content will only be updated if `Status' is
-%% `PUBLISHED'.
+%% that the
+%% `$SAVED' alias' content will always be updated, but the
+%% `$LATEST' alias'
+%% content will only be updated if `Status' is `PUBLISHED'.
 update_view_content(Client, InstanceId, ViewId, Input) ->
     update_view_content(Client, InstanceId, ViewId, Input, []).
 update_view_content(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = post,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7508,17 +8252,20 @@ update_view_content(Client, InstanceId, ViewId, Input0, Options0) ->
 
 %% @doc Updates the view metadata.
 %%
-%% Note that either `Name' or `Description' must be provided.
+%% Note that either `Name' or `Description'
+%% must be provided.
 update_view_metadata(Client, InstanceId, ViewId, Input) ->
     update_view_metadata(Client, InstanceId, ViewId, Input, []).
 update_view_metadata(Client, InstanceId, ViewId, Input0, Options0) ->
     Method = post,
     Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7534,6 +8281,11 @@ update_view_metadata(Client, InstanceId, ViewId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

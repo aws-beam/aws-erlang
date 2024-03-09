@@ -2,31 +2,43 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon GuardDuty is a continuous security monitoring service that
-%% analyzes and processes the following foundational data sources - VPC flow
-%% logs, Amazon Web Services CloudTrail management event logs, CloudTrail S3
-%% data event logs, EKS audit logs, DNS logs, Amazon EBS volume data, runtime
-%% activity belonging to container workloads, such as Amazon EKS, Amazon ECS
-%% (including Amazon Web Services Fargate), and Amazon EC2 instances.
+%% analyzes and processes
+%% the following foundational data sources - VPC flow logs, Amazon Web
+%% Services CloudTrail management event logs, CloudTrail S3 data event
+%% logs, EKS audit logs, DNS logs, Amazon EBS volume data, runtime activity
+%% belonging to container workloads, such
+%% as Amazon EKS, Amazon ECS (including Amazon Web Services Fargate), and
+%% Amazon EC2 instances.
 %%
-%% It uses threat intelligence feeds, such as lists of malicious IPs and
-%% domains, and machine learning to identify unexpected, potentially
-%% unauthorized, and malicious activity within your Amazon Web Services
-%% environment. This can include issues like escalations of privileges, uses
-%% of exposed credentials, or communication with malicious IPs, domains, or
-%% presence of malware on your Amazon EC2 instances and container workloads.
-%% For example, GuardDuty can detect compromised EC2 instances and container
-%% workloads serving malware, or mining bitcoin.
+%% It uses threat intelligence
+%% feeds, such as lists of malicious IPs and domains, and machine learning to
+%% identify
+%% unexpected, potentially unauthorized, and malicious activity within your
+%% Amazon Web Services environment.
+%% This can include issues like escalations of privileges, uses of exposed
+%% credentials, or
+%% communication with malicious IPs, domains, or presence of malware on your
+%% Amazon EC2 instances
+%% and container workloads. For example, GuardDuty can detect compromised EC2
+%% instances and
+%% container workloads serving malware, or mining bitcoin.
 %%
 %% GuardDuty also monitors Amazon Web Services account access behavior for
-%% signs of compromise, such as unauthorized infrastructure deployments like
-%% EC2 instances deployed in a Region that has never been used, or unusual
-%% API calls like a password policy change to reduce password strength.
+%% signs of compromise, such as
+%% unauthorized infrastructure deployments like EC2 instances deployed in a
+%% Region that has never
+%% been used, or unusual API calls like a password policy change to reduce
+%% password strength.
 %%
 %% GuardDuty informs you about the status of your Amazon Web Services
-%% environment by producing security findings that you can view in the
-%% GuardDuty console or through Amazon EventBridge. For more information, see
-%% the Amazon GuardDuty User Guide:
-%% https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html .
+%% environment by producing security
+%% findings that you can view in the GuardDuty console or through Amazon
+%% EventBridge. For more
+%% information, see the
+%% Amazon
+%% GuardDuty User Guide:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html
+%% .
 -module(aws_guardduty).
 
 -export([accept_administrator_invitation/3,
@@ -195,17 +207,20 @@
 %%====================================================================
 
 %% @doc Accepts the invitation to be a member account and get monitored by a
-%% GuardDuty administrator account that sent the invitation.
+%% GuardDuty
+%% administrator account that sent the invitation.
 accept_administrator_invitation(Client, DetectorId, Input) ->
     accept_administrator_invitation(Client, DetectorId, Input, []).
 accept_administrator_invitation(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -226,10 +241,12 @@ accept_invitation(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -246,17 +263,20 @@ accept_invitation(Client, DetectorId, Input0, Options0) ->
 %% IDs.
 %%
 %% Only the administrator account can archive findings. Member accounts
-%% don't have permission to archive findings from their accounts.
+%% don't have
+%% permission to archive findings from their accounts.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 archive_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/archive"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -271,30 +291,34 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a single GuardDuty detector.
 %%
-%% A detector is a resource that represents the GuardDuty service. To start
-%% using GuardDuty, you must create a detector in each Region where you
-%% enable the service. You can have only one detector per account per Region.
-%% All data sources are enabled in a new detector by default.
+%% A detector is a resource that represents the
+%% GuardDuty service. To start using GuardDuty, you must create a detector in
+%% each Region where
+%% you enable the service. You can have only one detector per account per
+%% Region. All data
+%% sources are enabled in a new detector by default.
 %%
-%% <ul> <li> When you don't specify any `features', with an exception
-%% to `RUNTIME_MONITORING', all the optional features are enabled by
-%% default.
+%% When you don't specify any `features', with an
+%% exception to `RUNTIME_MONITORING', all the optional features are
+%% enabled by default.
 %%
-%% </li> <li> When you specify some of the `features', any feature that
-%% is not specified in the API call gets enabled by default, with an
-%% exception to `RUNTIME_MONITORING'.
+%% When you specify some of the `features', any feature that is not
+%% specified in the
+%% API call gets enabled by default, with an exception to
+%% `RUNTIME_MONITORING'.
 %%
-%% </li> </ul> Specifying both EKS Runtime Monitoring
-%% (`EKS_RUNTIME_MONITORING') and Runtime Monitoring
-%% (`RUNTIME_MONITORING') will cause an error. You can add only one of
-%% these two features because Runtime Monitoring already includes the threat
-%% detection for Amazon EKS resources. For more information, see Runtime
-%% Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
+%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
+%% You can add only one of these two features because Runtime Monitoring
+%% already includes the
+%% threat detection for Amazon EKS resources. For more information, see
+%% Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
@@ -302,10 +326,12 @@ create_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detector"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -320,8 +346,9 @@ create_detector(Client, Input0, Options0) ->
 
 %% @doc Creates a filter using the specified finding criteria.
 %%
-%% The maximum number of saved filters per Amazon Web Services account per
-%% Region is 100. For more information, see Quotas for GuardDuty:
+%% The maximum number of saved filters
+%% per Amazon Web Services account per Region is 100. For more information,
+%% see Quotas for GuardDuty:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html.
 create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
@@ -329,10 +356,12 @@ create_filter(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -348,10 +377,12 @@ create_filter(Client, DetectorId, Input0, Options0) ->
 %% @doc Creates a new IPSet, which is called a trusted IP list in the console
 %% user interface.
 %%
-%% An IPSet is a list of IP addresses that are trusted for secure
-%% communication with Amazon Web Services infrastructure and applications.
-%% GuardDuty doesn't generate findings for IP addresses that are included
-%% in IPSets. Only users from the administrator account can use this
+%% An
+%% IPSet is a list of IP addresses that are trusted for secure communication
+%% with Amazon Web Services
+%% infrastructure and applications. GuardDuty doesn't generate findings
+%% for IP addresses that are
+%% included in IPSets. Only users from the administrator account can use this
 %% operation.
 create_ip_set(Client, DetectorId, Input) ->
     create_ip_set(Client, DetectorId, Input, []).
@@ -359,10 +390,12 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -376,36 +409,47 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates member accounts of the current Amazon Web Services account by
-%% specifying a list of Amazon Web Services account IDs.
+%% specifying a list of Amazon Web Services account
+%% IDs.
 %%
 %% This step is a prerequisite for managing the associated member accounts
-%% either by invitation or through an organization.
+%% either by
+%% invitation or through an organization.
 %%
 %% As a delegated administrator, using `CreateMembers' will enable
-%% GuardDuty in the added member accounts, with the exception of the
+%% GuardDuty in
+%% the added member accounts, with the exception of the
 %% organization delegated administrator account. A delegated administrator
-%% must enable GuardDuty prior to being added as a member.
+%% must enable GuardDuty
+%% prior to being added as a member.
 %%
-%% When you use CreateMembers as an Organizations delegated administrator,
-%% GuardDuty applies your organization's auto-enable settings to the
-%% member accounts in this request, irrespective of the accounts being new or
-%% existing members. For more information about the existing auto-enable
-%% settings for your organization, see DescribeOrganizationConfiguration:
+%% When you use CreateMembers as an Organizations delegated
+%% administrator, GuardDuty applies your organization's auto-enable
+%% settings to the member
+%% accounts in this request, irrespective of the accounts being new or
+%% existing members. For
+%% more information about the existing auto-enable settings for your
+%% organization, see
+%% DescribeOrganizationConfiguration:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeOrganizationConfiguration.html.
 %%
 %% If you are adding accounts by invitation, before using InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html,
-%% use `CreateMembers' after GuardDuty has been enabled in potential
-%% member accounts.
+%% use
+%% `CreateMembers' after GuardDuty has been enabled in potential member
+%% accounts.
 %%
-%% If you disassociate a member from a GuardDuty delegated administrator, the
-%% member account details obtained from this API, including the associated
-%% email addresses, will be retained. This is done so that the delegated
-%% administrator can invoke the InviteMembers:
+%% If you disassociate a member from a GuardDuty
+%% delegated administrator, the member account details
+%% obtained from this API, including the associated email addresses, will be
+%% retained.
+%% This is done so that the delegated administrator can invoke the
+%% InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To remove the
-%% details associated with a member account, the delegated administrator must
-%% invoke the DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To
+%% remove the details associated with a member account, the delegated
+%% administrator must invoke the
+%% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 create_members(Client, DetectorId, Input) ->
@@ -414,10 +458,12 @@ create_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -432,18 +478,20 @@ create_members(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a publishing destination to export findings to.
 %%
-%% The resource to export findings to must exist before you use this
-%% operation.
+%% The resource to export findings to
+%% must exist before you use this operation.
 create_publishing_destination(Client, DetectorId, Input) ->
     create_publishing_destination(Client, DetectorId, Input, []).
 create_publishing_destination(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -459,18 +507,22 @@ create_publishing_destination(Client, DetectorId, Input0, Options0) ->
 %% @doc Generates sample findings of types specified by the list of finding
 %% types.
 %%
-%% If 'NULL' is specified for `findingTypes', the API generates
-%% sample findings of all supported finding types.
+%% If 'NULL' is
+%% specified for `findingTypes', the API generates sample findings of all
+%% supported
+%% finding types.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 create_sample_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/create"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -485,19 +537,22 @@ create_sample_findings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Creates a new ThreatIntelSet.
 %%
-%% ThreatIntelSets consist of known malicious IP addresses. GuardDuty
-%% generates findings based on ThreatIntelSets. Only users of the
-%% administrator account can use this operation.
+%% ThreatIntelSets consist of known malicious IP addresses.
+%% GuardDuty generates findings based on ThreatIntelSets. Only users of the
+%% administrator
+%% account can use this operation.
 create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
 create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -511,17 +566,20 @@ create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Declines invitations sent to the current member account by Amazon Web
-%% Services accounts specified by their account IDs.
+%% Services accounts specified by
+%% their account IDs.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/decline"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -542,10 +600,12 @@ delete_detector(Client, DetectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -565,10 +625,12 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -582,17 +644,20 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes invitations sent to the current member account by Amazon Web
-%% Services accounts specified by their account IDs.
+%% Services accounts specified by
+%% their account IDs.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -607,17 +672,20 @@ delete_invitations(Client, Input0, Options0) ->
 
 %% @doc Deletes the IPSet specified by the `ipSetId'.
 %%
-%% IPSets are called trusted IP lists in the console user interface.
+%% IPSets are called trusted IP
+%% lists in the console user interface.
 delete_ip_set(Client, DetectorId, IpSetId, Input) ->
     delete_ip_set(Client, DetectorId, IpSetId, Input, []).
 delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -631,21 +699,26 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes GuardDuty member accounts (to the current GuardDuty
-%% administrator account) specified by the account IDs.
+%% administrator account)
+%% specified by the account IDs.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to `ALL', you'll receive an error if you attempt
-%% to disable GuardDuty for a member account in your organization.
+%% organization set to
+%% `ALL', you'll receive an error if you attempt to disable GuardDuty
+%% for a member
+%% account in your organization.
 delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
 delete_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -666,10 +739,12 @@ delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -689,10 +764,12 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -707,12 +784,14 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
 
 %% @doc Returns a list of malware scans.
 %%
-%% Each member account can view the malware scans for their own accounts. An
-%% administrator can view the malware scans for all the member accounts.
+%% Each member account can view the malware scans for their
+%% own accounts. An administrator can view the malware scans for all the
+%% member accounts.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 describe_malware_scans(Client, DetectorId, Input) ->
     describe_malware_scans(Client, DetectorId, Input, []).
@@ -720,10 +799,12 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scans"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -737,11 +818,13 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about the account selected as the delegated
-%% administrator for GuardDuty.
+%% administrator for
+%% GuardDuty.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 describe_organization_configuration(Client, DetectorId)
   when is_map(Client) ->
@@ -755,9 +838,11 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Op
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -771,7 +856,8 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the publishing destination specified by the
-%% provided `destinationId'.
+%% provided
+%% `destinationId'.
 describe_publishing_destination(Client, DestinationId, DetectorId)
   when is_map(Client) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, #{}, #{}).
@@ -784,9 +870,11 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -794,20 +882,23 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Removes the existing GuardDuty delegated administrator of the
-%% organization.
+%% @doc Removes the existing GuardDuty delegated
+%% administrator of the organization.
 %%
-%% Only the organization's management account can run this API operation.
+%% Only the organization's management account can run this
+%% API operation.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin/disable"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -823,31 +914,38 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% @doc Disassociates the current GuardDuty member account from its
 %% administrator account.
 %%
-%% When you disassociate an invited member from a GuardDuty delegated
-%% administrator, the member account details obtained from the CreateMembers:
+%% When you
+%% disassociate an invited member from a GuardDuty delegated administrator,
+%% the member account details
+%% obtained from the CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% API, including the associated email addresses, are retained. This is done
-%% so that the delegated administrator can invoke the InviteMembers:
+%% API, including the associated email addresses, are retained. This is
+%% done so that the delegated administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To remove the
-%% details associated with a member account, the delegated administrator must
-%% invoke the DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To
+%% remove the details associated with a member account, the delegated
+%% administrator must invoke the
+%% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to `ALL', you'll receive an error if you attempt
-%% to disable GuardDuty in a member account.
+%% organization set to
+%% `ALL', you'll receive an error if you attempt to disable GuardDuty
+%% in a member
+%% account.
 disassociate_from_administrator_account(Client, DetectorId, Input) ->
     disassociate_from_administrator_account(Client, DetectorId, Input, []).
 disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator/disassociate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -863,15 +961,18 @@ disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
 %% @doc Disassociates the current GuardDuty member account from its
 %% administrator account.
 %%
-%% When you disassociate an invited member from a GuardDuty delegated
-%% administrator, the member account details obtained from the CreateMembers:
+%% When you
+%% disassociate an invited member from a GuardDuty delegated administrator,
+%% the member account details
+%% obtained from the CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% API, including the associated email addresses, are retained. This is done
-%% so that the delegated administrator can invoke the InviteMembers:
+%% API, including the associated email addresses, are retained. This is
+%% done so that the delegated administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To remove the
-%% details associated with a member account, the delegated administrator must
-%% invoke the DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To
+%% remove the details associated with a member account, the delegated
+%% administrator must invoke the
+%% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 disassociate_from_master_account(Client, DetectorId, Input) ->
@@ -880,10 +981,12 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master/disassociate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -897,34 +1000,41 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates GuardDuty member accounts (from the current
-%% administrator account) specified by the account IDs.
+%% administrator account) specified
+%% by the account IDs.
 %%
-%% When you disassociate an invited member from a GuardDuty delegated
-%% administrator, the member account details obtained from the CreateMembers:
+%% When you
+%% disassociate an invited member from a GuardDuty delegated administrator,
+%% the member account details
+%% obtained from the CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% API, including the associated email addresses, are retained. This is done
-%% so that the delegated administrator can invoke the InviteMembers:
+%% API, including the associated email addresses, are retained. This is
+%% done so that the delegated administrator can invoke the InviteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
-%% API without the need to invoke the CreateMembers API again. To remove the
-%% details associated with a member account, the delegated administrator must
-%% invoke the DeleteMembers:
+%% API without the need to invoke the CreateMembers API again. To
+%% remove the details associated with a member account, the delegated
+%% administrator must invoke the
+%% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to `ALL', you'll receive an error if you attempt
-%% to disassociate a member account before removing them from your
-%% organization.
+%% organization set to
+%% `ALL', you'll receive an error if you attempt to disassociate a
+%% member account
+%% before removing them from your organization.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/disassociate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -938,19 +1048,23 @@ disassociate_members(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Designates an Amazon Web Services account within the organization as
-%% your GuardDuty delegated administrator.
+%% your GuardDuty delegated
+%% administrator.
 %%
-%% Only the organization's management account can run this API operation.
+%% Only the organization's management account can run this
+%% API operation.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin/enable"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -964,10 +1078,12 @@ enable_organization_admin_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides the details of the GuardDuty administrator account
-%% associated with the current GuardDuty member account.
+%% associated with the current
+%% GuardDuty member account.
 %%
 %% If the organization's management account or a delegated administrator
-%% runs this API, it will return success (`HTTP 200') but no content.
+%% runs this API,
+%% it will return success (`HTTP 200') but no content.
 get_administrator_account(Client, DetectorId)
   when is_map(Client) ->
     get_administrator_account(Client, DetectorId, #{}, #{}).
@@ -980,9 +1096,11 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -992,20 +1110,24 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves aggregated statistics for your account.
 %%
-%% If you are a GuardDuty administrator, you can retrieve the statistics for
-%% all the resources associated with the active member accounts in your
-%% organization who have enabled Runtime Monitoring and have the GuardDuty
-%% security agent running on their resources.
+%% If you are a GuardDuty administrator, you
+%% can retrieve the statistics for all the resources associated with the
+%% active member accounts
+%% in your organization who have enabled Runtime Monitoring and have the
+%% GuardDuty security agent running
+%% on their resources.
 get_coverage_statistics(Client, DetectorId, Input) ->
     get_coverage_statistics(Client, DetectorId, Input, []).
 get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/coverage/statistics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1022,7 +1144,8 @@ get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_detector(Client, DetectorId)
   when is_map(Client) ->
@@ -1036,9 +1159,11 @@ get_detector(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1059,9 +1184,11 @@ get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1076,10 +1203,12 @@ get_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/get"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1096,8 +1225,8 @@ get_findings(Client, DetectorId, Input0, Options0) ->
 %% ID.
 %%
 %% There might be regional differences because some flags might not be
-%% available in all the Regions where GuardDuty is currently supported. For
-%% more information, see Regions and endpoints:
+%% available in all the Regions where GuardDuty
+%% is currently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
@@ -1105,10 +1234,12 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/statistics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1122,8 +1253,8 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the count of all GuardDuty membership invitations that were
-%% sent to the current member account except the currently accepted
-%% invitation.
+%% sent to the current
+%% member account except the currently accepted invitation.
 get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
@@ -1136,9 +1267,11 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitation/count"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1159,9 +1292,11 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1173,7 +1308,8 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_malware_scan_settings(Client, DetectorId)
   when is_map(Client) ->
@@ -1187,9 +1323,11 @@ get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scan-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1198,7 +1336,8 @@ get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides the details for the GuardDuty administrator account
-%% associated with the current GuardDuty member account.
+%% associated with the current
+%% GuardDuty member account.
 get_master_account(Client, DetectorId)
   when is_map(Client) ->
     get_master_account(Client, DetectorId, #{}, #{}).
@@ -1211,9 +1350,11 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1226,7 +1367,8 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
@@ -1234,10 +1376,12 @@ get_member_detectors(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/get"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1251,17 +1395,20 @@ get_member_detectors(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves GuardDuty member accounts (of the current GuardDuty
-%% administrator account) specified by the account IDs.
+%% administrator account)
+%% specified by the account IDs.
 get_members(Client, DetectorId, Input) ->
     get_members(Client, DetectorId, Input, []).
 get_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/get"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1274,14 +1421,14 @@ get_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves how many active member accounts have each feature enabled
-%% within GuardDuty.
+%% @doc Retrieves how many active member accounts have
+%% each feature enabled within GuardDuty.
 %%
 %% Only a delegated GuardDuty administrator of an organization can run this
 %% API.
 %%
-%% When you create a new organization, it might take up to 24 hours to
-%% generate the statistics for the entire organization.
+%% When you create a new organization, it might take up to 24
+%% hours to generate the statistics for the entire organization.
 get_organization_statistics(Client)
   when is_map(Client) ->
     get_organization_statistics(Client, #{}, #{}).
@@ -1294,9 +1441,11 @@ get_organization_statistics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/statistics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1305,17 +1454,20 @@ get_organization_statistics(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides the number of days left for each data source used in the
-%% free trial period.
+%% free trial
+%% period.
 get_remaining_free_trial_days(Client, DetectorId, Input) ->
     get_remaining_free_trial_days(Client, DetectorId, Input, []).
 get_remaining_free_trial_days(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/freeTrial/daysRemaining"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1342,9 +1494,11 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1353,13 +1507,15 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon GuardDuty usage statistics over the last 30 days for the
-%% specified detector ID.
+%% specified detector
+%% ID.
 %%
 %% For newly enabled detectors or data sources, the cost returned will
-%% include only the usage so far under 30 days. This may differ from the cost
-%% metrics in the console, which project usage over 30 days to provide a
-%% monthly cost estimate. For more information, see Understanding How Usage
-%% Costs are Calculated:
+%% include only the usage
+%% so far under 30 days. This may differ from the cost metrics in the
+%% console, which project
+%% usage over 30 days to provide a monthly cost estimate. For more
+%% information, see Understanding How Usage Costs are Calculated:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
@@ -1367,10 +1523,12 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/usage/statistics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1384,35 +1542,42 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Invites Amazon Web Services accounts to become members of an
-%% organization administered by the Amazon Web Services account that invokes
-%% this API.
+%% organization administered by the Amazon Web Services account
+%% that invokes this API.
 %%
 %% If you are using Amazon Web Services Organizations to manage your
-%% GuardDuty environment, this step is not needed. For more information, see
-%% Managing accounts with organizations:
+%% GuardDuty environment, this step is not
+%% needed. For more information, see Managing accounts with organizations:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html.
 %%
-%% To invite Amazon Web Services accounts, the first step is to ensure that
-%% GuardDuty has been enabled in the potential member accounts. You can now
-%% invoke this API to add accounts by invitation. The invited accounts can
-%% either accept or decline the invitation from their GuardDuty accounts.
-%% Each invited Amazon Web Services account can choose to accept the
-%% invitation from only one Amazon Web Services account. For more
-%% information, see Managing GuardDuty accounts by invitation:
+%% To invite Amazon Web Services accounts, the first step is
+%% to ensure that GuardDuty has been enabled in the potential member
+%% accounts. You can now invoke this API
+%% to add accounts by invitation. The
+%% invited accounts can either accept or decline the invitation from their
+%% GuardDuty accounts. Each invited Amazon Web Services account can
+%% choose to accept the invitation from only one Amazon Web Services account.
+%% For more information, see
+%% Managing GuardDuty accounts
+%% by invitation:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_invitations.html.
 %%
 %% After the invite has been accepted and you choose to disassociate a member
-%% account (by using DisassociateMembers:
+%% account
+%% (by using DisassociateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisassociateMembers.html)
-%% from your account, the details of the member account obtained by invoking
-%% CreateMembers:
+%% from your account,
+%% the details of the member account obtained by invoking CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html,
-%% including the associated email addresses, will be retained. This is done
-%% so that you can invoke InviteMembers without the need to invoke
+%% including the
+%% associated email addresses, will be retained.
+%% This is done so that you can invoke InviteMembers without the need to
+%% invoke
 %% CreateMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
-%% again. To remove the details associated with a member account, you must
-%% also invoke DeleteMembers:
+%% again. To
+%% remove the details associated with a member account, you must also invoke
+%% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
@@ -1420,10 +1585,12 @@ invite_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/invite"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1438,21 +1605,25 @@ invite_members(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Lists coverage details for your GuardDuty account.
 %%
-%% If you're a GuardDuty administrator, you can retrieve all resources
-%% associated with the active member accounts in your organization.
+%% If you're a GuardDuty administrator, you can
+%% retrieve all resources associated with the active member accounts in your
+%% organization.
 %%
 %% Make sure the accounts have Runtime Monitoring enabled and GuardDuty agent
-%% running on their resources.
+%% running on
+%% their resources.
 list_coverage(Client, DetectorId, Input) ->
     list_coverage(Client, DetectorId, Input, []).
 list_coverage(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/coverage"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1479,9 +1650,11 @@ list_detectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1507,9 +1680,11 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1525,8 +1700,8 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists GuardDuty findings for the specified detector ID.
 %%
 %% There might be regional differences because some flags might not be
-%% available in all the Regions where GuardDuty is currently supported. For
-%% more information, see Regions and endpoints:
+%% available in all the Regions where GuardDuty
+%% is currently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
@@ -1534,10 +1709,12 @@ list_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1551,7 +1728,8 @@ list_findings(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all GuardDuty membership invitations that were sent to the
-%% current Amazon Web Services account.
+%% current Amazon Web Services
+%% account.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -1564,9 +1742,11 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1582,8 +1762,10 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the IPSets of the GuardDuty service specified by the detector
 %% ID.
 %%
-%% If you use this operation from a member account, the IPSets returned are
-%% the IPSets from the associated administrator account.
+%% If you use this
+%% operation from a member account, the IPSets returned are the IPSets from
+%% the associated
+%% administrator account.
 list_ip_sets(Client, DetectorId)
   when is_map(Client) ->
     list_ip_sets(Client, DetectorId, #{}, #{}).
@@ -1596,9 +1778,11 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1612,7 +1796,8 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details about all member accounts for the current GuardDuty
-%% administrator account.
+%% administrator
+%% account.
 list_members(Client, DetectorId)
   when is_map(Client) ->
     list_members(Client, DetectorId, #{}, #{}).
@@ -1625,9 +1810,11 @@ list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1643,7 +1830,8 @@ list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the accounts designated as GuardDuty delegated administrators.
 %%
-%% Only the organization's management account can run this API operation.
+%% Only the organization's management account can run this
+%% API operation.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -1656,9 +1844,11 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1672,7 +1862,8 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of publishing destinations associated with the
-%% specified `detectorId'.
+%% specified
+%% `detectorId'.
 list_publishing_destinations(Client, DetectorId)
   when is_map(Client) ->
     list_publishing_destinations(Client, DetectorId, #{}, #{}).
@@ -1685,9 +1876,11 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1702,10 +1895,11 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists tags for a resource.
 %%
-%% Tagging is currently supported for detectors, finding filters, IP sets,
-%% threat intel sets, and publishing destination, with a limit of 50 tags per
-%% resource. When invoked, this operation returns all assigned tags for a
-%% given resource.
+%% Tagging is currently supported for detectors, finding filters,
+%% IP sets, threat intel sets, and publishing destination, with a limit of 50
+%% tags per resource.
+%% When invoked, this
+%% operation returns all assigned tags for a given resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1718,9 +1912,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1731,8 +1927,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists the ThreatIntelSets of the GuardDuty service specified by the
 %% detector ID.
 %%
-%% If you use this operation from a member account, the ThreatIntelSets
-%% associated with the administrator account are returned.
+%% If you
+%% use this operation from a member account, the ThreatIntelSets associated
+%% with the
+%% administrator account are returned.
 list_threat_intel_sets(Client, DetectorId)
   when is_map(Client) ->
     list_threat_intel_sets(Client, DetectorId, #{}, #{}).
@@ -1745,9 +1943,11 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1764,10 +1964,12 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% Invoking this API will automatically create the Service-linked role:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html
-%% in the corresponding account.
+%% in
+%% the corresponding account.
 %%
 %% When the malware scan starts, you can use the associated scan ID to track
-%% the status of the scan. For more information, see DescribeMalwareScans:
+%% the status of the scan. For more information,
+%% see DescribeMalwareScans:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeMalwareScans.html.
 start_malware_scan(Client, Input) ->
     start_malware_scan(Client, Input, []).
@@ -1775,10 +1977,12 @@ start_malware_scan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/malware-scan/start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1793,8 +1997,9 @@ start_malware_scan(Client, Input0, Options0) ->
 
 %% @doc Turns on GuardDuty monitoring of the specified member accounts.
 %%
-%% Use this operation to restart monitoring of accounts that you stopped
-%% monitoring with the StopMonitoringMembers:
+%% Use this operation to
+%% restart monitoring of accounts that you stopped monitoring with the
+%% StopMonitoringMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StopMonitoringMembers.html
 %% operation.
 start_monitoring_members(Client, DetectorId, Input) ->
@@ -1803,10 +2008,12 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1821,22 +2028,27 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Stops GuardDuty monitoring for the specified member accounts.
 %%
-%% Use the `StartMonitoringMembers' operation to restart monitoring for
-%% those accounts.
+%% Use the
+%% `StartMonitoringMembers' operation to restart monitoring for those
+%% accounts.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
-%% organization set to `ALL', you'll receive an error if you attempt
-%% to stop monitoring the member accounts in your organization.
+%% organization set to
+%% `ALL', you'll receive an error if you attempt to stop monitoring
+%% the member
+%% accounts in your organization.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 stop_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/stop"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1856,10 +2068,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1879,10 +2093,12 @@ unarchive_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/unarchive"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1902,10 +2118,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1921,16 +2139,18 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the GuardDuty detector specified by the detector ID.
 %%
-%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
-%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
-%% add only one of these two features because Runtime Monitoring already
-%% includes the threat detection for Amazon EKS resources. For more
-%% information, see Runtime Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
+%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
+%% You can add only one of these two features because Runtime Monitoring
+%% already includes the
+%% threat detection for Amazon EKS resources. For more information, see
+%% Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
@@ -1938,10 +2158,12 @@ update_detector(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1961,10 +2183,12 @@ update_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1984,10 +2208,12 @@ update_findings_feedback(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/feedback"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2007,10 +2233,12 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2027,7 +2255,8 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_malware_scan_settings(Client, DetectorId, Input) ->
     update_malware_scan_settings(Client, DetectorId, Input, []).
@@ -2035,10 +2264,12 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scan-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2053,16 +2284,18 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Contains information on member accounts to be updated.
 %%
-%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
-%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
-%% add only one of these two features because Runtime Monitoring already
-%% includes the threat detection for Amazon EKS resources. For more
-%% information, see Runtime Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
+%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
+%% You can add only one of these two features because Runtime Monitoring
+%% already includes the
+%% threat detection for Amazon EKS resources. For more information, see
+%% Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
@@ -2070,10 +2303,12 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/update"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2089,19 +2324,22 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 %% @doc Configures the delegated administrator account with the provided
 %% values.
 %%
-%% You must provide a value for either `autoEnableOrganizationMembers' or
+%% You must provide
+%% a value for either `autoEnableOrganizationMembers' or
 %% `autoEnable', but not both.
 %%
-%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
-%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
-%% add only one of these two features because Runtime Monitoring already
-%% includes the threat detection for Amazon EKS resources. For more
-%% information, see Runtime Monitoring:
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING')
+%% and Runtime Monitoring (`RUNTIME_MONITORING') will cause an error.
+%% You can add only one of these two features because Runtime Monitoring
+%% already includes the
+%% threat detection for Amazon EKS resources. For more information, see
+%% Runtime Monitoring:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints:
+%% presently supported. For more
+%% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
@@ -2109,10 +2347,12 @@ update_organization_configuration(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2133,10 +2373,12 @@ update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2156,10 +2398,12 @@ update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2175,6 +2419,11 @@ update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

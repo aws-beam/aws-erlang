@@ -6,8 +6,9 @@
 %% Backup is a unified backup service designed to protect Amazon Web Services
 %% services and their associated data.
 %%
-%% Backup simplifies the creation, migration, restoration, and deletion of
-%% backups, while also providing reporting and auditing.
+%% Backup simplifies the creation, migration,
+%% restoration, and deletion of backups, while also providing reporting and
+%% auditing.
 -module(aws_backup).
 
 -export([cancel_legal_hold/3,
@@ -256,10 +257,12 @@ cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
     Method = delete,
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -276,21 +279,25 @@ cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
 
 %% @doc Creates a backup plan using a backup plan name and backup rules.
 %%
-%% A backup plan is a document that contains information that Backup uses to
-%% schedule tasks that create recovery points for resources.
+%% A backup plan is a
+%% document that contains information that Backup uses to schedule tasks that
+%% create recovery points for resources.
 %%
 %% If you call `CreateBackupPlan' with a plan that already exists, you
-%% receive an `AlreadyExistsException' exception.
+%% receive
+%% an `AlreadyExistsException' exception.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
 create_backup_plan(Client, Input0, Options0) ->
     Method = put,
-    Path = ["/backup/plans/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/backup/plans"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -312,12 +319,14 @@ create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
 create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
     Method = put,
-    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -332,21 +341,26 @@ create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
 
 %% @doc Creates a logical container where backups are stored.
 %%
-%% A `CreateBackupVault' request includes a name, optionally one or more
-%% resource tags, an encryption key, and a request ID.
+%% A `CreateBackupVault'
+%% request includes a name, optionally one or more resource tags, an
+%% encryption key, and a
+%% request ID.
 %%
 %% Do not include sensitive data, such as passport numbers, in the name of a
-%% backup vault.
+%% backup
+%% vault.
 create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
 create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -361,20 +375,24 @@ create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
 
 %% @doc Creates a framework with one or more controls.
 %%
-%% A framework is a collection of controls that you can use to evaluate your
-%% backup practices. By using pre-built customizable controls to define your
-%% policies, you can evaluate whether your backup practices comply with your
-%% policies and which resources are not yet in compliance.
+%% A framework is a collection of controls
+%% that you can use to evaluate your backup practices. By using pre-built
+%% customizable
+%% controls to define your policies, you can evaluate whether your backup
+%% practices comply
+%% with your policies and which resources are not yet in compliance.
 create_framework(Client, Input) ->
     create_framework(Client, Input, []).
 create_framework(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/frameworks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -389,20 +407,24 @@ create_framework(Client, Input0, Options0) ->
 
 %% @doc This action creates a legal hold on a recovery point (backup).
 %%
-%% A legal hold is a restraint on altering or deleting a backup until an
-%% authorized user cancels the legal hold. Any actions to delete or
-%% disassociate a recovery point will fail with an error if one or more
-%% active legal holds are on the recovery point.
+%% A legal hold
+%% is a restraint on altering or deleting a backup until an authorized user
+%% cancels the
+%% legal hold. Any actions to delete or disassociate a recovery point will
+%% fail with
+%% an error if one or more active legal holds are on the recovery point.
 create_legal_hold(Client, Input) ->
     create_legal_hold(Client, Input, []).
 create_legal_hold(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/legal-holds/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/legal-holds"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -419,21 +441,26 @@ create_legal_hold(Client, Input0, Options0) ->
 %% copied.
 %%
 %% This request includes a name, the Region, the maximum number of retention
-%% days, the minimum number of retention days, and optionally can include
-%% tags and a creator request ID.
+%% days, the
+%% minimum number of retention days, and optionally can include tags and a
+%% creator request
+%% ID.
 %%
 %% Do not include sensitive data, such as passport numbers, in the name of a
-%% backup vault.
+%% backup
+%% vault.
 create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input) ->
     create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input, []).
 create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/logically-air-gapped-backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -448,21 +475,24 @@ create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Option
 
 %% @doc Creates a report plan.
 %%
-%% A report plan is a document that contains information about the contents
-%% of the report and where Backup will deliver it.
+%% A report plan is a document that contains information about the
+%% contents of the report and where Backup will deliver it.
 %%
 %% If you call `CreateReportPlan' with a plan that already exists, you
-%% receive an `AlreadyExistsException' exception.
+%% receive
+%% an `AlreadyExistsException' exception.
 create_report_plan(Client, Input) ->
     create_report_plan(Client, Input, []).
 create_report_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-plans"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -475,22 +505,24 @@ create_report_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This is the first of two steps to create a restore testing plan; once
-%% this request is successful, finish the procedure with request
-%% CreateRestoreTestingSelection.
+%% @doc This is the first of two steps to create a restore testing
+%% plan; once this request is successful, finish the procedure with
+%% request CreateRestoreTestingSelection.
 %%
-%% You must include the parameter RestoreTestingPlan. You may optionally
-%% include CreatorRequestId and Tags.
+%% You must include the parameter RestoreTestingPlan. You may
+%% optionally include CreatorRequestId and Tags.
 create_restore_testing_plan(Client, Input) ->
     create_restore_testing_plan(Client, Input, []).
 create_restore_testing_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -506,35 +538,39 @@ create_restore_testing_plan(Client, Input0, Options0) ->
 %% @doc This request can be sent after CreateRestoreTestingPlan request
 %% returns successfully.
 %%
-%% This is the second part of creating a resource testing plan, and it must
-%% be completed sequentially.
+%% This is the second part of creating a resource testing
+%% plan, and it must be completed sequentially.
 %%
 %% This consists of `RestoreTestingSelectionName',
 %% `ProtectedResourceType', and one of the following:
 %%
-%% <ul> <li> `ProtectedResourceArns'
+%% `ProtectedResourceArns'
 %%
-%% </li> <li> `ProtectedResourceConditions'
+%% `ProtectedResourceConditions'
 %%
-%% </li> </ul> Each protected resource type can have one single value.
+%% Each protected resource type can have one single value.
 %%
 %% A restore testing selection can include a wildcard value (&quot;*&quot;)
-%% for `ProtectedResourceArns' along with
-%% `ProtectedResourceConditions'. Alternatively, you can include up to 30
-%% specific protected resource ARNs in `ProtectedResourceArns'.
+%% for
+%% `ProtectedResourceArns' along with `ProtectedResourceConditions'.
+%% Alternatively, you can include up to 30 specific protected resource ARNs
+%% in
+%% `ProtectedResourceArns'.
 %%
-%% Cannot select by both protected resource types AND specific ARNs. Request
-%% will fail if both are included.
+%% Cannot select by both protected resource types AND specific ARNs.
+%% Request will fail if both are included.
 create_restore_testing_selection(Client, RestoreTestingPlanName, Input) ->
     create_restore_testing_selection(Client, RestoreTestingPlanName, Input, []).
 create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -549,19 +585,22 @@ create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options
 
 %% @doc Deletes a backup plan.
 %%
-%% A backup plan can only be deleted after all associated selections of
-%% resources have been deleted. Deleting a backup plan deletes the current
-%% version of a backup plan. Previous versions, if any, will still exist.
+%% A backup plan can only be deleted after all associated selections
+%% of resources have been deleted. Deleting a backup plan deletes the current
+%% version of a
+%% backup plan. Previous versions, if any, will still exist.
 delete_backup_plan(Client, BackupPlanId, Input) ->
     delete_backup_plan(Client, BackupPlanId, Input, []).
 delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -575,17 +614,20 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource selection associated with a backup plan that is
-%% specified by the `SelectionId'.
+%% specified by the
+%% `SelectionId'.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -600,17 +642,20 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
 
 %% @doc Deletes the backup vault identified by its name.
 %%
-%% A vault can be deleted only if it is empty.
+%% A vault can be deleted only if it is
+%% empty.
 delete_backup_vault(Client, BackupVaultName, Input) ->
     delete_backup_vault(Client, BackupVaultName, Input, []).
 delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -630,11 +675,13 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input) ->
 delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -648,24 +695,29 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes Backup Vault Lock from a backup vault specified by a backup
-%% vault name.
+%% vault
+%% name.
 %%
 %% If the Vault Lock configuration is immutable, then you cannot delete Vault
-%% Lock using API operations, and you will receive an
-%% `InvalidRequestException' if you attempt to do so. For more
-%% information, see Vault Lock:
+%% Lock using
+%% API operations, and you will receive an `InvalidRequestException' if
+%% you attempt
+%% to do so. For more information, see Vault Lock:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html in
-%% the Backup Developer Guide.
+%% the
+%% Backup Developer Guide.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     delete_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -684,11 +736,13 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input) ->
 delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -707,11 +761,13 @@ delete_framework(Client, FrameworkName, Input) ->
 delete_framework(Client, FrameworkName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -727,31 +783,38 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
 %% @doc Deletes the recovery point specified by a recovery point ID.
 %%
 %% If the recovery point ID belongs to a continuous backup, calling this
-%% endpoint deletes the existing continuous backup and stops future
-%% continuous backup.
+%% endpoint deletes
+%% the existing continuous backup and stops future continuous backup.
 %%
 %% When an IAM role's permissions are insufficient to call this API, the
-%% service sends back an HTTP 200 response with an empty HTTP body, but the
-%% recovery point is not deleted. Instead, it enters an `EXPIRED' state.
+%% service sends back
+%% an HTTP 200 response with an empty HTTP body, but the recovery point is
+%% not deleted.
+%% Instead, it enters an `EXPIRED' state.
 %%
 %% `EXPIRED' recovery points can be deleted with this API once the IAM
-%% role has the `iam:CreateServiceLinkedRole' action. To learn more about
-%% adding this role, see Troubleshooting manual deletions:
+%% role
+%% has the `iam:CreateServiceLinkedRole' action. To learn more about
+%% adding this role, see
+%%
+%% Troubleshooting manual deletions:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/deleting-backups.html#deleting-backups-troubleshooting.
 %%
 %% If the user or role is deleted or the permission within the role is
-%% removed, the deletion will not be successful and will enter an
-%% `EXPIRED' state.
+%% removed,
+%% the deletion will not be successful and will enter an `EXPIRED' state.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -770,11 +833,13 @@ delete_report_plan(Client, ReportPlanName, Input) ->
 delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -789,18 +854,20 @@ delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
 
 %% @doc This request deletes the specified restore testing plan.
 %%
-%% Deletion can only successfully occur if all associated restore testing
-%% selections are deleted first.
+%% Deletion can only successfully occur if all associated
+%% restore testing selections are deleted first.
 delete_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     delete_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
 delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = delete,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -816,18 +883,20 @@ delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 %% @doc Input the Restore Testing Plan name and Restore Testing Selection
 %% name.
 %%
-%% All testing selections associated with a restore testing plan must be
-%% deleted before the restore testing plan can be deleted.
+%% All testing selections associated with a restore testing plan must
+%% be deleted before the restore testing plan can be deleted.
 delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
 delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
     Method = delete,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -852,10 +921,12 @@ describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap)
 describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -875,10 +946,12 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
 describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -902,10 +975,12 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap)
 describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/copy-jobs/", aws_util:encode_uri(CopyJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -925,10 +1000,12 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap)
 describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -940,7 +1017,8 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
 %% cross-account backup.
 %%
 %% Returns an error if the account is not a member of an Organizations
-%% organization. Example: `describe-global-settings --region us-west-2'
+%% organization.
+%% Example: `describe-global-settings --region us-west-2'
 describe_global_settings(Client)
   when is_map(Client) ->
     describe_global_settings(Client, #{}, #{}).
@@ -952,10 +1030,12 @@ describe_global_settings(Client, QueryMap, HeadersMap)
 describe_global_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -964,8 +1044,10 @@ describe_global_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a saved resource, including the last time
-%% it was backed up, its Amazon Resource Name (ARN), and the Amazon Web
-%% Services service type of the saved resource.
+%% it was backed up,
+%% its Amazon Resource Name (ARN), and the Amazon Web Services service type
+%% of the saved
+%% resource.
 describe_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     describe_protected_resource(Client, ResourceArn, #{}, #{}).
@@ -977,10 +1059,12 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
 describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -989,7 +1073,8 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata associated with a recovery point, including ID,
-%% status, encryption, and lifecycle.
+%% status, encryption, and
+%% lifecycle.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
@@ -1001,10 +1086,12 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1018,10 +1105,13 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 
 %% @doc Returns the current service opt-in settings for the Region.
 %%
-%% If service opt-in is enabled for a service, Backup tries to protect that
-%% service's resources in this Region, when the resource is included in
-%% an on-demand backup or scheduled backup plan. Otherwise, Backup does not
-%% try to protect that service's resources in this Region.
+%% If service opt-in is enabled
+%% for a service, Backup tries to protect that service's resources in
+%% this Region,
+%% when the resource is included in an on-demand backup or scheduled backup
+%% plan. Otherwise,
+%% Backup does not try to protect that service's resources in this
+%% Region.
 describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, #{}, #{}).
@@ -1033,10 +1123,12 @@ describe_region_settings(Client, QueryMap, HeadersMap)
 describe_region_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account-settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1045,7 +1137,8 @@ describe_region_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the details associated with creating a report as specified by
-%% its `ReportJobId'.
+%% its
+%% `ReportJobId'.
 describe_report_job(Client, ReportJobId)
   when is_map(Client) ->
     describe_report_job(Client, ReportJobId, #{}, #{}).
@@ -1057,10 +1150,12 @@ describe_report_job(Client, ReportJobId, QueryMap, HeadersMap)
 describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1081,10 +1176,12 @@ describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap)
 describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1105,10 +1202,12 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
 describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1117,11 +1216,13 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified continuous backup recovery point from Backup
-%% and releases control of that continuous backup to the source service, such
-%% as Amazon RDS.
+%% and
+%% releases control of that continuous backup to the source service, such as
+%% Amazon RDS.
 %%
 %% The source service will continue to create and retain continuous backups
-%% using the lifecycle that you specified in your original backup plan.
+%% using the
+%% lifecycle that you specified in your original backup plan.
 %%
 %% Does not support snapshot backup recovery points.
 disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
@@ -1129,11 +1230,13 @@ disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
 disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = post,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/disassociate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1147,18 +1250,21 @@ disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This action to a specific child (nested) recovery point removes the
-%% relationship between the specified recovery point and its parent
-%% (composite) recovery point.
+%% relationship
+%% between the specified recovery point and its parent (composite) recovery
+%% point.
 disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input) ->
     disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input, []).
 disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/parentAssociation"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1183,11 +1289,13 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap)
 
 export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/toTemplate/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/toTemplate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1198,8 +1306,9 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0
 %% @doc Returns `BackupPlan' details for the specified
 %% `BackupPlanId'.
 %%
-%% The details are the body of a backup plan in JSON format, in addition to
-%% plan metadata.
+%% The
+%% details are the body of a backup plan in JSON format, in addition to plan
+%% metadata.
 get_backup_plan(Client, BackupPlanId)
   when is_map(Client) ->
     get_backup_plan(Client, BackupPlanId, #{}, #{}).
@@ -1210,11 +1319,13 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap)
 
 get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1232,11 +1343,13 @@ get_backup_plan_from_json(Client, Input) ->
 get_backup_plan_from_json(Client, Input0, Options0) ->
     Method = post,
     Path = ["/backup/template/json/toPlan"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1262,10 +1375,12 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
 get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans/", aws_util:encode_uri(BackupPlanTemplateId), "/toPlan"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1274,7 +1389,8 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns selection metadata and a document in JSON format that
-%% specifies a list of resources that are associated with a backup plan.
+%% specifies a list of
+%% resources that are associated with a backup plan.
 get_backup_selection(Client, BackupPlanId, SelectionId)
   when is_map(Client) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, #{}, #{}).
@@ -1286,10 +1402,12 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap)
 get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1298,7 +1416,8 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the access policy document that is associated with the named
-%% backup vault.
+%% backup
+%% vault.
 get_backup_vault_access_policy(Client, BackupVaultName)
   when is_map(Client) ->
     get_backup_vault_access_policy(Client, BackupVaultName, #{}, #{}).
@@ -1310,10 +1429,12 @@ get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap)
 get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1333,10 +1454,12 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap)
 get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1346,8 +1469,8 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Op
 
 %% @doc This action returns details for a specified legal hold.
 %%
-%% The details are the body of a legal hold in JSON format, in addition to
-%% metadata.
+%% The details are the
+%% body of a legal hold in JSON format, in addition to metadata.
 get_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     get_legal_hold(Client, LegalHoldId, #{}, #{}).
@@ -1358,11 +1481,13 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
 
 get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), "/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1383,10 +1508,12 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/restore-metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1410,10 +1537,12 @@ get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap)
 get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1424,7 +1553,8 @@ get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 %% @doc This request returns the minimal required set of metadata needed to
 %% start a restore job with secure default settings.
 %%
-%% `BackupVaultName' and `RecoveryPointArn' are required parameters.
+%% `BackupVaultName'
+%% and `RecoveryPointArn' are required parameters.
 %% `BackupVaultAccountId' is an optional parameter.
 get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
@@ -1438,9 +1568,11 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/inferred-metadata"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1457,8 +1589,8 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn,
 %% @doc Returns `RestoreTestingPlan' details for the specified
 %% `RestoreTestingPlanName'.
 %%
-%% The details are the body of a restore testing plan in JSON format, in
-%% addition to plan metadata.
+%% The details are the body of a restore testing plan
+%% in JSON format, in addition to plan metadata.
 get_restore_testing_plan(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     get_restore_testing_plan(Client, RestoreTestingPlanName, #{}, #{}).
@@ -1471,9 +1603,11 @@ get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1481,8 +1615,8 @@ get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns RestoreTestingSelection, which displays resources and
-%% elements of the restore testing plan.
+%% @doc Returns RestoreTestingSelection, which displays resources
+%% and elements of the restore testing plan.
 get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName)
   when is_map(Client) ->
     get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, #{}, #{}).
@@ -1495,9 +1629,11 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1517,10 +1653,12 @@ get_supported_resource_types(Client, QueryMap, HeadersMap)
 get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/supported-resource-types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1528,16 +1666,17 @@ get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This is a request for a summary of backup jobs created or running
-%% within the most recent 30 days.
+%% @doc This is a request for a summary of backup jobs created
+%% or running within the most recent 30 days.
 %%
-%% You can include parameters AccountID, State, ResourceType,
-%% MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter
+%% You can
+%% include parameters AccountID, State, ResourceType, MessageCategory,
+%% AggregationPeriod, MaxResults, or NextToken to filter
 %% results.
 %%
-%% This request returns a summary that contains Region, Account, State,
-%% ResourceType, MessageCategory, StartTime, EndTime, and Count of included
-%% jobs.
+%% This request returns a summary that contains
+%% Region, Account, State, ResourceType, MessageCategory,
+%% StartTime, EndTime, and Count of included jobs.
 list_backup_job_summaries(Client)
   when is_map(Client) ->
     list_backup_job_summaries(Client, #{}, #{}).
@@ -1549,10 +1688,12 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap)
 list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/backup-job-summaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1571,7 +1712,8 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing backup jobs for an authenticated account
-%% for the last 30 days.
+%% for the last 30
+%% days.
 %%
 %% For a longer period of time, consider using these monitoring tools:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html.
@@ -1585,11 +1727,13 @@ list_backup_jobs(Client, QueryMap, HeadersMap)
 
 list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup-jobs/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1614,7 +1758,8 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata of your saved backup plan templates, including the
-%% template ID, name, and the creation and deletion dates.
+%% template ID, name,
+%% and the creation and deletion dates.
 list_backup_plan_templates(Client)
   when is_map(Client) ->
     list_backup_plan_templates(Client, #{}, #{}).
@@ -1626,10 +1771,12 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap)
 list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1643,8 +1790,8 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns version metadata of your backup plans, including Amazon
-%% Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan
-%% names, and version IDs.
+%% Resource Names (ARNs),
+%% backup plan IDs, creation and deletion dates, plan names, and version IDs.
 list_backup_plan_versions(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_plan_versions(Client, BackupPlanId, #{}, #{}).
@@ -1655,11 +1802,13 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap)
 
 list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/versions/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1675,9 +1824,10 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of all active backup plans for an authenticated
 %% account.
 %%
-%% The list contains information such as Amazon Resource Names (ARNs), plan
-%% IDs, creation and deletion dates, version IDs, plan names, and creator
-%% request IDs.
+%% The list
+%% contains information such as Amazon Resource Names (ARNs), plan IDs,
+%% creation and deletion
+%% dates, version IDs, plan names, and creator request IDs.
 list_backup_plans(Client)
   when is_map(Client) ->
     list_backup_plans(Client, #{}, #{}).
@@ -1688,11 +1838,13 @@ list_backup_plans(Client, QueryMap, HeadersMap)
 
 list_backup_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup/plans/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup/plans"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1707,7 +1859,8 @@ list_backup_plans(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array containing metadata of the resources associated with
-%% the target backup plan.
+%% the target backup
+%% plan.
 list_backup_selections(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_selections(Client, BackupPlanId, #{}, #{}).
@@ -1718,11 +1871,13 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap)
 
 list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1736,7 +1891,8 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of recovery point storage containers along with
-%% information about them.
+%% information about
+%% them.
 list_backup_vaults(Client)
   when is_map(Client) ->
     list_backup_vaults(Client, #{}, #{}).
@@ -1747,11 +1903,13 @@ list_backup_vaults(Client, QueryMap, HeadersMap)
 
 list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup-vaults/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup-vaults"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1766,16 +1924,17 @@ list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This request obtains a list of copy jobs created or running within
-%% the the most recent 30 days.
+%% @doc This request obtains a list of copy jobs created
+%% or running within the the most recent 30 days.
 %%
-%% You can include parameters AccountID, State, ResourceType,
-%% MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter
+%% You can
+%% include parameters AccountID, State, ResourceType, MessageCategory,
+%% AggregationPeriod, MaxResults, or NextToken to filter
 %% results.
 %%
-%% This request returns a summary that contains Region, Account, State,
-%% RestourceType, MessageCategory, StartTime, EndTime, and Count of included
-%% jobs.
+%% This request returns a summary that contains
+%% Region, Account, State, RestourceType, MessageCategory,
+%% StartTime, EndTime, and Count of included jobs.
 list_copy_job_summaries(Client)
   when is_map(Client) ->
     list_copy_job_summaries(Client, #{}, #{}).
@@ -1787,10 +1946,12 @@ list_copy_job_summaries(Client, QueryMap, HeadersMap)
 list_copy_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/copy-job-summaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1819,11 +1980,13 @@ list_copy_jobs(Client, QueryMap, HeadersMap)
 
 list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/copy-jobs/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/copy-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1860,10 +2023,12 @@ list_frameworks(Client, QueryMap, HeadersMap)
 list_frameworks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/frameworks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1887,11 +2052,13 @@ list_legal_holds(Client, QueryMap, HeadersMap)
 
 list_legal_holds(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/legal-holds/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/legal-holds"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1905,8 +2072,10 @@ list_legal_holds(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array of resources successfully backed up by Backup,
-%% including the time the resource was saved, an Amazon Resource Name (ARN)
-%% of the resource, and a resource type.
+%% including
+%% the time the resource was saved, an Amazon Resource Name (ARN) of the
+%% resource, and a
+%% resource type.
 list_protected_resources(Client)
   when is_map(Client) ->
     list_protected_resources(Client, #{}, #{}).
@@ -1917,11 +2086,13 @@ list_protected_resources(Client, QueryMap, HeadersMap)
 
 list_protected_resources(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/resources/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1946,11 +2117,13 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, Head
 
 list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/resources/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1976,11 +2149,13 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
 
 list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2001,7 +2176,8 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This action returns recovery point ARNs (Amazon Resource Names) of
-%% the specified legal hold.
+%% the
+%% specified legal hold.
 list_recovery_points_by_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     list_recovery_points_by_legal_hold(Client, LegalHoldId, #{}, #{}).
@@ -2013,10 +2189,12 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
 list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), "/recovery-points"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2030,7 +2208,8 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns detailed information about all the recovery points of the
-%% type specified by a resource Amazon Resource Name (ARN).
+%% type specified by a
+%% resource Amazon Resource Name (ARN).
 %%
 %% For Amazon EFS and Amazon EC2, this action only lists recovery points
 %% created by Backup.
@@ -2044,11 +2223,13 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap)
 
 list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/recovery-points/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/recovery-points"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2073,10 +2254,12 @@ list_report_jobs(Client, QueryMap, HeadersMap)
 list_report_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2095,8 +2278,8 @@ list_report_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of your report plans.
 %%
-%% For detailed information about a single report plan, use
-%% `DescribeReportPlan'.
+%% For detailed information about a single report
+%% plan, use `DescribeReportPlan'.
 list_report_plans(Client)
   when is_map(Client) ->
     list_report_plans(Client, #{}, #{}).
@@ -2108,10 +2291,12 @@ list_report_plans(Client, QueryMap, HeadersMap)
 list_report_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-plans"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2124,15 +2309,17 @@ list_report_plans(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This request obtains a summary of restore jobs created or running
-%% within the the most recent 30 days.
+%% @doc This request obtains a summary of restore jobs created
+%% or running within the the most recent 30 days.
 %%
-%% You can include parameters AccountID, State, ResourceType,
-%% AggregationPeriod, MaxResults, or NextToken to filter results.
+%% You can
+%% include parameters AccountID, State, ResourceType,
+%% AggregationPeriod, MaxResults, or NextToken to filter
+%% results.
 %%
-%% This request returns a summary that contains Region, Account, State,
-%% RestourceType, MessageCategory, StartTime, EndTime, and Count of included
-%% jobs.
+%% This request returns a summary that contains
+%% Region, Account, State, RestourceType, MessageCategory,
+%% StartTime, EndTime, and Count of included jobs.
 list_restore_job_summaries(Client)
   when is_map(Client) ->
     list_restore_job_summaries(Client, #{}, #{}).
@@ -2144,10 +2331,12 @@ list_restore_job_summaries(Client, QueryMap, HeadersMap)
 list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/restore-job-summaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2165,7 +2354,8 @@ list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of jobs that Backup initiated to restore a saved
-%% resource, including details about the recovery process.
+%% resource,
+%% including details about the recovery process.
 list_restore_jobs(Client)
   when is_map(Client) ->
     list_restore_jobs(Client, #{}, #{}).
@@ -2176,11 +2366,13 @@ list_restore_jobs(Client, QueryMap, HeadersMap)
 
 list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/restore-jobs/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/restore-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2218,11 +2410,13 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMa
 
 list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/restore-jobs/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/restore-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2251,9 +2445,11 @@ list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2268,7 +2464,8 @@ list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of restore testing selections.
 %%
-%% Can be filtered by `MaxResults' and `RestoreTestingPlanName'.
+%% Can be filtered
+%% by `MaxResults' and `RestoreTestingPlanName'.
 list_restore_testing_selections(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     list_restore_testing_selections(Client, RestoreTestingPlanName, #{}, #{}).
@@ -2281,9 +2478,11 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2297,12 +2496,13 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of key-value pairs assigned to a target recovery
-%% point, backup plan, or backup vault.
+%% point, backup plan, or
+%% backup vault.
 %%
 %% `ListTags' only works for resource types that support full Backup
 %% management of their backups. Those resource types are listed in the
-%% &quot;Full Backup management&quot; section of the Feature availability by
-%% resource:
+%% &quot;Full Backup management&quot; section of the Feature
+%% availability by resource:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
 %% table.
 list_tags(Client, ResourceArn)
@@ -2315,11 +2515,13 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
 
 list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/tags/", aws_util:encode_uri(ResourceArn), "/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2333,19 +2535,23 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sets a resource-based policy that is used to manage access
-%% permissions on the target backup vault.
+%% permissions on the target
+%% backup vault.
 %%
-%% Requires a backup vault name and an access policy document in JSON format.
+%% Requires a backup vault name and an access policy document in JSON
+%% format.
 put_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     put_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2359,29 +2565,36 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies Backup Vault Lock to a backup vault, preventing attempts to
-%% delete any recovery point stored in or created in a backup vault.
+%% delete
+%% any recovery point stored in or created in a backup vault.
 %%
-%% Vault Lock also prevents attempts to update the lifecycle policy that
-%% controls the retention period of any recovery point currently stored in a
-%% backup vault. If specified, Vault Lock enforces a minimum and maximum
-%% retention period for future backup and copy jobs that target a backup
-%% vault.
+%% Vault Lock also prevents
+%% attempts to update the lifecycle policy that controls the retention period
+%% of any recovery
+%% point currently stored in a backup vault. If specified, Vault Lock
+%% enforces a minimum and
+%% maximum retention period for future backup and copy jobs that target a
+%% backup vault.
 %%
 %% Backup Vault Lock has been assessed by Cohasset Associates for use in
-%% environments that are subject to SEC 17a-4, CFTC, and FINRA regulations.
-%% For more information about how Backup Vault Lock relates to these
-%% regulations, see the Cohasset Associates Compliance Assessment.:
-%% samples/cohassetreport.zip
+%% environments
+%% that are subject to SEC 17a-4, CFTC, and FINRA regulations. For more
+%% information about
+%% how Backup Vault Lock relates to these regulations, see the
+%% Cohasset Associates
+%% Compliance Assessment.: samples/cohassetreport.zip
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2401,11 +2614,13 @@ put_backup_vault_notifications(Client, BackupVaultName, Input) ->
 put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2418,21 +2633,24 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This request allows you to send your independent self-run restore
-%% test validation results.
+%% @doc This request allows you to send your independent self-run
+%% restore test validation results.
 %%
-%% `RestoreJobId' and `ValidationStatus' are required. Optionally,
-%% you can input a `ValidationStatusMessage'.
+%% `RestoreJobId' and `ValidationStatus'
+%% are required. Optionally, you can input a
+%% `ValidationStatusMessage'.
 put_restore_validation_result(Client, RestoreJobId, Input) ->
     put_restore_validation_result(Client, RestoreJobId, Input, []).
 put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/validations"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2451,11 +2669,13 @@ start_backup_job(Client, Input) ->
 start_backup_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2476,11 +2696,13 @@ start_copy_job(Client, Input) ->
 start_copy_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/copy-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2499,11 +2721,13 @@ start_report_job(Client, ReportPlanName, Input) ->
 start_report_job(Client, ReportPlanName, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportPlanName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2523,11 +2747,13 @@ start_restore_job(Client, Input) ->
 start_restore_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2542,20 +2768,23 @@ start_restore_job(Client, Input0, Options0) ->
 
 %% @doc Attempts to cancel a job to create a one-time backup of a resource.
 %%
-%% This action is not supported for the following services: Amazon FSx for
-%% Windows File Server, Amazon FSx for Lustre, FSx for ONTAP , Amazon FSx for
-%% OpenZFS, Amazon DocumentDB (with MongoDB compatibility), Amazon RDS,
-%% Amazon Aurora, and Amazon Neptune.
+%% This action is not supported for the following services:
+%% Amazon FSx for Windows File Server, Amazon FSx for Lustre, FSx for ONTAP
+%% , Amazon FSx for OpenZFS, Amazon DocumentDB (with MongoDB compatibility),
+%% Amazon RDS, Amazon Aurora,
+%% and Amazon Neptune.
 stop_backup_job(Client, BackupJobId, Input) ->
     stop_backup_job(Client, BackupJobId, Input, []).
 stop_backup_job(Client, BackupJobId, Input0, Options0) ->
     Method = post,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2569,17 +2798,20 @@ stop_backup_job(Client, BackupJobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns a set of key-value pairs to a recovery point, backup plan, or
-%% backup vault identified by an Amazon Resource Name (ARN).
+%% backup vault
+%% identified by an Amazon Resource Name (ARN).
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2593,17 +2825,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a set of key-value pairs from a recovery point, backup plan,
-%% or backup vault identified by an Amazon Resource Name (ARN)
+%% or backup vault
+%% identified by an Amazon Resource Name (ARN)
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/untag/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2617,19 +2852,23 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing backup plan identified by its `backupPlanId'
-%% with the input document in JSON format.
+%% with the
+%% input document in JSON format.
 %%
-%% The new version is uniquely identified by a `VersionId'.
+%% The new version is uniquely identified by a
+%% `VersionId'.
 update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
 update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = post,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2643,17 +2882,20 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing framework identified by its `FrameworkName'
-%% with the input document in JSON format.
+%% with the
+%% input document in JSON format.
 update_framework(Client, FrameworkName, Input) ->
     update_framework(Client, FrameworkName, Input, []).
 update_framework(Client, FrameworkName, Input0, Options0) ->
     Method = put,
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2670,18 +2912,20 @@ update_framework(Client, FrameworkName, Input0, Options0) ->
 %% cross-account backup.
 %%
 %% Returns an error if the account is not an Organizations management
-%% account. Use the `DescribeGlobalSettings' API to determine the current
-%% settings.
+%% account. Use the
+%% `DescribeGlobalSettings' API to determine the current settings.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/global-settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2697,20 +2941,26 @@ update_global_settings(Client, Input0, Options0) ->
 %% @doc Sets the transition lifecycle of a recovery point.
 %%
 %% The lifecycle defines when a protected resource is transitioned to cold
-%% storage and when it expires. Backup transitions and expires backups
-%% automatically according to the lifecycle that you define.
+%% storage and when
+%% it expires. Backup transitions and expires backups automatically according
+%% to
+%% the lifecycle that you define.
 %%
 %% Backups transitioned to cold storage must be stored in cold storage for a
-%% minimum of 90 days. Therefore, the “retention” setting must be 90 days
-%% greater than the “transition to cold after days” setting. The “transition
-%% to cold after days” setting cannot be changed after a backup has been
-%% transitioned to cold.
+%% minimum of 90
+%% days. Therefore, the “retention” setting must be 90 days greater than the
+%% “transition to
+%% cold after days” setting. The “transition to cold after days” setting
+%% cannot be changed
+%% after a backup has been transitioned to cold.
 %%
 %% Resource types that are able to be transitioned to cold storage are listed
-%% in the &quot;Lifecycle to cold storage&quot; section of the Feature
-%% availability by resource:
+%% in the &quot;Lifecycle to cold storage&quot;
+%% section of the
+%% Feature availability by resource:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
-%% table. Backup ignores this expression for other resource types.
+%% table. Backup ignores this expression for
+%% other resource types.
 %%
 %% This operation does not support continuous backups.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
@@ -2718,11 +2968,13 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = post,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2737,18 +2989,22 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 
 %% @doc Updates the current service opt-in settings for the Region.
 %%
-%% Use the `DescribeRegionSettings' API to determine the resource types
-%% that are supported.
+%% Use
+%% the `DescribeRegionSettings' API to determine the resource types that
+%% are
+%% supported.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
 update_region_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/account-settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2762,17 +3018,20 @@ update_region_settings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing report plan identified by its
-%% `ReportPlanName' with the input document in JSON format.
+%% `ReportPlanName' with the
+%% input document in JSON format.
 update_report_plan(Client, ReportPlanName, Input) ->
     update_report_plan(Client, ReportPlanName, Input, []).
 update_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2788,31 +3047,32 @@ update_report_plan(Client, ReportPlanName, Input0, Options0) ->
 %% @doc This request will send changes to your specified restore testing
 %% plan.
 %%
-%% `RestoreTestingPlanName' cannot be updated after it is created.
+%% `RestoreTestingPlanName'
+%% cannot be updated after it is created.
 %%
 %% `RecoveryPointSelection' can contain:
 %%
-%% <ul> <li> `Algorithm'
+%% `Algorithm'
 %%
-%% </li> <li> `ExcludeVaults'
+%% `ExcludeVaults'
 %%
-%% </li> <li> `IncludeVaults'
+%% `IncludeVaults'
 %%
-%% </li> <li> `RecoveryPointTypes'
+%% `RecoveryPointTypes'
 %%
-%% </li> <li> `SelectionWindowDays'
-%%
-%% </li> </ul>
+%% `SelectionWindowDays'
 update_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     update_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
 update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2825,23 +3085,26 @@ update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Most elements except the `RestoreTestingSelectionName' can be
-%% updated with this request.
+%% @doc Most elements except the `RestoreTestingSelectionName'
+%% can be updated with this request.
 %%
-%% `RestoreTestingSelection' can use either protected resource ARNs or
-%% conditions, but not both. That is, if your selection has
-%% `ProtectedResourceArns', requesting an update with the parameter
-%% `ProtectedResourceConditions' will be unsuccessful.
+%% `RestoreTestingSelection' can use either protected
+%% resource ARNs or conditions, but not both. That is, if your selection
+%% has `ProtectedResourceArns', requesting an update with the
+%% parameter `ProtectedResourceConditions' will be
+%% unsuccessful.
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2857,6 +3120,11 @@ update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingS
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

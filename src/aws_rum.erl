@@ -2,17 +2,18 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With Amazon CloudWatch RUM, you can perform real-user monitoring to
-%% collect client-side data about your web application performance from
-%% actual user sessions in real time.
+%% collect client-side data about
+%% your web application performance from actual user sessions in real time.
 %%
-%% The data collected includes page load times, client-side errors, and user
-%% behavior. When you view this data, you can see it all aggregated together
-%% and also see breakdowns by the browsers and devices that your customers
-%% use.
+%% The data collected includes page load
+%% times, client-side errors, and user behavior. When you view this data, you
+%% can see it all aggregated together and
+%% also see breakdowns by the browsers and devices that your customers use.
 %%
 %% You can use the collected data to quickly identify and debug client-side
-%% performance issues. CloudWatch RUM helps you visualize anomalies in your
-%% application performance and find relevant debugging data such as error
+%% performance issues. CloudWatch
+%% RUM helps you visualize anomalies in your application performance and find
+%% relevant debugging data such as error
 %% messages, stack traces, and user sessions. You can also use RUM to
 %% understand the range of end-user impact including the number of users,
 %% geolocations, and browsers used.
@@ -66,56 +67,70 @@
 %% @doc Specifies the extended metrics and custom metrics that you want a
 %% CloudWatch RUM app monitor to send to a destination.
 %%
-%% Valid destinations include CloudWatch and Evidently.
+%% Valid
+%% destinations include CloudWatch and Evidently.
 %%
 %% By default, RUM app monitors send some metrics to CloudWatch. These
-%% default metrics are listed in CloudWatch metrics that you can collect with
-%% CloudWatch RUM:
+%% default metrics
+%% are listed in CloudWatch metrics that you can collect
+%% with CloudWatch RUM:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-metrics.html.
 %%
 %% In addition to these default metrics, you can choose to send extended
-%% metrics, custom metrics, or both.
+%% metrics, custom
+%% metrics, or both.
 %%
-%% <ul> <li> Extended metrics let you send metrics with additional dimensions
-%% that aren't included in the default metrics. You can also send
-%% extended metrics to both Evidently and CloudWatch. The valid dimension
-%% names for the additional dimensions for extended metrics are
-%% `BrowserName', `CountryCode', `DeviceType', `FileType',
-%% `OSName', and `PageId'. For more information, see Extended metrics
-%% that you can send to CloudWatch and CloudWatch Evidently:
+%% Extended metrics let you send metrics with additional dimensions that
+%% aren't included in the
+%% default metrics. You can also send extended metrics to both Evidently and
+%% CloudWatch. The valid dimension names for the additional dimensions for
+%% extended
+%% metrics are `BrowserName', `CountryCode',
+%% `DeviceType', `FileType', `OSName', and
+%% `PageId'. For more information, see
+%% Extended metrics that you can send to CloudWatch and CloudWatch
+%% Evidently:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-vended-metrics.html.
 %%
-%% </li> <li> Custom metrics are metrics that you define. You can send custom
-%% metrics to CloudWatch. CloudWatch Evidently, or both. With custom metrics,
-%% you can use any metric name and namespace. To derive the metrics, you can
-%% use any custom events, built-in events, custom attributes, or default
-%% attributes.
+%% Custom metrics are metrics that you define. You can send custom metrics to
+%% CloudWatch.
+%% CloudWatch Evidently, or both. With custom metrics, you can use any metric
+%% name and namespace. To derive the metrics, you can use any custom events,
+%% built-in
+%% events, custom attributes, or default attributes.
 %%
 %% You can't send custom metrics to the `AWS/RUM' namespace. You must
-%% send custom metrics to a custom namespace that you define. The namespace
-%% that you use can't start with `AWS/'. CloudWatch RUM prepends
-%% `RUM/CustomMetrics/' to the custom namespace that you define, so the
-%% final namespace for your metrics in CloudWatch is
-%% `RUM/CustomMetrics/your-custom-namespace '.
+%% send custom metrics to a
+%% custom namespace that you define. The namespace that you use can't
+%% start with `AWS/'.
+%% CloudWatch RUM prepends `RUM/CustomMetrics/' to the custom namespace
+%% that you define,
+%% so the final namespace for your metrics in CloudWatch is
 %%
-%% </li> </ul> The maximum number of metric definitions that you can specify
-%% in one `BatchCreateRumMetricDefinitions' operation is 200.
+%% ```
+%% RUM/CustomMetrics/your-custom-namespace '''.
+%%
+%% The maximum number of metric definitions that you can specify in one
+%% `BatchCreateRumMetricDefinitions' operation is 200.
 %%
 %% The maximum number of metric definitions that one destination can contain
 %% is 2000.
 %%
 %% Extended metrics sent to CloudWatch and RUM custom metrics are charged as
 %% CloudWatch custom metrics. Each combination of additional dimension name
-%% and dimension value counts as a custom metric. For more information, see
+%% and dimension
+%% value counts as a custom metric. For more information, see
 %% Amazon CloudWatch Pricing: https://aws.amazon.com/cloudwatch/pricing/.
 %%
-%% You must have already created a destination for the metrics before you
-%% send them. For more information, see PutRumMetricsDestination:
+%% You must have
+%% already created a destination for the metrics before you send them. For
+%% more information, see
+%% PutRumMetricsDestination:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html.
 %%
 %% If some metric definitions specified in a
-%% `BatchCreateRumMetricDefinitions' operations are not valid, those
-%% metric definitions fail and return errors, but all valid metric
+%% `BatchCreateRumMetricDefinitions' operations are not valid,
+%% those metric definitions fail and return errors, but all valid metric
 %% definitions in the same operation still succeed.
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input) ->
     batch_create_rum_metric_definitions(Client, AppMonitorName, Input, []).
@@ -123,10 +138,12 @@ batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -143,9 +160,10 @@ batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
 %% destination.
 %%
 %% If some metric definition IDs specified in a
-%% `BatchDeleteRumMetricDefinitions' operations are not valid, those
-%% metric definitions fail and return errors, but all valid metric definition
-%% IDs in the same operation are still deleted.
+%% `BatchDeleteRumMetricDefinitions' operations are not valid,
+%% those metric definitions fail and return errors, but all valid metric
+%% definition IDs in the same operation are still
+%% deleted.
 %%
 %% The maximum number of metric definitions that you can specify in one
 %% `BatchDeleteRumMetricDefinitions' operation is 200.
@@ -155,10 +173,12 @@ batch_delete_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
     Method = delete,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -188,9 +208,11 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -206,10 +228,12 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates a Amazon CloudWatch RUM app monitor, which collects telemetry
-%% data from your application and sends that data to RUM.
+%% data from your application and sends that
+%% data to RUM.
 %%
 %% The data includes performance and reliability information such as page
-%% load time, client-side errors, and user behavior.
+%% load time, client-side errors,
+%% and user behavior.
 %%
 %% You use this operation only to create a new app monitor. To update an
 %% existing app monitor, use UpdateAppMonitor:
@@ -217,9 +241,11 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
 %% instead.
 %%
 %% After you create an app monitor, sign in to the CloudWatch RUM console to
-%% get the JavaScript code snippet to add to your web application. For more
-%% information, see How do I find a code snippet that I've already
-%% generated?:
+%% get
+%% the JavaScript code snippet to add to your web application. For more
+%% information, see
+%% How do I find a code snippet
+%% that I've already generated?:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html
 create_app_monitor(Client, Input) ->
     create_app_monitor(Client, Input, []).
@@ -227,10 +253,12 @@ create_app_monitor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitor"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -252,10 +280,12 @@ delete_app_monitor(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/appmonitor/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -269,18 +299,20 @@ delete_app_monitor(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a destination for CloudWatch RUM extended metrics, so that
-%% the specified app monitor stops sending extended metrics to that
-%% destination.
+%% the specified app monitor stops
+%% sending extended metrics to that destination.
 delete_rum_metrics_destination(Client, AppMonitorName, Input) ->
     delete_rum_metrics_destination(Client, AppMonitorName, Input, []).
 delete_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
     Method = delete,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -308,9 +340,11 @@ get_app_monitor(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appmonitor/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -319,18 +353,20 @@ get_app_monitor(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the raw performance events that RUM has collected from your
-%% web application, so that you can do your own processing or analysis of
-%% this data.
+%% web application,
+%% so that you can do your own processing or analysis of this data.
 get_app_monitor_data(Client, Name, Input) ->
     get_app_monitor_data(Client, Name, Input, []).
 get_app_monitor_data(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitor/", aws_util:encode_uri(Name), "/data"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -351,10 +387,12 @@ list_app_monitors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitors"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -370,7 +408,8 @@ list_app_monitors(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of destinations that you have created to receive RUM
-%% extended metrics, for the specified app monitor.
+%% extended metrics,
+%% for the specified app monitor.
 %%
 %% For more information about extended metrics, see AddRumMetrics:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_AddRumMetrcs.html.
@@ -386,9 +425,11 @@ list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, Opti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -414,9 +455,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -427,8 +470,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Sends telemetry events about your application performance and user
 %% behavior to CloudWatch RUM.
 %%
-%% The code snippet that RUM generates for you to add to your application
-%% includes `PutRumEvents' operations to send this data to RUM.
+%% The code
+%% snippet that RUM generates for you to add to your application includes
+%% `PutRumEvents' operations to
+%% send this data to RUM.
 %%
 %% Each `PutRumEvents' operation can send a batch of events from one user
 %% session.
@@ -438,10 +483,12 @@ put_rum_events(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitors/", aws_util:encode_uri(Id), "/"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -457,8 +504,8 @@ put_rum_events(Client, Id, Input0, Options0) ->
 %% @doc Creates or updates a destination to receive extended metrics from
 %% CloudWatch RUM.
 %%
-%% You can send extended metrics to CloudWatch or to a CloudWatch Evidently
-%% experiment.
+%% You can send
+%% extended metrics to CloudWatch or to a CloudWatch Evidently experiment.
 %%
 %% For more information about extended metrics, see
 %% BatchCreateRumMetricDefinitions:
@@ -469,10 +516,12 @@ put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -488,20 +537,25 @@ put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
 %% @doc Assigns one or more tags (key-value pairs) to the specified
 %% CloudWatch RUM resource.
 %%
-%% Currently, the only resources that can be tagged app monitors.
+%% Currently,
+%% the only resources that
+%% can be tagged app monitors.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions by granting a user permission to access or
-%% change only resources with certain tag values.
+%% them to scope user
+%% permissions by granting a user
+%% permission to access or change only resources with certain tag values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
 %% You can use the `TagResource' action with a resource that already has
-%% tags. If you specify a new tag key for the resource, this tag is appended
-%% to the list of tags associated with the alarm. If you specify a tag key
-%% that is already associated with the resource, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% tags.
+%% If you specify a new tag key for the resource,
+%% this tag is appended to the list of tags associated
+%% with the alarm. If you specify a tag key that is already associated with
+%% the resource, the new tag value that you specify replaces
+%% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
 %%
@@ -513,10 +567,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -536,10 +592,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -557,19 +615,23 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% When you use this operation, only the parts of the app monitor
 %% configuration that you specify in this operation are changed. For any
-%% parameters that you omit, the existing values are kept.
+%% parameters that you omit, the existing
+%% values are kept.
 %%
 %% You can't use this operation to change the tags of an existing app
-%% monitor. To change the tags of an existing app monitor, use TagResource:
+%% monitor. To change the tags of an existing app monitor, use
+%% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_TagResource.html.
 %%
 %% To create a new app monitor, use CreateAppMonitor:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_CreateAppMonitor.html.
 %%
 %% After you update an app monitor, sign in to the CloudWatch RUM console to
-%% get the updated JavaScript code snippet to add to your web application.
-%% For more information, see How do I find a code snippet that I've
-%% already generated?:
+%% get
+%% the updated JavaScript code snippet to add to your web application. For
+%% more information, see
+%% How do I find a code snippet
+%% that I've already generated?:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html
 update_app_monitor(Client, Name, Input) ->
     update_app_monitor(Client, Name, Input, []).
@@ -577,10 +639,12 @@ update_app_monitor(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/appmonitor/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -596,7 +660,8 @@ update_app_monitor(Client, Name, Input0, Options0) ->
 %% @doc Modifies one existing metric definition for CloudWatch RUM extended
 %% metrics.
 %%
-%% For more information about extended metrics, see
+%% For
+%% more information about extended metrics, see
 %% BatchCreateRumMetricsDefinitions:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchCreateRumMetricsDefinitions.html.
 update_rum_metric_definition(Client, AppMonitorName, Input) ->
@@ -605,10 +670,12 @@ update_rum_metric_definition(Client, AppMonitorName, Input0, Options0) ->
     Method = patch,
     Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -624,6 +691,11 @@ update_rum_metric_definition(Client, AppMonitorName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -11,43 +11,43 @@
 %%
 %% Endpoints
 %%
-%% <ul> <li> `api.airflow.{region}.amazonaws.com' - This endpoint is used
-%% for environment management.
+%% `api.airflow.{region}.amazonaws.com' - This endpoint is used for
+%% environment management.
 %%
-%% <ul> <li> CreateEnvironment:
+%% CreateEnvironment:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_CreateEnvironment.html
 %%
-%% </li> <li> DeleteEnvironment:
+%% DeleteEnvironment:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_DeleteEnvironment.html
 %%
-%% </li> <li> GetEnvironment:
+%% GetEnvironment:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_GetEnvironment.html
 %%
-%% </li> <li> ListEnvironments:
+%% ListEnvironments:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_ListEnvironments.html
 %%
-%% </li> <li> ListTagsForResource:
+%% ListTagsForResource:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_ListTagsForResource.html
 %%
-%% </li> <li> TagResource:
+%% TagResource:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_TagResource.html
 %%
-%% </li> <li> UntagResource:
+%% UntagResource:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_UntagResource.html
 %%
-%% </li> <li> UpdateEnvironment:
+%% UpdateEnvironment:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_UpdateEnvironment.html
 %%
-%% </li> </ul> </li> <li> `env.airflow.{region}.amazonaws.com' - This
-%% endpoint is used to operate the Airflow environment.
+%% `env.airflow.{region}.amazonaws.com' - This endpoint is used to
+%% operate the Airflow environment.
 %%
-%% <ul> <li> CreateCliToken:
+%% CreateCliToken:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_CreateCliToken.html
 %%
-%% </li> <li> CreateWebLoginToken:
+%% CreateWebLoginToken:
 %% https://docs.aws.amazon.com/mwaa/latest/API/API_CreateWebLoginToken.html
 %%
-%% </li> </ul> </li> </ul> Regions
+%% Regions
 %%
 %% For a list of supported regions, see Amazon MWAA endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/mwaa.html in the Amazon Web
@@ -96,10 +96,12 @@ create_cli_token(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clitoken/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -120,10 +122,12 @@ create_environment(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -146,10 +150,12 @@ create_web_login_token(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/webtoken/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -170,10 +176,12 @@ delete_environment(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -200,9 +208,11 @@ get_environment(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -224,9 +234,11 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -255,9 +267,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -265,7 +279,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Internal only.
+%% @doc
+%% Internal only.
 %%
 %% Publishes environment health metrics to Amazon CloudWatch.
 publish_metrics(Client, EnvironmentName, Input) ->
@@ -274,10 +289,12 @@ publish_metrics(Client, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/environments/", aws_util:encode_uri(EnvironmentName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -298,10 +315,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -324,10 +343,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -349,10 +370,12 @@ update_environment(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -368,6 +391,11 @@ update_environment(Client, Name, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

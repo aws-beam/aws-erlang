@@ -5,19 +5,21 @@
 %% and usage data.
 %%
 %% You can query for aggregated data such as total monthly costs or total
-%% daily usage. You can also query for granular data. This might include the
-%% number of daily write operations for Amazon DynamoDB database tables in
-%% your production environment.
+%% daily usage. You can
+%% also query for granular data. This might include the number of daily write
+%% operations for
+%% Amazon DynamoDB database tables in your production environment.
 %%
 %% Service Endpoint
 %%
 %% The Cost Explorer API provides the following endpoint:
 %%
-%% <ul> <li> `https://ce.us-east-1.amazonaws.com'
+%% `https://ce.us-east-1.amazonaws.com'
 %%
-%% </li> </ul> For information about the costs that are associated with the
-%% Cost Explorer API, see Amazon Web Services Cost Management Pricing:
-%% http://aws.amazon.com/aws-cost-management/pricing/.
+%% For information about the costs that are associated with the Cost Explorer
+%% API, see
+%% Amazon Web Services Cost
+%% Management Pricing: http://aws.amazon.com/aws-cost-management/pricing/.
 -module(aws_cost_explorer).
 
 -export([create_anomaly_monitor/2,
@@ -106,7 +108,8 @@
 %%====================================================================
 
 %% @doc Creates a new cost anomaly detection monitor with the requested type
-%% and monitor specification.
+%% and monitor
+%% specification.
 create_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_anomaly_monitor(Client, Input, []).
@@ -116,9 +119,11 @@ create_anomaly_monitor(Client, Input, Options)
 
 %% @doc Adds an alert subscription to a cost anomaly detection monitor.
 %%
-%% You can use each subscription to define subscribers with email or SNS
-%% notifications. Email subscribers can set an absolute or percentage
-%% threshold and a time frequency for receiving notifications.
+%% You can use each
+%% subscription to define subscribers with email or SNS notifications. Email
+%% subscribers can set
+%% an absolute or percentage threshold and a time frequency for receiving
+%% notifications.
 create_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_anomaly_subscription(Client, Input, []).
@@ -152,8 +157,8 @@ delete_anomaly_subscription(Client, Input, Options)
 
 %% @doc Deletes a Cost Category.
 %%
-%% Expenses from this month going forward will no longer be categorized with
-%% this Cost Category.
+%% Expenses from this month going forward will no longer be
+%% categorized with this Cost Category.
 delete_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cost_category_definition(Client, Input, []).
@@ -162,13 +167,16 @@ delete_cost_category_definition(Client, Input, Options)
     request(Client, <<"DeleteCostCategoryDefinition">>, Input, Options).
 
 %% @doc Returns the name, Amazon Resource Name (ARN), rules, definition, and
-%% effective dates of a Cost Category that's defined in the account.
+%% effective dates of a
+%% Cost Category that's defined in the account.
 %%
 %% You have the option to use `EffectiveOn' to return a Cost Category
-%% that's active on a specific date. If there's no `EffectiveOn'
-%% specified, you see a Cost Category that's effective on the current
-%% date. If Cost Category is still effective, `EffectiveEnd' is omitted
-%% in the response.
+%% that's
+%% active on a specific date. If there's no `EffectiveOn' specified,
+%% you see a Cost
+%% Category that's effective on the current date. If Cost Category is
+%% still effective,
+%% `EffectiveEnd' is omitted in the response.
 describe_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cost_category_definition(Client, Input, []).
@@ -177,9 +185,11 @@ describe_cost_category_definition(Client, Input, Options)
     request(Client, <<"DescribeCostCategoryDefinition">>, Input, Options).
 
 %% @doc Retrieves all of the cost anomalies detected on your account during
-%% the time period that's specified by the `DateInterval' object.
+%% the time period that's
+%% specified by the `DateInterval' object.
 %%
-%% Anomalies are available for up to 90 days.
+%% Anomalies are available for up to 90
+%% days.
 get_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomalies(Client, Input, []).
@@ -189,8 +199,8 @@ get_anomalies(Client, Input, Options)
 
 %% @doc Retrieves the cost anomaly monitor definitions for your account.
 %%
-%% You can filter using a list of cost anomaly monitor Amazon Resource Names
-%% (ARNs).
+%% You can filter using a
+%% list of cost anomaly monitor Amazon Resource Names (ARNs).
 get_anomaly_monitors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomaly_monitors(Client, Input, []).
@@ -200,8 +210,8 @@ get_anomaly_monitors(Client, Input, Options)
 
 %% @doc Retrieves the cost anomaly subscription objects for your account.
 %%
-%% You can filter using a list of cost anomaly monitor Amazon Resource Names
-%% (ARNs).
+%% You can filter using a
+%% list of cost anomaly monitor Amazon Resource Names (ARNs).
 get_anomaly_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomaly_subscriptions(Client, Input, []).
@@ -210,7 +220,8 @@ get_anomaly_subscriptions(Client, Input, Options)
     request(Client, <<"GetAnomalySubscriptions">>, Input, Options).
 
 %% @doc Retrieves estimated usage records for hourly granularity or
-%% resource-level data at daily granularity.
+%% resource-level data at daily
+%% granularity.
 get_approximate_usage_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_approximate_usage_records(Client, Input, []).
@@ -220,11 +231,15 @@ get_approximate_usage_records(Client, Input, Options)
 
 %% @doc Retrieves cost and usage metrics for your account.
 %%
-%% You can specify which cost and usage-related metric that you want the
-%% request to return. For example, you can specify `BlendedCosts' or
-%% `UsageQuantity'. You can also filter and group your data by various
-%% dimensions, such as `SERVICE' or `AZ', in a specific time range.
-%% For a complete list of valid dimensions, see the GetDimensionValues:
+%% You can specify which cost and
+%% usage-related metric that you want the request to return. For example, you
+%% can specify
+%% `BlendedCosts' or `UsageQuantity'. You can also filter and group
+%% your
+%% data by various dimensions, such as `SERVICE' or `AZ', in a
+%% specific
+%% time range. For a complete list of valid dimensions, see the
+%% GetDimensionValues:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html
 %% operation. Management account in an organization in Organizations have
 %% access to all member accounts.
@@ -241,21 +256,26 @@ get_cost_and_usage(Client, Input, Options)
 
 %% @doc Retrieves cost and usage metrics with resources for your account.
 %%
-%% You can specify which cost and usage-related metric, such as
-%% `BlendedCosts' or `UsageQuantity', that you want the request to
-%% return. You can also filter and group your data by various dimensions,
-%% such as `SERVICE' or `AZ', in a specific time range. For a
-%% complete list of valid dimensions, see the GetDimensionValues:
+%% You can specify which
+%% cost and usage-related metric, such as `BlendedCosts' or
+%% `UsageQuantity', that you want the request to return. You can also
+%% filter and group
+%% your data by various dimensions, such as `SERVICE' or `AZ', in a
+%% specific time range. For a complete list of valid dimensions, see the
+%% GetDimensionValues:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html
 %% operation. Management account in an organization in Organizations have
 %% access to all member accounts. This API is currently available for the
 %% Amazon Elastic Compute Cloud – Compute service only.
 %%
 %% This is an opt-in only feature. You can enable this feature from the Cost
-%% Explorer Settings page. For information about how to access the Settings
-%% page, see Controlling Access for Cost Explorer:
+%% Explorer
+%% Settings page. For information about how to access the Settings page, see
+%% Controlling
+%% Access for Cost Explorer:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html
-%% in the Billing and Cost Management User Guide.
+%% in the Billing and Cost Management User
+%% Guide.
 get_cost_and_usage_with_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage_with_resources(Client, Input, []).
@@ -266,7 +286,8 @@ get_cost_and_usage_with_resources(Client, Input, Options)
 %% @doc Retrieves an array of Cost Category names and values incurred cost.
 %%
 %% If some Cost Category names and values are not associated with any cost,
-%% they will not be returned by this API.
+%% they will not
+%% be returned by this API.
 get_cost_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_categories(Client, Input, []).
@@ -275,8 +296,8 @@ get_cost_categories(Client, Input, Options)
     request(Client, <<"GetCostCategories">>, Input, Options).
 
 %% @doc Retrieves a forecast for how much Amazon Web Services predicts that
-%% you will spend over the forecast time period that you select, based on
-%% your past costs.
+%% you will spend over
+%% the forecast time period that you select, based on your past costs.
 get_cost_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_forecast(Client, Input, []).
@@ -287,7 +308,8 @@ get_cost_forecast(Client, Input, Options)
 %% @doc Retrieves all available filter values for a specified filter over a
 %% period of time.
 %%
-%% You can search the dimension values for an arbitrary string.
+%% You
+%% can search the dimension values for an arbitrary string.
 get_dimension_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dimension_values(Client, Input, []).
@@ -296,41 +318,45 @@ get_dimension_values(Client, Input, Options)
     request(Client, <<"GetDimensionValues">>, Input, Options).
 
 %% @doc Retrieves the reservation coverage for your account, which you can
-%% use to see how much of your Amazon Elastic Compute Cloud, Amazon
-%% ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage
-%% is covered by a reservation.
+%% use to see how much
+%% of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon
+%% Relational Database Service,
+%% or Amazon Redshift usage is covered by a reservation.
 %%
-%% An organization's management account can see the coverage of the
-%% associated member accounts. This supports dimensions, Cost Categories, and
-%% nested expressions. For any time period, you can filter data about
-%% reservation usage by the following dimensions:
+%% An organization's management account can
+%% see the coverage of the associated member accounts. This supports
+%% dimensions, Cost Categories,
+%% and nested expressions. For any time period, you can filter data about
+%% reservation usage by
+%% the following dimensions:
 %%
-%% <ul> <li> AZ
+%% AZ
 %%
-%% </li> <li> CACHE_ENGINE
+%% CACHE_ENGINE
 %%
-%% </li> <li> DATABASE_ENGINE
+%% DATABASE_ENGINE
 %%
-%% </li> <li> DEPLOYMENT_OPTION
+%% DEPLOYMENT_OPTION
 %%
-%% </li> <li> INSTANCE_TYPE
+%% INSTANCE_TYPE
 %%
-%% </li> <li> LINKED_ACCOUNT
+%% LINKED_ACCOUNT
 %%
-%% </li> <li> OPERATING_SYSTEM
+%% OPERATING_SYSTEM
 %%
-%% </li> <li> PLATFORM
+%% PLATFORM
 %%
-%% </li> <li> REGION
+%% REGION
 %%
-%% </li> <li> SERVICE
+%% SERVICE
 %%
-%% </li> <li> TAG
+%% TAG
 %%
-%% </li> <li> TENANCY
+%% TENANCY
 %%
-%% </li> </ul> To determine valid values for a dimension, use the
-%% `GetDimensionValues' operation.
+%% To determine valid values for a dimension, use the
+%% `GetDimensionValues'
+%% operation.
 get_reservation_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_coverage(Client, Input, []).
@@ -340,28 +366,36 @@ get_reservation_coverage(Client, Input, Options)
 
 %% @doc Gets recommendations for reservation purchases.
 %%
-%% These recommendations might help you to reduce your costs. Reservations
-%% provide a discounted hourly rate (up to 75%) compared to On-Demand
-%% pricing.
+%% These recommendations might help you to
+%% reduce your costs. Reservations provide a discounted hourly rate (up to
+%% 75%) compared to
+%% On-Demand pricing.
 %%
 %% Amazon Web Services generates your recommendations by identifying your
-%% On-Demand usage during a specific time period and collecting your usage
-%% into categories that are eligible for a reservation. After Amazon Web
-%% Services has these categories, it simulates every combination of
-%% reservations in each category of usage to identify the best number of each
-%% type of Reserved Instance (RI) to purchase to maximize your estimated
-%% savings.
+%% On-Demand usage
+%% during a specific time period and collecting your usage into categories
+%% that are eligible for
+%% a reservation. After Amazon Web Services has these categories, it
+%% simulates every combination
+%% of reservations in each category of usage to identify the best number of
+%% each type of Reserved
+%% Instance (RI) to purchase to maximize your estimated savings.
 %%
 %% For example, Amazon Web Services automatically aggregates your Amazon EC2
-%% Linux, shared tenancy, and c4 family usage in the US West (Oregon) Region
-%% and recommends that you buy size-flexible regional reservations to apply
-%% to the c4 family usage. Amazon Web Services recommends the smallest size
-%% instance in an instance family. This makes it easier to purchase a
-%% size-flexible Reserved Instance (RI). Amazon Web Services also shows the
-%% equal number of normalized units. This way, you can purchase any instance
-%% size that you want. For this example, your RI recommendation is for
-%% `c4.large' because that is the smallest size instance in the c4
-%% instance family.
+%% Linux, shared
+%% tenancy, and c4 family usage in the US West (Oregon) Region and recommends
+%% that you buy
+%% size-flexible regional reservations to apply to the c4 family usage.
+%% Amazon Web Services
+%% recommends the smallest size instance in an instance family. This makes it
+%% easier to purchase
+%% a size-flexible Reserved Instance (RI). Amazon Web Services also shows the
+%% equal number of
+%% normalized units. This way, you can purchase any instance size that you
+%% want. For this
+%% example, your RI recommendation is for `c4.large' because that is the
+%% smallest size
+%% instance in the c4 instance family.
 get_reservation_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_purchase_recommendation(Client, Input, []).
@@ -371,10 +405,12 @@ get_reservation_purchase_recommendation(Client, Input, Options)
 
 %% @doc Retrieves the reservation utilization for your account.
 %%
-%% Management account in an organization have access to member accounts. You
-%% can filter data by dimensions in a time period. You can use
-%% `GetDimensionValues' to determine the possible dimension values.
-%% Currently, you can group only by `SUBSCRIPTION_ID'.
+%% Management account in an
+%% organization have access to member accounts. You can filter data by
+%% dimensions in a time
+%% period. You can use `GetDimensionValues' to determine the possible
+%% dimension
+%% values. Currently, you can group only by `SUBSCRIPTION_ID'.
 get_reservation_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_utilization(Client, Input, []).
@@ -383,12 +419,14 @@ get_reservation_utilization(Client, Input, Options)
     request(Client, <<"GetReservationUtilization">>, Input, Options).
 
 %% @doc Creates recommendations that help you save cost by identifying idle
-%% and underutilized Amazon EC2 instances.
+%% and underutilized
+%% Amazon EC2 instances.
 %%
 %% Recommendations are generated to either downsize or terminate instances,
-%% along with providing savings detail and metrics. For more information
-%% about calculation and function, see Optimizing Your Cost with Rightsizing
-%% Recommendations:
+%% along with
+%% providing savings detail and metrics. For more information about
+%% calculation and function, see
+%% Optimizing Your Cost with Rightsizing Recommendations:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html
 %% in the Billing and Cost Management User Guide.
 get_rightsizing_recommendation(Client, Input)
@@ -400,8 +438,8 @@ get_rightsizing_recommendation(Client, Input, Options)
 
 %% @doc Retrieves the details for a Savings Plan recommendation.
 %%
-%% These details include the hourly data-points that construct the cost,
-%% coverage, and utilization charts.
+%% These details include the hourly
+%% data-points that construct the cost, coverage, and utilization charts.
 get_savings_plan_purchase_recommendation_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plan_purchase_recommendation_details(Client, Input, []).
@@ -411,22 +449,26 @@ get_savings_plan_purchase_recommendation_details(Client, Input, Options)
 
 %% @doc Retrieves the Savings Plans covered for your account.
 %%
-%% This enables you to see how much of your cost is covered by a Savings
-%% Plan. An organization’s management account can see the coverage of the
-%% associated member accounts. This supports dimensions, Cost Categories, and
+%% This enables you to see how much of
+%% your cost is covered by a Savings Plan. An organization’s management
+%% account can see the
+%% coverage of the associated member accounts. This supports dimensions, Cost
+%% Categories, and
 %% nested expressions. For any time period, you can filter data for Savings
-%% Plans usage with the following dimensions:
+%% Plans usage with the
+%% following dimensions:
 %%
-%% <ul> <li> `LINKED_ACCOUNT'
+%% `LINKED_ACCOUNT'
 %%
-%% </li> <li> `REGION'
+%% `REGION'
 %%
-%% </li> <li> `SERVICE'
+%% `SERVICE'
 %%
-%% </li> <li> `INSTANCE_FAMILY'
+%% `INSTANCE_FAMILY'
 %%
-%% </li> </ul> To determine valid values for a dimension, use the
-%% `GetDimensionValues' operation.
+%% To determine valid values for a dimension, use the
+%% `GetDimensionValues'
+%% operation.
 get_savings_plans_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_coverage(Client, Input, []).
@@ -436,9 +478,12 @@ get_savings_plans_coverage(Client, Input, Options)
 
 %% @doc Retrieves the Savings Plans recommendations for your account.
 %%
-%% First use `StartSavingsPlansPurchaseRecommendationGeneration' to
-%% generate a new set of recommendations, and then use
-%% `GetSavingsPlansPurchaseRecommendation' to retrieve them.
+%% First use
+%% `StartSavingsPlansPurchaseRecommendationGeneration' to generate a new
+%% set of
+%% recommendations, and then use `GetSavingsPlansPurchaseRecommendation'
+%% to retrieve
+%% them.
 get_savings_plans_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_purchase_recommendation(Client, Input, []).
@@ -447,7 +492,8 @@ get_savings_plans_purchase_recommendation(Client, Input, Options)
     request(Client, <<"GetSavingsPlansPurchaseRecommendation">>, Input, Options).
 
 %% @doc Retrieves the Savings Plans utilization for your account across date
-%% ranges with daily or monthly granularity.
+%% ranges with daily or
+%% monthly granularity.
 %%
 %% Management account in an organization have access to member accounts. You
 %% can use `GetDimensionValues' in `SAVINGS_PLANS' to determine the
@@ -463,14 +509,18 @@ get_savings_plans_utilization(Client, Input, Options)
     request(Client, <<"GetSavingsPlansUtilization">>, Input, Options).
 
 %% @doc Retrieves attribute data along with aggregate utilization and savings
-%% data for a given time period.
+%% data for a given
+%% time period.
 %%
 %% This doesn't support granular or grouped data (daily/monthly) in
-%% response. You can't retrieve data by dates in a single response
-%% similar to `GetSavingsPlanUtilization', but you have the option to
-%% make multiple calls to `GetSavingsPlanUtilizationDetails' by providing
-%% individual dates. You can use `GetDimensionValues' in
-%% `SAVINGS_PLANS' to determine the possible dimension values.
+%% response. You
+%% can't retrieve data by dates in a single response similar to
+%% `GetSavingsPlanUtilization', but you have the option to make multiple
+%% calls to
+%% `GetSavingsPlanUtilizationDetails' by providing individual dates. You
+%% can use
+%% `GetDimensionValues' in `SAVINGS_PLANS' to determine the possible
+%% dimension values.
 %%
 %% `GetSavingsPlanUtilizationDetails' internally groups data by
 %% `SavingsPlansArn'.
@@ -483,7 +533,8 @@ get_savings_plans_utilization_details(Client, Input, Options)
 
 %% @doc Queries for available tag keys and tag values for a specified period.
 %%
-%% You can search the tag values for an arbitrary string.
+%% You can search
+%% the tag values for an arbitrary string.
 get_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tags(Client, Input, []).
@@ -492,8 +543,8 @@ get_tags(Client, Input, Options)
     request(Client, <<"GetTags">>, Input, Options).
 
 %% @doc Retrieves a forecast for how much Amazon Web Services predicts that
-%% you will use over the forecast time period that you select, based on your
-%% past usage.
+%% you will use
+%% over the forecast time period that you select, based on your past usage.
 get_usage_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_usage_forecast(Client, Input, []).
@@ -503,8 +554,8 @@ get_usage_forecast(Client, Input, Options)
 
 %% @doc Get a list of cost allocation tags.
 %%
-%% All inputs in the API are optional and serve as filters. By default, all
-%% cost allocation tags are returned.
+%% All inputs in the API are optional and serve as
+%% filters. By default, all cost allocation tags are returned.
 list_cost_allocation_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cost_allocation_tags(Client, Input, []).
@@ -513,15 +564,19 @@ list_cost_allocation_tags(Client, Input, Options)
     request(Client, <<"ListCostAllocationTags">>, Input, Options).
 
 %% @doc Returns the name, Amazon Resource Name (ARN), `NumberOfRules' and
-%% effective dates of all Cost Categories defined in the account.
+%% effective
+%% dates of all Cost Categories defined in the account.
 %%
-%% You have the option to use `EffectiveOn' to return a list of Cost
-%% Categories that were active on a specific date. If there is no
-%% `EffectiveOn' specified, you’ll see Cost Categories that are effective
-%% on the current date. If Cost Category is still effective,
-%% `EffectiveEnd' is omitted in the response.
-%% `ListCostCategoryDefinitions' supports pagination. The request can
-%% have a `MaxResults' range up to 100.
+%% You have the option to use
+%% `EffectiveOn' to return a list of Cost Categories that were active on
+%% a specific
+%% date. If there is no `EffectiveOn' specified, you’ll see Cost
+%% Categories that are
+%% effective on the current date. If Cost Category is still effective,
+%% `EffectiveEnd'
+%% is omitted in the response. `ListCostCategoryDefinitions' supports
+%% pagination. The
+%% request can have a `MaxResults' range up to 100.
 list_cost_category_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cost_category_definitions(Client, Input, []).
@@ -530,7 +585,8 @@ list_cost_category_definitions(Client, Input, Options)
     request(Client, <<"ListCostCategoryDefinitions">>, Input, Options).
 
 %% @doc Retrieves a list of your historical recommendation generations within
-%% the past 30 days.
+%% the past 30
+%% days.
 list_savings_plans_purchase_recommendation_generation(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_savings_plans_purchase_recommendation_generation(Client, Input, []).
@@ -539,7 +595,8 @@ list_savings_plans_purchase_recommendation_generation(Client, Input, Options)
     request(Client, <<"ListSavingsPlansPurchaseRecommendationGeneration">>, Input, Options).
 
 %% @doc Returns a list of resource tags associated with the resource
-%% specified by the Amazon Resource Name (ARN).
+%% specified by the Amazon
+%% Resource Name (ARN).
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -557,13 +614,16 @@ provide_anomaly_feedback(Client, Input, Options)
 
 %% @doc Requests a Savings Plans recommendation generation.
 %%
-%% This enables you to calculate a fresh set of Savings Plans recommendations
-%% that takes your latest usage data and current Savings Plans inventory into
-%% account. You can refresh Savings Plans recommendations up to three times
+%% This enables you to calculate a fresh
+%% set of Savings Plans recommendations that takes your latest usage data and
+%% current Savings
+%% Plans inventory into account. You can refresh Savings Plans
+%% recommendations up to three times
 %% daily for a consolidated billing family.
 %%
 %% `StartSavingsPlansPurchaseRecommendationGeneration' has no request
-%% syntax because no input parameters are needed to support this operation.
+%% syntax
+%% because no input parameters are needed to support this operation.
 start_savings_plans_purchase_recommendation_generation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_savings_plans_purchase_recommendation_generation(Client, Input, []).
@@ -575,13 +635,17 @@ start_savings_plans_purchase_recommendation_generation(Client, Input, Options)
 %% resource.
 %%
 %% You can use the `TagResource' operation with a resource that already
-%% has tags. If you specify a new tag key for the resource, this tag is
-%% appended to the list of tags associated with the resource. If you specify
-%% a tag key that is already associated with the resource, the new tag value
-%% you specify replaces the previous value for that tag.
+%% has tags.
+%% If you specify a new tag key for the resource, this tag is appended to the
+%% list of tags
+%% associated with the resource. If you specify a tag key that is already
+%% associated with the
+%% resource, the new tag value you specify replaces the previous value for
+%% that tag.
 %%
 %% Although the maximum number of array members is 200, user-tag maximum is
-%% 50. The remaining are reserved for Amazon Web Services use.
+%% 50. The remaining
+%% are reserved for Amazon Web Services use.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -591,7 +655,8 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes one or more tags from a resource.
 %%
-%% Specify only tag keys in your request. Don't specify the value.
+%% Specify only tag keys in your request. Don't
+%% specify the value.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -601,8 +666,8 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an existing cost anomaly monitor.
 %%
-%% The changes made are applied going forward, and doesn't change
-%% anomalies detected in the past.
+%% The changes made are applied going forward, and
+%% doesn't change anomalies detected in the past.
 update_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_monitor(Client, Input, []).
@@ -612,12 +677,14 @@ update_anomaly_monitor(Client, Input, Options)
 
 %% @doc Updates an existing cost anomaly subscription.
 %%
-%% Specify the fields that you want to update. Omitted fields are unchanged.
+%% Specify the fields that you want to update.
+%% Omitted fields are unchanged.
 %%
 %% The JSON below describes the generic construct for each type. See Request
 %% Parameters:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateAnomalySubscription.html#API_UpdateAnomalySubscription_RequestParameters
-%% for possible values as they apply to `AnomalySubscription'.
+%% for possible values as they apply to
+%% `AnomalySubscription'.
 update_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_subscription(Client, Input, []).
@@ -628,9 +695,12 @@ update_anomaly_subscription(Client, Input, Options)
 %% @doc Updates status for cost allocation tags in bulk, with maximum batch
 %% size of 20.
 %%
-%% If the tag status that's updated is the same as the existing tag
-%% status, the request doesn't fail. Instead, it doesn't have any
-%% effect on the tag status (for example, activating the active tag).
+%% If the tag
+%% status that's updated is the same as the existing tag status, the
+%% request doesn't fail.
+%% Instead, it doesn't have any effect on the tag status (for example,
+%% activating the active
+%% tag).
 update_cost_allocation_tags_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cost_allocation_tags_status(Client, Input, []).
@@ -640,9 +710,10 @@ update_cost_allocation_tags_status(Client, Input, Options)
 
 %% @doc Updates an existing Cost Category.
 %%
-%% Changes made to the Cost Category rules will be used to categorize the
-%% current month’s expenses and future expenses. This won’t change
-%% categorization for the previous months.
+%% Changes made to the Cost Category rules will be used to
+%% categorize the current month’s expenses and future expenses. This won’t
+%% change categorization
+%% for the previous months.
 update_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cost_category_definition(Client, Input, []).

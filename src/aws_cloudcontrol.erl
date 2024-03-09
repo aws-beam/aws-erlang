@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc For more information about Amazon Web Services Cloud Control API, see
-%% the Amazon Web Services Cloud Control API User Guide:
+%% the Amazon Web Services Cloud Control API User
+%% Guide:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/what-is-cloudcontrolapi.html.
 -module(aws_cloudcontrol).
 
@@ -33,7 +34,8 @@
 %%
 %% For more information, see Canceling resource operation requests:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-cancel
-%% in the Amazon Web Services Cloud Control API User Guide.
+%% in the
+%% Amazon Web Services Cloud Control API User Guide.
 %%
 %% Only resource operations requests with a status of `PENDING' or
 %% `IN_PROGRESS' can be canceled.
@@ -46,15 +48,17 @@ cancel_resource_request(Client, Input, Options)
 
 %% @doc Creates the specified resource.
 %%
-%% For more information, see Creating a resource:
+%% For more information, see Creating a
+%% resource:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-create.html
 %% in the Amazon Web Services Cloud Control API User Guide.
 %%
 %% After you have initiated a resource creation request, you can monitor the
-%% progress of your request by calling GetResourceRequestStatus:
+%% progress of your
+%% request by calling GetResourceRequestStatus:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_GetResourceRequestStatus.html
-%% using the `RequestToken' of the `ProgressEvent' type returned by
-%% `CreateResource'.
+%% using the `RequestToken' of the
+%% `ProgressEvent' type returned by `CreateResource'.
 create_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource(Client, Input, []).
@@ -64,15 +68,17 @@ create_resource(Client, Input, Options)
 
 %% @doc Deletes the specified resource.
 %%
-%% For details, see Deleting a resource:
+%% For details, see Deleting a
+%% resource:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-delete.html
 %% in the Amazon Web Services Cloud Control API User Guide.
 %%
 %% After you have initiated a resource deletion request, you can monitor the
-%% progress of your request by calling GetResourceRequestStatus:
+%% progress of your
+%% request by calling GetResourceRequestStatus:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_GetResourceRequestStatus.html
-%% using the `RequestToken' of the `ProgressEvent' returned by
-%% `DeleteResource'.
+%% using the `RequestToken' of the
+%% `ProgressEvent' returned by `DeleteResource'.
 delete_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource(Client, Input, []).
@@ -83,12 +89,14 @@ delete_resource(Client, Input, Options)
 %% @doc Returns information about the current state of the specified
 %% resource.
 %%
-%% For details, see Reading a resource's current state:
+%% For details, see
+%% Reading a resource's current state:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-read.html.
 %%
 %% You can use this action to return information about an existing resource
-%% in your account and Amazon Web Services Region, whether those resources
-%% were provisioned using Cloud Control API.
+%% in your account
+%% and Amazon Web Services Region, whether those resources were provisioned
+%% using Cloud Control API.
 get_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource(Client, Input, []).
@@ -98,10 +106,11 @@ get_resource(Client, Input, Options)
 
 %% @doc Returns the current status of a resource operation request.
 %%
-%% For more information, see Tracking the progress of resource operation
-%% requests:
+%% For more information, see
+%% Tracking the progress of resource operation requests:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-track
-%% in the Amazon Web Services Cloud Control API User Guide.
+%% in the
+%% Amazon Web Services Cloud Control API User Guide.
 get_resource_request_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_request_status(Client, Input, []).
@@ -111,10 +120,11 @@ get_resource_request_status(Client, Input, Options)
 
 %% @doc Returns existing resource operation requests.
 %%
-%% This includes requests of all status types. For more information, see
-%% Listing active resource operation requests:
+%% This includes requests of all status types.
+%% For more information, see Listing active resource operation requests:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-list
-%% in the Amazon Web Services Cloud Control API User Guide.
+%% in the
+%% Amazon Web Services Cloud Control API User Guide.
 %%
 %% Resource operation requests expire after 7 days.
 list_resource_requests(Client, Input)
@@ -131,8 +141,9 @@ list_resource_requests(Client, Input, Options)
 %% in the Amazon Web Services Cloud Control API User Guide.
 %%
 %% You can use this action to return information about existing resources in
-%% your account and Amazon Web Services Region, whether those resources were
-%% provisioned using Cloud Control API.
+%% your account and
+%% Amazon Web Services Region, whether those resources were provisioned using
+%% Cloud Control API.
 list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
@@ -143,9 +154,11 @@ list_resources(Client, Input, Options)
 %% @doc Updates the specified property values in the resource.
 %%
 %% You specify your resource property updates as a list of patch operations
-%% contained in a JSON patch document that adheres to the RFC 6902 -
-%% JavaScript Object Notation (JSON) Patch :
-%% https://datatracker.ietf.org/doc/html/rfc6902 standard.
+%% contained in a
+%% JSON patch document that adheres to the
+%% RFC 6902 - JavaScript Object
+%% Notation (JSON) Patch
+%% : https://datatracker.ietf.org/doc/html/rfc6902 standard.
 %%
 %% For details on how Cloud Control API performs resource update operations,
 %% see Updating a resource:
@@ -153,14 +166,15 @@ list_resources(Client, Input, Options)
 %% in the Amazon Web Services Cloud Control API User Guide.
 %%
 %% After you have initiated a resource update request, you can monitor the
-%% progress of your request by calling GetResourceRequestStatus:
+%% progress of your
+%% request by calling GetResourceRequestStatus:
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_GetResourceRequestStatus.html
-%% using the `RequestToken' of the `ProgressEvent' returned by
-%% `UpdateResource'.
+%% using the `RequestToken' of the
+%% `ProgressEvent' returned by `UpdateResource'.
 %%
 %% For more information about the properties of a specific resource, refer to
-%% the related topic for the resource in the Resource and property types
-%% reference:
+%% the related
+%% topic for the resource in the Resource and property types reference:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
 %% in the CloudFormation Users Guide.
 update_resource(Client, Input)

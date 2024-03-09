@@ -246,26 +246,28 @@
 %% can associate this IAM Identity Center instance with your S3 Access Grants
 %% instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:AssociateAccessGrantsIdentityCenter' permission to use this
-%% operation.
+%% Permissions
 %%
-%% </dd> <dt>Additional Permissions</dt> <dd> You must also have the
-%% following permissions: `sso:CreateApplication',
+%% You must have the `s3:AssociateAccessGrantsIdentityCenter' permission
+%% to use this operation.
+%%
+%% Additional Permissions
+%%
+%% You must also have the following permissions: `sso:CreateApplication',
 %% `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod'.
-%%
-%% </dd> </dl>
 associate_access_grants_identity_center(Client, Input) ->
     associate_access_grants_identity_center(Client, Input, []).
 associate_access_grants_identity_center(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance/identitycenter"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -291,27 +293,31 @@ associate_access_grants_identity_center(Client, Input0, Options0) ->
 %% Access Grants instance using CreateAccessGrantsLocation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessGrantsLocation.html.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:CreateAccessGrant' permission to use this operation.
+%% Permissions
 %%
-%% </dd> <dt>Additional Permissions</dt> <dd> For any directory identity -
-%% `sso:DescribeInstance' and `sso:DescribeApplication'
+%% You must have the `s3:CreateAccessGrant' permission to use this
+%% operation.
+%%
+%% Additional Permissions
+%%
+%% For any directory identity - `sso:DescribeInstance' and
+%% `sso:DescribeApplication'
 %%
 %% For directory users - `identitystore:DescribeUser'
 %%
 %% For directory groups - `identitystore:DescribeGroup'
-%%
-%% </dd> </dl>
 create_access_grant(Client, Input) ->
     create_access_grant(Client, Input, []).
 create_access_grant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance/grant"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -331,26 +337,29 @@ create_access_grant(Client, Input0, Options0) ->
 %%
 %% You can create one S3 Access Grants instance per Region per account.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:CreateAccessGrantsInstance' permission to use this operation.
+%% Permissions
 %%
-%% </dd> <dt>Additional Permissions</dt> <dd> To associate an IAM Identity
-%% Center instance with your S3 Access Grants instance, you must also have
-%% the `sso:DescribeInstance', `sso:CreateApplication',
-%% `sso:PutApplicationGrant', and
+%% You must have the `s3:CreateAccessGrantsInstance' permission to use
+%% this operation.
+%%
+%% Additional Permissions
+%%
+%% To associate an IAM Identity Center instance with your S3 Access Grants
+%% instance, you must also have the `sso:DescribeInstance',
+%% `sso:CreateApplication', `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod' permissions.
-%%
-%% </dd> </dl>
 create_access_grants_instance(Client, Input) ->
     create_access_grants_instance(Client, Input, []).
 create_access_grants_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -371,37 +380,40 @@ create_access_grants_instance(Client, Input0, Options0) ->
 %% Your S3 data must be in the same Region as your S3 Access Grants instance.
 %% The location can be one of the following:
 %%
-%% <ul> <li> The default S3 location `s3://'
+%% The default S3 location `s3://'
 %%
-%% </li> <li> A bucket - `S3://&lt;bucket-name&gt;'
+%% A bucket - `S3://'
 %%
-%% </li> <li> A bucket and prefix -
-%% `S3://&lt;bucket-name&gt;/&lt;prefix&gt;'
+%% A bucket and prefix - `S3:///'
 %%
-%% </li> </ul> When you register a location, you must include the IAM role
-%% that has permission to manage the S3 location that you are registering.
-%% Give S3 Access Grants permission to assume this role using a policy:
+%% When you register a location, you must include the IAM role that has
+%% permission to manage the S3 location that you are registering. Give S3
+%% Access Grants permission to assume this role using a policy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-location.html.
 %% S3 Access Grants assumes this role to manage access to the location and to
 %% vend temporary credentials to grantees or client applications.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:CreateAccessGrantsLocation' permission to use this operation.
+%% Permissions
 %%
-%% </dd> <dt>Additional Permissions</dt> <dd> You must also have the
-%% following permission for the specified IAM role: `iam:PassRole'
+%% You must have the `s3:CreateAccessGrantsLocation' permission to use
+%% this operation.
 %%
-%% </dd> </dl>
+%% Additional Permissions
+%%
+%% You must also have the following permission for the specified IAM role:
+%% `iam:PassRole'
 create_access_grants_location(Client, Input) ->
     create_access_grants_location(Client, Input, []).
 create_access_grants_location(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance/location"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -416,19 +428,24 @@ create_access_grants_location(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Creates an access point and associates it with the specified bucket. For
-%% more information, see Managing Data Access with Amazon S3 Access Points:
+%% more information, see
+%% Managing
+%% Data Access with Amazon S3 Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html
-%% in the Amazon S3 User Guide.
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% S3 on Outposts only supports VPC-style access points.
 %%
-%% For more information, see Accessing Amazon S3 on Outposts using virtual
-%% private cloud (VPC) only access points:
+%% For more information, see Accessing Amazon S3 on Outposts using
+%% virtual private cloud (VPC) only access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
-%% the Amazon S3 User Guide.
+%% the
+%% Amazon S3 User Guide.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -442,26 +459,26 @@ create_access_grants_location(Client, Input0, Options0) ->
 %%
 %% The following actions are related to `CreateAccessPoint':
 %%
-%% <ul> <li> GetAccessPoint:
+%% GetAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html
 %%
-%% </li> <li> DeleteAccessPoint:
+%% DeleteAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html
 %%
-%% </li> <li> ListAccessPoints:
+%% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
-%%
-%% </li> </ul>
 create_access_point(Client, Name, Input) ->
     create_access_point(Client, Name, Input, []).
 create_access_point(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -476,36 +493,38 @@ create_access_point(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Creates an Object Lambda Access Point. For more information, see
-%% Transforming objects with Object Lambda Access Points:
+%% Transforming objects with
+%% Object Lambda Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to
 %% `CreateAccessPointForObjectLambda':
 %%
-%% <ul> <li> DeleteAccessPointForObjectLambda:
+%% DeleteAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointForObjectLambda.html
 %%
-%% </li> <li> GetAccessPointForObjectLambda:
+%% GetAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html
 %%
-%% </li> <li> ListAccessPointsForObjectLambda:
+%% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
-%%
-%% </li> </ul>
 create_access_point_for_object_lambda(Client, Name, Input) ->
     create_access_point_for_object_lambda(Client, Name, Input, []).
 create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -520,68 +539,77 @@ create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action creates an Amazon S3 on Outposts bucket.
+%% @doc
+%% This action creates an Amazon S3 on Outposts bucket.
 %%
-%% To create an S3 bucket, see Create Bucket:
+%% To create an S3 bucket, see Create
+%% Bucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html in
 %% the Amazon S3 API Reference.
 %%
 %% Creates a new Outposts bucket. By creating the bucket, you become the
-%% bucket owner. To create an Outposts bucket, you must have S3 on Outposts.
-%% For more information, see Using Amazon S3 on Outposts:
+%% bucket owner. To
+%% create an Outposts bucket, you must have S3 on Outposts. For more
+%% information, see Using
+%% Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% Amazon S3 User Guide.
 %%
 %% Not every string is an acceptable bucket name. For information on bucket
-%% naming restrictions, see Working with Amazon S3 Buckets:
+%% naming
+%% restrictions, see Working with
+%% Amazon S3 Buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules.
 %%
 %% S3 on Outposts buckets support:
 %%
-%% <ul> <li> Tags
+%% Tags
 %%
-%% </li> <li> LifecycleConfigurations for deleting expired objects
+%% LifecycleConfigurations for deleting expired objects
 %%
-%% </li> </ul> For a complete list of restrictions and Amazon S3 feature
-%% limitations on S3 on Outposts, see Amazon S3 on Outposts Restrictions and
-%% Limitations:
+%% For a complete list of restrictions and Amazon S3 feature limitations on
+%% S3 on Outposts, see
+%%
+%% Amazon S3 on Outposts Restrictions and Limitations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OnOutpostsRestrictionsLimitations.html.
 %%
 %% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and `x-amz-outpost-id' in
-%% your API request, see the Examples:
+%% the S3 on Outposts
+%% endpoint hostname prefix and `x-amz-outpost-id' in your API request,
+%% see the
+%% Examples:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html#API_control_CreateBucket_Examples
 %% section.
 %%
-%% The following actions are related to `CreateBucket' for Amazon S3 on
-%% Outposts:
+%% The following actions are related to `CreateBucket' for
+%% Amazon S3 on Outposts:
 %%
-%% <ul> <li> PutObject:
+%% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> GetBucket:
+%% GetBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucket.html
 %%
-%% </li> <li> DeleteBucket:
+%% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html
 %%
-%% </li> <li> CreateAccessPoint:
+%% CreateAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html
 %%
-%% </li> <li> PutAccessPointPolicy:
+%% PutAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html
-%%
-%% </li> </ul>
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
 create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -622,48 +650,49 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% @doc This operation creates an S3 Batch Operations job.
 %%
 %% You can use S3 Batch Operations to perform large-scale batch actions on
-%% Amazon S3 objects. Batch Operations can run a single action on lists of
-%% Amazon S3 objects that you specify. For more information, see S3 Batch
-%% Operations:
+%% Amazon S3 objects.
+%% Batch Operations can run a single action on lists of Amazon S3 objects
+%% that you specify. For more
+%% information, see S3 Batch Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html in
 %% the Amazon S3 User Guide.
 %%
-%% <dl> <dt>Permissions</dt> <dd> For information about permissions required
-%% to use the Batch Operations, see Granting permissions for S3 Batch
-%% Operations:
-%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
-%% the Amazon S3 User Guide.
+%% Permissions
 %%
-%% </dd> </dl>
+%% For information about permissions required to use the Batch Operations,
+%% see Granting permissions for S3 Batch Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3
+%% User Guide.
 %%
 %% Related actions include:
 %%
-%% <ul> <li> DescribeJob:
+%% DescribeJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html
 %%
-%% </li> <li> ListJobs:
+%% ListJobs:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListJobs.html
 %%
-%% </li> <li> UpdateJobPriority:
+%% UpdateJobPriority:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobPriority.html
 %%
-%% </li> <li> UpdateJobStatus:
+%% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
 %%
-%% </li> <li> JobOperation:
+%% JobOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_JobOperation.html
-%%
-%% </li> </ul>
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -678,50 +707,56 @@ create_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Creates a Multi-Region Access Point and associates it with the specified
-%% buckets. For more information about creating Multi-Region Access Points,
-%% see Creating Multi-Region Access Points:
+%% buckets. For more information
+%% about creating Multi-Region Access Points, see Creating
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
-%% information about the restrictions around managing Multi-Region Access
-%% Points, see Managing Multi-Region Access Points:
+%% information
+%% about the restrictions around managing Multi-Region Access Points, see
+%% Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% This request is asynchronous, meaning that you might receive a response
-%% before the command has completed. When this request provides a response,
-%% it provides a token that you can use to monitor the status of the request
-%% with `DescribeMultiRegionAccessPointOperation'.
+%% before the
+%% command has completed. When this request provides a response, it provides
+%% a token that you
+%% can use to monitor the status of the request with
+%% `DescribeMultiRegionAccessPointOperation'.
 %%
 %% The following actions are related to `CreateMultiRegionAccessPoint':
 %%
-%% <ul> <li> DeleteMultiRegionAccessPoint:
+%% DeleteMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteMultiRegionAccessPoint.html
 %%
-%% </li> <li> DescribeMultiRegionAccessPointOperation:
+%% DescribeMultiRegionAccessPointOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html
 %%
-%% </li> <li> GetMultiRegionAccessPoint:
+%% GetMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html
 %%
-%% </li> <li> ListMultiRegionAccessPoints:
+%% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
-%%
-%% </li> </ul>
 create_multi_region_access_point(Client, Input) ->
     create_multi_region_access_point(Client, Input, []).
 create_multi_region_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/async-requests/mrap/create"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -739,23 +774,31 @@ create_multi_region_access_point(Client, Input0, Options0) ->
 %% @doc Creates a new S3 Storage Lens group and associates it with the
 %% specified Amazon Web Services account ID.
 %%
-%% An S3 Storage Lens group is a custom grouping of objects based on prefix,
-%% suffix, object tags, object size, object age, or a combination of these
-%% filters. For each Storage Lens group that you’ve created, you can also
-%% optionally add Amazon Web Services resource tags. For more information
-%% about S3 Storage Lens groups, see Working with S3 Storage Lens groups:
+%% An
+%% S3 Storage Lens group is a custom grouping of objects based on prefix,
+%% suffix, object tags,
+%% object size, object age, or a combination of these filters. For each
+%% Storage Lens group
+%% that you’ve created, you can also optionally add Amazon Web Services
+%% resource tags. For more information
+%% about S3 Storage Lens groups, see Working with S3 Storage Lens
+%% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups-overview.html.
 %%
 %% To use this operation, you must have the permission to perform the
 %% `s3:CreateStorageLensGroup' action. If you’re trying to create a
-%% Storage Lens group with Amazon Web Services resource tags, you must also
-%% have permission to perform the `s3:TagResource' action. For more
-%% information about the required Storage Lens Groups permissions, see
-%% Setting account permissions to use S3 Storage Lens groups:
+%% Storage Lens
+%% group with Amazon Web Services resource tags, you must also have
+%% permission to perform the
+%% `s3:TagResource' action. For more information about the required
+%% Storage Lens
+%% Groups permissions, see Setting account permissions to use S3 Storage Lens
+%% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% For information about Storage Lens groups errors, see List of Amazon S3
-%% Storage Lens error codes:
+%% Storage
+%% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
 create_storage_lens_group(Client, Input) ->
     create_storage_lens_group(Client, Input, []).
@@ -763,10 +806,12 @@ create_storage_lens_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/storagelensgroup"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -786,20 +831,22 @@ create_storage_lens_group(Client, Input0, Options0) ->
 %% You cannot undo an access grant deletion and the grantee will no longer
 %% have access to the S3 data.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:DeleteAccessGrant' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:DeleteAccessGrant' permission to use this
+%% operation.
 delete_access_grant(Client, AccessGrantId, Input) ->
     delete_access_grant(Client, AccessGrantId, Input, []).
 delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/grant/", aws_util:encode_uri(AccessGrantId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -829,20 +876,22 @@ delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
 %% and DissociateAccessGrantsIdentityCenter:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DissociateAccessGrantsIdentityCenter.html.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:DeleteAccessGrantsInstance' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:DeleteAccessGrantsInstance' permission to use
+%% this operation.
 delete_access_grants_instance(Client, Input) ->
     delete_access_grants_instance(Client, Input, []).
 delete_access_grants_instance(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -863,21 +912,22 @@ delete_access_grants_instance(Client, Input0, Options0) ->
 %% Access Grants instance. By deleting the resource policy, you delete any
 %% cross-account permissions to your S3 Access Grants instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:DeleteAccessGrantsInstanceResourcePolicy' permission to use this
-%% operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:DeleteAccessGrantsInstanceResourcePolicy'
+%% permission to use this operation.
 delete_access_grants_instance_resource_policy(Client, Input) ->
     delete_access_grants_instance_resource_policy(Client, Input, []).
 delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -902,20 +952,22 @@ delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 %% registered location in your S3 Access Grants instance in order to create
 %% access grants.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:DeleteAccessGrantsLocation' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:DeleteAccessGrantsLocation' permission to use
+%% this operation.
 delete_access_grants_location(Client, AccessGrantsLocationId, Input) ->
     delete_access_grants_location(Client, AccessGrantsLocationId, Input, []).
 delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -930,7 +982,8 @@ delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Deletes the specified access point.
 %%
@@ -946,26 +999,26 @@ delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% The following actions are related to `DeleteAccessPoint':
 %%
-%% <ul> <li> CreateAccessPoint:
+%% CreateAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html
 %%
-%% </li> <li> GetAccessPoint:
+%% GetAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html
 %%
-%% </li> <li> ListAccessPoints:
+%% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
-%%
-%% </li> </ul>
 delete_access_point(Client, Name, Input) ->
     delete_access_point(Client, Name, Input, []).
 delete_access_point(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -980,33 +1033,34 @@ delete_access_point(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Deletes the specified Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `DeleteAccessPointForObjectLambda':
 %%
-%% <ul> <li> CreateAccessPointForObjectLambda:
+%% CreateAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPointForObjectLambda.html
 %%
-%% </li> <li> GetAccessPointForObjectLambda:
+%% GetAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html
 %%
-%% </li> <li> ListAccessPointsForObjectLambda:
+%% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
-%%
-%% </li> </ul>
 delete_access_point_for_object_lambda(Client, Name, Input) ->
     delete_access_point_for_object_lambda(Client, Name, Input, []).
 delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1021,7 +1075,8 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Deletes the access point policy for the specified access point.
 %%
@@ -1037,23 +1092,23 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% The following actions are related to `DeleteAccessPointPolicy':
 %%
-%% <ul> <li> PutAccessPointPolicy:
+%% PutAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html
 %%
-%% </li> <li> GetAccessPointPolicy:
+%% GetAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html
-%%
-%% </li> </ul>
 delete_access_point_policy(Client, Name, Input) ->
     delete_access_point_policy(Client, Name, Input, []).
 delete_access_point_policy(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1068,30 +1123,31 @@ delete_access_point_policy(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Removes the resource policy for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `DeleteAccessPointPolicyForObjectLambda':
 %%
-%% <ul> <li> GetAccessPointPolicyForObjectLambda:
+%% GetAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicyForObjectLambda.html
 %%
-%% </li> <li> PutAccessPointPolicyForObjectLambda:
+%% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
-%%
-%% </li> </ul>
 delete_access_point_policy_for_object_lambda(Client, Name, Input) ->
     delete_access_point_policy_for_object_lambda(Client, Name, Input, []).
 delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1106,16 +1162,18 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action deletes an Amazon S3 on Outposts bucket.
+%% @doc
+%% This action deletes an Amazon S3 on Outposts bucket.
 %%
 %% To delete an S3 bucket, see DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html in
 %% the Amazon S3 API Reference.
 %%
 %% Deletes the Amazon S3 on Outposts bucket. All objects (including all
-%% object versions and delete markers) in the bucket must be deleted before
-%% the bucket itself can be deleted. For more information, see Using Amazon
-%% S3 on Outposts:
+%% object versions and
+%% delete markers) in the bucket must be deleted before the bucket itself can
+%% be deleted. For
+%% more information, see Using Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% Amazon S3 User Guide.
 %%
@@ -1131,26 +1189,26 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% == Related Resources ==
 %%
-%% <ul> <li> CreateBucket:
+%% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html
 %%
-%% </li> <li> GetBucket:
+%% GetBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucket.html
 %%
-%% </li> <li> DeleteObject:
+%% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
-%%
-%% </li> </ul>
 delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
 delete_bucket(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1165,27 +1223,32 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action deletes an Amazon S3 on Outposts bucket's lifecycle
+%% @doc
+%% This action deletes an Amazon S3 on Outposts bucket's lifecycle
 %% configuration.
 %%
-%% To delete an S3 bucket's lifecycle configuration, see
-%% DeleteBucketLifecycle:
+%% To delete
+%% an S3 bucket's lifecycle configuration, see DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
 %% in the Amazon S3 API Reference.
 %%
 %% Deletes the lifecycle configuration from the specified Outposts bucket.
 %% Amazon S3 on Outposts removes all the lifecycle configuration rules in the
-%% lifecycle subresource associated with the bucket. Your objects never
-%% expire, and Amazon S3 on Outposts no longer automatically deletes any
-%% objects on the basis of rules contained in the deleted lifecycle
+%% lifecycle subresource
+%% associated with the bucket. Your objects never expire, and Amazon S3 on
+%% Outposts no longer
+%% automatically deletes any objects on the basis of rules contained in the
+%% deleted lifecycle
 %% configuration. For more information, see Using Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% Amazon S3 User Guide.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3-outposts:PutLifecycleConfiguration' action. By default, the bucket
-%% owner has this permission and the Outposts bucket owner can grant this
-%% permission to others.
+%% owner
+%% has this permission and the Outposts bucket owner can grant this
+%% permission to
+%% others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -1203,23 +1266,23 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% Related actions include:
 %%
-%% <ul> <li> PutBucketLifecycleConfiguration:
+%% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html
 %%
-%% </li> <li> GetBucketLifecycleConfiguration:
+%% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
-%%
-%% </li> </ul>
 delete_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     delete_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1234,34 +1297,48 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action deletes an Amazon S3 on Outposts bucket policy.
+%% @doc
+%% This action deletes an Amazon S3 on Outposts bucket policy.
 %%
-%% To delete an S3 bucket policy, see DeleteBucketPolicy:
+%% To delete an S3 bucket policy,
+%% see DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketPolicy.html
 %% in the Amazon S3 API Reference.
 %%
 %% This implementation of the DELETE action uses the policy subresource to
-%% delete the policy of a specified Amazon S3 on Outposts bucket. If you are
-%% using an identity other than the root user of the Amazon Web Services
-%% account that owns the bucket, the calling identity must have the
+%% delete the
+%% policy of a specified Amazon S3 on Outposts bucket. If you are using an
+%% identity other than the
+%% root user of the Amazon Web Services account that owns the bucket, the
+%% calling identity must have the
 %% `s3-outposts:DeleteBucketPolicy' permissions on the specified Outposts
-%% bucket and belong to the bucket owner's account to use this action.
-%% For more information, see Using Amazon S3 on Outposts:
+%% bucket
+%% and belong to the bucket owner's account to use this action. For more
+%% information, see
+%% Using
+%% Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% Amazon S3 User Guide.
 %%
 %% If you don't have `DeleteBucketPolicy' permissions, Amazon S3
-%% returns a `403 Access Denied' error. If you have the correct
-%% permissions, but you're not using an identity that belongs to the
-%% bucket owner's account, Amazon S3 returns a `405 Method Not
-%% Allowed' error.
+%% returns a
+%% ```
+%% 403 Access Denied''' error. If you have the correct
+%% permissions, but you're not using an
+%% identity that belongs to the bucket owner's account, Amazon S3 returns
+%% a
+%% ```
+%% 405 Method Not Allowed''' error.
 %%
 %% As a security precaution, the root user of the Amazon Web Services account
-%% that owns a bucket can always use this action, even if the policy
-%% explicitly denies the root user the ability to perform this action.
+%% that owns a bucket can
+%% always use this action, even if the policy explicitly denies the root user
+%% the ability
+%% to perform this action.
 %%
 %% For more information about bucket policies, see Using Bucket Policies and
-%% User Policies:
+%% User
+%% Policies:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -1276,23 +1353,23 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% The following actions are related to `DeleteBucketPolicy':
 %%
-%% <ul> <li> GetBucketPolicy:
+%% GetBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketPolicy.html
 %%
-%% </li> <li> PutBucketPolicy:
+%% PutBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html
-%%
-%% </li> </ul>
 delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
 delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1307,10 +1384,12 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation deletes an Amazon S3 on Outposts bucket's
-%% replication configuration.
+%% @doc
+%% This operation deletes an Amazon S3 on Outposts bucket's replication
+%% configuration.
 %%
-%% To delete an S3 bucket's replication configuration, see
+%% To
+%% delete an S3 bucket's replication configuration, see
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
 %% in the Amazon S3 API Reference.
@@ -1320,20 +1399,25 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3-outposts:PutReplicationConfiguration' action. The Outposts bucket
-%% owner has this permission by default and can grant it to others. For more
-%% information about permissions, see Setting up IAM with S3 on Outposts:
+%% owner
+%% has this permission by default and can grant it to others. For more
+%% information about
+%% permissions, see Setting up IAM with
+%% S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsIAM.html
-%% and Managing access to S3 on Outposts buckets:
+%% and Managing access to
+%% S3 on Outposts buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsBucketPolicy.html
 %% in the Amazon S3 User Guide.
 %%
-%% It can take a while to propagate `PUT' or `DELETE' requests for a
-%% replication configuration to all S3 on Outposts systems. Therefore, the
-%% replication configuration that's returned by a `GET' request soon
-%% after a `PUT' or `DELETE' request might return a more recent
-%% result than what's on the Outpost. If an Outpost is offline, the delay
-%% in updating the replication configuration on that Outpost can be
-%% significant.
+%% It can take a while to propagate `PUT' or `DELETE' requests for
+%% a replication configuration to all S3 on Outposts systems. Therefore, the
+%% replication
+%% configuration that's returned by a `GET' request soon after a
+%% `PUT' or `DELETE' request might return a more recent result
+%% than what's on the Outpost. If an Outpost is offline, the delay in
+%% updating the
+%% replication configuration on that Outpost can be significant.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -1348,27 +1432,28 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% For information about S3 replication on Outposts configuration, see
 %% Replicating objects for S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsReplication.html
-%% in the Amazon S3 User Guide.
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% The following operations are related to `DeleteBucketReplication':
 %%
-%% <ul> <li> PutBucketReplication:
+%% PutBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketReplication.html
 %%
-%% </li> <li> GetBucketReplication:
+%% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketReplication.html
-%%
-%% </li> </ul>
 delete_bucket_replication(Client, Bucket, Input) ->
     delete_bucket_replication(Client, Bucket, Input, []).
 delete_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1383,9 +1468,11 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action deletes an Amazon S3 on Outposts bucket's tags.
+%% @doc
+%% This action deletes an Amazon S3 on Outposts bucket's tags.
 %%
-%% To delete an S3 bucket tags, see DeleteBucketTagging:
+%% To delete an S3 bucket tags,
+%% see DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
 %% in the Amazon S3 API Reference.
 %%
@@ -1396,7 +1483,8 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% To use this action, you must have permission to perform the
 %% `PutBucketTagging' action. By default, the bucket owner has this
-%% permission and can grant this permission to others.
+%% permission
+%% and can grant this permission to others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -1410,23 +1498,23 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% The following actions are related to `DeleteBucketTagging':
 %%
-%% <ul> <li> GetBucketTagging:
+%% GetBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketTagging.html
 %%
-%% </li> <li> PutBucketTagging:
+%% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html
-%%
-%% </li> </ul>
 delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
 delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1444,35 +1532,39 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% @doc Removes the entire tag set from the specified S3 Batch Operations
 %% job.
 %%
-%% <dl> <dt>Permissions</dt> <dd> To use the `DeleteJobTagging'
-%% operation, you must have permission to perform the
-%% `s3:DeleteJobTagging' action. For more information, see Controlling
+%% Permissions
+%%
+%% To use the
+%% `DeleteJobTagging' operation, you must have permission to
+%% perform the `s3:DeleteJobTagging' action. For more information, see
+%% Controlling
 %% access and labeling jobs using tags:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags
-%% in the Amazon S3 User Guide.
+%% in the
+%% Amazon S3 User Guide.
 %%
-%% </dd> </dl> Related actions include:
+%% Related actions include:
 %%
-%% <ul> <li> CreateJob:
+%% CreateJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html
 %%
-%% </li> <li> GetJobTagging:
+%% GetJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html
 %%
-%% </li> <li> PutJobTagging:
+%% PutJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html
-%%
-%% </li> </ul>
 delete_job_tagging(Client, JobId, Input) ->
     delete_job_tagging(Client, JobId, Input, []).
 delete_job_tagging(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1487,48 +1579,53 @@ delete_job_tagging(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Deletes a Multi-Region Access Point. This action does not delete the
-%% buckets associated with the Multi-Region Access Point, only the
-%% Multi-Region Access Point itself.
+%% buckets associated with the Multi-Region Access Point,
+%% only the Multi-Region Access Point itself.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
-%% information about the restrictions around managing Multi-Region Access
-%% Points, see Managing Multi-Region Access Points:
+%% information
+%% about the restrictions around managing Multi-Region Access Points, see
+%% Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% This request is asynchronous, meaning that you might receive a response
-%% before the command has completed. When this request provides a response,
-%% it provides a token that you can use to monitor the status of the request
-%% with `DescribeMultiRegionAccessPointOperation'.
+%% before the
+%% command has completed. When this request provides a response, it provides
+%% a token that you
+%% can use to monitor the status of the request with
+%% `DescribeMultiRegionAccessPointOperation'.
 %%
 %% The following actions are related to `DeleteMultiRegionAccessPoint':
 %%
-%% <ul> <li> CreateMultiRegionAccessPoint:
+%% CreateMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateMultiRegionAccessPoint.html
 %%
-%% </li> <li> DescribeMultiRegionAccessPointOperation:
+%% DescribeMultiRegionAccessPointOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html
 %%
-%% </li> <li> GetMultiRegionAccessPoint:
+%% GetMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html
 %%
-%% </li> <li> ListMultiRegionAccessPoints:
+%% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
-%%
-%% </li> </ul>
 delete_multi_region_access_point(Client, Input) ->
     delete_multi_region_access_point(Client, Input, []).
 delete_multi_region_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/async-requests/mrap/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1543,32 +1640,34 @@ delete_multi_region_access_point(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Removes the `PublicAccessBlock' configuration for an Amazon Web
-%% Services account. For more information, see Using Amazon S3 block public
-%% access:
+%% Services account. For more
+%% information, see Using Amazon S3 block
+%% public access:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html.
 %%
 %% Related actions include:
 %%
-%% <ul> <li> GetPublicAccessBlock:
+%% GetPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html
 %%
-%% </li> <li> PutPublicAccessBlock:
+%% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
-%%
-%% </li> </ul>
 delete_public_access_block(Client, Input) ->
     delete_public_access_block(Client, Input, []).
 delete_public_access_block(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/configuration/publicAccessBlock"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1583,17 +1682,19 @@ delete_public_access_block(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Deletes the Amazon S3 Storage Lens configuration. For more information
-%% about S3 Storage Lens, see Assessing your storage activity and usage with
-%% Amazon S3 Storage Lens :
+%% about S3 Storage Lens, see Assessing your storage
+%% activity and usage with Amazon S3 Storage Lens :
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html in the
 %% Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:DeleteStorageLensConfiguration' action. For more information, see
-%% Setting permissions to use Amazon S3 Storage Lens:
+%% Setting permissions to
+%% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
 delete_storage_lens_configuration(Client, ConfigId, Input) ->
@@ -1601,11 +1702,13 @@ delete_storage_lens_configuration(Client, ConfigId, Input) ->
 delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1620,17 +1723,21 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Deletes the Amazon S3 Storage Lens configuration tags. For more
-%% information about S3 Storage Lens, see Assessing your storage activity and
-%% usage with Amazon S3 Storage Lens :
+%% information about S3 Storage Lens, see
+%% Assessing your
+%% storage activity and usage with Amazon S3 Storage Lens :
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html in the
 %% Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:DeleteStorageLensConfigurationTagging' action. For more
-%% information, see Setting permissions to use Amazon S3 Storage Lens:
+%% information,
+%% see Setting permissions to
+%% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
 delete_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
@@ -1638,11 +1745,13 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
 delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1657,16 +1766,19 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing S3 Storage Lens group.
+%% @doc
+%% Deletes an existing S3 Storage Lens group.
 %%
 %% To use this operation, you must have the permission to perform the
 %% `s3:DeleteStorageLensGroup' action. For more information about the
-%% required Storage Lens Groups permissions, see Setting account permissions
-%% to use S3 Storage Lens groups:
+%% required Storage Lens
+%% Groups permissions, see Setting account permissions to use S3 Storage Lens
+%% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% For information about Storage Lens groups errors, see List of Amazon S3
-%% Storage Lens error codes:
+%% Storage
+%% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
 delete_storage_lens_group(Client, Name, Input) ->
     delete_storage_lens_group(Client, Name, Input, []).
@@ -1674,10 +1786,12 @@ delete_storage_lens_group(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1695,28 +1809,29 @@ delete_storage_lens_group(Client, Name, Input0, Options0) ->
 %% @doc Retrieves the configuration parameters and status for a Batch
 %% Operations job.
 %%
-%% For more information, see S3 Batch Operations:
+%% For more
+%% information, see S3 Batch Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html in
 %% the Amazon S3 User Guide.
 %%
-%% <dl> <dt>Permissions</dt> <dd> To use the `DescribeJob' operation, you
-%% must have permission to perform the `s3:DescribeJob' action.
+%% Permissions
 %%
-%% </dd> </dl> Related actions include:
+%% To use the `DescribeJob' operation, you must have permission to
+%% perform the `s3:DescribeJob' action.
 %%
-%% <ul> <li> CreateJob:
+%% Related actions include:
+%%
+%% CreateJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html
 %%
-%% </li> <li> ListJobs:
+%% ListJobs:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListJobs.html
 %%
-%% </li> <li> UpdateJobPriority:
+%% UpdateJobPriority:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobPriority.html
 %%
-%% </li> <li> UpdateJobStatus:
+%% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
-%%
-%% </li> </ul>
 describe_job(Client, JobId, AccountId)
   when is_map(Client) ->
     describe_job(Client, JobId, AccountId, #{}, #{}).
@@ -1728,10 +1843,12 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap)
 describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1743,30 +1860,30 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Retrieves the status of an asynchronous request to manage a Multi-Region
-%% Access Point. For more information about managing Multi-Region Access
-%% Points and how asynchronous requests work, see Managing Multi-Region
-%% Access Points:
+%% Access Point. For more information
+%% about managing Multi-Region Access Points and how asynchronous requests
+%% work, see Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to `GetMultiRegionAccessPoint':
 %%
-%% <ul> <li> CreateMultiRegionAccessPoint:
+%% CreateMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateMultiRegionAccessPoint.html
 %%
-%% </li> <li> DeleteMultiRegionAccessPoint:
+%% DeleteMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteMultiRegionAccessPoint.html
 %%
-%% </li> <li> GetMultiRegionAccessPoint:
+%% GetMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html
 %%
-%% </li> <li> ListMultiRegionAccessPoints:
+%% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
-%%
-%% </li> </ul>
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId)
   when is_map(Client) ->
     describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, #{}, #{}).
@@ -1778,10 +1895,12 @@ describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId,
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/async-requests/mrap/", aws_util:encode_multi_segment_uri(RequestTokenARN), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1796,24 +1915,27 @@ describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId,
 %% @doc Dissociates the Amazon Web Services IAM Identity Center instance from
 %% the S3 Access Grants instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:DissociateAccessGrantsIdentityCenter' permission to use this
+%% Permissions
+%%
+%% You must have the `s3:DissociateAccessGrantsIdentityCenter' permission
+%% to use this operation.
+%%
+%% Additional Permissions
+%%
+%% You must have the `sso:DeleteApplication' permission to use this
 %% operation.
-%%
-%% </dd> <dt>Additional Permissions</dt> <dd> You must have the
-%% `sso:DeleteApplication' permission to use this operation.
-%%
-%% </dd> </dl>
 dissociate_access_grants_identity_center(Client, Input) ->
     dissociate_access_grants_identity_center(Client, Input, []).
 dissociate_access_grants_identity_center(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/identitycenter"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -1831,10 +1953,10 @@ dissociate_access_grants_identity_center(Client, Input0, Options0) ->
 %% @doc Get the details of an access grant from your S3 Access Grants
 %% instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:GetAccessGrant'
-%% permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:GetAccessGrant' permission to use this
+%% operation.
 get_access_grant(Client, AccessGrantId, AccountId)
   when is_map(Client) ->
     get_access_grant(Client, AccessGrantId, AccountId, #{}, #{}).
@@ -1846,10 +1968,12 @@ get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap)
 get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/grant/", aws_util:encode_uri(AccessGrantId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1863,10 +1987,10 @@ get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options
 
 %% @doc Retrieves the S3 Access Grants instance for a Region in your account.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:GetAccessGrantsInstance' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:GetAccessGrantsInstance' permission to use this
+%% operation.
 get_access_grants_instance(Client, AccountId)
   when is_map(Client) ->
     get_access_grants_instance(Client, AccountId, #{}, #{}).
@@ -1878,10 +2002,12 @@ get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap)
 get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1896,15 +2022,15 @@ get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieve the S3 Access Grants instance that contains a particular
 %% prefix.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:GetAccessGrantsInstanceForPrefix' permission for the caller
-%% account to use this operation.
+%% Permissions
 %%
-%% </dd> <dt>Additional Permissions</dt> <dd> The prefix owner account must
-%% grant you the following permissions to their S3 Access Grants instance:
-%% `s3:GetAccessGrantsInstanceForPrefix'.
+%% You must have the `s3:GetAccessGrantsInstanceForPrefix' permission for
+%% the caller account to use this operation.
 %%
-%% </dd> </dl>
+%% Additional Permissions
+%%
+%% The prefix owner account must grant you the following permissions to their
+%% S3 Access Grants instance: `s3:GetAccessGrantsInstanceForPrefix'.
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId)
   when is_map(Client) ->
     get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, #{}, #{}).
@@ -1916,10 +2042,12 @@ get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, Hea
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/prefix"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1937,11 +2065,10 @@ get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, Hea
 
 %% @doc Returns the resource policy of the S3 Access Grants instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:GetAccessGrantsInstanceResourcePolicy' permission to use this
-%% operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:GetAccessGrantsInstanceResourcePolicy'
+%% permission to use this operation.
 get_access_grants_instance_resource_policy(Client, AccountId)
   when is_map(Client) ->
     get_access_grants_instance_resource_policy(Client, AccountId, #{}, #{}).
@@ -1953,10 +2080,12 @@ get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersM
 get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1971,10 +2100,10 @@ get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersM
 %% @doc Retrieves the details of a particular location registered in your S3
 %% Access Grants instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:GetAccessGrantsLocation' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:GetAccessGrantsLocation' permission to use this
+%% operation.
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId)
   when is_map(Client) ->
     get_access_grants_location(Client, AccessGrantsLocationId, AccountId, #{}, #{}).
@@ -1986,10 +2115,12 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2001,7 +2132,8 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns configuration information about the specified access point.
 %%
@@ -2017,16 +2149,14 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 %%
 %% The following actions are related to `GetAccessPoint':
 %%
-%% <ul> <li> CreateAccessPoint:
+%% CreateAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html
 %%
-%% </li> <li> DeleteAccessPoint:
+%% DeleteAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html
 %%
-%% </li> <li> ListAccessPoints:
+%% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
-%%
-%% </li> </ul>
 get_access_point(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point(Client, Name, AccountId, #{}, #{}).
@@ -2038,10 +2168,12 @@ get_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
 get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2053,17 +2185,16 @@ get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns configuration for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `GetAccessPointConfigurationForObjectLambda':
 %%
-%% <ul> <li> PutAccessPointConfigurationForObjectLambda:
+%% PutAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointConfigurationForObjectLambda.html
-%%
-%% </li> </ul>
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_configuration_for_object_lambda(Client, Name, AccountId, #{}, #{}).
@@ -2075,10 +2206,12 @@ get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryM
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2090,23 +2223,22 @@ get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns configuration information about the specified Object Lambda Access
 %% Point
 %%
 %% The following actions are related to `GetAccessPointForObjectLambda':
 %%
-%% <ul> <li> CreateAccessPointForObjectLambda:
+%% CreateAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPointForObjectLambda.html
 %%
-%% </li> <li> DeleteAccessPointForObjectLambda:
+%% DeleteAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointForObjectLambda.html
 %%
-%% </li> <li> ListAccessPointsForObjectLambda:
+%% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
-%%
-%% </li> </ul>
 get_access_point_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_for_object_lambda(Client, Name, AccountId, #{}, #{}).
@@ -2118,10 +2250,12 @@ get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap
 get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2133,20 +2267,19 @@ get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns the access point policy associated with the specified access
 %% point.
 %%
 %% The following actions are related to `GetAccessPointPolicy':
 %%
-%% <ul> <li> PutAccessPointPolicy:
+%% PutAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html
 %%
-%% </li> <li> DeleteAccessPointPolicy:
+%% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
-%%
-%% </li> </ul>
 get_access_point_policy(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy(Client, Name, AccountId, #{}, #{}).
@@ -2158,10 +2291,12 @@ get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap)
 get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2173,20 +2308,19 @@ get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns the resource policy for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `GetAccessPointPolicyForObjectLambda':
 %%
-%% <ul> <li> DeleteAccessPointPolicyForObjectLambda:
+%% DeleteAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicyForObjectLambda.html
 %%
-%% </li> <li> PutAccessPointPolicyForObjectLambda:
+%% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
-%%
-%% </li> </ul>
 get_access_point_policy_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_for_object_lambda(Client, Name, AccountId, #{}, #{}).
@@ -2198,10 +2332,12 @@ get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, Hea
 get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2213,11 +2349,14 @@ get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Indicates whether the specified access point currently has a policy that
-%% allows public access. For more information about public access through
-%% access points, see Managing Data Access with Amazon S3 access points:
+%% allows public access.
+%% For more information about public access through access points, see
+%% Managing Data Access with Amazon S3
+%% access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html
 %% in the Amazon S3 User Guide.
 get_access_point_policy_status(Client, Name, AccountId)
@@ -2231,10 +2370,12 @@ get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap)
 get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policyStatus"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2246,7 +2387,8 @@ get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns the status of the resource policy associated with an Object Lambda
 %% Access Point.
@@ -2261,10 +2403,12 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policyStatus"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2276,22 +2420,30 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an Amazon S3 on Outposts bucket.
+%% @doc
+%% Gets an Amazon S3 on Outposts bucket.
 %%
 %% For more information, see Using Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
-%% the Amazon S3 User Guide.
+%% the
+%% Amazon S3 User Guide.
 %%
 %% If you are using an identity other than the root user of the Amazon Web
-%% Services account that owns the Outposts bucket, the calling identity must
-%% have the `s3-outposts:GetBucket' permissions on the specified Outposts
-%% bucket and belong to the Outposts bucket owner's account in order to
-%% use this action. Only users from Outposts bucket owner account with the
-%% right permissions can perform actions on an Outposts bucket.
+%% Services account that owns the
+%% Outposts bucket, the calling identity must have the
+%% `s3-outposts:GetBucket'
+%% permissions on the specified Outposts bucket and belong to the Outposts
+%% bucket owner's
+%% account in order to use this action. Only users from Outposts bucket owner
+%% account with
+%% the right permissions can perform actions on an Outposts bucket.
 %%
 %% If you don't have `s3-outposts:GetBucket' permissions or
-%% you're not using an identity that belongs to the bucket owner's
-%% account, Amazon S3 returns a `403 Access Denied' error.
+%% you're not using an
+%% identity that belongs to the bucket owner's account, Amazon S3 returns
+%% a
+%% ```
+%% 403 Access Denied''' error.
 %%
 %% The following actions are related to `GetBucket' for Amazon S3 on
 %% Outposts:
@@ -2306,16 +2458,14 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucket.html#API_control_GetBucket_Examples
 %% section.
 %%
-%% <ul> <li> PutObject:
+%% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> CreateBucket:
+%% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html
 %%
-%% </li> <li> DeleteBucket:
+%% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html
-%%
-%% </li> </ul>
 get_bucket(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket(Client, Bucket, AccountId, #{}, #{}).
@@ -2327,10 +2477,12 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap)
 get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2342,29 +2494,35 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This action gets an Amazon S3 on Outposts bucket's lifecycle
+%% @doc
+%% This action gets an Amazon S3 on Outposts bucket's lifecycle
 %% configuration.
 %%
-%% To get an S3 bucket's lifecycle configuration, see
-%% GetBucketLifecycleConfiguration:
+%% To get an S3
+%% bucket's lifecycle configuration, see GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
 %% in the Amazon S3 API Reference.
 %%
 %% Returns the lifecycle configuration information set on the Outposts
-%% bucket. For more information, see Using Amazon S3 on Outposts:
+%% bucket. For more
+%% information, see Using Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html
-%% and for information about lifecycle configuration, see Object Lifecycle
+%% and for
+%% information about lifecycle configuration, see Object Lifecycle
 %% Management:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html
 %% in Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3-outposts:GetLifecycleConfiguration' action. The Outposts bucket
-%% owner has this permission, by default. The bucket owner can grant this
-%% permission to others. For more information about permissions, see
-%% Permissions Related to Bucket Subresource Operations:
+%% owner
+%% has this permission, by default. The bucket owner can grant this
+%% permission to others. For
+%% more information about permissions, see Permissions Related to Bucket
+%% Subresource Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
-%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% and Managing
+%% Access Permissions to Your Amazon S3 Resources:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -2379,24 +2537,22 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% `GetBucketLifecycleConfiguration' has the following special error:
 %%
-%% <ul> <li> Error code: `NoSuchLifecycleConfiguration'
+%% Error code: `NoSuchLifecycleConfiguration'
 %%
-%% <ul> <li> Description: The lifecycle configuration does not exist.
+%% Description: The lifecycle configuration does not exist.
 %%
-%% </li> <li> HTTP Status Code: 404 Not Found
+%% HTTP Status Code: 404 Not Found
 %%
-%% </li> <li> SOAP Fault Code Prefix: Client
+%% SOAP Fault Code Prefix: Client
 %%
-%% </li> </ul> </li> </ul> The following actions are related to
+%% The following actions are related to
 %% `GetBucketLifecycleConfiguration':
 %%
-%% <ul> <li> PutBucketLifecycleConfiguration:
+%% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html
 %%
-%% </li> <li> DeleteBucketLifecycleConfiguration:
+%% DeleteBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html
-%%
-%% </li> </ul>
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_lifecycle_configuration(Client, Bucket, AccountId, #{}, #{}).
@@ -2408,10 +2564,12 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2423,34 +2581,46 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This action gets a bucket policy for an Amazon S3 on Outposts bucket.
+%% @doc
+%% This action gets a bucket policy for an Amazon S3 on Outposts bucket.
 %%
-%% To get a policy for an S3 bucket, see GetBucketPolicy:
+%% To get a policy for
+%% an S3 bucket, see GetBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicy.html
-%% in the Amazon S3 API Reference.
+%% in the
+%% Amazon S3 API Reference.
 %%
 %% Returns the policy of a specified Outposts bucket. For more information,
-%% see Using Amazon S3 on Outposts:
+%% see Using
+%% Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% the Amazon S3 User Guide.
 %%
 %% If you are using an identity other than the root user of the Amazon Web
-%% Services account that owns the bucket, the calling identity must have the
-%% `GetBucketPolicy' permissions on the specified bucket and belong to
-%% the bucket owner's account in order to use this action.
+%% Services account that owns the
+%% bucket, the calling identity must have the `GetBucketPolicy'
+%% permissions on the
+%% specified bucket and belong to the bucket owner's account in order to
+%% use this
+%% action.
 %%
 %% Only users from Outposts bucket owner account with the right permissions
-%% can perform actions on an Outposts bucket. If you don't have
-%% `s3-outposts:GetBucketPolicy' permissions or you're not using an
-%% identity that belongs to the bucket owner's account, Amazon S3 returns
-%% a `403 Access Denied' error.
+%% can perform
+%% actions on an Outposts bucket. If you don't have
+%% `s3-outposts:GetBucketPolicy'
+%% permissions or you're not using an identity that belongs to the bucket
+%% owner's account,
+%% Amazon S3 returns a `403 Access Denied' error.
 %%
 %% As a security precaution, the root user of the Amazon Web Services account
-%% that owns a bucket can always use this action, even if the policy
-%% explicitly denies the root user the ability to perform this action.
+%% that owns a bucket can
+%% always use this action, even if the policy explicitly denies the root user
+%% the ability
+%% to perform this action.
 %%
 %% For more information about bucket policies, see Using Bucket Policies and
-%% User Policies:
+%% User
+%% Policies:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -2465,16 +2635,14 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
 %%
 %% The following actions are related to `GetBucketPolicy':
 %%
-%% <ul> <li> GetObject:
+%% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> PutBucketPolicy:
+%% PutBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html
 %%
-%% </li> <li> DeleteBucketPolicy:
+%% DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html
-%%
-%% </li> </ul>
 get_bucket_policy(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_policy(Client, Bucket, AccountId, #{}, #{}).
@@ -2486,10 +2654,12 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap)
 get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2501,36 +2671,45 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation gets an Amazon S3 on Outposts bucket's replication
+%% @doc
+%% This operation gets an Amazon S3 on Outposts bucket's replication
 %% configuration.
 %%
-%% To get an S3 bucket's replication configuration, see
-%% GetBucketReplication:
+%% To get an
+%% S3 bucket's replication configuration, see GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html
 %% in the Amazon S3 API Reference.
 %%
 %% Returns the replication configuration of an S3 on Outposts bucket. For
-%% more information about S3 on Outposts, see Using Amazon S3 on Outposts:
+%% more information
+%% about S3 on Outposts, see Using Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
-%% the Amazon S3 User Guide. For information about S3 replication on Outposts
-%% configuration, see Replicating objects for S3 on Outposts:
+%% the
+%% Amazon S3 User Guide. For information about S3 replication on Outposts
+%% configuration, see Replicating objects for
+%% S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsReplication.html
 %% in the Amazon S3 User Guide.
 %%
-%% It can take a while to propagate `PUT' or `DELETE' requests for a
-%% replication configuration to all S3 on Outposts systems. Therefore, the
-%% replication configuration that's returned by a `GET' request soon
-%% after a `PUT' or `DELETE' request might return a more recent
-%% result than what's on the Outpost. If an Outpost is offline, the delay
-%% in updating the replication configuration on that Outpost can be
-%% significant.
+%% It can take a while to propagate `PUT' or `DELETE' requests for
+%% a replication configuration to all S3 on Outposts systems. Therefore, the
+%% replication
+%% configuration that's returned by a `GET' request soon after a
+%% `PUT' or `DELETE' request might return a more recent result
+%% than what's on the Outpost. If an Outpost is offline, the delay in
+%% updating the
+%% replication configuration on that Outpost can be significant.
 %%
 %% This action requires permissions for the
 %% `s3-outposts:GetReplicationConfiguration' action. The Outposts bucket
-%% owner has this permission by default and can grant it to others. For more
-%% information about permissions, see Setting up IAM with S3 on Outposts:
+%% owner
+%% has this permission by default and can grant it to others. For more
+%% information about
+%% permissions, see Setting up IAM with
+%% S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsIAM.html
-%% and Managing access to S3 on Outposts bucket:
+%% and Managing access to
+%% S3 on Outposts bucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsBucketPolicy.html
 %% in the Amazon S3 User Guide.
 %%
@@ -2545,7 +2724,8 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% section.
 %%
 %% If you include the `Filter' element in a replication configuration,
-%% you must also include the `DeleteMarkerReplication', `Status', and
+%% you must
+%% also include the `DeleteMarkerReplication', `Status', and
 %% `Priority' elements. The response also returns those elements.
 %%
 %% For information about S3 on Outposts replication failure reasons, see
@@ -2555,13 +2735,11 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% The following operations are related to `GetBucketReplication':
 %%
-%% <ul> <li> PutBucketReplication:
+%% PutBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketReplication.html
 %%
-%% </li> <li> DeleteBucketReplication:
+%% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketReplication.html
-%%
-%% </li> </ul>
 get_bucket_replication(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_replication(Client, Bucket, AccountId, #{}, #{}).
@@ -2573,10 +2751,12 @@ get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap)
 get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2588,46 +2768,49 @@ get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This action gets an Amazon S3 on Outposts bucket's tags.
+%% @doc
+%% This action gets an Amazon S3 on Outposts bucket's tags.
 %%
-%% To get an S3 bucket tags, see GetBucketTagging:
+%% To get an S3 bucket tags, see
+%% GetBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html
 %% in the Amazon S3 API Reference.
 %%
 %% Returns the tag set associated with the Outposts bucket. For more
-%% information, see Using Amazon S3 on Outposts:
+%% information, see
+%% Using
+%% Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% the Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `GetBucketTagging' action. By default, the bucket owner has this
-%% permission and can grant this permission to others.
+%% permission
+%% and can grant this permission to others.
 %%
 %% `GetBucketTagging' has the following special error:
 %%
-%% <ul> <li> Error code: `NoSuchTagSetError'
+%% Error code: `NoSuchTagSetError'
 %%
-%% <ul> <li> Description: There is no tag set associated with the bucket.
+%% Description: There is no tag set associated with the bucket.
 %%
-%% </li> </ul> </li> </ul> All Amazon S3 on Outposts REST API requests for
-%% this action require an additional parameter of `x-amz-outpost-id' to
-%% be passed with the request. In addition, you must use an S3 on Outposts
-%% endpoint hostname prefix instead of `s3-control'. For an example of
-%% the request syntax for Amazon S3 on Outposts that uses the S3 on Outposts
-%% endpoint hostname prefix and the `x-amz-outpost-id' derived by using
-%% the access point ARN, see the Examples:
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the
+%% request. In addition, you must use an S3 on Outposts endpoint hostname
+%% prefix instead of `s3-control'. For an example of the request syntax
+%% for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname
+%% prefix and the `x-amz-outpost-id' derived by using the access point
+%% ARN, see the Examples:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketTagging.html#API_control_GetBucketTagging_Examples
 %% section.
 %%
 %% The following actions are related to `GetBucketTagging':
 %%
-%% <ul> <li> PutBucketTagging:
+%% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html
 %%
-%% </li> <li> DeleteBucketTagging:
+%% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html
-%%
-%% </li> </ul>
 get_bucket_tagging(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_tagging(Client, Bucket, AccountId, #{}, #{}).
@@ -2639,10 +2822,12 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap)
 get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2654,24 +2839,33 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation returns the versioning state for S3 on Outposts
-%% buckets only.
+%% @doc
+%% This operation returns the versioning state
+%% for
+%% S3 on Outposts
+%% buckets
+%% only.
 %%
 %% To return the versioning state for an S3 bucket, see GetBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html
 %% in the Amazon S3 API Reference.
 %%
-%% Returns the versioning state for an S3 on Outposts bucket. With S3
-%% Versioning, you can save multiple distinct copies of your objects and
-%% recover from unintended user actions and application failures.
+%% Returns the versioning state for an S3 on Outposts bucket. With
+%% S3
+%% Versioning,
+%% you can save multiple distinct copies of your
+%% objects
+%% and recover from unintended user actions and application failures.
 %%
 %% If you've never set versioning on your bucket, it has no versioning
-%% state. In that case, the `GetBucketVersioning' request does not return
-%% a versioning state value.
+%% state. In that case,
+%% the `GetBucketVersioning' request does not return a versioning state
+%% value.
 %%
 %% For more information about versioning, see Versioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html in
-%% the Amazon S3 User Guide.
+%% the Amazon S3
+%% User Guide.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -2683,19 +2877,17 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketVersioning.html#API_control_GetBucketVersioning_Examples
 %% section.
 %%
-%% The following operations are related to `GetBucketVersioning' for S3
-%% on Outposts.
+%% The following operations are related to `GetBucketVersioning' for
+%% S3 on Outposts.
 %%
-%% <ul> <li> PutBucketVersioning:
+%% PutBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketVersioning.html
 %%
-%% </li> <li> PutBucketLifecycleConfiguration:
+%% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html
 %%
-%% </li> <li> GetBucketLifecycleConfiguration:
+%% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
-%%
-%% </li> </ul>
 get_bucket_versioning(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_versioning(Client, Bucket, AccountId, #{}, #{}).
@@ -2707,10 +2899,12 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap)
 get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/versioning"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2730,16 +2924,16 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% is an Amazon Web Services STS token that grants them access to the S3
 %% data.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:GetDataAccess'
-%% permission to use this operation.
+%% Permissions
 %%
-%% </dd> <dt>Additional Permissions</dt> <dd> The IAM role that S3 Access
-%% Grants assumes must have the following permissions specified in the trust
-%% policy when registering the location: `sts:AssumeRole', for directory
-%% users or groups `sts:SetContext', and for IAM users or roles
-%% `sts:SourceIdentity'.
+%% You must have the `s3:GetDataAccess' permission to use this operation.
 %%
-%% </dd> </dl>
+%% Additional Permissions
+%%
+%% The IAM role that S3 Access Grants assumes must have the following
+%% permissions specified in the trust policy when registering the location:
+%% `sts:AssumeRole', for directory users or groups `sts:SetContext',
+%% and for IAM users or roles `sts:SourceIdentity'.
 get_data_access(Client, Permission, Target, AccountId)
   when is_map(Client) ->
     get_data_access(Client, Permission, Target, AccountId, #{}, #{}).
@@ -2751,10 +2945,12 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap)
 get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/dataaccess"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2776,24 +2972,27 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 
 %% @doc Returns the tags on an S3 Batch Operations job.
 %%
-%% <dl> <dt>Permissions</dt> <dd> To use the `GetJobTagging' operation,
-%% you must have permission to perform the `s3:GetJobTagging' action. For
-%% more information, see Controlling access and labeling jobs using tags:
+%% Permissions
+%%
+%% To use the
+%% `GetJobTagging' operation, you must have permission to
+%% perform the `s3:GetJobTagging' action. For more information, see
+%% Controlling
+%% access and labeling jobs using tags:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags
-%% in the Amazon S3 User Guide.
+%% in the
+%% Amazon S3 User Guide.
 %%
-%% </dd> </dl> Related actions include:
+%% Related actions include:
 %%
-%% <ul> <li> CreateJob:
+%% CreateJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html
 %%
-%% </li> <li> PutJobTagging:
+%% PutJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html
 %%
-%% </li> <li> DeleteJobTagging:
+%% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
-%%
-%% </li> </ul>
 get_job_tagging(Client, JobId, AccountId)
   when is_map(Client) ->
     get_job_tagging(Client, JobId, AccountId, #{}, #{}).
@@ -2805,10 +3004,12 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap)
 get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2820,32 +3021,33 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns configuration information about the specified Multi-Region Access
 %% Point.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
-%% information about the restrictions around managing Multi-Region Access
-%% Points, see Managing Multi-Region Access Points:
+%% information
+%% about the restrictions around managing Multi-Region Access Points, see
+%% Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to `GetMultiRegionAccessPoint':
 %%
-%% <ul> <li> CreateMultiRegionAccessPoint:
+%% CreateMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateMultiRegionAccessPoint.html
 %%
-%% </li> <li> DeleteMultiRegionAccessPoint:
+%% DeleteMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteMultiRegionAccessPoint.html
 %%
-%% </li> <li> DescribeMultiRegionAccessPointOperation:
+%% DescribeMultiRegionAccessPointOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html
 %%
-%% </li> <li> ListMultiRegionAccessPoints:
+%% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
-%%
-%% </li> </ul>
 get_multi_region_access_point(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point(Client, Name, AccountId, #{}, #{}).
@@ -2857,10 +3059,12 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
 get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2872,27 +3076,28 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns the access control policy of the specified Multi-Region Access
 %% Point.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
-%% information about the restrictions around managing Multi-Region Access
-%% Points, see Managing Multi-Region Access Points:
+%% information
+%% about the restrictions around managing Multi-Region Access Points, see
+%% Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to
 %% `GetMultiRegionAccessPointPolicy':
 %%
-%% <ul> <li> GetMultiRegionAccessPointPolicyStatus:
+%% GetMultiRegionAccessPointPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicyStatus.html
 %%
-%% </li> <li> PutMultiRegionAccessPointPolicy:
+%% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
-%%
-%% </li> </ul>
 get_multi_region_access_point_policy(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_policy(Client, Name, AccountId, #{}, #{}).
@@ -2904,10 +3109,12 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2919,27 +3126,29 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Indicates whether the specified Multi-Region Access Point has an access
-%% control policy that allows public access.
+%% control policy that allows public
+%% access.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
-%% information about the restrictions around managing Multi-Region Access
-%% Points, see Managing Multi-Region Access Points:
+%% information
+%% about the restrictions around managing Multi-Region Access Points, see
+%% Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to
 %% `GetMultiRegionAccessPointPolicyStatus':
 %%
-%% <ul> <li> GetMultiRegionAccessPointPolicy:
+%% GetMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicy.html
 %%
-%% </li> <li> PutMultiRegionAccessPointPolicy:
+%% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
-%%
-%% </li> </ul>
 get_multi_region_access_point_policy_status(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_policy_status(Client, Name, AccountId, #{}, #{}).
@@ -2951,10 +3160,12 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), "/policystatus"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2966,27 +3177,28 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns the routing configuration for a Multi-Region Access Point,
-%% indicating which Regions are active or passive.
+%% indicating which Regions are active or
+%% passive.
 %%
 %% To obtain routing control changes and failover requests, use the Amazon S3
-%% failover control infrastructure endpoints in these five Amazon Web
-%% Services Regions:
+%% failover control
+%% infrastructure endpoints in these five Amazon Web Services Regions:
 %%
-%% <ul> <li> `us-east-1'
+%% `us-east-1'
 %%
-%% </li> <li> `us-west-2'
+%% `us-west-2'
 %%
-%% </li> <li> `ap-southeast-2'
+%% `ap-southeast-2'
 %%
-%% </li> <li> `ap-northeast-1'
+%% `ap-northeast-1'
 %%
-%% </li> <li> `eu-west-1'
+%% `eu-west-1'
 %%
-%% </li> </ul> Your Amazon S3 bucket does not need to be in these five
-%% Regions.
+%% Your Amazon S3 bucket does not need to be in these five Regions.
 get_multi_region_access_point_routes(Client, Mrap, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_routes(Client, Mrap, AccountId, #{}, #{}).
@@ -2998,10 +3210,12 @@ get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersM
 get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Mrap), "/routes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3013,22 +3227,22 @@ get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Retrieves the `PublicAccessBlock' configuration for an Amazon Web
-%% Services account. For more information, see Using Amazon S3 block public
-%% access:
+%% Services account. For
+%% more information, see Using Amazon S3 block
+%% public access:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html.
 %%
 %% Related actions include:
 %%
-%% <ul> <li> DeletePublicAccessBlock:
+%% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html
 %%
-%% </li> <li> PutPublicAccessBlock:
+%% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
-%%
-%% </li> </ul>
 get_public_access_block(Client, AccountId)
   when is_map(Client) ->
     get_public_access_block(Client, AccountId, #{}, #{}).
@@ -3040,10 +3254,12 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap)
 get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3055,10 +3271,12 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Gets the Amazon S3 Storage Lens configuration. For more information, see
-%% Assessing your storage activity and usage with Amazon S3 Storage Lens :
+%% Assessing your storage
+%% activity and usage with Amazon S3 Storage Lens :
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html in the
 %% Amazon S3 User Guide. For a complete list of S3 Storage Lens metrics, see
 %% S3 Storage Lens metrics glossary:
@@ -3069,7 +3287,8 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% `s3:GetStorageLensConfiguration' action. For more information, see
 %% Setting permissions to use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
-%% in the Amazon S3 User Guide.
+%% in the
+%% Amazon S3 User Guide.
 get_storage_lens_configuration(Client, ConfigId, AccountId)
   when is_map(Client) ->
     get_storage_lens_configuration(Client, ConfigId, AccountId, #{}, #{}).
@@ -3081,10 +3300,12 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap
 get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3096,17 +3317,21 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Gets the tags of Amazon S3 Storage Lens configuration. For more
-%% information about S3 Storage Lens, see Assessing your storage activity and
-%% usage with Amazon S3 Storage Lens :
+%% information about S3 Storage Lens, see
+%% Assessing your
+%% storage activity and usage with Amazon S3 Storage Lens :
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html in the
 %% Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:GetStorageLensConfigurationTagging' action. For more information,
-%% see Setting permissions to use Amazon S3 Storage Lens:
+%% see
+%% Setting permissions to
+%% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId)
@@ -3120,10 +3345,12 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3135,16 +3362,19 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the Storage Lens group configuration details.
+%% @doc
+%% Retrieves the Storage Lens group configuration details.
 %%
 %% To use this operation, you must have the permission to perform the
 %% `s3:GetStorageLensGroup' action. For more information about the
-%% required Storage Lens Groups permissions, see Setting account permissions
-%% to use S3 Storage Lens groups:
+%% required Storage Lens
+%% Groups permissions, see Setting account permissions to use S3 Storage Lens
+%% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% For information about Storage Lens groups errors, see List of Amazon S3
-%% Storage Lens error codes:
+%% Storage
+%% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
 get_storage_lens_group(Client, Name, AccountId)
   when is_map(Client) ->
@@ -3157,10 +3387,12 @@ get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap)
 get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3174,10 +3406,10 @@ get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the list of access grants in your S3 Access Grants instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:ListAccessGrants'
-%% permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:ListAccessGrants' permission to use this
+%% operation.
 list_access_grants(Client, AccountId)
   when is_map(Client) ->
     list_access_grants(Client, AccountId, #{}, #{}).
@@ -3189,10 +3421,12 @@ list_access_grants(Client, AccountId, QueryMap, HeadersMap)
 list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/grants"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3220,10 +3454,10 @@ list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% individual access grants. You can only have one S3 Access Grants instance
 %% per Region per account.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:ListAccessGrantsInstances' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:ListAccessGrantsInstances' permission to use
+%% this operation.
 list_access_grants_instances(Client, AccountId)
   when is_map(Client) ->
     list_access_grants_instances(Client, AccountId, #{}, #{}).
@@ -3235,10 +3469,12 @@ list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap)
 list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstances"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3258,10 +3494,10 @@ list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of the locations registered in your S3 Access Grants
 %% instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:ListAccessGrantsLocations' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:ListAccessGrantsLocations' permission to use
+%% this operation.
 list_access_grants_locations(Client, AccountId)
   when is_map(Client) ->
     list_access_grants_locations(Client, AccountId, #{}, #{}).
@@ -3273,10 +3509,12 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap)
 list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/locations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3294,14 +3532,20 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
-%% Returns a list of the access points that are owned by the current account
-%% that's associated with the specified bucket. You can retrieve up to
-%% 1000 access points per call. If the specified bucket has more than 1,000
-%% access points (or the number specified in `maxResults', whichever is
-%% less), the response will include a continuation token that you can use to
-%% list the additional access points.
+%% Returns a list of the access points
+%% that are
+%% owned by the current account
+%% that's
+%% associated with the specified bucket. You can retrieve up to 1000 access
+%% points
+%% per call. If the specified bucket has more than 1,000 access points (or
+%% the number specified in
+%% `maxResults', whichever is less), the response will include a
+%% continuation
+%% token that you can use to list the additional access points.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -3315,16 +3559,14 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% The following actions are related to `ListAccessPoints':
 %%
-%% <ul> <li> CreateAccessPoint:
+%% CreateAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html
 %%
-%% </li> <li> DeleteAccessPoint:
+%% DeleteAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html
 %%
-%% </li> <li> GetAccessPoint:
+%% GetAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html
-%%
-%% </li> </ul>
 list_access_points(Client, AccountId)
   when is_map(Client) ->
     list_access_points(Client, AccountId, #{}, #{}).
@@ -3336,10 +3578,12 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap)
 list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3357,26 +3601,26 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns some or all (up to 1,000) access points associated with the Object
-%% Lambda Access Point per call. If there are more access points than what
-%% can be returned in one call, the response will include a continuation
-%% token that you can use to list the additional access points.
+%% Lambda Access Point per call. If there
+%% are more access points than what can be returned in one call, the response
+%% will include a
+%% continuation token that you can use to list the additional access points.
 %%
 %% The following actions are related to
 %% `ListAccessPointsForObjectLambda':
 %%
-%% <ul> <li> CreateAccessPointForObjectLambda:
+%% CreateAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPointForObjectLambda.html
 %%
-%% </li> <li> DeleteAccessPointForObjectLambda:
+%% DeleteAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointForObjectLambda.html
 %%
-%% </li> <li> GetAccessPointForObjectLambda:
+%% GetAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html
-%%
-%% </li> </ul>
 list_access_points_for_object_lambda(Client, AccountId)
   when is_map(Client) ->
     list_access_points_for_object_lambda(Client, AccountId, #{}, #{}).
@@ -3388,10 +3632,12 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap)
 list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3409,31 +3655,33 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists current S3 Batch Operations jobs as well as the jobs that have
-%% ended within the last 30 days for the Amazon Web Services account making
-%% the request.
+%% ended within the last 30 days for
+%% the Amazon Web Services account making the request.
 %%
 %% For more information, see S3 Batch Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html in
-%% the Amazon S3 User Guide.
+%% the
+%% Amazon S3 User Guide.
 %%
-%% <dl> <dt>Permissions</dt> <dd> To use the `ListJobs' operation, you
-%% must have permission to perform the `s3:ListJobs' action.
+%% Permissions
 %%
-%% </dd> </dl> Related actions include:
+%% To use the
+%% `ListJobs' operation, you must have permission to
+%% perform the `s3:ListJobs' action.
 %%
-%% <ul> <li> CreateJob:
+%% Related actions include:
+%%
+%% CreateJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html
 %%
-%% </li> <li> DescribeJob:
+%% DescribeJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html
 %%
-%% </li> <li> UpdateJobPriority:
+%% UpdateJobPriority:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobPriority.html
 %%
-%% </li> <li> UpdateJobStatus:
+%% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
-%%
-%% </li> </ul>
 list_jobs(Client, AccountId)
   when is_map(Client) ->
     list_jobs(Client, AccountId, #{}, #{}).
@@ -3445,10 +3693,12 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap)
 list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3466,34 +3716,36 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns a list of the Multi-Region Access Points currently associated with
-%% the specified Amazon Web Services account. Each call can return up to 100
-%% Multi-Region Access Points, the maximum number of Multi-Region Access
-%% Points that can be associated with a single account.
+%% the specified Amazon Web Services account.
+%% Each call can return up to 100 Multi-Region Access Points, the maximum
+%% number of Multi-Region Access Points that can be
+%% associated with a single account.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
-%% information about the restrictions around managing Multi-Region Access
-%% Points, see Managing Multi-Region Access Points:
+%% information
+%% about the restrictions around managing Multi-Region Access Points, see
+%% Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to `ListMultiRegionAccessPoint':
 %%
-%% <ul> <li> CreateMultiRegionAccessPoint:
+%% CreateMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateMultiRegionAccessPoint.html
 %%
-%% </li> <li> DeleteMultiRegionAccessPoint:
+%% DeleteMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteMultiRegionAccessPoint.html
 %%
-%% </li> <li> DescribeMultiRegionAccessPointOperation:
+%% DescribeMultiRegionAccessPointOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html
 %%
-%% </li> <li> GetMultiRegionAccessPoint:
+%% GetMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html
-%%
-%% </li> </ul>
 list_multi_region_access_points(Client, AccountId)
   when is_map(Client) ->
     list_multi_region_access_points(Client, AccountId, #{}, #{}).
@@ -3505,10 +3757,12 @@ list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap)
 list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3525,17 +3779,21 @@ list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Returns a list of all Outposts buckets in an Outpost that are owned by the
-%% authenticated sender of the request. For more information, see Using
-%% Amazon S3 on Outposts:
+%% authenticated
+%% sender of the request. For more information, see Using Amazon S3 on
+%% Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
-%% the Amazon S3 User Guide.
+%% the
+%% Amazon S3 User Guide.
 %%
 %% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and `x-amz-outpost-id' in
-%% your request, see the Examples:
+%% the S3 on Outposts
+%% endpoint hostname prefix and `x-amz-outpost-id' in your request, see
+%% the Examples:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListRegionalBuckets.html#API_control_ListRegionalBuckets_Examples
 %% section.
 list_regional_buckets(Client, AccountId)
@@ -3549,10 +3807,12 @@ list_regional_buckets(Client, AccountId, QueryMap, HeadersMap)
 list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3570,17 +3830,20 @@ list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Gets a list of Amazon S3 Storage Lens configurations. For more information
-%% about S3 Storage Lens, see Assessing your storage activity and usage with
-%% Amazon S3 Storage Lens :
+%% about S3 Storage Lens, see
+%% Assessing your
+%% storage activity and usage with Amazon S3 Storage Lens :
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html in the
 %% Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:ListStorageLensConfigurations' action. For more information, see
-%% Setting permissions to use Amazon S3 Storage Lens:
+%% Setting permissions to
+%% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
 list_storage_lens_configurations(Client, AccountId)
@@ -3594,10 +3857,12 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap)
 list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3613,16 +3878,19 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the Storage Lens groups in the specified home Region.
+%% @doc
+%% Lists all the Storage Lens groups in the specified home Region.
 %%
 %% To use this operation, you must have the permission to perform the
 %% `s3:ListStorageLensGroups' action. For more information about the
-%% required Storage Lens Groups permissions, see Setting account permissions
-%% to use S3 Storage Lens groups:
+%% required Storage Lens
+%% Groups permissions, see Setting account permissions to use S3 Storage Lens
+%% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% For information about Storage Lens groups errors, see List of Amazon S3
-%% Storage Lens error codes:
+%% Storage
+%% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
 list_storage_lens_groups(Client, AccountId)
   when is_map(Client) ->
@@ -3635,10 +3903,12 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap)
 list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelensgroup"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3660,18 +3930,21 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% Each tag is a label consisting of a user-defined key and value. Tags can
 %% help you manage, identify, organize, search for, and filter resources.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:ListTagsForResource' permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl> This operation is only supported for S3 Storage Lens groups:
+%% You must have the `s3:ListTagsForResource' permission to use this
+%% operation.
+%%
+%% This operation is only supported for S3 Storage Lens groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html
 %% and for S3 Access Grants:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html.
 %% The tagged resource can be an S3 Storage Lens group or S3 Access Grants
 %% instance, registered location, or grant.
 %%
-%% For more information about the required Storage Lens Groups permissions,
-%% see Setting account permissions to use S3 Storage Lens groups:
+%% For more information about the required Storage Lens
+%% Groups permissions, see Setting account permissions to use S3 Storage Lens
+%% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
@@ -3688,10 +3961,12 @@ list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3705,21 +3980,22 @@ list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Opt
 
 %% @doc Updates the resource policy of the S3 Access Grants instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:PutAccessGrantsInstanceResourcePolicy' permission to use this
-%% operation.
+%% Permissions
 %%
-%% </dd> </dl>
+%% You must have the `s3:PutAccessGrantsInstanceResourcePolicy'
+%% permission to use this operation.
 put_access_grants_instance_resource_policy(Client, Input) ->
     put_access_grants_instance_resource_policy(Client, Input, []).
 put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -3734,27 +4010,28 @@ put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Replaces configuration for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `PutAccessPointConfigurationForObjectLambda':
 %%
-%% <ul> <li> GetAccessPointConfigurationForObjectLambda:
+%% GetAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointConfigurationForObjectLambda.html
-%%
-%% </li> </ul>
 put_access_point_configuration_for_object_lambda(Client, Name, Input) ->
     put_access_point_configuration_for_object_lambda(Client, Name, Input, []).
 put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -3769,11 +4046,14 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Associates an access policy with the specified access point. Each access
-%% point can have only one policy, so a request made to this API replaces any
-%% existing policy associated with the specified access point.
+%% point can have only one policy,
+%% so a request made to this API replaces any existing policy associated with
+%% the specified
+%% access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -3787,23 +4067,23 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 %%
 %% The following actions are related to `PutAccessPointPolicy':
 %%
-%% <ul> <li> GetAccessPointPolicy:
+%% GetAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html
 %%
-%% </li> <li> DeleteAccessPointPolicy:
+%% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
-%%
-%% </li> </ul>
 put_access_point_policy(Client, Name, Input) ->
     put_access_point_policy(Client, Name, Input, []).
 put_access_point_policy(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -3818,7 +4098,8 @@ put_access_point_policy(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Creates or replaces resource policy for an Object Lambda Access Point. For
 %% an example policy, see Creating Object Lambda Access Points:
@@ -3828,23 +4109,23 @@ put_access_point_policy(Client, Name, Input0, Options0) ->
 %% The following actions are related to
 %% `PutAccessPointPolicyForObjectLambda':
 %%
-%% <ul> <li> DeleteAccessPointPolicyForObjectLambda:
+%% DeleteAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicyForObjectLambda.html
 %%
-%% </li> <li> GetAccessPointPolicyForObjectLambda:
+%% GetAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicyForObjectLambda.html
-%%
-%% </li> </ul>
 put_access_point_policy_for_object_lambda(Client, Name, Input) ->
     put_access_point_policy_for_object_lambda(Client, Name, Input, []).
 put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -3859,18 +4140,23 @@ put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action puts a lifecycle configuration to an Amazon S3 on
-%% Outposts bucket.
+%% @doc
+%% This action puts a lifecycle configuration to an Amazon S3 on Outposts
+%% bucket.
 %%
-%% To put a lifecycle configuration to an S3 bucket, see
+%% To put a
+%% lifecycle configuration to an S3 bucket, see
 %% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
 %% in the Amazon S3 API Reference.
 %%
 %% Creates a new lifecycle configuration for the S3 on Outposts bucket or
-%% replaces an existing lifecycle configuration. Outposts buckets only
-%% support lifecycle configurations that delete/expire objects after a
-%% certain period of time and abort incomplete multipart uploads.
+%% replaces an
+%% existing lifecycle configuration. Outposts buckets only support lifecycle
+%% configurations
+%% that delete/expire objects after a certain period of time and abort
+%% incomplete multipart
+%% uploads.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -3885,23 +4171,23 @@ put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %% The following actions are related to
 %% `PutBucketLifecycleConfiguration':
 %%
-%% <ul> <li> GetBucketLifecycleConfiguration:
+%% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
 %%
-%% </li> <li> DeleteBucketLifecycleConfiguration:
+%% DeleteBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html
-%%
-%% </li> </ul>
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -3916,34 +4202,47 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action puts a bucket policy to an Amazon S3 on Outposts bucket.
+%% @doc
+%% This action puts a bucket policy to an Amazon S3 on Outposts bucket.
 %%
-%% To put a policy on an S3 bucket, see PutBucketPolicy:
+%% To put a policy on an
+%% S3 bucket, see PutBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketPolicy.html
-%% in the Amazon S3 API Reference.
+%% in the
+%% Amazon S3 API Reference.
 %%
 %% Applies an Amazon S3 bucket policy to an Outposts bucket. For more
-%% information, see Using Amazon S3 on Outposts:
+%% information, see Using
+%% Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% the Amazon S3 User Guide.
 %%
 %% If you are using an identity other than the root user of the Amazon Web
-%% Services account that owns the Outposts bucket, the calling identity must
-%% have the `PutBucketPolicy' permissions on the specified Outposts
-%% bucket and belong to the bucket owner's account in order to use this
-%% action.
+%% Services account that owns the
+%% Outposts bucket, the calling identity must have the `PutBucketPolicy'
+%% permissions on the specified Outposts bucket and belong to the bucket
+%% owner's account in
+%% order to use this action.
 %%
 %% If you don't have `PutBucketPolicy' permissions, Amazon S3 returns
-%% a `403 Access Denied' error. If you have the correct permissions, but
-%% you're not using an identity that belongs to the bucket owner's
-%% account, Amazon S3 returns a `405 Method Not Allowed' error.
+%% a
+%% ```
+%% 403 Access Denied''' error. If you have the correct
+%% permissions, but you're not using an
+%% identity that belongs to the bucket owner's account, Amazon S3 returns
+%% a
+%% ```
+%% 405 Method Not Allowed''' error.
 %%
 %% As a security precaution, the root user of the Amazon Web Services account
-%% that owns a bucket can always use this action, even if the policy
-%% explicitly denies the root user the ability to perform this action.
+%% that owns a bucket can
+%% always use this action, even if the policy explicitly denies the root user
+%% the ability
+%% to perform this action.
 %%
 %% For more information about bucket policies, see Using Bucket Policies and
-%% User Policies:
+%% User
+%% Policies:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -3958,23 +4257,23 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% The following actions are related to `PutBucketPolicy':
 %%
-%% <ul> <li> GetBucketPolicy:
+%% GetBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketPolicy.html
 %%
-%% </li> <li> DeleteBucketPolicy:
+%% DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html
-%%
-%% </li> </ul>
 put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
 put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>},
@@ -3990,56 +4289,70 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action creates an Amazon S3 on Outposts bucket's replication
+%% @doc
+%% This action creates an Amazon S3 on Outposts bucket's replication
 %% configuration.
 %%
-%% To create an S3 bucket's replication configuration, see
-%% PutBucketReplication:
+%% To create
+%% an S3 bucket's replication configuration, see PutBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html
 %% in the Amazon S3 API Reference.
 %%
 %% Creates a replication configuration or replaces an existing one. For
-%% information about S3 replication on Outposts configuration, see
-%% Replicating objects for S3 on Outposts:
+%% information about
+%% S3 replication on Outposts configuration, see Replicating objects for
+%% S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsReplication.html
 %% in the Amazon S3 User Guide.
 %%
-%% It can take a while to propagate `PUT' or `DELETE' requests for a
-%% replication configuration to all S3 on Outposts systems. Therefore, the
-%% replication configuration that's returned by a `GET' request soon
-%% after a `PUT' or `DELETE' request might return a more recent
-%% result than what's on the Outpost. If an Outpost is offline, the delay
-%% in updating the replication configuration on that Outpost can be
-%% significant.
+%% It can take a while to propagate `PUT' or `DELETE' requests for
+%% a replication configuration to all S3 on Outposts systems. Therefore, the
+%% replication
+%% configuration that's returned by a `GET' request soon after a
+%% `PUT' or `DELETE' request might return a more recent result
+%% than what's on the Outpost. If an Outpost is offline, the delay in
+%% updating the
+%% replication configuration on that Outpost can be significant.
 %%
 %% Specify the replication configuration in the request body. In the
-%% replication configuration, you provide the following information:
+%% replication
+%% configuration, you provide the following information:
 %%
-%% <ul> <li> The name of the destination bucket or buckets where you want S3
-%% on Outposts to replicate objects
+%% The name of the destination bucket or buckets where you want S3 on
+%% Outposts to
+%% replicate objects
 %%
-%% </li> <li> The Identity and Access Management (IAM) role that S3 on
-%% Outposts can assume to replicate objects on your behalf
+%% The Identity and Access Management (IAM) role that S3 on Outposts can
+%% assume to replicate objects on
+%% your behalf
 %%
-%% </li> <li> Other relevant information, such as replication rules
+%% Other relevant information, such as replication rules
 %%
-%% </li> </ul> A replication configuration must include at least one rule and
-%% can contain a maximum of 100. Each rule identifies a subset of objects to
-%% replicate by filtering the objects in the source Outposts bucket. To
-%% choose additional subsets of objects to replicate, add a rule for each
-%% subset.
+%% A replication configuration must include at least one rule and can contain
+%% a maximum of
+%% 100. Each rule identifies a subset of objects to replicate by filtering
+%% the objects in the
+%% source Outposts bucket. To choose additional subsets of objects to
+%% replicate, add a rule
+%% for each subset.
 %%
 %% To specify a subset of the objects in the source Outposts bucket to apply
-%% a replication rule to, add the `Filter' element as a child of the
-%% `Rule' element. You can filter objects based on an object key prefix,
-%% one or more object tags, or both. When you add the `Filter' element in
-%% the configuration, you must also add the following elements:
-%% `DeleteMarkerReplication', `Status', and `Priority'.
+%% a replication
+%% rule to, add the `Filter' element as a child of the `Rule'
+%% element.
+%% You can filter objects based on an object key prefix, one or more object
+%% tags, or both.
+%% When you add the `Filter' element in the configuration, you must also
+%% add the
+%% following elements: `DeleteMarkerReplication', `Status', and
+%% `Priority'.
 %%
 %% Using `PutBucketReplication' on Outposts requires that both the source
-%% and destination buckets must have versioning enabled. For information
-%% about enabling versioning on a bucket, see Managing S3 Versioning for your
-%% S3 on Outposts bucket:
+%% and
+%% destination buckets must have versioning enabled. For information about
+%% enabling versioning
+%% on a bucket, see Managing S3 Versioning
+%% for your S3 on Outposts bucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsManagingVersioning.html.
 %%
 %% For information about S3 on Outposts replication failure reasons, see
@@ -4050,25 +4363,31 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% Handling Replication of Encrypted Objects
 %%
 %% Outposts buckets are encrypted at all times. All the objects in the source
-%% Outposts bucket are encrypted and can be replicated. Also, all the
-%% replicas in the destination Outposts bucket are encrypted with the same
-%% encryption key as the objects in the source Outposts bucket.
+%% Outposts
+%% bucket are encrypted and can be replicated. Also, all the replicas in the
+%% destination
+%% Outposts bucket are encrypted with the same encryption key as the objects
+%% in the source
+%% Outposts bucket.
 %%
 %% Permissions
 %%
 %% To create a `PutBucketReplication' request, you must have
 %% `s3-outposts:PutReplicationConfiguration' permissions for the bucket.
-%% The Outposts bucket owner has this permission by default and can grant it
-%% to others. For more information about permissions, see Setting up IAM with
+%% The
+%% Outposts bucket owner has this permission by default and can grant it to
+%% others. For more
+%% information about permissions, see Setting up IAM with
 %% S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsIAM.html
-%% and Managing access to S3 on Outposts buckets:
+%% and Managing access to
+%% S3 on Outposts buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsBucketPolicy.html.
 %%
 %% To perform this operation, the user or role must also have the
 %% `iam:CreateRole' and `iam:PassRole' permissions. For more
-%% information, see Granting a user permissions to pass a role to an Amazon
-%% Web Services service:
+%% information, see Granting a user permissions to
+%% pass a role to an Amazon Web Services service:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -4083,23 +4402,23 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% The following operations are related to `PutBucketReplication':
 %%
-%% <ul> <li> GetBucketReplication:
+%% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketReplication.html
 %%
-%% </li> <li> DeleteBucketReplication:
+%% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketReplication.html
-%%
-%% </li> </ul>
 put_bucket_replication(Client, Bucket, Input) ->
     put_bucket_replication(Client, Bucket, Input, []).
 put_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4114,95 +4433,109 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action puts tags on an Amazon S3 on Outposts bucket.
+%% @doc
+%% This action puts tags on an Amazon S3 on Outposts bucket.
 %%
-%% To put tags on an S3 bucket, see PutBucketTagging:
+%% To put tags on an S3 bucket, see
+%% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html
 %% in the Amazon S3 API Reference.
 %%
 %% Sets the tags for an S3 on Outposts bucket. For more information, see
-%% Using Amazon S3 on Outposts:
+%% Using
+%% Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
 %% the Amazon S3 User Guide.
 %%
 %% Use tags to organize your Amazon Web Services bill to reflect your own
-%% cost structure. To do this, sign up to get your Amazon Web Services
-%% account bill with tag key values included. Then, to see the cost of
-%% combined resources, organize your billing information according to
-%% resources with the same tag key values. For example, you can tag several
-%% resources with a specific application name, and then organize your billing
-%% information to see the total cost of that application across several
-%% services. For more information, see Cost allocation and tagging:
+%% cost structure. To do this,
+%% sign up to get your Amazon Web Services account bill with tag key values
+%% included. Then, to see the cost
+%% of combined resources, organize your billing information according to
+%% resources with the
+%% same tag key values. For example, you can tag several resources with a
+%% specific application
+%% name, and then organize your billing information to see the total cost of
+%% that application
+%% across several services. For more information, see Cost allocation and
+%% tagging:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html.
 %%
 %% Within a bucket, if you add a tag that has the same key as an existing
-%% tag, the new value overwrites the old value. For more information, see
-%% Using cost allocation in Amazon S3 bucket tags:
+%% tag, the new
+%% value overwrites the old value. For more information, see Using cost
+%% allocation in Amazon S3
+%% bucket tags:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html.
 %%
 %% To use this action, you must have permissions to perform the
 %% `s3-outposts:PutBucketTagging' action. The Outposts bucket owner has
-%% this permission by default and can grant this permission to others. For
-%% more information about permissions, see Permissions Related to Bucket
-%% Subresource Operations:
+%% this
+%% permission by default and can grant this permission to others. For more
+%% information about
+%% permissions, see Permissions Related to Bucket Subresource Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
-%% and Managing access permissions to your Amazon S3 resources:
+%% and Managing
+%% access permissions to your Amazon S3 resources:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% `PutBucketTagging' has the following special errors:
 %%
-%% <ul> <li> Error code: `InvalidTagError'
+%% Error code: `InvalidTagError'
 %%
-%% <ul> <li> Description: The tag provided was not a valid tag. This error
-%% can occur if the tag did not pass input validation. For information about
-%% tag restrictions, see User-Defined Tag Restrictions:
+%% Description: The tag provided was not a valid tag. This error can occur if
+%% the tag did not pass input validation. For information about tag
+%% restrictions,
+%% see
+%% User-Defined Tag Restrictions:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html
-%% and Amazon Web Services-Generated Cost Allocation Tag Restrictions:
+%% and
+%% Amazon Web Services-Generated Cost Allocation Tag Restrictions:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tag-restrictions.html.
 %%
-%% </li> </ul> </li> <li> Error code: `MalformedXMLError'
+%% Error code: `MalformedXMLError'
 %%
-%% <ul> <li> Description: The XML provided does not match the schema.
+%% Description: The XML provided does not match the schema.
 %%
-%% </li> </ul> </li> <li> Error code: `OperationAbortedError '
+%% Error code: `OperationAbortedError '
 %%
-%% <ul> <li> Description: A conflicting conditional action is currently in
-%% progress against this resource. Try again.
+%% Description: A conflicting conditional action is currently in progress
+%% against this resource. Try again.
 %%
-%% </li> </ul> </li> <li> Error code: `InternalError'
+%% Error code: `InternalError'
 %%
-%% <ul> <li> Description: The service was unable to apply the provided tag to
-%% the bucket.
+%% Description: The service was unable to apply the provided tag to the
+%% bucket.
 %%
-%% </li> </ul> </li> </ul> All Amazon S3 on Outposts REST API requests for
-%% this action require an additional parameter of `x-amz-outpost-id' to
-%% be passed with the request. In addition, you must use an S3 on Outposts
-%% endpoint hostname prefix instead of `s3-control'. For an example of
-%% the request syntax for Amazon S3 on Outposts that uses the S3 on Outposts
-%% endpoint hostname prefix and the `x-amz-outpost-id' derived by using
-%% the access point ARN, see the Examples:
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the
+%% request. In addition, you must use an S3 on Outposts endpoint hostname
+%% prefix instead of `s3-control'. For an example of the request syntax
+%% for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname
+%% prefix and the `x-amz-outpost-id' derived by using the access point
+%% ARN, see the Examples:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html#API_control_PutBucketTagging_Examples
 %% section.
 %%
 %% The following actions are related to `PutBucketTagging':
 %%
-%% <ul> <li> GetBucketTagging:
+%% GetBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketTagging.html
 %%
-%% </li> <li> DeleteBucketTagging:
+%% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html
-%%
-%% </li> </ul>
 put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
 put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, true}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4217,46 +4550,64 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation sets the versioning state for S3 on Outposts buckets
+%% @doc
+%% This operation sets the versioning state
+%% for
+%% S3 on Outposts
+%% buckets
 %% only.
 %%
 %% To set the versioning state for an S3 bucket, see PutBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html
 %% in the Amazon S3 API Reference.
 %%
-%% Sets the versioning state for an S3 on Outposts bucket. With S3
-%% Versioning, you can save multiple distinct copies of your objects and
-%% recover from unintended user actions and application failures.
+%% Sets the versioning state for an S3 on Outposts bucket. With
+%% S3
+%% Versioning,
+%% you can save multiple distinct copies of your
+%% objects
+%% and recover from unintended user actions and application failures.
 %%
 %% You can set the versioning state to one of the following:
 %%
-%% <ul> <li> Enabled - Enables versioning for the objects in the bucket. All
-%% objects added to the bucket receive a unique version ID.
+%% Enabled - Enables versioning for the objects in
+%% the bucket. All objects added to the bucket receive a unique version ID.
 %%
-%% </li> <li> Suspended - Suspends versioning for the objects in the bucket.
-%% All objects added to the bucket receive the version ID `null'.
+%% Suspended - Suspends versioning for the objects
+%% in the bucket. All objects added to the bucket receive the version ID
+%% `null'.
 %%
-%% </li> </ul> If you've never set versioning on your bucket, it has no
-%% versioning state. In that case, a GetBucketVersioning:
+%% If you've never set versioning on your bucket, it has no versioning
+%% state. In that case,
+%% a
+%% GetBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketVersioning.html
 %% request does not return a versioning state value.
 %%
 %% When you enable S3 Versioning, for each object in your bucket, you have a
-%% current version and zero or more noncurrent versions. You can configure
-%% your bucket S3 Lifecycle rules to expire noncurrent versions after a
-%% specified time period. For more information, see Creating and managing a
-%% lifecycle configuration for your S3 on Outposts bucket:
+%% current
+%% version and zero or more noncurrent versions. You can configure your
+%% bucket S3 Lifecycle
+%% rules to expire noncurrent versions after a specified time period. For
+%% more information,
+%% see Creating and managing
+%% a lifecycle configuration for your S3 on Outposts bucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3OutpostsLifecycleManaging.html
-%% in the Amazon S3 User Guide.
+%% in the Amazon S3
+%% User Guide.
 %%
 %% If you have an object expiration lifecycle configuration in your
-%% non-versioned bucket and you want to maintain the same permanent delete
-%% behavior when you enable versioning, you must add a noncurrent expiration
-%% policy. The noncurrent expiration lifecycle configuration will manage the
-%% deletes of the noncurrent object versions in the version-enabled bucket.
+%% non-versioned bucket
+%% and you want to maintain the same permanent delete behavior when you
+%% enable versioning, you
+%% must add a noncurrent expiration policy. The noncurrent expiration
+%% lifecycle configuration
+%% will manage the deletes of the noncurrent object versions in the
+%% version-enabled bucket.
 %% For more information, see Versioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html in
-%% the Amazon S3 User Guide.
+%% the Amazon S3
+%% User Guide.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -4268,29 +4619,29 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketVersioning.html#API_control_PutBucketVersioning_Examples
 %% section.
 %%
-%% The following operations are related to `PutBucketVersioning' for S3
-%% on Outposts.
+%% The following operations are related to `PutBucketVersioning' for
+%% S3 on Outposts.
 %%
-%% <ul> <li> GetBucketVersioning:
+%% GetBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketVersioning.html
 %%
-%% </li> <li> PutBucketLifecycleConfiguration:
+%% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html
 %%
-%% </li> <li> GetBucketLifecycleConfiguration:
+%% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
-%%
-%% </li> </ul>
 put_bucket_versioning(Client, Bucket, Input) ->
     put_bucket_versioning(Client, Bucket, Input, []).
 put_bucket_versioning(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/versioning"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>},
@@ -4309,34 +4660,39 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% @doc Sets the supplied tag-set on an S3 Batch Operations job.
 %%
 %% A tag is a key-value pair. You can associate S3 Batch Operations tags with
-%% any job by sending a PUT request against the tagging subresource that is
-%% associated with the job. To modify the existing tag set, you can either
-%% replace the existing tag set entirely, or make changes within the existing
-%% tag set by retrieving the existing tag set using GetJobTagging:
+%% any job by sending
+%% a PUT request against the tagging subresource that is associated with the
+%% job. To modify
+%% the existing tag set, you can either replace the existing tag set
+%% entirely, or make changes
+%% within the existing tag set by retrieving the existing tag set using
+%% GetJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html,
-%% modify that tag set, and use this operation to replace the tag set with
-%% the one you modified. For more information, see Controlling access and
-%% labeling jobs using tags:
+%% modify that tag set, and use this operation to replace the tag set
+%% with the one you modified. For more information, see Controlling
+%% access and labeling jobs using tags:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags
 %% in the Amazon S3 User Guide.
 %%
 %% If you send this request with an empty tag set, Amazon S3 deletes the
-%% existing tag set on the Batch Operations job. If you use this method, you
-%% are charged for a Tier 1 Request (PUT). For more information, see Amazon
-%% S3 pricing: http://aws.amazon.com/s3/pricing/.
+%% existing
+%% tag set on the Batch Operations job. If you use this method, you are
+%% charged for a Tier
+%% 1 Request (PUT). For more information, see Amazon S3 pricing:
+%% http://aws.amazon.com/s3/pricing/.
 %%
 %% For deleting existing tags for your Batch Operations job, a
 %% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
-%% request is preferred because it achieves the same result without incurring
-%% charges.
+%% request is preferred because it achieves the same
+%% result without incurring charges.
 %%
 %% A few things to consider about using tags:
 %%
 %% Amazon S3 limits the maximum number of tags to 50 tags per job.
 %%
-%% You can associate up to 50 tags with a job as long as they have unique tag
-%% keys.
+%% You can associate up to 50 tags with a job as long as they have unique
+%% tag keys.
 %%
 %% A tag key can be up to 128 Unicode characters in length, and tag values
 %% can be up to 256 Unicode characters in length.
@@ -4348,31 +4704,34 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html
 %% in the Billing and Cost Management User Guide.
 %%
-%% <dl> <dt>Permissions</dt> <dd> To use the `PutJobTagging' operation,
-%% you must have permission to perform the `s3:PutJobTagging' action.
+%% Permissions
 %%
-%% </dd> </dl> Related actions include:
+%% To use the
+%% `PutJobTagging' operation, you must have permission to
+%% perform the `s3:PutJobTagging' action.
 %%
-%% <ul> <li> CreateJob:
+%% Related actions include:
+%%
+%% CreateJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html
 %%
-%% </li> <li> GetJobTagging:
+%% GetJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html
 %%
-%% </li> <li> DeleteJobTagging:
+%% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
-%%
-%% </li> </ul>
 put_job_tagging(Client, JobId, Input) ->
     put_job_tagging(Client, JobId, Input, []).
 put_job_tagging(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4387,39 +4746,43 @@ put_job_tagging(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Associates an access control policy with the specified Multi-Region Access
-%% Point. Each Multi-Region Access Point can have only one policy, so a
-%% request made to this action replaces any existing policy that is
+%% Point. Each Multi-Region Access Point can have only
+%% one policy, so a request made to this action replaces any existing policy
+%% that is
 %% associated with the specified Multi-Region Access Point.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
-%% information about the restrictions around managing Multi-Region Access
-%% Points, see Managing Multi-Region Access Points:
+%% information
+%% about the restrictions around managing Multi-Region Access Points, see
+%% Managing
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to
 %% `PutMultiRegionAccessPointPolicy':
 %%
-%% <ul> <li> GetMultiRegionAccessPointPolicy:
+%% GetMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicy.html
 %%
-%% </li> <li> GetMultiRegionAccessPointPolicyStatus:
+%% GetMultiRegionAccessPointPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicyStatus.html
-%%
-%% </li> </ul>
 put_multi_region_access_point_policy(Client, Input) ->
     put_multi_region_access_point_policy(Client, Input, []).
 put_multi_region_access_point_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/async-requests/mrap/put-policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4434,7 +4797,8 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Creates or modifies the `PublicAccessBlock' configuration for an
 %% Amazon Web Services account. For this operation, users must have the
@@ -4444,23 +4808,23 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 %%
 %% Related actions include:
 %%
-%% <ul> <li> GetPublicAccessBlock:
+%% GetPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html
 %%
-%% </li> <li> DeletePublicAccessBlock:
+%% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html
-%%
-%% </li> </ul>
 put_public_access_block(Client, Input) ->
     put_public_access_block(Client, Input, []).
 put_public_access_block(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/configuration/publicAccessBlock"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4475,10 +4839,12 @@ put_public_access_block(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Puts an Amazon S3 Storage Lens configuration. For more information about
-%% S3 Storage Lens, see Working with Amazon S3 Storage Lens:
+%% S3 Storage Lens, see Working with
+%% Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html in the
 %% Amazon S3 User Guide. For a complete list of S3 Storage Lens metrics, see
 %% S3 Storage Lens metrics glossary:
@@ -4489,17 +4855,20 @@ put_public_access_block(Client, Input0, Options0) ->
 %% `s3:PutStorageLensConfiguration' action. For more information, see
 %% Setting permissions to use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
-%% in the Amazon S3 User Guide.
+%% in the
+%% Amazon S3 User Guide.
 put_storage_lens_configuration(Client, ConfigId, Input) ->
     put_storage_lens_configuration(Client, ConfigId, Input, []).
 put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4514,17 +4883,21 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Put or replace tags on an existing Amazon S3 Storage Lens configuration.
-%% For more information about S3 Storage Lens, see Assessing your storage
-%% activity and usage with Amazon S3 Storage Lens :
+%% For more information
+%% about S3 Storage Lens, see Assessing your storage activity and usage with
+%% Amazon S3 Storage Lens :
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html in the
 %% Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:PutStorageLensConfigurationTagging' action. For more information,
-%% see Setting permissions to use Amazon S3 Storage Lens:
+%% see
+%% Setting permissions to
+%% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
 put_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
@@ -4532,11 +4905,13 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
 put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4551,51 +4926,60 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation is not supported by directory buckets.
+%% @doc
+%% This operation is not supported by directory buckets.
 %%
 %% Submits an updated route configuration for a Multi-Region Access Point.
-%% This API operation updates the routing status for the specified Regions
-%% from active to passive, or from passive to active. A value of `0'
-%% indicates a passive status, which means that traffic won't be routed
-%% to the specified Region. A value of `100' indicates an active status,
+%% This API operation updates the
+%% routing status for the specified Regions from active to passive, or from
+%% passive to active.
+%% A value of `0' indicates a passive status, which means that traffic
+%% won't be
+%% routed to the specified Region. A value of `100' indicates an active
+%% status,
 %% which means that traffic will be routed to the specified Region. At least
-%% one Region must be active at all times.
+%% one Region must
+%% be active at all times.
 %%
 %% When the routing configuration is changed, any in-progress operations
-%% (uploads, copies, deletes, and so on) to formerly active Regions will
-%% continue to run to their final completion state (success or failure). The
-%% routing configurations of any Regions that aren’t specified remain
-%% unchanged.
+%% (uploads, copies,
+%% deletes, and so on) to formerly active Regions will continue to run to
+%% their final
+%% completion state (success or failure). The routing configurations of any
+%% Regions that
+%% aren’t specified remain unchanged.
 %%
 %% Updated routing configurations might not be immediately applied. It can
-%% take up to 2 minutes for your changes to take effect.
+%% take up to 2
+%% minutes for your changes to take effect.
 %%
 %% To submit routing control changes and failover requests, use the Amazon S3
-%% failover control infrastructure endpoints in these five Amazon Web
-%% Services Regions:
+%% failover control
+%% infrastructure endpoints in these five Amazon Web Services Regions:
 %%
-%% <ul> <li> `us-east-1'
+%% `us-east-1'
 %%
-%% </li> <li> `us-west-2'
+%% `us-west-2'
 %%
-%% </li> <li> `ap-southeast-2'
+%% `ap-southeast-2'
 %%
-%% </li> <li> `ap-northeast-1'
+%% `ap-northeast-1'
 %%
-%% </li> <li> `eu-west-1'
+%% `eu-west-1'
 %%
-%% </li> </ul> Your Amazon S3 bucket does not need to be in these five
-%% Regions.
+%% Your Amazon S3 bucket does not need to be in these five Regions.
 submit_multi_region_access_point_routes(Client, Mrap, Input) ->
     submit_multi_region_access_point_routes(Client, Mrap, Input, []).
 submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
     Method = patch,
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Mrap), "/routes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4624,11 +5008,12 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 %% The tagged resource can be an S3 Storage Lens group or S3 Access Grants
 %% instance, registered location, or grant.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:TagResource'
-%% permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl> For more information about the required Storage Lens Groups
-%% permissions, see Setting account permissions to use S3 Storage Lens
+%% You must have the `s3:TagResource' permission to use this operation.
+%%
+%% For more information about the required Storage Lens
+%% Groups permissions, see Setting account permissions to use S3 Storage Lens
 %% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
@@ -4641,10 +5026,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4672,16 +5059,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% The tagged resource can be an S3 Storage Lens group or S3 Access Grants
 %% instance, registered location, or grant.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:UntagResource'
-%% permission to use this operation.
+%% Permissions
 %%
-%% </dd> </dl> For more information about the required Storage Lens Groups
-%% permissions, see Setting account permissions to use S3 Storage Lens
-%% groups:
+%% You must have the `s3:UntagResource' permission to use this operation.
+%%
+%% For more information about the required Storage
+%% Lens Groups permissions, see Setting account permissions to use S3 Storage
+%% Lens groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
-%% For information about S3 Tagging errors, see List of Amazon S3 Tagging
-%% error codes:
+%% For information about S3 Tagging errors, see List of Amazon S3
+%% Tagging error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
@@ -4689,10 +5077,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4711,23 +5101,26 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates the IAM role of a registered location in your S3 Access
 %% Grants instance.
 %%
-%% <dl> <dt>Permissions</dt> <dd> You must have the
-%% `s3:UpdateAccessGrantsLocation' permission to use this operation.
+%% Permissions
 %%
-%% </dd> <dt>Additional Permissions</dt> <dd> You must also have the
-%% following permission: `iam:PassRole'
+%% You must have the `s3:UpdateAccessGrantsLocation' permission to use
+%% this operation.
 %%
-%% </dd> </dl>
+%% Additional Permissions
+%%
+%% You must also have the following permission: `iam:PassRole'
 update_access_grants_location(Client, AccessGrantsLocationId, Input) ->
     update_access_grants_location(Client, AccessGrantsLocationId, Input, []).
 update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4748,35 +5141,37 @@ update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html in
 %% the Amazon S3 User Guide.
 %%
-%% <dl> <dt>Permissions</dt> <dd> To use the `UpdateJobPriority'
-%% operation, you must have permission to perform the
-%% `s3:UpdateJobPriority' action.
+%% Permissions
 %%
-%% </dd> </dl> Related actions include:
+%% To use the
+%% `UpdateJobPriority' operation, you must have permission to
+%% perform the `s3:UpdateJobPriority' action.
 %%
-%% <ul> <li> CreateJob:
+%% Related actions include:
+%%
+%% CreateJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html
 %%
-%% </li> <li> ListJobs:
+%% ListJobs:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListJobs.html
 %%
-%% </li> <li> DescribeJob:
+%% DescribeJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html
 %%
-%% </li> <li> UpdateJobStatus:
+%% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
-%%
-%% </li> </ul>
 update_job_priority(Client, JobId, Input) ->
     update_job_priority(Client, JobId, Input, []).
 update_job_priority(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/priority"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4794,39 +5189,43 @@ update_job_priority(Client, JobId, Input0, Options0) ->
 
 %% @doc Updates the status for the specified job.
 %%
-%% Use this operation to confirm that you want to run a job or to cancel an
-%% existing job. For more information, see S3 Batch Operations:
+%% Use this operation to confirm that you want to
+%% run a job or to cancel an existing job. For more information, see S3 Batch
+%% Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html in
 %% the Amazon S3 User Guide.
 %%
-%% <dl> <dt>Permissions</dt> <dd> To use the `UpdateJobStatus' operation,
-%% you must have permission to perform the `s3:UpdateJobStatus' action.
+%% Permissions
 %%
-%% </dd> </dl> Related actions include:
+%% To use the
+%% `UpdateJobStatus' operation, you must have permission to
+%% perform the `s3:UpdateJobStatus' action.
 %%
-%% <ul> <li> CreateJob:
+%% Related actions include:
+%%
+%% CreateJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html
 %%
-%% </li> <li> ListJobs:
+%% ListJobs:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListJobs.html
 %%
-%% </li> <li> DescribeJob:
+%% DescribeJob:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html
 %%
-%% </li> <li> UpdateJobStatus:
+%% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
-%%
-%% </li> </ul>
 update_job_status(Client, JobId, Input) ->
     update_job_status(Client, JobId, Input, []).
 update_job_status(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4843,16 +5242,19 @@ update_job_status(Client, JobId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the existing Storage Lens group.
+%% @doc
+%% Updates the existing Storage Lens group.
 %%
 %% To use this operation, you must have the permission to perform the
 %% `s3:UpdateStorageLensGroup' action. For more information about the
-%% required Storage Lens Groups permissions, see Setting account permissions
-%% to use S3 Storage Lens groups:
+%% required Storage Lens
+%% Groups permissions, see Setting account permissions to use S3 Storage Lens
+%% groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% For information about Storage Lens groups errors, see List of Amazon S3
-%% Storage Lens error codes:
+%% Storage
+%% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
 update_storage_lens_group(Client, Name, Input) ->
     update_storage_lens_group(Client, Name, Input, []).
@@ -4860,10 +5262,12 @@ update_storage_lens_group(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -4881,6 +5285,11 @@ update_storage_lens_group(Client, Name, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

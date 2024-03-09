@@ -5,7 +5,8 @@
 %% a provided Software Bill of Materials (SBOM) for security vulnerabilities.
 -module(aws_inspector_scan).
 
--export([]).
+-export([scan_sbom/2,
+         scan_sbom/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -13,9 +14,43 @@
 %% API
 %%====================================================================
 
+%% @doc Scans a provided CycloneDX 1.5 SBOM and reports on any
+%% vulnerabilities discovered in that SBOM.
+%%
+%% You can generate compatible SBOMs for your resources using the Amazon
+%% Inspector SBOM generator: .
+scan_sbom(Client, Input) ->
+    scan_sbom(Client, Input, []).
+scan_sbom(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/scan/sbom"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -21,13 +21,10 @@
 %%
 %% To learn more about AppStream 2.0, see the following resources:
 %%
-%% <ul> <li> Amazon AppStream 2.0 product page:
-%% http://aws.amazon.com/appstream2
+%% Amazon AppStream 2.0 product page: http://aws.amazon.com/appstream2
 %%
-%% </li> <li> Amazon AppStream 2.0 documentation:
+%% Amazon AppStream 2.0 documentation:
 %% http://aws.amazon.com/documentation/appstream2
-%%
-%% </li> </ul>
 -module(aws_appstream).
 
 -export([associate_app_block_builder_app_block/2,
@@ -255,11 +252,14 @@ copy_image(Client, Input, Options)
 %% @doc Creates an app block.
 %%
 %% App blocks are an Amazon AppStream 2.0 resource that stores the details
-%% about the virtual hard disk in an S3 bucket. It also stores the setup
-%% script with details about how to mount the virtual hard disk. The virtual
-%% hard disk includes the application binaries and other files necessary to
-%% launch your applications. Multiple applications can be assigned to a
-%% single app block.
+%% about the
+%% virtual hard disk in an S3 bucket. It also stores the setup script with
+%% details about
+%% how to mount the virtual hard disk. The virtual hard disk includes the
+%% application
+%% binaries and other files necessary to launch your applications. Multiple
+%% applications
+%% can be assigned to a single app block.
 %%
 %% This is only supported for Elastic fleets.
 create_app_block(Client, Input)
@@ -288,10 +288,13 @@ create_app_block_builder_streaming_url(Client, Input, Options)
 %% @doc Creates an application.
 %%
 %% Applications are an Amazon AppStream 2.0 resource that stores the details
-%% about how to launch applications on Elastic fleet streaming instances. An
-%% application consists of the launch details, icon, and display name.
-%% Applications are associated with an app block that contains the
-%% application binaries and other files. The applications assigned to an
+%% about how to
+%% launch applications on Elastic fleet streaming instances. An application
+%% consists of the
+%% launch details, icon, and display name. Applications are associated with
+%% an app block
+%% that contains the application binaries and other files. The applications
+%% assigned to an
 %% Elastic fleet are the applications users can launch.
 %%
 %% This is only supported for Elastic fleets.
@@ -315,12 +318,16 @@ create_directory_config(Client, Input, Options)
 
 %% @doc Creates a new entitlement.
 %%
-%% Entitlements control access to specific applications within a stack, based
-%% on user attributes. Entitlements apply to SAML 2.0 federated user
+%% Entitlements control access to specific applications within
+%% a stack, based on user attributes. Entitlements apply to SAML 2.0
+%% federated user
 %% identities. Amazon AppStream 2.0 user pool and streaming URL users are
-%% entitled to all applications in a stack. Entitlements don't apply to
-%% the desktop stream view application, or to applications managed by a
-%% dynamic app provider using the Dynamic Application Framework.
+%% entitled to all
+%% applications in a stack. Entitlements don't apply to the desktop
+%% stream view
+%% application, or to applications managed by a dynamic app provider using
+%% the Dynamic
+%% Application Framework.
 create_entitlement(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_entitlement(Client, Input, []).
@@ -386,9 +393,9 @@ create_streaming_url(Client, Input, Options)
 %% @doc Creates a new image with the latest Windows operating system updates,
 %% driver updates, and AppStream 2.0 agent software.
 %%
-%% For more information, see the &quot;Update an Image by Using Managed
-%% AppStream 2.0 Image Updates&quot; section in Administer Your AppStream 2.0
-%% Images:
+%% For more information, see the &quot;Update an Image by Using
+%% Managed AppStream 2.0 Image Updates&quot; section in Administer Your
+%% AppStream 2.0 Images:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/administer-images.html,
 %% in the Amazon AppStream 2.0 Administration Guide.
 create_updated_image(Client, Input)
@@ -427,7 +434,8 @@ delete_app_block(Client, Input, Options)
 %% @doc Deletes an app block builder.
 %%
 %% An app block builder can only be deleted when it has no association with
-%% an app block.
+%% an app
+%% block.
 delete_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_block_builder(Client, Input, []).
@@ -472,8 +480,9 @@ delete_fleet(Client, Input, Options)
 
 %% @doc Deletes the specified image.
 %%
-%% You cannot delete an image when it is in use. After you delete an image,
-%% you cannot provision new capacity using the image.
+%% You cannot delete an image when it is in use.
+%% After you delete an image, you cannot provision new capacity using the
+%% image.
 delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image(Client, Input, []).
@@ -642,8 +651,9 @@ describe_images(Client, Input, Options)
 %% @doc Retrieves a list that describes the streaming sessions for a
 %% specified stack and fleet.
 %%
-%% If a UserId is provided for the stack and fleet, only streaming sessions
-%% for that user are described. If an authentication type is not provided,
+%% If a UserId is provided for the stack and fleet,
+%% only streaming sessions for that user are described. If an authentication
+%% type is not provided,
 %% the default is to authenticate users using a streaming URL.
 describe_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -676,12 +686,10 @@ describe_usage_report_subscriptions(Client, Input, Options)
 %%
 %% You must specify either or both of the following:
 %%
-%% <ul> <li> The stack name
+%% The stack name
 %%
-%% </li> <li> The user name (email address of the user associated with the
-%% stack) and the authentication type for the user
-%%
-%% </li> </ul>
+%% The user name (email address of the user associated with the stack) and
+%% the authentication type for the user
 describe_user_stack_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_stack_associations(Client, Input, []).
@@ -805,11 +813,12 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Starts an app block builder.
 %%
 %% An app block builder can only be started when it's associated with an
-%% app block.
+%% app
+%% block.
 %%
 %% Starting an app block builder starts a new instance, which is equivalent
-%% to an elastic fleet instance with application builder assistance
-%% functionality.
+%% to an elastic
+%% fleet instance with application builder assistance functionality.
 start_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_app_block_builder(Client, Input, []).
@@ -836,7 +845,8 @@ start_image_builder(Client, Input, Options)
 %% @doc Stops an app block builder.
 %%
 %% Stopping an app block builder terminates the instance, and the instance
-%% state is not persisted.
+%% state is not
+%% persisted.
 stop_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_app_block_builder(Client, Input, []).
@@ -866,11 +876,12 @@ stop_image_builder(Client, Input, Options)
 %% You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 %%
 %% Each tag consists of a key and an optional value. If a resource already
-%% has a tag with the same key, this operation updates its value.
+%% has a tag with the same key,
+%% this operation updates its value.
 %%
 %% To list the current tags for your resources, use
-%% `ListTagsForResource'. To disassociate tags from your resources, use
-%% `UntagResource'.
+%% `ListTagsForResource'.
+%% To disassociate tags from your resources, use `UntagResource'.
 %%
 %% For more information about tags, see Tagging Your Resources:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
@@ -900,11 +911,12 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an app block builder.
 %%
-%% If the app block builder is in the `STARTING' or `STOPPING' state,
-%% you can't update it. If the app block builder is in the `RUNNING'
+%% If the app block builder is in the `STARTING' or `STOPPING'
+%% state, you can't update it. If the app block builder is in the
+%% `RUNNING'
 %% state, you can only update the DisplayName and Description. If the app
-%% block builder is in the `STOPPED' state, you can update any attribute
-%% except the Name.
+%% block builder is
+%% in the `STOPPED' state, you can update any attribute except the Name.
 update_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app_block_builder(Client, Input, []).
@@ -942,26 +954,30 @@ update_entitlement(Client, Input, Options)
 %% @doc Updates the specified fleet.
 %%
 %% If the fleet is in the `STOPPED' state, you can update any attribute
-%% except the fleet name.
+%% except
+%% the fleet name.
 %%
 %% If the fleet is in the `RUNNING' state, you can update the following
-%% based on the fleet type:
+%% based
+%% on the fleet type:
 %%
-%% <ul> <li> Always-On and On-Demand fleet types
+%% Always-On and On-Demand fleet types
 %%
 %% You can update the `DisplayName', `ComputeCapacity',
-%% `ImageARN', `ImageName', `IdleDisconnectTimeoutInSeconds', and
+%% `ImageARN', `ImageName',
+%% `IdleDisconnectTimeoutInSeconds', and
 %% `DisconnectTimeoutInSeconds' attributes.
 %%
-%% </li> <li> Elastic fleet type
+%% Elastic fleet type
 %%
 %% You can update the `DisplayName',
-%% `IdleDisconnectTimeoutInSeconds', `DisconnectTimeoutInSeconds',
-%% `MaxConcurrentSessions', `SessionScriptS3Location' and
-%% `UsbDeviceFilterStrings' attributes.
+%% `IdleDisconnectTimeoutInSeconds',
+%% `DisconnectTimeoutInSeconds', `MaxConcurrentSessions',
+%% `SessionScriptS3Location'
+%% and `UsbDeviceFilterStrings' attributes.
 %%
-%% </li> </ul> If the fleet is in the `STARTING' or `STOPPED' state,
-%% you can't update it.
+%% If the fleet is in the `STARTING' or `STOPPED' state, you
+%% can't update it.
 update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet(Client, Input, []).
@@ -1000,7 +1016,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"appstream">>},
+    Client1 = Client#{service => <<"appstream2">>},
     Host = build_host(<<"appstream2">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -3,12 +3,16 @@
 
 %% @doc Welcome to the Amazon Nimble Studio API reference.
 %%
-%% This API reference provides methods, schema, resources, parameters, and
-%% more to help you get the most out of Nimble Studio.
+%% This API reference provides
+%% methods, schema, resources, parameters, and more to help you get the most
+%% out of Nimble
+%% Studio.
 %%
 %% Nimble Studio is a virtual studio that empowers visual effects, animation,
-%% and interactive content teams to create content securely within a
-%% scalable, private cloud service.
+%% and
+%% interactive content teams to create content securely within a scalable,
+%% private cloud
+%% service.
 -module(aws_nimble).
 
 -export([accept_eulas/3,
@@ -146,10 +150,12 @@ accept_eulas(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/eula-acceptances"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -171,10 +177,12 @@ create_launch_profile(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -196,10 +204,12 @@ create_streaming_image(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -217,17 +227,20 @@ create_streaming_image(Client, StudioId, Input0, Options0) ->
 %% @doc Creates a streaming session in a studio.
 %%
 %% After invoking this operation, you must poll GetStreamingSession until the
-%% streaming session is in the `READY' state.
+%% streaming
+%% session is in the `READY' state.
 create_streaming_session(Client, StudioId, Input) ->
     create_streaming_session(Client, StudioId, Input, []).
 create_streaming_session(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -245,18 +258,20 @@ create_streaming_session(Client, StudioId, Input0, Options0) ->
 %% @doc Creates a streaming session stream for a streaming session.
 %%
 %% After invoking this API, invoke GetStreamingSessionStream with the
-%% returned streamId to poll the resource until it is in the `READY'
-%% state.
+%% returned streamId
+%% to poll the resource until it is in the `READY' state.
 create_streaming_session_stream(Client, SessionId, StudioId, Input) ->
     create_streaming_session_stream(Client, SessionId, StudioId, Input, []).
 create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/streams"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -273,12 +288,13 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
 
 %% @doc Create a new studio.
 %%
-%% When creating a studio, two IAM roles must be provided: the admin role and
-%% the user role. These roles are assumed by your users when they log in to
-%% the Nimble Studio portal.
+%% When creating a studio, two IAM roles must be provided: the admin role
+%% and the user role. These roles are assumed by your users when they log in
+%% to the Nimble Studio portal.
 %%
 %% The user role must have the `AmazonNimbleStudio-StudioUser' managed
-%% policy attached for the portal to function properly.
+%% policy
+%% attached for the portal to function properly.
 %%
 %% The admin role must have the `AmazonNimbleStudio-StudioAdmin' managed
 %% policy attached for the portal to function properly.
@@ -287,17 +303,24 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
 %% `StudioEncryptionConfiguration'.
 %%
 %% In Nimble Studio, resource names, descriptions, initialization scripts,
-%% and other data you provide are always encrypted at rest using an KMS key.
-%% By default, this key is owned by Amazon Web Services and managed on your
-%% behalf. You may provide your own KMS key when calling `CreateStudio'
-%% to encrypt this data using a key you own and manage.
+%% and other
+%% data you provide are always encrypted at rest using an KMS key. By
+%% default, this key is
+%% owned by Amazon Web Services and managed on your behalf. You may provide
+%% your own KMS key
+%% when calling `CreateStudio' to encrypt this data using a key you own
+%% and
+%% manage.
 %%
 %% When providing an KMS key during studio creation, Nimble Studio creates
-%% KMS grants in your account to provide your studio user and admin roles
-%% access to these KMS keys.
+%% KMS
+%% grants in your account to provide your studio user and admin roles access
+%% to these KMS
+%% keys.
 %%
 %% If you delete this grant, the studio will no longer be accessible to your
-%% portal users.
+%% portal
+%% users.
 %%
 %% If you delete the studio KMS key, your studio will no longer be
 %% accessible.
@@ -307,10 +330,12 @@ create_studio(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -332,10 +357,12 @@ create_studio_component(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -357,10 +384,12 @@ delete_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -382,10 +411,12 @@ delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -407,10 +438,12 @@ delete_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -428,20 +461,24 @@ delete_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
 %% @doc Deletes streaming session resource.
 %%
 %% After invoking this operation, use GetStreamingSession to poll the
-%% resource until it transitions to a `DELETED' state.
+%% resource until it
+%% transitions to a `DELETED' state.
 %%
 %% A streaming session will count against your streaming session quota until
-%% it is marked `DELETED'.
+%% it is marked
+%% `DELETED'.
 delete_streaming_session(Client, SessionId, StudioId, Input) ->
     delete_streaming_session(Client, SessionId, StudioId, Input, []).
 delete_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -463,10 +500,12 @@ delete_studio(Client, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -488,10 +527,12 @@ delete_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) -
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -513,10 +554,12 @@ delete_studio_member(Client, PrincipalId, StudioId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -544,9 +587,11 @@ get_eula(Client, EulaId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/eulas/", aws_util:encode_uri(EulaId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -567,9 +612,11 @@ get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, Opti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -578,12 +625,13 @@ get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Launch profile details include the launch profile resource and
-%% summary information of resources that are used by, or available to, the
-%% launch profile.
+%% summary information of
+%% resources that are used by, or available to, the launch profile.
 %%
-%% This includes the name and description of all studio components used by
-%% the launch profiles, and the name and description of streaming images that
-%% can be used with this launch profile.
+%% This includes the name
+%% and description of all studio components used by the launch profiles, and
+%% the name and
+%% description of streaming images that can be used with this launch profile.
 get_launch_profile_details(Client, LaunchProfileId, StudioId)
   when is_map(Client) ->
     get_launch_profile_details(Client, LaunchProfileId, StudioId, #{}, #{}).
@@ -596,9 +644,11 @@ get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/details"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -619,9 +669,11 @@ get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfi
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/init"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -648,9 +700,11 @@ get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -671,9 +725,11 @@ get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, Op
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -684,7 +740,8 @@ get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, Op
 %% @doc Gets StreamingSession resource.
 %%
 %% Invoke this operation to poll for a streaming session state while creating
-%% or deleting a session.
+%% or deleting
+%% a session.
 get_streaming_session(Client, SessionId, StudioId)
   when is_map(Client) ->
     get_streaming_session(Client, SessionId, StudioId, #{}, #{}).
@@ -697,9 +754,11 @@ get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -710,7 +769,8 @@ get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, Options
 %% @doc Gets `StreamingSessionBackup' resource.
 %%
 %% Invoke this operation to poll for a streaming session backup while
-%% stopping a streaming session.
+%% stopping a
+%% streaming session.
 get_streaming_session_backup(Client, BackupId, StudioId)
   when is_map(Client) ->
     get_streaming_session_backup(Client, BackupId, StudioId, #{}, #{}).
@@ -723,9 +783,11 @@ get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-session-backups/", aws_util:encode_uri(BackupId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -753,9 +815,11 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -776,9 +840,11 @@ get_studio(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -799,9 +865,11 @@ get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -822,9 +890,11 @@ get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -845,9 +915,11 @@ list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/eula-acceptances"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -873,9 +945,11 @@ list_eulas(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/eulas"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -901,9 +975,11 @@ list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -929,9 +1005,11 @@ list_launch_profiles(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -949,7 +1027,8 @@ list_launch_profiles(Client, StudioId, QueryMap, HeadersMap, Options0)
 %% @doc List the streaming image resources available to this studio.
 %%
 %% This list will contain both images provided by Amazon Web Services, as
-%% well as streaming images that you have created in your studio.
+%% well as
+%% streaming images that you have created in your studio.
 list_streaming_images(Client, StudioId)
   when is_map(Client) ->
     list_streaming_images(Client, StudioId, #{}, #{}).
@@ -962,9 +1041,11 @@ list_streaming_images(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -990,9 +1071,11 @@ list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-session-backups"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1018,9 +1101,11 @@ list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1048,9 +1133,11 @@ list_studio_components(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1080,9 +1167,11 @@ list_studio_members(Client, StudioId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1109,9 +1198,11 @@ list_studios(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/studios"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1126,10 +1217,12 @@ list_studios(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets the tags for a resource, given its Amazon Resource Names (ARN).
 %%
 %% This operation supports ARNs for all resource types in Nimble Studio that
-%% support tags, including studio, studio component, launch profile,
-%% streaming image, and streaming session. All resources that can be tagged
-%% will contain an ARN property, so you do not have to create this ARN
-%% yourself.
+%% support
+%% tags, including studio, studio component, launch profile, streaming image,
+%% and streaming
+%% session. All resources that can be tagged will contain an ARN property, so
+%% you do not
+%% have to create this ARN yourself.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1142,9 +1235,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1159,10 +1254,12 @@ put_launch_profile_members(Client, LaunchProfileId, StudioId, Input0, Options0) 
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1184,10 +1281,12 @@ put_studio_members(Client, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1203,7 +1302,8 @@ put_studio_members(Client, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Transitions sessions from the `STOPPED' state into the
-%% `READY' state.
+%% `READY'
+%% state.
 %%
 %% The `START_IN_PROGRESS' state is the intermediate state between the
 %% `STOPPED' and `READY' states.
@@ -1213,10 +1313,12 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1234,12 +1336,14 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 %% @doc Repairs the IAM Identity Center configuration for a given studio.
 %%
 %% If the studio has a valid IAM Identity Center configuration currently
-%% associated with it, this operation will fail with a validation error.
+%% associated with
+%% it, this operation will fail with a validation error.
 %%
 %% If the studio does not have a valid IAM Identity Center configuration
-%% currently associated with it, then a new IAM Identity Center application
-%% is created for the studio and the studio is changed to the `READY'
-%% state.
+%% currently
+%% associated with it, then a new IAM Identity Center application is created
+%% for the studio
+%% and the studio is changed to the `READY' state.
 %%
 %% After the IAM Identity Center application is repaired, you must use the
 %% Amazon Nimble Studio console to add administrators and users to your
@@ -1250,10 +1354,12 @@ start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
     Method = put,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/sso-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1269,7 +1375,8 @@ start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Transitions sessions from the `READY' state into the
-%% `STOPPED' state.
+%% `STOPPED'
+%% state.
 %%
 %% The `STOP_IN_PROGRESS' state is the intermediate state between the
 %% `READY' and `STOPPED' states.
@@ -1279,10 +1386,12 @@ stop_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/stop"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1304,10 +1413,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1327,10 +1438,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1351,10 +1464,12 @@ update_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1376,10 +1491,12 @@ update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1401,10 +1518,12 @@ update_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1429,10 +1548,12 @@ update_studio(Client, StudioId, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1454,10 +1575,12 @@ update_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) -
     Method = patch,
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1475,6 +1598,11 @@ update_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) -
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -5,11 +5,12 @@
 %%
 %% This is the Well-Architected Tool API Reference.
 %%
-%% The WA Tool API provides programmatic access to the Well-Architected Tool:
-%% http://aws.amazon.com/well-architected-tool in the Amazon Web Services
-%% Management Console: https://console.aws.amazon.com/wellarchitected. For
-%% information about the Well-Architected Tool, see the Well-Architected Tool
-%% User Guide:
+%% The WA Tool API provides programmatic access to the
+%% Well-Architected Tool: http://aws.amazon.com/well-architected-tool in the
+%% Amazon Web Services Management Console:
+%% https://console.aws.amazon.com/wellarchitected. For information
+%% about the Well-Architected Tool, see the
+%% Well-Architected Tool User Guide:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html.
 -module(aws_wellarchitected).
 
@@ -191,24 +192,29 @@
 %% @doc Associate a lens to a workload.
 %%
 %% Up to 10 lenses can be associated with a workload in a single API
-%% operation. A maximum of 20 lenses can be associated with a workload.
+%% operation. A
+%% maximum of 20 lenses can be associated with a workload.
 %%
 %% Disclaimer
 %%
 %% By accessing and/or applying custom lenses created by another Amazon Web
-%% Services user or account, you acknowledge that custom lenses created by
-%% other users and shared with you are Third Party Content as defined in the
-%% Amazon Web Services Customer Agreement.
+%% Services user or account,
+%% you acknowledge that custom lenses created by other users and shared with
+%% you are
+%% Third Party Content as defined in the Amazon Web Services Customer
+%% Agreement.
 associate_lenses(Client, WorkloadId, Input) ->
     associate_lenses(Client, WorkloadId, Input, []).
 associate_lenses(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/associateLenses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -227,11 +233,13 @@ associate_profiles(Client, WorkloadId, Input) ->
 associate_profiles(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/associateProfiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -247,38 +255,44 @@ associate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% @doc Create a lens share.
 %%
 %% The owner of a lens can share it with other Amazon Web Services accounts,
-%% users, an organization, and organizational units (OUs) in the same Amazon
-%% Web Services Region. Lenses provided by Amazon Web Services (Amazon Web
-%% Services Official Content) cannot be shared.
+%% users, an organization,
+%% and organizational units (OUs) in the same Amazon Web Services Region.
+%% Lenses provided by Amazon Web Services (Amazon Web Services Official
+%% Content) cannot be shared.
 %%
 %% Shared access to a lens is not removed until the lens invitation is
 %% deleted.
 %%
 %% If you share a lens with an organization or OU, all accounts in the
-%% organization or OU are granted access to the lens.
+%% organization or OU
+%% are granted access to the lens.
 %%
 %% For more information, see Sharing a custom lens:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-sharing.html
-%% in the Well-Architected Tool User Guide.
+%% in the
+%% Well-Architected Tool User Guide.
 %%
 %% Disclaimer
 %%
-%% By sharing your custom lenses with other Amazon Web Services accounts, you
-%% acknowledge that Amazon Web Services will make your custom lenses
-%% available to those other accounts. Those other accounts may continue to
-%% access and use your shared custom lenses even if you delete the custom
-%% lenses from your own Amazon Web Services account or terminate your Amazon
-%% Web Services account.
+%% By sharing your custom lenses with other Amazon Web Services accounts,
+%% you acknowledge that Amazon Web Services will make your custom lenses
+%% available to those
+%% other accounts. Those other accounts may continue to access and use your
+%% shared custom lenses even if you delete the custom lenses
+%% from your own Amazon Web Services account or terminate
+%% your Amazon Web Services account.
 create_lens_share(Client, LensAlias, Input) ->
     create_lens_share(Client, LensAlias, Input, []).
 create_lens_share(Client, LensAlias, Input0, Options0) ->
     Method = post,
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/shares"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -296,20 +310,23 @@ create_lens_share(Client, LensAlias, Input0, Options0) ->
 %% A lens can have up to 100 versions.
 %%
 %% Use this operation to publish a new lens version after you have imported a
-%% lens. The `LensAlias' is used to identify the lens to be published.
-%% The owner of a lens can share the lens with other Amazon Web Services
-%% accounts and users in the same Amazon Web Services Region. Only the owner
-%% of a lens can delete it.
+%% lens. The `LensAlias'
+%% is used to identify the lens to be published.
+%% The owner of a lens can share the lens with other
+%% Amazon Web Services accounts and users in the same Amazon Web Services
+%% Region. Only the owner of a lens can delete it.
 create_lens_version(Client, LensAlias, Input) ->
     create_lens_version(Client, LensAlias, Input, []).
 create_lens_version(Client, LensAlias, Input0, Options0) ->
     Method = post,
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -328,11 +345,13 @@ create_milestone(Client, WorkloadId, Input) ->
 create_milestone(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestones"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -351,11 +370,13 @@ create_profile(Client, Input) ->
 create_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -374,11 +395,13 @@ create_profile_share(Client, ProfileArn, Input) ->
 create_profile_share(Client, ProfileArn, Input0, Options0) ->
     Method = post,
     Path = ["/profiles/", aws_util:encode_uri(ProfileArn), "/shares"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -396,22 +419,28 @@ create_profile_share(Client, ProfileArn, Input0, Options0) ->
 %% Disclaimer
 %%
 %% Do not include or gather personal identifiable information (PII) of end
-%% users or other identifiable individuals in or via your review templates.
-%% If your review template or those shared with you and used in your account
-%% do include or collect PII you are responsible for: ensuring that the
-%% included PII is processed in accordance with applicable law, providing
-%% adequate privacy notices, and obtaining necessary consents for processing
-%% such data.
+%% users or
+%% other identifiable individuals in or via your review templates. If your
+%% review
+%% template or those shared with you and used in your account do include or
+%% collect PII
+%% you are responsible for: ensuring that the included PII is processed in
+%% accordance
+%% with applicable law, providing adequate privacy notices, and obtaining
+%% necessary
+%% consents for processing such data.
 create_review_template(Client, Input) ->
     create_review_template(Client, Input, []).
 create_review_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reviewTemplates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -427,30 +456,37 @@ create_review_template(Client, Input0, Options0) ->
 %% @doc Create a review template share.
 %%
 %% The owner of a review template can share it with other Amazon Web Services
-%% accounts, users, an organization, and organizational units (OUs) in the
-%% same Amazon Web Services Region.
+%% accounts,
+%% users, an organization, and organizational units (OUs) in the same Amazon
+%% Web Services Region.
 %%
 %% Shared access to a review template is not removed until the review
-%% template share invitation is deleted.
+%% template share
+%% invitation is deleted.
 %%
 %% If you share a review template with an organization or OU, all accounts in
-%% the organization or OU are granted access to the review template.
+%% the
+%% organization or OU are granted access to the review template.
 %%
 %% Disclaimer
 %%
 %% By sharing your review template with other Amazon Web Services accounts,
-%% you acknowledge that Amazon Web Services will make your review template
-%% available to those other accounts.
+%% you
+%% acknowledge that Amazon Web Services will make your review template
+%% available to
+%% those other accounts.
 create_template_share(Client, TemplateArn, Input) ->
     create_template_share(Client, TemplateArn, Input, []).
 create_template_share(Client, TemplateArn, Input0, Options0) ->
     Method = post,
     Path = ["/templates/shares/", aws_util:encode_uri(TemplateArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -466,42 +502,45 @@ create_template_share(Client, TemplateArn, Input0, Options0) ->
 %% @doc Create a new workload.
 %%
 %% The owner of a workload can share the workload with other Amazon Web
-%% Services accounts, users, an organization, and organizational units (OUs)
+%% Services accounts, users,
+%% an organization, and organizational units (OUs)
 %% in the same Amazon Web Services Region. Only the owner of a workload can
 %% delete it.
 %%
 %% For more information, see Defining a Workload:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/define-workload.html
-%% in the Well-Architected Tool User Guide.
+%% in the
+%% Well-Architected Tool User Guide.
 %%
 %% Either `AwsRegions', `NonAwsRegions', or both must be specified
-%% when creating a workload.
+%% when
+%% creating a workload.
 %%
-%% You also must specify `ReviewOwner', even though the parameter is
-%% listed as not being required in the following section.
+%% You also must specify `ReviewOwner', even though the
+%% parameter is listed as not being required in the following section.
 %%
 %% When creating a workload using a review template, you must have the
 %% following IAM permissions:
 %%
-%% <ul> <li> `wellarchitected:GetReviewTemplate'
+%% `wellarchitected:GetReviewTemplate'
 %%
-%% </li> <li> `wellarchitected:GetReviewTemplateAnswer'
+%% `wellarchitected:GetReviewTemplateAnswer'
 %%
-%% </li> <li> `wellarchitected:ListReviewTemplateAnswers'
+%% `wellarchitected:ListReviewTemplateAnswers'
 %%
-%% </li> <li> `wellarchitected:GetReviewTemplateLensReview'
-%%
-%% </li> </ul>
+%% `wellarchitected:GetReviewTemplateLensReview'
 create_workload(Client, Input) ->
     create_workload(Client, Input, []).
 create_workload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workloads"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -517,25 +556,31 @@ create_workload(Client, Input0, Options0) ->
 %% @doc Create a workload share.
 %%
 %% The owner of a workload can share it with other Amazon Web Services
-%% accounts and users in the same Amazon Web Services Region. Shared access
-%% to a workload is not removed until the workload invitation is deleted.
+%% accounts and users in the same
+%% Amazon Web Services Region. Shared access to a workload is not removed
+%% until the workload invitation is
+%% deleted.
 %%
 %% If you share a workload with an organization or OU, all accounts in the
-%% organization or OU are granted access to the workload.
+%% organization or OU
+%% are granted access to the workload.
 %%
 %% For more information, see Sharing a workload:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads-sharing.html
-%% in the Well-Architected Tool User Guide.
+%% in the
+%% Well-Architected Tool User Guide.
 create_workload_share(Client, WorkloadId, Input) ->
     create_workload_share(Client, WorkloadId, Input, []).
 create_workload_share(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -551,27 +596,31 @@ create_workload_share(Client, WorkloadId, Input0, Options0) ->
 %% @doc Delete an existing lens.
 %%
 %% Only the owner of a lens can delete it. After the lens is deleted, Amazon
-%% Web Services accounts and users that you shared the lens with can continue
-%% to use it, but they will no longer be able to apply it to new workloads.
+%% Web Services accounts and users
+%% that you shared the lens with can continue to use it, but they will no
+%% longer be able to apply it to new workloads.
 %%
 %% Disclaimer
 %%
-%% By sharing your custom lenses with other Amazon Web Services accounts, you
-%% acknowledge that Amazon Web Services will make your custom lenses
-%% available to those other accounts. Those other accounts may continue to
-%% access and use your shared custom lenses even if you delete the custom
-%% lenses from your own Amazon Web Services account or terminate your Amazon
-%% Web Services account.
+%% By sharing your custom lenses with other Amazon Web Services accounts,
+%% you acknowledge that Amazon Web Services will make your custom lenses
+%% available to those
+%% other accounts. Those other accounts may continue to access and use your
+%% shared custom lenses even if you delete the custom lenses
+%% from your own Amazon Web Services account or terminate
+%% your Amazon Web Services account.
 delete_lens(Client, LensAlias, Input) ->
     delete_lens(Client, LensAlias, Input, []).
 delete_lens(Client, LensAlias, Input0, Options0) ->
     Method = delete,
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -589,28 +638,32 @@ delete_lens(Client, LensAlias, Input0, Options0) ->
 %% @doc Delete a lens share.
 %%
 %% After the lens share is deleted, Amazon Web Services accounts, users,
-%% organizations, and organizational units (OUs) that you shared the lens
-%% with can continue to use it, but they will no longer be able to apply it
-%% to new workloads.
+%% organizations,
+%% and organizational units (OUs)
+%% that you shared the lens with can continue to use it, but they will no
+%% longer be able to apply it to new workloads.
 %%
 %% Disclaimer
 %%
-%% By sharing your custom lenses with other Amazon Web Services accounts, you
-%% acknowledge that Amazon Web Services will make your custom lenses
-%% available to those other accounts. Those other accounts may continue to
-%% access and use your shared custom lenses even if you delete the custom
-%% lenses from your own Amazon Web Services account or terminate your Amazon
-%% Web Services account.
+%% By sharing your custom lenses with other Amazon Web Services accounts,
+%% you acknowledge that Amazon Web Services will make your custom lenses
+%% available to those
+%% other accounts. Those other accounts may continue to access and use your
+%% shared custom lenses even if you delete the custom lenses
+%% from your own Amazon Web Services account or terminate
+%% your Amazon Web Services account.
 delete_lens_share(Client, LensAlias, ShareId, Input) ->
     delete_lens_share(Client, LensAlias, ShareId, Input, []).
 delete_lens_share(Client, LensAlias, ShareId, Input0, Options0) ->
     Method = delete,
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/shares/", aws_util:encode_uri(ShareId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -628,21 +681,25 @@ delete_lens_share(Client, LensAlias, ShareId, Input0, Options0) ->
 %%
 %% Disclaimer
 %%
-%% By sharing your profile with other Amazon Web Services accounts, you
-%% acknowledge that Amazon Web Services will make your profile available to
-%% those other accounts. Those other accounts may continue to access and use
-%% your shared profile even if you delete the profile from your own Amazon
-%% Web Services account or terminate your Amazon Web Services account.
+%% By sharing your profile with other Amazon Web Services accounts,
+%% you acknowledge that Amazon Web Services will make your profile available
+%% to those
+%% other accounts. Those other accounts may continue to access and use your
+%% shared profile even if you delete the profile
+%% from your own Amazon Web Services account or terminate
+%% your Amazon Web Services account.
 delete_profile(Client, ProfileArn, Input) ->
     delete_profile(Client, ProfileArn, Input, []).
 delete_profile(Client, ProfileArn, Input0, Options0) ->
     Method = delete,
     Path = ["/profiles/", aws_util:encode_uri(ProfileArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -662,11 +719,13 @@ delete_profile_share(Client, ProfileArn, ShareId, Input) ->
 delete_profile_share(Client, ProfileArn, ShareId, Input0, Options0) ->
     Method = delete,
     Path = ["/profiles/", aws_util:encode_uri(ProfileArn), "/shares/", aws_util:encode_uri(ShareId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -686,17 +745,20 @@ delete_profile_share(Client, ProfileArn, ShareId, Input0, Options0) ->
 %%
 %% After the review template is deleted, Amazon Web Services accounts, users,
 %% organizations, and organizational units (OUs) that you shared the review
-%% template with will no longer be able to apply it to new workloads.
+%% template with
+%% will no longer be able to apply it to new workloads.
 delete_review_template(Client, TemplateArn, Input) ->
     delete_review_template(Client, TemplateArn, Input, []).
 delete_review_template(Client, TemplateArn, Input0, Options0) ->
     Method = delete,
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -713,18 +775,22 @@ delete_review_template(Client, TemplateArn, Input0, Options0) ->
 %% @doc Delete a review template share.
 %%
 %% After the review template share is deleted, Amazon Web Services accounts,
-%% users, organizations, and organizational units (OUs) that you shared the
-%% review template with will no longer be able to apply it to new workloads.
+%% users,
+%% organizations, and organizational units (OUs) that you shared the review
+%% template with
+%% will no longer be able to apply it to new workloads.
 delete_template_share(Client, ShareId, TemplateArn, Input) ->
     delete_template_share(Client, ShareId, TemplateArn, Input, []).
 delete_template_share(Client, ShareId, TemplateArn, Input0, Options0) ->
     Method = delete,
     Path = ["/templates/shares/", aws_util:encode_uri(TemplateArn), "/", aws_util:encode_uri(ShareId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -744,11 +810,13 @@ delete_workload(Client, WorkloadId, Input) ->
 delete_workload(Client, WorkloadId, Input0, Options0) ->
     Method = delete,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -768,11 +836,13 @@ delete_workload_share(Client, ShareId, WorkloadId, Input) ->
 delete_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
     Method = delete,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares/", aws_util:encode_uri(ShareId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -792,17 +862,20 @@ delete_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
 %% operation.
 %%
 %% The Amazon Web Services Well-Architected Framework lens
-%% (`wellarchitected') cannot be removed from a workload.
+%% (`wellarchitected') cannot be
+%% removed from a workload.
 disassociate_lenses(Client, WorkloadId, Input) ->
     disassociate_lenses(Client, WorkloadId, Input, []).
 disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/disassociateLenses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -821,11 +894,13 @@ disassociate_profiles(Client, WorkloadId, Input) ->
 disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/disassociateProfiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -841,7 +916,8 @@ disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% @doc Export an existing lens.
 %%
 %% Only the owner of a lens can export it. Lenses provided by Amazon Web
-%% Services (Amazon Web Services Official Content) cannot be exported.
+%% Services (Amazon Web Services Official Content)
+%% cannot be exported.
 %%
 %% Lenses are defined in JSON. For more information, see JSON format
 %% specification:
@@ -851,12 +927,16 @@ disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% Disclaimer
 %%
 %% Do not include or gather personal identifiable information (PII) of end
-%% users or other identifiable individuals in or via your custom lenses. If
-%% your custom lens or those shared with you and used in your account do
-%% include or collect PII you are responsible for: ensuring that the included
-%% PII is processed in accordance with applicable law, providing adequate
-%% privacy notices, and obtaining necessary consents for processing such
-%% data.
+%% users or
+%% other identifiable individuals in or via your custom lenses. If your
+%% custom
+%% lens or those shared with you and used in your account do include or
+%% collect
+%% PII you are responsible for: ensuring that the included PII is processed
+%% in accordance
+%% with applicable law, providing adequate privacy notices, and obtaining
+%% necessary
+%% consents for processing such data.
 export_lens(Client, LensAlias)
   when is_map(Client) ->
     export_lens(Client, LensAlias, #{}, #{}).
@@ -868,10 +948,12 @@ export_lens(Client, LensAlias, QueryMap, HeadersMap)
 export_lens(Client, LensAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/export"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -895,10 +977,12 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap)
 get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -925,10 +1009,12 @@ get_consolidated_report(Client, Format, QueryMap, HeadersMap)
 get_consolidated_report(Client, Format, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/consolidatedReport"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -955,10 +1041,12 @@ get_lens(Client, LensAlias, QueryMap, HeadersMap)
 get_lens(Client, LensAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -982,10 +1070,12 @@ get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
 get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1009,10 +1099,12 @@ get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
 get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/report"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1036,10 +1128,12 @@ get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap)
 get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/versionDifference"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1064,10 +1158,12 @@ get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap)
 get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestones/", aws_util:encode_uri(MilestoneNumber), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1087,10 +1183,12 @@ get_profile(Client, ProfileArn, QueryMap, HeadersMap)
 get_profile(Client, ProfileArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profiles/", aws_util:encode_uri(ProfileArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1114,10 +1212,12 @@ get_profile_template(Client, QueryMap, HeadersMap)
 get_profile_template(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profileTemplate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1137,10 +1237,12 @@ get_review_template(Client, TemplateArn, QueryMap, HeadersMap)
 get_review_template(Client, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1160,10 +1262,12 @@ get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap,
 get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1183,10 +1287,12 @@ get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, Header
 get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1206,10 +1312,12 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap)
 get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1220,11 +1328,14 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 %% @doc Import a new custom lens or update an existing custom lens.
 %%
 %% To update an existing custom lens, specify its ARN as the `LensAlias'.
-%% If no ARN is specified, a new custom lens is created.
+%% If
+%% no ARN is specified, a new custom lens is created.
 %%
 %% The new or updated lens will have a status of `DRAFT'. The lens cannot
-%% be applied to workloads or shared with other Amazon Web Services accounts
-%% until it's published with `CreateLensVersion'.
+%% be
+%% applied to workloads or shared with other Amazon Web Services accounts
+%% until it's
+%% published with `CreateLensVersion'.
 %%
 %% Lenses are defined in JSON. For more information, see JSON format
 %% specification:
@@ -1236,22 +1347,28 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 %% Disclaimer
 %%
 %% Do not include or gather personal identifiable information (PII) of end
-%% users or other identifiable individuals in or via your custom lenses. If
-%% your custom lens or those shared with you and used in your account do
-%% include or collect PII you are responsible for: ensuring that the included
-%% PII is processed in accordance with applicable law, providing adequate
-%% privacy notices, and obtaining necessary consents for processing such
-%% data.
+%% users or
+%% other identifiable individuals in or via your custom lenses. If your
+%% custom
+%% lens or those shared with you and used in your account do include or
+%% collect
+%% PII you are responsible for: ensuring that the included PII is processed
+%% in accordance
+%% with applicable law, providing adequate privacy notices, and obtaining
+%% necessary
+%% consents for processing such data.
 import_lens(Client, Input) ->
     import_lens(Client, Input, []).
 import_lens(Client, Input0, Options0) ->
     Method = put,
     Path = ["/importLens"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1276,10 +1393,12 @@ list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
 list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1302,11 +1421,13 @@ list_check_details(Client, WorkloadId, Input) ->
 list_check_details(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/checks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1326,11 +1447,13 @@ list_check_summaries(Client, WorkloadId, Input) ->
 list_check_summaries(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/checkSummaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1355,10 +1478,12 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMa
 list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/improvements"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1386,10 +1511,12 @@ list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap)
 list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1415,10 +1542,12 @@ list_lens_shares(Client, LensAlias, QueryMap, HeadersMap)
 list_lens_shares(Client, LensAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/shares"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1445,10 +1574,12 @@ list_lenses(Client, QueryMap, HeadersMap)
 list_lenses(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1470,11 +1601,13 @@ list_milestones(Client, WorkloadId, Input) ->
 list_milestones(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestonesSummaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1493,11 +1626,13 @@ list_notifications(Client, Input) ->
 list_notifications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/notifications"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1521,11 +1656,13 @@ list_profile_notifications(Client, QueryMap, HeadersMap)
 
 list_profile_notifications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/profileNotifications/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/profileNotifications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1551,10 +1688,12 @@ list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap)
 list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profiles/", aws_util:encode_uri(ProfileArn), "/shares"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1581,10 +1720,12 @@ list_profiles(Client, QueryMap, HeadersMap)
 list_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profileSummaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1611,10 +1752,12 @@ list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMa
 list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1640,10 +1783,12 @@ list_review_templates(Client, QueryMap, HeadersMap)
 list_review_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reviewTemplates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1658,9 +1803,9 @@ list_review_templates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the share invitations.
 %%
-%% `WorkloadNamePrefix', `LensNamePrefix', `ProfileNamePrefix',
-%% and `TemplateNamePrefix' are mutually exclusive. Use the parameter
-%% that matches your `ShareResourceType'.
+%% `WorkloadNamePrefix', `LensNamePrefix',
+%% `ProfileNamePrefix', and `TemplateNamePrefix' are mutually
+%% exclusive. Use the parameter that matches your `ShareResourceType'.
 list_share_invitations(Client)
   when is_map(Client) ->
     list_share_invitations(Client, #{}, #{}).
@@ -1672,10 +1817,12 @@ list_share_invitations(Client, QueryMap, HeadersMap)
 list_share_invitations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/shareInvitations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1708,10 +1855,12 @@ list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(WorkloadArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1731,10 +1880,12 @@ list_template_shares(Client, TemplateArn, QueryMap, HeadersMap)
 list_template_shares(Client, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/shares/", aws_util:encode_uri(TemplateArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1761,10 +1912,12 @@ list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap)
 list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1785,11 +1938,13 @@ list_workloads(Client, Input) ->
 list_workloads(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workloadsSummaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1811,11 +1966,13 @@ tag_resource(Client, WorkloadArn, Input) ->
 tag_resource(Client, WorkloadArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(WorkloadArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1841,11 +1998,13 @@ untag_resource(Client, WorkloadArn, Input) ->
 untag_resource(Client, WorkloadArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(WorkloadArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1865,11 +2024,13 @@ update_answer(Client, LensAlias, QuestionId, WorkloadId, Input) ->
 update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1889,11 +2050,13 @@ update_global_settings(Client, Input) ->
 update_global_settings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/global-settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1912,11 +2075,13 @@ update_lens_review(Client, LensAlias, WorkloadId, Input) ->
 update_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1935,11 +2100,13 @@ update_profile(Client, ProfileArn, Input) ->
 update_profile(Client, ProfileArn, Input0, Options0) ->
     Method = patch,
     Path = ["/profiles/", aws_util:encode_uri(ProfileArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1958,11 +2125,13 @@ update_review_template(Client, TemplateArn, Input) ->
 update_review_template(Client, TemplateArn, Input0, Options0) ->
     Method = patch,
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1981,11 +2150,13 @@ update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input)
 update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input0, Options0) ->
     Method = patch,
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2004,11 +2175,13 @@ update_review_template_lens_review(Client, LensAlias, TemplateArn, Input) ->
 update_review_template_lens_review(Client, LensAlias, TemplateArn, Input0, Options0) ->
     Method = patch,
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2030,11 +2203,13 @@ update_share_invitation(Client, ShareInvitationId, Input) ->
 update_share_invitation(Client, ShareInvitationId, Input0, Options0) ->
     Method = patch,
     Path = ["/shareInvitations/", aws_util:encode_uri(ShareInvitationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2053,11 +2228,13 @@ update_workload(Client, WorkloadId, Input) ->
 update_workload(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2076,11 +2253,13 @@ update_workload_share(Client, ShareId, WorkloadId, Input) ->
 update_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares/", aws_util:encode_uri(ShareId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2099,11 +2278,13 @@ upgrade_lens_review(Client, LensAlias, WorkloadId, Input) ->
 upgrade_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
     Method = put,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/upgrade"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2122,11 +2303,13 @@ upgrade_profile_version(Client, ProfileArn, WorkloadId, Input) ->
 upgrade_profile_version(Client, ProfileArn, WorkloadId, Input0, Options0) ->
     Method = put,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/profiles/", aws_util:encode_uri(ProfileArn), "/upgrade"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2145,11 +2328,13 @@ upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input) ->
 upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input0, Options0) ->
     Method = put,
     Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/upgrade"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2165,6 +2350,11 @@ upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input0, Opti
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

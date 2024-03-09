@@ -2,25 +2,27 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use the Amazon Web Services Cost and Usage Report API to
-%% programmatically create, query, and delete Amazon Web Services Cost and
-%% Usage Report definitions.
+%% programmatically create, query, and delete
+%% Amazon Web Services Cost and Usage Report definitions.
 %%
 %% Amazon Web Services Cost and Usage Report track the monthly Amazon Web
-%% Services costs and usage associated with your Amazon Web Services account.
+%% Services costs and usage
+%% associated with your Amazon Web Services account.
+%%
 %% The report contains line items for each unique combination of Amazon Web
-%% Services product, usage type, and operation that your Amazon Web Services
-%% account uses. You can configure the Amazon Web Services Cost and Usage
-%% Report to show only the data that you want, using the Amazon Web Services
-%% Cost and Usage Report API.
+%% Services product,
+%% usage type, and operation that your Amazon Web Services account uses.
+%%
+%% You can configure the Amazon Web Services Cost and Usage Report to show
+%% only the data that you want, using the
+%% Amazon Web Services Cost and Usage Report API.
 %%
 %% Service Endpoint
 %%
 %% The Amazon Web Services Cost and Usage Report API provides the following
 %% endpoint:
 %%
-%% <ul> <li> cur.us-east-1.amazonaws.com
-%%
-%% </li> </ul>
+%% cur.us-east-1.amazonaws.com
 -module(aws_cost_and_usage_report).
 
 -export([delete_report_definition/2,
@@ -46,7 +48,8 @@
 
 %% @doc Deletes the specified report.
 %%
-%% Any tags associated with the report are also deleted.
+%% Any tags associated with the report are also
+%% deleted.
 delete_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report_definition(Client, Input, []).

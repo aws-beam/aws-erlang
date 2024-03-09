@@ -4,13 +4,15 @@
 %% @doc IoT data
 %%
 %% IoT data enables secure, bi-directional communication between
-%% Internet-connected things (such as sensors, actuators, embedded devices,
-%% or smart appliances) and the Amazon Web Services cloud.
+%% Internet-connected things (such as sensors,
+%% actuators, embedded devices, or smart appliances) and the Amazon Web
+%% Services cloud.
 %%
-%% It implements a broker for applications and things to publish messages
-%% over HTTP (Publish) and retrieve, update, and delete shadows. A shadow is
-%% a persistent representation of your things and their state in the Amazon
-%% Web Services cloud.
+%% It implements a broker for applications and
+%% things to publish messages over HTTP (Publish) and retrieve, update, and
+%% delete shadows. A shadow is a
+%% persistent representation of your things and their state in the Amazon Web
+%% Services cloud.
 %%
 %% Find the endpoint address for actions in IoT data by running this CLI
 %% command:
@@ -18,8 +20,8 @@
 %% `aws iot describe-endpoint --endpoint-type iot:Data-ATS'
 %%
 %% The service name used by Amazon Web ServicesSignature Version 4:
-%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html to
-%% sign requests is: iotdevicegateway.
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+%% to sign requests is: iotdevicegateway.
 -module(aws_iot_data_plane).
 
 -export([delete_thing_shadow/3,
@@ -61,11 +63,13 @@ delete_thing_shadow(Client, ThingName, Input) ->
 delete_thing_shadow(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -84,7 +88,8 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
 %%
 %% This action returns the message payload of the retained message, which can
 %% incur messaging costs. To list only the topic names of the retained
-%% messages, call ListRetainedMessages:
+%% messages, call
+%% ListRetainedMessages:
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_ListRetainedMessages.html.
 %%
 %% Requires permission to access the GetRetainedMessage:
@@ -92,8 +97,8 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
 %% action.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT
-%% Core pricing - Messaging:
-%% http://aws.amazon.com/iot-core/pricing/#Messaging.
+%% Core
+%% pricing - Messaging: http://aws.amazon.com/iot-core/pricing/#Messaging.
 get_retained_message(Client, Topic)
   when is_map(Client) ->
     get_retained_message(Client, Topic, #{}, #{}).
@@ -105,10 +110,12 @@ get_retained_message(Client, Topic, QueryMap, HeadersMap)
 get_retained_message(Client, Topic, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/retainedMessage/", aws_util:encode_uri(Topic), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -124,7 +131,8 @@ get_retained_message(Client, Topic, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see GetThingShadow:
 %% http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html
-%% in the IoT Developer Guide.
+%% in the
+%% IoT Developer Guide.
 get_thing_shadow(Client, ThingName)
   when is_map(Client) ->
     get_thing_shadow(Client, ThingName, #{}, #{}).
@@ -136,10 +144,12 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap)
 get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -167,10 +177,12 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap)
 list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/things/shadow/ListNamedShadowsForThing/", aws_util:encode_uri(ThingName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -187,10 +199,13 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% This action returns only the topic names of the retained messages. It
-%% doesn't return any message payloads. Although this action doesn't
-%% return a message payload, it can still incur messaging costs.
+%% doesn't
+%% return any message payloads. Although this action doesn't return a
+%% message payload,
+%% it can still incur messaging costs.
 %%
-%% To get the message payload of a retained message, call GetRetainedMessage:
+%% To get the message payload of a retained message, call
+%% GetRetainedMessage:
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_GetRetainedMessage.html
 %% with the topic name of the retained message.
 %%
@@ -199,8 +214,8 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% action.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT
-%% Core pricing - Messaging:
-%% http://aws.amazon.com/iot-core/pricing/#Messaging.
+%% Core
+%% pricing - Messaging: http://aws.amazon.com/iot-core/pricing/#Messaging.
 list_retained_messages(Client)
   when is_map(Client) ->
     list_retained_messages(Client, #{}, #{}).
@@ -212,10 +227,12 @@ list_retained_messages(Client, QueryMap, HeadersMap)
 list_retained_messages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/retainedMessage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -234,23 +251,26 @@ list_retained_messages(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 %%
-%% For more information about MQTT messages, see MQTT Protocol:
-%% http://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html in the IoT
-%% Developer Guide.
+%% For more information about MQTT messages, see
+%% MQTT Protocol:
+%% http://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html in the
+%% IoT Developer Guide.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT
-%% Core pricing - Messaging:
-%% http://aws.amazon.com/iot-core/pricing/#Messaging.
+%% Core
+%% pricing - Messaging: http://aws.amazon.com/iot-core/pricing/#Messaging.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 publish(Client, Topic, Input0, Options0) ->
     Method = post,
     Path = ["/topics/", aws_util:encode_uri(Topic), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-mqtt5-correlation-data">>, <<"correlationData">>},
@@ -280,17 +300,20 @@ publish(Client, Topic, Input0, Options0) ->
 %%
 %% For more information, see UpdateThingShadow:
 %% http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html
-%% in the IoT Developer Guide.
+%% in the
+%% IoT Developer Guide.
 update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
 update_thing_shadow(Client, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -307,6 +330,11 @@ update_thing_shadow(Client, ThingName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -2,20 +2,27 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Compute Optimizer is a service that analyzes the configuration and
-%% utilization metrics of your Amazon Web Services compute resources, such as
-%% Amazon EC2 instances, Amazon EC2 Auto Scaling groups, Lambda functions,
-%% Amazon EBS volumes, and Amazon ECS services on Fargate.
+%% utilization
+%% metrics of your Amazon Web Services compute resources, such as Amazon EC2
+%% instances, Amazon EC2 Auto Scaling groups, Lambda functions, Amazon EBS
+%% volumes, and Amazon ECS services on Fargate.
 %%
-%% It reports whether your resources are optimal, and generates optimization
-%% recommendations to reduce the cost and improve the performance of your
+%% It reports whether your resources are optimal, and generates
+%% optimization recommendations to reduce the cost and improve the
+%% performance of your
 %% workloads. Compute Optimizer also provides recent utilization metric data,
-%% in addition to projected utilization metric data for the recommendations,
-%% which you can use to evaluate which recommendation provides the best
-%% price-performance trade-off. The analysis of your usage patterns can help
-%% you decide when to move or resize your running resources, and still meet
-%% your performance and capacity requirements. For more information about
-%% Compute Optimizer, including the required permissions to use the service,
-%% see the Compute Optimizer User Guide:
+%% in addition
+%% to projected utilization metric data for the recommendations, which you
+%% can use to
+%% evaluate which recommendation provides the best price-performance
+%% trade-off. The
+%% analysis of your usage patterns can help you decide when to move or resize
+%% your running
+%% resources, and still meet your performance and capacity requirements. For
+%% more
+%% information about Compute Optimizer, including the required permissions to
+%% use the
+%% service, see the Compute Optimizer User Guide:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/.
 -module(aws_compute_optimizer).
 
@@ -75,9 +82,11 @@
 %% @doc Deletes a recommendation preference, such as enhanced infrastructure
 %% metrics.
 %%
-%% For more information, see Activating enhanced infrastructure metrics:
+%% For more information, see Activating
+%% enhanced infrastructure metrics:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 delete_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_recommendation_preferences(Client, Input, []).
@@ -89,8 +98,10 @@ delete_recommendation_preferences(Client, Input, Options)
 %%
 %% Use the `ExportAutoScalingGroupRecommendations' or
 %% `ExportEC2InstanceRecommendations' actions to request an export of
-%% your recommendations. Then use the `DescribeRecommendationExportJobs'
-%% action to view your export jobs.
+%% your
+%% recommendations. Then use the `DescribeRecommendationExportJobs'
+%% action
+%% to view your export jobs.
 describe_recommendation_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendation_export_jobs(Client, Input, []).
@@ -101,11 +112,14 @@ describe_recommendation_export_jobs(Client, Input, Options)
 %% @doc Exports optimization recommendations for Auto Scaling groups.
 %%
 %% Recommendations are exported in a comma-separated values (.csv) file, and
-%% its metadata in a JavaScript Object Notation (JSON) (.json) file, to an
-%% existing Amazon Simple Storage Service (Amazon S3) bucket that you
-%% specify. For more information, see Exporting Recommendations:
+%% its metadata
+%% in a JavaScript Object Notation (JSON) (.json) file, to an existing Amazon
+%% Simple Storage Service (Amazon S3) bucket that you specify. For more
+%% information, see Exporting
+%% Recommendations:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 %%
 %% You can have only one Auto Scaling group export job in progress per Amazon
 %% Web Services Region.
@@ -116,14 +130,16 @@ export_auto_scaling_group_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportAutoScalingGroupRecommendations">>, Input, Options).
 
-%% @doc Exports optimization recommendations for Amazon ECS services on
-%% Fargate.
+%% @doc
+%% Exports optimization recommendations for Amazon ECS services on Fargate.
 %%
-%% Recommendations are exported in a CSV file, and its metadata in a JSON
-%% file, to an existing Amazon Simple Storage Service (Amazon S3) bucket that
-%% you specify. For more information, see Exporting Recommendations:
+%% Recommendations are exported in a CSV file, and its metadata
+%% in a JSON file, to an existing Amazon Simple Storage Service (Amazon S3)
+%% bucket that you specify. For more information, see Exporting
+%% Recommendations:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 %%
 %% You can only have one Amazon ECS service export job in progress per Amazon
 %% Web Services Region.
@@ -137,11 +153,14 @@ export_e_c_s_service_recommendations(Client, Input, Options)
 %% @doc Exports optimization recommendations for Amazon EBS volumes.
 %%
 %% Recommendations are exported in a comma-separated values (.csv) file, and
-%% its metadata in a JavaScript Object Notation (JSON) (.json) file, to an
-%% existing Amazon Simple Storage Service (Amazon S3) bucket that you
-%% specify. For more information, see Exporting Recommendations:
+%% its metadata
+%% in a JavaScript Object Notation (JSON) (.json) file, to an existing Amazon
+%% Simple Storage Service (Amazon S3) bucket that you specify. For more
+%% information, see Exporting
+%% Recommendations:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 %%
 %% You can have only one Amazon EBS volume export job in progress per Amazon
 %% Web Services Region.
@@ -155,11 +174,14 @@ export_ebs_volume_recommendations(Client, Input, Options)
 %% @doc Exports optimization recommendations for Amazon EC2 instances.
 %%
 %% Recommendations are exported in a comma-separated values (.csv) file, and
-%% its metadata in a JavaScript Object Notation (JSON) (.json) file, to an
-%% existing Amazon Simple Storage Service (Amazon S3) bucket that you
-%% specify. For more information, see Exporting Recommendations:
+%% its metadata
+%% in a JavaScript Object Notation (JSON) (.json) file, to an existing Amazon
+%% Simple Storage Service (Amazon S3) bucket that you specify. For more
+%% information, see Exporting
+%% Recommendations:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 %%
 %% You can have only one Amazon EC2 instance export job in progress per
 %% Amazon Web Services Region.
@@ -173,11 +195,14 @@ export_ec2_instance_recommendations(Client, Input, Options)
 %% @doc Exports optimization recommendations for Lambda functions.
 %%
 %% Recommendations are exported in a comma-separated values (.csv) file, and
-%% its metadata in a JavaScript Object Notation (JSON) (.json) file, to an
-%% existing Amazon Simple Storage Service (Amazon S3) bucket that you
-%% specify. For more information, see Exporting Recommendations:
+%% its metadata
+%% in a JavaScript Object Notation (JSON) (.json) file, to an existing Amazon
+%% Simple Storage Service (Amazon S3) bucket that you specify. For more
+%% information, see Exporting
+%% Recommendations:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 %%
 %% You can have only one Lambda function export job in progress per Amazon
 %% Web Services Region.
@@ -188,14 +213,18 @@ export_lambda_function_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportLambdaFunctionRecommendations">>, Input, Options).
 
-%% @doc Export optimization recommendations for your licenses.
+%% @doc
+%% Export optimization recommendations for your licenses.
 %%
 %% Recommendations are exported in a comma-separated values (CSV) file, and
-%% its metadata in a JavaScript Object Notation (JSON) file, to an existing
-%% Amazon Simple Storage Service (Amazon S3) bucket that you specify. For
-%% more information, see Exporting Recommendations:
+%% its metadata
+%% in a JavaScript Object Notation (JSON) file, to an existing Amazon Simple
+%% Storage Service (Amazon S3) bucket that you specify. For more information,
+%% see Exporting
+%% Recommendations:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 %%
 %% You can have only one license export job in progress per Amazon Web
 %% Services Region.
@@ -209,10 +238,13 @@ export_license_recommendations(Client, Input, Options)
 %% @doc Returns Auto Scaling group recommendations.
 %%
 %% Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling
-%% groups that meet a specific set of requirements. For more information, see
-%% the Supported resources and requirements:
+%% groups that
+%% meet a specific set of requirements. For more information, see the
+%% Supported
+%% resources and requirements:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 get_auto_scaling_group_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_auto_scaling_group_recommendations(Client, Input, []).
@@ -220,7 +252,8 @@ get_auto_scaling_group_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAutoScalingGroupRecommendations">>, Input, Options).
 
-%% @doc Returns the projected metrics of Amazon ECS service recommendations.
+%% @doc
+%% Returns the projected metrics of Amazon ECS service recommendations.
 get_e_c_s_service_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_e_c_s_service_recommendation_projected_metrics(Client, Input, []).
@@ -228,13 +261,16 @@ get_e_c_s_service_recommendation_projected_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetECSServiceRecommendationProjectedMetrics">>, Input, Options).
 
-%% @doc Returns Amazon ECS service recommendations.
+%% @doc
+%% Returns Amazon ECS service recommendations.
 %%
 %% Compute Optimizer generates recommendations for Amazon ECS services on
-%% Fargate that meet a specific set of requirements. For more information,
-%% see the Supported resources and requirements:
+%% Fargate that meet a specific set of requirements. For more
+%% information, see the Supported resources and
+%% requirements:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 get_e_c_s_service_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_e_c_s_service_recommendations(Client, Input, []).
@@ -247,9 +283,11 @@ get_e_c_s_service_recommendations(Client, Input, Options)
 %%
 %% Compute Optimizer generates recommendations for Amazon EBS volumes that
 %% meet a specific set of requirements. For more information, see the
-%% Supported resources and requirements:
+%% Supported
+%% resources and requirements:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 get_ebs_volume_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_volume_recommendations(Client, Input, []).
@@ -261,9 +299,12 @@ get_ebs_volume_recommendations(Client, Input, Options)
 %%
 %% Compute Optimizer generates recommendations for Amazon Elastic Compute
 %% Cloud (Amazon EC2) instances that meet a specific set of requirements. For
-%% more information, see the Supported resources and requirements:
+%% more
+%% information, see the Supported resources and
+%% requirements:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 get_ec2_instance_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ec2_instance_recommendations(Client, Input, []).
@@ -274,11 +315,11 @@ get_ec2_instance_recommendations(Client, Input, Options)
 %% @doc Returns the projected utilization metrics of Amazon EC2 instance
 %% recommendations.
 %%
-%% The `Cpu' and `Memory' metrics are the only projected utilization
-%% metrics returned when you run this action. Additionally, the `Memory'
-%% metric is returned only for resources that have the unified CloudWatch
-%% agent installed on them. For more information, see Enabling Memory
-%% Utilization with the CloudWatch Agent:
+%% The `Cpu' and `Memory' metrics are the only projected
+%% utilization metrics returned when you run this action. Additionally, the
+%% `Memory' metric is returned only for resources that have the unified
+%% CloudWatch agent installed on them. For more information, see Enabling
+%% Memory Utilization with the CloudWatch Agent:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html#cw-agent.
 get_ec2_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -288,14 +329,15 @@ get_ec2_recommendation_projected_metrics(Client, Input, Options)
     request(Client, <<"GetEC2RecommendationProjectedMetrics">>, Input, Options).
 
 %% @doc Returns the recommendation preferences that are in effect for a given
-%% resource, such as enhanced infrastructure metrics.
+%% resource, such
+%% as enhanced infrastructure metrics.
 %%
-%% Considers all applicable preferences that you might have set at the
-%% resource, account, and organization level.
+%% Considers all applicable preferences that you might
+%% have set at the resource, account, and organization level.
 %%
 %% When you create a recommendation preference, you can set its status to
-%% `Active' or `Inactive'. Use this action to view the recommendation
-%% preferences that are in effect, or `Active'.
+%% `Active' or `Inactive'. Use this action to view the
+%% recommendation preferences that are in effect, or `Active'.
 get_effective_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_effective_recommendation_preferences(Client, Input, []).
@@ -304,13 +346,15 @@ get_effective_recommendation_preferences(Client, Input, Options)
     request(Client, <<"GetEffectiveRecommendationPreferences">>, Input, Options).
 
 %% @doc Returns the enrollment (opt in) status of an account to the Compute
-%% Optimizer service.
+%% Optimizer
+%% service.
 %%
 %% If the account is the management account of an organization, this action
-%% also confirms the enrollment status of member accounts of the
-%% organization. Use the `GetEnrollmentStatusesForOrganization' action to
-%% get detailed information about the enrollment status of member accounts of
-%% an organization.
+%% also confirms
+%% the enrollment status of member accounts of the organization. Use the
+%% `GetEnrollmentStatusesForOrganization' action to get detailed
+%% information
+%% about the enrollment status of member accounts of an organization.
 get_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_enrollment_status(Client, Input, []).
@@ -319,8 +363,8 @@ get_enrollment_status(Client, Input, Options)
     request(Client, <<"GetEnrollmentStatus">>, Input, Options).
 
 %% @doc Returns the Compute Optimizer enrollment (opt-in) status of
-%% organization member accounts, if your account is an organization
-%% management account.
+%% organization member
+%% accounts, if your account is an organization management account.
 %%
 %% To get the enrollment status of standalone accounts, use the
 %% `GetEnrollmentStatus' action.
@@ -334,10 +378,12 @@ get_enrollment_statuses_for_organization(Client, Input, Options)
 %% @doc Returns Lambda function recommendations.
 %%
 %% Compute Optimizer generates recommendations for functions that meet a
-%% specific set of requirements. For more information, see the Supported
-%% resources and requirements:
+%% specific set
+%% of requirements. For more information, see the Supported resources and
+%% requirements:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 get_lambda_function_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lambda_function_recommendations(Client, Input, []).
@@ -349,10 +395,12 @@ get_lambda_function_recommendations(Client, Input, Options)
 %% a specific license.
 %%
 %% Compute Optimizer generates recommendations for licenses that meet a
-%% specific set of requirements. For more information, see the Supported
-%% resources and requirements:
+%% specific set of requirements. For more
+%% information, see the Supported resources and
+%% requirements:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 get_license_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_recommendations(Client, Input, []).
@@ -361,16 +409,20 @@ get_license_recommendations(Client, Input, Options)
     request(Client, <<"GetLicenseRecommendations">>, Input, Options).
 
 %% @doc Returns existing recommendation preferences, such as enhanced
-%% infrastructure metrics.
+%% infrastructure
+%% metrics.
 %%
 %% Use the `scope' parameter to specify which preferences to return. You
-%% can specify to return preferences for an organization, a specific account
-%% ID, or a specific EC2 instance or Auto Scaling group Amazon Resource Name
-%% (ARN).
+%% can
+%% specify to return preferences for an organization, a specific account ID,
+%% or a specific
+%% EC2 instance or Auto Scaling group Amazon Resource Name (ARN).
 %%
-%% For more information, see Activating enhanced infrastructure metrics:
+%% For more information, see Activating
+%% enhanced infrastructure metrics:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 get_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation_preferences(Client, Input, []).
@@ -382,22 +434,21 @@ get_recommendation_preferences(Client, Input, Options)
 %%
 %% It returns the number of:
 %%
-%% <ul> <li> Amazon EC2 instances in an account that are
-%% `Underprovisioned', `Overprovisioned', or `Optimized'.
-%%
-%% </li> <li> Auto Scaling groups in an account that are `NotOptimized',
-%% or `Optimized'.
-%%
-%% </li> <li> Amazon EBS volumes in an account that are `NotOptimized',
-%% or `Optimized'.
-%%
-%% </li> <li> Lambda functions in an account that are `NotOptimized', or
+%% Amazon EC2 instances in an account that are
+%% `Underprovisioned', `Overprovisioned', or
 %% `Optimized'.
 %%
-%% </li> <li> Amazon ECS services in an account that are
-%% `Underprovisioned', `Overprovisioned', or `Optimized'.
+%% Auto Scaling groups in an account that are `NotOptimized', or
+%% `Optimized'.
 %%
-%% </li> </ul>
+%% Amazon EBS volumes in an account that are `NotOptimized',
+%% or `Optimized'.
+%%
+%% Lambda functions in an account that are `NotOptimized',
+%% or `Optimized'.
+%%
+%% Amazon ECS services in an account that are `Underprovisioned',
+%% `Overprovisioned', or `Optimized'.
 get_recommendation_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation_summaries(Client, Input, []).
@@ -406,11 +457,14 @@ get_recommendation_summaries(Client, Input, Options)
     request(Client, <<"GetRecommendationSummaries">>, Input, Options).
 
 %% @doc Creates a new recommendation preference or updates an existing
-%% recommendation preference, such as enhanced infrastructure metrics.
+%% recommendation
+%% preference, such as enhanced infrastructure metrics.
 %%
-%% For more information, see Activating enhanced infrastructure metrics:
+%% For more information, see Activating
+%% enhanced infrastructure metrics:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html
-%% in the Compute Optimizer User Guide.
+%% in the Compute Optimizer User
+%% Guide.
 put_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_recommendation_preferences(Client, Input, []).
@@ -422,17 +476,19 @@ put_recommendation_preferences(Client, Input, Options)
 %% the Compute Optimizer service.
 %%
 %% If the account is a management account of an organization, this action can
-%% also be used to enroll member accounts of the organization.
+%% also be
+%% used to enroll member accounts of the organization.
 %%
 %% You must have the appropriate permissions to opt in to Compute Optimizer,
-%% to view its recommendations, and to opt out. For more information, see
-%% Controlling access with Amazon Web Services Identity and Access
-%% Management:
+%% to view its
+%% recommendations, and to opt out. For more information, see Controlling
+%% access with Amazon Web Services Identity and Access Management:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html
 %% in the Compute Optimizer User Guide.
 %%
 %% When you opt in, Compute Optimizer automatically creates a service-linked
-%% role in your account to access its data. For more information, see Using
+%% role in your
+%% account to access its data. For more information, see Using
 %% Service-Linked Roles for Compute Optimizer:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/using-service-linked-roles.html
 %% in the Compute Optimizer User Guide.

@@ -4,20 +4,27 @@
 %% @doc Amazon CloudWatch Application Insights
 %%
 %% Amazon CloudWatch Application Insights is a service that helps you detect
-%% common problems with your applications.
+%% common
+%% problems with your applications.
 %%
-%% It enables you to pinpoint the source of issues in your applications
-%% (built with technologies such as Microsoft IIS, .NET, and Microsoft SQL
+%% It enables you to pinpoint the source of issues in your
+%% applications (built with technologies such as Microsoft IIS, .NET, and
+%% Microsoft SQL
 %% Server), by providing key insights into detected problems.
 %%
 %% After you onboard your application, CloudWatch Application Insights
-%% identifies, recommends, and sets up metrics and logs. It continuously
-%% analyzes and correlates your metrics and logs for unusual behavior to
-%% surface actionable problems with your application. For example, if your
-%% application is slow and unresponsive and leading to HTTP 500 errors in
+%% identifies,
+%% recommends, and sets up metrics and logs. It continuously analyzes and
+%% correlates your
+%% metrics and logs for unusual behavior to surface actionable problems with
+%% your application.
+%% For example, if your application is slow and unresponsive and leading to
+%% HTTP 500 errors in
 %% your Application Load Balancer (ALB), Application Insights informs you
-%% that a memory pressure problem with your SQL Server database is occurring.
-%% It bases this analysis on impactful metrics and log errors.
+%% that a memory
+%% pressure problem with your SQL Server database is occurring. It bases this
+%% analysis on
+%% impactful metrics and log errors.
 -module(aws_application_insights).
 
 -export([add_workload/2,
@@ -130,7 +137,8 @@ create_log_pattern(Client, Input, Options)
 
 %% @doc Removes the specified application from monitoring.
 %%
-%% Does not delete the application.
+%% Does not delete the
+%% application.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -140,9 +148,10 @@ delete_application(Client, Input, Options)
 
 %% @doc Ungroups a custom component.
 %%
-%% When you ungroup custom components, all applicable monitors that are set
-%% up for the component are removed and the instances revert to their
-%% standalone status.
+%% When you ungroup custom components, all applicable monitors
+%% that are set up for the component are removed and the instances revert to
+%% their standalone
+%% status.
 delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
@@ -167,7 +176,8 @@ describe_application(Client, Input, Options)
     request(Client, <<"DescribeApplication">>, Input, Options).
 
 %% @doc Describes a component and lists the resources that are grouped
-%% together in a component.
+%% together in a
+%% component.
 describe_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_component(Client, Input, []).
@@ -249,19 +259,17 @@ list_components(Client, Input, Options)
     request(Client, <<"ListComponents">>, Input, Options).
 
 %% @doc Lists the INFO, WARN, and ERROR events for periodic configuration
-%% updates performed by Application Insights.
+%% updates performed by
+%% Application Insights.
 %%
 %% Examples of events represented are:
 %%
-%% <ul> <li> INFO: creating a new alarm or updating an alarm threshold.
+%% INFO: creating a new alarm or updating an alarm threshold.
 %%
-%% </li> <li> WARN: alarm not created due to insufficient data points used to
-%% predict thresholds.
+%% WARN: alarm not created due to insufficient data points used to predict
+%% thresholds.
 %%
-%% </li> <li> ERROR: alarm not created due to permission errors or exceeding
-%% quotas.
-%%
-%% </li> </ul>
+%% ERROR: alarm not created due to permission errors or exceeding quotas.
 list_configuration_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configuration_history(Client, Input, []).
@@ -294,13 +302,15 @@ list_problems(Client, Input, Options)
     request(Client, <<"ListProblems">>, Input, Options).
 
 %% @doc Retrieve a list of the tags (keys and values) that are associated
-%% with a specified application.
+%% with a specified
+%% application.
 %%
-%% A tag is a label that you optionally define and associate with an
-%% application. Each tag consists of a required tag key and an optional
-%% associated tag value. A tag key is a general label that acts as a category
-%% for more specific tag values. A tag value acts as a descriptor within a
-%% tag key.
+%% A tag is a label that you optionally define and associate
+%% with an application. Each tag consists of a required tag key and an
+%% optional associated tag value. A tag key is a general label that acts
+%% as a category for more specific tag values. A tag value acts as a
+%% descriptor within a tag
+%% key.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -326,14 +336,17 @@ remove_workload(Client, Input, Options)
 
 %% @doc Add one or more tags (keys and values) to a specified application.
 %%
-%% A tag is a label that you optionally define and associate with an
+%% A
+%% tag is a label that you optionally define and associate with an
 %% application. Tags can help you categorize and manage application in
-%% different ways, such as by purpose, owner, environment, or other criteria.
+%% different ways, such as
+%% by purpose, owner, environment, or other criteria.
 %%
-%% Each tag consists of a required tag key and an associated tag value, both
-%% of which you define. A tag key is a general label that acts as a category
-%% for more specific tag values. A tag value acts as a descriptor within a
-%% tag key.
+%% Each tag consists of a required tag key and an associated
+%% tag value, both of which you define. A tag key is a general label
+%% that acts as a category for more specific tag values. A tag value acts as
+%% a descriptor
+%% within a tag key.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -359,7 +372,8 @@ update_application(Client, Input, Options)
     request(Client, <<"UpdateApplication">>, Input, Options).
 
 %% @doc Updates the custom component name and/or the list of resources that
-%% make up the component.
+%% make up the
+%% component.
 update_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component(Client, Input, []).
@@ -369,9 +383,10 @@ update_component(Client, Input, Options)
 
 %% @doc Updates the monitoring configurations for the component.
 %%
-%% The configuration input parameter is an escaped JSON of the configuration
-%% and should match the schema of what is returned by
-%% `DescribeComponentConfigurationRecommendation'.
+%% The configuration input
+%% parameter is an escaped JSON of the configuration and should match the
+%% schema of what is
+%% returned by `DescribeComponentConfigurationRecommendation'.
 update_component_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component_configuration(Client, Input, []).

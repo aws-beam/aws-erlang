@@ -2,85 +2,97 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc CodeDeploy is a deployment service that automates application
-%% deployments to Amazon EC2 instances, on-premises instances running in your
-%% own facility, serverless Lambda functions, or applications in an Amazon
-%% ECS service.
+%% deployments
+%% to Amazon EC2 instances, on-premises instances running in your own
+%% facility,
+%% serverless Lambda functions, or applications in an Amazon ECS
+%% service.
 %%
 %% You can deploy a nearly unlimited variety of application content, such as
-%% an updated Lambda function, updated applications in an Amazon ECS service,
+%% an updated
+%% Lambda function, updated applications in an Amazon ECS service,
 %% code, web and configuration files, executables, packages, scripts,
-%% multimedia files, and so on. CodeDeploy can deploy application content
-%% stored in Amazon S3 buckets, GitHub repositories, or Bitbucket
-%% repositories. You do not need to make changes to your existing code before
-%% you can use CodeDeploy.
+%% multimedia files, and
+%% so on. CodeDeploy can deploy application content stored in Amazon S3
+%% buckets, GitHub repositories, or Bitbucket repositories. You do not need
+%% to make changes
+%% to your existing code before you can use CodeDeploy.
 %%
 %% CodeDeploy makes it easier for you to rapidly release new features, helps
 %% you avoid downtime during application deployment, and handles the
-%% complexity of updating your applications, without many of the risks
-%% associated with error-prone manual deployments.
+%% complexity of updating
+%% your applications, without many of the risks associated with error-prone
+%% manual
+%% deployments.
 %%
 %% CodeDeploy Components
 %%
 %% Use the information in this guide to help you work with the following
 %% CodeDeploy components:
 %%
-%% <ul> <li> Application: A name that uniquely identifies the application you
-%% want to deploy. CodeDeploy uses this name, which functions as a container,
-%% to ensure the correct combination of revision, deployment configuration,
-%% and deployment group are referenced during a deployment.
-%%
-%% </li> <li> Deployment group: A set of individual instances, CodeDeploy
-%% Lambda deployment configuration settings, or an Amazon ECS service and
-%% network details. A Lambda deployment group specifies how to route traffic
-%% to a new version of a Lambda function. An Amazon ECS deployment group
-%% specifies the service created in Amazon ECS to deploy, a load balancer,
-%% and a listener to reroute production traffic to an updated containerized
-%% application. An Amazon EC2/On-premises deployment group contains
-%% individually tagged instances, Amazon EC2 instances in Amazon EC2 Auto
-%% Scaling groups, or both. All deployment groups can specify optional
-%% trigger, alarm, and rollback settings.
-%%
-%% </li> <li> Deployment configuration: A set of deployment rules and
-%% deployment success and failure conditions used by CodeDeploy during a
+%% Application: A name that uniquely identifies
+%% the application you want to deploy. CodeDeploy uses this name, which
+%% functions as a container, to ensure the correct combination of revision,
+%% deployment configuration, and deployment group are referenced during a
 %% deployment.
 %%
-%% </li> <li> Deployment: The process and the components used when updating a
-%% Lambda function, a containerized application in an Amazon ECS service, or
-%% of installing content on one or more instances.
+%% Deployment group: A set of individual
+%% instances, CodeDeploy
+%% Lambda deployment configuration settings, or an Amazon ECS
+%% service and network details. A Lambda deployment group specifies how
+%% to route traffic to a new version of a Lambda function. An Amazon ECS
+%% deployment group specifies the service created in Amazon ECS to deploy, a
+%% load balancer, and a listener to reroute production
+%% traffic to an updated containerized application. An Amazon EC2/On-premises
+%% deployment group contains individually tagged instances, Amazon EC2
+%% instances in Amazon EC2 Auto Scaling groups, or both. All
+%% deployment groups can specify optional trigger, alarm, and rollback
+%% settings.
 %%
-%% </li> <li> Application revisions: For an Lambda deployment, this is an
-%% AppSpec file that specifies the Lambda function to be updated and one or
-%% more functions to validate deployment lifecycle events. For an Amazon ECS
-%% deployment, this is an AppSpec file that specifies the Amazon ECS task
-%% definition, container, and port where production traffic is rerouted. For
-%% an EC2/On-premises deployment, this is an archive file that contains
-%% source content—source code, webpages, executable files, and deployment
-%% scripts—along with an AppSpec file. Revisions are stored in Amazon S3
-%% buckets or GitHub repositories. For Amazon S3, a revision is uniquely
-%% identified by its Amazon S3 object key and its ETag, version, or both. For
-%% GitHub, a revision is uniquely identified by its commit ID.
+%% Deployment configuration: A set of deployment
+%% rules and deployment success and failure conditions used by CodeDeploy
+%% during a deployment.
 %%
-%% </li> </ul> This guide also contains information to help you get details
-%% about the instances in your deployments, to make on-premises instances
-%% available for CodeDeploy deployments, to get details about a Lambda
-%% function deployment, and to get details about Amazon ECS service
-%% deployments.
+%% Deployment: The process and the components used
+%% when updating a Lambda function, a containerized application in an
+%% Amazon ECS service, or of installing content on one or more
+%% instances.
+%%
+%% Application revisions: For an Lambda deployment, this is an AppSpec file
+%% that specifies the
+%% Lambda function to be updated and one or more functions to
+%% validate deployment lifecycle events. For an Amazon ECS deployment, this
+%% is an AppSpec file that specifies the Amazon ECS task definition,
+%% container, and port where production traffic is rerouted. For an
+%% EC2/On-premises
+%% deployment, this is an archive file that contains source content—source
+%% code,
+%% webpages, executable files, and deployment scripts—along with an AppSpec
+%% file.
+%% Revisions are stored in Amazon S3 buckets or GitHub repositories. For
+%% Amazon S3, a revision is uniquely identified by its Amazon S3 object key
+%% and its ETag, version, or both. For GitHub, a revision is uniquely
+%% identified by its commit ID.
+%%
+%% This guide also contains information to help you get details about the
+%% instances in
+%% your deployments, to make on-premises instances available for CodeDeploy
+%% deployments, to get details about a Lambda function deployment, and to get
+%% details about Amazon ECS service deployments.
 %%
 %% CodeDeploy Information Resources
 %%
-%% <ul> <li> CodeDeploy User Guide:
+%% CodeDeploy User Guide:
 %% https://docs.aws.amazon.com/codedeploy/latest/userguide
 %%
-%% </li> <li> CodeDeploy API Reference Guide:
+%% CodeDeploy API Reference Guide:
 %% https://docs.aws.amazon.com/codedeploy/latest/APIReference/
 %%
-%% </li> <li> CLI Reference for CodeDeploy:
+%% CLI Reference for CodeDeploy:
 %% https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html
 %%
-%% </li> <li> CodeDeploy Developer Forum:
+%% CodeDeploy Developer Forum:
 %% https://forums.aws.amazon.com/forum.jspa?forumID=179
-%%
-%% </li> </ul>
 -module(aws_codedeploy).
 
 -export([add_tags_to_on_premises_instances/2,
@@ -194,7 +206,8 @@ add_tags_to_on_premises_instances(Client, Input, Options)
 
 %% @doc Gets information about one or more application revisions.
 %%
-%% The maximum number of application revisions that can be returned is 25.
+%% The maximum number of
+%% application revisions that can be returned is 25.
 batch_get_application_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_application_revisions(Client, Input, []).
@@ -204,7 +217,8 @@ batch_get_application_revisions(Client, Input, Options)
 
 %% @doc Gets information about one or more applications.
 %%
-%% The maximum number of applications that can be returned is 100.
+%% The maximum number of applications
+%% that can be returned is 100.
 batch_get_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_applications(Client, Input, []).
@@ -220,14 +234,18 @@ batch_get_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDeploymentGroups">>, Input, Options).
 
-%% @doc This method works, but is deprecated.
+%% @doc
+%% This method works, but is deprecated.
 %%
-%% Use `BatchGetDeploymentTargets' instead.
+%% Use `BatchGetDeploymentTargets'
+%% instead.
 %%
 %% Returns an array of one or more instances associated with a deployment.
-%% This method works with EC2/On-premises and Lambda compute platforms. The
-%% newer `BatchGetDeploymentTargets' works with all compute platforms.
-%% The maximum number of instances that can be returned is 25.
+%% This method
+%% works with EC2/On-premises and Lambda compute platforms. The newer
+%% `BatchGetDeploymentTargets' works with all compute platforms. The
+%% maximum
+%% number of instances that can be returned is 25.
 batch_get_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_instances(Client, Input, []).
@@ -237,23 +255,26 @@ batch_get_deployment_instances(Client, Input, Options)
 
 %% @doc Returns an array of one or more targets associated with a deployment.
 %%
-%% This method works with all compute types and should be used instead of the
-%% deprecated `BatchGetDeploymentInstances'. The maximum number of
-%% targets that can be returned is 25.
+%% This method
+%% works with all compute types and should be used instead of the deprecated
+%% `BatchGetDeploymentInstances'. The maximum number of targets that can
+%% be
+%% returned is 25.
 %%
 %% The type of targets returned depends on the deployment's compute
-%% platform or deployment method:
+%% platform or
+%% deployment method:
 %%
-%% <ul> <li> EC2/On-premises: Information about Amazon EC2 instance targets.
+%% EC2/On-premises: Information about Amazon EC2 instance targets.
 %%
-%% </li> <li> Lambda: Information about Lambda functions targets.
+%% Lambda: Information about
+%% Lambda functions targets.
 %%
-%% </li> <li> Amazon ECS: Information about Amazon ECS service targets.
+%% Amazon ECS: Information about Amazon ECS service targets.
 %%
-%% </li> <li> CloudFormation: Information about targets of blue/green
-%% deployments initiated by a CloudFormation stack update.
-%%
-%% </li> </ul>
+%% CloudFormation: Information about
+%% targets of blue/green deployments initiated by a CloudFormation stack
+%% update.
 batch_get_deployment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_targets(Client, Input, []).
@@ -263,7 +284,8 @@ batch_get_deployment_targets(Client, Input, Options)
 
 %% @doc Gets information about one or more deployments.
 %%
-%% The maximum number of deployments that can be returned is 25.
+%% The maximum number of deployments that
+%% can be returned is 25.
 batch_get_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployments(Client, Input, []).
@@ -273,7 +295,8 @@ batch_get_deployments(Client, Input, Options)
 
 %% @doc Gets information about one or more on-premises instances.
 %%
-%% The maximum number of on-premises instances that can be returned is 25.
+%% The maximum number of
+%% on-premises instances that can be returned is 25.
 batch_get_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_on_premises_instances(Client, Input, []).
@@ -282,12 +305,15 @@ batch_get_on_premises_instances(Client, Input, Options)
     request(Client, <<"BatchGetOnPremisesInstances">>, Input, Options).
 
 %% @doc For a blue/green deployment, starts the process of rerouting traffic
-%% from instances in the original environment to instances in the replacement
-%% environment without waiting for a specified wait time to elapse.
+%% from instances in
+%% the original environment to instances in the replacement environment
+%% without waiting for
+%% a specified wait time to elapse.
 %%
-%% (Traffic rerouting, which is achieved by registering instances in the
-%% replacement environment with the load balancer, can start as soon as all
-%% instances have a status of Ready.)
+%% (Traffic rerouting, which is achieved by registering
+%% instances in the replacement environment with the load balancer, can start
+%% as soon as
+%% all instances have a status of Ready.)
 continue_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     continue_deployment(Client, Input, []).
@@ -340,7 +366,8 @@ delete_application(Client, Input, Options)
 %% @doc Deletes a deployment configuration.
 %%
 %% A deployment configuration cannot be deleted if it is currently in use.
-%% Predefined configurations cannot be deleted.
+%% Predefined
+%% configurations cannot be deleted.
 delete_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment_config(Client, Input, []).
@@ -366,13 +393,15 @@ delete_git_hub_account_token(Client, Input, Options)
 
 %% @doc Deletes resources linked to an external ID.
 %%
-%% This action only applies if you have configured blue/green deployments
-%% through CloudFormation.
+%% This action only applies if you have
+%% configured blue/green deployments through CloudFormation.
 %%
 %% It is not necessary to call this action directly. CloudFormation calls it
 %% on your behalf when it needs to delete stack resources. This action is
-%% offered publicly in case you need to delete resources to comply with
-%% General Data Protection Regulation (GDPR) requirements.
+%% offered
+%% publicly in case you need to delete resources to comply with General Data
+%% Protection
+%% Regulation (GDPR) requirements.
 delete_resources_by_external_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resources_by_external_id(Client, Input, []).
@@ -406,10 +435,10 @@ get_application_revision(Client, Input, Options)
 
 %% @doc Gets information about a deployment.
 %%
-%% The `content' property of the `appSpecContent' object in the
-%% returned revision is always null. Use `GetApplicationRevision' and the
-%% `sha256' property of the returned `appSpecContent' object to get
-%% the content of the deployment’s AppSpec file.
+%% The `content' property of the `appSpecContent' object in
+%% the returned revision is always null. Use `GetApplicationRevision' and
+%% the `sha256' property of the returned `appSpecContent' object
+%% to get the content of the deployment’s AppSpec file.
 get_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment(Client, Input, []).
@@ -484,7 +513,8 @@ list_deployment_configs(Client, Input, Options)
     request(Client, <<"ListDeploymentConfigs">>, Input, Options).
 
 %% @doc Lists the deployment groups for an application registered with the
-%% Amazon Web Services user or Amazon Web Services account.
+%% Amazon Web Services
+%% user or Amazon Web Services account.
 list_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_groups(Client, Input, []).
@@ -492,11 +522,14 @@ list_deployment_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeploymentGroups">>, Input, Options).
 
-%% @doc The newer `BatchGetDeploymentTargets' should be used instead
-%% because it works with all compute types.
+%% @doc
+%% The newer `BatchGetDeploymentTargets' should be used instead because
+%% it works with all compute types.
 %%
-%% `ListDeploymentInstances' throws an exception if it is used with a
-%% compute platform other than EC2/On-premises or Lambda.
+%% `ListDeploymentInstances' throws an
+%% exception if it is used with a compute platform other than EC2/On-premises
+%% or
+%% Lambda.
 %%
 %% Lists the instance for a deployment associated with the user or Amazon Web
 %% Services account.
@@ -516,7 +549,8 @@ list_deployment_targets(Client, Input, Options)
     request(Client, <<"ListDeploymentTargets">>, Input, Options).
 
 %% @doc Lists the deployments in a deployment group for an application
-%% registered with the user or Amazon Web Services account.
+%% registered with the
+%% user or Amazon Web Services account.
 list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployments(Client, Input, []).
@@ -535,8 +569,10 @@ list_git_hub_account_token_names(Client, Input, Options)
 %% @doc Gets a list of names for one or more on-premises instances.
 %%
 %% Unless otherwise specified, both registered and deregistered on-premises
-%% instance names are listed. To list only registered or deregistered
-%% on-premises instance names, use the registration status parameter.
+%% instance
+%% names are listed. To list only registered or deregistered on-premises
+%% instance names,
+%% use the registration status parameter.
 list_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_on_premises_instances(Client, Input, []).
@@ -545,7 +581,8 @@ list_on_premises_instances(Client, Input, Options)
     request(Client, <<"ListOnPremisesInstances">>, Input, Options).
 
 %% @doc Returns a list of tags for the resource identified by a specified
-%% Amazon Resource Name (ARN).
+%% Amazon Resource
+%% Name (ARN).
 %%
 %% Tags are used to organize and categorize your CodeDeploy resources.
 list_tags_for_resource(Client, Input)
@@ -557,17 +594,19 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Sets the result of a Lambda validation function.
 %%
-%% The function validates lifecycle hooks during a deployment that uses the
-%% Lambda or Amazon ECS compute platform. For Lambda deployments, the
-%% available lifecycle hooks are `BeforeAllowTraffic' and
-%% `AfterAllowTraffic'. For Amazon ECS deployments, the available
-%% lifecycle hooks are `BeforeInstall', `AfterInstall',
+%% The function validates
+%% lifecycle hooks during a deployment that uses the Lambda or Amazon ECS
+%% compute platform. For Lambda deployments, the available
+%% lifecycle hooks are `BeforeAllowTraffic' and `AfterAllowTraffic'.
+%% For Amazon ECS deployments, the available lifecycle hooks are
+%% `BeforeInstall', `AfterInstall',
 %% `AfterAllowTestTraffic', `BeforeAllowTraffic', and
 %% `AfterAllowTraffic'. Lambda validation functions return
 %% `Succeeded' or `Failed'. For more information, see AppSpec
 %% 'hooks' Section for an Lambda Deployment :
 %% https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda
-%% and AppSpec 'hooks' Section for an Amazon ECS Deployment:
+%% and
+%% AppSpec 'hooks' Section for an Amazon ECS Deployment:
 %% https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs.
 put_lifecycle_event_hook_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -604,8 +643,8 @@ remove_tags_from_on_premises_instances(Client, Input, Options)
     request(Client, <<"RemoveTagsFromOnPremisesInstances">>, Input, Options).
 
 %% @doc In a blue/green deployment, overrides any specified wait time and
-%% starts terminating instances immediately after the traffic routing is
-%% complete.
+%% starts terminating
+%% instances immediately after the traffic routing is complete.
 skip_wait_time_for_instance_termination(Client, Input)
   when is_map(Client), is_map(Input) ->
     skip_wait_time_for_instance_termination(Client, Input, []).
@@ -622,7 +661,8 @@ stop_deployment(Client, Input, Options)
     request(Client, <<"StopDeployment">>, Input, Options).
 
 %% @doc Associates the list of tags in the input `Tags' parameter with
-%% the resource identified by the `ResourceArn' input parameter.
+%% the
+%% resource identified by the `ResourceArn' input parameter.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -632,9 +672,9 @@ tag_resource(Client, Input, Options)
 
 %% @doc Disassociates a resource from a list of tags.
 %%
-%% The resource is identified by the `ResourceArn' input parameter. The
-%% tags are identified by the list of keys in the `TagKeys' input
-%% parameter.
+%% The resource is identified by the
+%% `ResourceArn' input parameter. The tags are identified by the list of
+%% keys in the `TagKeys' input parameter.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

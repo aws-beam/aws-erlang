@@ -33,13 +33,14 @@
 %% account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or updating the alternate contacts:
+%% see Access or
+%% updating the alternate contacts:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
-%% Before you can update the alternate contact information for an Amazon Web
-%% Services account that is managed by Organizations, you must first enable
-%% integration between Amazon Web Services Account Management and
-%% Organizations. For more information, see Enabling trusted access for
+%% Before you can update the alternate contact information for an
+%% Amazon Web Services account that is managed by Organizations, you must
+%% first enable integration between Amazon Web Services Account Management
+%% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 delete_alternate_contact(Client, Input) ->
@@ -48,10 +49,12 @@ delete_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteAlternateContact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -71,10 +74,12 @@ disable_region(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disableRegion"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -94,10 +99,12 @@ enable_region(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enableRegion"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -114,13 +121,14 @@ enable_region(Client, Input0, Options0) ->
 %% Services account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or updating the alternate contacts:
+%% see Access or
+%% updating the alternate contacts:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
-%% Before you can update the alternate contact information for an Amazon Web
-%% Services account that is managed by Organizations, you must first enable
-%% integration between Amazon Web Services Account Management and
-%% Organizations. For more information, see Enabling trusted access for
+%% Before you can update the alternate contact information for an
+%% Amazon Web Services account that is managed by Organizations, you must
+%% first enable integration between Amazon Web Services Account Management
+%% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 get_alternate_contact(Client, Input) ->
@@ -129,10 +137,12 @@ get_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getAlternateContact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -149,7 +159,8 @@ get_alternate_contact(Client, Input0, Options0) ->
 %% account.
 %%
 %% For complete details about how to use the primary contact operations, see
-%% Update the primary and alternate contact information:
+%% Update
+%% the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 get_contact_information(Client, Input) ->
     get_contact_information(Client, Input, []).
@@ -157,10 +168,12 @@ get_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getContactInformation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -180,10 +193,12 @@ get_region_opt_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getRegionOptStatus"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -200,17 +215,20 @@ get_region_opt_status(Client, Input0, Options0) ->
 %% statuses.
 %%
 %% Optionally, this list can be filtered by the
-%% `region-opt-status-contains' parameter.
+%% `region-opt-status-contains'
+%% parameter.
 list_regions(Client, Input) ->
     list_regions(Client, Input, []).
 list_regions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRegions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -227,13 +245,14 @@ list_regions(Client, Input0, Options0) ->
 %% Services account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or updating the alternate contacts:
+%% see Access or
+%% updating the alternate contacts:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
-%% Before you can update the alternate contact information for an Amazon Web
-%% Services account that is managed by Organizations, you must first enable
-%% integration between Amazon Web Services Account Management and
-%% Organizations. For more information, see Enabling trusted access for
+%% Before you can update the alternate contact information for an
+%% Amazon Web Services account that is managed by Organizations, you must
+%% first enable integration between Amazon Web Services Account Management
+%% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 put_alternate_contact(Client, Input) ->
@@ -242,10 +261,12 @@ put_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putAlternateContact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -262,7 +283,8 @@ put_alternate_contact(Client, Input0, Options0) ->
 %% account.
 %%
 %% For complete details about how to use the primary contact operations, see
-%% Update the primary and alternate contact information:
+%% Update
+%% the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 put_contact_information(Client, Input) ->
     put_contact_information(Client, Input, []).
@@ -270,10 +292,12 @@ put_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putContactInformation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -289,6 +313,11 @@ put_contact_information(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

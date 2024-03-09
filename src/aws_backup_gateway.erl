@@ -3,16 +3,19 @@
 
 %% @doc Backup gateway
 %%
-%% Backup gateway connects Backup to your hypervisor, so you can create,
-%% store, and restore backups of your virtual machines (VMs) anywhere,
-%% whether on-premises or in the VMware Cloud (VMC) on Amazon Web Services.
+%% Backup gateway connects Backup to your hypervisor, so you can
+%% create, store, and restore backups of your virtual machines (VMs)
+%% anywhere, whether
+%% on-premises or in the VMware Cloud (VMC) on Amazon Web Services.
 %%
 %% Add on-premises resources by connecting to a hypervisor through a gateway.
 %% Backup will automatically discover the resources in your hypervisor.
 %%
 %% Use Backup to assign virtual or on-premises resources to a backup plan, or
-%% run on-demand backups. Once you have backed up your resources, you can
-%% view them and restore them like any resource supported by Backup.
+%% run
+%% on-demand backups. Once you have backed up your resources, you can view
+%% them and restore them
+%% like any resource supported by Backup.
 %%
 %% To download the Amazon Web Services software to get started, navigate to
 %% the Backup console, choose Gateways, then choose Create gateway.
@@ -77,8 +80,8 @@
 
 %% @doc Associates a backup gateway with your server.
 %%
-%% After you complete the association process, you can back up and restore
-%% your VMs through the gateway.
+%% After you complete the association process,
+%% you can back up and restore your VMs through the gateway.
 associate_gateway_to_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_gateway_to_server(Client, Input, []).
@@ -88,8 +91,8 @@ associate_gateway_to_server(Client, Input, Options)
 
 %% @doc Creates a backup gateway.
 %%
-%% After you create a gateway, you can associate it with a server using the
-%% `AssociateGatewayToServer' operation.
+%% After you create a gateway, you can associate it with a server
+%% using the `AssociateGatewayToServer' operation.
 create_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gateway(Client, Input, []).
@@ -115,8 +118,9 @@ delete_hypervisor(Client, Input, Options)
 
 %% @doc Disassociates a backup gateway from the specified server.
 %%
-%% After the disassociation process finishes, the gateway can no longer
-%% access the virtual machines on the server.
+%% After the disassociation process
+%% finishes, the gateway can no longer access the virtual machines on the
+%% server.
 disassociate_gateway_from_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_gateway_from_server(Client, Input, []).
@@ -127,8 +131,9 @@ disassociate_gateway_from_server(Client, Input, Options)
 %% @doc Retrieves the bandwidth rate limit schedule for a specified gateway.
 %%
 %% By default, gateways do not have bandwidth rate limit schedules, which
-%% means no bandwidth rate limiting is in effect. Use this to get a
-%% gateway's bandwidth rate limit schedule.
+%% means
+%% no bandwidth rate limiting is in effect. Use this to get a gateway's
+%% bandwidth rate limit schedule.
 get_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bandwidth_rate_limit_schedule(Client, Input, []).
@@ -136,8 +141,8 @@ get_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBandwidthRateLimitSchedule">>, Input, Options).
 
-%% @doc By providing the ARN (Amazon Resource Name), this API returns the
-%% gateway.
+%% @doc By providing the ARN (Amazon Resource Name), this
+%% API returns the gateway.
 get_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_gateway(Client, Input, []).
@@ -149,7 +154,8 @@ get_gateway(Client, Input, Options)
 %% which the gateway will connect.
 %%
 %% A hypervisor is hardware, software, or firmware that creates and manages
-%% virtual machines, and allocates resources to them.
+%% virtual machines,
+%% and allocates resources to them.
 get_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hypervisor(Client, Input, []).
@@ -161,8 +167,9 @@ get_hypervisor(Client, Input, Options)
 %% hypervisor.
 %%
 %% A hypervisor property mapping displays the relationship of entity
-%% properties available from the on-premises hypervisor to the properties
-%% available in Amazon Web Services.
+%% properties
+%% available from the on-premises hypervisor to the properties available in
+%% Amazon Web Services.
 get_hypervisor_property_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hypervisor_property_mappings(Client, Input, []).
@@ -207,7 +214,8 @@ list_hypervisors(Client, Input, Options)
     request(Client, <<"ListHypervisors">>, Input, Options).
 
 %% @doc Lists the tags applied to the resource identified by its Amazon
-%% Resource Name (ARN).
+%% Resource Name
+%% (ARN).
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -227,7 +235,8 @@ list_virtual_machines(Client, Input, Options)
 %% gateway.
 %%
 %% By default, gateways do not have a bandwidth rate limit schedule, which
-%% means no bandwidth rate limiting is in effect. Use this to initiate a
+%% means
+%% no bandwidth rate limiting is in effect. Use this to initiate a
 %% gateway's bandwidth rate limit schedule.
 put_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -239,8 +248,9 @@ put_bandwidth_rate_limit_schedule(Client, Input, Options)
 %% @doc This action sets the property mappings for the specified hypervisor.
 %%
 %% A hypervisor property mapping displays the relationship of entity
-%% properties available from the on-premises hypervisor to the properties
-%% available in Amazon Web Services.
+%% properties
+%% available from the on-premises hypervisor to the properties available in
+%% Amazon Web Services.
 put_hypervisor_property_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_hypervisor_property_mappings(Client, Input, []).
@@ -274,7 +284,8 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Tests your hypervisor configuration to validate that backup gateway
-%% can connect with the hypervisor and its resources.
+%% can connect with the
+%% hypervisor and its resources.
 test_hypervisor_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_hypervisor_configuration(Client, Input, []).
@@ -292,8 +303,8 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates a gateway's name.
 %%
-%% Specify which gateway to update using the Amazon Resource Name (ARN) of
-%% the gateway in your request.
+%% Specify which gateway to update using the Amazon Resource Name
+%% (ARN) of the gateway in your request.
 update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
@@ -305,8 +316,9 @@ update_gateway_information(Client, Input, Options)
 %%
 %% The request immediately triggers the software update.
 %%
-%% When you make this request, you get a `200 OK' success response
-%% immediately. However, it might take some time for the update to complete.
+%% When you make this request, you get a `200 OK'
+%% success response immediately. However, it might take some
+%% time for the update to complete.
 update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_software_now(Client, Input, []).
@@ -317,8 +329,10 @@ update_gateway_software_now(Client, Input, Options)
 %% @doc Updates a hypervisor metadata, including its host, username, and
 %% password.
 %%
-%% Specify which hypervisor to update using the Amazon Resource Name (ARN) of
-%% the hypervisor in your request.
+%% Specify which
+%% hypervisor to update using the Amazon Resource Name (ARN) of the
+%% hypervisor in your
+%% request.
 update_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hypervisor(Client, Input, []).

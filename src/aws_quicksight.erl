@@ -4,8 +4,10 @@
 %% @doc Amazon QuickSight API Reference
 %%
 %% Amazon QuickSight is a fully managed, serverless business intelligence
-%% service for the Amazon Web Services Cloud that makes it easy to extend
-%% data and insights to every user in your organization.
+%% service for the
+%% Amazon Web Services Cloud that makes it easy to extend data and insights
+%% to every user in your
+%% organization.
 %%
 %% This API reference contains documentation for a programming interface that
 %% you can use to manage Amazon QuickSight.
@@ -440,11 +442,13 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -461,41 +465,55 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% Services Region.
 %%
 %% Currently, you can add a custom default theme by using the
-%% `CreateAccountCustomization' or `UpdateAccountCustomization' API
-%% operation. To further customize Amazon QuickSight by removing Amazon
-%% QuickSight sample assets and videos for all new users, see Customizing
-%% Amazon QuickSight:
+%% `CreateAccountCustomization' or `UpdateAccountCustomization'
+%% API operation. To further customize Amazon QuickSight by removing Amazon
+%% QuickSight
+%% sample assets and videos for all new users, see Customizing Amazon
+%% QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html
 %% in the Amazon QuickSight User Guide.
 %%
 %% You can create customizations for your Amazon Web Services account or, if
-%% you specify a namespace, for a QuickSight namespace instead.
-%% Customizations that apply to a namespace always override customizations
-%% that apply to an Amazon Web Services account. To find out which
-%% customizations apply, use the `DescribeAccountCustomization' API
-%% operation.
+%% you specify a namespace, for
+%% a QuickSight namespace instead. Customizations that apply to a namespace
+%% always override
+%% customizations that apply to an Amazon Web Services account. To find out
+%% which customizations apply, use
+%% the `DescribeAccountCustomization' API operation.
 %%
 %% Before you use the `CreateAccountCustomization' API operation to add a
-%% theme as the namespace default, make sure that you first share the theme
-%% with the namespace. If you don't share it with the namespace, the
-%% theme isn't visible to your users even if you make it the default
-%% theme. To check if the theme is shared, view the current permissions by
-%% using the ` DescribeThemePermissions:
+%% theme
+%% as the namespace default, make sure that you first share the theme with
+%% the namespace.
+%% If you don't share it with the namespace, the theme isn't visible
+%% to your users
+%% even if you make it the default theme.
+%% To check if the theme is shared, view the current permissions by using the
+%%
+%% ```
+%% DescribeThemePermissions:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeThemePermissions.html
-%% ' API operation. To share the theme, grant permissions by using the `
+%% '''
+%% API operation.
+%% To share the theme, grant permissions by using the
+%%
+%% ```
 %% UpdateThemePermissions:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateThemePermissions.html
-%% ' API operation.
+%% '''
+%% API operation.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 create_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -513,47 +531,60 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% QuickSight Q.
 %%
 %% The Amazon Web Services Region for the account is derived from what is
-%% configured in the CLI or SDK.
+%% configured in the
+%% CLI or SDK.
 %%
 %% Before you use this operation, make sure that you can connect to an
 %% existing Amazon Web Services account. If you don't have an Amazon Web
-%% Services account, see Sign up for Amazon Web Services:
+%% Services account, see Sign
+%% up for Amazon Web Services:
 %% https://docs.aws.amazon.com/quicksight/latest/user/setting-up-aws-sign-up.html
-%% in the Amazon QuickSight User Guide. The person who signs up for Amazon
-%% QuickSight needs to have the correct Identity and Access Management (IAM)
-%% permissions. For more information, see IAM Policy Examples for Amazon
-%% QuickSight:
+%% in the Amazon QuickSight User
+%% Guide. The person who signs up for Amazon QuickSight needs to have the
+%% correct Identity and Access Management (IAM) permissions. For more
+%% information,
+%% see IAM Policy Examples for Amazon QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/iam-policy-examples.html
-%% in the Amazon QuickSight User Guide.
+%% in the
+%% Amazon QuickSight User Guide.
 %%
 %% If your IAM policy includes both the `Subscribe' and
 %% `CreateAccountSubscription' actions, make sure that both actions are
-%% set to `Allow'. If either action is set to `Deny', the `Deny'
-%% action prevails and your API call fails.
+%% set
+%% to `Allow'. If either action is set to `Deny', the
+%% `Deny' action prevails and your API call fails.
 %%
 %% You can't pass an existing IAM role to access other Amazon Web
 %% Services services using this API operation. To pass your existing IAM role
-%% to Amazon QuickSight, see Passing IAM roles to Amazon QuickSight:
+%% to
+%% Amazon QuickSight, see Passing IAM roles to Amazon QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html#security-create-iam-role
-%% in the Amazon QuickSight User Guide.
+%% in the
+%% Amazon QuickSight User Guide.
 %%
 %% You can't set default resource access on the new account from the
-%% Amazon QuickSight API. Instead, add default resource access from the
-%% Amazon QuickSight console. For more information about setting default
-%% resource access to Amazon Web Services services, see Setting default
-%% resource access to Amazon Web Services services:
+%% Amazon QuickSight
+%% API. Instead, add default resource access from the Amazon QuickSight
+%% console. For more
+%% information about setting default resource access to Amazon Web Services
+%% services, see
+%% Setting default resource
+%% access to Amazon Web Services services:
 %% https://docs.aws.amazon.com/quicksight/latest/user/scoping-policies-defaults.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon QuickSight
+%% User Guide.
 create_account_subscription(Client, AwsAccountId, Input) ->
     create_account_subscription(Client, AwsAccountId, Input, []).
 create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -575,11 +606,13 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
 create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -595,26 +628,34 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %% @doc Creates a dashboard from either a template or directly with a
 %% `DashboardDefinition'.
 %%
-%% To first create a template, see the ` CreateTemplate:
+%% To first create a template, see the
+%%
+%% ```
+%% CreateTemplate:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTemplate.html
-%% ' API operation.
+%% '''
+%% API operation.
 %%
 %% A dashboard is an entity in Amazon QuickSight that identifies Amazon
-%% QuickSight reports, created from analyses. You can share Amazon QuickSight
-%% dashboards. With the right permissions, you can create scheduled email
-%% reports from them. If you have the correct permissions, you can create a
-%% dashboard from a template that exists in a different Amazon Web Services
-%% account.
+%% QuickSight reports, created
+%% from analyses. You can share Amazon QuickSight dashboards. With the right
+%% permissions, you can
+%% create scheduled email reports from them. If you have the correct
+%% permissions, you can
+%% create a dashboard from a template that exists in a different Amazon Web
+%% Services account.
 create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -636,11 +677,13 @@ create_data_set(Client, AwsAccountId, Input) ->
 create_data_set(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -659,11 +702,13 @@ create_data_source(Client, AwsAccountId, Input) ->
 create_data_source(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -682,11 +727,13 @@ create_folder(Client, AwsAccountId, FolderId, Input) ->
 create_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -706,11 +753,13 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -731,8 +780,9 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 %% Support.
 %%
 %% The permissions resource is
-%% `arn:aws:quicksight:&lt;your-region&gt;:&lt;relevant-aws-account-id&gt;:group/default/&lt;group-name&gt;
-%% '.
+%%
+%% ```
+%% arn:aws:quicksight:::group/default/ '''.
 %%
 %% The response is a group object.
 create_group(Client, AwsAccountId, Namespace, Input) ->
@@ -740,11 +790,13 @@ create_group(Client, AwsAccountId, Namespace, Input) ->
 create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -763,11 +815,13 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -781,22 +835,27 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an assignment with one specified IAM policy, identified by
-%% its Amazon Resource Name (ARN).
+%% its
+%% Amazon Resource Name (ARN).
 %%
-%% This policy assignment is attached to the specified groups or users of
-%% Amazon QuickSight. Assignment names are unique per Amazon Web Services
+%% This policy assignment is attached to the specified groups
+%% or users of Amazon QuickSight. Assignment names are unique per Amazon Web
+%% Services
 %% account. To avoid overwriting rules in other namespaces, use assignment
-%% names that are unique.
+%% names that are
+%% unique.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
-    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -811,14 +870,17 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 
 %% @doc Creates and starts a new SPICE ingestion for a dataset.
 %%
-%% You can manually refresh datasets in an Enterprise edition account 32
-%% times in a 24-hour period. You can manually refresh datasets in a Standard
-%% edition account 8 times in a 24-hour period. Each 24-hour period is
-%% measured starting 24 hours before the current date and time.
+%% You can manually refresh datasets in
+%% an Enterprise edition account 32 times in a 24-hour period. You can
+%% manually refresh
+%% datasets in a Standard edition account 8 times in a 24-hour period. Each
+%% 24-hour period
+%% is measured starting 24 hours before the current date and time.
 %%
 %% Any ingestions operating on tagged datasets inherit the same tags
-%% automatically for use in access control. For an example, see How do I
-%% create an IAM policy to control access to Amazon EC2 resources using
+%% automatically for use in
+%% access control. For an example, see How do I create an IAM policy to
+%% control access to Amazon EC2 resources using
 %% tags?:
 %% http://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/
 %% in the Amazon Web Services Knowledge Center. Tags are visible on the
@@ -828,11 +890,13 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -849,24 +913,30 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% Amazon QuickSight.
 %%
 %% A namespace allows you to isolate the Amazon QuickSight users and groups
-%% that are registered for that namespace. Users that access the namespace
-%% can share assets only with other users or groups in the same namespace.
-%% They can't see users and groups in other namespaces. You can create a
-%% namespace after your Amazon Web Services account is subscribed to Amazon
-%% QuickSight. The namespace must be unique within the Amazon Web Services
-%% account. By default, there is a limit of 100 namespaces per Amazon Web
-%% Services account. To increase your limit, create a ticket with Amazon Web
-%% Services Support.
+%% that are registered
+%% for that namespace. Users that access the namespace can share assets only
+%% with other
+%% users or groups in the same namespace. They can't see users and groups
+%% in other
+%% namespaces. You can create a namespace after your Amazon Web Services
+%% account is subscribed to
+%% Amazon QuickSight. The namespace must be unique within the Amazon Web
+%% Services account. By default, there is a
+%% limit of 100 namespaces per Amazon Web Services account. To increase your
+%% limit, create a ticket with
+%% Amazon Web Services Support.
 create_namespace(Client, AwsAccountId, Input) ->
     create_namespace(Client, AwsAccountId, Input, []).
 create_namespace(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -887,11 +957,13 @@ create_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
 create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -911,11 +983,13 @@ create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input)
 create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -931,26 +1005,32 @@ create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
 %% @doc Creates a template either from a `TemplateDefinition' or from an
 %% existing Amazon QuickSight analysis or template.
 %%
-%% You can use the resulting template to create additional dashboards,
-%% templates, or analyses.
+%% You can use the resulting
+%% template to create additional dashboards, templates, or analyses.
 %%
 %% A template is an entity in Amazon QuickSight that encapsulates the
-%% metadata required to create an analysis and that you can use to create s
-%% dashboard. A template adds a layer of abstraction by using placeholders to
-%% replace the dataset associated with the analysis. You can use templates to
-%% create dashboards by replacing dataset placeholders with datasets that
-%% follow the same schema that was used to create the source analysis and
-%% template.
+%% metadata
+%% required to create an analysis and that you can use to create s dashboard.
+%% A template adds
+%% a layer of abstraction by using placeholders to replace the dataset
+%% associated with the
+%% analysis. You can use templates to create dashboards by replacing dataset
+%% placeholders
+%% with datasets that follow the same schema that was used to create the
+%% source analysis
+%% and template.
 create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
 create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -969,11 +1049,13 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -988,9 +1070,9 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 
 %% @doc Creates a theme.
 %%
-%% A theme is set of configuration options for color and layout. Themes apply
-%% to analyses and dashboards. For more information, see Using Themes in
-%% Amazon QuickSight:
+%% A theme is set of configuration options for color and layout.
+%% Themes apply to analyses and dashboards. For more information, see Using
+%% Themes in Amazon QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html
 %% in the Amazon QuickSight User Guide.
 create_theme(Client, AwsAccountId, ThemeId, Input) ->
@@ -998,11 +1080,13 @@ create_theme(Client, AwsAccountId, ThemeId, Input) ->
 create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1021,11 +1105,13 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1044,11 +1130,13 @@ create_topic(Client, AwsAccountId, Input) ->
 create_topic(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1067,11 +1155,13 @@ create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input) ->
 create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1090,11 +1180,13 @@ create_vpc_connection(Client, AwsAccountId, Input) ->
 create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1108,18 +1200,20 @@ create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes all Amazon QuickSight customizations in this Amazon Web
-%% Services Region for the specified Amazon Web Services account and Amazon
-%% QuickSight namespace.
+%% Services Region for the specified
+%% Amazon Web Services account and Amazon QuickSight namespace.
 delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
 delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1147,11 +1241,13 @@ delete_account_subscription(Client, AwsAccountId, Input) ->
 delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1166,33 +1262,40 @@ delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Deletes an analysis from Amazon QuickSight.
 %%
-%% You can optionally include a recovery window during which you can restore
-%% the analysis. If you don't specify a recovery window value, the
+%% You can optionally include a recovery window during
+%% which you can restore the analysis. If you don't specify a recovery
+%% window value, the
 %% operation defaults to 30 days. Amazon QuickSight attaches a
-%% `DeletionTime' stamp to the response that specifies the end of the
-%% recovery window. At the end of the recovery window, Amazon QuickSight
-%% deletes the analysis permanently.
+%% `DeletionTime' stamp to
+%% the response that specifies the end of the recovery window. At the end of
+%% the recovery
+%% window, Amazon QuickSight deletes the analysis permanently.
 %%
 %% At any time before recovery window ends, you can use the
-%% `RestoreAnalysis' API operation to remove the `DeletionTime' stamp
-%% and cancel the deletion of the analysis. The analysis remains visible in
-%% the API until it's deleted, so you can describe it but you can't
-%% make a template from it.
+%% `RestoreAnalysis'
+%% API operation to remove the `DeletionTime' stamp and cancel the
+%% deletion of
+%% the analysis. The analysis remains visible in the API until it's
+%% deleted, so you can
+%% describe it but you can't make a template from it.
 %%
 %% An analysis that's scheduled for deletion isn't accessible in the
-%% Amazon QuickSight console. To access it in the console, restore it.
-%% Deleting an analysis doesn't delete the dashboards that you publish
-%% from it.
+%% Amazon QuickSight console.
+%% To access it in the console, restore it. Deleting an analysis doesn't
+%% delete the
+%% dashboards that you publish from it.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1213,11 +1316,13 @@ delete_dashboard(Client, AwsAccountId, DashboardId, Input) ->
 delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1237,11 +1342,13 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input) ->
 delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1260,11 +1367,13 @@ delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
 delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1279,18 +1388,20 @@ delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Opti
 
 %% @doc Deletes the data source permanently.
 %%
-%% This operation breaks all the datasets that reference the deleted data
-%% source.
+%% This operation breaks
+%% all the datasets that reference the deleted data source.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     delete_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1309,11 +1420,13 @@ delete_folder(Client, AwsAccountId, FolderId, Input) ->
 delete_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1333,11 +1446,13 @@ delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1356,11 +1471,13 @@ delete_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1380,11 +1497,13 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1403,11 +1522,13 @@ delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespace/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1430,11 +1551,13 @@ delete_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
 delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1451,18 +1574,21 @@ delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 %% the namespace.
 %%
 %% This is an asynchronous process. Assets including dashboards, analyses,
-%% datasets and data sources are not deleted. To delete these assets, you use
-%% the API operations for the relevant asset.
+%% datasets and data sources are not
+%% deleted. To delete these assets, you use the API operations for the
+%% relevant asset.
 delete_namespace(Client, AwsAccountId, Namespace, Input) ->
     delete_namespace(Client, AwsAccountId, Namespace, Input, []).
 delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1481,11 +1607,13 @@ delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input) ->
 delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1504,11 +1632,13 @@ delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
 delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1527,11 +1657,13 @@ delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input)
 delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1550,11 +1682,13 @@ delete_template(Client, AwsAccountId, TemplateId, Input) ->
 delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1570,18 +1704,20 @@ delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
 
 %% @doc Deletes the item that the specified template alias points to.
 %%
-%% If you provide a specific alias, you delete the version of the template
-%% that the alias points to.
+%% If you provide a specific
+%% alias, you delete the version of the template that the alias points to.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1600,11 +1736,13 @@ delete_theme(Client, AwsAccountId, ThemeId, Input) ->
 delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1621,18 +1759,20 @@ delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 %% @doc Deletes the version of the theme that the specified theme alias
 %% points to.
 %%
-%% If you provide a specific alias, you delete the version of the theme that
-%% the alias points to.
+%% If you provide a specific alias, you delete the version of the theme
+%% that the alias points to.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1651,11 +1791,13 @@ delete_topic(Client, AwsAccountId, TopicId, Input) ->
 delete_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1674,11 +1816,13 @@ delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) -
 delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1692,19 +1836,23 @@ delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the Amazon QuickSight user that is associated with the
-%% identity of the IAM user or role that's making the call.
+%% identity of the
+%% IAM user or role that's making the call.
 %%
-%% The IAM user isn't deleted as a result of this call.
+%% The IAM user
+%% isn't deleted as a result of this call.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     delete_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1723,11 +1871,13 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input)
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/user-principals/", aws_util:encode_uri(PrincipalId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1746,11 +1896,13 @@ delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
 delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1764,64 +1916,77 @@ delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the customizations associated with the provided Amazon Web
-%% Services account and Amazon Amazon QuickSight namespace in an Amazon Web
-%% Services Region.
+%% Services account and Amazon
+%% Amazon QuickSight namespace in an Amazon Web Services Region.
 %%
-%% The Amazon QuickSight console evaluates which customizations to apply by
-%% running this API operation with the `Resolved' flag included.
+%% The Amazon QuickSight console evaluates which
+%% customizations to apply by running this API operation with the
+%% `Resolved' flag
+%% included.
 %%
 %% To determine what customizations display when you run this command, it can
-%% help to visualize the relationship of the entities involved.
+%% help to
+%% visualize the relationship of the entities involved.
 %%
-%% <ul> <li> `Amazon Web Services account' - The Amazon Web Services
-%% account exists at the top of the hierarchy. It has the potential to use
-%% all of the Amazon Web Services Regions and Amazon Web Services Services.
-%% When you subscribe to Amazon QuickSight, you choose one Amazon Web
-%% Services Region to use as your home Region. That's where your free
-%% SPICE capacity is located. You can use Amazon QuickSight in any supported
-%% Amazon Web Services Region.
+%% `Amazon Web Services account' - The Amazon Web Services account exists
+%% at the top of the hierarchy.
+%% It has the potential to use all of the Amazon Web Services Regions and
+%% Amazon Web Services Services. When you
+%% subscribe to Amazon QuickSight, you choose one Amazon Web Services Region
+%% to use as your home Region.
+%% That's where your free SPICE capacity is located. You can use Amazon
+%% QuickSight in any
+%% supported Amazon Web Services Region.
 %%
-%% </li> <li> `Amazon Web Services Region' - In each Amazon Web Services
-%% Region where you sign in to Amazon QuickSight at least once, Amazon
-%% QuickSight acts as a separate instance of the same service. If you have a
-%% user directory, it resides in us-east-1, which is the US East (N.
+%% `Amazon Web Services Region' - In each Amazon Web Services Region
+%% where you sign in to Amazon QuickSight
+%% at least once, Amazon QuickSight acts as a separate instance of the same
+%% service. If
+%% you have a user directory, it resides in us-east-1, which is the US East
+%% (N.
 %% Virginia). Generally speaking, these users have access to Amazon
-%% QuickSight in any Amazon Web Services Region, unless they are constrained
-%% to a namespace.
+%% QuickSight in any
+%% Amazon Web Services Region, unless they are constrained to a namespace.
 %%
 %% To run the command in a different Amazon Web Services Region, you change
-%% your Region settings. If you're using the CLI, you can use one of the
-%% following options:
+%% your Region settings.
+%% If you're using the CLI, you can use one of the following options:
 %%
-%% <ul> <li> Use command line options:
+%% Use command line options:
 %% https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html.
 %%
-%% </li> <li> Use named profiles:
+%% Use named profiles:
 %% https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html.
 %%
-%% </li> <li> Run `aws configure' to change your default Amazon Web
-%% Services Region. Use Enter to key the same settings for your keys. For
-%% more information, see Configuring the CLI:
+%% Run `aws configure' to change your default Amazon Web Services Region.
+%% Use
+%% Enter to key the same settings for your keys. For more information, see
+%% Configuring the CLI:
 %% https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html.
 %%
-%% </li> </ul> </li> <li> `Namespace' - A QuickSight namespace is a
-%% partition that contains users and assets (data sources, datasets,
-%% dashboards, and so on). To access assets that are in a specific namespace,
-%% users and groups must also be part of the same namespace. People who share
-%% a namespace are completely isolated from users and assets in other
-%% namespaces, even if they are in the same Amazon Web Services account and
-%% Amazon Web Services Region.
+%% `Namespace' - A QuickSight namespace is a partition that contains
+%% users and assets (data sources, datasets, dashboards, and so on). To
+%% access
+%% assets that are in a specific namespace, users and groups must also be
+%% part of
+%% the same namespace. People who share a namespace are completely isolated
+%% from
+%% users and assets in other namespaces, even if they are in the same Amazon
+%% Web Services account
+%% and Amazon Web Services Region.
 %%
-%% </li> <li> `Applied customizations' - Within an Amazon Web Services
-%% Region, a set of Amazon QuickSight customizations can apply to an Amazon
-%% Web Services account or to a namespace. Settings that you apply to a
-%% namespace override settings that you apply to an Amazon Web Services
-%% account. All settings are isolated to a single Amazon Web Services Region.
-%% To apply them in other Amazon Web Services Regions, run the
-%% `CreateAccountCustomization' command in each Amazon Web Services
-%% Region where you want to apply the same customizations.
-%%
-%% </li> </ul>
+%% `Applied customizations' - Within an Amazon Web Services Region, a set
+%% of
+%% Amazon QuickSight customizations can apply to an Amazon Web Services
+%% account or to a namespace.
+%% Settings that you apply to a namespace override settings that you apply to
+%% an
+%% Amazon Web Services account. All settings are isolated to a single Amazon
+%% Web Services Region. To apply them in
+%% other Amazon Web Services Regions, run the
+%% `CreateAccountCustomization' command in
+%% each Amazon Web Services Region where you want to apply the same
+%% customizations.
 describe_account_customization(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_customization(Client, AwsAccountId, #{}, #{}).
@@ -1833,10 +1998,12 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap)
 describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1850,7 +2017,8 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the settings that were used when your Amazon QuickSight
-%% subscription was first created in this Amazon Web Services account.
+%% subscription was first
+%% created in this Amazon Web Services account.
 describe_account_settings(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_settings(Client, AwsAccountId, #{}, #{}).
@@ -1862,10 +2030,12 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap)
 describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1890,10 +2060,12 @@ describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap)
 describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1913,10 +2085,12 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
 describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1927,8 +2101,12 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Option
 %% @doc Provides a detailed description of the definition of an analysis.
 %%
 %% If you do not need to know details about the content of an Analysis, for
-%% instance if you are trying to check the status of a recently created or
-%% updated Analysis, use the `DescribeAnalysis' :
+%% instance if you
+%% are trying to check the status of a recently created or updated Analysis,
+%% use the
+%%
+%% `DescribeAnalysis'
+%% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAnalysis.html
 %% instead.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId)
@@ -1942,10 +2120,12 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, Headers
 describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/definition"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1965,10 +2145,12 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1996,10 +2178,12 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, Q
 describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/", aws_util:encode_uri(AssetBundleExportJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2022,10 +2206,12 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/", aws_util:encode_uri(AssetBundleImportJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2045,10 +2231,12 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
 describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2064,8 +2252,12 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Opti
 %% @doc Provides a detailed description of the definition of a dashboard.
 %%
 %% If you do not need to know details about the content of a dashboard, for
-%% instance if you are trying to check the status of a recently created or
-%% updated dashboard, use the `DescribeDashboard' :
+%% instance if you
+%% are trying to check the status of a recently created or updated dashboard,
+%% use the
+%%
+%% `DescribeDashboard'
+%% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboard.html
 %% instead.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId)
@@ -2079,10 +2271,12 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, Heade
 describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/definition"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2107,10 +2301,12 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2133,10 +2329,12 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2152,8 +2350,8 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 %% call.
 %%
 %% If the job has not finished running, this operation returns a message that
-%% says `Dashboard Snapshot Job with id &lt;SnapshotjobId&gt; has not reached
-%% a terminal state.'.
+%% says `Dashboard Snapshot Job with id has not reached a terminal
+%% state.'.
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId)
   when is_map(Client) ->
     describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
@@ -2165,10 +2363,12 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), "/result"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2191,10 +2391,12 @@ describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
 describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2217,10 +2419,12 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
 describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2240,10 +2444,12 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, 
 describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2263,10 +2469,12 @@ describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
 describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2286,10 +2494,12 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2309,10 +2519,12 @@ describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
 describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2332,10 +2544,12 @@ describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap
 describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2364,10 +2578,12 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/resolved-permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2394,10 +2610,12 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
 describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2406,10 +2624,11 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Use the `DescribeGroupMembership' operation to determine if a
-%% user is a member of the specified group.
+%% user is a
+%% member of the specified group.
 %%
-%% If the user exists and is a member of the specified group, an associated
-%% `GroupMember' object is returned.
+%% If the user exists and is a member of the specified
+%% group, an associated `GroupMember' object is returned.
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace)
   when is_map(Client) ->
     describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, #{}, #{}).
@@ -2421,10 +2640,12 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2445,10 +2666,12 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2468,10 +2691,12 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2491,10 +2716,12 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap)
 describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2514,10 +2741,12 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2537,10 +2766,12 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2560,10 +2791,12 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2583,10 +2816,12 @@ describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
 describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2611,10 +2846,12 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2625,8 +2862,12 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
 %% @doc Provides a detailed description of the definition of a template.
 %%
 %% If you do not need to know details about the content of a template, for
-%% instance if you are trying to check the status of a recently created or
-%% updated template, use the `DescribeTemplate' :
+%% instance if you
+%% are trying to check the status of a recently created or updated template,
+%% use the
+%%
+%% `DescribeTemplate'
+%% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplate.html
 %% instead.
 describe_template_definition(Client, AwsAccountId, TemplateId)
@@ -2640,10 +2881,12 @@ describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, Headers
 describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/definition"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2668,10 +2911,12 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, Header
 describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2691,10 +2936,12 @@ describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2719,10 +2966,12 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, Headers
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2742,10 +2991,12 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2765,10 +3016,12 @@ describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
 describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2788,10 +3041,12 @@ describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
 describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2811,10 +3066,12 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, Heade
 describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/refresh/", aws_util:encode_uri(RefreshId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2834,10 +3091,12 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryM
 describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2857,10 +3116,12 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
 describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2880,10 +3141,12 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2900,23 +3163,26 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 %%
 %% The following rules apply to the generated URL:
 %%
-%% <ul> <li> It contains a temporary bearer token. It is valid for 5 minutes
-%% after it is generated. Once redeemed within this period, it cannot be
-%% re-used again.
+%% It contains a temporary bearer token. It is valid for 5 minutes after it
+%% is generated. Once redeemed within this period, it cannot be re-used
+%% again.
 %%
-%% </li> <li> The URL validity period should not be confused with the actual
-%% session lifetime that can be customized using the `
+%% The URL validity period should not be confused with the actual session
+%% lifetime that can be customized using the
+%% ```
 %% SessionLifetimeInMinutes:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForAnonymousUser.html#QS-GenerateEmbedUrlForAnonymousUser-request-SessionLifetimeInMinutes
-%% ' parameter. The resulting user session is valid for 15 minutes
-%% (minimum) to 10 hours (maximum). The default session duration is 10 hours.
+%% ''' parameter. The resulting user session is valid for 15
+%% minutes (minimum) to 10 hours (maximum). The default session duration is
+%% 10 hours.
 %%
-%% </li> <li> You are charged only when the URL is used or there is
-%% interaction with Amazon QuickSight.
+%% You are charged only when the URL is used or there is interaction with
+%% Amazon QuickSight.
 %%
-%% </li> </ul> For more information, see Embedded Analytics:
+%% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon QuickSight User
+%% Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive demo of the ways you can customize embedding, visit the Amazon
@@ -2927,11 +3193,13 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input) ->
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/anonymous-user"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2948,30 +3216,34 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% experience in your website.
 %%
 %% This action can be used for any type of user registered in an Amazon
-%% QuickSight account. Before you use this action, make sure that you have
-%% configured the relevant Amazon QuickSight resource and permissions.
+%% QuickSight account.
+%% Before you use this action, make sure that you have configured the
+%% relevant Amazon QuickSight resource and permissions.
 %%
 %% The following rules apply to the generated URL:
 %%
-%% <ul> <li> It contains a temporary bearer token. It is valid for 5 minutes
-%% after it is generated. Once redeemed within this period, it cannot be
-%% re-used again.
+%% It contains a temporary bearer token. It is valid for 5 minutes after it
+%% is generated. Once redeemed within this period, it cannot be re-used
+%% again.
 %%
-%% </li> <li> The URL validity period should not be confused with the actual
-%% session lifetime that can be customized using the `
+%% The URL validity period should not be confused with the actual session
+%% lifetime
+%% that can be customized using the
+%% ```
 %% SessionLifetimeInMinutes:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForRegisteredUser.html#QS-GenerateEmbedUrlForRegisteredUser-request-SessionLifetimeInMinutes
-%% ' parameter.
+%% ''' parameter.
 %%
 %% The resulting user session is valid for 15 minutes (minimum) to 10 hours
 %% (maximum). The default session duration is 10 hours.
 %%
-%% </li> <li> You are charged only when the URL is used or there is
-%% interaction with Amazon QuickSight.
+%% You are charged only when the URL is used or there is interaction with
+%% Amazon QuickSight.
 %%
-%% </li> </ul> For more information, see Embedded Analytics:
+%% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon QuickSight User
+%% Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive demo of the ways you can customize embedding, visit the Amazon
@@ -2982,11 +3254,13 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input) ->
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/registered-user"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3010,23 +3284,23 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 %% not from the user's browser. The following rules apply to the
 %% generated URL:
 %%
-%% <ul> <li> They must be used together.
+%% They must be used together.
 %%
-%% </li> <li> They can be used one time only.
+%% They can be used one time only.
 %%
-%% </li> <li> They are valid for 5 minutes after you run this command.
+%% They are valid for 5 minutes after you run this command.
 %%
-%% </li> <li> You are charged only when the URL is used or there is
-%% interaction with Amazon QuickSight.
+%% You are charged only when the URL is used or there is interaction with
+%% Amazon QuickSight.
 %%
-%% </li> <li> The resulting user session is valid for 15 minutes (default) up
-%% to 10 hours (maximum). You can use the optional
-%% `SessionLifetimeInMinutes' parameter to customize session duration.
+%% The resulting user session is valid for 15 minutes (default) up to 10
+%% hours (maximum). You can use the optional `SessionLifetimeInMinutes'
+%% parameter to customize session duration.
 %%
-%% </li> </ul> For more information, see Embedding Analytics Using
-%% GetDashboardEmbedUrl:
+%% For more information, see Embedding Analytics Using GetDashboardEmbedUrl:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics-deprecated.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon QuickSight User
+%% Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive demo of the ways you can customize embedding, visit the Amazon
@@ -3043,10 +3317,12 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/embed-url"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3066,28 +3342,37 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates a session URL and authorization code that you can use to
-%% embed the Amazon Amazon QuickSight console in your web server code.
+%% embed the Amazon
+%% Amazon QuickSight console in your web server code.
 %%
-%% Use `GetSessionEmbedUrl' where you want to provide an authoring portal
-%% that allows users to create data sources, datasets, analyses, and
-%% dashboards. The users who access an embedded Amazon QuickSight console
+%% Use `GetSessionEmbedUrl' where
+%% you want to provide an authoring portal that allows users to create data
+%% sources,
+%% datasets, analyses, and dashboards. The users who access an embedded
+%% Amazon QuickSight console
 %% need belong to the author or admin security cohort. If you want to
-%% restrict permissions to some of these features, add a custom permissions
-%% profile to the user with the ` UpdateUser:
-%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateUser.html
-%% ' API operation. Use ` RegisterUser:
-%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisterUser.html
-%% ' API operation to add a new user with a custom permission profile
-%% attached. For more information, see the following sections in the Amazon
-%% QuickSight User Guide:
+%% restrict permissions
+%% to some of these features, add a custom permissions profile to the user
+%% with the
 %%
-%% <ul> <li> Embedding Analytics:
+%% ```
+%% UpdateUser:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateUser.html
+%% ''' API operation. Use
+%% ```
+%% RegisterUser:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisterUser.html
+%% '''
+%% API operation to add a new user with a custom permission profile attached.
+%% For more
+%% information, see the following sections in the Amazon QuickSight User
+%% Guide:
+%%
+%% Embedding Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %%
-%% </li> <li> Customizing Access to the Amazon QuickSight Console:
+%% Customizing Access to the Amazon QuickSight Console:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html
-%%
-%% </li> </ul>
 get_session_embed_url(Client, AwsAccountId)
   when is_map(Client) ->
     get_session_embed_url(Client, AwsAccountId, #{}, #{}).
@@ -3099,10 +3384,12 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap)
 get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/session-embed-url"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3129,10 +3416,12 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap)
 list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3163,10 +3452,12 @@ list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
 list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3197,10 +3488,12 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
 list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3226,10 +3519,12 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
 list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3254,10 +3549,12 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap)
 list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3286,10 +3583,12 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap)
 list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3315,10 +3614,12 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3344,10 +3645,12 @@ list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
 list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3372,10 +3675,12 @@ list_folders(Client, AwsAccountId, QueryMap, HeadersMap)
 list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3400,10 +3705,12 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3428,10 +3735,12 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3444,7 +3753,8 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the IAM policy assignments in the current Amazon QuickSight
+%% @doc Lists the
+%% IAM policy assignments in the current Amazon QuickSight
 %% account.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
@@ -3457,10 +3767,12 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/v2/iam-policy-assignments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3474,9 +3786,13 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all of the IAM policy assignments, including the Amazon
-%% Resource Names (ARNs), for the IAM policies assigned to the specified user
-%% and group, or groups that the user belongs to.
+%% @doc Lists all of
+%% the IAM policy assignments, including the Amazon
+%% Resource Names
+%% (ARNs),
+%% for the IAM policies assigned to the specified user and
+%% group,
+%% or groups that the user belongs to.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
@@ -3488,10 +3804,12 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/iam-policy-assignments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3520,10 +3838,12 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap)
 list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3548,10 +3868,12 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
 list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3578,10 +3900,12 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
 list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3608,10 +3932,12 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
 list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3631,10 +3957,12 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
 list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3659,10 +3987,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3682,10 +4012,12 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
 list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3711,10 +4043,12 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
 list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3739,10 +4073,12 @@ list_templates(Client, AwsAccountId, QueryMap, HeadersMap)
 list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3767,10 +4103,12 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3796,10 +4134,12 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
 list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3824,10 +4164,12 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap)
 list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3853,10 +4195,12 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3876,10 +4220,12 @@ list_topics(Client, AwsAccountId, QueryMap, HeadersMap)
 list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3905,10 +4251,12 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
 list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3934,10 +4282,12 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
 list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3951,7 +4301,8 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the VPC connections in the current set Amazon Web
-%% Services Region of an Amazon Web Services account.
+%% Services Region of an
+%% Amazon Web Services account.
 list_vpc_connections(Client, AwsAccountId)
   when is_map(Client) ->
     list_vpc_connections(Client, AwsAccountId, #{}, #{}).
@@ -3963,10 +4314,12 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap)
 list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3985,11 +4338,13 @@ put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
 put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4020,11 +4375,13 @@ register_user(Client, AwsAccountId, Namespace, Input) ->
 register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4043,11 +4400,13 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input) ->
 restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/restore/analyses/", aws_util:encode_uri(AnalysisId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4070,11 +4429,13 @@ search_analyses(Client, AwsAccountId, Input) ->
 search_analyses(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/analyses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4096,11 +4457,13 @@ search_dashboards(Client, AwsAccountId, Input) ->
 search_dashboards(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/dashboards"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4120,11 +4483,13 @@ search_data_sets(Client, AwsAccountId, Input) ->
 search_data_sets(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4144,11 +4509,13 @@ search_data_sources(Client, AwsAccountId, Input) ->
 search_data_sources(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4167,11 +4534,13 @@ search_folders(Client, AwsAccountId, Input) ->
 search_folders(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/folders"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4191,11 +4560,13 @@ search_groups(Client, AwsAccountId, Namespace, Input) ->
 search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups-search"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4228,11 +4599,13 @@ start_asset_bundle_export_job(Client, AwsAccountId, Input) ->
 start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/export"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4263,11 +4636,13 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input) ->
 start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/import"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4284,26 +4659,27 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% You can request one of the following format configurations per API call.
 %%
-%% <ul> <li> 1 paginated PDF
+%% 1 paginated PDF
 %%
-%% </li> <li> 1 Excel workbook
+%% 1 Excel workbook
 %%
-%% </li> <li> 5 CSVs
+%% 5 CSVs
 %%
-%% </li> </ul> Poll job descriptions with a
-%% `DescribeDashboardSnapshotJob' API call. Once the job succeeds, use
-%% the `DescribeDashboardSnapshotJobResult' API to obtain the download
-%% URIs that the job generates.
+%% Poll job descriptions with a `DescribeDashboardSnapshotJob' API call.
+%% Once the job succeeds, use the `DescribeDashboardSnapshotJobResult'
+%% API to obtain the download URIs that the job generates.
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input) ->
     start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input, []).
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4320,40 +4696,46 @@ start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0
 %% QuickSight resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions, by granting a user permission to access or
-%% change only resources with certain tag values. You can use the
-%% `TagResource' operation with a resource that already has tags. If you
-%% specify a new tag key for the resource, this tag is appended to the list
-%% of tags associated with the resource. If you specify a tag key that is
-%% already associated with the resource, the new tag value that you specify
+%% them to
+%% scope user permissions, by granting a user permission to access or change
+%% only resources
+%% with certain tag values. You can use the `TagResource' operation with
+%% a
+%% resource that already has tags. If you specify a new tag key for the
+%% resource, this tag
+%% is appended to the list of tags associated with the resource. If you
+%% specify a tag key
+%% that is already associated with the resource, the new tag value that you
+%% specify
 %% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource. Amazon QuickSight
-%% supports tagging on data set, data source, dashboard, template, topic, and
-%% user.
+%% supports tagging on data
+%% set, data source, dashboard, template, topic, and user.
 %%
 %% Tagging for Amazon QuickSight works in a similar way to tagging for other
-%% Amazon Web Services services, except for the following:
+%% Amazon Web Services services, except for
+%% the following:
 %%
-%% <ul> <li> Tags are used to track costs for users in Amazon QuickSight. You
-%% can't tag other resources that Amazon QuickSight costs are based on,
-%% such as storage capacoty (SPICE), session usage, alert consumption, or
-%% reporting units.
+%% Tags are used to track costs for users in Amazon QuickSight. You can't
+%% tag other resources that Amazon QuickSight costs are based on, such as
+%% storage capacoty (SPICE), session usage, alert consumption, or reporting
+%% units.
 %%
-%% </li> <li> Amazon QuickSight doesn't currently support the tag editor
-%% for Resource Groups.
-%%
-%% </li> </ul>
+%% Amazon QuickSight doesn't currently support the tag editor for
+%% Resource Groups.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4372,11 +4754,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4396,20 +4780,24 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Currently, the only customization that you can use is a theme.
 %%
 %% You can use customizations for your Amazon Web Services account or, if you
-%% specify a namespace, for a Amazon QuickSight namespace instead.
-%% Customizations that apply to a namespace override customizations that
-%% apply to an Amazon Web Services account. To find out which customizations
-%% apply, use the `DescribeAccountCustomization' API operation.
+%% specify a namespace, for a
+%% Amazon QuickSight namespace instead. Customizations that apply to a
+%% namespace override
+%% customizations that apply to an Amazon Web Services account. To find out
+%% which customizations apply, use
+%% the `DescribeAccountCustomization' API operation.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
 update_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4430,11 +4818,13 @@ update_account_settings(Client, AwsAccountId, Input) ->
 update_account_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4453,11 +4843,13 @@ update_analysis(Client, AnalysisId, AwsAccountId, Input) ->
 update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4476,11 +4868,13 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) ->
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4496,20 +4890,25 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 %% @doc Updates a dashboard in an Amazon Web Services account.
 %%
 %% Updating a Dashboard creates a new dashboard version but does not
-%% immediately publish the new version. You can update the published version
-%% of a dashboard by using the ` UpdateDashboardPublishedVersion:
+%% immediately publish
+%% the new version. You can update the published version of a dashboard by
+%% using the
+%% ```
+%% UpdateDashboardPublishedVersion:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardPublishedVersion.html
-%% ' API operation.
+%% ''' API operation.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4528,11 +4927,13 @@ update_dashboard_links(Client, AwsAccountId, DashboardId, Input) ->
 update_dashboard_links(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/linked-entities"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4551,11 +4952,13 @@ update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input) ->
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4574,11 +4977,13 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4600,11 +5005,13 @@ update_data_set(Client, AwsAccountId, DataSetId, Input) ->
 update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4626,11 +5033,13 @@ update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4649,11 +5058,13 @@ update_data_source(Client, AwsAccountId, DataSourceId, Input) ->
 update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4672,11 +5083,13 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input) ->
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4695,11 +5108,13 @@ update_folder(Client, AwsAccountId, FolderId, Input) ->
 update_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4718,11 +5133,13 @@ update_folder_permissions(Client, AwsAccountId, FolderId, Input) ->
 update_folder_permissions(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4741,11 +5158,13 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
 update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4760,19 +5179,22 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 
 %% @doc Updates an existing IAM policy assignment.
 %%
-%% This operation updates only the optional parameter or parameters that are
-%% specified in the request. This overwrites all of the users included in
-%% `Identities'.
+%% This operation updates only
+%% the optional parameter or parameters that are specified in the request.
+%% This overwrites
+%% all of the users included in `Identities'.
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4795,11 +5217,13 @@ update_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
 update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4814,18 +5238,23 @@ update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 
 %% @doc Updates the content and status of IP rules.
 %%
-%% To use this operation, you must provide the entire map of rules. You can
-%% use the `DescribeIpRestriction' operation to get the current rule map.
+%% To use this operation, you
+%% must
+%% provide the entire map of rules. You can use the
+%% `DescribeIpRestriction'
+%% operation to get the current rule map.
 update_ip_restriction(Client, AwsAccountId, Input) ->
     update_ip_restriction(Client, AwsAccountId, Input, []).
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4839,27 +5268,34 @@ update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use the `UpdatePublicSharingSettings' operation to turn on or
-%% turn off the public sharing settings of an Amazon QuickSight dashboard.
+%% turn off the
+%% public sharing settings of an Amazon QuickSight dashboard.
 %%
 %% To use this operation, turn on session capacity pricing for your Amazon
-%% QuickSight account.
+%% QuickSight
+%% account.
 %%
 %% Before you can turn on public sharing on your account, make sure to give
-%% public sharing permissions to an administrative user in the Identity and
-%% Access Management (IAM) console. For more information on using IAM with
-%% Amazon QuickSight, see Using Amazon QuickSight with IAM:
+%% public sharing
+%% permissions to an administrative user in the Identity and Access
+%% Management (IAM)
+%% console. For more information on using IAM with Amazon QuickSight, see
+%% Using Amazon QuickSight with IAM:
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon QuickSight
+%% User Guide.
 update_public_sharing_settings(Client, AwsAccountId, Input) ->
     update_public_sharing_settings(Client, AwsAccountId, Input, []).
 update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/public-sharing-settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4878,11 +5314,13 @@ update_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4901,11 +5339,13 @@ update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
 update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4925,11 +5365,13 @@ update_template(Client, AwsAccountId, TemplateId, Input) ->
 update_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4948,11 +5390,13 @@ update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4971,11 +5415,13 @@ update_template_permissions(Client, AwsAccountId, TemplateId, Input) ->
 update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4994,11 +5440,13 @@ update_theme(Client, AwsAccountId, ThemeId, Input) ->
 update_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5017,11 +5465,13 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5036,61 +5486,61 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 
 %% @doc Updates the resource permissions for a theme.
 %%
-%% Permissions apply to the action to grant or revoke permissions on, for
-%% example `&quot;quicksight:DescribeTheme&quot;'.
+%% Permissions apply to the action to grant or
+%% revoke permissions on, for example
+%% `&quot;quicksight:DescribeTheme&quot;'.
 %%
 %% Theme permissions apply in groupings. Valid groupings include the
-%% following for the three levels of permissions, which are user, owner, or
-%% no permissions:
+%% following for the three
+%% levels of permissions, which are user, owner, or no permissions:
 %%
-%% <ul> <li> User
+%% User
 %%
-%% <ul> <li> `&quot;quicksight:DescribeTheme&quot;'
+%% `&quot;quicksight:DescribeTheme&quot;'
 %%
-%% </li> <li> `&quot;quicksight:DescribeThemeAlias&quot;'
+%% `&quot;quicksight:DescribeThemeAlias&quot;'
 %%
-%% </li> <li> `&quot;quicksight:ListThemeAliases&quot;'
+%% `&quot;quicksight:ListThemeAliases&quot;'
 %%
-%% </li> <li> `&quot;quicksight:ListThemeVersions&quot;'
+%% `&quot;quicksight:ListThemeVersions&quot;'
 %%
-%% </li> </ul> </li> <li> Owner
+%% Owner
 %%
-%% <ul> <li> `&quot;quicksight:DescribeTheme&quot;'
+%% `&quot;quicksight:DescribeTheme&quot;'
 %%
-%% </li> <li> `&quot;quicksight:DescribeThemeAlias&quot;'
+%% `&quot;quicksight:DescribeThemeAlias&quot;'
 %%
-%% </li> <li> `&quot;quicksight:ListThemeAliases&quot;'
+%% `&quot;quicksight:ListThemeAliases&quot;'
 %%
-%% </li> <li> `&quot;quicksight:ListThemeVersions&quot;'
+%% `&quot;quicksight:ListThemeVersions&quot;'
 %%
-%% </li> <li> `&quot;quicksight:DeleteTheme&quot;'
+%% `&quot;quicksight:DeleteTheme&quot;'
 %%
-%% </li> <li> `&quot;quicksight:UpdateTheme&quot;'
+%% `&quot;quicksight:UpdateTheme&quot;'
 %%
-%% </li> <li> `&quot;quicksight:CreateThemeAlias&quot;'
+%% `&quot;quicksight:CreateThemeAlias&quot;'
 %%
-%% </li> <li> `&quot;quicksight:DeleteThemeAlias&quot;'
+%% `&quot;quicksight:DeleteThemeAlias&quot;'
 %%
-%% </li> <li> `&quot;quicksight:UpdateThemeAlias&quot;'
+%% `&quot;quicksight:UpdateThemeAlias&quot;'
 %%
-%% </li> <li> `&quot;quicksight:UpdateThemePermissions&quot;'
+%% `&quot;quicksight:UpdateThemePermissions&quot;'
 %%
-%% </li> <li> `&quot;quicksight:DescribeThemePermissions&quot;'
+%% `&quot;quicksight:DescribeThemePermissions&quot;'
 %%
-%% </li> </ul> </li> <li> To specify no permissions, omit the permissions
-%% list.
-%%
-%% </li> </ul>
+%% To specify no permissions, omit the permissions list.
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input) ->
     update_theme_permissions(Client, AwsAccountId, ThemeId, Input, []).
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5109,11 +5559,13 @@ update_topic(Client, AwsAccountId, TopicId, Input) ->
 update_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5132,11 +5584,13 @@ update_topic_permissions(Client, AwsAccountId, TopicId, Input) ->
 update_topic_permissions(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5155,11 +5609,13 @@ update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) -
 update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5178,11 +5634,13 @@ update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
 update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5201,11 +5659,13 @@ update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
 update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5221,6 +5681,11 @@ update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

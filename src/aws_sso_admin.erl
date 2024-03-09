@@ -2,34 +2,43 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc IAM Identity Center (successor to Single Sign-On) helps you securely
-%% create, or connect, your workforce identities and manage their access
-%% centrally across Amazon Web Services accounts and applications.
+%% create, or connect, your workforce identities and manage
+%% their access centrally across Amazon Web Services accounts and
+%% applications.
 %%
-%% IAM Identity Center is the recommended approach for workforce
-%% authentication and authorization in Amazon Web Services, for organizations
-%% of any size and type.
+%% IAM Identity Center is the recommended
+%% approach for workforce authentication and authorization in Amazon Web
+%% Services, for organizations of
+%% any size and type.
 %%
 %% IAM Identity Center uses the `sso' and `identitystore' API
 %% namespaces.
 %%
 %% This reference guide provides information on single sign-on operations
-%% which could be used for access management of Amazon Web Services accounts.
-%% For information about IAM Identity Center features, see the IAM Identity
-%% Center User Guide:
+%% which could be
+%% used for access management of Amazon Web Services accounts. For
+%% information about IAM Identity Center features, see
+%% the IAM Identity Center
+%% User Guide:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html.
 %%
 %% Many operations in the IAM Identity Center APIs rely on identifiers for
-%% users and groups, known as principals. For more information about how to
-%% work with principals and principal IDs in IAM Identity Center, see the
-%% Identity Store API Reference:
+%% users and groups, known as
+%% principals. For more information about how to work with principals and
+%% principal IDs in
+%% IAM Identity Center, see the Identity Store API
+%% Reference:
 %% https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html.
 %%
 %% Amazon Web Services provides SDKs that consist of libraries and sample
-%% code for various programming languages and platforms (Java, Ruby, .Net,
-%% iOS, Android, and more). The SDKs provide a convenient way to create
-%% programmatic access to IAM Identity Center and other Amazon Web Services
+%% code for various
+%% programming languages and platforms (Java, Ruby, .Net, iOS, Android, and
+%% more). The
+%% SDKs provide a convenient way to create programmatic access to IAM
+%% Identity Center and other Amazon Web Services
 %% services. For more information about the Amazon Web Services SDKs,
-%% including how to download and install them, see Tools for Amazon Web
+%% including how to download and
+%% install them, see Tools for Amazon Web
 %% Services: http://aws.amazon.com/tools/.
 -module(aws_sso_admin).
 
@@ -199,8 +208,11 @@ attach_customer_managed_policy_reference_to_permission_set(Client, Input, Option
 %% set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments, you will need to call ` `ProvisionPermissionSet' '
-%% after this operation. Calling `ProvisionPermissionSet' applies the
+%% assignments,
+%% you will need to call
+%% ```
+%% `ProvisionPermissionSet' ''' after
+%% this operation. Calling `ProvisionPermissionSet' applies the
 %% corresponding IAM policy updates to all assigned accounts.
 attach_managed_policy_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -210,22 +222,29 @@ attach_managed_policy_to_permission_set(Client, Input, Options)
     request(Client, <<"AttachManagedPolicyToPermissionSet">>, Input, Options).
 
 %% @doc Assigns access to a principal for a specified Amazon Web Services
-%% account using a specified permission set.
+%% account using a specified
+%% permission set.
 %%
-%% The term principal here refers to a user or group that is defined in IAM
-%% Identity Center.
+%% The term principal here refers to a user or group that is
+%% defined in IAM Identity Center.
 %%
 %% As part of a successful `CreateAccountAssignment' call, the specified
 %% permission set will automatically be provisioned to the account in the
-%% form of an IAM policy. That policy is attached to the IAM role created in
-%% IAM Identity Center. If the permission set is subsequently updated, the
-%% corresponding IAM policies attached to roles in your accounts will not be
-%% updated automatically. In this case, you must call `
-%% `ProvisionPermissionSet' ' to make these updates.
+%% form of an
+%% IAM policy. That policy is attached to the IAM role created in IAM
+%% Identity Center. If the
+%% permission set is subsequently updated, the corresponding IAM policies
+%% attached to
+%% roles in your accounts will not be updated automatically. In this case,
+%% you must
+%% call
+%% ```
+%% `ProvisionPermissionSet' ''' to make these
+%% updates.
 %%
 %% After a successful response, call
-%% `DescribeAccountAssignmentCreationStatus' to describe the status of an
-%% assignment creation request.
+%% `DescribeAccountAssignmentCreationStatus' to describe the status of
+%% an assignment creation request.
 create_account_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account_assignment(Client, Input, []).
@@ -251,20 +270,19 @@ create_application_assignment(Client, Input, Options)
     request(Client, <<"CreateApplicationAssignment">>, Input, Options).
 
 %% @doc Creates an instance of IAM Identity Center for a standalone Amazon
-%% Web Services account that is not managed by Organizations or a member
-%% Amazon Web Services account in an organization.
+%% Web Services account that is not
+%% managed by Organizations or a member Amazon Web Services account in an
+%% organization.
 %%
-%% You can create only one instance per account and across all Amazon Web
-%% Services Regions.
+%% You can
+%% create only one instance per account and across all Amazon Web Services
+%% Regions.
 %%
 %% The CreateInstance request is rejected if the following apply:
 %%
-%% <ul> <li> The instance is created within the organization management
-%% account.
+%% The instance is created within the organization management account.
 %%
-%% </li> <li> An instance already exists in the same account.
-%%
-%% </li> </ul>
+%% An instance already exists in the same account.
 create_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance(Client, Input, []).
@@ -273,16 +291,18 @@ create_instance(Client, Input, Options)
     request(Client, <<"CreateInstance">>, Input, Options).
 
 %% @doc Enables the attributes-based access control (ABAC) feature for the
-%% specified IAM Identity Center instance.
+%% specified IAM Identity Center
+%% instance.
 %%
 %% You can also specify new attributes to add to your ABAC configuration
-%% during the enabling process. For more information about ABAC, see
-%% Attribute-Based Access Control: /singlesignon/latest/userguide/abac.html
-%% in the IAM Identity Center User Guide.
+%% during
+%% the enabling process. For more information about ABAC, see Attribute-Based
+%% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
+%% Identity Center User Guide.
 %%
 %% After a successful response, call
-%% `DescribeInstanceAccessControlAttributeConfiguration' to validate that
-%% `InstanceAccessControlAttributeConfiguration' was created.
+%% `DescribeInstanceAccessControlAttributeConfiguration' to validate
+%% that `InstanceAccessControlAttributeConfiguration' was created.
 create_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_access_control_attribute_configuration(Client, Input, []).
@@ -294,7 +314,9 @@ create_instance_access_control_attribute_configuration(Client, Input, Options)
 %% instance.
 %%
 %% To grant users and groups access to Amazon Web Services account resources,
-%% use ` `CreateAccountAssignment' '.
+%% use
+%% ```
+%% `CreateAccountAssignment' '''.
 create_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_permission_set(Client, Input, []).
@@ -308,8 +330,9 @@ create_permission_set(Client, Input, Options)
 %% A trusted token issuer enables trusted identity propagation to be used
 %% with applications that authenticate outside of Amazon Web Services.
 %%
-%% This trusted token issuer describes an external identity provider (IdP)
-%% that can generate claims or assertions in the form of access tokens for a
+%% This trusted token issuer describes an external identity
+%% provider (IdP) that can generate claims or assertions in the form of
+%% access tokens for a
 %% user. Applications enabled for IAM Identity Center can use these tokens
 %% for authentication.
 create_trusted_token_issuer(Client, Input)
@@ -320,11 +343,12 @@ create_trusted_token_issuer(Client, Input, Options)
     request(Client, <<"CreateTrustedTokenIssuer">>, Input, Options).
 
 %% @doc Deletes a principal's access from a specified Amazon Web Services
-%% account using a specified permission set.
+%% account using a specified
+%% permission set.
 %%
 %% After a successful response, call
-%% `DescribeAccountAssignmentDeletionStatus' to describe the status of an
-%% assignment deletion request.
+%% `DescribeAccountAssignmentDeletionStatus' to describe the status of
+%% an assignment deletion request.
 delete_account_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_assignment(Client, Input, []).
@@ -334,7 +358,8 @@ delete_account_assignment(Client, Input, Options)
 
 %% @doc Deletes the association with the application.
 %%
-%% The connected service resource still exists.
+%% The connected service resource still
+%% exists.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -351,7 +376,8 @@ delete_application_access_scope(Client, Input, Options)
     request(Client, <<"DeleteApplicationAccessScope">>, Input, Options).
 
 %% @doc Revoke application access to an application by deleting application
-%% assignments for a user or group.
+%% assignments for a
+%% user or group.
 delete_application_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_assignment(Client, Input, []).
@@ -385,9 +411,10 @@ delete_inline_policy_from_permission_set(Client, Input, Options)
 
 %% @doc Deletes the instance of IAM Identity Center.
 %%
-%% Only the account that owns the instance can call this API. Neither the
-%% delegated administrator nor member account can delete the organization
-%% instance, but those roles can delete their own instance.
+%% Only the account that owns the instance can
+%% call this API. Neither the delegated administrator nor member account can
+%% delete the
+%% organization instance, but those roles can delete their own instance.
 delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance(Client, Input, []).
@@ -396,12 +423,15 @@ delete_instance(Client, Input, Options)
     request(Client, <<"DeleteInstance">>, Input, Options).
 
 %% @doc Disables the attributes-based access control (ABAC) feature for the
-%% specified IAM Identity Center instance and deletes all of the attribute
-%% mappings that have been configured.
+%% specified IAM Identity Center
+%% instance and deletes all of the attribute mappings that have been
+%% configured.
 %%
-%% Once deleted, any attributes that are received from an identity source and
-%% any custom attributes you have previously configured will not be passed.
-%% For more information about ABAC, see Attribute-Based Access Control:
+%% Once
+%% deleted, any attributes that are received from an identity source and any
+%% custom
+%% attributes you have previously configured will not be passed. For more
+%% information about ABAC, see Attribute-Based Access Control:
 %% /singlesignon/latest/userguide/abac.html in the IAM Identity Center User
 %% Guide.
 delete_instance_access_control_attribute_configuration(Client, Input)
@@ -468,10 +498,10 @@ describe_application(Client, Input, Options)
 
 %% @doc Retrieves a direct assignment of a user or group to an application.
 %%
-%% If the user doesn’t have a direct assignment to the application, the user
-%% may still have access to the application through a group. Therefore, don’t
-%% use this API to test access to an application for a user. Instead use
-%% `ListApplicationAssignmentsForPrincipal'.
+%% If the user doesn’t have a direct assignment to the application,
+%% the user may still have access to the application through a group.
+%% Therefore, don’t use this API to test access to an application for a user.
+%% Instead use `ListApplicationAssignmentsForPrincipal'.
 describe_application_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_assignment(Client, Input, []).
@@ -493,18 +523,17 @@ describe_application_provider(Client, Input, Options)
 %%
 %% The status can be one of the following:
 %%
-%% <ul> <li> `CREATE_IN_PROGRESS' - The instance is in the process of
-%% being created. When the instance is ready for use, DescribeInstance
-%% returns the status of `ACTIVE'. While the instance is in the
-%% `CREATE_IN_PROGRESS' state, you can call only DescribeInstance and
-%% DeleteInstance operations.
+%% `CREATE_IN_PROGRESS' - The instance is in the process of being
+%% created. When the
+%% instance is ready for use, DescribeInstance returns the status of
+%% `ACTIVE'. While the instance is in the
+%% `CREATE_IN_PROGRESS' state, you can call only DescribeInstance
+%% and DeleteInstance operations.
 %%
-%% </li> <li> `DELETE_IN_PROGRESS' - The instance is being deleted.
-%% Returns `AccessDeniedException' after the delete operation completes.
+%% `DELETE_IN_PROGRESS' - The instance is being deleted. Returns
+%% `AccessDeniedException' after the delete operation completes.
 %%
-%% </li> <li> `ACTIVE' - The instance is active.
-%%
-%% </li> </ul>
+%% `ACTIVE' - The instance is active.
 describe_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance(Client, Input, []).
@@ -513,13 +542,16 @@ describe_instance(Client, Input, Options)
     request(Client, <<"DescribeInstance">>, Input, Options).
 
 %% @doc Returns the list of IAM Identity Center identity store attributes
-%% that have been configured to work with attributes-based access control
-%% (ABAC) for the specified IAM Identity Center instance.
+%% that have been configured to work
+%% with attributes-based access control (ABAC) for the specified IAM Identity
+%% Center instance.
 %%
-%% This will not return attributes configured and sent by an external
-%% identity provider. For more information about ABAC, see Attribute-Based
-%% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
-%% Identity Center User Guide.
+%% This will
+%% not return attributes configured and sent by an external identity
+%% provider.
+%% For more information about ABAC, see Attribute-Based Access Control:
+%% /singlesignon/latest/userguide/abac.html in the IAM Identity Center User
+%% Guide.
 describe_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_access_control_attribute_configuration(Client, Input, []).
@@ -567,7 +599,8 @@ detach_customer_managed_policy_reference_from_permission_set(Client, Input, Opti
     request(Client, <<"DetachCustomerManagedPolicyReferenceFromPermissionSet">>, Input, Options).
 
 %% @doc Detaches the attached Amazon Web Services managed policy ARN from the
-%% specified permission set.
+%% specified permission
+%% set.
 detach_managed_policy_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_managed_policy_from_permission_set(Client, Input, []).
@@ -627,7 +660,8 @@ get_permissions_boundary_for_permission_set(Client, Input, Options)
     request(Client, <<"GetPermissionsBoundaryForPermissionSet">>, Input, Options).
 
 %% @doc Lists the status of the Amazon Web Services account assignment
-%% creation requests for a specified IAM Identity Center instance.
+%% creation requests for a specified
+%% IAM Identity Center instance.
 list_account_assignment_creation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignment_creation_status(Client, Input, []).
@@ -636,7 +670,8 @@ list_account_assignment_creation_status(Client, Input, Options)
     request(Client, <<"ListAccountAssignmentCreationStatus">>, Input, Options).
 
 %% @doc Lists the status of the Amazon Web Services account assignment
-%% deletion requests for a specified IAM Identity Center instance.
+%% deletion requests for a specified
+%% IAM Identity Center instance.
 list_account_assignment_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignment_deletion_status(Client, Input, []).
@@ -645,7 +680,8 @@ list_account_assignment_deletion_status(Client, Input, Options)
     request(Client, <<"ListAccountAssignmentDeletionStatus">>, Input, Options).
 
 %% @doc Lists the assignee of the specified Amazon Web Services account with
-%% the specified permission set.
+%% the specified permission
+%% set.
 list_account_assignments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignments(Client, Input, []).
@@ -654,7 +690,8 @@ list_account_assignments(Client, Input, Options)
     request(Client, <<"ListAccountAssignments">>, Input, Options).
 
 %% @doc Retrieves a list of the IAM Identity Center associated Amazon Web
-%% Services accounts that the principal has access to.
+%% Services accounts that the principal has access
+%% to.
 list_account_assignments_for_principal(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignments_for_principal(Client, Input, []).
@@ -726,9 +763,11 @@ list_application_providers(Client, Input, Options)
 %% @doc Lists all applications associated with the instance of IAM Identity
 %% Center.
 %%
-%% When listing applications for an instance in the management account,
-%% member accounts must use the `applicationAccount' parameter to filter
-%% the list to only applications created from that account.
+%% When listing applications for an instance
+%% in the management account, member accounts must use the
+%% `applicationAccount'
+%% parameter to filter the list to only applications created from that
+%% account.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -746,8 +785,8 @@ list_customer_managed_policy_references_in_permission_set(Client, Input, Options
     request(Client, <<"ListCustomerManagedPolicyReferencesInPermissionSet">>, Input, Options).
 
 %% @doc Lists the details of the organization and account instances of IAM
-%% Identity Center that were created in or visible to the account calling
-%% this API.
+%% Identity Center that
+%% were created in or visible to the account calling this API.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
@@ -765,7 +804,8 @@ list_managed_policies_in_permission_set(Client, Input, Options)
     request(Client, <<"ListManagedPoliciesInPermissionSet">>, Input, Options).
 
 %% @doc Lists the status of the permission set provisioning requests for a
-%% specified IAM Identity Center instance.
+%% specified IAM Identity Center
+%% instance.
 list_permission_set_provisioning_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_set_provisioning_status(Client, Input, []).
@@ -782,7 +822,8 @@ list_permission_sets(Client, Input, Options)
     request(Client, <<"ListPermissionSets">>, Input, Options).
 
 %% @doc Lists all the permission sets that are provisioned to a specified
-%% Amazon Web Services account.
+%% Amazon Web Services
+%% account.
 list_permission_sets_provisioned_to_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_sets_provisioned_to_account(Client, Input, []).
@@ -808,7 +849,8 @@ list_trusted_token_issuers(Client, Input, Options)
     request(Client, <<"ListTrustedTokenIssuers">>, Input, Options).
 
 %% @doc The process by which a specified permission set is provisioned to the
-%% specified target.
+%% specified
+%% target.
 provision_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_permission_set(Client, Input, []).
@@ -817,7 +859,8 @@ provision_permission_set(Client, Input, Options)
     request(Client, <<"ProvisionPermissionSet">>, Input, Options).
 
 %% @doc Adds or updates the list of authorized targets for an IAM Identity
-%% Center access scope for an application.
+%% Center access scope for an
+%% application.
 put_application_access_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_application_access_scope(Client, Input, []).
@@ -831,8 +874,8 @@ put_application_access_scope(Client, Input, Options)
 %% have access to the application unless an assignment is created using the
 %% CreateApplicationAssignment API:
 %% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.
-%% If `false', all users have access to the application. If an assignment
-%% is created using CreateApplicationAssignment:
+%% If `false', all users have access to the application.
+%% If an assignment is created using CreateApplicationAssignment:
 %% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.,
 %% the user retains access if `AssignmentsRequired' is set to `true'.
 put_application_assignment_configuration(Client, Input)
@@ -861,9 +904,12 @@ put_application_grant(Client, Input, Options)
 %% @doc Attaches an inline policy to a permission set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments, you will need to call ` `ProvisionPermissionSet' '
-%% after this action to apply the corresponding IAM policy updates to all
-%% assigned accounts.
+%% assignments,
+%% you will need to call
+%% ```
+%% `ProvisionPermissionSet' ''' after
+%% this action to apply the corresponding IAM policy updates to all assigned
+%% accounts.
 put_inline_policy_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inline_policy_to_permission_set(Client, Input, []).
@@ -905,7 +951,8 @@ update_application(Client, Input, Options)
     request(Client, <<"UpdateApplication">>, Input, Options).
 
 %% @doc Update the details for the instance of IAM Identity Center that is
-%% owned by the Amazon Web Services account.
+%% owned by the
+%% Amazon Web Services account.
 update_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance(Client, Input, []).
@@ -914,14 +961,16 @@ update_instance(Client, Input, Options)
     request(Client, <<"UpdateInstance">>, Input, Options).
 
 %% @doc Updates the IAM Identity Center identity store attributes that you
-%% can use with the IAM Identity Center instance for attributes-based access
-%% control (ABAC).
+%% can use with the IAM Identity Center instance
+%% for attributes-based access control (ABAC).
 %%
-%% When using an external identity provider as an identity source, you can
-%% pass attributes through the SAML assertion as an alternative to
-%% configuring attributes from the IAM Identity Center identity store. If a
-%% SAML assertion passes any of these attributes, IAM Identity Center
-%% replaces the attribute value with the value from the IAM Identity Center
+%% When using an external identity provider as
+%% an identity source, you can pass attributes through the SAML assertion as
+%% an alternative
+%% to configuring attributes from the IAM Identity Center identity store. If
+%% a SAML assertion passes any
+%% of these attributes, IAM Identity Center replaces the attribute value with
+%% the value from the IAM Identity Center
 %% identity store. For more information about ABAC, see Attribute-Based
 %% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
 %% Identity Center User Guide.

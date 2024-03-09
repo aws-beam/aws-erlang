@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc License Manager makes it easier to manage licenses from software
-%% vendors across multiple Amazon Web Services accounts and on-premises
-%% servers.
+%% vendors across multiple
+%% Amazon Web Services accounts and on-premises servers.
 -module(aws_license_manager).
 
 -export([accept_grant/2,
@@ -142,7 +142,8 @@ checkout_borrow_license(Client, Input, Options)
 %% @doc Checks out the specified license.
 %%
 %% If the account that created the license is the same that is performing the
-%% check out, you must specify the account as the beneficiary.
+%% check out, you must
+%% specify the account as the beneficiary.
 checkout_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     checkout_license(Client, Input, []).
@@ -152,9 +153,11 @@ checkout_license(Client, Input, Options)
 
 %% @doc Creates a grant for the specified license.
 %%
-%% A grant shares the use of license entitlements with a specific Amazon Web
-%% Services account, an organization, or an organizational unit (OU). For
-%% more information, see Granted licenses in License Manager:
+%% A grant shares the use of license
+%% entitlements with a specific Amazon Web Services account, an organization,
+%% or an
+%% organizational unit (OU). For more information, see Granted licenses in
+%% License Manager:
 %% https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html
 %% in the License Manager User Guide.
 create_grant(Client, Input)
@@ -166,7 +169,8 @@ create_grant(Client, Input, Options)
 
 %% @doc Creates a new version of the specified grant.
 %%
-%% For more information, see Granted licenses in License Manager:
+%% For more information, see
+%% Granted licenses in License Manager:
 %% https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html
 %% in the License Manager User Guide.
 create_grant_version(Client, Input)
@@ -187,11 +191,15 @@ create_license(Client, Input, Options)
 %% @doc Creates a license configuration.
 %%
 %% A license configuration is an abstraction of a customer license agreement
-%% that can be consumed and enforced by License Manager. Components include
-%% specifications for the license type (licensing by instance, socket, CPU,
-%% or vCPU), allowed tenancy (shared tenancy, Dedicated Instance, Dedicated
-%% Host, or all of these), license affinity to host (how long a license must
-%% be associated with a host), and the number of licenses purchased and used.
+%% that can be
+%% consumed and enforced by License Manager. Components include
+%% specifications for the license
+%% type (licensing by instance, socket, CPU, or vCPU), allowed tenancy
+%% (shared tenancy,
+%% Dedicated Instance, Dedicated Host, or all of these), license affinity to
+%% host (how long a
+%% license must be associated with a host), and the number of licenses
+%% purchased and used.
 create_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_configuration(Client, Input, []).
@@ -226,8 +234,10 @@ create_license_version(Client, Input, Options)
 %% @doc Creates a long-lived token.
 %%
 %% A refresh token is a JWT token used to get an access token. With an access
-%% token, you can call AssumeRoleWithWebIdentity to get role credentials that
-%% you can use to call License Manager to manage the specified license.
+%% token,
+%% you can call AssumeRoleWithWebIdentity to get role credentials that you
+%% can use to
+%% call License Manager to manage the specified license.
 create_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_token(Client, Input, []).
@@ -264,8 +274,9 @@ delete_license_configuration(Client, Input, Options)
 %% @doc Deletes the specified report generator.
 %%
 %% This action deletes the report generator, which stops it from generating
-%% future reports. The action cannot be reversed. It has no effect on the
-%% previous reports from this generator.
+%% future reports.
+%% The action cannot be reversed. It has no effect on the previous reports
+%% from this generator.
 delete_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_license_manager_report_generator(Client, Input, []).
@@ -293,7 +304,8 @@ extend_license_consumption(Client, Input, Options)
 
 %% @doc Gets a temporary access token to use with AssumeRoleWithWebIdentity.
 %%
-%% Access tokens are valid for one hour.
+%% Access tokens
+%% are valid for one hour.
 get_access_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_token(Client, Input, []).
@@ -361,8 +373,10 @@ get_service_settings(Client, Input, Options)
 %% configuration.
 %%
 %% Resource associations need not consume licenses from a license
-%% configuration. For example, an AMI or a stopped instance might not consume
-%% a license (depending on the license rules).
+%% configuration.
+%% For example, an AMI or a stopped instance might not consume a license
+%% (depending on
+%% the license rules).
 list_associations_for_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations_for_license_configuration(Client, Input, []).
@@ -436,8 +450,9 @@ list_licenses(Client, Input, Options)
 
 %% @doc Lists grants that are received.
 %%
-%% Received grants are grants created while specifying the recipient as this
-%% Amazon Web Services account, your organization, or an organizational unit
+%% Received grants are grants created while specifying the
+%% recipient as this Amazon Web Services account, your organization, or an
+%% organizational unit
 %% (OU) to which this member account belongs.
 list_received_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -495,11 +510,11 @@ list_tokens(Client, Input, Options)
     request(Client, <<"ListTokens">>, Input, Options).
 
 %% @doc Lists all license usage records for a license configuration,
-%% displaying license consumption details by resource at a selected point in
-%% time.
+%% displaying license
+%% consumption details by resource at a selected point in time.
 %%
-%% Use this action to audit the current license consumption for any license
-%% inventory and configuration.
+%% Use this action to audit the
+%% current license consumption for any license inventory and configuration.
 list_usage_for_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_usage_for_license_configuration(Client, Input, []).
@@ -555,8 +570,9 @@ update_license_manager_report_generator(Client, Input, Options)
 %%
 %% You can update the license specifications of AMIs, instances, and hosts.
 %% You cannot update the license specifications for launch templates and
-%% CloudFormation templates, as they send license configurations to the
-%% operation that creates the resource.
+%% CloudFormation templates,
+%% as they send license configurations to the operation that creates the
+%% resource.
 update_license_specifications_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_specifications_for_resource(Client, Input, []).

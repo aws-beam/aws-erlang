@@ -4,11 +4,13 @@
 %% @doc Amazon Connect Customer Profiles
 %%
 %% Amazon Connect Customer Profiles is a unified customer profile for your
-%% contact center that has pre-built connectors powered by AppFlow that make
-%% it easy to combine customer information from third party applications,
-%% such as Salesforce (CRM), ServiceNow (ITSM), and your enterprise resource
-%% planning (ERP), with contact history from your Amazon Connect contact
-%% center.
+%% contact center that has
+%% pre-built connectors powered by AppFlow that make it easy to combine
+%% customer information
+%% from third party applications, such as Salesforce (CRM), ServiceNow
+%% (ITSM), and your
+%% enterprise resource planning (ERP), with contact history from your Amazon
+%% Connect contact center.
 %%
 %% If you're new to Amazon Connect, you might find it helpful to review
 %% the Amazon Connect Administrator Guide:
@@ -147,20 +149,24 @@
 %%====================================================================
 
 %% @doc Associates a new key value with a specific profile, such as a Contact
-%% Record ContactId.
+%% Record
+%% ContactId.
 %%
 %% A profile object can have a single unique key and any number of additional
-%% keys that can be used to identify the profile that it belongs to.
+%% keys that can
+%% be used to identify the profile that it belongs to.
 add_profile_key(Client, DomainName, Input) ->
     add_profile_key(Client, DomainName, Input, []).
 add_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -175,23 +181,29 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 
 %% @doc Creates a new calculated attribute definition.
 %%
-%% After creation, new object data ingested into Customer Profiles will be
-%% included in the calculated attribute, which can be retrieved for a profile
-%% using the GetCalculatedAttributeForProfile:
+%% After creation, new object data ingested
+%% into Customer Profiles will be included in the calculated attribute, which
+%% can be retrieved
+%% for a profile using the GetCalculatedAttributeForProfile:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetCalculatedAttributeForProfile.html
-%% API. Defining a calculated attribute makes it available for all profiles
-%% within a domain. Each calculated attribute can only reference one
-%% `ObjectType' and at most, two fields from that `ObjectType'.
+%% API.
+%% Defining a calculated attribute makes it available for all profiles within
+%% a domain. Each
+%% calculated attribute can only reference one `ObjectType' and at most,
+%% two fields
+%% from that `ObjectType'.
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -205,35 +217,41 @@ create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a domain, which is a container for all customer data, such as
-%% customer profile attributes, object types, profile keys, and encryption
-%% keys.
+%% customer profile
+%% attributes, object types, profile keys, and encryption keys.
 %%
-%% You can create multiple domains, and each domain can have multiple
-%% third-party integrations.
+%% You can create multiple
+%% domains, and each domain can have multiple third-party integrations.
 %%
 %% Each Amazon Connect instance can be associated with only one domain.
-%% Multiple Amazon Connect instances can be associated with one domain.
+%% Multiple Amazon Connect instances can
+%% be associated with one domain.
 %%
 %% Use this API or UpdateDomain:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomain.html
-%% to enable identity resolution:
+%% to
+%% enable identity
+%% resolution:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html:
 %% set `Matching' to true.
 %%
 %% To prevent cross-service impersonation when you call this API, see
 %% Cross-service confused deputy prevention:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html
-%% for sample policies that you should apply.
+%% for sample policies that you should
+%% apply.
 create_domain(Client, DomainName, Input) ->
     create_domain(Client, DomainName, Input, []).
 create_domain(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -247,22 +265,24 @@ create_domain(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an event stream, which is a subscription to real-time events,
-%% such as when profiles are created and updated through Amazon Connect
-%% Customer Profiles.
+%% such as when profiles are created and
+%% updated through Amazon Connect Customer Profiles.
 %%
 %% Each event stream can be associated with only one Kinesis Data Stream
-%% destination in the same region and Amazon Web Services account as the
-%% customer profiles domain
+%% destination in the same region and
+%% Amazon Web Services account as the customer profiles domain
 create_event_stream(Client, DomainName, EventStreamName, Input) ->
     create_event_stream(Client, DomainName, EventStreamName, Input, []).
 create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -275,7 +295,8 @@ create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an integration workflow.
+%% @doc
+%% Creates an integration workflow.
 %%
 %% An integration workflow is an async process which ingests historic data
 %% and sets up an integration for ongoing updates. The supported Amazon
@@ -285,11 +306,13 @@ create_integration_workflow(Client, DomainName, Input) ->
 create_integration_workflow(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/integrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -305,17 +328,20 @@ create_integration_workflow(Client, DomainName, Input0, Options0) ->
 %% @doc Creates a standard profile.
 %%
 %% A standard profile represents the following attributes for a customer
-%% profile in a domain.
+%% profile in a
+%% domain.
 create_profile(Client, DomainName, Input) ->
     create_profile(Client, DomainName, Input, []).
 create_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -330,20 +356,23 @@ create_profile(Client, DomainName, Input0, Options0) ->
 
 %% @doc Deletes an existing calculated attribute definition.
 %%
-%% Note that deleting a default calculated attribute is possible, however
-%% once deleted, you will be unable to undo that action and will need to
-%% recreate it on your own using the CreateCalculatedAttributeDefinition API
-%% if you want it back.
+%% Note that deleting a default calculated attribute
+%% is possible, however once deleted, you will be unable to undo that action
+%% and will need to recreate it on
+%% your own using the CreateCalculatedAttributeDefinition API if you want it
+%% back.
 delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
 delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -357,17 +386,20 @@ delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specific domain and all of its customer data, such as
-%% customer profile attributes and their related objects.
+%% customer profile
+%% attributes and their related objects.
 delete_domain(Client, DomainName, Input) ->
     delete_domain(Client, DomainName, Input, []).
 delete_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -386,11 +418,13 @@ delete_event_stream(Client, DomainName, EventStreamName, Input) ->
 delete_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -409,11 +443,13 @@ delete_integration(Client, DomainName, Input) ->
 delete_integration(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -433,11 +469,13 @@ delete_profile(Client, DomainName, Input) ->
 delete_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -456,11 +494,13 @@ delete_profile_key(Client, DomainName, Input) ->
 delete_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -480,11 +520,13 @@ delete_profile_object(Client, DomainName, Input) ->
 delete_profile_object(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -498,21 +540,25 @@ delete_profile_object(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a ProfileObjectType from a specific domain as well as removes
-%% all the ProfileObjects of that type.
+%% all the
+%% ProfileObjects of that type.
 %%
-%% It also disables integrations from this specific ProfileObjectType. In
-%% addition, it scrubs all of the fields of the standard profile that were
-%% populated from this ProfileObjectType.
+%% It also disables integrations from this specific
+%% ProfileObjectType. In addition, it scrubs all of the fields of the
+%% standard profile that
+%% were populated from this ProfileObjectType.
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
     delete_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -533,11 +579,13 @@ delete_workflow(Client, DomainName, WorkflowId, Input) ->
 delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -557,11 +605,13 @@ detect_profile_object_type(Client, DomainName, Input) ->
 detect_profile_object_type(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/detect/object-types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -577,29 +627,37 @@ detect_profile_object_type(Client, DomainName, Input0, Options0) ->
 %% @doc Tests the auto-merging settings of your Identity Resolution Job
 %% without merging your data.
 %%
-%% It randomly selects a sample of matching groups from the existing matching
-%% results, and applies the automerging settings that you provided. You can
-%% then view the number of profiles in the sample, the number of matches, and
-%% the number of profiles identified to be merged. This enables you to
-%% evaluate the accuracy of the attributes in your matching list.
+%% It randomly
+%% selects a sample of matching groups from the existing matching results,
+%% and applies the
+%% automerging settings that you provided. You can then view the number of
+%% profiles in the
+%% sample, the number of matches, and the number of profiles identified to be
+%% merged. This
+%% enables you to evaluate the accuracy of the attributes in your matching
+%% list.
 %%
 %% You can't view which profiles are matched and would be merged.
 %%
 %% We strongly recommend you use this API to do a dry run of the automerging
-%% process before running the Identity Resolution Job. Include at least two
-%% matching attributes. If your matching list includes too few attributes
-%% (such as only `FirstName' or only `LastName'), there may be a
-%% large number of matches. This increases the chances of erroneous merges.
+%% process
+%% before running the Identity Resolution Job. Include at least two matching
+%% attributes. If your matching list includes too few attributes (such as
+%% only
+%% `FirstName' or only `LastName'), there may be a large number of
+%% matches. This increases the chances of erroneous merges.
 get_auto_merging_preview(Client, DomainName, Input) ->
     get_auto_merging_preview(Client, DomainName, Input, []).
 get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/auto-merging-preview"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -625,10 +683,12 @@ get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName,
 get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -648,10 +708,12 @@ get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName
 get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -671,10 +733,12 @@ get_domain(Client, DomainName, QueryMap, HeadersMap)
 get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -695,10 +759,12 @@ get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap)
 get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -710,8 +776,8 @@ get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Opti
 %% domain.
 %%
 %% Identity Resolution Jobs are set up using the Amazon Connect admin
-%% console. For more information, see Use Identity Resolution to consolidate
-%% similar profiles:
+%% console. For more information, see Use
+%% Identity Resolution to consolidate similar profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-identity-resolution.html.
 get_identity_resolution_job(Client, DomainName, JobId)
   when is_map(Client) ->
@@ -724,10 +790,12 @@ get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap)
 get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -741,11 +809,13 @@ get_integration(Client, DomainName, Input) ->
 get_integration(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -760,47 +830,53 @@ get_integration(Client, DomainName, Input0, Options0) ->
 
 %% @doc Before calling this API, use CreateDomain:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateDomain.html
-%% or UpdateDomain:
+%% or
+%% UpdateDomain:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomain.html
-%% to enable identity resolution: set `Matching' to true.
+%% to
+%% enable identity resolution: set `Matching' to true.
 %%
 %% GetMatches returns potentially matching profiles, based on the results of
-%% the latest run of a machine learning process.
+%% the latest run
+%% of a machine learning process.
 %%
 %% The process of matching duplicate profiles. If `Matching' =
-%% `true', Amazon Connect Customer Profiles starts a weekly batch process
-%% called Identity Resolution Job. If you do not specify a date and time for
-%% Identity Resolution Job to run, by default it runs every Saturday at 12AM
-%% UTC to detect duplicate profiles in your domains.
+%% `true', Amazon Connect Customer Profiles starts a weekly
+%% batch process called Identity Resolution Job. If you do not specify a date
+%% and time for Identity Resolution Job to run, by default it runs every
+%% Saturday at 12AM UTC to detect duplicate profiles in your domains.
 %%
-%% After the Identity Resolution Job completes, use the GetMatches:
+%% After the Identity Resolution Job completes, use the
+%% GetMatches:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html
 %% API to return and review the results. Or, if you have configured
 %% `ExportingConfig' in the `MatchingRequest', you can download the
-%% results from S3.
+%% results from
+%% S3.
 %%
 %% Amazon Connect uses the following profile attributes to identify matches:
 %%
-%% <ul> <li> PhoneNumber
+%% PhoneNumber
 %%
-%% </li> <li> HomePhoneNumber
+%% HomePhoneNumber
 %%
-%% </li> <li> BusinessPhoneNumber
+%% BusinessPhoneNumber
 %%
-%% </li> <li> MobilePhoneNumber
+%% MobilePhoneNumber
 %%
-%% </li> <li> EmailAddress
+%% EmailAddress
 %%
-%% </li> <li> PersonalEmailAddress
+%% PersonalEmailAddress
 %%
-%% </li> <li> BusinessEmailAddress
+%% BusinessEmailAddress
 %%
-%% </li> <li> FullName
+%% FullName
 %%
-%% </li> </ul> For example, two or more profiles—with spelling mistakes such
-%% as John Doe and Jhn Doe, or different casing email addresses such as
-%% JOHN_DOE@ANYCOMPANY.COM and johndoe@anycompany.com, or different phone
-%% number formats such as 555-010-0000 and +1-555-010-0000—can be detected as
+%% For example, two or more profiles—with spelling mistakes such as John Doe
+%% and Jhn Doe, or different casing
+%% email addresses such as JOHN_DOE@ANYCOMPANY.COM and
+%% johndoe@anycompany.com, or different phone number
+%% formats such as 555-010-0000 and +1-555-010-0000—can be detected as
 %% belonging to the same customer John Doe and merged into a unified profile.
 get_matches(Client, DomainName)
   when is_map(Client) ->
@@ -813,10 +889,12 @@ get_matches(Client, DomainName, QueryMap, HeadersMap)
 get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -841,10 +919,12 @@ get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap
 get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -855,9 +935,12 @@ get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap
 %% @doc Returns the template information for a specific object type.
 %%
 %% A template is a predefined ProfileObjectType, such as “Salesforce-Account”
-%% or “Salesforce-Contact.” When a user sends a ProfileObject, using the
-%% PutProfileObject API, with an ObjectTypeName that matches one of the
-%% TemplateIds, it uses the mappings from the template.
+%% or
+%% “Salesforce-Contact.” When a user sends a ProfileObject, using the
+%% PutProfileObject API,
+%% with an ObjectTypeName that matches one of the TemplateIds, it uses the
+%% mappings from the
+%% template.
 get_profile_object_type_template(Client, TemplateId)
   when is_map(Client) ->
     get_profile_object_type_template(Client, TemplateId, #{}, #{}).
@@ -869,10 +952,12 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap)
 get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -881,21 +966,24 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a set of profiles that belong to the same matching group
-%% using the `matchId' or `profileId'.
+%% using the `matchId' or
+%% `profileId'.
 %%
 %% You can also specify the type of matching that you want for finding
-%% similar profiles using either `RULE_BASED_MATCHING' or
-%% `ML_BASED_MATCHING'.
+%% similar profiles using
+%% either `RULE_BASED_MATCHING' or `ML_BASED_MATCHING'.
 get_similar_profiles(Client, DomainName, Input) ->
     get_similar_profiles(Client, DomainName, Input, []).
 get_similar_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -922,10 +1010,12 @@ get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
 get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -945,10 +1035,12 @@ get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
 get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), "/steps"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -968,11 +1060,13 @@ list_account_integrations(Client, Input) ->
 list_account_integrations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/integrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1000,10 +1094,12 @@ list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap)
 list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1028,10 +1124,12 @@ list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, 
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1057,10 +1155,12 @@ list_domains(Client, QueryMap, HeadersMap)
 list_domains(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1085,10 +1185,12 @@ list_event_streams(Client, DomainName, QueryMap, HeadersMap)
 list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1103,7 +1205,8 @@ list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all of the Identity Resolution Jobs in your domain.
 %%
-%% The response sorts the list by `JobStartTime'.
+%% The response sorts the list by
+%% `JobStartTime'.
 list_identity_resolution_jobs(Client, DomainName)
   when is_map(Client) ->
     list_identity_resolution_jobs(Client, DomainName, #{}, #{}).
@@ -1115,10 +1218,12 @@ list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap)
 list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1143,10 +1248,12 @@ list_integrations(Client, DomainName, QueryMap, HeadersMap)
 list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1172,10 +1279,12 @@ list_profile_object_type_templates(Client, QueryMap, HeadersMap)
 list_profile_object_type_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1200,10 +1309,12 @@ list_profile_object_types(Client, DomainName, QueryMap, HeadersMap)
 list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1223,11 +1334,13 @@ list_profile_objects(Client, DomainName, Input) ->
 list_profile_objects(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1254,10 +1367,12 @@ list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap)
 list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/ruleBasedMatches"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1273,8 +1388,9 @@ list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Displays the tags associated with an Amazon Connect Customer Profiles
 %% resource.
 %%
-%% In Connect Customer Profiles, domains, profile object types, and
-%% integrations can be tagged.
+%% In Connect
+%% Customer Profiles, domains, profile object types, and integrations can be
+%% tagged.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1286,10 +1402,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1303,11 +1421,13 @@ list_workflows(Client, DomainName, Input) ->
 list_workflows(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1324,46 +1444,50 @@ list_workflows(Client, DomainName, Input0, Options0) ->
 
 %% @doc Runs an AWS Lambda job that does the following:
 %%
-%% <ol> <li> All the profileKeys in the `ProfileToBeMerged' will be moved
-%% to the main profile.
+%% All the profileKeys in the `ProfileToBeMerged' will be moved to the
+%% main profile.
 %%
-%% </li> <li> All the objects in the `ProfileToBeMerged' will be moved to
-%% the main profile.
+%% All the objects in the `ProfileToBeMerged' will be moved to the main
+%% profile.
 %%
-%% </li> <li> All the `ProfileToBeMerged' will be deleted at the end.
+%% All the `ProfileToBeMerged' will be deleted at the end.
 %%
-%% </li> <li> All the profileKeys in the `ProfileIdsToBeMerged' will be
-%% moved to the main profile.
+%% All the profileKeys in the `ProfileIdsToBeMerged' will be moved to the
+%% main profile.
 %%
-%% </li> <li> Standard fields are merged as follows:
+%% Standard fields are merged as follows:
 %%
-%% <ol> <li> Fields are always &quot;union&quot;-ed if there are no conflicts
-%% in standard fields or attributeKeys.
+%% Fields are always &quot;union&quot;-ed if there are no conflicts in
+%% standard fields or
+%% attributeKeys.
 %%
-%% </li> <li> When there are conflicting fields:
+%% When there are conflicting fields:
 %%
-%% <ol> <li> If no `SourceProfileIds' entry is specified, the main
+%% If no `SourceProfileIds' entry is specified, the main
 %% Profile value is always taken.
 %%
-%% </li> <li> If a `SourceProfileIds' entry is specified, the specified
+%% If a `SourceProfileIds' entry is specified, the specified
 %% profileId is always taken, even if it is a NULL value.
 %%
-%% </li> </ol> </li> </ol> </li> </ol> You can use MergeProfiles together
-%% with GetMatches:
+%% You can use MergeProfiles together with GetMatches:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html,
-%% which returns potentially matching profiles, or use it with the results of
-%% another matching system. After profiles have been merged, they cannot be
-%% separated (unmerged).
+%% which
+%% returns potentially matching profiles, or use it with the results of
+%% another matching
+%% system. After profiles have been merged, they cannot be separated
+%% (unmerged).
 merge_profiles(Client, DomainName, Input) ->
     merge_profiles(Client, DomainName, Input, []).
 merge_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/merge"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1377,11 +1501,13 @@ merge_profiles(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an integration between the service and a third-party service,
-%% which includes Amazon AppFlow and Amazon Connect.
+%% which includes
+%% Amazon AppFlow and Amazon Connect.
 %%
 %% An integration can belong to only one domain.
 %%
-%% To add or remove tags on an existing Integration, see TagResource :
+%% To add or remove tags on an existing Integration, see TagResource
+%% :
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/
 %% UntagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
@@ -1390,11 +1516,13 @@ put_integration(Client, DomainName, Input) ->
 put_integration(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1410,14 +1538,17 @@ put_integration(Client, DomainName, Input0, Options0) ->
 %% @doc Adds additional objects to customer profiles of a given ObjectType.
 %%
 %% When adding a specific profile object, like a Contact Record, an inferred
-%% profile can get created if it is not mapped to an existing profile. The
-%% resulting profile will only have a phone number populated in the standard
-%% ProfileObject. Any additional Contact Records with the same phone number
-%% will be mapped to the same inferred profile.
+%% profile can
+%% get created if it is not mapped to an existing profile. The resulting
+%% profile will only
+%% have a phone number populated in the standard ProfileObject. Any
+%% additional Contact Records
+%% with the same phone number will be mapped to the same inferred profile.
 %%
 %% When a ProfileObject is created and if a ProfileObjectType already exists
-%% for the ProfileObject, it will provide data to a standard profile
-%% depending on the ProfileObjectType definition.
+%% for the
+%% ProfileObject, it will provide data to a standard profile depending on the
+%% ProfileObjectType definition.
 %%
 %% PutProfileObject needs an ObjectType, which can be created using
 %% PutProfileObjectType.
@@ -1426,11 +1557,13 @@ put_profile_object(Client, DomainName, Input) ->
 put_profile_object(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1445,7 +1578,8 @@ put_profile_object(Client, DomainName, Input0, Options0) ->
 
 %% @doc Defines a ProfileObjectType.
 %%
-%% To add or remove tags on an existing ObjectType, see TagResource:
+%% To add or remove tags on an existing ObjectType, see
+%% TagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/UntagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
@@ -1453,11 +1587,13 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1471,25 +1607,29 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for profiles within a specific domain using one or more
-%% predefined search keys (e.g., _fullName, _phone, _email, _account, etc.)
-%% and/or custom-defined search keys.
+%% predefined search keys
+%% (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined
+%% search keys.
 %%
-%% A search key is a data type pair that consists of a `KeyName' and
-%% `Values' list.
+%% A search key
+%% is a data type pair that consists of a `KeyName' and `Values'
+%% list.
 %%
 %% This operation supports searching for profiles with a minimum of 1
-%% key-value(s) pair and up to 5 key-value(s) pairs using either `AND' or
-%% `OR' logic.
+%% key-value(s) pair and up to
+%% 5 key-value(s) pairs using either `AND' or `OR' logic.
 search_profiles(Client, DomainName, Input) ->
     search_profiles(Client, DomainName, Input, []).
 search_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/search"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1505,21 +1645,28 @@ search_profiles(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
-%% Connect Customer Profiles resource.
+%% Connect Customer Profiles
+%% resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions by granting a user permission to access or
-%% change only resources with certain tag values. In Connect Customer
-%% Profiles, domains, profile object types, and integrations can be tagged.
+%% them
+%% to scope user permissions by granting a user permission to access or
+%% change only resources
+%% with certain tag values. In Connect Customer Profiles, domains, profile
+%% object types, and
+%% integrations can be tagged.
 %%
 %% Tags don't have any semantic meaning to AWS and are interpreted
-%% strictly as strings of characters.
+%% strictly as strings of
+%% characters.
 %%
 %% You can use the TagResource action with a resource that already has tags.
-%% If you specify a new tag key, this tag is appended to the list of tags
-%% associated with the resource. If you specify a tag key that is already
-%% associated with the resource, the new tag value that you specify replaces
-%% the previous value for that tag.
+%% If you specify
+%% a new tag key, this tag is appended to the list of tags associated with
+%% the resource. If
+%% you specify a tag key that is already associated with the resource, the
+%% new tag value that
+%% you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
 tag_resource(Client, ResourceArn, Input) ->
@@ -1527,11 +1674,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1547,18 +1696,21 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes one or more tags from the specified Amazon Connect Customer
 %% Profiles resource.
 %%
-%% In Connect Customer Profiles, domains, profile object types, and
-%% integrations can be tagged.
+%% In Connect
+%% Customer Profiles, domains, profile object types, and integrations can be
+%% tagged.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1574,19 +1726,22 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an existing calculated attribute definition.
 %%
-%% When updating the Conditions, note that increasing the date range of a
-%% calculated attribute will not trigger inclusion of historical data greater
-%% than the current date range.
+%% When updating the Conditions, note that increasing
+%% the date range of a calculated attribute will not trigger inclusion of
+%% historical data greater than the
+%% current date range.
 update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
 update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1600,20 +1755,24 @@ update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the properties of a domain, including creating or selecting a
-%% dead letter queue or an encryption key.
+%% dead letter queue
+%% or an encryption key.
 %%
 %% After a domain is created, the name can’t be changed.
 %%
 %% Use this API or CreateDomain:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateDomain.html
-%% to enable identity resolution:
+%% to
+%% enable identity
+%% resolution:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html:
 %% set `Matching' to true.
 %%
 %% To prevent cross-service impersonation when you call this API, see
 %% Cross-service confused deputy prevention:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html
-%% for sample policies that you should apply.
+%% for sample policies that you should
+%% apply.
 %%
 %% To add or remove tags on an existing Domain, see TagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/UntagResource:
@@ -1623,11 +1782,13 @@ update_domain(Client, DomainName, Input) ->
 update_domain(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1642,21 +1803,26 @@ update_domain(Client, DomainName, Input0, Options0) ->
 
 %% @doc Updates the properties of a profile.
 %%
-%% The ProfileId is required for updating a customer profile.
+%% The ProfileId is required for updating a customer
+%% profile.
 %%
 %% When calling the UpdateProfile API, specifying an empty string value means
-%% that any existing value will be removed. Not specifying a string value
-%% means that any value already there will be kept.
+%% that any
+%% existing value will be removed. Not specifying a string value means that
+%% any value already
+%% there will be kept.
 update_profile(Client, DomainName, Input) ->
     update_profile(Client, DomainName, Input, []).
 update_profile(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1672,6 +1838,11 @@ update_profile(Client, DomainName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

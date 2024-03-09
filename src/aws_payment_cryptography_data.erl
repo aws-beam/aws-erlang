@@ -89,25 +89,25 @@
 %%
 %% Related operations:
 %%
-%% <ul> <li> `EncryptData'
+%% `EncryptData'
 %%
-%% </li> <li> GetPublicCertificate:
+%% GetPublicCertificate:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html
 %%
-%% </li> <li> ImportKey:
+%% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
-%%
-%% </li> </ul>
 decrypt_data(Client, KeyIdentifier, Input) ->
     decrypt_data(Client, KeyIdentifier, Input, []).
 decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/keys/", aws_util:encode_uri(KeyIdentifier), "/decrypt"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -169,27 +169,27 @@ decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DecryptData'
+%% `DecryptData'
 %%
-%% </li> <li> GetPublicCertificate:
+%% GetPublicCertificate:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html
 %%
-%% </li> <li> ImportKey:
+%% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
-%% </li> <li> `ReEncryptData'
-%%
-%% </li> </ul>
+%% `ReEncryptData'
 encrypt_data(Client, KeyIdentifier, Input) ->
     encrypt_data(Client, KeyIdentifier, Input, []).
 encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/keys/", aws_util:encode_uri(KeyIdentifier), "/encrypt"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -234,22 +234,22 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> ImportKey:
+%% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
-%% </li> <li> `VerifyCardValidationData'
-%%
-%% </li> </ul>
+%% `VerifyCardValidationData'
 generate_card_validation_data(Client, Input) ->
     generate_card_validation_data(Client, Input, []).
 generate_card_validation_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cardvalidationdata/generate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -291,19 +291,19 @@ generate_card_validation_data(Client, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `VerifyMac'
-%%
-%% </li> </ul>
+%% `VerifyMac'
 generate_mac(Client, Input) ->
     generate_mac(Client, Input, []).
 generate_mac(Client, Input0, Options0) ->
     Method = post,
     Path = ["/mac/generate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -342,23 +342,23 @@ generate_mac(Client, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `GenerateCardValidationData'
+%% `GenerateCardValidationData'
 %%
-%% </li> <li> `TranslatePinData'
+%% `TranslatePinData'
 %%
-%% </li> <li> `VerifyPinData'
-%%
-%% </li> </ul>
+%% `VerifyPinData'
 generate_pin_data(Client, Input) ->
     generate_pin_data(Client, Input, []).
 generate_pin_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pindata/generate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -407,27 +407,27 @@ generate_pin_data(Client, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DecryptData'
+%% `DecryptData'
 %%
-%% </li> <li> `EncryptData'
+%% `EncryptData'
 %%
-%% </li> <li> GetPublicCertificate:
+%% GetPublicCertificate:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html
 %%
-%% </li> <li> ImportKey:
+%% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
-%%
-%% </li> </ul>
 re_encrypt_data(Client, IncomingKeyIdentifier, Input) ->
     re_encrypt_data(Client, IncomingKeyIdentifier, Input, []).
 re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/keys/", aws_util:encode_uri(IncomingKeyIdentifier), "/reencrypt"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -477,21 +477,21 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `GeneratePinData'
+%% `GeneratePinData'
 %%
-%% </li> <li> `VerifyPinData'
-%%
-%% </li> </ul>
+%% `VerifyPinData'
 translate_pin_data(Client, Input) ->
     translate_pin_data(Client, Input, []).
 translate_pin_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pindata/translate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -537,21 +537,21 @@ translate_pin_data(Client, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `VerifyCardValidationData'
+%% `VerifyCardValidationData'
 %%
-%% </li> <li> `VerifyPinData'
-%%
-%% </li> </ul>
+%% `VerifyPinData'
 verify_auth_request_cryptogram(Client, Input) ->
     verify_auth_request_cryptogram(Client, Input, []).
 verify_auth_request_cryptogram(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cryptogram/verify"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -594,23 +594,23 @@ verify_auth_request_cryptogram(Client, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `GenerateCardValidationData'
+%% `GenerateCardValidationData'
 %%
-%% </li> <li> `VerifyAuthRequestCryptogram'
+%% `VerifyAuthRequestCryptogram'
 %%
-%% </li> <li> `VerifyPinData'
-%%
-%% </li> </ul>
+%% `VerifyPinData'
 verify_card_validation_data(Client, Input) ->
     verify_card_validation_data(Client, Input, []).
 verify_card_validation_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cardvalidationdata/verify"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -643,19 +643,19 @@ verify_card_validation_data(Client, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `GenerateMac'
-%%
-%% </li> </ul>
+%% `GenerateMac'
 verify_mac(Client, Input) ->
     verify_mac(Client, Input, []).
 verify_mac(Client, Input0, Options0) ->
     Method = post,
     Path = ["/mac/verify"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -694,21 +694,21 @@ verify_mac(Client, Input0, Options0) ->
 %%
 %% Related operations:
 %%
-%% <ul> <li> `GeneratePinData'
+%% `GeneratePinData'
 %%
-%% </li> <li> `TranslatePinData'
-%%
-%% </li> </ul>
+%% `TranslatePinData'
 verify_pin_data(Client, Input) ->
     verify_pin_data(Client, Input, []).
 verify_pin_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pindata/verify"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -724,6 +724,11 @@ verify_pin_data(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

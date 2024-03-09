@@ -7,7 +7,8 @@
 %% Internet of Things (IIoT):
 %% https://en.wikipedia.org/wiki/Internet_of_things#Industrial_applications
 %% devices to the power of the Amazon Web Services Cloud. For more
-%% information, see the IoT SiteWise User Guide:
+%% information, see the
+%% IoT SiteWise User Guide:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/. For
 %% information about IoT SiteWise quotas, see Quotas:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html in
@@ -229,21 +230,25 @@
 %%====================================================================
 
 %% @doc Associates a child asset with the given parent asset through a
-%% hierarchy defined in the parent asset's model.
+%% hierarchy defined in the
+%% parent asset's model.
 %%
 %% For more information, see Associating assets:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 associate_assets(Client, AssetId, Input) ->
     associate_assets(Client, AssetId, Input, []).
 associate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/associate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -261,12 +266,14 @@ associate_time_series_to_asset_property(Client, Input) ->
     associate_time_series_to_asset_property(Client, Input, []).
 associate_time_series_to_asset_property(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/timeseries/associate/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/timeseries/associate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -290,10 +297,12 @@ batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/associate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -314,10 +323,12 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/disassociate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -331,21 +342,25 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets aggregated values (for example, average, minimum, and maximum)
-%% for one or more asset properties.
+%% for one or more asset
+%% properties.
 %%
 %% For more information, see Querying aggregates:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 batch_get_asset_property_aggregates(Client, Input) ->
     batch_get_asset_property_aggregates(Client, Input, []).
 batch_get_asset_property_aggregates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/aggregates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -360,7 +375,8 @@ batch_get_asset_property_aggregates(Client, Input0, Options0) ->
 
 %% @doc Gets the current value for one or more asset properties.
 %%
-%% For more information, see Querying current values:
+%% For more information, see Querying
+%% current values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values
 %% in the IoT SiteWise User Guide.
 batch_get_asset_property_value(Client, Input) ->
@@ -368,11 +384,13 @@ batch_get_asset_property_value(Client, Input) ->
 batch_get_asset_property_value(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/latest"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -387,7 +405,8 @@ batch_get_asset_property_value(Client, Input0, Options0) ->
 
 %% @doc Gets the historical values for one or more asset properties.
 %%
-%% For more information, see Querying historical values:
+%% For more information, see
+%% Querying historical values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values
 %% in the IoT SiteWise User Guide.
 batch_get_asset_property_value_history(Client, Input) ->
@@ -395,11 +414,13 @@ batch_get_asset_property_value_history(Client, Input) ->
 batch_get_asset_property_value_history(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/history"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -414,46 +435,52 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 
 %% @doc Sends a list of asset property values to IoT SiteWise.
 %%
-%% Each value is a timestamp-quality-value (TQV) data point. For more
-%% information, see Ingesting data using the API:
+%% Each value is a timestamp-quality-value
+%% (TQV) data point. For more information, see Ingesting data using the API:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ingest-api.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId' and `propertyId' of an asset property.
+%% The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for
-%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty:
+%% A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
+%% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
 %%
-%% </li> </ul> With respect to Unix epoch time, IoT SiteWise accepts only
-%% TQVs that have a timestamp of no more than 7 days in the past and no more
-%% than 10 minutes in the future. IoT SiteWise rejects timestamps outside of
-%% the inclusive range of [-7 days, +10 minutes] and returns a
+%% With respect to Unix epoch time, IoT SiteWise accepts only TQVs that have
+%% a timestamp of no more
+%% than 7 days in the past and no more than 10 minutes in the future. IoT
+%% SiteWise rejects timestamps
+%% outside of the inclusive range of [-7 days, +10 minutes] and returns a
 %% `TimestampOutOfRangeException' error.
 %%
 %% For each asset property, IoT SiteWise overwrites TQVs with duplicate
-%% timestamps unless the newer TQV has a different quality. For example, if
-%% you store a TQV `{T1, GOOD, V1}', then storing `{T1, GOOD, V2}'
-%% replaces the existing TQV.
+%% timestamps unless the newer
+%% TQV has a different quality. For example, if you store a TQV `{T1, GOOD,
+%% V1}',
+%% then storing `{T1, GOOD, V2}' replaces the existing TQV.
 %%
 %% IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue'
-%% entry individually. For more information, see BatchPutAssetPropertyValue
-%% authorization:
+%% entry individually.
+%% For more information, see BatchPutAssetPropertyValue authorization:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-batchputassetpropertyvalue-action
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 batch_put_asset_property_value(Client, Input) ->
     batch_put_asset_property_value(Client, Input, []).
 batch_put_asset_property_value(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -467,18 +494,21 @@ batch_put_asset_property_value(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an access policy that grants the specified identity (IAM
-%% Identity Center user, IAM Identity Center group, or IAM user) access to
-%% the specified IoT SiteWise Monitor portal or project resource.
+%% Identity Center user, IAM Identity Center group, or
+%% IAM user) access to the specified IoT SiteWise Monitor portal or project
+%% resource.
 create_access_policy(Client, Input) ->
     create_access_policy(Client, Input, []).
 create_access_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/access-policies"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -495,17 +525,20 @@ create_access_policy(Client, Input0, Options0) ->
 %%
 %% For more information, see Creating assets:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
 create_asset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assets"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -521,35 +554,39 @@ create_asset(Client, Input0, Options0) ->
 %% @doc Creates an asset model from specified property and hierarchy
 %% definitions.
 %%
-%% You create assets from asset models. With asset models, you can easily
-%% create assets of the same type that have standardized definitions. Each
-%% asset created from a model inherits the asset model's property and
-%% hierarchy definitions. For more information, see Defining asset models:
+%% You create
+%% assets from asset models. With asset models, you can easily create assets
+%% of the same type
+%% that have standardized definitions. Each asset created from a model
+%% inherits the asset model's
+%% property and hierarchy definitions. For more information, see Defining
+%% asset models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/define-models.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 %%
 %% You can create two types of asset models, `ASSET_MODEL' or
 %% `COMPONENT_MODEL'.
 %%
-%% <ul> <li> ASSET_MODEL – (default) An asset model that you can use to
-%% create assets. Can't be included as a component in another asset
-%% model.
+%% ASSET_MODEL – (default) An asset model that you can use to create assets.
+%% Can't be included as a component in another asset model.
 %%
-%% </li> <li> COMPONENT_MODEL – A reusable component that you can include in
-%% the composite models of other asset models. You can't create assets
-%% directly from this type of asset model.
-%%
-%% </li> </ul>
+%% COMPONENT_MODEL – A reusable component that you can include in the
+%% composite
+%% models of other asset models. You can't create assets directly from
+%% this type of asset model.
 create_asset_model(Client, Input) ->
     create_asset_model(Client, Input, []).
 create_asset_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -565,23 +602,26 @@ create_asset_model(Client, Input0, Options0) ->
 %% @doc Creates a custom composite model from specified property and
 %% hierarchy definitions.
 %%
-%% There are two types of custom composite models, `inline' and
-%% `component-model-based'.
+%% There are two types of custom composite models,
+%% `inline' and `component-model-based'.
 %%
 %% Use component-model-based custom composite models to define standard,
 %% reusable components. A component-model-based custom composite model
-%% consists of a name, a description, and the ID of the component model it
-%% references. A component-model-based custom composite model has no
-%% properties of its own; its referenced component model provides its
-%% associated properties to any created assets. For more information, see
+%% consists of a name,
+%% a description, and the ID of the component model it references. A
+%% component-model-based custom composite model has no properties of its own;
+%% its referenced
+%% component model provides its associated properties to any created assets.
+%% For more information, see
 %% Custom composite models (Components):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/custom-composite-models.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 %%
 %% Use inline custom composite models to organize the properties of an asset
 %% model. The properties of inline custom composite models are local to the
-%% asset model where they are included and can't be used to create
-%% multiple assets.
+%% asset model where they are
+%% included and can't be used to create multiple assets.
 %%
 %% To create a component-model-based model, specify the
 %% `composedAssetModelId' of an existing asset model with
@@ -596,10 +636,12 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -614,28 +656,32 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 
 %% @doc Defines a job to ingest data to IoT SiteWise from Amazon S3.
 %%
-%% For more information, see Create a bulk import job (CLI):
+%% For more information, see Create a
+%% bulk import job (CLI):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/CreateBulkImportJob.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
 %% Before you create a bulk import job, you must enable IoT SiteWise warm
-%% tier or IoT SiteWise cold tier. For more information about how to
-%% configure storage settings, see PutStorageConfiguration:
+%% tier or IoT SiteWise cold tier.
+%% For more information about how to configure storage settings, see
+%% PutStorageConfiguration:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_PutStorageConfiguration.html.
 %%
 %% Bulk import is designed to store historical data to IoT SiteWise. It does
-%% not trigger computations or notifications on IoT SiteWise warm or cold
-%% tier storage.
+%% not trigger computations or notifications on
+%% IoT SiteWise warm or cold tier storage.
 create_bulk_import_job(Client, Input) ->
     create_bulk_import_job(Client, Input, []).
 create_bulk_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -655,10 +701,12 @@ create_dashboard(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dashboards"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -672,21 +720,25 @@ create_dashboard(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a gateway, which is a virtual or edge device that delivers
-%% industrial data streams from local servers to IoT SiteWise.
+%% industrial data streams
+%% from local servers to IoT SiteWise.
 %%
 %% For more information, see Ingesting data using a gateway:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
 create_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -701,11 +753,12 @@ create_gateway(Client, Input0, Options0) ->
 
 %% @doc Creates a portal, which can contain projects and dashboards.
 %%
-%% IoT SiteWise Monitor uses IAM Identity Center or IAM to authenticate
-%% portal users and manage user permissions.
+%% IoT SiteWise Monitor uses IAM Identity Center or IAM
+%% to authenticate portal users and manage user permissions.
 %%
 %% Before you can sign in to a new portal, you must add at least one identity
-%% to that portal. For more information, see Adding or removing portal
+%% to that
+%% portal. For more information, see Adding or removing portal
 %% administrators:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins
 %% in the IoT SiteWise User Guide.
@@ -715,10 +768,12 @@ create_portal(Client, Input0, Options0) ->
     Method = post,
     Path = ["/portals"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -734,17 +789,20 @@ create_portal(Client, Input0, Options0) ->
 %% @doc Creates a project in the specified portal.
 %%
 %% Make sure that the project name and description don't contain
-%% confidential information.
+%% confidential
+%% information.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -758,7 +816,8 @@ create_project(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an access policy that grants the specified identity access to
-%% the specified IoT SiteWise Monitor resource.
+%% the specified
+%% IoT SiteWise Monitor resource.
 %%
 %% You can use this operation to revoke access to an IoT SiteWise Monitor
 %% resource.
@@ -768,10 +827,12 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = delete,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -788,12 +849,14 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 %% @doc Deletes an asset.
 %%
 %% This action can't be undone. For more information, see Deleting assets
-%% and models:
+%% and
+%% models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
 %% in the IoT SiteWise User Guide.
 %%
 %% You can't delete an asset that's associated to another asset. For
-%% more information, see DisassociateAssets:
+%% more information, see
+%% DisassociateAssets:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html.
 delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
@@ -801,10 +864,12 @@ delete_asset(Client, AssetId, Input0, Options0) ->
     Method = delete,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -820,23 +885,28 @@ delete_asset(Client, AssetId, Input0, Options0) ->
 
 %% @doc Deletes an asset model.
 %%
-%% This action can't be undone. You must delete all assets created from
-%% an asset model before you can delete the model. Also, you can't delete
-%% an asset model if a parent asset model exists that contains a property
-%% formula expression that depends on the asset model that you want to
-%% delete. For more information, see Deleting assets and models:
+%% This action can't be undone. You must delete all assets created
+%% from an asset model before you can delete the model. Also, you can't
+%% delete an asset model if
+%% a parent asset model exists that contains a property formula expression
+%% that depends on the
+%% asset model that you want to delete. For more information, see Deleting
+%% assets and models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 delete_asset_model(Client, AssetModelId, Input) ->
     delete_asset_model(Client, AssetModelId, Input, []).
 delete_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -852,23 +922,28 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
 
 %% @doc Deletes a composite model.
 %%
-%% This action can't be undone. You must delete all assets created from a
-%% composite model before you can delete the model. Also, you can't
-%% delete a composite model if a parent asset model exists that contains a
-%% property formula expression that depends on the asset model that you want
-%% to delete. For more information, see Deleting assets and models:
+%% This action can't be undone. You must delete all assets created
+%% from a composite model before you can delete the model. Also, you
+%% can't delete a composite model if
+%% a parent asset model exists that contains a property formula expression
+%% that depends on the
+%% asset model that you want to delete. For more information, see Deleting
+%% assets and models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -889,10 +964,12 @@ delete_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -908,18 +985,20 @@ delete_dashboard(Client, DashboardId, Input0, Options0) ->
 
 %% @doc Deletes a gateway from IoT SiteWise.
 %%
-%% When you delete a gateway, some of the gateway's files remain in your
-%% gateway's file system.
+%% When you delete a gateway, some of the gateway's files remain
+%% in your gateway's file system.
 delete_gateway(Client, GatewayId, Input) ->
     delete_gateway(Client, GatewayId, Input, []).
 delete_gateway(Client, GatewayId, Input0, Options0) ->
     Method = delete,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -939,10 +1018,12 @@ delete_portal(Client, PortalId, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -963,10 +1044,12 @@ delete_project(Client, ProjectId, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -982,34 +1065,34 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 
 %% @doc Deletes a time series (data stream).
 %%
-%% If you delete a time series that's associated with an asset property,
-%% the asset property still exists, but the time series will no longer be
+%% If you delete a time series that's associated with an
+%% asset property, the asset property still exists, but the time series will
+%% no longer be
 %% associated with this asset property.
 %%
 %% To identify a time series, do one of the following:
 %%
-%% <ul> <li> If the time series isn't associated with an asset property,
+%% If the time series isn't associated with an asset property,
 %% specify the `alias' of the time series.
 %%
-%% </li> <li> If the time series is associated with an asset property,
+%% If the time series is associated with an asset property,
 %% specify one of the following:
 %%
-%% <ul> <li> The `alias' of the time series.
+%% The `alias' of the time series.
 %%
-%% </li> <li> The `assetId' and `propertyId' that identifies the
-%% asset property.
-%%
-%% </li> </ul> </li> </ul>
+%% The `assetId' and `propertyId' that identifies the asset property.
 delete_time_series(Client, Input) ->
     delete_time_series(Client, Input, []).
 delete_time_series(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/timeseries/delete/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/timeseries/delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1026,7 +1109,8 @@ delete_time_series(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an access policy, which specifies an identity's access
-%% to an IoT SiteWise Monitor portal or project.
+%% to an IoT SiteWise Monitor portal or
+%% project.
 describe_access_policy(Client, AccessPolicyId)
   when is_map(Client) ->
     describe_access_policy(Client, AccessPolicyId, #{}, #{}).
@@ -1039,9 +1123,11 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1061,10 +1147,12 @@ describe_action(Client, ActionId, QueryMap, HeadersMap)
 describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions/", aws_util:encode_uri(ActionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1084,10 +1172,12 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap)
 describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1104,7 +1194,8 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 %%
 %% An `AssetCompositeModel' is an instance of an
 %% `AssetModelCompositeModel'. If you want to see information about the
-%% model this is based on, call DescribeAssetModelCompositeModel:
+%% model this is based on, call
+%% DescribeAssetModelCompositeModel:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModelCompositeModel.html.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId)
   when is_map(Client) ->
@@ -1117,10 +1208,12 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap,
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/composite-models/", aws_util:encode_uri(AssetCompositeModelId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1140,10 +1233,12 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap)
 describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1172,10 +1267,12 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1186,12 +1283,15 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 %% @doc Retrieves information about an asset property.
 %%
 %% When you call this operation for an attribute property, this response
-%% includes the default attribute value that you define in the asset model.
-%% If you update the default value in the model, this operation's
-%% response includes the new default value.
+%% includes the
+%% default attribute value that you define in the asset model. If you update
+%% the default value
+%% in the model, this operation's response includes the new default
+%% value.
 %%
 %% This operation doesn't return the value of the asset property. To get
-%% the value of an asset property, use GetAssetPropertyValue:
+%% the value of an
+%% asset property, use GetAssetPropertyValue:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_GetAssetPropertyValue.html.
 describe_asset_property(Client, AssetId, PropertyId)
   when is_map(Client) ->
@@ -1204,10 +1304,12 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
 describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1217,7 +1319,8 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Optio
 
 %% @doc Retrieves information about a bulk import job request.
 %%
-%% For more information, see Describe a bulk import job (CLI):
+%% For more information, see Describe
+%% a bulk import job (CLI):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/DescribeBulkImportJob.html
 %% in the Amazon Simple Storage Service User Guide.
 describe_bulk_import_job(Client, JobId)
@@ -1231,10 +1334,12 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap)
 describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1255,9 +1360,11 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1266,11 +1373,13 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the default encryption configuration for
-%% the Amazon Web Services account in the default or specified Region.
+%% the Amazon Web Services account in
+%% the default or specified Region.
 %%
 %% For more information, see Key management:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 describe_default_encryption_configuration(Client)
   when is_map(Client) ->
     describe_default_encryption_configuration(Client, #{}, #{}).
@@ -1282,10 +1391,12 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
 describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/encryption"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1305,10 +1416,12 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap)
 describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1319,10 +1432,12 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about a gateway capability configuration.
 %%
 %% Each gateway capability defines data sources for a gateway. A capability
-%% configuration can contain multiple data source configurations. If you
-%% define OPC-UA sources for a gateway in the IoT SiteWise console, all of
-%% your OPC-UA sources are stored in one capability configuration. To list
-%% all capability configurations for a gateway, use DescribeGateway:
+%% configuration
+%% can contain multiple data source configurations. If you define OPC-UA
+%% sources for a gateway in
+%% the IoT SiteWise console, all of your OPC-UA sources are stored in one
+%% capability configuration. To
+%% list all capability configurations for a gateway, use DescribeGateway:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId)
   when is_map(Client) ->
@@ -1335,10 +1450,12 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability/", aws_util:encode_uri(CapabilityNamespace), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1358,10 +1475,12 @@ describe_logging_options(Client, QueryMap, HeadersMap)
 describe_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1382,9 +1501,11 @@ describe_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1405,9 +1526,11 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1428,10 +1551,12 @@ describe_storage_configuration(Client, QueryMap, HeadersMap)
 describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/storage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1443,18 +1568,15 @@ describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
 %%
 %% To identify a time series, do one of the following:
 %%
-%% <ul> <li> If the time series isn't associated with an asset property,
+%% If the time series isn't associated with an asset property,
 %% specify the `alias' of the time series.
 %%
-%% </li> <li> If the time series is associated with an asset property,
+%% If the time series is associated with an asset property,
 %% specify one of the following:
 %%
-%% <ul> <li> The `alias' of the time series.
+%% The `alias' of the time series.
 %%
-%% </li> <li> The `assetId' and `propertyId' that identifies the
-%% asset property.
-%%
-%% </li> </ul> </li> </ul>
+%% The `assetId' and `propertyId' that identifies the asset property.
 describe_time_series(Client)
   when is_map(Client) ->
     describe_time_series(Client, #{}, #{}).
@@ -1465,11 +1587,13 @@ describe_time_series(Client, QueryMap, HeadersMap)
 
 describe_time_series(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/timeseries/describe/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/timeseries/describe"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1484,17 +1608,20 @@ describe_time_series(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Disassociates a child asset from the given parent asset through a
-%% hierarchy defined in the parent asset's model.
+%% hierarchy defined in the
+%% parent asset's model.
 disassociate_assets(Client, AssetId, Input) ->
     disassociate_assets(Client, AssetId, Input, []).
 disassociate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/disassociate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1512,12 +1639,14 @@ disassociate_time_series_from_asset_property(Client, Input) ->
     disassociate_time_series_from_asset_property(Client, Input, []).
 disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/timeseries/disassociate/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/timeseries/disassociate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1540,10 +1669,12 @@ execute_action(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actions"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1563,11 +1694,13 @@ execute_query(Client, Input) ->
 execute_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/queries/execution"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1582,20 +1715,19 @@ execute_query(Client, Input0, Options0) ->
 
 %% @doc Gets aggregated values for an asset property.
 %%
-%% For more information, see Querying aggregates:
+%% For more information, see Querying
+%% aggregates:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates
 %% in the IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId' and `propertyId' of an asset property.
+%% The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for
-%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty:
+%% A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
+%% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
-%%
-%% </li> </ul>
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate)
   when is_map(Client) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, #{}, #{}).
@@ -1607,10 +1739,12 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/aggregates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1634,20 +1768,19 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 
 %% @doc Gets an asset property's current value.
 %%
-%% For more information, see Querying current values:
+%% For more information, see Querying
+%% current values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values
 %% in the IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId' and `propertyId' of an asset property.
+%% The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for
-%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty:
+%% A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
+%% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
-%%
-%% </li> </ul>
 get_asset_property_value(Client)
   when is_map(Client) ->
     get_asset_property_value(Client, #{}, #{}).
@@ -1659,10 +1792,12 @@ get_asset_property_value(Client, QueryMap, HeadersMap)
 get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/latest"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1678,20 +1813,19 @@ get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the history of an asset property's values.
 %%
-%% For more information, see Querying historical values:
+%% For more information, see Querying
+%% historical values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values
 %% in the IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId' and `propertyId' of an asset property.
+%% The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for
-%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty:
+%% A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
+%% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
-%%
-%% </li> </ul>
 get_asset_property_value_history(Client)
   when is_map(Client) ->
     get_asset_property_value_history(Client, #{}, #{}).
@@ -1703,10 +1837,12 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap)
 get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/history"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1727,25 +1863,25 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get interpolated values for an asset property for a specified time
-%% interval, during a period of time.
+%% interval, during a
+%% period of time.
 %%
 %% If your time series is missing data points during the specified time
-%% interval, you can use interpolation to estimate the missing data.
+%% interval,
+%% you can use interpolation to estimate the missing data.
 %%
 %% For example, you can use this operation to return the interpolated
-%% temperature values for a wind turbine every 24 hours over a duration of 7
-%% days.
+%% temperature values for
+%% a wind turbine every 24 hours over a duration of 7 days.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
-%% <ul> <li> The `assetId' and `propertyId' of an asset property.
+%% The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for
-%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty:
+%% A `propertyAlias', which is a data stream alias (for example,
+%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
+%% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
-%%
-%% </li> </ul>
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type)
   when is_map(Client) ->
     get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, #{}, #{}).
@@ -1757,10 +1893,12 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/interpolated"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1785,8 +1923,9 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of access policies for an identity (an IAM
-%% Identity Center user, an IAM Identity Center group, or an IAM user) or an
-%% IoT SiteWise Monitor resource (a portal or project).
+%% Identity Center user, an IAM Identity Center
+%% group, or an IAM user) or an IoT SiteWise Monitor resource (a portal or
+%% project).
 list_access_policies(Client)
   when is_map(Client) ->
     list_access_policies(Client, #{}, #{}).
@@ -1799,9 +1938,11 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1831,10 +1972,12 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap)
 list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1862,10 +2005,12 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap)
 list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1882,7 +2027,8 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Op
 %% model.
 %%
 %% If you update properties associated with the model before you finish
-%% listing all the properties, you need to start all over again.
+%% listing all the properties,
+%% you need to start all over again.
 list_asset_model_properties(Client, AssetModelId)
   when is_map(Client) ->
     list_asset_model_properties(Client, AssetModelId, #{}, #{}).
@@ -1894,10 +2040,12 @@ list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap)
 list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/properties"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1923,10 +2071,12 @@ list_asset_models(Client, QueryMap, HeadersMap)
 list_asset_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1943,7 +2093,8 @@ list_asset_models(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a paginated list of properties associated with an asset.
 %%
 %% If you update properties associated with the model before you finish
-%% listing all the properties, you need to start all over again.
+%% listing all the properties,
+%% you need to start all over again.
 list_asset_properties(Client, AssetId)
   when is_map(Client) ->
     list_asset_properties(Client, AssetId, #{}, #{}).
@@ -1955,10 +2106,12 @@ list_asset_properties(Client, AssetId, QueryMap, HeadersMap)
 list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1974,8 +2127,10 @@ list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of asset relationships for an asset.
 %%
-%% You can use this operation to identify an asset's root asset and all
-%% associated assets between that asset and its root.
+%% You can use this operation
+%% to identify an asset's root asset and all associated assets between
+%% that asset and its
+%% root.
 list_asset_relationships(Client, AssetId, TraversalType)
   when is_map(Client) ->
     list_asset_relationships(Client, AssetId, TraversalType, #{}, #{}).
@@ -1987,10 +2142,12 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap)
 list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/assetRelationships"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2008,15 +2165,16 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, O
 %%
 %% You can use this operation to do the following:
 %%
-%% <ul> <li> List assets based on a specific asset model.
+%% List assets based on a specific asset model.
 %%
-%% </li> <li> List top-level assets.
+%% List top-level assets.
 %%
-%% </li> </ul> You can't use this operation to list all assets. To
-%% retrieve summaries for all of your assets, use ListAssetModels:
+%% You can't use this operation to list all assets. To retrieve summaries
+%% for all of your
+%% assets, use ListAssetModels:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html
-%% to get all of your asset model IDs. Then, use ListAssets to get all assets
-%% for each asset model.
+%% to get all of your asset model IDs. Then, use ListAssets to get all
+%% assets for each asset model.
 list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
@@ -2028,10 +2186,12 @@ list_assets(Client, QueryMap, HeadersMap)
 list_assets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2050,12 +2210,10 @@ list_assets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can use this operation to do the following:
 %%
-%% <ul> <li> List child assets associated to a parent asset by a hierarchy
-%% that you specify.
+%% List child assets associated to a parent asset by a hierarchy that you
+%% specify.
 %%
-%% </li> <li> List an asset's parent asset.
-%%
-%% </li> </ul>
+%% List an asset's parent asset.
 list_associated_assets(Client, AssetId)
   when is_map(Client) ->
     list_associated_assets(Client, AssetId, #{}, #{}).
@@ -2067,10 +2225,12 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap)
 list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/hierarchies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2087,7 +2247,8 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of bulk import job requests.
 %%
-%% For more information, see List bulk import jobs (CLI):
+%% For more information, see List bulk
+%% import jobs (CLI):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ListBulkImportJobs.html
 %% in the IoT SiteWise User Guide.
 list_bulk_import_jobs(Client)
@@ -2101,10 +2262,12 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap)
 list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2131,10 +2294,12 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap)
 list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composition-relationships"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2161,9 +2326,11 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2189,10 +2356,12 @@ list_gateways(Client, QueryMap, HeadersMap)
 list_gateways(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2218,9 +2387,11 @@ list_portals(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2247,9 +2418,11 @@ list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2276,9 +2449,11 @@ list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2304,10 +2479,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2330,11 +2507,13 @@ list_time_series(Client, QueryMap, HeadersMap)
 
 list_time_series(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/timeseries/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/timeseries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2353,19 +2532,23 @@ list_time_series(Client, QueryMap, HeadersMap, Options0)
 %% @doc Sets the default encryption configuration for the Amazon Web Services
 %% account.
 %%
-%% For more information, see Key management:
+%% For more information, see
+%% Key management:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
-%% in the IoT SiteWise User Guide.
+%% in
+%% the IoT SiteWise User Guide.
 put_default_encryption_configuration(Client, Input) ->
     put_default_encryption_configuration(Client, Input, []).
 put_default_encryption_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/account/encryption"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2384,11 +2567,13 @@ put_logging_options(Client, Input) ->
 put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2407,11 +2592,13 @@ put_storage_configuration(Client, Input) ->
 put_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/account/storage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2426,18 +2613,20 @@ put_storage_configuration(Client, Input0, Options0) ->
 
 %% @doc Adds tags to an IoT SiteWise resource.
 %%
-%% If a tag already exists for the resource, this operation updates the
-%% tag's value.
+%% If a tag already exists for the resource, this operation
+%% updates the tag's value.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2457,11 +2646,13 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2477,17 +2668,20 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing access policy that specifies an identity's
-%% access to an IoT SiteWise Monitor portal or project resource.
+%% access to an IoT SiteWise Monitor
+%% portal or project resource.
 update_access_policy(Client, AccessPolicyId, Input) ->
     update_access_policy(Client, AccessPolicyId, Input, []).
 update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = put,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2504,17 +2698,20 @@ update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 %%
 %% For more information, see Updating assets and models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 update_asset(Client, AssetId, Input) ->
     update_asset(Client, AssetId, Input, []).
 update_asset(Client, AssetId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2530,22 +2727,28 @@ update_asset(Client, AssetId, Input0, Options0) ->
 %% @doc Updates an asset model and all of the assets that were created from
 %% the model.
 %%
-%% Each asset created from the model inherits the updated asset model's
-%% property and hierarchy definitions. For more information, see Updating
-%% assets and models:
+%% Each asset
+%% created from the model inherits the updated asset model's property and
+%% hierarchy definitions.
+%% For more information, see Updating assets and models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 %%
 %% This operation overwrites the existing model with the provided model. To
-%% avoid deleting your asset model's properties or hierarchies, you must
-%% include their IDs and definitions in the updated asset model payload. For
-%% more information, see DescribeAssetModel:
+%% avoid deleting
+%% your asset model's properties or hierarchies, you must include their
+%% IDs and definitions in
+%% the updated asset model payload. For more information, see
+%% DescribeAssetModel:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html.
 %%
 %% If you remove a property from an asset model, IoT SiteWise deletes all
-%% previous data for that property. If you remove a hierarchy definition from
-%% an asset model, IoT SiteWise disassociates every asset associated with
-%% that hierarchy. You can't change the type or data type of an existing
+%% previous data for that
+%% property. If you remove a hierarchy definition from an asset model, IoT
+%% SiteWise disassociates every
+%% asset associated with that hierarchy. You can't change the type or
+%% data type of an existing
 %% property.
 update_asset_model(Client, AssetModelId, Input) ->
     update_asset_model(Client, AssetModelId, Input, []).
@@ -2553,10 +2756,12 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2572,11 +2777,13 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% @doc Updates a composite model and all of the assets that were created
 %% from the model.
 %%
-%% Each asset created from the model inherits the updated asset model's
-%% property and hierarchy definitions. For more information, see Updating
-%% assets and models:
+%% Each asset
+%% created from the model inherits the updated asset model's property and
+%% hierarchy definitions.
+%% For more information, see Updating assets and models:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
-%% in the IoT SiteWise User Guide.
+%% in the
+%% IoT SiteWise User Guide.
 %%
 %% If you remove a property from a composite asset model, IoT SiteWise
 %% deletes all previous data for that property. You can’t change the type or
@@ -2589,18 +2796,21 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% existing property removed.
 %%
 %% Submit a second `UpdateAssetModelCompositeModel' request that includes
-%% the new property. The new asset property will have the same `name' as
-%% the previous one and IoT SiteWise will generate a new unique `id'.
+%% the new property. The new asset property will have the same
+%% `name' as the previous one and IoT SiteWise will generate a new unique
+%% `id'.
 update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
 update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2616,9 +2826,10 @@ update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
 %% @doc Updates an asset property's alias and notification state.
 %%
 %% This operation overwrites the property's existing alias and
-%% notification state. To keep your existing property's alias or
-%% notification state, you must include the existing values in the
-%% UpdateAssetProperty request. For more information, see
+%% notification state. To keep
+%% your existing property's alias or notification state, you must include
+%% the existing values
+%% in the UpdateAssetProperty request. For more information, see
 %% DescribeAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html.
 update_asset_property(Client, AssetId, PropertyId, Input) ->
@@ -2626,11 +2837,13 @@ update_asset_property(Client, AssetId, PropertyId, Input) ->
 update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2650,10 +2863,12 @@ update_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2672,11 +2887,13 @@ update_gateway(Client, GatewayId, Input) ->
 update_gateway(Client, GatewayId, Input0, Options0) ->
     Method = put,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2693,10 +2910,12 @@ update_gateway(Client, GatewayId, Input0, Options0) ->
 %% capability configuration.
 %%
 %% Each gateway capability defines data sources for a gateway. A capability
-%% configuration can contain multiple data source configurations. If you
-%% define OPC-UA sources for a gateway in the IoT SiteWise console, all of
-%% your OPC-UA sources are stored in one capability configuration. To list
-%% all capability configurations for a gateway, use DescribeGateway:
+%% configuration
+%% can contain multiple data source configurations. If you define OPC-UA
+%% sources for a gateway in
+%% the IoT SiteWise console, all of your OPC-UA sources are stored in one
+%% capability configuration. To
+%% list all capability configurations for a gateway, use DescribeGateway:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
 update_gateway_capability_configuration(Client, GatewayId, Input) ->
     update_gateway_capability_configuration(Client, GatewayId, Input, []).
@@ -2704,10 +2923,12 @@ update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2727,10 +2948,12 @@ update_portal(Client, PortalId, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2750,10 +2973,12 @@ update_project(Client, ProjectId, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2769,6 +2994,11 @@ update_project(Client, ProjectId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

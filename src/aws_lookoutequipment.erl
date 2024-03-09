@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Lookout for Equipment is a machine learning service that uses
-%% advanced analytics to identify anomalies in machines from sensor data for
-%% use in predictive maintenance.
+%% advanced analytics to identify
+%% anomalies in machines from sensor data for use in predictive maintenance.
 -module(aws_lookoutequipment).
 
 -export([create_dataset/2,
@@ -114,10 +114,13 @@
 %% @doc Creates a container for a collection of data being ingested for
 %% analysis.
 %%
-%% The dataset contains the metadata describing where the data is and what
-%% the data actually looks like. For example, it contains the location of the
-%% data source, the data schema, and other information. A dataset also
-%% contains any tags associated with the ingested data.
+%% The dataset
+%% contains the metadata describing where the data is and what the data
+%% actually looks like.
+%% For example, it contains the location of the data source, the data schema,
+%% and other
+%% information. A dataset also contains any tags associated with the ingested
+%% data.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -127,12 +130,14 @@ create_dataset(Client, Input, Options)
 
 %% @doc Creates a scheduled inference.
 %%
-%% Scheduling an inference is setting up a continuous real-time inference
-%% plan to analyze new measurement data. When setting up the schedule, you
+%% Scheduling an inference is setting up a continuous
+%% real-time inference plan to analyze new measurement data. When setting up
+%% the schedule, you
 %% provide an S3 bucket location for the input data, assign it a delimiter
-%% between separate entries in the data, set an offset delay if desired, and
-%% set the frequency of inferencing. You must also provide an S3 bucket
-%% location for the output data.
+%% between separate
+%% entries in the data, set an offset delay if desired, and set the frequency
+%% of inferencing.
+%% You must also provide an S3 bucket location for the output data.
 create_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_scheduler(Client, Input, []).
@@ -159,16 +164,20 @@ create_label_group(Client, Input, Options)
 %% @doc Creates a machine learning model for data inference.
 %%
 %% A machine-learning (ML) model is a mathematical model that finds patterns
-%% in your data. In Amazon Lookout for Equipment, the model learns the
-%% patterns of normal behavior and detects abnormal behavior that could be
-%% potential equipment failure (or maintenance events). The models are made
-%% by analyzing normal data and abnormalities in machine behavior that have
-%% already occurred.
+%% in your data.
+%% In Amazon Lookout for Equipment, the model learns the patterns of normal
+%% behavior and detects abnormal
+%% behavior that could be potential equipment failure (or maintenance
+%% events). The models are
+%% made by analyzing normal data and abnormalities in machine behavior that
+%% have already
+%% occurred.
 %%
 %% Your model is trained using a portion of the data from your dataset and
-%% uses that data to learn patterns of normal behavior and abnormal patterns
-%% that lead to equipment failure. Another portion of the data is used to
-%% evaluate the model's accuracy.
+%% uses that data
+%% to learn patterns of normal behavior and abnormal patterns that lead to
+%% equipment failure.
+%% Another portion of the data is used to evaluate the model's accuracy.
 create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
@@ -186,12 +195,14 @@ create_retraining_scheduler(Client, Input, Options)
 
 %% @doc Deletes a dataset and associated artifacts.
 %%
-%% The operation will check to see if any inference scheduler or data
-%% ingestion job is currently using the dataset, and if there isn't, the
-%% dataset, its metadata, and any associated data stored in S3 will be
-%% deleted. This does not affect any models that used this dataset for
-%% training and evaluation, but does prevent it from being used in the
-%% future.
+%% The operation will check to see if any
+%% inference scheduler or data ingestion job is currently using the dataset,
+%% and if there
+%% isn't, the dataset, its metadata, and any associated data stored in S3
+%% will be deleted.
+%% This does not affect any models that used this dataset for training and
+%% evaluation, but
+%% does prevent it from being used in the future.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -201,7 +212,8 @@ delete_dataset(Client, Input, Options)
 
 %% @doc Deletes an inference scheduler that has been set up.
 %%
-%% Prior inference results will not be deleted.
+%% Prior inference results will not be
+%% deleted.
 delete_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_scheduler(Client, Input, []).
@@ -228,8 +240,9 @@ delete_label_group(Client, Input, Options)
 %% @doc Deletes a machine learning model currently available for Amazon
 %% Lookout for Equipment.
 %%
-%% This will prevent it from being used with an inference scheduler, even one
-%% that is already set up.
+%% This will prevent it
+%% from being used with an inference scheduler, even one that is already set
+%% up.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
@@ -247,7 +260,8 @@ delete_resource_policy(Client, Input, Options)
 
 %% @doc Deletes a retraining scheduler from a model.
 %%
-%% The retraining scheduler must be in the `STOPPED' status.
+%% The retraining scheduler must be in the
+%% `STOPPED' status.
 delete_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retraining_scheduler(Client, Input, []).
@@ -256,7 +270,8 @@ delete_retraining_scheduler(Client, Input, Options)
     request(Client, <<"DeleteRetrainingScheduler">>, Input, Options).
 
 %% @doc Provides information on a specific data ingestion job such as
-%% creation time, dataset ARN, and status.
+%% creation time, dataset
+%% ARN, and status.
 describe_data_ingestion_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_ingestion_job(Client, Input, []).
@@ -265,7 +280,8 @@ describe_data_ingestion_job(Client, Input, Options)
     request(Client, <<"DescribeDataIngestionJob">>, Input, Options).
 
 %% @doc Provides a JSON description of the data in each time series dataset,
-%% including names, column names, and data types.
+%% including names,
+%% column names, and data types.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -274,7 +290,8 @@ describe_dataset(Client, Input, Options)
     request(Client, <<"DescribeDataset">>, Input, Options).
 
 %% @doc Specifies information about the inference scheduler being used,
-%% including name, model, status, and associated metadata
+%% including name, model,
+%% status, and associated metadata
 describe_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_scheduler(Client, Input, []).
@@ -299,8 +316,10 @@ describe_label_group(Client, Input, Options)
     request(Client, <<"DescribeLabelGroup">>, Input, Options).
 
 %% @doc Provides a JSON containing the overall information about a specific
-%% machine learning model, including model name and ARN, dataset, training
-%% and evaluation information, status, and so on.
+%% machine learning
+%% model, including model name and ARN, dataset, training and evaluation
+%% information, status,
+%% and so on.
 describe_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model(Client, Input, []).
@@ -326,7 +345,8 @@ describe_resource_policy(Client, Input, Options)
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
 
 %% @doc Provides a description of the retraining scheduler, including
-%% information such as the model name and retraining parameters.
+%% information such as the
+%% model name and retraining parameters.
 describe_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_retraining_scheduler(Client, Input, []).
@@ -351,7 +371,8 @@ import_model_version(Client, Input, Options)
     request(Client, <<"ImportModelVersion">>, Input, Options).
 
 %% @doc Provides a list of all data ingestion jobs, including dataset name
-%% and ARN, S3 location of the input data, status, and so on.
+%% and ARN, S3 location
+%% of the input data, status, and so on.
 list_data_ingestion_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_ingestion_jobs(Client, Input, []).
@@ -378,7 +399,8 @@ list_inference_events(Client, Input, Options)
     request(Client, <<"ListInferenceEvents">>, Input, Options).
 
 %% @doc Lists all inference executions that have been performed by the
-%% specified inference scheduler.
+%% specified inference
+%% scheduler.
 list_inference_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_executions(Client, Input, []).
@@ -412,10 +434,11 @@ list_labels(Client, Input, Options)
     request(Client, <<"ListLabels">>, Input, Options).
 
 %% @doc Generates a list of all model versions for a given model, including
-%% the model version, model version ARN, and status.
+%% the model version,
+%% model version ARN, and status.
 %%
-%% To list a subset of versions, use the `MaxModelVersion' and
-%% `MinModelVersion' fields.
+%% To list a subset of versions, use the
+%% `MaxModelVersion' and `MinModelVersion' fields.
 list_model_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_versions(Client, Input, []).
@@ -424,7 +447,8 @@ list_model_versions(Client, Input, Options)
     request(Client, <<"ListModelVersions">>, Input, Options).
 
 %% @doc Generates a list of all models in the account, including model name
-%% and ARN, dataset, and status.
+%% and ARN, dataset,
+%% and status.
 list_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_models(Client, Input, []).
@@ -433,7 +457,8 @@ list_models(Client, Input, Options)
     request(Client, <<"ListModels">>, Input, Options).
 
 %% @doc Lists all retraining schedulers in your account, filtering by model
-%% name prefix and status.
+%% name prefix and
+%% status.
 list_retraining_schedulers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_retraining_schedulers(Client, Input, []).
@@ -442,10 +467,11 @@ list_retraining_schedulers(Client, Input, Options)
     request(Client, <<"ListRetrainingSchedulers">>, Input, Options).
 
 %% @doc Lists statistics about the data collected for each of the sensors
-%% that have been successfully ingested in the particular dataset.
+%% that have been
+%% successfully ingested in the particular dataset.
 %%
-%% Can also be used to retreive Sensor Statistics for a previous ingestion
-%% job.
+%% Can also be used to retreive Sensor
+%% Statistics for a previous ingestion job.
 list_sensor_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sensor_statistics(Client, Input, []).
@@ -513,11 +539,14 @@ stop_retraining_scheduler(Client, Input, Options)
 
 %% @doc Associates a given tag to a resource in your account.
 %%
-%% A tag is a key-value pair which can be added to an Amazon Lookout for
-%% Equipment resource as metadata. Tags can be used for organizing your
+%% A tag is a key-value pair which
+%% can be added to an Amazon Lookout for Equipment resource as metadata. Tags
+%% can be used for organizing your
 %% resources as well as helping you to search and filter by tag. Multiple
-%% tags can be added to a resource, either when you create it, or later. Up
-%% to 50 tags can be associated with each resource.
+%% tags can be added to
+%% a resource, either when you create it, or later. Up to 50 tags can be
+%% associated with each
+%% resource.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

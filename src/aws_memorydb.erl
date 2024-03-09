@@ -139,8 +139,9 @@ create_cluster(Client, Input, Options)
 %% @doc Creates a new MemoryDB parameter group.
 %%
 %% A parameter group is a collection of parameters and their values that are
-%% applied to all of the nodes in any cluster. For more information, see
-%% Configuring engine parameters using parameter groups:
+%% applied to all of the nodes in any cluster. For
+%% more information, see Configuring engine parameters using parameter
+%% groups:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/parametergroups.html.
 create_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -161,10 +162,12 @@ create_snapshot(Client, Input, Options)
 %%
 %% A subnet group is a collection of subnets (typically private) that you can
 %% designate for your clusters running in an Amazon Virtual Private Cloud
-%% (VPC) environment. When you create a cluster in an Amazon VPC, you must
-%% specify a subnet group. MemoryDB uses that subnet group to choose a subnet
-%% and IP addresses within that subnet to associate with your nodes. For more
-%% information, see Subnets and subnet groups:
+%% (VPC) environment.
+%%
+%% When you create a cluster in an Amazon VPC, you must specify a subnet
+%% group. MemoryDB uses that subnet group to choose a subnet and IP addresses
+%% within that subnet to associate with your nodes.
+%% For more information, see Subnets and subnet groups:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/subnetgroups.html.
 create_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -283,9 +286,10 @@ describe_engine_versions(Client, Input, Options)
 %% groups.
 %%
 %% You can obtain events specific to a particular cluster, security group, or
-%% parameter group by providing the name as a parameter. By default, only the
-%% events occurring within the last hour are returned; however, you can
-%% retrieve up to 14 days' worth of events if necessary.
+%% parameter group by providing the name as a parameter.
+%%
+%% By default, only the events occurring within the last hour are returned;
+%% however, you can retrieve up to 14 days' worth of events if necessary.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -340,8 +344,8 @@ describe_service_updates(Client, Input, Options)
 %% @doc Returns information about cluster snapshots.
 %%
 %% By default, DescribeSnapshots lists all of your snapshots; it can
-%% optionally describe a single snapshot, or just the snapshots associated
-%% with a particular cluster.
+%% optionally describe a single snapshot,
+%% or just the snapshots associated with a particular cluster.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -372,9 +376,10 @@ describe_users(Client, Input, Options)
 %%
 %% This API is designed for testing the behavior of your application in case
 %% of MemoryDB failover. It is not designed to be used as a production-level
-%% tool for initiating a failover to overcome a problem you may have with the
-%% cluster. Moreover, in certain conditions such as large scale operational
-%% events, Amazon may block this API.
+%% tool for initiating
+%% a failover to overcome a problem you may have with the cluster. Moreover,
+%% in certain conditions such as large scale operational events, Amazon may
+%% block this API.
 failover_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_shard(Client, Input, []).
@@ -398,8 +403,8 @@ list_allowed_node_type_updates(Client, Input, Options)
 %% @doc Lists all tags currently on a named resource.
 %%
 %% A tag is a key-value pair where the key and value are case-sensitive. You
-%% can use tags to categorize and track your MemoryDB resources. For more
-%% information, see Tagging your MemoryDB resources:
+%% can use tags to categorize and track your MemoryDB resources.
+%% For more information, see Tagging your MemoryDB resources:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/Tagging-Resources.html
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -433,18 +438,22 @@ reset_parameter_group(Client, Input, Options)
 
 %% @doc A tag is a key-value pair where the key and value are case-sensitive.
 %%
-%% You can use tags to categorize and track all your MemoryDB resources. When
-%% you add or remove tags on clusters, those actions will be replicated to
-%% all nodes in the cluster. For more information, see Resource-level
-%% permissions:
+%% You can use tags to categorize and track all your MemoryDB resources.
+%%
+%% When you add or remove tags on clusters, those actions will be replicated
+%% to all nodes in the cluster. For more information, see
+%%
+%% Resource-level permissions:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/iam.resourcelevelpermissions.html.
 %%
 %% For example, you can use cost-allocation tags to your MemoryDB resources,
-%% Amazon generates a cost allocation report as a comma-separated value (CSV)
-%% file with your usage and costs aggregated by your tags. You can apply tags
-%% that represent business categories (such as cost centers, application
-%% names, or owners) to organize your costs across multiple services. For
-%% more information, see Using Cost Allocation Tags:
+%% Amazon generates a cost allocation report as a comma-separated value
+%% (CSV) file with your usage and costs aggregated by your tags. You can
+%% apply tags that represent business categories
+%% (such as cost centers, application names, or owners) to organize your
+%% costs across multiple services.
+%%
+%% For more information, see Using Cost Allocation Tags:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -525,7 +534,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"memorydb">>},
+    Client1 = Client#{service => <<"memory-db">>},
     Host = build_host(<<"memory-db">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

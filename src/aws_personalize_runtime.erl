@@ -20,9 +20,9 @@
 %% @doc Returns a list of recommended actions in sorted in descending order
 %% by prediction score.
 %%
-%% Use the `GetActionRecommendations' API if you have a custom campaign
-%% that deploys a solution version trained with a PERSONALIZED_ACTIONS
-%% recipe.
+%% Use the `GetActionRecommendations' API if you have a custom
+%% campaign that deploys a solution version trained with a
+%% PERSONALIZED_ACTIONS recipe.
 %%
 %% For more information about PERSONALIZED_ACTIONS recipes, see
 %% PERSONALIZED_ACTIONS recipes:
@@ -35,11 +35,13 @@ get_action_recommendations(Client, Input) ->
 get_action_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/action-recommendations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -54,21 +56,24 @@ get_action_recommendations(Client, Input0, Options0) ->
 
 %% @doc Re-ranks a list of recommended items for the given user.
 %%
-%% The first item in the list is deemed the most likely item to be of
-%% interest to the user.
+%% The first item in the list is
+%% deemed the most likely item to be of interest to the user.
 %%
 %% The solution backing the campaign must have been created using a recipe of
-%% type PERSONALIZED_RANKING.
+%% type
+%% PERSONALIZED_RANKING.
 get_personalized_ranking(Client, Input) ->
     get_personalized_ranking(Client, Input, []).
 get_personalized_ranking(Client, Input0, Options0) ->
     Method = post,
     Path = ["/personalize-ranking"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -87,29 +92,31 @@ get_personalized_ranking(Client, Input0, Options0) ->
 %% and the required user and item input depends on the recipe type used to
 %% create the solution backing the campaign as follows:
 %%
-%% <ul> <li> USER_PERSONALIZATION - `userId' required, `itemId' not
-%% used
+%% USER_PERSONALIZATION - `userId' required, `itemId' not used
 %%
-%% </li> <li> RELATED_ITEMS - `itemId' required, `userId' not used
+%% RELATED_ITEMS - `itemId' required, `userId' not used
 %%
-%% </li> </ul> Campaigns that are backed by a solution created using a recipe
-%% of type PERSONALIZED_RANKING use the API.
+%% Campaigns that are backed by a solution created using a recipe of type
+%% PERSONALIZED_RANKING use the API.
 %%
 %% For recommenders, the recommender's ARN is required and the required
 %% item and user input depends on the use case (domain-based recipe) backing
-%% the recommender. For information on use case requirements see Choosing
-%% recommender use cases:
+%% the recommender.
+%% For information on use case requirements see Choosing recommender use
+%% cases:
 %% https://docs.aws.amazon.com/personalize/latest/dg/domain-use-cases.html.
 get_recommendations(Client, Input) ->
     get_recommendations(Client, Input, []).
 get_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recommendations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -125,6 +132,11 @@ get_recommendations(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

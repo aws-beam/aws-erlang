@@ -79,11 +79,13 @@ create_signaling_channel(Client, Input) ->
 create_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSignalingChannel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -99,25 +101,29 @@ create_signaling_channel(Client, Input0, Options0) ->
 %% @doc Creates a new Kinesis video stream.
 %%
 %% When you create a new stream, Kinesis Video Streams assigns it a version
-%% number. When you change the stream's metadata, Kinesis Video Streams
-%% updates the version.
+%% number.
+%% When you change the stream's metadata, Kinesis Video Streams updates
+%% the version.
 %%
 %% `CreateStream' is an asynchronous operation.
 %%
 %% For information about how the service works, see How it Works:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html.
 %%
-%% You must have permissions for the `KinesisVideo:CreateStream' action.
+%% You must have permissions for the `KinesisVideo:CreateStream'
+%% action.
 create_stream(Client, Input) ->
     create_stream(Client, Input, []).
 create_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createStream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -147,11 +153,13 @@ delete_edge_configuration(Client, Input) ->
 delete_edge_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteEdgeConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -166,19 +174,22 @@ delete_edge_configuration(Client, Input0, Options0) ->
 
 %% @doc Deletes a specified signaling channel.
 %%
-%% `DeleteSignalingChannel' is an asynchronous operation. If you
-%% don't specify the channel's current version, the most recent
-%% version is deleted.
+%% `DeleteSignalingChannel' is an
+%% asynchronous operation. If you don't specify the channel's current
+%% version, the most
+%% recent version is deleted.
 delete_signaling_channel(Client, Input) ->
     delete_signaling_channel(Client, Input, []).
 delete_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteSignalingChannel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -194,13 +205,16 @@ delete_signaling_channel(Client, Input0, Options0) ->
 %% @doc Deletes a Kinesis video stream and the data contained in the stream.
 %%
 %% This method marks the stream for deletion, and makes the data in the
-%% stream inaccessible immediately.
+%% stream
+%% inaccessible immediately.
 %%
 %% To ensure that you have the latest version of the stream before deleting
-%% it, you can specify the stream version. Kinesis Video Streams assigns a
-%% version to each stream. When you update a stream, Kinesis Video Streams
-%% assigns a new version number. To get the latest stream version, use the
-%% `DescribeStream' API.
+%% it, you
+%% can specify the stream version. Kinesis Video Streams assigns a version to
+%% each stream.
+%% When you update a stream, Kinesis Video Streams assigns a new version
+%% number. To get the
+%% latest stream version, use the `DescribeStream' API.
 %%
 %% This operation requires permission for the `KinesisVideo:DeleteStream'
 %% action.
@@ -209,11 +223,13 @@ delete_stream(Client, Input) ->
 delete_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteStream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -230,19 +246,22 @@ delete_stream(Client, Input0, Options0) ->
 %% `StartEdgeConfigurationUpdate' API and the latest status of the edge
 %% agent's recorder and uploader jobs.
 %%
-%% Use this API to get the status of the configuration to determine if the
-%% configuration is in sync with the Edge Agent. Use this API to evaluate the
-%% health of the Edge Agent.
+%% Use this API to get the status of the configuration
+%% to determine if the configuration is in sync with the Edge Agent. Use this
+%% API to
+%% evaluate the health of the Edge Agent.
 describe_edge_configuration(Client, Input) ->
     describe_edge_configuration(Client, Input, []).
 describe_edge_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeEdgeConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -262,11 +281,13 @@ describe_image_generation_configuration(Client, Input) ->
 describe_image_generation_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeImageGenerationConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -281,17 +302,20 @@ describe_image_generation_configuration(Client, Input0, Options0) ->
 
 %% @doc Returns the most current information about the stream.
 %%
-%% The `streamName' or `streamARN' should be provided in the input.
+%% The `streamName'
+%% or `streamARN' should be provided in the input.
 describe_mapped_resource_configuration(Client, Input) ->
     describe_mapped_resource_configuration(Client, Input, []).
 describe_mapped_resource_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeMappedResourceConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -306,17 +330,20 @@ describe_mapped_resource_configuration(Client, Input0, Options0) ->
 
 %% @doc Returns the most current information about the channel.
 %%
-%% Specify the `ChannelName' or `ChannelARN' in the input.
+%% Specify the `ChannelName'
+%% or `ChannelARN' in the input.
 describe_media_storage_configuration(Client, Input) ->
     describe_media_storage_configuration(Client, Input, []).
 describe_media_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeMediaStorageConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -336,11 +363,13 @@ describe_notification_configuration(Client, Input) ->
 describe_notification_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeNotificationConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -355,18 +384,22 @@ describe_notification_configuration(Client, Input0, Options0) ->
 
 %% @doc Returns the most current information about the signaling channel.
 %%
-%% You must specify either the name or the Amazon Resource Name (ARN) of the
-%% channel that you want to describe.
+%% You must specify
+%% either the name or the Amazon Resource Name (ARN) of the channel that you
+%% want to
+%% describe.
 describe_signaling_channel(Client, Input) ->
     describe_signaling_channel(Client, Input, []).
 describe_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSignalingChannel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -381,17 +414,20 @@ describe_signaling_channel(Client, Input0, Options0) ->
 
 %% @doc Returns the most current information about the specified stream.
 %%
-%% You must specify either the `StreamName' or the `StreamARN'.
+%% You must specify
+%% either the `StreamName' or the `StreamARN'.
 describe_stream(Client, Input) ->
     describe_stream(Client, Input, []).
 describe_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeStream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -407,12 +443,14 @@ describe_stream(Client, Input0, Options0) ->
 %% @doc Gets an endpoint for a specified stream for either reading or
 %% writing.
 %%
-%% Use this endpoint in your application to read from the specified stream
-%% (using the `GetMedia' or `GetMediaForFragmentList' operations) or
-%% write to it (using the `PutMedia' operation).
+%% Use this
+%% endpoint in your application to read from the specified stream (using the
+%% `GetMedia' or `GetMediaForFragmentList' operations) or write
+%% to it (using the `PutMedia' operation).
 %%
 %% The returned endpoint does not have the API name appended. The client
-%% needs to add the API name to the returned endpoint.
+%% needs to
+%% add the API name to the returned endpoint.
 %%
 %% In the request, specify the stream either by `StreamName' or
 %% `StreamARN'.
@@ -421,11 +459,13 @@ get_data_endpoint(Client, Input) ->
 get_data_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getDataEndpoint"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -442,29 +482,35 @@ get_data_endpoint(Client, Input0, Options0) ->
 %% receive messages.
 %%
 %% This API uses the `SingleMasterChannelEndpointConfiguration' input
-%% parameter, which consists of the `Protocols' and `Role'
-%% properties.
+%% parameter,
+%% which consists of the `Protocols' and `Role' properties.
 %%
 %% `Protocols' is used to determine the communication mechanism. For
-%% example, if you specify `WSS' as the protocol, this API produces a
-%% secure websocket endpoint. If you specify `HTTPS' as the protocol,
-%% this API generates an HTTPS endpoint.
+%% example,
+%% if you specify `WSS' as the protocol, this API produces a secure
+%% websocket
+%% endpoint. If you specify `HTTPS' as the protocol, this API generates
+%% an HTTPS
+%% endpoint.
 %%
 %% `Role' determines the messaging permissions. A `MASTER' role
 %% results in this API generating an endpoint that a client can use to
-%% communicate with any of the viewers on the channel. A `VIEWER' role
-%% results in this API generating an endpoint that a client can use to
-%% communicate only with a `MASTER'.
+%% communicate with any
+%% of the viewers on the channel. A `VIEWER' role results in this API
+%% generating
+%% an endpoint that a client can use to communicate only with a `MASTER'.
 get_signaling_channel_endpoint(Client, Input) ->
     get_signaling_channel_endpoint(Client, Input, []).
 get_signaling_channel_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getSignalingChannelEndpoint"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -486,11 +532,13 @@ list_edge_agent_configurations(Client, Input) ->
 list_edge_agent_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listEdgeAgentConfigurations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -505,19 +553,22 @@ list_edge_agent_configurations(Client, Input0, Options0) ->
 
 %% @doc Returns an array of `ChannelInfo' objects.
 %%
-%% Each object describes a signaling channel. To retrieve only those channels
-%% that satisfy a specific condition, you can specify a
-%% `ChannelNameCondition'.
+%% Each object describes a
+%% signaling channel. To retrieve only those channels that satisfy a specific
+%% condition,
+%% you can specify a `ChannelNameCondition'.
 list_signaling_channels(Client, Input) ->
     list_signaling_channels(Client, Input, []).
 list_signaling_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSignalingChannels"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -532,18 +583,22 @@ list_signaling_channels(Client, Input0, Options0) ->
 
 %% @doc Returns an array of `StreamInfo' objects.
 %%
-%% Each object describes a stream. To retrieve only streams that satisfy a
-%% specific condition, you can specify a `StreamNameCondition'.
+%% Each object describes a
+%% stream. To retrieve only streams that satisfy a specific condition, you
+%% can specify a
+%% `StreamNameCondition'.
 list_streams(Client, Input) ->
     list_streams(Client, Input, []).
 list_streams(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listStreams"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -563,11 +618,13 @@ list_tags_for_resource(Client, Input) ->
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -589,11 +646,13 @@ list_tags_for_stream(Client, Input) ->
 list_tags_for_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForStream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -610,35 +669,42 @@ list_tags_for_stream(Client, Input0, Options0) ->
 %% configuration.
 %%
 %% The Kinesis Video Stream will sync the stream’s edge configuration with
-%% the Edge Agent IoT Greengrass component that runs on an IoT Hub Device,
-%% setup at your premise. The time to sync can vary and depends on the
-%% connectivity of the Hub Device. The `SyncStatus' will be updated as
-%% the edge configuration is acknowledged, and synced with the Edge Agent.
+%% the Edge Agent IoT Greengrass
+%% component that runs on an IoT Hub Device, setup at your premise. The time
+%% to sync can vary
+%% and depends on the connectivity of the Hub Device.
+%% The `SyncStatus' will be updated as the edge configuration is
+%% acknowledged,
+%% and synced with the Edge Agent.
 %%
 %% If this API is invoked for the first time, a new edge configuration will
-%% be created for the stream, and the sync status will be set to
-%% `SYNCING'. You will have to wait for the sync status to reach a
-%% terminal state such as: `IN_SYNC', or `SYNC_FAILED', before using
-%% this API again. If you invoke this API during the syncing process, a
-%% `ResourceInUseException' will be thrown. The connectivity of the
-%% stream’s edge configuration and the Edge Agent will be retried for 15
-%% minutes. After 15 minutes, the status will transition into the
-%% `SYNC_FAILED' state.
+%% be created for the stream,
+%% and the sync status will be set to `SYNCING'. You will have to wait
+%% for the sync status
+%% to reach a terminal state such as: `IN_SYNC', or `SYNC_FAILED',
+%% before using this API again.
+%% If you invoke this API during the syncing process, a
+%% `ResourceInUseException' will be thrown.
+%% The connectivity of the stream’s edge configuration and the Edge Agent
+%% will be retried for 15 minutes. After 15 minutes,
+%% the status will transition into the `SYNC_FAILED' state.
 %%
 %% To move an edge configuration from one device to another, use
-%% `DeleteEdgeConfiguration' to delete the current edge configuration.
-%% You can then invoke StartEdgeConfigurationUpdate with an updated Hub
-%% Device ARN.
+%% `DeleteEdgeConfiguration' to delete
+%% the current edge configuration. You can then invoke
+%% StartEdgeConfigurationUpdate with an updated Hub Device ARN.
 start_edge_configuration_update(Client, Input) ->
     start_edge_configuration_update(Client, Input, []).
 start_edge_configuration_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startEdgeConfigurationUpdate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -653,22 +719,29 @@ start_edge_configuration_update(Client, Input0, Options0) ->
 
 %% @doc Adds one or more tags to a signaling channel.
 %%
-%% A tag is a key-value pair (the value is optional) that you can define and
-%% assign to Amazon Web Services resources. If you specify a tag that already
-%% exists, the tag value is replaced with the value that you specify in the
-%% request. For more information, see Using Cost Allocation Tags:
+%% A tag is a
+%% key-value pair (the value is optional) that you can define and assign to
+%% Amazon Web Services resources.
+%% If you specify a tag that already exists, the tag value is replaced with
+%% the value that
+%% you specify in the request. For more information, see Using Cost
+%% Allocation
+%% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
-%% in the Billing and Cost Management and Cost Management User Guide.
+%% in the Billing and Cost Management and Cost Management User
+%% Guide.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -683,14 +756,18 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Adds one or more tags to a stream.
 %%
-%% A tag is a key-value pair (the value is optional) that you can define and
-%% assign to Amazon Web Services resources. If you specify a tag that already
-%% exists, the tag value is replaced with the value that you specify in the
-%% request. For more information, see Using Cost Allocation Tags:
+%% A tag is a key-value pair
+%% (the value is optional) that you can define and assign to Amazon Web
+%% Services resources. If you specify
+%% a tag that already exists, the tag value is replaced with the value that
+%% you specify in
+%% the request. For more information, see Using Cost Allocation
+%% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management and Cost Management User Guide.
 %%
-%% You must provide either the `StreamName' or the `StreamARN'.
+%% You must provide either the `StreamName' or the
+%% `StreamARN'.
 %%
 %% This operation requires permission for the `KinesisVideo:TagStream'
 %% action.
@@ -701,11 +778,13 @@ tag_stream(Client, Input) ->
 tag_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagStream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -720,18 +799,22 @@ tag_stream(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags from a signaling channel.
 %%
-%% In the request, specify only a tag key or keys; don't specify the
-%% value. If you specify a tag key that does not exist, it's ignored.
+%% In the request, specify only a tag
+%% key or keys; don't specify the value. If you specify a tag key that
+%% does not exist, it's
+%% ignored.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -746,20 +829,25 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags from a stream.
 %%
-%% In the request, specify only a tag key or keys; don't specify the
-%% value. If you specify a tag key that does not exist, it's ignored.
+%% In the request, specify only a tag key or
+%% keys; don't specify the value. If you specify a tag key that does not
+%% exist, it's
+%% ignored.
 %%
-%% In the request, you must provide the `StreamName' or `StreamARN'.
+%% In the request, you must provide the `StreamName' or
+%% `StreamARN'.
 untag_stream(Client, Input) ->
     untag_stream(Client, Input, []).
 untag_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagStream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -773,12 +861,14 @@ untag_stream(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Increases or decreases the stream's data retention period by the
-%% value that you specify.
+%% value that you
+%% specify.
 %%
 %% To indicate whether you want to increase or decrease the data retention
-%% period, specify the `Operation' parameter in the request body. In the
-%% request, you must specify either the `StreamName' or the
-%% `StreamARN'.
+%% period,
+%% specify the `Operation' parameter in the request body. In the request,
+%% you
+%% must specify either the `StreamName' or the `StreamARN'.
 %%
 %% This operation requires permission for the
 %% `KinesisVideo:UpdateDataRetention' action.
@@ -786,28 +876,30 @@ untag_stream(Client, Input0, Options0) ->
 %% Changing the data retention period affects the data in the stream as
 %% follows:
 %%
-%% <ul> <li> If the data retention period is increased, existing data is
-%% retained for the new retention period. For example, if the data retention
-%% period is increased from one hour to seven hours, all existing data is
-%% retained for seven hours.
+%% If the data retention period is increased, existing data is retained for
+%% the new retention period. For example, if the data retention period is
+%% increased
+%% from one hour to seven hours, all existing data is retained for seven
+%% hours.
 %%
-%% </li> <li> If the data retention period is decreased, existing data is
-%% retained for the new retention period. For example, if the data retention
-%% period is decreased from seven hours to one hour, all existing data is
-%% retained for one hour, and any data older than one hour is deleted
-%% immediately.
-%%
-%% </li> </ul>
+%% If the data retention period is decreased, existing data is retained for
+%% the new retention period. For example, if the data retention period is
+%% decreased
+%% from seven hours to one hour, all existing data is retained for one hour,
+%% and
+%% any data older than one hour is deleted immediately.
 update_data_retention(Client, Input) ->
     update_data_retention(Client, Input, []).
 update_data_retention(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDataRetention"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -827,11 +919,13 @@ update_image_generation_configuration(Client, Input) ->
 update_image_generation_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateImageGenerationConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -846,30 +940,35 @@ update_image_generation_configuration(Client, Input0, Options0) ->
 
 %% @doc Associates a `SignalingChannel' to a stream to store the media.
 %%
-%% There are two signaling modes that you can specify :
+%% There are
+%% two signaling modes that you can specify :
 %%
-%% <ul> <li> If `StorageStatus' is enabled, the data will be stored in
-%% the `StreamARN' provided. In order for WebRTC Ingestion to work, the
-%% stream must have data retention enabled.
+%% If `StorageStatus' is enabled, the data will be stored in the
+%% `StreamARN' provided. In order for WebRTC Ingestion to work, the
+%% stream must have data retention
+%% enabled.
 %%
-%% </li> <li> If `StorageStatus' is disabled, no data will be stored, and
-%% the `StreamARN' parameter will not be needed.
+%% If `StorageStatus' is disabled, no data will be stored, and the
+%% `StreamARN' parameter will not be needed.
 %%
-%% </li> </ul> If `StorageStatus' is enabled, direct peer-to-peer
-%% (master-viewer) connections no longer occur. Peers connect directly to the
-%% storage session. You must call the `JoinStorageSession' API to trigger
-%% an SDP offer send and establish a connection between a peer and the
-%% storage session.
+%% If `StorageStatus' is enabled, direct peer-to-peer (master-viewer)
+%% connections no
+%% longer occur. Peers connect directly to the storage session. You must call
+%% the
+%% `JoinStorageSession' API to trigger an SDP offer send and establish a
+%% connection between a peer and the storage session.
 update_media_storage_configuration(Client, Input) ->
     update_media_storage_configuration(Client, Input, []).
 update_media_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateMediaStorageConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -888,11 +987,13 @@ update_notification_configuration(Client, Input) ->
 update_notification_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateNotificationConfiguration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -907,22 +1008,27 @@ update_notification_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates the existing signaling channel.
 %%
-%% This is an asynchronous operation and takes time to complete.
+%% This is an asynchronous operation and takes
+%% time to complete.
 %%
 %% If the `MessageTtlSeconds' value is updated (either increased or
-%% reduced), it only applies to new messages sent via this channel after
-%% it's been updated. Existing messages are still expired as per the
-%% previous `MessageTtlSeconds' value.
+%% reduced),
+%% it only applies to new messages sent via this channel after it's been
+%% updated. Existing
+%% messages are still expired as per the previous `MessageTtlSeconds'
+%% value.
 update_signaling_channel(Client, Input) ->
     update_signaling_channel(Client, Input, []).
 update_signaling_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateSignalingChannel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -941,10 +1047,12 @@ update_signaling_channel(Client, Input0, Options0) ->
 %% stream.
 %%
 %% To make sure that you have the latest version of the stream before
-%% updating it, you can specify the stream version. Kinesis Video Streams
-%% assigns a version to each stream. When you update a stream, Kinesis Video
-%% Streams assigns a new version number. To get the latest stream version,
-%% use the `DescribeStream' API.
+%% updating it, you
+%% can specify the stream version. Kinesis Video Streams assigns a version to
+%% each stream.
+%% When you update a stream, Kinesis Video Streams assigns a new version
+%% number. To get the
+%% latest stream version, use the `DescribeStream' API.
 %%
 %% `UpdateStream' is an asynchronous operation, and takes time to
 %% complete.
@@ -953,11 +1061,13 @@ update_stream(Client, Input) ->
 update_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateStream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -973,6 +1083,11 @@ update_stream(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -4,25 +4,32 @@
 %% @doc Step Functions
 %%
 %% Step Functions is a service that lets you coordinate the components of
-%% distributed applications and microservices using visual workflows.
+%% distributed applications
+%% and microservices using visual workflows.
 %%
 %% You can use Step Functions to build applications from individual
-%% components, each of which performs a discrete function, or task, allowing
-%% you to scale and change applications quickly. Step Functions provides a
-%% console that helps visualize the components of your application as a
-%% series of steps. Step Functions automatically triggers and tracks each
-%% step, and retries steps when there are errors, so your application
-%% executes predictably and in the right order every time. Step Functions
-%% logs the state of each step, so you can quickly diagnose and debug any
+%% components, each of which performs
+%% a discrete function, or task, allowing you to scale and change
+%% applications quickly. Step Functions provides a console that helps
+%% visualize the components of your
+%% application as a series of steps. Step Functions automatically triggers
+%% and tracks each step, and
+%% retries steps when there are errors, so your application executes
+%% predictably and in the right
+%% order every time. Step Functions logs the state of each step, so you can
+%% quickly diagnose and debug any
 %% issues.
 %%
 %% Step Functions manages operations and underlying infrastructure to ensure
-%% your application is available at any scale. You can run tasks on Amazon
-%% Web Services, your own servers, or any system that has access to Amazon
-%% Web Services. You can access and use Step Functions using the console, the
-%% Amazon Web Services SDKs, or an HTTP API. For more information about Step
-%% Functions, see the Step Functions Developer Guide:
-%% https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html .
+%% your application is
+%% available at any scale. You can run tasks on Amazon Web Services, your own
+%% servers, or any system that has
+%% access to Amazon Web Services. You can access and use Step Functions using
+%% the console, the Amazon Web Services SDKs, or an HTTP API.
+%% For more information about Step Functions, see the
+%% Step Functions Developer Guide:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html
+%% .
 %%
 %% If you use the Step Functions API actions using Amazon Web Services SDK
 %% integrations, make sure the API actions are in camel case and parameter
@@ -112,22 +119,27 @@
 
 %% @doc Creates an activity.
 %%
-%% An activity is a task that you write in any programming language and host
-%% on any machine that has access to Step Functions. Activities must poll
-%% Step Functions using the `GetActivityTask' API action and respond
-%% using `SendTask*' API actions. This function lets Step Functions know
-%% the existence of your activity and returns an identifier for use in a
-%% state machine and when polling from the activity.
+%% An activity is a task that you write in any programming language and
+%% host on any machine that has access to Step Functions. Activities must
+%% poll Step Functions using the
+%% `GetActivityTask' API action and respond using `SendTask*' API
+%% actions. This function lets Step Functions know the existence of your
+%% activity and returns an
+%% identifier for use in a state machine and when polling from the activity.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
 %% `CreateActivity' is an idempotent API. Subsequent requests won’t
-%% create a duplicate resource if it was already created.
-%% `CreateActivity''s idempotency check is based on the activity
-%% `name'. If a following request has different `tags' values, Step
-%% Functions will ignore these differences and treat it as an idempotent
-%% request of the previous. In this case, `tags' will not be updated,
+%% create a
+%% duplicate resource if it was already created. `CreateActivity''s
+%% idempotency
+%% check is based on the activity `name'. If a following request has
+%% different
+%% `tags' values, Step Functions will ignore these differences and treat
+%% it as an
+%% idempotent request of the previous. In this case, `tags' will not be
+%% updated,
 %% even if they are different.
 create_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -138,30 +150,38 @@ create_activity(Client, Input, Options)
 
 %% @doc Creates a state machine.
 %%
-%% A state machine consists of a collection of states that can do work
-%% (`Task' states), determine to which states to transition next
+%% A state machine consists of a collection of states that can do
+%% work (`Task' states), determine to which states to transition next
 %% (`Choice' states), stop an execution with an error (`Fail'
-%% states), and so on. State machines are specified using a JSON-based,
-%% structured language. For more information, see Amazon States Language:
+%% states),
+%% and so on. State machines are specified using a JSON-based, structured
+%% language. For more
+%% information, see Amazon States
+%% Language:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html
 %% in the Step Functions User Guide.
 %%
 %% If you set the `publish' parameter of this API action to `true',
-%% it publishes version `1' as the first revision of the state machine.
+%% it
+%% publishes version `1' as the first revision of the state machine.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
 %% `CreateStateMachine' is an idempotent API. Subsequent requests won’t
-%% create a duplicate resource if it was already created.
-%% `CreateStateMachine''s idempotency check is based on the state
-%% machine `name', `definition', `type',
-%% `LoggingConfiguration', and `TracingConfiguration'. The check is
-%% also based on the `publish' and `versionDescription' parameters.
-%% If a following request has a different `roleArn' or `tags', Step
-%% Functions will ignore these differences and treat it as an idempotent
-%% request of the previous. In this case, `roleArn' and `tags' will
-%% not be updated, even if they are different.
+%% create a
+%% duplicate resource if it was already created.
+%% `CreateStateMachine''s idempotency
+%% check is based on the state machine `name', `definition',
+%% `type', `LoggingConfiguration', and
+%% `TracingConfiguration'. The check is also based on the `publish'
+%% and `versionDescription' parameters. If a following request has a
+%% different
+%% `roleArn' or `tags', Step Functions will ignore these differences
+%% and treat
+%% it as an idempotent request of the previous. In this case, `roleArn'
+%% and
+%% `tags' will not be updated, even if they are different.
 create_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine(Client, Input, []).
@@ -180,11 +200,15 @@ create_state_machine(Client, Input, Options)
 %% code.
 %%
 %% You can also map an alias to split `StartExecution' requests between
-%% two versions of a state machine. To do this, add a second
-%% `RoutingConfig' object in the `routingConfiguration' parameter.
-%% You must also specify the percentage of execution run requests each
-%% version should receive in both `RoutingConfig' objects. Step Functions
-%% randomly chooses which version runs a given execution based on the
+%% two
+%% versions of a state machine. To do this, add a second `RoutingConfig'
+%% object in the
+%% `routingConfiguration' parameter. You must also specify the percentage
+%% of
+%% execution run requests each version should receive in both
+%% `RoutingConfig' objects.
+%% Step Functions randomly chooses which version runs a given execution based
+%% on the
 %% percentage you specify.
 %%
 %% To create an alias that points to a single version, specify a single
@@ -194,22 +218,23 @@ create_state_machine(Client, Input, Options)
 %% unused aliases using the `DeleteStateMachineAlias' API action.
 %%
 %% `CreateStateMachineAlias' is an idempotent API. Step Functions bases
-%% the idempotency check on the `stateMachineArn', `description',
+%% the
+%% idempotency check on the `stateMachineArn', `description',
 %% `name', and `routingConfiguration' parameters. Requests that
-%% contain the same values for these parameters return a successful
-%% idempotent response without creating a duplicate resource.
+%% contain
+%% the same values for these parameters return a successful idempotent
+%% response without creating
+%% a duplicate resource.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DescribeStateMachineAlias'
+%% `DescribeStateMachineAlias'
 %%
-%% </li> <li> `ListStateMachineAliases'
+%% `ListStateMachineAliases'
 %%
-%% </li> <li> `UpdateStateMachineAlias'
+%% `UpdateStateMachineAlias'
 %%
-%% </li> <li> `DeleteStateMachineAlias'
-%%
-%% </li> </ul>
+%% `DeleteStateMachineAlias'
 create_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine_alias(Client, Input, []).
@@ -227,9 +252,9 @@ delete_activity(Client, Input, Options)
 
 %% @doc Deletes a state machine.
 %%
-%% This is an asynchronous operation. It sets the state machine's status
-%% to `DELETING' and begins the deletion process. A state machine is
-%% deleted only when all its executions are completed. On the next state
+%% This is an asynchronous operation. It sets the state machine's
+%% status to `DELETING' and begins the deletion process. A state machine
+%% is deleted only when all its executions are completed. On the next state
 %% transition, the state machine's executions are terminated.
 %%
 %% A qualified state machine ARN can either refer to a Distributed Map state
@@ -238,29 +263,31 @@ delete_activity(Client, Input, Options)
 %% The following are some examples of qualified and unqualified state machine
 %% ARNs:
 %%
-%% <ul> <li> The following qualified state machine ARN refers to a
-%% Distributed Map state with a label `mapStateLabel' in a state machine
-%% named `myStateMachine'.
+%% The following qualified state machine ARN refers to a Distributed Map
+%% state with a label `mapStateLabel' in a state machine named
+%% `myStateMachine'.
 %%
 %% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
 %%
 %% If you provide a qualified state machine ARN that refers to a Distributed
 %% Map state, the request fails with `ValidationException'.
 %%
-%% </li> <li> The following unqualified state machine ARN refers to a state
-%% machine named `myStateMachine'.
+%% The following unqualified state machine ARN refers to a state machine
+%% named `myStateMachine'.
 %%
 %% `arn:partition:states:region:account-id:stateMachine:myStateMachine'
 %%
-%% </li> </ul> This API action also deletes all versions:
+%% This API action also deletes all versions:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
 %% and aliases:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
 %% associated with a state machine.
 %%
 %% For `EXPRESS' state machines, the deletion happens eventually (usually
-%% in less than a minute). Running executions may emit logs after
-%% `DeleteStateMachine' API is called.
+%% in
+%% less than a minute). Running executions may emit logs after
+%% `DeleteStateMachine'
+%% API is called.
 delete_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine(Client, Input, []).
@@ -272,20 +299,20 @@ delete_state_machine(Client, Input, Options)
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html.
 %%
 %% After you delete a state machine alias, you can't use it to start
-%% executions. When you delete a state machine alias, Step Functions
-%% doesn't delete the state machine versions that alias references.
+%% executions. When you
+%% delete a state machine alias, Step Functions doesn't delete the state
+%% machine versions
+%% that alias references.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateStateMachineAlias'
+%% `CreateStateMachineAlias'
 %%
-%% </li> <li> `DescribeStateMachineAlias'
+%% `DescribeStateMachineAlias'
 %%
-%% </li> <li> `ListStateMachineAliases'
+%% `ListStateMachineAliases'
 %%
-%% </li> <li> `UpdateStateMachineAlias'
-%%
-%% </li> </ul>
+%% `UpdateStateMachineAlias'
 delete_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_alias(Client, Input, []).
@@ -296,8 +323,12 @@ delete_state_machine_alias(Client, Input, Options)
 %% @doc Deletes a state machine version:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html.
 %%
-%% After you delete a version, you can't call `StartExecution' using
-%% that version's ARN or use the version with a state machine alias:
+%% After
+%% you delete a version, you can't call `StartExecution' using that
+%% version's ARN
+%% or use
+%% the
+%% version with a state machine alias:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html.
 %%
 %% Deleting a state machine version won't terminate its in-progress
@@ -309,11 +340,9 @@ delete_state_machine_alias(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `PublishStateMachineVersion'
+%% `PublishStateMachineVersion'
 %%
-%% </li> <li> `ListStateMachineVersions'
-%%
-%% </li> </ul>
+%% `ListStateMachineVersions'
 delete_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_version(Client, Input, []).
@@ -344,7 +373,8 @@ describe_activity(Client, Input, Options)
 %% dispatched by a Map Run.
 %%
 %% If you specify a version or alias ARN when you call the
-%% `StartExecution' API action, `DescribeExecution' returns that ARN.
+%% `StartExecution'
+%% API action, `DescribeExecution' returns that ARN.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -383,31 +413,30 @@ describe_map_run(Client, Input, Options)
 %% The following are some examples of qualified and unqualified state machine
 %% ARNs:
 %%
-%% <ul> <li> The following qualified state machine ARN refers to a
-%% Distributed Map state with a label `mapStateLabel' in a state machine
-%% named `myStateMachine'.
+%% The following qualified state machine ARN refers to a Distributed Map
+%% state with a label `mapStateLabel' in a state machine named
+%% `myStateMachine'.
 %%
 %% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
 %%
 %% If you provide a qualified state machine ARN that refers to a Distributed
 %% Map state, the request fails with `ValidationException'.
 %%
-%% </li> <li> The following qualified state machine ARN refers to an alias
-%% named `PROD'.
+%% The following qualified state machine ARN refers to an alias named
+%% `PROD'.
 %%
-%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine:PROD&gt;'
+%% `arn::states:::stateMachine:'
 %%
 %% If you provide a qualified state machine ARN that refers to a version ARN
 %% or an alias ARN, the request starts execution for that version or alias.
 %%
-%% </li> <li> The following unqualified state machine ARN refers to a state
-%% machine named `myStateMachine'.
+%% The following unqualified state machine ARN refers to a state machine
+%% named `myStateMachine'.
 %%
-%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine&gt;'
+%% `arn::states:::stateMachine:'
 %%
-%% </li> </ul> This API action returns the details for a state machine
-%% version if the `stateMachineArn' you specify is a state machine
-%% version ARN.
+%% This API action returns the details for a state machine version if the
+%% `stateMachineArn' you specify is a state machine version ARN.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -423,15 +452,13 @@ describe_state_machine(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateStateMachineAlias'
+%% `CreateStateMachineAlias'
 %%
-%% </li> <li> `ListStateMachineAliases'
+%% `ListStateMachineAliases'
 %%
-%% </li> <li> `UpdateStateMachineAlias'
+%% `UpdateStateMachineAlias'
 %%
-%% </li> <li> `DeleteStateMachineAlias'
-%%
-%% </li> </ul>
+%% `DeleteStateMachineAlias'
 describe_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine_alias(Client, Input, []).
@@ -440,11 +467,14 @@ describe_state_machine_alias(Client, Input, Options)
     request(Client, <<"DescribeStateMachineAlias">>, Input, Options).
 
 %% @doc Provides information about a state machine's definition, its
-%% execution role ARN, and configuration.
+%% execution role ARN, and
+%% configuration.
 %%
 %% If a Map Run dispatched the execution, this action returns the Map Run
-%% Amazon Resource Name (ARN) in the response. The state machine returned is
-%% the state machine associated with the Map Run.
+%% Amazon Resource Name (ARN) in the response.
+%% The
+%% state machine returned is the state machine associated with the
+%% Map Run.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -458,22 +488,28 @@ describe_state_machine_for_execution(Client, Input, Options)
     request(Client, <<"DescribeStateMachineForExecution">>, Input, Options).
 
 %% @doc Used by workers to retrieve a task (with the specified activity ARN)
-%% which has been scheduled for execution by a running state machine.
+%% which has been
+%% scheduled for execution by a running state machine.
 %%
-%% This initiates a long poll, where the service holds the HTTP connection
-%% open and responds as soon as a task becomes available (i.e. an execution
-%% of a task of this type is needed.) The maximum time the service holds on
-%% to the request before responding is 60 seconds. If no task is available
-%% within 60 seconds, the poll returns a `taskToken' with a null string.
+%% This initiates a long poll, where the
+%% service holds the HTTP connection open and responds as soon as a task
+%% becomes available (i.e.
+%% an execution of a task of this type is needed.) The maximum time the
+%% service holds on to the
+%% request before responding is 60 seconds. If no task is available within 60
+%% seconds, the poll
+%% returns a `taskToken' with a null string.
 %%
 %% This API action isn't logged in CloudTrail.
 %%
 %% Workers should set their client side socket timeout to at least 65 seconds
-%% (5 seconds higher than the maximum time the service may hold the poll
-%% request).
+%% (5 seconds
+%% higher than the maximum time the service may hold the poll request).
 %%
 %% Polling with `GetActivityTask' can cause latency in some
-%% implementations. See Avoid Latency When Polling for Activity Tasks:
+%% implementations. See
+%% Avoid
+%% Latency When Polling for Activity Tasks:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html
 %% in the Step Functions Developer Guide.
 get_activity_task(Client, Input)
@@ -485,14 +521,15 @@ get_activity_task(Client, Input, Options)
 
 %% @doc Returns the history of the specified execution as a list of events.
 %%
-%% By default, the results are returned in ascending order of the
-%% `timeStamp' of the events. Use the `reverseOrder' parameter to get
-%% the latest events first.
+%% By default, the
+%% results are returned in ascending order of the `timeStamp' of the
+%% events. Use the
+%% `reverseOrder' parameter to get the latest events first.
 %%
 %% If `nextToken' is returned, there are more results available. The
-%% value of `nextToken' is a unique pagination token for each page. Make
-%% the call again using the returned token to retrieve the next page. Keep
-%% all other arguments unchanged. Each pagination token expires after 24
+%% value of `nextToken' is a unique pagination token for each page.
+%% Make the call again using the returned token to retrieve the next page.
+%% Keep all other arguments unchanged. Each pagination token expires after 24
 %% hours. Using an expired pagination token will return an HTTP 400
 %% InvalidToken error.
 %%
@@ -507,9 +544,9 @@ get_execution_history(Client, Input, Options)
 %% @doc Lists the existing activities.
 %%
 %% If `nextToken' is returned, there are more results available. The
-%% value of `nextToken' is a unique pagination token for each page. Make
-%% the call again using the returned token to retrieve the next page. Keep
-%% all other arguments unchanged. Each pagination token expires after 24
+%% value of `nextToken' is a unique pagination token for each page.
+%% Make the call again using the returned token to retrieve the next page.
+%% Keep all other arguments unchanged. Each pagination token expires after 24
 %% hours. Using an expired pagination token will return an HTTP 400
 %% InvalidToken error.
 %%
@@ -537,12 +574,13 @@ list_activities(Client, Input, Options)
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
 %% ARN to list the executions associated with a specific alias or version.
 %%
-%% Results are sorted by time, with the most recent execution first.
+%% Results are
+%% sorted by time, with the most recent execution first.
 %%
 %% If `nextToken' is returned, there are more results available. The
-%% value of `nextToken' is a unique pagination token for each page. Make
-%% the call again using the returned token to retrieve the next page. Keep
-%% all other arguments unchanged. Each pagination token expires after 24
+%% value of `nextToken' is a unique pagination token for each page.
+%% Make the call again using the returned token to retrieve the next page.
+%% Keep all other arguments unchanged. Each pagination token expires after 24
 %% hours. Using an expired pagination token will return an HTTP 400
 %% InvalidToken error.
 %%
@@ -581,23 +619,21 @@ list_map_runs(Client, Input, Options)
 %% you can specify the version ARN in the `stateMachineArn' parameter.
 %%
 %% If `nextToken' is returned, there are more results available. The
-%% value of `nextToken' is a unique pagination token for each page. Make
-%% the call again using the returned token to retrieve the next page. Keep
-%% all other arguments unchanged. Each pagination token expires after 24
+%% value of `nextToken' is a unique pagination token for each page.
+%% Make the call again using the returned token to retrieve the next page.
+%% Keep all other arguments unchanged. Each pagination token expires after 24
 %% hours. Using an expired pagination token will return an HTTP 400
 %% InvalidToken error.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateStateMachineAlias'
+%% `CreateStateMachineAlias'
 %%
-%% </li> <li> `DescribeStateMachineAlias'
+%% `DescribeStateMachineAlias'
 %%
-%% </li> <li> `UpdateStateMachineAlias'
+%% `UpdateStateMachineAlias'
 %%
-%% </li> <li> `DeleteStateMachineAlias'
-%%
-%% </li> </ul>
+%% `DeleteStateMachineAlias'
 list_state_machine_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_aliases(Client, Input, []).
@@ -612,19 +648,17 @@ list_state_machine_aliases(Client, Input, Options)
 %% The results are sorted in descending order of the version creation time.
 %%
 %% If `nextToken' is returned, there are more results available. The
-%% value of `nextToken' is a unique pagination token for each page. Make
-%% the call again using the returned token to retrieve the next page. Keep
-%% all other arguments unchanged. Each pagination token expires after 24
+%% value of `nextToken' is a unique pagination token for each page.
+%% Make the call again using the returned token to retrieve the next page.
+%% Keep all other arguments unchanged. Each pagination token expires after 24
 %% hours. Using an expired pagination token will return an HTTP 400
 %% InvalidToken error.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `PublishStateMachineVersion'
+%% `PublishStateMachineVersion'
 %%
-%% </li> <li> `DeleteStateMachineVersion'
-%%
-%% </li> </ul>
+%% `DeleteStateMachineVersion'
 list_state_machine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_versions(Client, Input, []).
@@ -635,9 +669,9 @@ list_state_machine_versions(Client, Input, Options)
 %% @doc Lists the existing state machines.
 %%
 %% If `nextToken' is returned, there are more results available. The
-%% value of `nextToken' is a unique pagination token for each page. Make
-%% the call again using the returned token to retrieve the next page. Keep
-%% all other arguments unchanged. Each pagination token expires after 24
+%% value of `nextToken' is a unique pagination token for each page.
+%% Make the call again using the returned token to retrieve the next page.
+%% Keep all other arguments unchanged. Each pagination token expires after 24
 %% hours. Using an expired pagination token will return an HTTP 400
 %% InvalidToken error.
 %%
@@ -663,32 +697,35 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Creates a version:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
-%% from the current revision of a state machine.
+%% from the
+%% current revision of a state machine.
 %%
-%% Use versions to create immutable snapshots of your state machine. You can
-%% start executions from versions either directly or with an alias. To create
-%% an alias, use `CreateStateMachineAlias'.
+%% Use versions to create immutable snapshots of your state
+%% machine. You can start executions from versions either directly or with an
+%% alias. To create an
+%% alias, use `CreateStateMachineAlias'.
 %%
 %% You can publish up to 1000 versions for each state machine. You must
 %% manually delete unused versions using the `DeleteStateMachineVersion'
 %% API action.
 %%
 %% `PublishStateMachineVersion' is an idempotent API. It doesn't
-%% create a duplicate state machine version if it already exists for the
-%% current revision. Step Functions bases
-%% `PublishStateMachineVersion''s idempotency check on the
+%% create a
+%% duplicate state machine version if it already exists for the current
+%% revision. Step Functions bases `PublishStateMachineVersion''s
+%% idempotency check on the
 %% `stateMachineArn', `name', and `revisionId' parameters.
 %% Requests with the same parameters return a successful idempotent response.
-%% If you don't specify a `revisionId', Step Functions checks for a
-%% previously published version of the state machine's current revision.
+%% If you don't
+%% specify a `revisionId', Step Functions checks for a previously
+%% published
+%% version of the state machine's current revision.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DeleteStateMachineVersion'
+%% `DeleteStateMachineVersion'
 %%
-%% </li> <li> `ListStateMachineVersions'
-%%
-%% </li> </ul>
+%% `ListStateMachineVersions'
 publish_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_state_machine_version(Client, Input, []).
@@ -734,25 +771,23 @@ publish_state_machine_version(Client, Input, Options)
 %% You can redrive executions if your original execution meets the following
 %% conditions:
 %%
-%% <ul> <li> The execution status isn't `SUCCEEDED'.
+%% The execution status isn't `SUCCEEDED'.
 %%
-%% </li> <li> Your workflow execution has not exceeded the redrivable period
-%% of 14 days. Redrivable period refers to the time during which you can
-%% redrive a given execution. This period starts from the day a state machine
-%% completes its execution.
+%% Your workflow execution has not exceeded the redrivable period of 14 days.
+%% Redrivable period refers to the time during which you can redrive a given
+%% execution. This period starts from the day a state machine completes its
+%% execution.
 %%
-%% </li> <li> The workflow execution has not exceeded the maximum open time
-%% of one year. For more information about state machine quotas, see Quotas
-%% related to state machine executions:
+%% The workflow execution has not exceeded the maximum open time of one year.
+%% For more information about state machine quotas, see Quotas related to
+%% state machine executions:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions.
 %%
-%% </li> <li> The execution event history count is less than 24,999. Redriven
-%% executions append their event history to the existing event history. Make
-%% sure your workflow execution contains less than 24,999 events to
-%% accommodate the `ExecutionRedriven' history event and at least one
-%% other history event.
-%%
-%% </li> </ul>
+%% The execution event history count is less than 24,999. Redriven executions
+%% append their event history to the existing event history. Make sure your
+%% workflow execution contains less than 24,999 events to accommodate the
+%% `ExecutionRedriven' history event and at least one other history
+%% event.
 redrive_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     redrive_execution(Client, Input, []).
@@ -777,23 +812,30 @@ send_task_failure(Client, Input, Options)
 %% pattern, and optionally Task states using the job run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
 %% pattern to report to Step Functions that the task represented by the
-%% specified `taskToken' is still making progress.
+%% specified
+%% `taskToken' is still making progress.
 %%
-%% This action resets the `Heartbeat' clock. The `Heartbeat'
-%% threshold is specified in the state machine's Amazon States Language
-%% definition (`HeartbeatSeconds'). This action does not in itself create
-%% an event in the execution history. However, if the task times out, the
-%% execution history contains an `ActivityTimedOut' entry for activities,
-%% or a `TaskTimedOut' entry for tasks using the job run:
+%% This action resets the
+%% `Heartbeat' clock. The `Heartbeat' threshold is specified in the
+%% state
+%% machine's Amazon States Language definition (`HeartbeatSeconds').
+%% This action does not in itself
+%% create an event in the execution history. However, if the task times out,
+%% the execution
+%% history contains an `ActivityTimedOut' entry for activities, or a
+%% `TaskTimedOut' entry for tasks using the job run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
-%% or callback:
+%% or
+%% callback:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token
 %% pattern.
 %%
 %% The `Timeout' of a task, defined in the state machine's Amazon
-%% States Language definition, is its maximum allowed duration, regardless of
-%% the number of `SendTaskHeartbeat' requests received. Use
-%% `HeartbeatSeconds' to configure the timeout interval for heartbeats.
+%% States Language definition, is
+%% its maximum allowed duration, regardless of the number of
+%% `SendTaskHeartbeat' requests received. Use `HeartbeatSeconds' to
+%% configure the timeout interval
+%% for heartbeats.
 send_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_heartbeat(Client, Input, []).
@@ -806,7 +848,8 @@ send_task_heartbeat(Client, Input, Options)
 %% pattern, and optionally Task states using the job run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
 %% pattern to report that the task identified by the `taskToken'
-%% completed successfully.
+%% completed
+%% successfully.
 send_task_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_success(Client, Input, []).
@@ -822,45 +865,46 @@ send_task_success(Client, Input, Options)
 %% The following are some examples of qualified and unqualified state machine
 %% ARNs:
 %%
-%% <ul> <li> The following qualified state machine ARN refers to a
-%% Distributed Map state with a label `mapStateLabel' in a state machine
-%% named `myStateMachine'.
+%% The following qualified state machine ARN refers to a Distributed Map
+%% state with a label `mapStateLabel' in a state machine named
+%% `myStateMachine'.
 %%
 %% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
 %%
 %% If you provide a qualified state machine ARN that refers to a Distributed
 %% Map state, the request fails with `ValidationException'.
 %%
-%% </li> <li> The following qualified state machine ARN refers to an alias
-%% named `PROD'.
+%% The following qualified state machine ARN refers to an alias named
+%% `PROD'.
 %%
-%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine:PROD&gt;'
+%% `arn::states:::stateMachine:'
 %%
 %% If you provide a qualified state machine ARN that refers to a version ARN
 %% or an alias ARN, the request starts execution for that version or alias.
 %%
-%% </li> <li> The following unqualified state machine ARN refers to a state
-%% machine named `myStateMachine'.
+%% The following unqualified state machine ARN refers to a state machine
+%% named `myStateMachine'.
 %%
-%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine&gt;'
+%% `arn::states:::stateMachine:'
 %%
-%% </li> </ul> If you start an execution with an unqualified state machine
-%% ARN, Step Functions uses the latest revision of the state machine for the
-%% execution.
+%% If you start an execution with an unqualified state machine ARN, Step
+%% Functions uses the latest revision of the state machine for the execution.
 %%
 %% To start executions of a state machine version:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html,
-%% call `StartExecution' and provide the version ARN or the ARN of an
-%% alias:
+%% call
+%% `StartExecution' and provide the version ARN or the ARN of an alias:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
 %% that points to the version.
 %%
 %% `StartExecution' is idempotent for `STANDARD' workflows. For a
 %% `STANDARD' workflow, if you call `StartExecution' with the same
-%% name and input as a running execution, the call succeeds and return the
-%% same response as the original request. If the execution is closed or if
-%% the input is different, it returns a `400 ExecutionAlreadyExists'
-%% error. You can reuse names after 90 days.
+%% name
+%% and input as a running execution, the call succeeds and return the same
+%% response as the
+%% original request. If the execution is closed or if the input is different,
+%% it returns a
+%% `400 ExecutionAlreadyExists' error. You can reuse names after 90 days.
 %%
 %% `StartExecution' isn't idempotent for `EXPRESS' workflows.
 start_execution(Client, Input)
@@ -872,13 +916,17 @@ start_execution(Client, Input, Options)
 
 %% @doc Starts a Synchronous Express state machine execution.
 %%
-%% `StartSyncExecution' is not available for `STANDARD' workflows.
+%% `StartSyncExecution'
+%% is not available for `STANDARD' workflows.
 %%
 %% `StartSyncExecution' will return a `200 OK' response, even if your
 %% execution fails, because the status code in the API response doesn't
-%% reflect function errors. Error codes are reserved for errors that prevent
-%% your execution from running, such as permissions errors, limit errors, or
-%% issues with your state machine code and configuration.
+%% reflect function
+%% errors. Error codes are reserved for errors that prevent your execution
+%% from running, such
+%% as permissions errors, limit errors, or issues with your state machine
+%% code and
+%% configuration.
 %%
 %% This API action isn't logged in CloudTrail.
 start_sync_execution(Client, Input)
@@ -900,11 +948,12 @@ stop_execution(Client, Input, Options)
 
 %% @doc Add a tag to a Step Functions resource.
 %%
-%% An array of key-value pairs. For more information, see Using Cost
-%% Allocation Tags:
+%% An array of key-value pairs. For more information, see Using
+%% Cost Allocation Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
-%% in the Amazon Web Services Billing and Cost Management User Guide, and
-%% Controlling Access Using IAM Tags:
+%% in the Amazon Web Services Billing and Cost Management User
+%% Guide, and Controlling Access Using IAM
+%% Tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html.
 %%
 %% Tags may only contain Unicode letters, digits, white space, or these
@@ -921,45 +970,45 @@ tag_resource(Client, Input, Options)
 %% You can test a state without creating a state machine or updating an
 %% existing state machine. Using this API, you can test the following:
 %%
-%% <ul> <li> A state's input and output processing:
+%% A state's input and output processing:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-input-output-dataflow
 %% data flow
 %%
-%% </li> <li> An Amazon Web Services service integration:
+%% An Amazon Web Services service integration:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-services.html
 %% request and response
 %%
-%% </li> <li> An HTTP Task:
+%% An HTTP Task:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-third-party-apis.html
 %% request and response
 %%
-%% </li> </ul> You can call this API on only one state at a time. The states
-%% that you can test include the following:
+%% You can call this API on only one state at a time. The states that you can
+%% test include the following:
 %%
-%% <ul> <li> All Task types:
+%% All Task types:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-task-state.html#task-types
 %% except Activity:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html
 %%
-%% </li> <li> Pass:
+%% Pass:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-pass-state.html
 %%
-%% </li> <li> Wait:
+%% Wait:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-wait-state.html
 %%
-%% </li> <li> Choice:
+%% Choice:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html
 %%
-%% </li> <li> Succeed:
+%% Succeed:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-succeed-state.html
 %%
-%% </li> <li> Fail:
+%% Fail:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-fail-state.html
 %%
-%% </li> </ul> The `TestState' API assumes an IAM role which must contain
-%% the required IAM permissions for the resources your state is accessing.
-%% For information about the permissions a state might need, see IAM
-%% permissions to test a state:
+%% The `TestState' API assumes an IAM role which must contain the
+%% required IAM permissions for the resources your state is accessing. For
+%% information about the permissions a state might need, see IAM permissions
+%% to test a state:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-permissions.
 %%
 %% The `TestState' API can run for up to five minutes. If the execution
@@ -968,7 +1017,8 @@ tag_resource(Client, Input, Options)
 %%
 %% `TestState' doesn't support Activity tasks:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html,
-%% `.sync' or `.waitForTaskToken' service integration patterns:
+%% `.sync' or `.waitForTaskToken'
+%% service integration patterns:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html,
 %% Parallel:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html,
@@ -1002,9 +1052,11 @@ update_map_run(Client, Input, Options)
 %% @doc Updates an existing state machine by modifying its `definition',
 %% `roleArn', or `loggingConfiguration'.
 %%
-%% Running executions will continue to use the previous `definition' and
-%% `roleArn'. You must include at least one of `definition' or
-%% `roleArn' or you will receive a `MissingRequiredParameter' error.
+%% Running executions will continue
+%% to use the previous `definition' and `roleArn'. You must include
+%% at
+%% least one of `definition' or `roleArn' or you will receive a
+%% `MissingRequiredParameter' error.
 %%
 %% A qualified state machine ARN refers to a Distributed Map state defined
 %% within a state machine. For example, the qualified state machine ARN
@@ -1018,40 +1070,42 @@ update_map_run(Client, Input, Options)
 %% The following are some examples of qualified and unqualified state machine
 %% ARNs:
 %%
-%% <ul> <li> The following qualified state machine ARN refers to a
-%% Distributed Map state with a label `mapStateLabel' in a state machine
-%% named `myStateMachine'.
+%% The following qualified state machine ARN refers to a Distributed Map
+%% state with a label `mapStateLabel' in a state machine named
+%% `myStateMachine'.
 %%
 %% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
 %%
 %% If you provide a qualified state machine ARN that refers to a Distributed
 %% Map state, the request fails with `ValidationException'.
 %%
-%% </li> <li> The following qualified state machine ARN refers to an alias
-%% named `PROD'.
+%% The following qualified state machine ARN refers to an alias named
+%% `PROD'.
 %%
-%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine:PROD&gt;'
+%% `arn::states:::stateMachine:'
 %%
 %% If you provide a qualified state machine ARN that refers to a version ARN
 %% or an alias ARN, the request starts execution for that version or alias.
 %%
-%% </li> <li> The following unqualified state machine ARN refers to a state
-%% machine named `myStateMachine'.
+%% The following unqualified state machine ARN refers to a state machine
+%% named `myStateMachine'.
 %%
-%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine&gt;'
+%% `arn::states:::stateMachine:'
 %%
-%% </li> </ul> After you update your state machine, you can set the
-%% `publish' parameter to `true' in the same action to publish a new
-%% version:
+%% After you update your state machine, you can set the `publish'
+%% parameter to
+%% `true' in the same action to publish a new version:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html.
-%% This way, you can opt-in to strict versioning of your state machine.
+%% This
+%% way, you can opt-in to strict versioning of your state machine.
 %%
 %% Step Functions assigns monotonically increasing integers for state machine
 %% versions, starting at version number 1.
 %%
 %% All `StartExecution' calls within a few seconds use the updated
 %% `definition' and `roleArn'. Executions started immediately after
-%% you call `UpdateStateMachine' may use the previous state machine
+%% you
+%% call `UpdateStateMachine' may use the previous state machine
 %% `definition' and `roleArn'.
 update_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1068,26 +1122,28 @@ update_state_machine(Client, Input, Options)
 %% `routingConfiguration' parameters to update a state machine alias.
 %%
 %% `UpdateStateMachineAlias' is an idempotent API. Step Functions bases
-%% the idempotency check on the `stateMachineAliasArn',
-%% `description', and `routingConfiguration' parameters. Requests
-%% with the same parameters return an idempotent response.
+%% the
+%% idempotency check on the `stateMachineAliasArn', `description',
+%% and
+%% `routingConfiguration' parameters. Requests with the same parameters
+%% return an
+%% idempotent response.
 %%
 %% This operation is eventually consistent. All `StartExecution' requests
 %% made within a few seconds use the latest alias configuration. Executions
-%% started immediately after calling `UpdateStateMachineAlias' may use
-%% the previous routing configuration.
+%% started immediately
+%% after calling `UpdateStateMachineAlias' may use the previous routing
+%% configuration.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateStateMachineAlias'
+%% `CreateStateMachineAlias'
 %%
-%% </li> <li> `DescribeStateMachineAlias'
+%% `DescribeStateMachineAlias'
 %%
-%% </li> <li> `ListStateMachineAliases'
+%% `ListStateMachineAliases'
 %%
-%% </li> <li> `DeleteStateMachineAlias'
-%%
-%% </li> </ul>
+%% `DeleteStateMachineAlias'
 update_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine_alias(Client, Input, []).

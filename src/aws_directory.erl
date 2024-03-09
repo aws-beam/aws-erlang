@@ -4,23 +4,28 @@
 %% @doc Directory Service
 %%
 %% Directory Service is a web service that makes it easy for you to setup and
-%% run directories in the Amazon Web Services cloud, or connect your Amazon
-%% Web Services resources with an existing self-managed Microsoft Active
+%% run directories in the
+%% Amazon Web Services cloud, or connect your Amazon Web Services resources
+%% with an existing self-managed Microsoft Active
 %% Directory.
 %%
 %% This guide provides detailed information about Directory Service
-%% operations, data types, parameters, and errors. For information about
-%% Directory Services features, see Directory Service:
-%% https://aws.amazon.com/directoryservice/ and the Directory Service
+%% operations, data types,
+%% parameters, and errors. For information about Directory Services features,
+%% see Directory Service: https://aws.amazon.com/directoryservice/ and the
+%% Directory Service
 %% Administration Guide:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html.
 %%
 %% Amazon Web Services provides SDKs that consist of libraries and sample
-%% code for various programming languages and platforms (Java, Ruby, .Net,
-%% iOS, Android, etc.). The SDKs provide a convenient way to create
-%% programmatic access to Directory Service and other Amazon Web Services
+%% code for various
+%% programming languages and platforms (Java, Ruby, .Net, iOS, Android,
+%% etc.). The SDKs
+%% provide a convenient way to create programmatic access to Directory
+%% Service and other Amazon Web Services
 %% services. For more information about the Amazon Web Services SDKs,
-%% including how to download and install them, see Tools for Amazon Web
+%% including how to download and
+%% install them, see Tools for Amazon Web
 %% Services: http://aws.amazon.com/tools/.
 -module(aws_directory).
 
@@ -175,15 +180,18 @@ accept_shared_directory(Client, Input, Options)
     request(Client, <<"AcceptSharedDirectory">>, Input, Options).
 
 %% @doc If the DNS server for your self-managed domain uses a publicly
-%% addressable IP address, you must add a CIDR address block to correctly
-%% route traffic to and from your Microsoft AD on Amazon Web Services.
+%% addressable IP address,
+%% you must add a CIDR address block to correctly route traffic to and from
+%% your Microsoft AD
+%% on Amazon Web Services.
 %%
-%% AddIpRoutes adds this address block. You can also use AddIpRoutes to
-%% facilitate routing traffic that uses public IP ranges from your Microsoft
-%% AD on Amazon Web Services to a peer VPC.
+%% AddIpRoutes adds this address block. You can
+%% also use AddIpRoutes to facilitate routing traffic that uses public IP
+%% ranges from your Microsoft AD on Amazon Web Services to a peer VPC.
 %%
-%% Before you call AddIpRoutes, ensure that all of the required permissions
-%% have been explicitly granted through a policy. For details about what
+%% Before you call AddIpRoutes, ensure that all of the required
+%% permissions have been explicitly granted through a policy. For details
+%% about what
 %% permissions are required to run the AddIpRoutes operation, see Directory
 %% Service API Permissions: Actions, Resources, and Conditions Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
@@ -205,8 +213,10 @@ add_region(Client, Input, Options)
 
 %% @doc Adds or overwrites one or more tags for the specified directory.
 %%
-%% Each directory can have a maximum of 50 tags. Each tag consists of a key
-%% and optional value. Tag keys must be unique to each resource.
+%% Each directory can
+%% have a maximum of 50 tags. Each tag consists of a key and optional value.
+%% Tag keys must be
+%% unique to each resource.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -216,10 +226,13 @@ add_tags_to_resource(Client, Input, Options)
 
 %% @doc Cancels an in-progress schema extension to a Microsoft AD directory.
 %%
-%% Once a schema extension has started replicating to all domain controllers,
-%% the task can no longer be canceled. A schema extension can be canceled
-%% during any of the following states; `Initializing',
-%% `CreatingSnapshot', and `UpdatingSchema'.
+%% Once a schema
+%% extension has started replicating to all domain controllers, the task can
+%% no longer be
+%% canceled. A schema extension can be canceled during any of the following
+%% states;
+%% `Initializing', `CreatingSnapshot', and
+%% `UpdatingSchema'.
 cancel_schema_extension(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_schema_extension(Client, Input, []).
@@ -230,10 +243,12 @@ cancel_schema_extension(Client, Input, Options)
 %% @doc Creates an AD Connector to connect to a self-managed directory.
 %%
 %% Before you call `ConnectDirectory', ensure that all of the required
-%% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the `ConnectDirectory'
-%% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference:
+%% permissions
+%% have been explicitly granted through a policy. For details about what
+%% permissions are required
+%% to run the `ConnectDirectory' operation, see Directory Service API
+%% Permissions: Actions, Resources, and Conditions
+%% Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 connect_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -245,8 +260,9 @@ connect_directory(Client, Input, Options)
 %% @doc Creates an alias for a directory and assigns the alias to the
 %% directory.
 %%
-%% The alias is used to construct the access URL for the directory, such as
-%% `http://&lt;alias&gt;.awsapps.com'.
+%% The alias is used
+%% to construct the access URL for the directory, such as
+%% `http://.awsapps.com'.
 %%
 %% After an alias has been created, it cannot be deleted or reused, so this
 %% operation should only be used when absolutely necessary.
@@ -269,9 +285,10 @@ create_computer(Client, Input, Options)
 %% @doc Creates a conditional forwarder associated with your Amazon Web
 %% Services directory.
 %%
-%% Conditional forwarders are required in order to set up a trust
-%% relationship with another domain. The conditional forwarder points to the
-%% trusted domain.
+%% Conditional
+%% forwarders are required in order to set up a trust relationship with
+%% another domain. The
+%% conditional forwarder points to the trusted domain.
 create_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_conditional_forwarder(Client, Input, []).
@@ -283,13 +300,16 @@ create_conditional_forwarder(Client, Input, Options)
 %%
 %% For more information, see Simple Active Directory:
 %% https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html
-%% in the Directory Service Admin Guide.
+%% in the Directory Service Admin
+%% Guide.
 %%
 %% Before you call `CreateDirectory', ensure that all of the required
-%% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the `CreateDirectory'
-%% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference:
+%% permissions
+%% have been explicitly granted through a policy. For details about what
+%% permissions are required
+%% to run the `CreateDirectory' operation, see Directory Service API
+%% Permissions: Actions, Resources, and Conditions
+%% Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 create_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -299,8 +319,9 @@ create_directory(Client, Input, Options)
     request(Client, <<"CreateDirectory">>, Input, Options).
 
 %% @doc Creates a subscription to forward real-time Directory Service domain
-%% controller security logs to the specified Amazon CloudWatch log group in
-%% your Amazon Web Services account.
+%% controller security
+%% logs to the specified Amazon CloudWatch log group in your Amazon Web
+%% Services account.
 create_log_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_subscription(Client, Input, []).
@@ -316,9 +337,9 @@ create_log_subscription(Client, Input, Options)
 %%
 %% Before you call CreateMicrosoftAD, ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the CreateMicrosoftAD
-%% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference:
+%% about what permissions
+%% are required to run the CreateMicrosoftAD operation, see Directory Service
+%% API Permissions: Actions, Resources, and Conditions Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 create_microsoft_ad(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -341,15 +362,18 @@ create_snapshot(Client, Input, Options)
 %% @doc Directory Service for Microsoft Active Directory allows you to
 %% configure trust relationships.
 %%
-%% For example, you can establish a trust between your Managed Microsoft AD
-%% directory, and your existing self-managed Microsoft Active Directory. This
-%% would allow you to provide users and groups access to resources in either
-%% domain, with a single set of credentials.
+%% For
+%% example, you can establish a trust between your Managed Microsoft AD
+%% directory, and your existing
+%% self-managed Microsoft Active Directory. This would allow you to provide
+%% users and groups
+%% access to resources in either domain, with a single set of credentials.
 %%
 %% This action initiates the creation of the Amazon Web Services side of a
-%% trust relationship between an Managed Microsoft AD directory and an
-%% external domain. You can create either a forest trust or an external
-%% trust.
+%% trust relationship between an
+%% Managed Microsoft AD directory and an external domain. You can create
+%% either a forest trust or an
+%% external trust.
 create_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trust(Client, Input, []).
@@ -358,7 +382,8 @@ create_trust(Client, Input, Options)
     request(Client, <<"CreateTrust">>, Input, Options).
 
 %% @doc Deletes a conditional forwarder that has been set up for your Amazon
-%% Web Services directory.
+%% Web Services
+%% directory.
 delete_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_conditional_forwarder(Client, Input, []).
@@ -369,10 +394,12 @@ delete_conditional_forwarder(Client, Input, Options)
 %% @doc Deletes an Directory Service directory.
 %%
 %% Before you call `DeleteDirectory', ensure that all of the required
-%% permissions have been explicitly granted through a policy. For details
-%% about what permissions are required to run the `DeleteDirectory'
-%% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference:
+%% permissions
+%% have been explicitly granted through a policy. For details about what
+%% permissions are required
+%% to run the `DeleteDirectory' operation, see Directory Service API
+%% Permissions: Actions, Resources, and Conditions
+%% Reference:
 %% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 delete_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -398,7 +425,8 @@ delete_snapshot(Client, Input, Options)
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
 %% @doc Deletes an existing trust relationship between your Managed Microsoft
-%% AD directory and an external domain.
+%% AD directory and an external
+%% domain.
 delete_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trust(Client, Input, []).
@@ -450,7 +478,8 @@ describe_client_authentication_settings(Client, Input, Options)
 %% account.
 %%
 %% If no input parameters are provided for RemoteDomainNames, this request
-%% describes all conditional forwarders for the specified directory ID.
+%% describes all
+%% conditional forwarders for the specified directory ID.
 describe_conditional_forwarders(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conditional_forwarders(Client, Input, []).
@@ -462,17 +491,22 @@ describe_conditional_forwarders(Client, Input, Options)
 %% account.
 %%
 %% You can retrieve information about specific directories by passing the
-%% directory identifiers in the `DirectoryIds' parameter. Otherwise, all
-%% directories that belong to the current account are returned.
+%% directory
+%% identifiers in the `DirectoryIds' parameter. Otherwise, all
+%% directories that belong
+%% to the current account are returned.
 %%
 %% This operation supports pagination with the use of the `NextToken'
-%% request and response parameters. If more results are available, the
+%% request and
+%% response parameters. If more results are available, the
 %% `DescribeDirectoriesResult.NextToken' member contains a token that you
-%% pass in the next call to `DescribeDirectories' to retrieve the next
-%% set of items.
+%% pass in
+%% the next call to `DescribeDirectories' to retrieve the next set of
+%% items.
 %%
 %% You can also specify a maximum number of return results with the
-%% `Limit' parameter.
+%% `Limit'
+%% parameter.
 describe_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_directories(Client, Input, []).
@@ -489,10 +523,12 @@ describe_domain_controllers(Client, Input, Options)
     request(Client, <<"DescribeDomainControllers">>, Input, Options).
 
 %% @doc Obtains information about which Amazon SNS topics receive status
-%% messages from the specified directory.
+%% messages from the specified
+%% directory.
 %%
 %% If no input parameters are provided, such as DirectoryId or TopicName,
-%% this request describes all of the associations in the account.
+%% this request
+%% describes all of the associations in the account.
 describe_event_topics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_topics(Client, Input, []).
@@ -509,7 +545,8 @@ describe_ldaps_settings(Client, Input, Options)
     request(Client, <<"DescribeLDAPSSettings">>, Input, Options).
 
 %% @doc Provides information about the Regions that are configured for
-%% multi-Region replication.
+%% multi-Region
+%% replication.
 describe_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_regions(Client, Input, []).
@@ -538,9 +575,12 @@ describe_shared_directories(Client, Input, Options)
 %% account.
 %%
 %% This operation supports pagination with the use of the NextToken request
-%% and response parameters. If more results are available, the
-%% DescribeSnapshots.NextToken member contains a token that you pass in the
-%% next call to `DescribeSnapshots' to retrieve the next set of items.
+%% and
+%% response parameters. If more results are available, the
+%% DescribeSnapshots.NextToken
+%% member contains a token that you pass in the next call to
+%% `DescribeSnapshots' to
+%% retrieve the next set of items.
 %%
 %% You can also specify a maximum number of return results with the Limit
 %% parameter.
@@ -554,7 +594,8 @@ describe_snapshots(Client, Input, Options)
 %% @doc Obtains information about the trust relationships for this account.
 %%
 %% If no input parameters are provided, such as DirectoryId or TrustIds, this
-%% request describes all the trust relationships belonging to the account.
+%% request
+%% describes all the trust relationships belonging to the account.
 describe_trusts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusts(Client, Input, []).
@@ -562,7 +603,8 @@ describe_trusts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrusts">>, Input, Options).
 
-%% @doc Describes the updates of a directory for a particular update type.
+%% @doc
+%% Describes the updates of a directory for a particular update type.
 describe_update_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_update_directory(Client, Input, []).
@@ -588,8 +630,9 @@ disable_ldaps(Client, Input, Options)
     request(Client, <<"DisableLDAPS">>, Input, Options).
 
 %% @doc Disables multi-factor authentication (MFA) with the Remote
-%% Authentication Dial In User Service (RADIUS) server for an AD Connector or
-%% Microsoft AD directory.
+%% Authentication Dial In
+%% User Service (RADIUS) server for an AD Connector or Microsoft AD
+%% directory.
 disable_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_radius(Client, Input, []).
@@ -624,8 +667,8 @@ enable_ldaps(Client, Input, Options)
     request(Client, <<"EnableLDAPS">>, Input, Options).
 
 %% @doc Enables multi-factor authentication (MFA) with the Remote
-%% Authentication Dial In User Service (RADIUS) server for an AD Connector or
-%% Microsoft AD directory.
+%% Authentication Dial In User
+%% Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 enable_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_radius(Client, Input, []).
@@ -635,9 +678,10 @@ enable_radius(Client, Input, Options)
 
 %% @doc Enables single sign-on for a directory.
 %%
-%% Single sign-on allows users in your directory to access certain Amazon Web
-%% Services services from a computer joined to the directory without having
-%% to enter their credentials separately.
+%% Single sign-on allows users in your directory to
+%% access certain Amazon Web Services services from a computer joined to the
+%% directory without having to enter
+%% their credentials separately.
 enable_sso(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_sso(Client, Input, []).
@@ -714,11 +758,14 @@ register_certificate(Client, Input, Options)
 
 %% @doc Associates a directory with an Amazon SNS topic.
 %%
-%% This establishes the directory as a publisher to the specified Amazon SNS
-%% topic. You can then receive email or text (SMS) messages when the status
-%% of your directory changes. You get notified if your directory goes from an
-%% Active status to an Impaired or Inoperable status. You also receive a
-%% notification when the directory returns to an Active status.
+%% This establishes the directory as a
+%% publisher to the specified Amazon SNS topic. You can then receive email or
+%% text (SMS) messages when
+%% the status of your directory changes. You get notified if your directory
+%% goes from an Active
+%% status to an Impaired or Inoperable status. You also receive a
+%% notification when the directory
+%% returns to an Active status.
 register_event_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_event_topic(Client, Input, []).
@@ -746,7 +793,8 @@ remove_ip_routes(Client, Input, Options)
 %% @doc Stops all replication and removes the domain controllers from the
 %% specified Region.
 %%
-%% You cannot remove the primary Region with this operation. Instead, use the
+%% You
+%% cannot remove the primary Region with this operation. Instead, use the
 %% `DeleteDirectory' API.
 remove_region(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -764,25 +812,29 @@ remove_tags_from_resource(Client, Input, Options)
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
 %% @doc Resets the password for any user in your Managed Microsoft AD or
-%% Simple AD directory.
+%% Simple AD
+%% directory.
 %%
 %% You can reset the password for any user in your directory with the
-%% following exceptions:
+%% following
+%% exceptions:
 %%
-%% <ul> <li> For Simple AD, you cannot reset the password for any user that
-%% is a member of either the Domain Admins or Enterprise Admins group except
-%% for the administrator user.
+%% For Simple AD, you cannot reset the password for any user that is a member
+%% of either
+%% the Domain Admins or Enterprise
+%% Admins group except for the administrator user.
 %%
-%% </li> <li> For Managed Microsoft AD, you can only reset the password for a
-%% user that is in an OU based off of the NetBIOS name that you typed when
-%% you created your directory. For example, you cannot reset the password for
-%% a user in the Amazon Web Services Reserved OU. For more information about
-%% the OU structure for an Managed Microsoft AD directory, see What Gets
-%% Created:
+%% For Managed Microsoft AD, you can only reset the password for a user that
+%% is in an
+%% OU based off of the NetBIOS name that you typed when you created your
+%% directory. For
+%% example, you cannot reset the password for a user in the Amazon Web
+%% Services
+%% Reserved OU. For more information about the OU structure for an Managed
+%% Microsoft AD directory, see What Gets Created:
 %% https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html
-%% in the Directory Service Administration Guide.
-%%
-%% </li> </ul>
+%% in the Directory Service Administration
+%% Guide.
 reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_user_password(Client, Input, []).
@@ -796,10 +848,12 @@ reset_user_password(Client, Input, Options)
 %% directory after the snapshot date are overwritten.
 %%
 %% This action returns as soon as the restore operation is initiated. You can
-%% monitor the progress of the restore operation by calling the
-%% `DescribeDirectories' operation with the directory identifier. When
-%% the DirectoryDescription.Stage value changes to `Active', the restore
-%% operation is complete.
+%% monitor the
+%% progress of the restore operation by calling the `DescribeDirectories'
+%% operation with
+%% the directory identifier. When the DirectoryDescription.Stage value
+%% changes to
+%% `Active', the restore operation is complete.
 restore_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_snapshot(Client, Input, []).
@@ -808,27 +862,32 @@ restore_from_snapshot(Client, Input, Options)
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
 
 %% @doc Shares a specified directory (`DirectoryId') in your Amazon Web
-%% Services account (directory owner) with another Amazon Web Services
-%% account (directory consumer).
+%% Services account (directory
+%% owner) with another Amazon Web Services account (directory consumer).
 %%
-%% With this operation you can use your directory from any Amazon Web
-%% Services account and from any Amazon VPC within an Amazon Web Services
-%% Region.
+%% With this operation you can use your
+%% directory from any Amazon Web Services account and from any Amazon VPC
+%% within an Amazon Web Services Region.
 %%
 %% When you share your Managed Microsoft AD directory, Directory Service
-%% creates a shared directory in the directory consumer account. This shared
-%% directory contains the metadata to provide access to the directory within
-%% the directory owner account. The shared directory is visible in all VPCs
-%% in the directory consumer account.
+%% creates a
+%% shared directory in the directory consumer account. This shared directory
+%% contains the
+%% metadata to provide access to the directory within the directory owner
+%% account. The shared
+%% directory is visible in all VPCs in the directory consumer account.
 %%
 %% The `ShareMethod' parameter determines whether the specified directory
-%% can be shared between Amazon Web Services accounts inside the same Amazon
-%% Web Services organization (`ORGANIZATIONS'). It also determines
-%% whether you can share the directory with any other Amazon Web Services
-%% account either inside or outside of the organization (`HANDSHAKE').
+%% can be
+%% shared between Amazon Web Services accounts inside the same Amazon Web
+%% Services organization (`ORGANIZATIONS'). It
+%% also determines whether you can share the directory with any other Amazon
+%% Web Services account either inside
+%% or outside of the organization (`HANDSHAKE').
 %%
 %% The `ShareNotes' parameter is only used when `HANDSHAKE' is
-%% called, which sends a directory sharing request to the directory consumer.
+%% called,
+%% which sends a directory sharing request to the directory consumer.
 share_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     share_directory(Client, Input, []).
@@ -854,7 +913,8 @@ unshare_directory(Client, Input, Options)
     request(Client, <<"UnshareDirectory">>, Input, Options).
 
 %% @doc Updates a conditional forwarder that has been set up for your Amazon
-%% Web Services directory.
+%% Web Services
+%% directory.
 update_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_conditional_forwarder(Client, Input, []).
@@ -862,7 +922,8 @@ update_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConditionalForwarder">>, Input, Options).
 
-%% @doc Updates the directory for a particular update type.
+%% @doc
+%% Updates the directory for a particular update type.
 update_directory_setup(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_directory_setup(Client, Input, []).
@@ -872,11 +933,14 @@ update_directory_setup(Client, Input, Options)
 
 %% @doc Adds or removes domain controllers to or from the directory.
 %%
-%% Based on the difference between current value and new value (provided
-%% through this API call), domain controllers will be added or removed. It
-%% may take up to 45 minutes for any new domain controllers to become fully
-%% active once the requested number of domain controllers is updated. During
-%% this time, you cannot make another update request.
+%% Based on the difference
+%% between current value and new value (provided through this API call),
+%% domain controllers will
+%% be added or removed. It may take up to 45 minutes for any new domain
+%% controllers to become
+%% fully active once the requested number of domain controllers is updated.
+%% During this time, you
+%% cannot make another update request.
 update_number_of_domain_controllers(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_number_of_domain_controllers(Client, Input, []).
@@ -885,7 +949,8 @@ update_number_of_domain_controllers(Client, Input, Options)
     request(Client, <<"UpdateNumberOfDomainControllers">>, Input, Options).
 
 %% @doc Updates the Remote Authentication Dial In User Service (RADIUS)
-%% server information for an AD Connector or Microsoft AD directory.
+%% server information
+%% for an AD Connector or Microsoft AD directory.
 update_radius(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_radius(Client, Input, []).
@@ -902,7 +967,8 @@ update_settings(Client, Input, Options)
     request(Client, <<"UpdateSettings">>, Input, Options).
 
 %% @doc Updates the trust that has been set up between your Managed Microsoft
-%% AD directory and an self-managed Active Directory.
+%% AD directory and an
+%% self-managed Active Directory.
 update_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trust(Client, Input, []).
@@ -911,10 +977,12 @@ update_trust(Client, Input, Options)
     request(Client, <<"UpdateTrust">>, Input, Options).
 
 %% @doc Directory Service for Microsoft Active Directory allows you to
-%% configure and verify trust relationships.
+%% configure and verify trust
+%% relationships.
 %%
 %% This action verifies a trust relationship between your Managed Microsoft
-%% AD directory and an external domain.
+%% AD directory and an
+%% external domain.
 verify_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_trust(Client, Input, []).

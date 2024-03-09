@@ -3,11 +3,13 @@
 
 %% @doc Amazon Web Services Private CA Connector for Active Directory creates
 %% a connector between Amazon Web Services Private CA and Active Directory
-%% (AD) that enables you to provision security certificates for AD signed by
-%% a private CA that you own.
+%% (AD) that enables you to
+%% provision security certificates for AD signed by a private CA that you
+%% own.
 %%
-%% For more information, see Amazon Web Services Private CA Connector for
-%% Active Directory:
+%% For more
+%% information, see Amazon Web Services Private CA Connector for Active
+%% Directory:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/ad-connector.html.
 -module(aws_pca_connector_ad).
 
@@ -82,17 +84,20 @@
 %% @doc Creates a connector between Amazon Web Services Private CA and an
 %% Active Directory.
 %%
-%% You must specify the private CA, directory ID, and security groups.
+%% You must specify the private CA,
+%% directory ID, and security groups.
 create_connector(Client, Input) ->
     create_connector(Client, Input, []).
 create_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connectors"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -106,17 +111,20 @@ create_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a directory registration that authorizes communication
-%% between Amazon Web Services Private CA and an Active Directory
+%% between Amazon Web Services Private CA and an
+%% Active Directory
 create_directory_registration(Client, Input) ->
     create_directory_registration(Client, Input, []).
 create_directory_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/directoryRegistrations"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -132,18 +140,22 @@ create_directory_registration(Client, Input0, Options0) ->
 %% @doc Creates a service principal name (SPN) for the service account in
 %% Active Directory.
 %%
-%% Kerberos authentication uses SPNs to associate a service instance with a
-%% service sign-in account.
+%% Kerberos
+%% authentication uses SPNs to associate a service instance with a service
+%% sign-in
+%% account.
 create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input) ->
     create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input, []).
 create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input0, Options0) ->
     Method = post,
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames/", aws_util:encode_uri(ConnectorArn), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -158,18 +170,21 @@ create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, In
 
 %% @doc Creates an Active Directory compatible certificate template.
 %%
-%% The connectors issues certificates using these templates based on the
-%% requester’s Active Directory group membership.
+%% The connectors issues certificates
+%% using these templates based on the requester’s Active Directory group
+%% membership.
 create_template(Client, Input) ->
     create_template(Client, Input, []).
 create_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/templates"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -184,18 +199,21 @@ create_template(Client, Input0, Options0) ->
 
 %% @doc Create a group access control entry.
 %%
-%% Allow or deny Active Directory groups from enrolling and/or autoenrolling
-%% with the template based on the group security identifiers (SIDs).
+%% Allow or deny Active Directory groups from enrolling and/or
+%% autoenrolling with the template based on the group security identifiers
+%% (SIDs).
 create_template_group_access_control_entry(Client, TemplateArn, Input) ->
     create_template_group_access_control_entry(Client, TemplateArn, Input, []).
 create_template_group_access_control_entry(Client, TemplateArn, Input0, Options0) ->
     Method = post,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -210,12 +228,12 @@ create_template_group_access_control_entry(Client, TemplateArn, Input0, Options0
 
 %% @doc Deletes a connector for Active Directory.
 %%
-%% You must provide the Amazon Resource Name (ARN) of the connector that you
-%% want to delete. You can find the ARN by calling the
+%% You must provide the Amazon Resource Name (ARN) of the
+%% connector that you want to delete. You can find the ARN by calling the
 %% [https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_ListConnectors]
 %% action. Deleting a connector does not deregister your directory with
-%% Amazon Web Services Private CA. You can deregister your directory by
-%% calling the
+%% Amazon Web Services Private CA. You can
+%% deregister your directory by calling the
 %% [https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_DeleteDirectoryRegistration]
 %% action.
 delete_connector(Client, ConnectorArn, Input) ->
@@ -224,10 +242,12 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/connectors/", aws_util:encode_uri(ConnectorArn), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -242,18 +262,20 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
 
 %% @doc Deletes a directory registration.
 %%
-%% Deleting a directory registration deauthorizes Amazon Web Services Private
-%% CA with the directory.
+%% Deleting a directory registration deauthorizes
+%% Amazon Web Services Private CA with the directory.
 delete_directory_registration(Client, DirectoryRegistrationArn, Input) ->
     delete_directory_registration(Client, DirectoryRegistrationArn, Input, []).
 delete_directory_registration(Client, DirectoryRegistrationArn, Input0, Options0) ->
     Method = delete,
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -267,17 +289,20 @@ delete_directory_registration(Client, DirectoryRegistrationArn, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the service principal name (SPN) used by a connector to
-%% authenticate with your Active Directory.
+%% authenticate with your
+%% Active Directory.
 delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input) ->
     delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input, []).
 delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input0, Options0) ->
     Method = delete,
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames/", aws_util:encode_uri(ConnectorArn), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -292,18 +317,20 @@ delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, In
 
 %% @doc Deletes a template.
 %%
-%% Certificates issued using the template are still valid until they are
-%% revoked or expired.
+%% Certificates issued using the template are still valid until they
+%% are revoked or expired.
 delete_template(Client, TemplateArn, Input) ->
     delete_template(Client, TemplateArn, Input, []).
 delete_template(Client, TemplateArn, Input0, Options0) ->
     Method = delete,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -323,10 +350,12 @@ delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, Temp
     Method = delete,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries/", aws_util:encode_uri(GroupSecurityIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -341,7 +370,8 @@ delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, Temp
 
 %% @doc Lists information about your connector.
 %%
-%% You specify the connector on input by its ARN (Amazon Resource Name).
+%% You specify the connector on input by its ARN
+%% (Amazon Resource Name).
 get_connector(Client, ConnectorArn)
   when is_map(Client) ->
     get_connector(Client, ConnectorArn, #{}, #{}).
@@ -354,9 +384,11 @@ get_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connectors/", aws_util:encode_uri(ConnectorArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -378,9 +410,11 @@ get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -389,7 +423,8 @@ get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the service principal name that the connector uses to
-%% authenticate with Active Directory.
+%% authenticate with
+%% Active Directory.
 get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn)
   when is_map(Client) ->
     get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, #{}, #{}).
@@ -402,9 +437,11 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Query
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames/", aws_util:encode_uri(ConnectorArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -413,7 +450,8 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Query
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a certificate template that the connector uses to issue
-%% certificates from a private CA.
+%% certificates from a
+%% private CA.
 get_template(Client, TemplateArn)
   when is_map(Client) ->
     get_template(Client, TemplateArn, #{}, #{}).
@@ -426,9 +464,11 @@ get_template(Client, TemplateArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -449,9 +489,11 @@ get_template_group_access_control_entry(Client, GroupSecurityIdentifier, Templat
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries/", aws_util:encode_uri(GroupSecurityIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -474,9 +516,11 @@ list_connectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connectors"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -504,9 +548,11 @@ list_directory_registrations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -520,7 +566,8 @@ list_directory_registrations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the service principal names that the connector uses to
-%% authenticate with Active Directory.
+%% authenticate with
+%% Active Directory.
 list_service_principal_names(Client, DirectoryRegistrationArn)
   when is_map(Client) ->
     list_service_principal_names(Client, DirectoryRegistrationArn, #{}, #{}).
@@ -533,9 +580,11 @@ list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/directoryRegistrations/", aws_util:encode_uri(DirectoryRegistrationArn), "/servicePrincipalNames"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -561,9 +610,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -584,9 +635,11 @@ list_template_group_access_control_entries(Client, TemplateArn, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -612,9 +665,11 @@ list_templates(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -635,10 +690,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -658,10 +715,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -683,10 +742,12 @@ update_template(Client, TemplateArn, Input0, Options0) ->
     Method = patch,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -708,10 +769,12 @@ update_template_group_access_control_entry(Client, GroupSecurityIdentifier, Temp
     Method = patch,
     Path = ["/templates/", aws_util:encode_uri(TemplateArn), "/accessControlEntries/", aws_util:encode_uri(GroupSecurityIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -727,6 +790,11 @@ update_template_group_access_control_entry(Client, GroupSecurityIdentifier, Temp
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Connect Voice ID provides real-time caller authentication and
-%% fraud risk detection, which make voice interactions in contact centers
-%% more secure and efficient.
+%% fraud risk detection, which
+%% make voice interactions in contact centers more secure and efficient.
 -module(aws_voice_id).
 
 -export([associate_fraudster/2,
@@ -81,7 +81,8 @@ associate_fraudster(Client, Input, Options)
     request(Client, <<"AssociateFraudster">>, Input, Options).
 
 %% @doc Creates a domain that contains all Amazon Connect Voice ID data, such
-%% as speakers, fraudsters, customer audio, and voiceprints.
+%% as speakers, fraudsters,
+%% customer audio, and voiceprints.
 %%
 %% Every domain is created with a default watchlist that fraudsters can be a
 %% part of.
@@ -129,10 +130,11 @@ delete_speaker(Client, Input, Options)
 
 %% @doc Deletes the specified watchlist from Voice ID.
 %%
-%% This API throws an exception when there are fraudsters in the watchlist
-%% that you are trying to delete. You must delete the fraudsters, and then
-%% delete the watchlist. Every domain has a default watchlist which cannot be
-%% deleted.
+%% This API throws an exception when
+%% there are fraudsters in the watchlist that you are trying to delete. You
+%% must delete the
+%% fraudsters, and then delete the watchlist. Every domain has a default
+%% watchlist which cannot be deleted.
 delete_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_watchlist(Client, Input, []).
@@ -190,9 +192,10 @@ describe_watchlist(Client, Input, Options)
 
 %% @doc Disassociates the fraudsters from the watchlist specified.
 %%
-%% Voice ID always expects a fraudster to be a part of at least one
-%% watchlist. If you try to disassociate a fraudster from its only watchlist,
-%% a `ValidationException' is thrown.
+%% Voice ID always expects a
+%% fraudster to be a part of at least one watchlist. If
+%% you try to disassociate a fraudster from its only watchlist, a
+%% `ValidationException' is thrown.
 disassociate_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_fraudster(Client, Input, []).
@@ -201,7 +204,8 @@ disassociate_fraudster(Client, Input, Options)
     request(Client, <<"DisassociateFraudster">>, Input, Options).
 
 %% @doc Evaluates a specified session based on audio data accumulated during
-%% a streaming Amazon Connect Voice ID call.
+%% a streaming
+%% Amazon Connect Voice ID call.
 evaluate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_session(Client, Input, []).
@@ -218,10 +222,11 @@ list_domains(Client, Input, Options)
     request(Client, <<"ListDomains">>, Input, Options).
 
 %% @doc Lists all the fraudster registration jobs in the domain with the
-%% given `JobStatus'.
+%% given
+%% `JobStatus'.
 %%
-%% If `JobStatus' is not provided, this lists all fraudster registration
-%% jobs in the given domain.
+%% If `JobStatus' is not provided, this lists all
+%% fraudster registration jobs in the given domain.
 list_fraudster_registration_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fraudster_registration_jobs(Client, Input, []).
@@ -238,10 +243,11 @@ list_fraudsters(Client, Input, Options)
     request(Client, <<"ListFraudsters">>, Input, Options).
 
 %% @doc Lists all the speaker enrollment jobs in the domain with the
-%% specified `JobStatus'.
+%% specified
+%% `JobStatus'.
 %%
-%% If `JobStatus' is not provided, this lists all jobs with all possible
-%% speaker enrollment job statuses.
+%% If `JobStatus' is not provided, this lists all
+%% jobs with all possible speaker enrollment job statuses.
 list_speaker_enrollment_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_speaker_enrollment_jobs(Client, Input, []).
@@ -275,12 +281,16 @@ list_watchlists(Client, Input, Options)
 
 %% @doc Opts out a speaker from Voice ID.
 %%
-%% A speaker can be opted out regardless of whether or not they already exist
-%% in Voice ID. If they don't yet exist, a new speaker is created in an
-%% opted out state. If they already exist, their existing status is
-%% overridden and they are opted out. Enrollment and evaluation
-%% authentication requests are rejected for opted out speakers, and opted out
-%% speakers have no voice embeddings stored in Voice ID.
+%% A speaker can be opted out regardless of whether or
+%% not they already exist in Voice ID. If they don't yet exist, a new
+%% speaker is created
+%% in an opted out state. If they already exist, their existing status is
+%% overridden and
+%% they are opted out. Enrollment and evaluation authentication requests are
+%% rejected for
+%% opted out speakers, and opted out speakers have no voice embeddings stored
+%% in
+%% Voice ID.
 opt_out_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_out_speaker(Client, Input, []).
@@ -323,8 +333,9 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates the specified domain.
 %%
-%% This API has clobber behavior, and clears and replaces all attributes. If
-%% an optional field, such as 'Description' is not provided, it is
+%% This API has clobber behavior, and clears and replaces
+%% all attributes. If an optional field, such as 'Description' is not
+%% provided, it is
 %% removed from the domain.
 update_domain(Client, Input)
   when is_map(Client), is_map(Input) ->

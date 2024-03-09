@@ -2,19 +2,23 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Connect is an easy-to-use omnichannel cloud contact center
-%% service that enables companies of any size to deliver superior customer
-%% service at a lower cost.
+%% service that
+%% enables companies of any size to deliver superior customer service at a
+%% lower cost.
 %%
 %% Amazon Connect communications capabilities make it easy for companies to
-%% deliver personalized interactions across communication channels, including
-%% chat.
+%% deliver
+%% personalized interactions across communication channels, including chat.
 %%
 %% Use the Amazon Connect Participant Service to manage participants (for
-%% example, agents, customers, and managers listening in), and to send
-%% messages and events within a chat contact. The APIs in the service enable
-%% the following: sending chat messages, attachment sharing, managing a
-%% participant's connection state and message events, and retrieving chat
-%% transcripts.
+%% example,
+%% agents, customers, and managers listening in), and to send messages and
+%% events within a
+%% chat contact. The APIs in the service enable the following: sending chat
+%% messages,
+%% attachment sharing, managing a participant's connection state and
+%% message events, and
+%% retrieving chat transcripts.
 -module(aws_connectparticipant).
 
 -export([complete_attachment_upload/2,
@@ -44,10 +48,11 @@
 %%====================================================================
 
 %% @doc Allows you to confirm that the attachment has been uploaded using the
-%% pre-signed URL provided in StartAttachmentUpload API.
+%% pre-signed URL
+%% provided in StartAttachmentUpload API.
 %%
-%% A conflict exception is thrown when an attachment with that identifier is
-%% already being uploaded.
+%% A conflict exception is thrown when an attachment
+%% with that identifier is already being uploaded.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
@@ -60,11 +65,13 @@ complete_attachment_upload(Client, Input) ->
 complete_attachment_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/complete-attachment-upload"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -85,11 +92,14 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% `ConnectionToken'.
 %%
 %% The participant token is valid for the lifetime of the participant – until
-%% they are part of a contact.
+%% they are
+%% part of a contact.
 %%
 %% The response URL for `WEBSOCKET' Type has a connect expiry timeout of
-%% 100s. Clients must manually connect to the returned websocket URL and
-%% subscribe to the desired topic.
+%% 100s.
+%% Clients must manually connect to the returned websocket URL and subscribe
+%% to the desired
+%% topic.
 %%
 %% For chat, you need to publish the following on the established websocket
 %% connection:
@@ -97,23 +107,30 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% `{&quot;topic&quot;:&quot;aws/subscribe&quot;,&quot;content&quot;:{&quot;topics&quot;:[&quot;aws/chat&quot;]}}'
 %%
 %% Upon websocket URL expiry, as specified in the response ConnectionExpiry
-%% parameter, clients need to call this API again to obtain a new websocket
-%% URL and perform the same steps as before.
+%% parameter,
+%% clients need to call this API again to obtain a new websocket URL and
+%% perform the same
+%% steps as before.
 %%
-%% Message streaming support: This API can also be used together with the
-%% StartContactStreaming:
+%% Message streaming support: This API can also be used
+%% together with the StartContactStreaming:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html
-%% API to create a participant connection for chat contacts that are not
-%% using a websocket. For more information about message streaming, Enable
-%% real-time chat message streaming:
+%% API to create a participant connection for chat
+%% contacts that are not using a websocket. For more information about
+%% message streaming,
+%% Enable real-time chat
+%% message streaming:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
-%% Feature specifications: For information about feature specifications, such
-%% as the allowed number of open websocket connections per participant, see
-%% Feature specifications:
+%% Feature specifications: For information about feature
+%% specifications, such as the allowed number of open websocket connections
+%% per
+%% participant, see Feature specifications:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect Administrator
+%% Guide.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
@@ -123,11 +140,13 @@ create_participant_connection(Client, Input) ->
 create_participant_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/connection"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ParticipantToken">>}
@@ -154,10 +173,12 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap)
 describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/participant/views/", aws_util:encode_uri(ViewToken), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -182,11 +203,13 @@ disconnect_participant(Client, Input) ->
 disconnect_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/disconnect"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -203,7 +226,8 @@ disconnect_participant(Client, Input0, Options0) ->
 
 %% @doc Provides a pre-signed URL for download of a completed attachment.
 %%
-%% This is an asynchronous API for use with active contacts.
+%% This is an
+%% asynchronous API for use with active contacts.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
@@ -216,11 +240,13 @@ get_attachment(Client, Input) ->
 get_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/attachment"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -238,27 +264,29 @@ get_attachment(Client, Input0, Options0) ->
 %% @doc Retrieves a transcript of the session, including details about any
 %% attachments.
 %%
-%% For information about accessing past chat contact transcripts for a
-%% persistent chat, see Enable persistent chat:
+%% For
+%% information about accessing past chat contact transcripts for a persistent
+%% chat, see
+%% Enable persistent chat:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html.
 %%
 %% If you have a process that consumes events in the transcript of an chat
-%% that has ended, note that chat transcripts contain the following event
-%% content types if the event has occurred during the chat session:
+%% that has ended, note that chat
+%% transcripts contain the following event content types if the event has
+%% occurred
+%% during the chat session:
 %%
-%% <ul> <li> `application/vnd.amazonaws.connect.event.participant.left'
+%% `application/vnd.amazonaws.connect.event.participant.left'
 %%
-%% </li> <li>
 %% `application/vnd.amazonaws.connect.event.participant.joined'
 %%
-%% </li> <li> `application/vnd.amazonaws.connect.event.chat.ended'
+%% `application/vnd.amazonaws.connect.event.chat.ended'
 %%
-%% </li> <li>
 %% `application/vnd.amazonaws.connect.event.transfer.succeeded'
 %%
-%% </li> <li> `application/vnd.amazonaws.connect.event.transfer.failed'
+%% `application/vnd.amazonaws.connect.event.transfer.failed'
 %%
-%% </li> </ul> `ConnectionToken' is used for invoking this API instead of
+%% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
@@ -269,11 +297,13 @@ get_transcript(Client, Input) ->
 get_transcript(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/transcript"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -288,18 +318,21 @@ get_transcript(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The
-%% `application/vnd.amazonaws.connect.event.connection.acknowledged'
+%% @doc
+%% The `application/vnd.amazonaws.connect.event.connection.acknowledged'
 %% ContentType will no longer be supported starting December 31, 2024.
 %%
-%% This event has been migrated to the CreateParticipantConnection:
+%% This event has
+%% been migrated to the CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
-%% API using the `ConnectParticipant' field.
+%% API using the
+%% `ConnectParticipant' field.
 %%
 %% Sends an event. Message receipts are not supported when there are more
-%% than two active participants in the chat. Using the SendEvent API for
-%% message receipts when a supervisor is barged-in will result in a conflict
-%% exception.
+%% than two active
+%% participants in the chat. Using the SendEvent API for message receipts
+%% when a supervisor
+%% is barged-in will result in a conflict exception.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
@@ -312,11 +345,13 @@ send_event(Client, Input) ->
 send_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/event"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -344,11 +379,13 @@ send_message(Client, Input) ->
 send_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/message"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -364,7 +401,8 @@ send_message(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading the
-%% file directly to S3.
+%% file directly to
+%% S3.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
@@ -377,11 +415,13 @@ start_attachment_upload(Client, Input) ->
 start_attachment_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/participant/start-attachment-upload"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amz-Bearer">>, <<"ConnectionToken">>}
@@ -399,6 +439,11 @@ start_attachment_upload(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

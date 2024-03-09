@@ -4,71 +4,83 @@
 %% @doc AWS CodeStar Connections
 %%
 %% This Amazon Web Services CodeStar Connections API Reference provides
-%% descriptions and usage examples of the operations and data types for the
-%% Amazon Web Services CodeStar Connections API.
+%% descriptions and usage examples of
+%% the operations and data types for the Amazon Web Services CodeStar
+%% Connections API.
 %%
-%% You can use the connections API to work with connections and
-%% installations.
+%% You can use the
+%% connections API to work with connections and installations.
 %%
 %% Connections are configurations that you use to connect Amazon Web Services
 %% resources to external code repositories. Each connection is a resource
-%% that can be given to services such as CodePipeline to connect to a
-%% third-party repository such as Bitbucket. For example, you can add the
-%% connection in CodePipeline so that it triggers your pipeline when a code
-%% change is made to your third-party code repository. Each connection is
-%% named and associated with a unique ARN that is used to reference the
-%% connection.
+%% that can be given to
+%% services such as CodePipeline to connect to a third-party repository such
+%% as Bitbucket. For
+%% example, you can add the connection in CodePipeline so that it triggers
+%% your pipeline when a
+%% code change is made to your third-party code repository. Each connection
+%% is named and
+%% associated with a unique ARN that is used to reference the connection.
 %%
 %% When you create a connection, the console initiates a third-party
-%% connection handshake. Installations are the apps that are used to conduct
-%% this handshake. For example, the installation for the Bitbucket provider
-%% type is the Bitbucket app. When you create a connection, you can choose an
-%% existing installation or create one.
+%% connection handshake.
+%% Installations are the apps that are used to conduct this handshake. For
+%% example, the installation for the Bitbucket provider type is the Bitbucket
+%% app. When you
+%% create a connection, you can choose an existing installation or create
+%% one.
 %%
 %% When you want to create a connection to an installed provider type such as
-%% GitHub Enterprise Server, you create a host for your connections.
+%% GitHub
+%% Enterprise Server, you create a host for your connections.
 %%
 %% You can work with connections by calling:
 %%
-%% <ul> <li> `CreateConnection', which creates a uniquely named
-%% connection that can be referenced by services such as CodePipeline.
+%% `CreateConnection', which creates a uniquely named connection that can
+%% be
+%% referenced by services such as CodePipeline.
 %%
-%% </li> <li> `DeleteConnection', which deletes the specified connection.
+%% `DeleteConnection', which deletes the specified connection.
 %%
-%% </li> <li> `GetConnection', which returns information about the
-%% connection, including the connection status.
+%% `GetConnection', which returns information about the connection,
+%% including
+%% the connection status.
 %%
-%% </li> <li> `ListConnections', which lists the connections associated
-%% with your account.
-%%
-%% </li> </ul> You can work with hosts by calling:
-%%
-%% <ul> <li> `CreateHost', which creates a host that represents the
-%% infrastructure where your provider is installed.
-%%
-%% </li> <li> `DeleteHost', which deletes the specified host.
-%%
-%% </li> <li> `GetHost', which returns information about the host,
-%% including the setup status.
-%%
-%% </li> <li> `ListHosts', which lists the hosts associated with your
+%% `ListConnections', which lists the connections associated with your
 %% account.
 %%
-%% </li> </ul> You can work with tags in Amazon Web Services CodeStar
-%% Connections by calling the following:
+%% You can work with hosts by calling:
 %%
-%% <ul> <li> `ListTagsForResource', which gets information about Amazon
-%% Web Services tags for a specified Amazon Resource Name (ARN) in Amazon Web
-%% Services CodeStar Connections.
+%% `CreateHost', which creates a host that represents the infrastructure
+%% where your provider is installed.
 %%
-%% </li> <li> `TagResource', which adds or updates tags for a resource in
-%% Amazon Web Services CodeStar Connections.
+%% `DeleteHost', which deletes the specified host.
 %%
-%% </li> <li> `UntagResource', which removes tags for a resource in
-%% Amazon Web Services CodeStar Connections.
+%% `GetHost', which returns information about the host, including
+%% the setup status.
 %%
-%% </li> </ul> For information about how to use Amazon Web Services CodeStar
-%% Connections, see the Developer Tools User Guide:
+%% `ListHosts', which lists the hosts associated with your
+%% account.
+%%
+%% You can work with tags in Amazon Web Services CodeStar Connections by
+%% calling the following:
+%%
+%% `ListTagsForResource', which gets information about Amazon Web
+%% Services tags for a
+%% specified Amazon Resource Name (ARN) in Amazon Web Services CodeStar
+%% Connections.
+%%
+%% `TagResource', which adds or updates tags for a resource in Amazon Web
+%% Services CodeStar
+%% Connections.
+%%
+%% `UntagResource', which removes tags for a resource in Amazon Web
+%% Services CodeStar
+%% Connections.
+%%
+%% For information about how to use Amazon Web Services CodeStar Connections,
+%% see the Developer Tools User
+%% Guide:
 %% https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html.
 -module(aws_codestar_connections).
 
@@ -134,11 +146,11 @@
 %%====================================================================
 
 %% @doc Creates a connection that can then be given to other Amazon Web
-%% Services services like CodePipeline so that it can access third-party code
-%% repositories.
+%% Services services like CodePipeline so
+%% that it can access third-party code repositories.
 %%
-%% The connection is in pending status until the third-party connection
-%% handshake is completed from the console.
+%% The connection is in pending status until
+%% the third-party connection handshake is completed from the console.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
@@ -147,11 +159,14 @@ create_connection(Client, Input, Options)
     request(Client, <<"CreateConnection">>, Input, Options).
 
 %% @doc Creates a resource that represents the infrastructure where a
-%% third-party provider is installed.
+%% third-party provider is
+%% installed.
 %%
 %% The host is used when you create connections to an installed third-party
-%% provider type, such as GitHub Enterprise Server. You create one host for
-%% all connections to that provider.
+%% provider
+%% type, such as GitHub Enterprise Server. You create one host for all
+%% connections to that
+%% provider.
 %%
 %% A host created through the CLI or the SDK is in `PENDING' status by
 %% default. You can make its status `AVAILABLE' by setting up the host in the
@@ -175,10 +190,11 @@ create_repository_link(Client, Input, Options)
     request(Client, <<"CreateRepositoryLink">>, Input, Options).
 
 %% @doc Creates a sync configuration which allows Amazon Web Services to sync
-%% content from a Git repository to update a specified Amazon Web Services
-%% resource.
+%% content from a Git
+%% repository to update a specified Amazon Web Services resource.
 %%
-%% Parameters for the sync configuration are determined by the sync type.
+%% Parameters for the sync
+%% configuration are determined by the sync type.
 create_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sync_configuration(Client, Input, []).
@@ -236,7 +252,8 @@ get_connection(Client, Input, Options)
     request(Client, <<"GetConnection">>, Input, Options).
 
 %% @doc Returns the host ARN and details such as status, provider type,
-%% endpoint, and, if applicable, the VPC configuration.
+%% endpoint, and, if
+%% applicable, the VPC configuration.
 get_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_host(Client, Input, []).
@@ -246,8 +263,8 @@ get_host(Client, Input, Options)
 
 %% @doc Returns details about a repository link.
 %%
-%% A repository link allows Git sync to monitor and sync changes from files
-%% in a specified Git repository.
+%% A repository link allows Git sync to monitor
+%% and sync changes from files in a specified Git repository.
 get_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_link(Client, Input, []).
@@ -257,8 +274,8 @@ get_repository_link(Client, Input, Options)
 
 %% @doc Returns details about the sync status for a repository.
 %%
-%% A repository sync uses Git sync to push and pull changes from your remote
-%% repository.
+%% A repository sync uses Git sync
+%% to push and pull changes from your remote repository.
 get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
@@ -267,7 +284,8 @@ get_repository_sync_status(Client, Input, Options)
     request(Client, <<"GetRepositorySyncStatus">>, Input, Options).
 
 %% @doc Returns the status of the sync with the Git repository for a specific
-%% Amazon Web Services resource.
+%% Amazon Web Services
+%% resource.
 get_resource_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_sync_status(Client, Input, []).
@@ -348,7 +366,8 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Adds to or modifies the tags of the given resource.
 %%
-%% Tags are metadata that can be used to manage a resource.
+%% Tags are metadata that can be used
+%% to manage a resource.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -376,7 +395,8 @@ update_host(Client, Input, Options)
 %% external Git repository.
 %%
 %% A repository link allows Git sync to monitor and sync changes to files in
-%% a specified Git repository.
+%% a specified Git
+%% repository.
 update_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_link(Client, Input, []).
@@ -423,7 +443,7 @@ do_request(Client, Action, Input0, Options) ->
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
-        {<<"X-Amz-Target">>, <<"com.amazonaws.codestar.connections.CodeStar_connections_20191201.", Action/binary>>}
+        {<<"X-Amz-Target">>, <<"CodeStar_connections_20191201.", Action/binary>>}
     ],
 
     Input = Input0,

@@ -2,10 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Personalize can consume real-time user event data, such as
-%% stream or click data, and use it for model training either alone or
-%% combined with historical data.
+%% stream or click data, and use
+%% it for model training either alone or combined with historical data.
 %%
-%% For more information see Recording item interaction events:
+%% For more information see
+%% Recording item interaction events:
 %% https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html.
 -module(aws_personalize_events).
 
@@ -29,8 +30,9 @@
 %% @doc Records action interaction event data.
 %%
 %% An action interaction event is an interaction between a user and an
-%% action. For example, a user taking an action, such a enrolling in a
-%% membership program or downloading your app.
+%% action.
+%% For example, a user taking an action, such a enrolling in a membership
+%% program or downloading your app.
 %%
 %% For more information about recording action interactions, see Recording
 %% action interaction events:
@@ -43,11 +45,13 @@ put_action_interactions(Client, Input) ->
 put_action_interactions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/action-interactions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -62,18 +66,21 @@ put_action_interactions(Client, Input0, Options0) ->
 
 %% @doc Adds one or more actions to an Actions dataset.
 %%
-%% For more information see Importing actions individually:
+%% For more information see
+%% Importing actions individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-actions.html.
 put_actions(Client, Input) ->
     put_actions(Client, Input, []).
 put_actions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -88,18 +95,21 @@ put_actions(Client, Input0, Options0) ->
 
 %% @doc Records item interaction event data.
 %%
-%% For more information see Recording item interaction events:
+%% For more information see
+%% Recording item interaction events:
 %% https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 put_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/events"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -114,18 +124,21 @@ put_events(Client, Input0, Options0) ->
 
 %% @doc Adds one or more items to an Items dataset.
 %%
-%% For more information see Importing items individually:
+%% For more information see
+%% Importing items individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html.
 put_items(Client, Input) ->
     put_items(Client, Input, []).
 put_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/items"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -140,18 +153,21 @@ put_items(Client, Input0, Options0) ->
 
 %% @doc Adds one or more users to a Users dataset.
 %%
-%% For more information see Importing users individually:
+%% For more information see
+%% Importing users individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html.
 put_users(Client, Input) ->
     put_users(Client, Input, []).
 put_users(Client, Input0, Options0) ->
     Method = post,
     Path = ["/users"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -167,6 +183,11 @@ put_users(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

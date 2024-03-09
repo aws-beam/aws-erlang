@@ -2,25 +2,29 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Use Amazon CloudWatch Observability Access Manager to create and
-%% manage links between source accounts and monitoring accounts by using
-%% CloudWatch cross-account observability.
+%% manage links between source accounts and
+%% monitoring accounts by using CloudWatch cross-account observability.
 %%
-%% With CloudWatch cross-account observability, you can monitor and
-%% troubleshoot applications that span multiple accounts within a Region.
-%% Seamlessly search, visualize, and analyze your metrics, logs, traces, and
-%% Application Insights applications in any of the linked accounts without
-%% account boundaries.
+%% With
+%% CloudWatch cross-account observability, you can monitor and troubleshoot
+%% applications that span
+%% multiple accounts within a Region. Seamlessly search, visualize, and
+%% analyze your metrics,
+%% logs, traces, and Application Insights applications in any of the linked
+%% accounts without account boundaries.
 %%
-%% Set up one or more Amazon Web Services accounts as monitoring accounts and
-%% link them with multiple source accounts. A monitoring account is a central
-%% Amazon Web Services account that can view and interact with observability
-%% data generated from source accounts. A source account is an individual
-%% Amazon Web Services account that generates observability data for the
-%% resources that reside in it. Source accounts share their observability
-%% data with the monitoring account. The shared observability data can
-%% include metrics in Amazon CloudWatch, logs in Amazon CloudWatch Logs,
-%% traces in X-Ray, and applications in Amazon CloudWatch Application
-%% Insights.
+%% Set up one or more Amazon Web Services accounts as monitoring
+%% accounts and link them with multiple source accounts. A
+%% monitoring account is a central Amazon Web Services account that can view
+%% and interact with
+%% observability data generated from source accounts. A source account is an
+%% individual Amazon Web Services account that generates observability data
+%% for the resources that reside in it.
+%% Source accounts share their observability data with the monitoring
+%% account. The shared
+%% observability data can include metrics in Amazon CloudWatch, logs in
+%% Amazon CloudWatch Logs, traces in X-Ray, and applications in Amazon
+%% CloudWatch Application Insights.
 -module(aws_oam).
 
 -export([create_link/2,
@@ -65,14 +69,18 @@
 %% created in a monitoring account.
 %%
 %% Before you create a link, you must create a sink in the monitoring account
-%% and create a sink policy in that account. The sink policy must permit the
-%% source account to link to it. You can grant permission to source accounts
-%% by granting permission to an entire organization or to individual
-%% accounts.
+%% and create a
+%% sink policy in that account. The sink policy must permit the source
+%% account to link to it. You
+%% can grant permission to source accounts by granting permission to an
+%% entire organization or to
+%% individual accounts.
 %%
-%% For more information, see CreateSink:
+%% For more information, see
+%% CreateSink:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_CreateSink.html
-%% and PutSinkPolicy:
+%% and
+%% PutSinkPolicy:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_PutSinkPolicy.html.
 %%
 %% Each monitoring account can be linked to as many as 100,000 source
@@ -85,10 +93,12 @@ create_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLink"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -104,11 +114,14 @@ create_link(Client, Input0, Options0) ->
 %% @doc Use this to create a sink in the current account, so that it can be
 %% used as a monitoring account in CloudWatch cross-account observability.
 %%
-%% A sink is a resource that represents an attachment point in a monitoring
-%% account. Source accounts can link to the sink to send observability data.
+%% A sink is a resource that
+%% represents an attachment point in a monitoring account. Source accounts
+%% can link to the sink
+%% to send observability data.
 %%
 %% After you create a sink, you must create a sink policy that allows source
-%% accounts to attach to it. For more information, see PutSinkPolicy:
+%% accounts to attach to it.
+%% For more information, see PutSinkPolicy:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_PutSinkPolicy.html.
 %%
 %% Each account can contain one sink. If you delete a sink, you can then
@@ -119,10 +132,12 @@ create_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSink"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -138,17 +153,20 @@ create_sink(Client, Input0, Options0) ->
 %% @doc Deletes a link between a monitoring account sink and a source
 %% account.
 %%
-%% You must run this operation in the source account.
+%% You must run this operation
+%% in the source account.
 delete_link(Client, Input) ->
     delete_link(Client, Input, []).
 delete_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLink"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -170,10 +188,12 @@ delete_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteSink"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -197,10 +217,12 @@ get_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLink"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -224,10 +246,12 @@ get_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetSink"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -242,18 +266,21 @@ get_sink(Client, Input0, Options0) ->
 
 %% @doc Returns the current sink policy attached to this sink.
 %%
-%% The sink policy specifies what accounts can attach to this sink as source
-%% accounts, and what types of data they can share.
+%% The sink policy specifies what
+%% accounts can attach to this sink as source accounts, and what types of
+%% data they can share.
 get_sink_policy(Client, Input) ->
     get_sink_policy(Client, Input, []).
 get_sink_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetSinkPolicy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -281,10 +308,12 @@ list_attached_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListAttachedLinks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -298,7 +327,8 @@ list_attached_links(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation in a source account to return a list of links to
-%% monitoring account sinks that this source account has.
+%% monitoring account sinks that
+%% this source account has.
 %%
 %% To find a list of links for one monitoring account sink, use
 %% ListAttachedLinks:
@@ -310,10 +340,12 @@ list_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLinks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -334,10 +366,12 @@ list_sinks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListSinks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -365,9 +399,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -376,35 +412,40 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the resource policy that grants permissions to
-%% source accounts to link to the monitoring account sink.
+%% source
+%% accounts to link to the monitoring account sink.
 %%
-%% When you create a sink policy, you can grant permissions to all accounts
-%% in an organization or to individual accounts.
+%% When you create a sink policy, you can grant
+%% permissions to all accounts in an organization or to individual accounts.
 %%
 %% You can also use a sink policy to limit the types of data that is shared.
-%% The three types that you can allow or deny are:
+%% The three types that
+%% you can allow or deny are:
 %%
-%% <ul> <li> Metrics - Specify with `AWS::CloudWatch::Metric'
+%% Metrics - Specify with
+%% `AWS::CloudWatch::Metric'
 %%
-%% </li> <li> Log groups - Specify with `AWS::Logs::LogGroup'
+%% Log groups - Specify with `AWS::Logs::LogGroup'
 %%
-%% </li> <li> Traces - Specify with `AWS::XRay::Trace'
+%% Traces - Specify with `AWS::XRay::Trace'
 %%
-%% </li> <li> Application Insights - Applications - Specify with
+%% Application Insights - Applications - Specify with
 %% `AWS::ApplicationInsights::Application'
 %%
-%% </li> </ul> See the examples in this section to see how to specify
-%% permitted source accounts and data types.
+%% See the examples in this section to see how to specify permitted source
+%% accounts and data types.
 put_sink_policy(Client, Input) ->
     put_sink_policy(Client, Input, []).
 put_sink_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutSinkPolicy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -422,34 +463,40 @@ put_sink_policy(Client, Input0, Options0) ->
 %% Both sinks and links can be tagged.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions by granting a user permission to access or
-%% change only resources with certain tag values.
+%% them to scope user
+%% permissions by granting a user
+%% permission to access or change only resources with certain tag values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
 %% You can use the `TagResource' action with a resource that already has
-%% tags. If you specify a new tag key for the alarm, this tag is appended to
-%% the list of tags associated with the alarm. If you specify a tag key that
-%% is already associated with the alarm, the new tag value that you specify
-%% replaces the previous value for that tag.
+%% tags. If you specify a new tag key for the alarm,
+%% this tag is appended to the list of tags associated
+%% with the alarm. If you specify a tag key that is already associated with
+%% the alarm, the new tag value that you specify replaces
+%% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
 %%
 %% Unlike tagging permissions in other Amazon Web Services services, to tag
-%% or untag links and sinks you must have the `oam:ResourceTag'
-%% permission. The `iam:ResourceTag' permission does not allow you to tag
-%% and untag links and sinks.
+%% or untag links and
+%% sinks you must have the `oam:ResourceTag' permission. The
+%% `iam:ResourceTag' permission does not allow you to tag and untag links
+%% and
+%% sinks.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -465,19 +512,23 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes one or more tags from the specified resource.
 %%
 %% Unlike tagging permissions in other Amazon Web Services services, to tag
-%% or untag links and sinks you must have the `oam:ResourceTag'
-%% permission. The `iam:TagResource' permission does not allow you to tag
-%% and untag links and sinks.
+%% or untag links and
+%% sinks you must have the `oam:ResourceTag' permission. The
+%% `iam:TagResource' permission does not allow you to tag and untag links
+%% and
+%% sinks.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -492,12 +543,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to change what types of data are shared from a
-%% source account to its linked monitoring account sink.
+%% source account to its linked
+%% monitoring account sink.
 %%
 %% You can't change the sink or change the monitoring account with this
 %% operation.
 %%
-%% To update the list of tags associated with the sink, use TagResource:
+%% To update the list of tags associated with the sink, use
+%% TagResource:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_TagResource.html.
 update_link(Client, Input) ->
     update_link(Client, Input, []).
@@ -505,10 +558,12 @@ update_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLink"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -524,6 +579,11 @@ update_link(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

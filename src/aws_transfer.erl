@@ -2,20 +2,25 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Transfer Family is a fully managed service that enables the transfer
-%% of files over the File Transfer Protocol (FTP), File Transfer Protocol
-%% over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol (SFTP)
-%% directly into and out of Amazon Simple Storage Service (Amazon S3) or
-%% Amazon EFS.
+%% of files over the File
+%% Transfer Protocol (FTP), File Transfer Protocol over SSL (FTPS), or Secure
+%% Shell (SSH) File
+%% Transfer Protocol (SFTP) directly into and out of Amazon Simple Storage
+%% Service (Amazon S3) or Amazon EFS.
 %%
 %% Additionally, you can use Applicability Statement 2 (AS2) to transfer
-%% files into and out of Amazon S3. Amazon Web Services helps you seamlessly
-%% migrate your file transfer workflows to Transfer Family by integrating
+%% files into and out of Amazon S3.
+%% Amazon Web Services helps you seamlessly migrate your file transfer
+%% workflows to Transfer Family by integrating
 %% with existing authentication systems, and providing DNS routing with
-%% Amazon Route 53 so nothing changes for your customers and partners, or
-%% their applications. With your data in Amazon S3, you can use it with
-%% Amazon Web Services for processing, analytics, machine learning, and
+%% Amazon Route 53 so
+%% nothing changes for your customers and partners, or their applications.
+%% With your data in
+%% Amazon S3, you can use it with Amazon Web Services for processing,
+%% analytics, machine learning, and
 %% archiving. Getting started with Transfer Family is easy since there is no
-%% infrastructure to buy and set up.
+%% infrastructure to buy and
+%% set up.
 -module(aws_transfer).
 
 -export([create_access/2,
@@ -144,13 +149,17 @@
 %%====================================================================
 
 %% @doc Used by administrators to choose which groups in the directory should
-%% have access to upload and download files over the enabled protocols using
-%% Transfer Family.
+%% have access to
+%% upload and download files over the enabled protocols using Transfer
+%% Family.
 %%
-%% For example, a Microsoft Active Directory might contain 50,000 users, but
-%% only a small fraction might need the ability to transfer files to the
-%% server. An administrator can use `CreateAccess' to limit the access to
-%% the correct set of users who need this ability.
+%% For example, a
+%% Microsoft Active Directory might contain 50,000 users, but only a small
+%% fraction might need
+%% the ability to transfer files to the server. An administrator can use
+%% `CreateAccess' to limit the access to the correct set of users who
+%% need this
+%% ability.
 create_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access(Client, Input, []).
@@ -162,9 +171,11 @@ create_access(Client, Input, Options)
 %%
 %% An agreement is a bilateral trading partner agreement, or partnership,
 %% between an Transfer Family server and an AS2 process. The agreement
-%% defines the file and message transfer relationship between the server and
-%% the AS2 process. To define an agreement, Transfer Family combines a
-%% server, local profile, partner profile, certificate, and other attributes.
+%% defines the file and message
+%% transfer relationship between the server and the AS2 process. To define an
+%% agreement, Transfer Family
+%% combines a server, local profile, partner profile, certificate, and other
+%% attributes.
 %%
 %% The partner is identified with the `PartnerProfileId', and the AS2
 %% process is identified with the `LocalProfileId'.
@@ -176,12 +187,13 @@ create_agreement(Client, Input, Options)
     request(Client, <<"CreateAgreement">>, Input, Options).
 
 %% @doc Creates the connector, which captures the parameters for a connection
-%% for the AS2 or SFTP protocol.
+%% for the
+%% AS2 or SFTP protocol.
 %%
 %% For AS2, the connector is required for sending files to an externally
 %% hosted AS2 server. For SFTP, the connector is required when sending files
-%% to an SFTP server or receiving files from an SFTP server. For more details
-%% about connectors, see Configure AS2 connectors:
+%% to an SFTP server or receiving files from an SFTP server.
+%% For more details about connectors, see Configure AS2 connectors:
 %% https://docs.aws.amazon.com/transfer/latest/userguide/configure-as2-connector.html
 %% and Create SFTP connectors:
 %% https://docs.aws.amazon.com/transfer/latest/userguide/configure-sftp-connector.html.
@@ -204,11 +216,14 @@ create_profile(Client, Input, Options)
     request(Client, <<"CreateProfile">>, Input, Options).
 
 %% @doc Instantiates an auto-scaling virtual server based on the selected
-%% file transfer protocol in Amazon Web Services.
+%% file transfer protocol
+%% in Amazon Web Services.
 %%
 %% When you make updates to your file transfer protocol-enabled server or
-%% when you work with users, use the service-generated `ServerId'
-%% property that is assigned to the newly created server.
+%% when you work
+%% with users, use the service-generated `ServerId' property that is
+%% assigned to the
+%% newly created server.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_server(Client, Input, []).
@@ -221,11 +236,14 @@ create_server(Client, Input, Options)
 %%
 %% You can only create and associate users with servers that have the
 %% `IdentityProviderType' set to `SERVICE_MANAGED'. Using parameters
-%% for `CreateUser', you can specify the user name, set the home
-%% directory, store the user's public key, and assign the user's
-%% Identity and Access Management (IAM) role. You can also optionally add a
-%% session policy, and assign metadata with tags that can be used to group
-%% and search for users.
+%% for
+%% `CreateUser', you can specify the user name, set the home directory,
+%% store the
+%% user's public key, and assign the user's Identity and Access
+%% Management (IAM)
+%% role. You can also optionally add a session policy, and assign metadata
+%% with tags that can
+%% be used to group and search for users.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -233,8 +251,9 @@ create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
 
-%% @doc Allows you to create a workflow with specified steps and step details
-%% the workflow invokes after file transfer completes.
+%% @doc
+%% Allows you to create a workflow with specified steps and step details the
+%% workflow invokes after file transfer completes.
 %%
 %% After creating a workflow, you can associate the workflow created with any
 %% transfer servers by specifying the `workflow-details' field in
@@ -265,7 +284,8 @@ delete_agreement(Client, Input, Options)
     request(Client, <<"DeleteAgreement">>, Input, Options).
 
 %% @doc Deletes the certificate that's specified in the
-%% `CertificateId' parameter.
+%% `CertificateId'
+%% parameter.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -340,11 +360,13 @@ delete_workflow(Client, Input, Options)
     request(Client, <<"DeleteWorkflow">>, Input, Options).
 
 %% @doc Describes the access that is assigned to the specific file transfer
-%% protocol-enabled server, as identified by its `ServerId' property and
-%% its `ExternalId'.
+%% protocol-enabled
+%% server, as identified by its `ServerId' property and its
+%% `ExternalId'.
 %%
 %% The response from this call returns the properties of the access that is
-%% associated with the `ServerId' value that was specified.
+%% associated with
+%% the `ServerId' value that was specified.
 describe_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_access(Client, Input, []).
@@ -413,11 +435,13 @@ describe_profile(Client, Input, Options)
     request(Client, <<"DescribeProfile">>, Input, Options).
 
 %% @doc Describes the security policy that is attached to your file transfer
-%% protocol-enabled server.
+%% protocol-enabled
+%% server.
 %%
 %% The response contains a description of the security policy's
-%% properties. For more information about security policies, see Working with
-%% security policies:
+%% properties. For more
+%% information about security policies, see Working with security
+%% policies:
 %% https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html.
 describe_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -427,10 +451,12 @@ describe_security_policy(Client, Input, Options)
     request(Client, <<"DescribeSecurityPolicy">>, Input, Options).
 
 %% @doc Describes a file transfer protocol-enabled server that you specify by
-%% passing the `ServerId' parameter.
+%% passing the
+%% `ServerId' parameter.
 %%
 %% The response contains a description of a server's properties. When you
-%% set `EndpointType' to VPC, the response will contain the
+%% set
+%% `EndpointType' to VPC, the response will contain the
 %% `EndpointDetails'.
 describe_server(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -440,10 +466,12 @@ describe_server(Client, Input, Options)
     request(Client, <<"DescribeServer">>, Input, Options).
 
 %% @doc Describes the user assigned to the specific file transfer
-%% protocol-enabled server, as identified by its `ServerId' property.
+%% protocol-enabled server, as
+%% identified by its `ServerId' property.
 %%
 %% The response from this call returns the properties of the user associated
-%% with the `ServerId' value that was specified.
+%% with the
+%% `ServerId' value that was specified.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -460,7 +488,9 @@ describe_workflow(Client, Input, Options)
     request(Client, <<"DescribeWorkflow">>, Input, Options).
 
 %% @doc Imports the signing and encryption certificates that you need to
-%% create local (AS2) profiles and partner profiles.
+%% create local (AS2)
+%% profiles and partner
+%% profiles.
 import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
@@ -469,7 +499,8 @@ import_certificate(Client, Input, Options)
     request(Client, <<"ImportCertificate">>, Input, Options).
 
 %% @doc Adds a host key to the server that's specified by the
-%% `ServerId' parameter.
+%% `ServerId'
+%% parameter.
 import_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_host_key(Client, Input, []).
@@ -478,11 +509,14 @@ import_host_key(Client, Input, Options)
     request(Client, <<"ImportHostKey">>, Input, Options).
 
 %% @doc Adds a Secure Shell (SSH) public key to a Transfer Family user
-%% identified by a `UserName' value assigned to the specific file
-%% transfer protocol-enabled server, identified by `ServerId'.
+%% identified by a
+%% `UserName' value assigned to the specific file transfer
+%% protocol-enabled server,
+%% identified by `ServerId'.
 %%
 %% The response returns the `UserName' value, the `ServerId' value,
-%% and the name of the `SshPublicKeyId'.
+%% and
+%% the name of the `SshPublicKeyId'.
 import_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_ssh_public_key(Client, Input, []).
@@ -499,12 +533,15 @@ list_accesses(Client, Input, Options)
     request(Client, <<"ListAccesses">>, Input, Options).
 
 %% @doc Returns a list of the agreements for the server that's identified
-%% by the `ServerId' that you supply.
+%% by the
+%% `ServerId' that you supply.
 %%
-%% If you want to limit the results to a certain number, supply a value for
-%% the `MaxResults' parameter. If you ran the command previously and
-%% received a value for `NextToken', you can supply that value to
-%% continue listing agreements from where you left off.
+%% If you want to limit the results to a certain number,
+%% supply a value for the `MaxResults' parameter. If you ran the command
+%% previously
+%% and received a value for `NextToken', you can supply that value to
+%% continue listing
+%% agreements from where you left off.
 list_agreements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_agreements(Client, Input, []).
@@ -515,10 +552,13 @@ list_agreements(Client, Input, Options)
 %% @doc Returns a list of the current certificates that have been imported
 %% into Transfer Family.
 %%
-%% If you want to limit the results to a certain number, supply a value for
-%% the `MaxResults' parameter. If you ran the command previously and
-%% received a value for the `NextToken' parameter, you can supply that
-%% value to continue listing certificates from where you left off.
+%% If you want to
+%% limit the results to a certain number, supply a value for the
+%% `MaxResults'
+%% parameter. If you ran the command previously and received a value for the
+%% `NextToken' parameter, you can supply that value to continue listing
+%% certificates
+%% from where you left off.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -537,7 +577,8 @@ list_connectors(Client, Input, Options)
 %% @doc Lists all in-progress executions for the specified workflow.
 %%
 %% If the specified workflow ID cannot be found, `ListExecutions' returns
-%% a `ResourceNotFound' exception.
+%% a
+%% `ResourceNotFound' exception.
 list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executions(Client, Input, []).
@@ -546,7 +587,8 @@ list_executions(Client, Input, Options)
     request(Client, <<"ListExecutions">>, Input, Options).
 
 %% @doc Returns a list of host keys for the server that's specified by
-%% the `ServerId' parameter.
+%% the `ServerId'
+%% parameter.
 list_host_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_host_keys(Client, Input, []).
@@ -556,10 +598,12 @@ list_host_keys(Client, Input, Options)
 
 %% @doc Returns a list of the profiles for your system.
 %%
-%% If you want to limit the results to a certain number, supply a value for
-%% the `MaxResults' parameter. If you ran the command previously and
-%% received a value for `NextToken', you can supply that value to
-%% continue listing profiles from where you left off.
+%% If you want to limit the results to a
+%% certain number, supply a value for the `MaxResults' parameter. If you
+%% ran the
+%% command previously and received a value for `NextToken', you can
+%% supply that value
+%% to continue listing profiles from where you left off.
 list_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_profiles(Client, Input, []).
@@ -568,7 +612,8 @@ list_profiles(Client, Input, Options)
     request(Client, <<"ListProfiles">>, Input, Options).
 
 %% @doc Lists the security policies that are attached to your file transfer
-%% protocol-enabled servers.
+%% protocol-enabled
+%% servers.
 list_security_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_policies(Client, Input, []).
@@ -577,7 +622,8 @@ list_security_policies(Client, Input, Options)
     request(Client, <<"ListSecurityPolicies">>, Input, Options).
 
 %% @doc Lists the file transfer protocol-enabled servers that are associated
-%% with your Amazon Web Services account.
+%% with your Amazon Web Services
+%% account.
 list_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_servers(Client, Input, []).
@@ -588,7 +634,8 @@ list_servers(Client, Input, Options)
 %% @doc Lists all of the tags associated with the Amazon Resource Name (ARN)
 %% that you specify.
 %%
-%% The resource can be a user, server, or role.
+%% The
+%% resource can be a user, server, or role.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -597,7 +644,8 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the users for a file transfer protocol-enabled server that you
-%% specify by passing the `ServerId' parameter.
+%% specify by passing
+%% the `ServerId' parameter.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -617,8 +665,8 @@ list_workflows(Client, Input, Options)
 %% @doc Sends a callback for asynchronous custom steps.
 %%
 %% The `ExecutionId', `WorkflowId', and `Token' are passed to the
-%% target resource during execution of a custom step of a workflow. You must
-%% include those with their callback as well as providing a status.
+%% target resource during execution of a custom step of a workflow.
+%% You must include those with their callback as well as providing a status.
 send_workflow_step_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_workflow_step_state(Client, Input, []).
@@ -629,24 +677,31 @@ send_workflow_step_state(Client, Input, Options)
 %% @doc Begins a file transfer between local Amazon Web Services storage and
 %% a remote AS2 or SFTP server.
 %%
-%% <ul> <li> For an AS2 connector, you specify the `ConnectorId' and one
-%% or more `SendFilePaths' to identify the files you want to transfer.
+%% For an AS2 connector, you specify the `ConnectorId' and one or more
+%% `SendFilePaths' to identify the files
+%% you want to transfer.
 %%
-%% </li> <li> For an SFTP connector, the file transfer can be either outbound
-%% or inbound. In both cases, you specify the `ConnectorId'. Depending on
-%% the direction of the transfer, you also specify the following items:
+%% For an SFTP connector, the file transfer can be either outbound or
+%% inbound. In both
+%% cases, you specify the `ConnectorId'. Depending on the direction of
+%% the transfer,
+%% you also specify the following items:
 %%
-%% <ul> <li> If you are transferring file from a partner's SFTP server to
-%% Amazon Web Services storage, you specify one or more
-%% `RetreiveFilePaths' to identify the files you want to transfer, and a
-%% `LocalDirectoryPath' to specify the destination folder.
+%% If you are transferring file from a partner's SFTP server to Amazon
+%% Web Services
+%% storage, you specify one or more `RetreiveFilePaths' to identify the
+%% files
+%% you want to transfer, and a `LocalDirectoryPath' to specify the
+%% destination
+%% folder.
 %%
-%% </li> <li> If you are transferring file to a partner's SFTP server
-%% from Amazon Web Services storage, you specify one or more
-%% `SendFilePaths' to identify the files you want to transfer, and a
-%% `RemoteDirectoryPath' to specify the destination folder.
-%%
-%% </li> </ul> </li> </ul>
+%% If you are transferring file to a partner's SFTP server from Amazon
+%% Web Services
+%% storage, you specify one or more `SendFilePaths' to identify the files
+%% you
+%% want to transfer, and a `RemoteDirectoryPath' to specify the
+%% destination
+%% folder.
 start_file_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_file_transfer(Client, Input, []).
@@ -655,14 +710,17 @@ start_file_transfer(Client, Input, Options)
     request(Client, <<"StartFileTransfer">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
-%% `OFFLINE' to `ONLINE'.
+%% `OFFLINE' to
+%% `ONLINE'.
 %%
-%% It has no impact on a server that is already `ONLINE'. An `ONLINE'
-%% server can accept and process file transfer jobs.
+%% It has no impact on a server that is already `ONLINE'. An
+%% `ONLINE' server can accept and process file transfer jobs.
 %%
 %% The state of `STARTING' indicates that the server is in an
-%% intermediate state, either not fully able to respond, or not fully online.
-%% The values of `START_FAILED' can indicate an error condition.
+%% intermediate state,
+%% either not fully able to respond, or not fully online. The values of
+%% `START_FAILED'
+%% can indicate an error condition.
 %%
 %% No response is returned from this call.
 start_server(Client, Input)
@@ -673,18 +731,23 @@ start_server(Client, Input, Options)
     request(Client, <<"StartServer">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
-%% `ONLINE' to `OFFLINE'.
+%% `ONLINE' to
+%% `OFFLINE'.
 %%
-%% An `OFFLINE' server cannot accept and process file transfer jobs.
-%% Information tied to your server, such as server and user properties, are
-%% not affected by stopping your server.
+%% An `OFFLINE' server cannot accept and process file transfer
+%% jobs. Information tied to your server, such as server and user properties,
+%% are not affected by
+%% stopping your server.
 %%
 %% Stopping the server does not reduce or impact your file transfer protocol
-%% endpoint billing; you must delete the server to stop being billed.
+%% endpoint
+%% billing; you must delete the server to stop being billed.
 %%
 %% The state of `STOPPING' indicates that the server is in an
-%% intermediate state, either not fully able to respond, or not fully
-%% offline. The values of `STOP_FAILED' can indicate an error condition.
+%% intermediate state,
+%% either not fully able to respond, or not fully offline. The values of
+%% `STOP_FAILED'
+%% can indicate an error condition.
 %%
 %% No response is returned from this call.
 stop_server(Client, Input)
@@ -709,9 +772,10 @@ tag_resource(Client, Input, Options)
 
 %% @doc Tests whether your SFTP connector is set up successfully.
 %%
-%% We highly recommend that you call this operation to test your ability to
-%% transfer files between local Amazon Web Services storage and a trading
-%% partner's SFTP server.
+%% We highly recommend that you call this
+%% operation to test your ability to transfer files between local Amazon Web
+%% Services storage and a trading partner's
+%% SFTP server.
 test_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_connection(Client, Input, []).
@@ -720,13 +784,17 @@ test_connection(Client, Input, Options)
     request(Client, <<"TestConnection">>, Input, Options).
 
 %% @doc If the `IdentityProviderType' of a file transfer protocol-enabled
-%% server is `AWS_DIRECTORY_SERVICE' or `API_Gateway', tests whether
-%% your identity provider is set up successfully.
+%% server is
+%% `AWS_DIRECTORY_SERVICE' or `API_Gateway', tests whether your
+%% identity
+%% provider is set up successfully.
 %%
 %% We highly recommend that you call this operation to test your
 %% authentication method as soon as you create your server. By doing so, you
-%% can troubleshoot issues with the identity provider integration to ensure
-%% that your users can successfully use the service.
+%% can troubleshoot
+%% issues with the identity provider integration to ensure that your users
+%% can successfully use
+%% the service.
 %%
 %% The `ServerId' and `UserName' parameters are required. The
 %% `ServerProtocol', `SourceIp', and `UserPassword' are all
@@ -734,37 +802,35 @@ test_connection(Client, Input, Options)
 %%
 %% Note the following:
 %%
-%% <ul> <li> You cannot use `TestIdentityProvider' if the
+%% You cannot use `TestIdentityProvider' if the
 %% `IdentityProviderType' of your server is `SERVICE_MANAGED'.
 %%
-%% </li> <li> `TestIdentityProvider' does not work with keys: it only
-%% accepts passwords.
+%% `TestIdentityProvider' does not work with keys: it only accepts
+%% passwords.
 %%
-%% </li> <li> `TestIdentityProvider' can test the password operation for
-%% a custom Identity Provider that handles keys and passwords.
+%% `TestIdentityProvider' can test the password operation for a custom
+%% Identity Provider that handles keys and passwords.
 %%
-%% </li> <li> If you provide any incorrect values for any parameters, the
-%% `Response' field is empty.
+%% If you provide any incorrect values for any parameters, the `Response'
+%% field is empty.
 %%
-%% </li> <li> If you provide a server ID for a server that uses
-%% service-managed users, you get an error:
+%% If you provide a server ID for a server that uses service-managed users,
+%% you get an error:
 %%
-%% ` An error occurred (InvalidRequestException) when calling the
+%% ```
+%% An error occurred (InvalidRequestException) when calling the
 %% TestIdentityProvider operation: s-server-ID not configured for external
-%% auth '
+%% auth '''
 %%
-%% </li> <li> If you enter a Server ID for the `--server-id' parameter
-%% that does not identify an actual Transfer server, you receive the
-%% following error:
+%% If you enter a Server ID for the `--server-id' parameter that does not
+%% identify an actual Transfer server, you receive the following error:
 %%
 %% `An error occurred (ResourceNotFoundException) when calling the
 %% TestIdentityProvider operation: Unknown server'.
 %%
 %% It is possible your sever is in a different region. You can specify a
-%% region by adding the following: `--region region-code', such as
-%% `--region us-east-2' to specify a server in US East (Ohio).
-%%
-%% </li> </ul>
+%% region by adding the following: `--region region-code',
+%% such as `--region us-east-2' to specify a server in US East (Ohio).
 test_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_identity_provider(Client, Input, []).
@@ -773,7 +839,8 @@ test_identity_provider(Client, Input, Options)
     request(Client, <<"TestIdentityProvider">>, Input, Options).
 
 %% @doc Detaches a key-value pair from a resource, as identified by its
-%% Amazon Resource Name (ARN).
+%% Amazon Resource Name
+%% (ARN).
 %%
 %% Resources are users, servers, roles, and other entities.
 %%
@@ -786,7 +853,8 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Allows you to update parameters for the access specified in the
-%% `ServerID' and `ExternalID' parameters.
+%% `ServerID' and
+%% `ExternalID' parameters.
 update_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access(Client, Input, []).
@@ -796,9 +864,10 @@ update_access(Client, Input, Options)
 
 %% @doc Updates some of the parameters for an existing agreement.
 %%
-%% Provide the `AgreementId' and the `ServerId' for the agreement
-%% that you want to update, along with the new values for the parameters to
-%% update.
+%% Provide the
+%% `AgreementId' and the `ServerId' for the agreement that you want
+%% to
+%% update, along with the new values for the parameters to update.
 update_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_agreement(Client, Input, []).
@@ -816,8 +885,10 @@ update_certificate(Client, Input, Options)
 
 %% @doc Updates some of the parameters for an existing connector.
 %%
-%% Provide the `ConnectorId' for the connector that you want to update,
-%% along with the new values for the parameters to update.
+%% Provide the
+%% `ConnectorId' for the connector that you want to update, along with
+%% the new
+%% values for the parameters to update.
 update_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connector(Client, Input, []).
@@ -826,7 +897,8 @@ update_connector(Client, Input, Options)
     request(Client, <<"UpdateConnector">>, Input, Options).
 
 %% @doc Updates the description for the host key that's specified by the
-%% `ServerId' and `HostKeyId' parameters.
+%% `ServerId' and
+%% `HostKeyId' parameters.
 update_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_host_key(Client, Input, []).
@@ -836,8 +908,10 @@ update_host_key(Client, Input, Options)
 
 %% @doc Updates some of the parameters for an existing profile.
 %%
-%% Provide the `ProfileId' for the profile that you want to update, along
-%% with the new values for the parameters to update.
+%% Provide the `ProfileId'
+%% for the profile that you want to update, along with the new values for the
+%% parameters to
+%% update.
 update_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_profile(Client, Input, []).
@@ -846,7 +920,8 @@ update_profile(Client, Input, Options)
     request(Client, <<"UpdateProfile">>, Input, Options).
 
 %% @doc Updates the file transfer protocol-enabled server's properties
-%% after that server has been created.
+%% after that server has
+%% been created.
 %%
 %% The `UpdateServer' call returns the `ServerId' of the server you
 %% updated.
@@ -859,23 +934,28 @@ update_server(Client, Input, Options)
 
 %% @doc Assigns new properties to a user.
 %%
-%% Parameters you pass modify any or all of the following: the home
-%% directory, role, and policy for the `UserName' and `ServerId' you
-%% specify.
+%% Parameters you pass modify any or all of the following:
+%% the home directory, role, and policy for the `UserName' and
+%% `ServerId'
+%% you specify.
 %%
 %% The response returns the `ServerId' and the `UserName' for the
 %% updated user.
 %%
 %% In the console, you can select Restricted when you create or update a
 %% user. This ensures that the user can't access anything outside of
-%% their home directory. The programmatic way to configure this behavior is
-%% to update the user. Set their `HomeDirectoryType' to `LOGICAL',
-%% and specify `HomeDirectoryMappings' with `Entry' as root (`/')
-%% and `Target' as their home directory.
+%% their home directory. The
+%% programmatic way to configure this behavior is to update the user. Set
+%% their
+%% `HomeDirectoryType' to `LOGICAL', and specify
+%% `HomeDirectoryMappings' with `Entry' as root (`/') and
+%% `Target' as their home directory.
 %%
 %% For example, if the user's home directory is `/test/admin-user',
-%% the following command updates the user so that their configuration in the
-%% console shows the Restricted flag as selected.
+%% the following
+%% command updates the user so that their configuration in the console shows
+%% the
+%% Restricted flag as selected.
 %%
 %% ` aws transfer update-user --server-id &lt;server-id&gt; --user-name
 %% admin-user --home-directory-type LOGICAL --home-directory-mappings

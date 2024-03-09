@@ -2,61 +2,60 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc This AWS CodeStar Notifications API Reference provides descriptions
-%% and usage examples of the operations and data types for the AWS CodeStar
-%% Notifications API.
+%% and usage examples of the
+%% operations and data types for the AWS CodeStar Notifications API.
 %%
-%% You can use the AWS CodeStar Notifications API to work with the following
-%% objects:
+%% You can use the AWS CodeStar Notifications API
+%% to work with the following objects:
 %%
 %% Notification rules, by calling the following:
 %%
-%% <ul> <li> `CreateNotificationRule', which creates a notification rule
-%% for a resource in your account.
+%% `CreateNotificationRule', which creates a notification rule for a
+%% resource in your account.
 %%
-%% </li> <li> `DeleteNotificationRule', which deletes a notification
-%% rule.
+%% `DeleteNotificationRule', which deletes a notification rule.
 %%
-%% </li> <li> `DescribeNotificationRule', which provides information
-%% about a notification rule.
-%%
-%% </li> <li> `ListNotificationRules', which lists the notification rules
-%% associated with your account.
-%%
-%% </li> <li> `UpdateNotificationRule', which changes the name, events,
-%% or targets associated with a notification rule.
-%%
-%% </li> <li> `Subscribe', which subscribes a target to a notification
-%% rule.
-%%
-%% </li> <li> `Unsubscribe', which removes a target from a notification
-%% rule.
-%%
-%% </li> </ul> Targets, by calling the following:
-%%
-%% <ul> <li> `DeleteTarget', which removes a notification rule target
-%% from a notification rule.
-%%
-%% </li> <li> `ListTargets', which lists the targets associated with a
+%% `DescribeNotificationRule', which provides information about a
 %% notification rule.
 %%
-%% </li> </ul> Events, by calling the following:
+%% `ListNotificationRules', which lists the notification rules associated
+%% with
+%% your account.
 %%
-%% <ul> <li> `ListEventTypes', which lists the event types you can
-%% include in a notification rule.
+%% `UpdateNotificationRule', which changes the name, events, or targets
+%% associated with a
+%% notification rule.
 %%
-%% </li> </ul> Tags, by calling the following:
+%% `Subscribe', which subscribes a target to a notification rule.
 %%
-%% <ul> <li> `ListTagsForResource', which lists the tags already
-%% associated with a notification rule in your account.
+%% `Unsubscribe', which removes a target from a notification rule.
 %%
-%% </li> <li> `TagResource', which associates a tag you provide with a
+%% Targets, by calling the following:
+%%
+%% `DeleteTarget', which removes a notification rule target from a
+%% notification rule.
+%%
+%% `ListTargets', which lists the targets associated with a
+%% notification rule.
+%%
+%% Events, by calling the following:
+%%
+%% `ListEventTypes', which lists the event types you can include in
+%% a notification rule.
+%%
+%% Tags, by calling the following:
+%%
+%% `ListTagsForResource', which lists the tags already associated
+%% with a notification rule in your account.
+%%
+%% `TagResource', which associates a tag you provide with a
 %% notification rule in your account.
 %%
-%% </li> <li> `UntagResource', which removes a tag from a notification
-%% rule in your account.
+%% `UntagResource', which removes a tag from a notification rule in
+%% your account.
 %%
-%% </li> </ul> For information about how to use AWS CodeStar Notifications,
-%% see the Amazon Web Services Developer Tools Console User Guide:
+%% For information about how to use AWS CodeStar Notifications, see the
+%% Amazon Web Services Developer Tools Console User Guide:
 %% https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html.
 -module(aws_codestar_notifications).
 
@@ -95,19 +94,22 @@
 
 %% @doc Creates a notification rule for a resource.
 %%
-%% The rule specifies the events you want notifications about and the targets
-%% (such as Chatbot topics or Chatbot clients configured for Slack) where you
-%% want to receive them.
+%% The rule specifies the events you want
+%% notifications about and the targets (such as Chatbot topics or Chatbot
+%% clients configured for Slack) where you want to receive
+%% them.
 create_notification_rule(Client, Input) ->
     create_notification_rule(Client, Input, []).
 create_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createNotificationRule"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -126,11 +128,13 @@ delete_notification_rule(Client, Input) ->
 delete_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteNotificationRule"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -149,11 +153,13 @@ delete_target(Client, Input) ->
 delete_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteTarget"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -172,11 +178,13 @@ describe_notification_rule(Client, Input) ->
 describe_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeNotificationRule"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -196,11 +204,13 @@ list_event_types(Client, Input) ->
 list_event_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listEventTypes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -220,11 +230,13 @@ list_notification_rules(Client, Input) ->
 list_notification_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listNotificationRules"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -243,11 +255,13 @@ list_tags_for_resource(Client, Input) ->
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForResource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -267,11 +281,13 @@ list_targets(Client, Input) ->
 list_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTargets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -285,18 +301,22 @@ list_targets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an association between a notification rule and an Chatbot
-%% topic or Chatbot client so that the associated target can receive
-%% notifications when the events described in the rule are triggered.
+%% topic or Chatbot client so that the
+%% associated target can receive notifications when the events described in
+%% the rule are
+%% triggered.
 subscribe(Client, Input) ->
     subscribe(Client, Input, []).
 subscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscribe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -315,11 +335,13 @@ tag_resource(Client, Input) ->
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagResource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -333,18 +355,22 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes an association between a notification rule and an Chatbot
-%% topic so that subscribers to that topic stop receiving notifications when
-%% the events described in the rule are triggered.
+%% topic so that
+%% subscribers to that topic stop receiving notifications when the events
+%% described in the
+%% rule are triggered.
 unsubscribe(Client, Input) ->
     unsubscribe(Client, Input, []).
 unsubscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/unsubscribe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -358,17 +384,20 @@ unsubscribe(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the association between one or more provided tags and a
-%% notification rule.
+%% notification
+%% rule.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 untag_resource(Client, Arn, Input0, Options0) ->
     Method = post,
     Path = ["/untagResource/", aws_util:encode_uri(Arn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -384,8 +413,10 @@ untag_resource(Client, Arn, Input0, Options0) ->
 
 %% @doc Updates a notification rule for a resource.
 %%
-%% You can change the events that trigger the notification rule, the status
-%% of the rule, and the targets that receive the notifications.
+%% You can change the events that trigger the
+%% notification rule, the status of the rule, and the targets that receive
+%% the
+%% notifications.
 %%
 %% To add or remove tags for a notification rule, you must use
 %% `TagResource' and `UntagResource'.
@@ -394,11 +425,13 @@ update_notification_rule(Client, Input) ->
 update_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateNotificationRule"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -414,6 +447,11 @@ update_notification_rule(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

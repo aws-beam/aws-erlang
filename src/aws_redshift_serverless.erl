@@ -7,15 +7,16 @@
 %% interfaces you can use to manage Amazon Redshift Serverless.
 %%
 %% Amazon Redshift Serverless automatically provisions data warehouse
-%% capacity and intelligently scales the underlying resources based on
-%% workload demands. Amazon Redshift Serverless adjusts capacity in seconds
-%% to deliver consistently high performance and simplified operations for
-%% even the most demanding and volatile workloads. Amazon Redshift Serverless
-%% lets you focus on using your data to acquire new insights for your
-%% business and customers.
+%% capacity and intelligently scales the
+%% underlying resources based on workload demands. Amazon Redshift Serverless
+%% adjusts capacity in seconds to deliver consistently high
+%% performance and simplified operations for even the most demanding and
+%% volatile workloads. Amazon Redshift Serverless lets you
+%% focus on using your data to acquire new insights for your business and
+%% customers.
 %%
-%% To learn more about Amazon Redshift Serverless, see What is Amazon
-%% Redshift Serverless:
+%% To learn more about Amazon Redshift Serverless,
+%% see What is Amazon Redshift Serverless:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html.
 -module(aws_redshift_serverless).
 
@@ -138,8 +139,8 @@
 
 %% @doc Converts a recovery point to a snapshot.
 %%
-%% For more information about recovery points and snapshots, see Working with
-%% snapshots and recovery points:
+%% For more information about recovery points and snapshots,
+%% see Working with snapshots and recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
 convert_recovery_point_to_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -186,8 +187,9 @@ create_scheduled_action(Client, Input, Options)
 
 %% @doc Creates a snapshot of all databases in a namespace.
 %%
-%% For more information about snapshots, see Working with snapshots and
-%% recovery points:
+%% For more information about snapshots, see
+%%
+%% Working with snapshots and recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -299,19 +301,19 @@ delete_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkgroup">>, Input, Options).
 
-%% @doc Returns a database user name and temporary password with temporary
-%% authorization to log in to Amazon Redshift Serverless.
+%% @doc Returns a database user name and temporary password with
+%% temporary authorization to log in to Amazon Redshift Serverless.
 %%
-%% By default, the temporary credentials expire in 900 seconds. You can
-%% optionally specify a duration between 900 seconds (15 minutes) and 3600
-%% seconds (60 minutes).
+%% By default, the temporary credentials expire in 900 seconds.
+%% You can optionally specify a duration between 900 seconds (15 minutes) and
+%% 3600 seconds (60 minutes).
 %%
-%% &lt;p&gt;The Identity and Access Management (IAM) user or role that runs
+%% The Identity and Access Management (IAM) user or role that runs
 %% GetCredentials must have an IAM policy attached that allows access to all
-%% necessary actions and resources.&lt;/p&gt; &lt;p&gt;If the
-%% &lt;code&gt;DbName&lt;/code&gt; parameter is specified, the IAM policy
-%% must allow access to the resource dbname for the specified database
-%% name.&lt;/p&gt;
+%% necessary actions and resources.
+%%
+%% If the `DbName' parameter is specified, the IAM policy must
+%% allow access to the resource dbname for the specified database name.
 get_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials(Client, Input, []).
@@ -533,8 +535,8 @@ restore_table_from_recovery_point(Client, Input, Options)
 %% @doc Restores a table from a snapshot to your Amazon Redshift Serverless
 %% instance.
 %%
-%% You can't use this operation to restore tables with interleaved sort
-%% keys:
+%% You can't use this operation to
+%% restore tables with interleaved sort keys:
 %% https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved.
 restore_table_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -579,9 +581,10 @@ update_endpoint_access(Client, Input, Options)
 %% @doc Updates a namespace with the specified settings.
 %%
 %% Unless required, you can't update multiple parameters in one request.
-%% For example, you must specify both `adminUsername' and
-%% `adminUserPassword' to update either field, but you can't update
-%% both `kmsKeyId' and `logExports' in a single request.
+%% For example,
+%% you must specify both `adminUsername' and `adminUserPassword' to
+%% update either field, but you can't update both `kmsKeyId'
+%% and `logExports' in a single request.
 update_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_namespace(Client, Input, []).
@@ -625,9 +628,9 @@ update_usage_limit(Client, Input, Options)
 
 %% @doc Updates a workgroup with the specified configuration settings.
 %%
-%% You can't update multiple parameters in one request. For example, you
-%% can update `baseCapacity' or `port' in a single request, but you
-%% can't update both in the same request.
+%% You can't update multiple parameters in one request. For example,
+%% you can update `baseCapacity' or `port' in a single request, but
+%% you can't update both in the same request.
 update_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workgroup(Client, Input, []).

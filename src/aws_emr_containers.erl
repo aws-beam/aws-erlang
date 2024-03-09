@@ -2,33 +2,35 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon EMR on EKS provides a deployment option for Amazon EMR that
-%% allows you to run open-source big data frameworks on Amazon Elastic
-%% Kubernetes Service (Amazon EKS).
+%% allows
+%% you to run open-source big data frameworks on Amazon Elastic Kubernetes
+%% Service (Amazon EKS).
 %%
 %% With this deployment option, you can focus on running analytics workloads
 %% while Amazon EMR on EKS builds, configures, and manages containers for
-%% open-source applications. For more information about Amazon EMR on EKS
-%% concepts and tasks, see What is shared id=&quot;EMR-EKS&quot;/&gt;:
+%% open-source applications.
+%% For more information about Amazon EMR on EKS concepts and tasks, see What
+%% is
+%% shared id=&quot;EMR-EKS&quot;/&gt;:
 %% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html.
 %%
 %% Amazon EMR containers is the API name for Amazon EMR on EKS. The
-%% `emr-containers' prefix is used in the following scenarios:
+%% `emr-containers' prefix is used in the following
+%% scenarios:
 %%
-%% <ul> <li> It is the prefix in the CLI commands for Amazon EMR on EKS. For
-%% example, `aws emr-containers start-job-run'.
+%% It is the prefix in the CLI commands for Amazon EMR on EKS. For example,
+%% `aws emr-containers start-job-run'.
 %%
-%% </li> <li> It is the prefix before IAM policy actions for Amazon EMR on
-%% EKS. For example, `&quot;Action&quot;: [
-%% &quot;emr-containers:StartJobRun&quot;]'. For more information, see
-%% Policy actions for Amazon EMR on EKS:
+%% It is the prefix before IAM policy actions for Amazon EMR on EKS. For
+%% example, `&quot;Action&quot;: [
+%% &quot;emr-containers:StartJobRun&quot;]'. For more
+%% information, see Policy actions for Amazon EMR on EKS:
 %% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions.
 %%
-%% </li> <li> It is the prefix used in Amazon EMR on EKS service endpoints.
-%% For example, `emr-containers.us-east-2.amazonaws.com'. For more
-%% information, see Amazon EMR on EKSService Endpoints:
+%% It is the prefix used in Amazon EMR on EKS service endpoints. For example,
+%% `emr-containers.us-east-2.amazonaws.com'. For more information, see
+%% Amazon EMR on EKSService Endpoints:
 %% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/service-quotas.html#service-endpoints.
-%%
-%% </li> </ul>
 -module(aws_emr_containers).
 
 -export([cancel_job_run/4,
@@ -96,11 +98,13 @@ cancel_job_run(Client, Id, VirtualClusterId, Input) ->
 cancel_job_run(Client, Id, VirtualClusterId, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -115,20 +119,24 @@ cancel_job_run(Client, Id, VirtualClusterId, Input0, Options0) ->
 
 %% @doc Creates a job template.
 %%
-%% Job template stores values of StartJobRun API request in a template and
-%% can be used to start a job run. Job template allows two use cases: avoid
+%% Job template stores values of StartJobRun API request in a
+%% template and can be used to start a job run. Job template allows two use
+%% cases: avoid
 %% repeating recurring StartJobRun API request values, enforcing certain
-%% values in StartJobRun API request.
+%% values in StartJobRun
+%% API request.
 create_job_template(Client, Input) ->
     create_job_template(Client, Input, []).
 create_job_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobtemplates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -144,18 +152,20 @@ create_job_template(Client, Input0, Options0) ->
 %% @doc Creates a managed endpoint.
 %%
 %% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
-%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
-%% cluster.
+%% EMR on EKS so that Amazon EMR Studio can
+%% communicate with your virtual cluster.
 create_managed_endpoint(Client, VirtualClusterId, Input) ->
     create_managed_endpoint(Client, VirtualClusterId, Input, []).
 create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -173,19 +183,22 @@ create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
 %% Virtual cluster is a managed entity on Amazon EMR on EKS. You can create,
 %% describe, list and delete virtual clusters. They do not consume any
 %% additional resource in your system. A single virtual cluster maps to a
-%% single Kubernetes namespace. Given this relationship, you can model
-%% virtual clusters the same way you model Kubernetes namespaces to meet your
-%% requirements.
+%% single Kubernetes
+%% namespace. Given this relationship, you can model virtual clusters the
+%% same way you model
+%% Kubernetes namespaces to meet your requirements.
 create_virtual_cluster(Client, Input) ->
     create_virtual_cluster(Client, Input, []).
 create_virtual_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -200,20 +213,24 @@ create_virtual_cluster(Client, Input0, Options0) ->
 
 %% @doc Deletes a job template.
 %%
-%% Job template stores values of StartJobRun API request in a template and
-%% can be used to start a job run. Job template allows two use cases: avoid
+%% Job template stores values of StartJobRun API request in a
+%% template and can be used to start a job run. Job template allows two use
+%% cases: avoid
 %% repeating recurring StartJobRun API request values, enforcing certain
-%% values in StartJobRun API request.
+%% values in StartJobRun
+%% API request.
 delete_job_template(Client, Id, Input) ->
     delete_job_template(Client, Id, Input, []).
 delete_job_template(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/jobtemplates/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -229,18 +246,20 @@ delete_job_template(Client, Id, Input0, Options0) ->
 %% @doc Deletes a managed endpoint.
 %%
 %% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
-%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
-%% cluster.
+%% EMR on EKS so that Amazon EMR Studio can
+%% communicate with your virtual cluster.
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input) ->
     delete_managed_endpoint(Client, Id, VirtualClusterId, Input, []).
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -258,19 +277,22 @@ delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
 %% Virtual cluster is a managed entity on Amazon EMR on EKS. You can create,
 %% describe, list and delete virtual clusters. They do not consume any
 %% additional resource in your system. A single virtual cluster maps to a
-%% single Kubernetes namespace. Given this relationship, you can model
-%% virtual clusters the same way you model Kubernetes namespaces to meet your
-%% requirements.
+%% single Kubernetes
+%% namespace. Given this relationship, you can model virtual clusters the
+%% same way you model
+%% Kubernetes namespaces to meet your requirements.
 delete_virtual_cluster(Client, Id, Input) ->
     delete_virtual_cluster(Client, Id, Input, []).
 delete_virtual_cluster(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -285,8 +307,9 @@ delete_virtual_cluster(Client, Id, Input0, Options0) ->
 
 %% @doc Displays detailed information about a job run.
 %%
-%% A job run is a unit of work, such as a Spark jar, PySpark script, or
-%% SparkSQL query, that you submit to Amazon EMR on EKS.
+%% A job run is a unit of work, such as a
+%% Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon
+%% EMR on EKS.
 describe_job_run(Client, Id, VirtualClusterId)
   when is_map(Client) ->
     describe_job_run(Client, Id, VirtualClusterId, #{}, #{}).
@@ -298,10 +321,12 @@ describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
 describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -311,10 +336,12 @@ describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
 
 %% @doc Displays detailed information about a specified job template.
 %%
-%% Job template stores values of StartJobRun API request in a template and
-%% can be used to start a job run. Job template allows two use cases: avoid
-%% repeating recurring StartJobRun API request values, enforcing certain
-%% values in StartJobRun API request.
+%% Job template stores values
+%% of StartJobRun API request in a template and can be used to start a job
+%% run. Job template
+%% allows two use cases: avoid repeating recurring StartJobRun API request
+%% values, enforcing
+%% certain values in StartJobRun API request.
 describe_job_template(Client, Id)
   when is_map(Client) ->
     describe_job_template(Client, Id, #{}, #{}).
@@ -326,10 +353,12 @@ describe_job_template(Client, Id, QueryMap, HeadersMap)
 describe_job_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobtemplates/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -339,9 +368,9 @@ describe_job_template(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Displays detailed information about a managed endpoint.
 %%
-%% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
-%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
-%% cluster.
+%% A managed endpoint is a gateway
+%% that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR
+%% Studio can communicate with your virtual cluster.
 describe_managed_endpoint(Client, Id, VirtualClusterId)
   when is_map(Client) ->
     describe_managed_endpoint(Client, Id, VirtualClusterId, #{}, #{}).
@@ -353,10 +382,12 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
 describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -366,10 +397,13 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Op
 
 %% @doc Displays detailed information about a specified virtual cluster.
 %%
-%% Virtual cluster is a managed entity on Amazon EMR on EKS. You can create,
-%% describe, list and delete virtual clusters. They do not consume any
-%% additional resource in your system. A single virtual cluster maps to a
-%% single Kubernetes namespace. Given this relationship, you can model
+%% Virtual cluster is a
+%% managed entity on Amazon EMR on EKS. You can create, describe, list and
+%% delete virtual
+%% clusters. They do not consume any additional resource in your system. A
+%% single virtual
+%% cluster maps to a single Kubernetes namespace. Given this relationship,
+%% you can model
 %% virtual clusters the same way you model Kubernetes namespaces to meet your
 %% requirements.
 describe_virtual_cluster(Client, Id)
@@ -383,10 +417,12 @@ describe_virtual_cluster(Client, Id, QueryMap, HeadersMap)
 describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -400,11 +436,13 @@ get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClus
 get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterIdentifier), "/endpoints/", aws_util:encode_uri(EndpointIdentifier), "/credentials"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -419,8 +457,9 @@ get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClus
 
 %% @doc Lists job runs based on a set of parameters.
 %%
-%% A job run is a unit of work, such as a Spark jar, PySpark script, or
-%% SparkSQL query, that you submit to Amazon EMR on EKS.
+%% A job run is a unit of work, such as a
+%% Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon
+%% EMR on EKS.
 list_job_runs(Client, VirtualClusterId)
   when is_map(Client) ->
     list_job_runs(Client, VirtualClusterId, #{}, #{}).
@@ -432,10 +471,12 @@ list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap)
 list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -454,10 +495,12 @@ list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists job templates based on a set of parameters.
 %%
-%% Job template stores values of StartJobRun API request in a template and
-%% can be used to start a job run. Job template allows two use cases: avoid
-%% repeating recurring StartJobRun API request values, enforcing certain
-%% values in StartJobRun API request.
+%% Job template stores values of
+%% StartJobRun API request in a template and can be used to start a job run.
+%% Job template
+%% allows two use cases: avoid repeating recurring StartJobRun API request
+%% values, enforcing
+%% certain values in StartJobRun API request.
 list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
@@ -469,10 +512,12 @@ list_job_templates(Client, QueryMap, HeadersMap)
 list_job_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobtemplates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -489,9 +534,9 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists managed endpoints based on a set of parameters.
 %%
-%% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
-%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
-%% cluster.
+%% A managed endpoint is a gateway
+%% that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR
+%% Studio can communicate with your virtual cluster.
 list_managed_endpoints(Client, VirtualClusterId)
   when is_map(Client) ->
     list_managed_endpoints(Client, VirtualClusterId, #{}, #{}).
@@ -503,10 +548,12 @@ list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap)
 list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -535,10 +582,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -548,10 +597,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists information about the specified virtual cluster.
 %%
-%% Virtual cluster is a managed entity on Amazon EMR on EKS. You can create,
-%% describe, list and delete virtual clusters. They do not consume any
-%% additional resource in your system. A single virtual cluster maps to a
-%% single Kubernetes namespace. Given this relationship, you can model
+%% Virtual cluster is a managed
+%% entity on Amazon EMR on EKS. You can create, describe, list and delete
+%% virtual
+%% clusters. They do not consume any additional resource in your system. A
+%% single virtual
+%% cluster maps to a single Kubernetes namespace. Given this relationship,
+%% you can model
 %% virtual clusters the same way you model Kubernetes namespaces to meet your
 %% requirements.
 list_virtual_clusters(Client)
@@ -565,10 +617,12 @@ list_virtual_clusters(Client, QueryMap, HeadersMap)
 list_virtual_clusters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -595,11 +649,13 @@ start_job_run(Client, VirtualClusterId, Input) ->
 start_job_run(Client, VirtualClusterId, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -614,26 +670,34 @@ start_job_run(Client, VirtualClusterId, Input0, Options0) ->
 
 %% @doc Assigns tags to resources.
 %%
-%% A tag is a label that you assign to an Amazon Web Services resource. Each
-%% tag consists of a key and an optional value, both of which you define.
-%% Tags enable you to categorize your Amazon Web Services resources by
-%% attributes such as purpose, owner, or environment. When you have many
-%% resources of the same type, you can quickly identify a specific resource
-%% based on the tags you've assigned to it. For example, you can define a
-%% set of tags for your Amazon EMR on EKS clusters to help you track each
+%% A tag is a label that you assign to an Amazon Web Services
+%% resource. Each tag consists of a key and an optional value, both of which
+%% you define. Tags
+%% enable you to categorize your Amazon Web Services resources by attributes
+%% such as purpose,
+%% owner, or environment. When you have many resources of the same type, you
+%% can quickly
+%% identify a specific resource based on the tags you've assigned to it.
+%% For example, you can
+%% define a set of tags for your Amazon EMR on EKS clusters to help you track
+%% each
 %% cluster's owner and stack level. We recommend that you devise a
-%% consistent set of tag keys for each resource type. You can then search and
-%% filter the resources based on the tags that you add.
+%% consistent set of tag keys
+%% for each resource type. You can then search and filter the resources based
+%% on the tags that
+%% you add.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -652,11 +716,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -673,6 +739,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

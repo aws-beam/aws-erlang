@@ -1,60 +1,74 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Most of these APIs are no longer supported and will not be updated.
+%% @doc
 %%
-%% We recommend using the latest versions in the Amazon Chime SDK API
-%% reference:
+%% Most of these APIs are no longer supported and will not be updated.
+%%
+%% We recommend using the latest versions in the
+%% Amazon Chime SDK API reference:
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/welcome.html, in
 %% the Amazon Chime SDK.
 %%
 %% Using the latest versions requires migrating to dedicated namespaces. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% The Amazon Chime application programming interface (API) is designed so
-%% administrators can perform key tasks, such as creating and managing Amazon
-%% Chime accounts, users, and Voice Connectors. This guide provides detailed
-%% information about the Amazon Chime API, including operations, types,
-%% inputs and outputs, and error codes.
+%% administrators can
+%% perform key tasks, such as creating and managing Amazon Chime accounts,
+%% users, and Voice
+%% Connectors. This guide provides detailed information about the Amazon
+%% Chime API,
+%% including operations, types, inputs and outputs, and error codes.
 %%
 %% You can use an AWS SDK, the AWS Command Line Interface (AWS CLI), or the
 %% REST API to make API calls for Amazon Chime. We recommend using an AWS SDK
-%% or the AWS CLI. The page for each API action contains a See Also section
-%% that includes links to information about using the action with a
-%% language-specific AWS SDK or the AWS CLI.
+%% or the
+%% AWS CLI. The page for each API action contains a See Also section that
+%% includes links to information about using the action with a
+%% language-specific
+%% AWS SDK or the AWS CLI.
 %%
-%% <dl> <dt>Using an AWS SDK</dt> <dd> You don't need to write code to
-%% calculate a signature for request authentication. The SDK clients
-%% authenticate your requests by using access keys that you provide. For more
-%% information about AWS SDKs, see the AWS Developer Center:
-%% http://aws.amazon.com/developer/.
+%% Using an AWS SDK
 %%
-%% </dd> <dt>Using the AWS CLI</dt> <dd> Use your access keys with the AWS
-%% CLI to make API calls. For information about setting up the AWS CLI, see
+%% You don't need to write code to calculate a signature for request
+%% authentication. The SDK clients authenticate your requests by using access
+%% keys that you provide. For more information about AWS SDKs, see the
+%% AWS Developer Center: http://aws.amazon.com/developer/.
+%%
+%% Using the AWS CLI
+%%
+%% Use your access keys with the AWS CLI to make API calls. For information
+%% about setting up the AWS CLI, see
 %% Installing the AWS Command Line Interface:
-%% https://docs.aws.amazon.com/cli/latest/userguide/installing.html in the
-%% AWS Command Line Interface User Guide. For a list of available Amazon
-%% Chime commands, see the Amazon Chime commands:
+%% https://docs.aws.amazon.com/cli/latest/userguide/installing.html
+%% in the AWS Command Line Interface User Guide. For a list of available
+%% Amazon Chime commands, see the
+%% Amazon Chime commands:
 %% https://docs.aws.amazon.com/cli/latest/reference/chime/index.html in the
 %% AWS CLI Command Reference.
 %%
-%% </dd> <dt>Using REST APIs</dt> <dd> If you use REST to make API calls, you
-%% must authenticate your request by providing a signature. Amazon Chime
-%% supports Signature Version 4. For more information, see Signature Version
-%% 4 Signing Process:
-%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html in
-%% the Amazon Web Services General Reference.
+%% Using REST APIs
+%%
+%% If you use REST to make API calls, you must authenticate your request by
+%% providing a signature. Amazon Chime supports Signature Version 4. For more
+%% information, see
+%% Signature Version 4 Signing Process:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+%% in the Amazon Web Services General Reference.
 %%
 %% When making REST API calls, use the service name `chime' and REST
 %% endpoint `https://service.chime.aws.amazon.com'.
 %%
-%% </dd> </dl> Administrative permissions are controlled using AWS Identity
-%% and Access Management (IAM). For more information, see Identity and Access
-%% Management for Amazon Chime:
-%% https://docs.aws.amazon.com/chime/latest/ag/security-iam.html in the
-%% Amazon Chime Administration Guide.
+%% Administrative permissions are controlled using AWS Identity and Access
+%% Management (IAM). For more information, see
+%% Identity and Access Management for Amazon Chime:
+%% https://docs.aws.amazon.com/chime/latest/ag/security-iam.html
+%% in the Amazon Chime Administration Guide.
 -module(aws_chime).
 
 -export([associate_phone_number_with_user/4,
@@ -525,10 +539,12 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=associate-phone-number"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -550,19 +566,23 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -584,19 +604,23 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -617,10 +641,12 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=associate-signin-delegate-groups"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -642,13 +668,16 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the
 %% Amazon Chime SDK Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
@@ -656,10 +685,12 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -680,19 +711,23 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 batch_create_channel_membership(Client, ChannelArn, Input) ->
     batch_create_channel_membership(Client, ChannelArn, Input, []).
 batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships?operation=batch-create"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -711,17 +746,20 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% account.
 %%
 %% Members can be users or bots. The member role designates whether the
-%% member is a chat room administrator or a general chat room member.
+%% member is a
+%% chat room administrator or a general chat room member.
 batch_create_room_membership(Client, AccountId, RoomId, Input) ->
     batch_create_room_membership(Client, AccountId, RoomId, Input, []).
 batch_create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships?operation=batch-create"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -734,23 +772,27 @@ batch_create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves phone numbers into the Deletion queue.
+%% @doc
+%% Moves phone numbers into the
+%% Deletion queue.
 %%
 %% Phone numbers must be disassociated from any users or Amazon Chime Voice
 %% Connectors before they can be deleted.
 %%
-%% Phone numbers remain in the Deletion queue for 7 days before they are
-%% deleted permanently.
+%% Phone numbers remain in the
+%% Deletion queue for 7 days before they are deleted permanently.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
 batch_delete_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -764,36 +806,42 @@ batch_delete_phone_number(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Suspends up to 50 users from a `Team' or `EnterpriseLWA'
-%% Amazon Chime account.
+%% Amazon Chime
+%% account.
 %%
 %% For more information about different account types, see Managing Your
 %% Amazon Chime Accounts:
 %% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
-%% the Amazon Chime Administration Guide.
+%% the Amazon Chime Administration
+%% Guide.
 %%
 %% Users suspended from a `Team' account are disassociated from the
-%% account,but they can continue to use Amazon Chime as free users. To remove
-%% the suspension from suspended `Team' account users, invite them to the
-%% `Team' account again. You can use the `InviteUsers' action to do
-%% so.
+%% account,but they
+%% can continue to use Amazon Chime as free users. To remove the suspension
+%% from suspended
+%% `Team' account users, invite them to the `Team' account again.
+%% You can use the `InviteUsers' action to do so.
 %%
 %% Users suspended from an `EnterpriseLWA' account are immediately signed
-%% out of Amazon Chime and can no longer sign in. To remove the suspension
-%% from suspended `EnterpriseLWA' account users, use the
+%% out of
+%% Amazon Chime and can no longer sign in. To remove the suspension from
+%% suspended `EnterpriseLWA' account users, use the
 %% `BatchUnsuspendUser' action.
 %%
-%% To sign out users without suspending them, use the `LogoutUser'
-%% action.
+%% To sign out users without suspending them, use the
+%% `LogoutUser' action.
 batch_suspend_user(Client, AccountId, Input) ->
     batch_suspend_user(Client, AccountId, Input, []).
 batch_suspend_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=suspend"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -807,27 +855,33 @@ batch_suspend_user(Client, AccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the suspension from up to 50 previously suspended users for
-%% the specified Amazon Chime `EnterpriseLWA' account.
+%% the specified Amazon
+%% Chime `EnterpriseLWA' account.
 %%
-%% Only users on `EnterpriseLWA' accounts can be unsuspended using this
-%% action. For more information about different account types, see Managing
-%% Your Amazon Chime Accounts :
-%% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
+%% Only users on `EnterpriseLWA'
+%% accounts can be unsuspended using this action. For more information about
+%% different account types, see
+%%
+%% Managing Your Amazon Chime Accounts
+%% : https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
 %% the account types, in the Amazon Chime Administration Guide.
 %%
 %% Previously suspended users who are unsuspended using this action are
-%% returned to `Registered' status. Users who are not previously
-%% suspended are ignored.
+%% returned to
+%% `Registered'
+%% status. Users who are not previously suspended are ignored.
 batch_unsuspend_user(Client, AccountId, Input) ->
     batch_unsuspend_user(Client, AccountId, Input, []).
 batch_unsuspend_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=unsuspend"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -859,10 +913,12 @@ batch_update_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-update"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -885,10 +941,12 @@ batch_update_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -904,21 +962,25 @@ batch_update_user(Client, AccountId, Input0, Options0) ->
 %% @doc Creates an Amazon Chime account under the administrator's AWS
 %% account.
 %%
-%% Only `Team' account types are currently supported for this action. For
-%% more information about different account types, see Managing Your Amazon
-%% Chime Accounts:
+%% Only `Team'
+%% account types are currently supported for this action. For more
+%% information about different account types, see
+%% Managing Your Amazon Chime Accounts:
 %% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
-%% the Amazon Chime Administration Guide.
+%% the Amazon Chime
+%% Administration Guide.
 create_account(Client, Input) ->
     create_account(Client, Input, []).
 create_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -934,8 +996,9 @@ create_account(Client, Input0, Options0) ->
 %% @doc Creates an Amazon Chime SDK messaging `AppInstance' under an AWS
 %% account.
 %%
-%% Only SDK messaging customers use this API. `CreateAppInstance'
-%% supports idempotency behavior as described in the AWS API Standard.
+%% Only SDK messaging customers use this API.
+%% `CreateAppInstance' supports idempotency behavior as described in the
+%% AWS API Standard.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateAppInstance:
@@ -943,19 +1006,23 @@ create_account(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_app_instance(Client, Input) ->
     create_app_instance(Client, Input, []).
 create_app_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -978,27 +1045,31 @@ create_app_instance(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 %%
-%% <ul> <li> `ChannelModerator' actions across all channels in the
+%% `ChannelModerator' actions across all channels in the
 %% `AppInstance'.
 %%
-%% </li> <li> `DeleteChannelMessage' actions.
+%% `DeleteChannelMessage' actions.
 %%
-%% </li> </ul> Only an `AppInstanceUser' can be promoted to an
-%% `AppInstanceAdmin' role.
+%% Only an `AppInstanceUser' can be promoted to an `AppInstanceAdmin'
+%% role.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
 create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1013,8 +1084,8 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 
 %% @doc Creates a user under an Amazon Chime `AppInstance'.
 %%
-%% The request consists of a unique `appInstanceUserId' and `Name'
-%% for that user.
+%% The request consists of a unique `appInstanceUserId' and
+%% `Name' for that user.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateAppInstanceUser:
@@ -1022,19 +1093,23 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
 create_app_instance_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-users"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1047,11 +1122,13 @@ create_app_instance_user(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new attendee for an active Amazon Chime SDK meeting.
+%% @doc
+%% Creates a new attendee for an active Amazon Chime SDK meeting.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the
 %% Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
@@ -1060,19 +1137,23 @@ create_app_instance_user(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1092,10 +1173,12 @@ create_bot(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1110,11 +1193,13 @@ create_bot(Client, AccountId, Input0, Options0) ->
 
 %% @doc Creates a channel to which you can add users and send messages.
 %%
-%% Restriction: You can't change a channel's privacy.
+%% Restriction: You can't change a channel's
+%% privacy.
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateChannel:
@@ -1122,19 +1207,23 @@ create_bot(Client, AccountId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1151,17 +1240,20 @@ create_channel(Client, Input0, Options0) ->
 
 %% @doc Permanently bans a member from a channel.
 %%
-%% Moderators can't add banned members to a channel. To undo a ban, you
-%% first have to `DeleteChannelBan', and then
+%% Moderators can't add banned members to a
+%% channel. To undo a ban, you first have to `DeleteChannelBan', and then
 %% `CreateChannelMembership'. Bans are cleaned up when you delete users
-%% or channels.
+%% or
+%% channels.
 %%
 %% If you ban a user who is already part of a channel, that user is
-%% automatically kicked from the channel.
+%% automatically kicked
+%% from the channel.
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateChannelBan:
@@ -1169,19 +1261,23 @@ create_channel(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
 create_channel_ban(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1198,30 +1294,31 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 
 %% @doc Adds a user to a channel.
 %%
-%% The `InvitedBy' response field is derived from the request header. A
-%% channel member can:
+%% The `InvitedBy' response field is derived from the
+%% request header. A channel member can:
 %%
-%% <ul> <li> List messages
+%% List messages
 %%
-%% </li> <li> Send messages
+%% Send messages
 %%
-%% </li> <li> Receive messages
+%% Receive messages
 %%
-%% </li> <li> Edit their own messages
+%% Edit their own messages
 %%
-%% </li> <li> Leave the channel
+%% Leave the channel
 %%
-%% </li> </ul> Privacy settings impact this action as follows:
+%% Privacy settings impact this action as follows:
 %%
-%% <ul> <li> Public Channels: You do not need to be a member to list
-%% messages, but you must be a member to send messages.
+%% Public Channels: You do not need to be a member to list messages, but you
+%% must be
+%% a member to send messages.
 %%
-%% </li> <li> Private Channels: You must be a member to list or send
-%% messages.
+%% Private Channels: You must be a member to list or send messages.
 %%
-%% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the `AppInstanceUserArn' of the user that makes the API call as the
-%% value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% `AppInstanceUserArn' of the user that makes the API call as the value
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateChannelMembership:
@@ -1229,19 +1326,23 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
 create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1260,19 +1361,20 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %%
 %% A channel moderator can:
 %%
-%% <ul> <li> Add and remove other members of the channel.
+%% Add and remove other members of the channel.
 %%
-%% </li> <li> Add and remove other moderators of the channel.
+%% Add and remove other moderators of the channel.
 %%
-%% </li> <li> Add and remove user bans for the channel.
+%% Add and remove user bans for the channel.
 %%
-%% </li> <li> Redact messages in the channel.
+%% Redact messages in the channel.
 %%
-%% </li> <li> List messages in the channel.
+%% List messages in the channel.
 %%
-%% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the `AppInstanceUserArn' of the user that makes the API call as the
-%% value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% `AppInstanceUserArn' of the user that makes the API call as the value
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateChannelModerator:
@@ -1280,19 +1382,23 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
 create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1315,19 +1421,23 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_media_capture_pipeline(Client, Input) ->
     create_media_capture_pipeline(Client, Input, []).
 create_media_capture_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/media-capture-pipelines"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1343,13 +1453,14 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
 %% @doc Creates a new Amazon Chime SDK meeting in the specified media Region
 %% with no initial attendees.
 %%
-%% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions:
+%% For more information about specifying media Regions, see
+%% Amazon Chime SDK Media Regions:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html
-%% in the Amazon Chime SDK Developer Guide . For more information about the
-%% Amazon Chime SDK, see Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
-%% Amazon Chime SDK Developer Guide.
+%% in the Amazon Chime SDK Developer Guide
+%% . For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateMeeting:
@@ -1357,19 +1468,23 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 create_meeting(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1389,8 +1504,9 @@ create_meeting(Client, Input0, Options0) ->
 %% Also ensures that the From number belongs to the customer.
 %%
 %% To play welcome audio or implement an interactive voice response (IVR),
-%% use the `CreateSipMediaApplicationCall' action with the corresponding
-%% SIP media application ID.
+%% use the
+%% `CreateSipMediaApplicationCall' action with the corresponding SIP
+%% media application ID.
 %%
 %% This API is is not available in a dedicated namespace.
 create_meeting_dial_out(Client, MeetingId, Input) ->
@@ -1399,10 +1515,12 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/dial-outs"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1415,16 +1533,21 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Amazon Chime SDK meeting in the specified media Region,
-%% with attendees.
+%% @doc
+%% Creates a new Amazon Chime SDK meeting in the specified media Region, with
+%% attendees.
 %%
-%% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions:
+%% For more information about specifying media Regions, see
+%% Amazon Chime SDK Media Regions:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html
-%% in the Amazon Chime SDK Developer Guide . For more information about the
-%% Amazon Chime SDK, see Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
-%% Amazon Chime SDK Developer Guide .
+%% in the
+%% Amazon Chime SDK Developer Guide
+%% . For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the
+%% Amazon Chime SDK Developer Guide
+%% .
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateMeetingWithAttendees:
@@ -1432,19 +1555,23 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 create_meeting_with_attendees(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings?operation=create-attendees"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1460,18 +1587,21 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 %% @doc Creates an order for phone numbers to be provisioned.
 %%
 %% For toll-free numbers, you cannot use the Amazon Chime Business Calling
-%% product type. For numbers outside the U.S., you must use the Amazon Chime
-%% SIP Media Application Dial-In product type.
+%% product type.
+%% For numbers outside the U.S., you must use the Amazon Chime SIP Media
+%% Application Dial-In product type.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
 create_phone_number_order(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1493,19 +1623,23 @@ create_phone_number_order(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1526,10 +1660,12 @@ create_room(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1552,10 +1688,12 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1576,19 +1714,23 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
 create_sip_media_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1611,19 +1753,23 @@ create_sip_media_application(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
 create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1645,19 +1791,23 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
 create_sip_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-rules"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1677,10 +1827,12 @@ create_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=create"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1699,10 +1851,10 @@ create_user(Client, AccountId, Input0, Options0) ->
 %% You can choose to create an Amazon Chime Voice Connector in a specific AWS
 %% Region.
 %%
-%% Enabling `CreateVoiceConnectorRequest$RequireEncryption' configures
-%% your Amazon Chime Voice Connector to use TLS transport for SIP signaling
-%% and Secure RTP (SRTP) for media. Inbound calls use TLS transport, and
-%% unencrypted outbound calls are blocked.
+%% Enabling `CreateVoiceConnectorRequest$RequireEncryption'
+%% configures your Amazon Chime Voice Connector to use TLS transport for SIP
+%% signaling and Secure RTP (SRTP) for media. Inbound calls use TLS
+%% transport, and unencrypted outbound calls are blocked.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateVoiceConnector:
@@ -1710,19 +1862,23 @@ create_user(Client, AccountId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 create_voice_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1738,13 +1894,15 @@ create_voice_connector(Client, Input0, Options0) ->
 %% @doc Creates an Amazon Chime Voice Connector group under the
 %% administrator's AWS account.
 %%
-%% You can associate Amazon Chime Voice Connectors with the Amazon Chime
-%% Voice Connector group by including `VoiceConnectorItems' in the
-%% request.
+%% You can
+%% associate Amazon Chime Voice Connectors with the Amazon Chime Voice
+%% Connector group by
+%% including `VoiceConnectorItems' in the request.
 %%
 %% You can include Amazon Chime Voice Connectors from different AWS Regions
-%% in your group. This creates a fault tolerant mechanism for fallback in
-%% case of availability events.
+%% in your group. This
+%% creates a fault tolerant mechanism for fallback in case of availability
+%% events.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, CreateVoiceConnectorGroup:
@@ -1752,19 +1910,23 @@ create_voice_connector(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
 create_voice_connector_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1779,16 +1941,21 @@ create_voice_connector_group(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified Amazon Chime account.
 %%
-%% You must suspend all users before deleting `Team' account. You can use
-%% the `BatchSuspendUser' action to dodo.
+%% You must suspend all users before deleting
+%% `Team' account. You can use the `BatchSuspendUser' action
+%% to dodo.
 %%
 %% For `EnterpriseLWA' and `EnterpriseAD' accounts, you must release
-%% the claimed domains for your Amazon Chime account before deletion. As soon
-%% as you release the domain, all users under that account are suspended.
+%% the
+%% claimed domains for your Amazon Chime account before deletion. As soon as
+%% you release
+%% the domain, all users under that account are suspended.
 %%
 %% Deleted accounts appear in your `Disabled' accounts list for 90 days.
-%% To restore deleted account from your `Disabled' accounts list, you
-%% must contact AWS Support.
+%% To restore
+%% deleted account from your `Disabled' accounts list, you must contact
+%% AWS
+%% Support.
 %%
 %% After 90 days, deleted accounts are permanently removed from your
 %% `Disabled' accounts list.
@@ -1798,10 +1965,12 @@ delete_account(Client, AccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1817,24 +1986,29 @@ delete_account(Client, AccountId, Input0, Options0) ->
 %% @doc Deletes an `AppInstance' and all associated data asynchronously.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteAppInstance:
+%% using the latest version,
+%% DeleteAppInstance:
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DeleteAppInstance.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_app_instance(Client, AppInstanceArn, Input) ->
     delete_app_instance(Client, AppInstanceArn, Input, []).
 delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1852,24 +2026,29 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% This action does not delete the user.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteAppInstanceAdmin:
+%% using the latest version,
+%% DeleteAppInstanceAdmin:
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DeleteAppInstanceAdmin.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1890,19 +2069,23 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1923,19 +2106,23 @@ delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Opt
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
     delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
 delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1949,13 +2136,14 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an attendee from the specified Amazon Chime SDK meeting and
-%% deletes their `JoinToken'.
+%% deletes their
+%% `JoinToken'.
 %%
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
-%% deleted. For more information about the Amazon Chime SDK, see Using the
-%% Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
-%% Amazon Chime SDK Developer Guide.
+%% deleted. For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteAttendee:
@@ -1963,19 +2151,23 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1989,13 +2181,15 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Immediately makes a channel and its memberships inaccessible and
-%% marks them for deletion.
+%% marks them for
+%% deletion.
 %%
 %% This is an irreversible process.
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteChannel:
@@ -2003,19 +2197,23 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
 delete_channel(Client, ChannelArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -2034,7 +2232,8 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteChannelBan:
@@ -2042,19 +2241,23 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
 delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -2073,7 +2276,8 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteChannelMembership:
@@ -2081,19 +2285,23 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
 delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -2110,13 +2318,15 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 
 %% @doc Deletes a channel message.
 %%
-%% Only admins can perform this action. Deletion makes messages inaccessible
-%% immediately. A background process deletes any revisions created by
+%% Only admins can perform this action. Deletion makes messages
+%% inaccessible immediately. A background process deletes any revisions
+%% created by
 %% `UpdateChannelMessage'.
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteChannelMessage:
@@ -2124,19 +2334,23 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
 delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -2155,7 +2369,8 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteChannelModerator:
@@ -2163,19 +2378,23 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -2198,10 +2417,12 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2217,24 +2438,29 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %% @doc Deletes the media capture pipeline.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteMediaCapturePipeline:
+%% using the latest version,
+%% DeleteMediaCapturePipeline:
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_media-pipelines-chime_DeleteMediaCapturePipeline.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
 delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
     Method = delete,
     Path = ["/media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2250,8 +2476,9 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
 %% @doc Deletes the specified Amazon Chime SDK meeting.
 %%
 %% The operation deletes all attendees, disconnects all clients, and prevents
-%% new clients from joining the meeting. For more information about the
-%% Amazon Chime SDK, see Using the Amazon Chime SDK:
+%% new clients from
+%% joining the meeting. For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
 %% Amazon Chime SDK Developer Guide.
 %%
@@ -2261,19 +2488,23 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 delete_meeting(Client, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2288,21 +2519,26 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 
 %% @doc Moves the specified phone number into the Deletion queue.
 %%
-%% A phone number must be disassociated from any users or Amazon Chime Voice
-%% Connectors before it can be deleted.
+%% A
+%% phone number must be disassociated from any users or Amazon Chime Voice
+%% Connectors
+%% before it can be deleted.
 %%
-%% Deleted phone numbers remain in the Deletion queue for 7 days before they
-%% are deleted permanently.
+%% Deleted phone numbers remain in the
+%% Deletion queue
+%% for 7 days before they are deleted permanently.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
 delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2324,19 +2560,23 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2356,10 +2596,12 @@ delete_room(Client, AccountId, RoomId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2380,10 +2622,12 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2404,19 +2648,23 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
 delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2439,19 +2687,23 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
 delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2466,8 +2718,10 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 
 %% @doc Deletes the specified Amazon Chime Voice Connector.
 %%
-%% Any phone numbers associated with the Amazon Chime Voice Connector must be
-%% disassociated from it before it can be deleted.
+%% Any phone numbers associated with the
+%% Amazon Chime Voice Connector must be disassociated from it before it can
+%% be
+%% deleted.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteVoiceConnector:
@@ -2475,19 +2729,23 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2510,19 +2768,23 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2537,8 +2799,10 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 
 %% @doc Deletes the specified Amazon Chime Voice Connector group.
 %%
-%% Any `VoiceConnectorItems' and phone numbers associated with the group
-%% must be removed before it can be deleted.
+%% Any
+%% `VoiceConnectorItems'
+%% and phone numbers associated with the group must be removed before it can
+%% be deleted.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DeleteVoiceConnectorGroup:
@@ -2546,19 +2810,23 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2583,19 +2851,23 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2617,19 +2889,23 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2651,19 +2927,23 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2688,19 +2968,23 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2722,19 +3006,23 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=delete"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2755,9 +3043,11 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_app_instance(Client, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance(Client, AppInstanceArn, #{}, #{}).
@@ -2770,9 +3060,11 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2788,9 +3080,11 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, #{}, #{}).
@@ -2803,9 +3097,11 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2821,9 +3117,11 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
     describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
@@ -2836,9 +3134,11 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2851,7 +3151,8 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DescribeChannel:
@@ -2859,9 +3160,11 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_channel(Client, ChannelArn)
   when is_map(Client) ->
     describe_channel(Client, ChannelArn, #{}, #{}).
@@ -2874,9 +3177,11 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2892,7 +3197,8 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DescribeChannelBan:
@@ -2900,9 +3206,11 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_channel_ban(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, #{}, #{}).
@@ -2915,9 +3223,11 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2933,7 +3243,8 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Option
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DescribeChannelMembership:
@@ -2941,9 +3252,11 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Option
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_channel_membership(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, #{}, #{}).
@@ -2956,9 +3269,11 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -2971,11 +3286,13 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the details of a channel based on the membership of the
-%% specified `AppInstanceUser'.
+%% specified
+%% `AppInstanceUser'.
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DescribeChannelMembershipForAppInstanceUser:
@@ -2983,9 +3300,11 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
@@ -2998,9 +3317,11 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-membership"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3021,7 +3342,8 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DescribeChannelModeratedByAppInstanceUser:
@@ -3029,9 +3351,11 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
@@ -3044,9 +3368,11 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-moderated-channel"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3066,7 +3392,8 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, DescribeChannelModerator:
@@ -3074,9 +3401,11 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn)
   when is_map(Client) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, #{}, #{}).
@@ -3089,9 +3418,11 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3111,10 +3442,12 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0)
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=disassociate-phone-number"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3136,19 +3469,23 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3170,19 +3507,23 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3203,10 +3544,12 @@ disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Opti
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=disassociate-signin-delegate-groups"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3220,7 +3563,8 @@ disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Opti
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified Amazon Chime account, such as
-%% account type and supported licenses.
+%% account type and supported
+%% licenses.
 get_account(Client, AccountId)
   when is_map(Client) ->
     get_account(Client, AccountId, #{}, #{}).
@@ -3232,10 +3576,12 @@ get_account(Client, AccountId, QueryMap, HeadersMap)
 get_account(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3244,9 +3590,11 @@ get_account(Client, AccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves account settings for the specified Amazon Chime account ID,
-%% such as remote control and dialout settings.
+%% such as remote control
+%% and dialout settings.
 %%
-%% For more information about these settings, see Use the Policies Page:
+%% For more information about these settings, see
+%% Use the Policies Page:
 %% https://docs.aws.amazon.com/chime/latest/ag/policies.html in the Amazon
 %% Chime Administration Guide.
 get_account_settings(Client, AccountId)
@@ -3260,10 +3608,12 @@ get_account_settings(Client, AccountId, QueryMap, HeadersMap)
 get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3279,9 +3629,11 @@ get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_app_instance_retention_settings(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, #{}, #{}).
@@ -3294,9 +3646,11 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3312,9 +3666,11 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_app_instance_streaming_configurations(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
@@ -3327,9 +3683,11 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3337,13 +3695,14 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the Amazon Chime SDK attendee details for a specified meeting ID
-%% and attendee ID.
+%% @doc
+%% Gets the Amazon Chime SDK attendee details for a specified meeting ID and
+%% attendee ID.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
-%% Amazon Chime SDK Developer Guide.
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, GetAttendee:
@@ -3351,9 +3710,11 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
@@ -3366,9 +3727,11 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3390,9 +3753,11 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3404,7 +3769,8 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
 %%
 %% The x-amz-chime-bearer request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, GetChannelMessage:
@@ -3412,9 +3778,11 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_channel_message(Client, ChannelArn, MessageId)
   when is_map(Client) ->
     get_channel_message(Client, ChannelArn, MessageId, #{}, #{}).
@@ -3427,9 +3795,11 @@ get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -3455,9 +3825,11 @@ get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3466,8 +3838,8 @@ get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves global settings for the administrator's AWS account,
-%% such as Amazon Chime Business Calling and Amazon Chime Voice Connector
-%% settings.
+%% such as Amazon Chime Business
+%% Calling and Amazon Chime Voice Connector settings.
 get_global_settings(Client)
   when is_map(Client) ->
     get_global_settings(Client, #{}, #{}).
@@ -3480,9 +3852,11 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3493,14 +3867,17 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets an existing media capture pipeline.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetMediaCapturePipeline:
+%% using the latest version,
+%% GetMediaCapturePipeline:
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_media-pipelines-chime_GetMediaCapturePipeline.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_media_capture_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
     get_media_capture_pipeline(Client, MediaPipelineId, #{}, #{}).
@@ -3513,9 +3890,11 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3523,22 +3902,28 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is is no longer supported and will not be updated.
+%% @doc
+%%
+%% This API is is no longer supported and will not be updated.
 %%
 %% We recommend using the latest version, GetMeeting:
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_GetMeeting.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% Gets the Amazon Chime SDK meeting details for the specified meeting ID.
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
-%% Amazon Chime SDK Developer Guide .
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the
+%% Amazon Chime SDK Developer Guide
+%% .
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
@@ -3551,9 +3936,11 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3569,9 +3956,11 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_messaging_session_endpoint(Client)
   when is_map(Client) ->
     get_messaging_session_endpoint(Client, #{}, #{}).
@@ -3584,9 +3973,11 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoints/messaging-session"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3607,10 +3998,12 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
 get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3619,8 +4012,8 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified phone number order, such as the
-%% order creation timestamp, phone numbers in E.164 format, product type, and
-%% order status.
+%% order creation timestamp, phone
+%% numbers in E.164 format, product type, and order status.
 get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
     get_phone_number_order(Client, PhoneNumberOrderId, #{}, #{}).
@@ -3633,9 +4026,11 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders/", aws_util:encode_uri(PhoneNumberOrderId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3657,9 +4052,11 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3676,9 +4073,11 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
@@ -3691,9 +4090,11 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3701,12 +4102,14 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the retention settings for the specified Amazon Chime Enterprise
+%% @doc
+%% Gets the retention settings for the specified Amazon Chime Enterprise
 %% account.
 %%
-%% For more information about retention settings, see Managing Chat Retention
-%% Policies: https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html
-%% in the Amazon Chime Administration Guide.
+%% For more information about retention settings, see
+%% Managing Chat Retention Policies:
+%% https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html in the
+%% Amazon Chime Administration Guide.
 get_retention_settings(Client, AccountId)
   when is_map(Client) ->
     get_retention_settings(Client, AccountId, #{}, #{}).
@@ -3718,10 +4121,12 @@ get_retention_settings(Client, AccountId, QueryMap, HeadersMap)
 get_retention_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3743,9 +4148,11 @@ get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3762,9 +4169,11 @@ get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
@@ -3777,9 +4186,11 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3796,9 +4207,11 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
@@ -3811,9 +4224,11 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3830,9 +4245,11 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
@@ -3845,9 +4262,11 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3859,7 +4278,8 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
 %% address, license type,and personal meeting PIN.
 %%
 %% To retrieve user details with an email address instead of a user ID, use
-%% the `ListUsers' action, and then filter by email address.
+%% the
+%% `ListUsers' action, and then filter by email address.
 get_user(Client, AccountId, UserId)
   when is_map(Client) ->
     get_user(Client, AccountId, UserId, #{}, #{}).
@@ -3872,9 +4292,11 @@ get_user(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3896,9 +4318,11 @@ get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3915,9 +4339,11 @@ get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
@@ -3930,9 +4356,11 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3949,9 +4377,11 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -3964,9 +4394,11 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3974,8 +4406,9 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves details for the specified Amazon Chime Voice Connector
-%% group, such as timestamps,name, and associated `VoiceConnectorItems'.
+%% @doc
+%% Retrieves details for the specified Amazon Chime Voice Connector group,
+%% such as timestamps,name, and associated `VoiceConnectorItems'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, GetVoiceConnectorGroup:
@@ -3983,9 +4416,11 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
@@ -3998,9 +4433,11 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4011,8 +4448,8 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 %% @doc Retrieves the logging configuration details for the specified Amazon
 %% Chime Voice Connector.
 %%
-%% Shows whether SIP message logs are enabled for sending to Amazon
-%% CloudWatch Logs.
+%% Shows whether SIP message logs are enabled for sending to
+%% Amazon CloudWatch Logs.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, GetVoiceConnectorLoggingConfiguration:
@@ -4020,9 +4457,11 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -4035,9 +4474,11 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4054,9 +4495,11 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
@@ -4069,9 +4512,11 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4088,9 +4533,11 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
@@ -4103,9 +4550,11 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4117,7 +4566,8 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 %% Amazon Chime Voice Connector.
 %%
 %% Shows whether media streaming is enabled for sending to Amazon Kinesis. It
-%% also shows the retention period, in hours, for the Amazon Kinesis data.
+%% also shows
+%% the retention period, in hours, for the Amazon Kinesis data.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, GetVoiceConnectorStreamingConfiguration:
@@ -4125,9 +4575,11 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -4140,9 +4592,11 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4159,9 +4613,11 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
@@ -4174,9 +4630,11 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4184,20 +4642,24 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is is no longer supported and will not be updated.
+%% @doc
+%%
+%% This API is is no longer supported and will not be updated.
 %%
 %% We recommend using the latest version, GetVoiceConnectorTerminationHealth:
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorTerminationHealth.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% Retrieves information about the last time a SIP `OPTIONS' ping was
-%% received from your SIP infrastructure for the specified Amazon Chime Voice
-%% Connector.
+%% received from
+%% your SIP infrastructure for the specified Amazon Chime Voice Connector.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
@@ -4210,9 +4672,11 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/health"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4221,19 +4685,23 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends email to a maximum of 50 users, inviting them to the specified
-%% Amazon Chime `Team' account.
+%% Amazon Chime
+%% `Team' account.
 %%
-%% Only `Team' account types are currently supported for this action.
+%% Only `Team' account types are currently
+%% supported for this action.
 invite_users(Client, AccountId, Input) ->
     invite_users(Client, AccountId, Input, []).
 invite_users(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=add"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4249,9 +4717,10 @@ invite_users(Client, AccountId, Input0, Options0) ->
 %% @doc Lists the Amazon Chime accounts under the administrator's AWS
 %% account.
 %%
-%% You can filter accounts by account name prefix. To find out which Amazon
-%% Chime account a user belongs to, you can filter by the user's email
-%% address, which returns one account result.
+%% You can filter accounts
+%% by account name prefix. To find out which Amazon Chime account a user
+%% belongs to, you can
+%% filter by the user's email address, which returns one account result.
 list_accounts(Client)
   when is_map(Client) ->
     list_accounts(Client, #{}, #{}).
@@ -4263,10 +4732,12 @@ list_accounts(Client, QueryMap, HeadersMap)
 list_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4289,9 +4760,11 @@ list_accounts(Client, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_app_instance_admins(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_admins(Client, AppInstanceArn, #{}, #{}).
@@ -4304,9 +4777,11 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4319,8 +4794,8 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all `AppInstanceUsers' created under a single
-%% `AppInstance'.
+%% @doc List all `AppInstanceUsers'
+%% created under a single `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListAppInstanceUsers:
@@ -4328,9 +4803,11 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
@@ -4343,9 +4820,11 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4368,9 +4847,11 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_app_instances(Client)
   when is_map(Client) ->
     list_app_instances(Client, #{}, #{}).
@@ -4383,9 +4864,11 @@ list_app_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4414,9 +4897,11 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4424,12 +4909,13 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the attendees for the specified Amazon Chime SDK meeting.
+%% @doc
+%% Lists the attendees for the specified Amazon Chime SDK meeting.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
-%% Amazon Chime SDK Developer Guide.
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListAttendees:
@@ -4437,9 +4923,11 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
@@ -4452,9 +4940,11 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4481,9 +4971,11 @@ list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4500,7 +4992,8 @@ list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListChannelBans:
@@ -4508,9 +5001,11 @@ list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_channel_bans(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_bans(Client, ChannelArn, #{}, #{}).
@@ -4523,9 +5018,11 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -4546,7 +5043,8 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListChannelMemberships:
@@ -4554,9 +5052,11 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_channel_memberships(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_memberships(Client, ChannelArn, #{}, #{}).
@@ -4569,9 +5069,11 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -4592,12 +5094,14 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists all channels that a particular `AppInstanceUser' is a part
 %% of.
 %%
-%% Only an `AppInstanceAdmin' can call the API with a user ARN that is
-%% not their own.
+%% Only an
+%% `AppInstanceAdmin' can call the API with a user ARN that is not their
+%% own.
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListChannelMembershipsForAppInstanceUser:
@@ -4605,9 +5109,11 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_channel_memberships_for_app_instance_user(Client)
   when is_map(Client) ->
     list_channel_memberships_for_app_instance_user(Client, #{}, #{}).
@@ -4620,9 +5126,11 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-memberships"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -4642,16 +5150,21 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Opt
 
 %% @doc List all the messages in a channel.
 %%
-%% Returns a paginated list of `ChannelMessages'. By default, sorted by
-%% creation timestamp in descending order.
+%% Returns a paginated list of
+%% `ChannelMessages'. By default, sorted by creation timestamp in
+%% descending
+%% order.
 %%
 %% Redacted messages appear in the results as empty, since they are only
-%% redacted, not deleted. Deleted messages do not appear in the results. This
-%% action always returns the latest version of an edited message.
+%% redacted, not
+%% deleted. Deleted messages do not appear in the results. This action always
+%% returns the
+%% latest version of an edited message.
 %%
 %% Also, the x-amz-chime-bearer request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListChannelMessages:
@@ -4659,9 +5172,11 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Opt
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_channel_messages(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_messages(Client, ChannelArn, #{}, #{}).
@@ -4674,9 +5189,11 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -4700,7 +5217,8 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListChannelModerators:
@@ -4708,9 +5226,11 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_channel_moderators(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_moderators(Client, ChannelArn, #{}, #{}).
@@ -4723,9 +5243,11 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -4745,19 +5267,21 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists all Channels created under a single Chime App as a paginated
 %% list.
 %%
-%% You can specify filters to narrow results.
+%% You can specify
+%% filters to narrow results.
 %%
 %% == Functionality &amp; restrictions ==
 %%
-%% <ul> <li> Use privacy = `PUBLIC' to retrieve all public channels in
-%% the account.
+%% Use privacy = `PUBLIC' to retrieve all public channels in the
+%% account.
 %%
-%% </li> <li> Only an `AppInstanceAdmin' can set privacy = `PRIVATE'
-%% to list the private channels in an account.
+%% Only an `AppInstanceAdmin' can set privacy = `PRIVATE' to
+%% list the private channels in an account.
 %%
-%% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the `AppInstanceUserArn' of the user that makes the API call as the
-%% value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% `AppInstanceUserArn' of the user that makes the API call as the value
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListChannels:
@@ -4765,9 +5289,11 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_channels(Client, AppInstanceArn)
   when is_map(Client) ->
     list_channels(Client, AppInstanceArn, #{}, #{}).
@@ -4780,9 +5306,11 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -4805,7 +5333,8 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ListChannelsModeratedByAppInstanceUser:
@@ -4813,9 +5342,11 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_channels_moderated_by_app_instance_user(Client)
   when is_map(Client) ->
     list_channels_moderated_by_app_instance_user(Client, #{}, #{}).
@@ -4828,9 +5359,11 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-moderated-channels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -4856,9 +5389,11 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Optio
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_media_capture_pipelines(Client)
   when is_map(Client) ->
     list_media_capture_pipelines(Client, #{}, #{}).
@@ -4871,9 +5406,11 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/media-capture-pipelines"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4894,9 +5431,11 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_meeting_tags(Client, MeetingId)
   when is_map(Client) ->
     list_meeting_tags(Client, MeetingId, #{}, #{}).
@@ -4909,9 +5448,11 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4924,10 +5465,10 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% ListMeetings is not supported in the Amazon Chime SDK Meetings Namespace.
 %% Update your application to remove calls to this API.
 %%
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK:
-%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
-%% Amazon Chime SDK Developer Guide.
+%% For more information about the Amazon Chime SDK, see
+%% Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the Amazon Chime SDK Developer Guide.
 list_meetings(Client)
   when is_map(Client) ->
     list_meetings(Client, #{}, #{}).
@@ -4940,9 +5481,11 @@ list_meetings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4969,9 +5512,11 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4998,10 +5543,12 @@ list_phone_numbers(Client, QueryMap, HeadersMap)
 list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5027,9 +5574,11 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
@@ -5042,9 +5591,11 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5059,8 +5610,8 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the membership details for the specified room in an Amazon
-%% Chime Enterprise account, such as the members' IDs, email addresses,
-%% and names.
+%% Chime Enterprise account,
+%% such as the members' IDs, email addresses, and names.
 list_room_memberships(Client, AccountId, RoomId)
   when is_map(Client) ->
     list_room_memberships(Client, AccountId, RoomId, #{}, #{}).
@@ -5073,9 +5624,11 @@ list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5105,9 +5658,11 @@ list_rooms(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5130,9 +5685,11 @@ list_rooms(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_sip_media_applications(Client)
   when is_map(Client) ->
     list_sip_media_applications(Client, #{}, #{}).
@@ -5145,9 +5702,11 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5168,9 +5727,11 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_sip_rules(Client)
   when is_map(Client) ->
     list_sip_rules(Client, #{}, #{}).
@@ -5183,9 +5744,11 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5212,9 +5775,11 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-countries"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5239,9 +5804,11 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
 %% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListTagsForResource.html.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -5253,10 +5820,12 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5270,8 +5839,8 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the users that belong to the specified Amazon Chime account.
 %%
-%% You can specify an email address to list only the user that the email
-%% address belongs to.
+%% You can specify an email
+%% address to list only the user that the email address belongs to.
 list_users(Client, AccountId)
   when is_map(Client) ->
     list_users(Client, AccountId, #{}, #{}).
@@ -5284,9 +5853,11 @@ list_users(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5310,9 +5881,11 @@ list_users(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
@@ -5325,9 +5898,11 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5349,9 +5924,11 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
@@ -5364,9 +5941,11 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5383,9 +5962,11 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
@@ -5398,9 +5979,11 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5421,10 +6004,12 @@ logout_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=logout"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5446,19 +6031,23 @@ logout_user(Client, AccountId, UserId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
 put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5479,19 +6068,23 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     put_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5505,20 +6098,24 @@ put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an events configuration that allows a bot to receive outgoing
-%% events sent by Amazon Chime.
+%% events sent by Amazon
+%% Chime.
 %%
 %% Choose either an HTTPS endpoint or a Lambda function ARN. For more
-%% information, see `Bot'.
+%% information,
+%% see `Bot'.
 put_events_configuration(Client, AccountId, BotId, Input) ->
     put_events_configuration(Client, AccountId, BotId, Input, []).
 put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5531,18 +6128,23 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Puts retention settings for the specified Amazon Chime Enterprise
-%% account.
+%% @doc
+%% Puts retention settings for the specified Amazon Chime Enterprise account.
 %%
 %% We recommend using AWS CloudTrail to monitor usage of this API for your
-%% account. For more information, see Logging Amazon Chime API Calls with AWS
-%% CloudTrail: https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html in
-%% the Amazon Chime Administration Guide.
+%% account. For more information, see
+%% Logging Amazon Chime API Calls with AWS CloudTrail:
+%% https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html
+%% in the Amazon Chime Administration Guide.
 %%
 %% To turn off existing retention settings, remove the number of days from
-%% the corresponding RetentionDays field in the RetentionSettings object. For
-%% more information about retention settings, see Managing Chat Retention
-%% Policies: https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html
+%% the corresponding
+%% RetentionDays
+%% field in the
+%% RetentionSettings
+%% object. For more information about retention settings, see
+%% Managing Chat Retention Policies:
+%% https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html
 %% in the Amazon Chime Administration Guide.
 put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
@@ -5550,10 +6152,12 @@ put_retention_settings(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5575,19 +6179,23 @@ put_retention_settings(Client, AccountId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5604,8 +6212,9 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 %% Chime Voice Connector, such as emergency phone numbers and calling
 %% countries.
 %%
-%% Origination and termination settings must be enabled for the Amazon Chime
-%% Voice Connector before emergency calling can be configured.
+%% Origination and termination settings must be enabled for
+%% the Amazon Chime Voice Connector before emergency calling can be
+%% configured.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, PutVoiceConnectorEmergencyCallingConfiguration:
@@ -5613,19 +6222,23 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5642,7 +6255,8 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 %% Connector.
 %%
 %% The logging configuration specifies whether SIP message logs are enabled
-%% for sending to Amazon CloudWatch Logs.
+%% for sending to
+%% Amazon CloudWatch Logs.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, PutVoiceConnectorLoggingConfiguration:
@@ -5650,19 +6264,23 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5687,19 +6305,23 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5721,19 +6343,23 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5749,9 +6375,10 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% @doc Adds a streaming configuration for the specified Amazon Chime Voice
 %% Connector.
 %%
-%% The streaming configuration specifies whether media streaming is enabled
-%% for sending to Kinesis. It also sets the retention period, in hours, for
-%% the Amazon Kinesis data.
+%% The streaming
+%% configuration specifies whether media streaming is enabled for sending to
+%% Kinesis.
+%% It also sets the retention period, in hours, for the Amazon Kinesis data.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, PutVoiceConnectorStreamingConfiguration:
@@ -5759,19 +6386,23 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5796,19 +6427,23 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5830,19 +6465,23 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=put"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5857,12 +6496,13 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 
 %% @doc Redacts message content, but not metadata.
 %%
-%% The message exists in the back end, but the action returns null content,
-%% and the state shows as redacted.
+%% The message exists in the back end, but the
+%% action returns null content, and the state shows as redacted.
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, RedactChannelMessage:
@@ -5870,19 +6510,23 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
 redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -5905,10 +6549,12 @@ redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/conversations/", aws_util:encode_uri(ConversationId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5929,10 +6575,12 @@ redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5952,10 +6600,12 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "?operation=regenerate-security-token"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5971,17 +6621,20 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options0) ->
 %% @doc Resets the personal meeting PIN for the specified user on an Amazon
 %% Chime account.
 %%
-%% Returns the `User' object with the updated personal meeting PIN.
+%% Returns
+%% the `User' object with the updated personal meeting PIN.
 reset_personal_pin(Client, AccountId, UserId, Input) ->
     reset_personal_pin(Client, AccountId, UserId, Input, []).
 reset_personal_pin(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=reset-personal-pin"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5994,18 +6647,20 @@ reset_personal_pin(Client, AccountId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves a phone number from the Deletion queue back into the phone
-%% number Inventory.
+%% @doc Moves a phone number from the Deletion queue back into the
+%% phone number Inventory.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
 restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), "?operation=restore"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6020,10 +6675,11 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 
 %% @doc Searches for phone numbers that can be ordered.
 %%
-%% For US numbers, provide at least one of the following search filters:
-%% `AreaCode', `City', `State', or `TollFreePrefix'. If you
-%% provide `City', you must also provide `State'. Numbers outside the
-%% US only support the `PhoneNumberType' filter, which you must use.
+%% For US numbers, provide at least one of
+%% the following search filters: `AreaCode', `City',
+%% `State', or `TollFreePrefix'. If you provide
+%% `City', you must also provide `State'. Numbers outside the US only
+%% support the `PhoneNumberType' filter, which you must use.
 search_available_phone_numbers(Client)
   when is_map(Client) ->
     search_available_phone_numbers(Client, #{}, #{}).
@@ -6035,10 +6691,12 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap)
 search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/search?type=phone-numbers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6061,11 +6719,12 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% Also, `STANDARD' messages can contain 4KB of data and the 1KB of
-%% metadata. `CONTROL' messages can contain 30 bytes of data and no
 %% metadata.
+%% `CONTROL' messages can contain 30 bytes of data and no metadata.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, SendChannelMessage:
@@ -6073,19 +6732,23 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 send_channel_message(Client, ChannelArn, Input) ->
     send_channel_message(Client, ChannelArn, Input, []).
 send_channel_message(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -6102,21 +6765,27 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
 
 %% @doc Starts transcription for the specified `meetingId'.
 %%
-%% For more information, refer to Using Amazon Chime SDK live transcription :
+%% For more information, refer to
+%% Using Amazon Chime SDK live transcription
+%% :
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meeting-transcription.html
 %% in the Amazon Chime SDK Developer Guide.
 %%
 %% If you specify an invalid configuration, a `TranscriptFailed' event
 %% will be sent with the contents of the `BadRequestException' generated
-%% by Amazon Transcribe. For more information on each parameter and which
-%% combinations are valid, refer to the StartStreamTranscription:
+%% by Amazon Transcribe.
+%% For more information on each parameter and which combinations are valid,
+%% refer to the
+%% StartStreamTranscription:
 %% https://docs.aws.amazon.com/transcribe/latest/APIReference/API_streaming_StartStreamTranscription.html
-%% API in the Amazon Transcribe Developer Guide.
+%% API in the
+%% Amazon Transcribe Developer Guide.
 %%
 %% Amazon Chime SDK live transcription is powered by Amazon Transcribe. Use
-%% of Amazon Transcribe is subject to the AWS Service Terms:
-%% https://aws.amazon.com/service-terms/, including the terms specific to the
-%% AWS Machine Learning and Artificial Intelligence Services.
+%% of Amazon Transcribe is subject to the
+%% AWS Service Terms: https://aws.amazon.com/service-terms/, including the
+%% terms specific to the AWS Machine Learning and Artificial
+%% Intelligence Services.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, StartMeetingTranscription:
@@ -6124,19 +6793,23 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6157,19 +6830,23 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6192,10 +6869,12 @@ tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=add"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6216,19 +6895,23 @@ tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 tag_meeting(Client, MeetingId, Input) ->
     tag_meeting(Client, MeetingId, Input, []).
 tag_meeting(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=add"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6250,19 +6933,23 @@ tag_meeting(Client, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6286,10 +6973,12 @@ untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6311,19 +7000,23 @@ untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 untag_meeting(Client, MeetingId, Input) ->
     untag_meeting(Client, MeetingId, Input, []).
 untag_meeting(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6348,19 +7041,23 @@ untag_meeting(Client, MeetingId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6383,10 +7080,12 @@ update_account(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6401,20 +7100,26 @@ update_account(Client, AccountId, Input0, Options0) ->
 
 %% @doc Updates the settings for the specified Amazon Chime account.
 %%
-%% You can update settings for remote control of shared screens, or for the
-%% dial-out option. For more information about these settings, see Use the
-%% Policies Page: https://docs.aws.amazon.com/chime/latest/ag/policies.html
-%% in the Amazon Chime Administration Guide.
+%% You can update settings for
+%% remote control of shared screens, or for the dial-out option. For more
+%% information about
+%% these settings, see Use
+%% the Policies Page:
+%% https://docs.aws.amazon.com/chime/latest/ag/policies.html in the Amazon
+%% Chime Administration
+%% Guide.
 update_account_settings(Client, AccountId, Input) ->
     update_account_settings(Client, AccountId, Input, []).
 update_account_settings(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6435,19 +7140,23 @@ update_account_settings(Client, AccountId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_app_instance(Client, AppInstanceArn, Input) ->
     update_app_instance(Client, AppInstanceArn, Input, []).
 update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6470,19 +7179,23 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
 update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6503,10 +7216,12 @@ update_bot(Client, AccountId, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6525,7 +7240,8 @@ update_bot(Client, AccountId, BotId, Input0, Options0) ->
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, UpdateChannel:
@@ -6533,19 +7249,23 @@ update_bot(Client, AccountId, BotId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
 update_channel(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -6564,7 +7284,8 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, UpdateChannelMessage:
@@ -6572,19 +7293,23 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
 update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -6603,7 +7328,8 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, UpdateChannelReadMarker:
@@ -6611,19 +7337,23 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
 update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/readMarker"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -6647,10 +7377,12 @@ update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6682,10 +7414,12 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6699,20 +7433,23 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the phone number settings for the administrator's AWS
-%% account, such as the default outbound calling name.
+%% account, such as the default
+%% outbound calling name.
 %%
-%% You can update the default outbound calling name once every seven days.
-%% Outbound calling names can take up to 72 hours to update.
+%% You can update the default outbound calling name once every seven
+%% days. Outbound calling names can take up to 72 hours to update.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
 update_phone_number_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6734,19 +7471,23 @@ update_phone_number_settings(Client, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6767,10 +7508,12 @@ update_room(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6784,10 +7527,12 @@ update_room(Client, AccountId, RoomId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates room membership details, such as the member role, for a room
-%% in an Amazon Chime Enterprise account.
+%% in an Amazon Chime
+%% Enterprise account.
 %%
-%% The member role designates whether the member is a chat room administrator
-%% or a general chat room member. The member role can be updated only for
+%% The member role designates whether the member is a chat room
+%% administrator or a general chat room member. The member role can be
+%% updated only for
 %% user IDs.
 update_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     update_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
@@ -6795,10 +7540,12 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6819,19 +7566,23 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
 update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6855,19 +7606,23 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls/", aws_util:encode_uri(TransactionId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6888,19 +7643,23 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
 update_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6922,10 +7681,12 @@ update_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6946,10 +7707,12 @@ update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6970,19 +7733,23 @@ update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
 update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6996,7 +7763,8 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates details of the specified Amazon Chime Voice Connector group,
-%% such as the name and Amazon Chime Voice Connector priority ranking.
+%% such as the name and
+%% Amazon Chime Voice Connector priority ranking.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, UpdateVoiceConnectorGroup:
@@ -7004,19 +7772,23 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7029,13 +7801,14 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Validates an address to be used for 911 calls made with Amazon Chime
-%% Voice Connectors.
+%% @doc Validates an address to be used for 911 calls made with Amazon
+%% Chime Voice Connectors.
 %%
-%% You can use validated addresses in a Presence Information Data Format
-%% Location Object file that you include in SIP requests. That helps ensure
-%% that addresses are routed to the appropriate Public Safety Answering
-%% Point.
+%% You can use validated addresses
+%% in a Presence Information Data Format Location Object file that you
+%% include in SIP requests.
+%% That helps ensure that addresses are routed to the appropriate Public
+%% Safety Answering Point.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version, ValidateE911Address:
@@ -7043,19 +7816,23 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace:
+%% more information, refer to
+%% Migrating from the Amazon Chime namespace:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
-%% in the Amazon Chime SDK Developer Guide.
+%% in the
+%% Amazon Chime SDK Developer Guide.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
 validate_e911_address(Client, Input0, Options0) ->
     Method = post,
     Path = ["/emergency-calling/address"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7071,6 +7848,11 @@ validate_e911_address(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

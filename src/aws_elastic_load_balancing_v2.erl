@@ -7,34 +7,41 @@
 %% EC2 instances.
 %%
 %% This enables you to increase the availability of your application. The
-%% load balancer also monitors the health of its registered targets and
-%% ensures that it routes traffic only to healthy targets. You configure your
-%% load balancer to accept incoming traffic by specifying one or more
-%% listeners, which are configured with a protocol and port number for
-%% connections from clients to the load balancer. You configure a target
-%% group with a protocol and port number for connections from the load
-%% balancer to the targets, and with health check settings to be used when
-%% checking the health status of the targets.
+%% load balancer also
+%% monitors the health of its registered targets and ensures that it routes
+%% traffic only to
+%% healthy targets. You configure your load balancer to accept incoming
+%% traffic by specifying one
+%% or more listeners, which are configured with a protocol and port number
+%% for connections from
+%% clients to the load balancer. You configure a target group with a protocol
+%% and port number for
+%% connections from the load balancer to the targets, and with health check
+%% settings to be used
+%% when checking the health status of the targets.
 %%
 %% Elastic Load Balancing supports the following types of load balancers:
-%% Application Load Balancers, Network Load Balancers, Gateway Load
-%% Balancers, and Classic Load Balancers. This reference covers the following
-%% load balancer types:
+%% Application Load
+%% Balancers, Network Load Balancers, Gateway Load Balancers, and Classic
+%% Load Balancers. This
+%% reference covers the following load balancer types:
 %%
-%% <ul> <li> Application Load Balancer - Operates at the application layer
-%% (layer 7) and supports HTTP and HTTPS.
+%% Application Load Balancer - Operates at the application layer (layer 7)
+%% and supports
+%% HTTP and HTTPS.
 %%
-%% </li> <li> Network Load Balancer - Operates at the transport layer (layer
-%% 4) and supports TCP, TLS, and UDP.
+%% Network Load Balancer - Operates at the transport layer (layer 4) and
+%% supports TCP,
+%% TLS, and UDP.
 %%
-%% </li> <li> Gateway Load Balancer - Operates at the network layer (layer
-%% 3).
+%% Gateway Load Balancer - Operates at the network layer (layer 3).
 %%
-%% </li> </ul> For more information, see the Elastic Load Balancing User
+%% For more information, see the Elastic Load Balancing User
 %% Guide: https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/.
 %%
 %% All Elastic Load Balancing operations are idempotent, which means that
-%% they complete at most one time. If you repeat an operation, it succeeds.
+%% they complete at
+%% most one time. If you repeat an operation, it succeeds.
 -module(aws_elastic_load_balancing_v2).
 
 -export([add_listener_certificates/2,
@@ -133,14 +140,18 @@
 %%====================================================================
 
 %% @doc Adds the specified SSL server certificate to the certificate list for
-%% the specified HTTPS or TLS listener.
+%% the specified HTTPS
+%% or TLS listener.
 %%
 %% If the certificate in already in the certificate list, the call is
-%% successful but the certificate is not added again.
+%% successful but the
+%% certificate is not added again.
 %%
-%% For more information, see HTTPS listeners:
+%% For more information, see HTTPS
+%% listeners:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html
-%% in the Application Load Balancers Guide or TLS listeners:
+%% in the Application Load Balancers Guide or TLS
+%% listeners:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html
 %% in the Network Load Balancers Guide.
 add_listener_certificates(Client, Input)
@@ -153,11 +164,14 @@ add_listener_certificates(Client, Input, Options)
 %% @doc Adds the specified tags to the specified Elastic Load Balancing
 %% resource.
 %%
-%% You can tag your Application Load Balancers, Network Load Balancers,
-%% Gateway Load Balancers, target groups, trust stores, listeners, and rules.
+%% You can tag your
+%% Application Load Balancers, Network Load Balancers, Gateway Load
+%% Balancers, target groups,
+%% trust stores, listeners, and rules.
 %%
 %% Each tag consists of a key and an optional value. If a resource already
-%% has a tag with the same key, `AddTags' updates its value.
+%% has a tag with the
+%% same key, `AddTags' updates its value.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -174,22 +188,27 @@ add_trust_store_revocations(Client, Input, Options)
     request(Client, <<"AddTrustStoreRevocations">>, Input, Options).
 
 %% @doc Creates a listener for the specified Application Load Balancer,
-%% Network Load Balancer, or Gateway Load Balancer.
+%% Network Load Balancer, or
+%% Gateway Load Balancer.
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Listeners for your Application Load Balancers:
+%% Listeners for
+%% your Application Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html
 %%
-%% </li> <li> Listeners for your Network Load Balancers:
+%% Listeners for
+%% your Network Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html
 %%
-%% </li> <li> Listeners for your Gateway Load Balancers:
+%% Listeners for your
+%% Gateway Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-listeners.html
 %%
-%% </li> </ul> This operation is idempotent, which means that it completes at
-%% most one time. If you attempt to create multiple listeners with the same
-%% settings, each call succeeds.
+%% This operation is idempotent, which means that it completes at most one
+%% time. If you
+%% attempt to create multiple listeners with the same settings, each call
+%% succeeds.
 create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
@@ -198,22 +217,26 @@ create_listener(Client, Input, Options)
     request(Client, <<"CreateListener">>, Input, Options).
 
 %% @doc Creates an Application Load Balancer, Network Load Balancer, or
-%% Gateway Load Balancer.
+%% Gateway Load
+%% Balancer.
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Application Load Balancers:
+%% Application Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html
 %%
-%% </li> <li> Network Load Balancers:
+%% Network Load
+%% Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html
 %%
-%% </li> <li> Gateway Load Balancers:
+%% Gateway Load
+%% Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html
 %%
-%% </li> </ul> This operation is idempotent, which means that it completes at
-%% most one time. If you attempt to create multiple load balancers with the
-%% same settings, each call succeeds.
+%% This operation is idempotent, which means that it completes at most one
+%% time. If you
+%% attempt to create multiple load balancers with the same settings, each
+%% call succeeds.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
@@ -223,13 +246,17 @@ create_load_balancer(Client, Input, Options)
 
 %% @doc Creates a rule for the specified listener.
 %%
-%% The listener must be associated with an Application Load Balancer.
+%% The listener must be associated with an
+%% Application Load Balancer.
 %%
 %% Each rule consists of a priority, one or more actions, and one or more
-%% conditions. Rules are evaluated in priority order, from the lowest value
-%% to the highest value. When the conditions for a rule are met, its actions
-%% are performed. If the conditions for no rules are met, the actions for the
-%% default rule are performed. For more information, see Listener rules:
+%% conditions. Rules
+%% are evaluated in priority order, from the lowest value to the highest
+%% value. When the
+%% conditions for a rule are met, its actions are performed. If the
+%% conditions for no rules are
+%% met, the actions for the default rule are performed. For more information,
+%% see Listener rules:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules
 %% in the Application Load Balancers Guide.
 create_rule(Client, Input)
@@ -243,18 +270,22 @@ create_rule(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Target groups for your Application Load Balancers:
+%% Target
+%% groups for your Application Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html
 %%
-%% </li> <li> Target groups for your Network Load Balancers:
+%% Target groups
+%% for your Network Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html
 %%
-%% </li> <li> Target groups for your Gateway Load Balancers:
+%% Target groups for your
+%% Gateway Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html
 %%
-%% </li> </ul> This operation is idempotent, which means that it completes at
-%% most one time. If you attempt to create multiple target groups with the
-%% same settings, each call succeeds.
+%% This operation is idempotent, which means that it completes at most one
+%% time. If you
+%% attempt to create multiple target groups with the same settings, each call
+%% succeeds.
 create_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_target_group(Client, Input, []).
@@ -273,7 +304,8 @@ create_trust_store(Client, Input, Options)
 %% @doc Deletes the specified listener.
 %%
 %% Alternatively, your listener is deleted when you delete the load balancer
-%% to which it is attached.
+%% to which it is
+%% attached.
 delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
@@ -282,18 +314,20 @@ delete_listener(Client, Input, Options)
     request(Client, <<"DeleteListener">>, Input, Options).
 
 %% @doc Deletes the specified Application Load Balancer, Network Load
-%% Balancer, or Gateway Load Balancer.
+%% Balancer, or Gateway Load
+%% Balancer.
 %%
 %% Deleting a load balancer also deletes its listeners.
 %%
 %% You can't delete a load balancer if deletion protection is enabled. If
-%% the load balancer does not exist or has already been deleted, the call
-%% succeeds.
+%% the load balancer
+%% does not exist or has already been deleted, the call succeeds.
 %%
 %% Deleting a load balancer does not affect its registered targets. For
-%% example, your EC2 instances continue to run and are still registered to
-%% their target groups. If you no longer need these EC2 instances, you can
-%% stop or terminate them.
+%% example, your EC2
+%% instances continue to run and are still registered to their target groups.
+%% If you no longer
+%% need these EC2 instances, you can stop or terminate them.
 delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
@@ -314,9 +348,11 @@ delete_rule(Client, Input, Options)
 %% @doc Deletes the specified target group.
 %%
 %% You can delete a target group if it is not referenced by any actions.
-%% Deleting a target group also deletes any associated health checks.
-%% Deleting a target group does not affect its registered targets. For
-%% example, any EC2 instances continue to run until you stop or terminate
+%% Deleting a target
+%% group also deletes any associated health checks. Deleting a target group
+%% does not affect its
+%% registered targets. For example, any EC2 instances continue to run until
+%% you stop or terminate
 %% them.
 delete_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -335,30 +371,32 @@ delete_trust_store(Client, Input, Options)
 
 %% @doc Deregisters the specified targets from the specified target group.
 %%
-%% After the targets are deregistered, they no longer receive traffic from
-%% the load balancer.
+%% After the targets are
+%% deregistered, they no longer receive traffic from the load balancer.
 %%
 %% The load balancer stops sending requests to targets that are
-%% deregistering, but uses connection draining to ensure that in-flight
-%% traffic completes on the existing connections. This deregistration delay
-%% is configured by default but can be updated for each target group.
+%% deregistering, but uses
+%% connection draining to ensure that in-flight traffic completes on the
+%% existing connections.
+%% This deregistration delay is configured by default but can be updated for
+%% each target group.
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Deregistration delay:
+%% Deregistration delay:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#deregistration-delay
 %% in the Application Load Balancers User Guide
 %%
-%% </li> <li> Deregistration delay:
+%% Deregistration delay:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay
 %% in the Network Load Balancers User Guide
 %%
-%% </li> <li> Deregistration delay:
+%% Deregistration delay:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#deregistration-delay
 %% in the Gateway Load Balancers User Guide
 %%
-%% </li> </ul> Note: If the specified target does not exist, the action
-%% returns successfully.
+%% Note: If the specified target does not exist, the action returns
+%% successfully.
 deregister_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_targets(Client, Input, []).
@@ -367,20 +405,22 @@ deregister_targets(Client, Input, Options)
     request(Client, <<"DeregisterTargets">>, Input, Options).
 
 %% @doc Describes the current Elastic Load Balancing resource limits for your
-%% Amazon Web Services account.
+%% Amazon Web Services
+%% account.
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Quotas for your Application Load Balancers:
+%% Quotas for your
+%% Application Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html
 %%
-%% </li> <li> Quotas for your Network Load Balancers:
+%% Quotas for your
+%% Network Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html
 %%
-%% </li> <li> Quotas for your Gateway Load Balancers:
+%% Quotas for your Gateway
+%% Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html
-%%
-%% </li> </ul>
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
@@ -389,17 +429,22 @@ describe_account_limits(Client, Input, Options)
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
 
 %% @doc Describes the default certificate and the certificate list for the
-%% specified HTTPS or TLS listener.
+%% specified HTTPS or TLS
+%% listener.
 %%
 %% If the default certificate is also in the certificate list, it appears
-%% twice in the results (once with `IsDefault' set to true and once with
-%% `IsDefault' set to false).
+%% twice in the
+%% results (once with `IsDefault' set to true and once with
+%% `IsDefault' set
+%% to false).
 %%
 %% For more information, see SSL certificates:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates
-%% in the Application Load Balancers Guide or Server certificates:
+%% in the Application Load Balancers Guide or
+%% Server certificates:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate
-%% in the Network Load Balancers Guide.
+%% in the Network Load Balancers
+%% Guide.
 describe_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener_certificates(Client, Input, []).
@@ -408,10 +453,11 @@ describe_listener_certificates(Client, Input, Options)
     request(Client, <<"DescribeListenerCertificates">>, Input, Options).
 
 %% @doc Describes the specified listeners or the listeners for the specified
-%% Application Load Balancer, Network Load Balancer, or Gateway Load
-%% Balancer.
+%% Application Load
+%% Balancer, Network Load Balancer, or Gateway Load Balancer.
 %%
-%% You must specify either a load balancer or one or more listeners.
+%% You must specify either a load
+%% balancer or one or more listeners.
 describe_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listeners(Client, Input, []).
@@ -420,23 +466,25 @@ describe_listeners(Client, Input, Options)
     request(Client, <<"DescribeListeners">>, Input, Options).
 
 %% @doc Describes the attributes for the specified Application Load Balancer,
-%% Network Load Balancer, or Gateway Load Balancer.
+%% Network Load
+%% Balancer, or Gateway Load Balancer.
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Load balancer attributes:
+%% Load balancer attributes:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes
-%% in the Application Load Balancers Guide
+%% in the Application Load Balancers
+%% Guide
 %%
-%% </li> <li> Load balancer attributes:
+%% Load balancer attributes:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes
-%% in the Network Load Balancers Guide
+%% in the Network Load Balancers
+%% Guide
 %%
-%% </li> <li> Load balancer attributes:
+%% Load balancer attributes:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html#load-balancer-attributes
-%% in the Gateway Load Balancers Guide
-%%
-%% </li> </ul>
+%% in the Gateway Load Balancers
+%% Guide
 describe_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_attributes(Client, Input, []).
@@ -455,7 +503,8 @@ describe_load_balancers(Client, Input, Options)
 %% @doc Describes the specified rules or the rules for the specified
 %% listener.
 %%
-%% You must specify either a listener or one or more rules.
+%% You must specify
+%% either a listener or one or more rules.
 describe_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rules(Client, Input, []).
@@ -468,7 +517,8 @@ describe_rules(Client, Input, Options)
 %%
 %% For more information, see Security policies:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies
-%% in the Application Load Balancers Guide or Security policies:
+%% in the Application Load Balancers Guide or
+%% Security policies:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies
 %% in the Network Load Balancers Guide.
 describe_ssl_policies(Client, Input)
@@ -481,9 +531,10 @@ describe_ssl_policies(Client, Input, Options)
 %% @doc Describes the tags for the specified Elastic Load Balancing
 %% resources.
 %%
-%% You can describe the tags for one or more Application Load Balancers,
-%% Network Load Balancers, Gateway Load Balancers, target groups, listeners,
-%% or rules.
+%% You can describe
+%% the tags for one or more Application Load Balancers, Network Load
+%% Balancers, Gateway Load
+%% Balancers, target groups, listeners, or rules.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -495,19 +546,20 @@ describe_tags(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Target group attributes:
+%% Target group attributes:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes
-%% in the Application Load Balancers Guide
+%% in the Application Load Balancers
+%% Guide
 %%
-%% </li> <li> Target group attributes:
+%% Target group attributes:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes
-%% in the Network Load Balancers Guide
+%% in the Network Load Balancers
+%% Guide
 %%
-%% </li> <li> Target group attributes:
+%% Target group attributes:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#target-group-attributes
-%% in the Gateway Load Balancers Guide
-%%
-%% </li> </ul>
+%% in the Gateway Load Balancers
+%% Guide
 describe_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_group_attributes(Client, Input, []).
@@ -517,10 +569,12 @@ describe_target_group_attributes(Client, Input, Options)
 
 %% @doc Describes the specified target groups or all of your target groups.
 %%
-%% By default, all target groups are described. Alternatively, you can
-%% specify one of the following to filter the results: the ARN of the load
-%% balancer, the names of one or more target groups, or the ARNs of one or
-%% more target groups.
+%% By default, all target
+%% groups are described. Alternatively, you can specify one of the following
+%% to filter the
+%% results: the ARN of the load balancer, the names of one or more target
+%% groups, or the ARNs of
+%% one or more target groups.
 describe_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_groups(Client, Input, []).
@@ -544,8 +598,8 @@ describe_trust_store_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreAssociations">>, Input, Options).
 
-%% @doc Describes the revocation files in use by the specified trust store
-%% arn, or revocation ID.
+%% @doc Describes the revocation files in use by the specified
+%% trust store arn, or revocation ID.
 describe_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_store_revocations(Client, Input, []).
@@ -553,8 +607,8 @@ describe_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreRevocations">>, Input, Options).
 
-%% @doc Describes all trust stores for a given account by trust store arn’s
-%% or name.
+%% @doc Describes all trust stores for a given account
+%% by trust store arn’s or name.
 describe_trust_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_stores(Client, Input, []).
@@ -564,7 +618,8 @@ describe_trust_stores(Client, Input, Options)
 
 %% @doc Retrieves the ca certificate bundle.
 %%
-%% This action returns a pre-signed S3 URI which is active for ten minutes.
+%% This action returns a pre-signed S3 URI which is
+%% active for ten minutes.
 get_trust_store_ca_certificates_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_ca_certificates_bundle(Client, Input, []).
@@ -574,7 +629,8 @@ get_trust_store_ca_certificates_bundle(Client, Input, Options)
 
 %% @doc Retrieves the specified revocation file.
 %%
-%% This action returns a pre-signed S3 URI which is active for ten minutes.
+%% This action returns a pre-signed S3 URI which is
+%% active for ten minutes.
 get_trust_store_revocation_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_revocation_content(Client, Input, []).
@@ -584,16 +640,21 @@ get_trust_store_revocation_content(Client, Input, Options)
 
 %% @doc Replaces the specified properties of the specified listener.
 %%
-%% Any properties that you do not specify remain unchanged.
+%% Any properties that you do
+%% not specify remain unchanged.
 %%
 %% Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the
-%% security policy and default certificate properties. If you change the
-%% protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security
-%% policy and default certificate properties.
+%% security policy
+%% and default certificate properties. If you change the protocol from HTTP
+%% to HTTPS, or from TCP
+%% to TLS, you must add the security policy and default certificate
+%% properties.
 %%
 %% To add an item to a list, remove an item from a list, or update an item in
-%% a list, you must provide the entire list. For example, to add an action,
-%% specify a list with the current actions plus the new action.
+%% a list, you
+%% must provide the entire list. For example, to add an action, specify a
+%% list with the current
+%% actions plus the new action.
 modify_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_listener(Client, Input, []).
@@ -602,11 +663,12 @@ modify_listener(Client, Input, Options)
     request(Client, <<"ModifyListener">>, Input, Options).
 
 %% @doc Modifies the specified attributes of the specified Application Load
-%% Balancer, Network Load Balancer, or Gateway Load Balancer.
+%% Balancer, Network Load
+%% Balancer, or Gateway Load Balancer.
 %%
 %% If any of the specified attributes can't be modified as requested, the
-%% call fails. Any existing attributes that you do not modify retain their
-%% current values.
+%% call fails. Any
+%% existing attributes that you do not modify retain their current values.
 modify_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_load_balancer_attributes(Client, Input, []).
@@ -616,11 +678,14 @@ modify_load_balancer_attributes(Client, Input, Options)
 
 %% @doc Replaces the specified properties of the specified rule.
 %%
-%% Any properties that you do not specify are unchanged.
+%% Any properties that you do not
+%% specify are unchanged.
 %%
 %% To add an item to a list, remove an item from a list, or update an item in
-%% a list, you must provide the entire list. For example, to add an action,
-%% specify a list with the current actions plus the new action.
+%% a list, you
+%% must provide the entire list. For example, to add an action, specify a
+%% list with the current
+%% actions plus the new action.
 modify_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_rule(Client, Input, []).
@@ -629,7 +694,8 @@ modify_rule(Client, Input, Options)
     request(Client, <<"ModifyRule">>, Input, Options).
 
 %% @doc Modifies the health checks used when evaluating the health state of
-%% the targets in the specified target group.
+%% the targets in the
+%% specified target group.
 modify_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group(Client, Input, []).
@@ -656,18 +722,22 @@ modify_trust_store(Client, Input, Options)
 %% @doc Registers the specified targets with the specified target group.
 %%
 %% If the target is an EC2 instance, it must be in the `running' state
-%% when you register it.
+%% when you
+%% register it.
 %%
 %% By default, the load balancer routes requests to registered targets using
-%% the protocol and port for the target group. Alternatively, you can
-%% override the port for a target when you register it. You can register each
-%% EC2 instance or IP address with the same target group multiple times using
-%% different ports.
+%% the protocol and
+%% port for the target group. Alternatively, you can override the port for a
+%% target when you
+%% register it. You can register each EC2 instance or IP address with the
+%% same target group
+%% multiple times using different ports.
 %%
 %% With a Network Load Balancer, you cannot register instances by instance ID
-%% if they have the following instance types: C1, CC1, CC2, CG1, CG2, CR1,
-%% CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register instances of
-%% these types by IP address.
+%% if they have
+%% the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2,
+%% HI1, HS1, M1, M2, M3,
+%% and T1. You can register instances of these types by IP address.
 register_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_targets(Client, Input, []).
@@ -676,7 +746,8 @@ register_targets(Client, Input, Options)
     request(Client, <<"RegisterTargets">>, Input, Options).
 
 %% @doc Removes the specified certificate from the certificate list for the
-%% specified HTTPS or TLS listener.
+%% specified HTTPS or TLS
+%% listener.
 remove_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_listener_certificates(Client, Input, []).
@@ -687,9 +758,10 @@ remove_listener_certificates(Client, Input, Options)
 %% @doc Removes the specified tags from the specified Elastic Load Balancing
 %% resources.
 %%
-%% You can remove the tags for one or more Application Load Balancers,
-%% Network Load Balancers, Gateway Load Balancers, target groups, listeners,
-%% or rules.
+%% You can
+%% remove the tags for one or more Application Load Balancers, Network Load
+%% Balancers, Gateway
+%% Load Balancers, target groups, listeners, or rules.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
@@ -717,8 +789,8 @@ set_ip_address_type(Client, Input, Options)
 %% @doc Sets the priorities of the specified rules.
 %%
 %% You can reorder the rules as long as there are no priority conflicts in
-%% the new order. Any existing rules that you do not specify retain their
-%% current priority.
+%% the new order. Any
+%% existing rules that you do not specify retain their current priority.
 set_rule_priorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_rule_priorities(Client, Input, []).
@@ -727,13 +799,15 @@ set_rule_priorities(Client, Input, Options)
     request(Client, <<"SetRulePriorities">>, Input, Options).
 
 %% @doc Associates the specified security groups with the specified
-%% Application Load Balancer or Network Load Balancer.
+%% Application Load Balancer or
+%% Network Load Balancer.
 %%
-%% The specified security groups override the previously associated security
-%% groups.
+%% The specified security groups override the previously associated
+%% security groups.
 %%
 %% You can't perform this operation on a Network Load Balancer unless you
-%% specified a security group for the load balancer when you created it.
+%% specified a
+%% security group for the load balancer when you created it.
 %%
 %% You can't associate a security group with a Gateway Load Balancer.
 set_security_groups(Client, Input)
@@ -744,14 +818,17 @@ set_security_groups(Client, Input, Options)
     request(Client, <<"SetSecurityGroups">>, Input, Options).
 
 %% @doc Enables the Availability Zones for the specified public subnets for
-%% the specified Application Load Balancer, Network Load Balancer or Gateway
-%% Load Balancer.
+%% the specified
+%% Application Load Balancer, Network Load Balancer or Gateway Load Balancer.
 %%
-%% The specified subnets replace the previously enabled subnets.
+%% The specified subnets replace the
+%% previously enabled subnets.
 %%
 %% When you specify subnets for a Network Load Balancer, or Gateway Load
-%% Balancer you must include all subnets that were enabled previously, with
-%% their existing configurations, plus any additional subnets.
+%% Balancer you must include all subnets that
+%% were enabled previously, with their existing configurations, plus any
+%% additional
+%% subnets.
 set_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subnets(Client, Input, []).

@@ -2,26 +2,33 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The AWS Migration Hub home region APIs are available specifically for
-%% working with your Migration Hub home region.
+%% working with your
+%% Migration Hub home region.
 %%
-%% You can use these APIs to determine a home region, as well as to create
-%% and work with controls that describe the home region.
+%% You can use these APIs to determine a home region, as well as to
+%% create and work with controls that describe the home region.
 %%
-%% <ul> <li> You must make API calls for write actions (create, notify,
-%% associate, disassociate, import, or put) while in your home region, or a
-%% `HomeRegionNotSetException' error is returned.
+%% You must make API calls for write actions (create, notify, associate,
+%% disassociate,
+%% import, or put) while in your home region, or a
+%% `HomeRegionNotSetException'
+%% error is returned.
 %%
-%% </li> <li> API calls for read actions (list, describe, stop, and delete)
-%% are permitted outside of your home region.
+%% API calls for read actions (list, describe, stop, and delete) are
+%% permitted outside of
+%% your home region.
 %%
-%% </li> <li> If you call a write API outside the home region, an
-%% `InvalidInputException' is returned.
+%% If you call a write API outside the home region, an
+%% `InvalidInputException'
+%% is returned.
 %%
-%% </li> <li> You can call `GetHomeRegion' action to obtain the
-%% account's Migration Hub home region.
+%% You can call `GetHomeRegion' action to obtain the account's
+%% Migration Hub
+%% home region.
 %%
-%% </li> </ul> For specific API usage, see the sections that follow in this
-%% AWS Migration Hub Home Region API reference.
+%% For specific API usage, see the sections that follow in this AWS Migration
+%% Hub Home Region
+%% API reference.
 -module(aws_migrationhub_config).
 
 -export([create_home_region_control/2,
@@ -60,7 +67,8 @@ delete_home_region_control(Client, Input, Options)
     request(Client, <<"DeleteHomeRegionControl">>, Input, Options).
 
 %% @doc This API permits filtering on the `ControlId' and
-%% `HomeRegion' fields.
+%% `HomeRegion'
+%% fields.
 describe_home_region_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_home_region_controls(Client, Input, []).
@@ -70,11 +78,14 @@ describe_home_region_controls(Client, Input, Options)
 
 %% @doc Returns the calling account’s home region, if configured.
 %%
-%% This API is used by other AWS services to determine the regional endpoint
-%% for calling AWS Application Discovery Service and Migration Hub. You must
-%% call `GetHomeRegion' at least once before you call any other AWS
-%% Application Discovery Service and AWS Migration Hub APIs, to obtain the
-%% account's Migration Hub home region.
+%% This API is used by other AWS
+%% services to determine the regional endpoint for calling AWS Application
+%% Discovery Service and
+%% Migration Hub. You must call `GetHomeRegion' at least once before you
+%% call any
+%% other AWS Application Discovery Service and AWS Migration Hub APIs, to
+%% obtain the account's
+%% Migration Hub home region.
 get_home_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_home_region(Client, Input, []).
@@ -97,7 +108,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"mgh">>},
+    Client1 = Client#{service => <<"migrationhub-config">>},
     Host = build_host(<<"migrationhub-config">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

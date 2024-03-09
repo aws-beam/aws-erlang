@@ -2,24 +2,28 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc IoT Greengrass brings local compute, messaging, data management,
-%% sync, and ML inference capabilities to edge devices.
+%% sync, and ML inference capabilities
+%% to edge devices.
 %%
 %% This enables devices to collect and analyze data closer to the source of
 %% information, react autonomously to local events, and communicate securely
-%% with each other on local networks. Local devices can also communicate
-%% securely with Amazon Web Services IoT Core and export IoT data to the
-%% Amazon Web Services Cloud. IoT Greengrass developers can use Lambda
-%% functions and components to create and deploy applications to fleets of
-%% edge devices for local operation.
+%% with each other on
+%% local networks. Local devices can also communicate securely with Amazon
+%% Web Services IoT Core and export IoT data
+%% to the Amazon Web Services Cloud. IoT Greengrass developers can use Lambda
+%% functions and components to create and
+%% deploy applications to fleets of edge devices for local operation.
 %%
 %% IoT Greengrass Version 2 provides a new major version of the IoT
-%% Greengrass Core software, new APIs, and a new console. Use this API
-%% reference to learn how to use the IoT Greengrass V2 API operations to
-%% manage components, manage deployments, and core devices.
+%% Greengrass Core software, new APIs, and a new console.
+%% Use this API reference to learn how to use the IoT Greengrass V2 API
+%% operations to manage components,
+%% manage deployments, and core devices.
 %%
 %% For more information, see What is IoT Greengrass?:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/what-is-iot-greengrass.html
-%% in the IoT Greengrass V2 Developer Guide.
+%% in the
+%% IoT Greengrass V2 Developer Guide.
 -module(aws_greengrassv2).
 
 -export([associate_service_role_to_account/2,
@@ -105,12 +109,15 @@
 %% @doc Associates a Greengrass service role with IoT Greengrass for your
 %% Amazon Web Services account in this Amazon Web Services Region.
 %%
-%% IoT Greengrass uses this role to verify the identity of client devices and
-%% manage core device connectivity information. The role must include the
+%% IoT Greengrass
+%% uses this role to verify the identity of client devices and manage core
+%% device connectivity
+%% information. The role must include the
 %% AWSGreengrassResourceAccessRolePolicy:
 %% https://console.aws.amazon.com/iam/home#/policies/arn:awsiam::aws:policy/service-role/AWSGreengrassResourceAccessRolePolicy
-%% managed policy or a custom policy that defines equivalent permissions for
-%% the IoT Greengrass features that you use. For more information, see
+%% managed policy or a custom policy that
+%% defines equivalent permissions for the IoT Greengrass features that you
+%% use. For more information, see
 %% Greengrass service role:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
 %% in the IoT Greengrass Version 2 Developer Guide.
@@ -120,10 +127,12 @@ associate_service_role_to_account(Client, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -138,19 +147,24 @@ associate_service_role_to_account(Client, Input0, Options0) ->
 
 %% @doc Associates a list of client devices with a core device.
 %%
-%% Use this API operation to specify which client devices can discover a core
-%% device through cloud discovery. With cloud discovery, client devices
-%% connect to IoT Greengrass to retrieve associated core devices'
-%% connectivity information and certificates. For more information, see
-%% Configure cloud discovery:
+%% Use this API operation to specify
+%% which client devices can discover a core device through cloud discovery.
+%% With cloud discovery,
+%% client devices connect to IoT Greengrass to retrieve associated core
+%% devices' connectivity information
+%% and certificates. For more information, see Configure cloud
+%% discovery:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/configure-cloud-discovery.html
 %% in the IoT Greengrass V2 Developer Guide.
 %%
 %% Client devices are local IoT devices that connect to and communicate with
-%% an IoT Greengrass core device over MQTT. You can connect client devices to
-%% a core device to sync MQTT messages and data to Amazon Web Services IoT
-%% Core and interact with client devices in Greengrass components. For more
-%% information, see Interact with local IoT devices:
+%% an IoT Greengrass core
+%% device over MQTT. You can connect client devices to a core device to sync
+%% MQTT messages and
+%% data to Amazon Web Services IoT Core and interact with client devices in
+%% Greengrass components. For more information,
+%% see Interact with
+%% local IoT devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/interact-with-local-iot-devices.html
 %% in the IoT Greengrass V2 Developer Guide.
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input) ->
@@ -159,10 +173,12 @@ batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Inpu
     Method = post,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associateClientDevices"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -177,19 +193,22 @@ batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Inpu
 
 %% @doc Disassociates a list of client devices from a core device.
 %%
-%% After you disassociate a client device from a core device, the client
-%% device won't be able to use cloud discovery to retrieve the core
-%% device's connectivity information and certificates.
+%% After you disassociate a client
+%% device from a core device, the client device won't be able to use
+%% cloud discovery to retrieve
+%% the core device's connectivity information and certificates.
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input) ->
     batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input, []).
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/disassociateClientDevices"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -206,17 +225,20 @@ batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, I
 %%
 %% This operation cancels the deployment for devices that haven't yet
 %% received it. If a device already received the deployment, this operation
-%% doesn't change anything for that device.
+%% doesn't change
+%% anything for that device.
 cancel_deployment(Client, DeploymentId, Input) ->
     cancel_deployment(Client, DeploymentId, Input, []).
 cancel_deployment(Client, DeploymentId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -233,68 +255,74 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %%
 %% Components are software that run on Greengrass core devices. After you
 %% develop and test a component on your core device, you can use this
-%% operation to upload your component to IoT Greengrass. Then, you can deploy
-%% the component to other core devices.
+%% operation to upload your
+%% component to IoT Greengrass. Then, you can deploy the component to other
+%% core devices.
 %%
 %% You can use this operation to do the following:
 %%
-%% <ul> <li> Create components from recipes
+%% Create components from recipes
 %%
 %% Create a component from a recipe, which is a file that defines the
-%% component's metadata, parameters, dependencies, lifecycle, artifacts,
-%% and platform capability. For more information, see IoT Greengrass
-%% component recipe reference:
+%% component's
+%% metadata, parameters, dependencies, lifecycle, artifacts, and platform
+%% capability. For
+%% more information, see IoT Greengrass component recipe
+%% reference:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html
 %% in the IoT Greengrass V2 Developer Guide.
 %%
 %% To create a component from a recipe, specify `inlineRecipe' when you
-%% call this operation.
+%% call
+%% this operation.
 %%
-%% </li> <li> Create components from Lambda functions
+%% Create components from Lambda functions
 %%
 %% Create a component from an Lambda function that runs on IoT Greengrass.
-%% This creates a recipe and artifacts from the Lambda function's
-%% deployment package. You can use this operation to migrate Lambda functions
-%% from IoT Greengrass V1 to IoT Greengrass V2.
+%% This creates a recipe
+%% and artifacts from the Lambda function's deployment package. You can
+%% use this operation to
+%% migrate Lambda functions from IoT Greengrass V1 to IoT Greengrass V2.
 %%
 %% This function only accepts Lambda functions that use the following
 %% runtimes:
 %%
-%% <ul> <li> Python 2.7 – `python2.7'
+%% Python 2.7 – `python2.7'
 %%
-%% </li> <li> Python 3.7 – `python3.7'
+%% Python 3.7 – `python3.7'
 %%
-%% </li> <li> Python 3.8 – `python3.8'
+%% Python 3.8 – `python3.8'
 %%
-%% </li> <li> Python 3.9 – `python3.9'
+%% Python 3.9 – `python3.9'
 %%
-%% </li> <li> Java 8 – `java8'
+%% Java 8 – `java8'
 %%
-%% </li> <li> Java 11 – `java11'
+%% Java 11 – `java11'
 %%
-%% </li> <li> Node.js 10 – `nodejs10.x'
+%% Node.js 10 – `nodejs10.x'
 %%
-%% </li> <li> Node.js 12 – `nodejs12.x'
+%% Node.js 12 – `nodejs12.x'
 %%
-%% </li> <li> Node.js 14 – `nodejs14.x'
+%% Node.js 14 – `nodejs14.x'
 %%
-%% </li> </ul> To create a component from a Lambda function, specify
-%% `lambdaFunction' when you call this operation.
+%% To create a component from a Lambda function, specify `lambdaFunction'
+%% when
+%% you call this operation.
 %%
 %% IoT Greengrass currently supports Lambda functions on only Linux core
 %% devices.
-%%
-%% </li> </ul>
 create_component_version(Client, Input) ->
     create_component_version(Client, Input, []).
 create_component_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/createComponentVersion"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -308,34 +336,41 @@ create_component_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a continuous deployment for a target, which is a Greengrass
-%% core device or group of core devices.
+%% core device or group of core
+%% devices.
 %%
 %% When you add a new core device to a group of core devices that has a
-%% deployment, IoT Greengrass deploys that group's deployment to the new
-%% device.
+%% deployment, IoT Greengrass
+%% deploys that group's deployment to the new device.
 %%
 %% You can define one deployment for each target. When you create a new
-%% deployment for a target that has an existing deployment, you replace the
-%% previous deployment. IoT Greengrass applies the new deployment to the
-%% target devices.
+%% deployment for a
+%% target that has an existing deployment, you replace the previous
+%% deployment. IoT Greengrass applies the
+%% new deployment to the target devices.
 %%
 %% Every deployment has a revision number that indicates how many deployment
-%% revisions you define for a target. Use this operation to create a new
-%% revision of an existing deployment.
+%% revisions you
+%% define for a target. Use this operation to create a new revision of an
+%% existing
+%% deployment.
 %%
 %% For more information, see the Create deployments:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/create-deployments.html
-%% in the IoT Greengrass V2 Developer Guide.
+%% in the
+%% IoT Greengrass V2 Developer Guide.
 create_deployment(Client, Input) ->
     create_deployment(Client, Input, []).
 create_deployment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/deployments"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -351,20 +386,24 @@ create_deployment(Client, Input0, Options0) ->
 %% @doc Deletes a version of a component from IoT Greengrass.
 %%
 %% This operation deletes the component's recipe and artifacts. As a
-%% result, deployments that refer to this component version will fail. If you
-%% have deployments that use this component version, you can remove the
-%% component from the deployment or update the deployment to use a valid
-%% version.
+%% result, deployments
+%% that refer to this component version will fail. If you have deployments
+%% that use this
+%% component version, you can remove the component from the deployment or
+%% update the deployment
+%% to use a valid version.
 delete_component(Client, Arn, Input) ->
     delete_component(Client, Arn, Input, []).
 delete_component(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -379,21 +418,25 @@ delete_component(Client, Arn, Input0, Options0) ->
 
 %% @doc Deletes a Greengrass core device, which is an IoT thing.
 %%
-%% This operation removes the core device from the list of core devices. This
-%% operation doesn't delete the IoT thing. For more information about how
-%% to delete the IoT thing, see DeleteThing:
+%% This operation removes the core
+%% device from the list of core devices. This operation doesn't delete
+%% the IoT thing. For more
+%% information about how to delete the IoT thing, see DeleteThing:
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_DeleteThing.html
-%% in the IoT API Reference.
+%% in the
+%% IoT API Reference.
 delete_core_device(Client, CoreDeviceThingName, Input) ->
     delete_core_device(Client, CoreDeviceThingName, Input, []).
 delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -413,19 +456,22 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_CancelDeployment.html.
 %%
 %% Deleting a deployment doesn't affect core devices that run that
-%% deployment, because core devices store the deployment's configuration
-%% on the device. Additionally, core devices can roll back to a previous
-%% deployment that has been deleted.
+%% deployment, because core
+%% devices store the deployment's configuration on the device.
+%% Additionally, core devices can
+%% roll back to a previous deployment that has been deleted.
 delete_deployment(Client, DeploymentId, Input) ->
     delete_deployment(Client, DeploymentId, Input, []).
 delete_deployment(Client, DeploymentId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -450,10 +496,12 @@ describe_component(Client, Arn, QueryMap, HeadersMap)
 describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -465,20 +513,24 @@ describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %% your Amazon Web Services account in this Amazon Web Services Region.
 %%
 %% Without a service role, IoT Greengrass can't verify the identity of
-%% client devices or manage core device connectivity information. For more
-%% information, see Greengrass service role:
+%% client devices or manage core device
+%% connectivity information. For more information, see Greengrass service
+%% role:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
-%% in the IoT Greengrass Version 2 Developer Guide.
+%% in
+%% the IoT Greengrass Version 2 Developer Guide.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 disassociate_service_role_from_account(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -503,10 +555,12 @@ get_component(Client, Arn, QueryMap, HeadersMap)
 get_component(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -521,8 +575,10 @@ get_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %% @doc Gets the pre-signed URL to download a public or a Lambda component
 %% artifact.
 %%
-%% Core devices call this operation to identify the URL that they can use to
-%% download an artifact to install.
+%% Core devices
+%% call this operation to identify the URL that they can use to download an
+%% artifact to
+%% install.
 get_component_version_artifact(Client, Arn, ArtifactName)
   when is_map(Client) ->
     get_component_version_artifact(Client, Arn, ArtifactName, #{}, #{}).
@@ -534,10 +590,12 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap)
 get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/artifacts/", aws_util:encode_multi_segment_uri(ArtifactName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -552,8 +610,9 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 %% calls the IoT Greengrass discovery API:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-discover-api.html,
 %% IoT Greengrass returns connectivity information for all of the core
-%% devices where the client device can connect. For more information, see
-%% Connect client devices to core devices:
+%% devices where the client device can
+%% connect. For more information, see Connect client devices to
+%% core devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
 %% in the IoT Greengrass Version 2 Developer Guide.
 get_connectivity_info(Client, ThingName)
@@ -568,9 +627,11 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -581,11 +642,12 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves metadata for a Greengrass core device.
 %%
 %% IoT Greengrass relies on individual devices to send status updates to the
-%% Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
-%% running on the device, or if device isn't connected to the Amazon Web
-%% Services Cloud, then the reported status of that device might not reflect
-%% its current status. The status timestamp indicates when the device status
-%% was last updated.
+%% Amazon Web Services Cloud. If the
+%% IoT Greengrass Core software isn't running on the device, or if device
+%% isn't connected to the Amazon Web Services Cloud,
+%% then the reported status of that device might not reflect its current
+%% status. The status
+%% timestamp indicates when the device status was last updated.
 %%
 %% Core devices send status updates at the following times:
 %%
@@ -594,14 +656,16 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% When the core device receives a deployment from the Amazon Web Services
 %% Cloud
 %%
-%% When the status of any component on the core device becomes `BROKEN'
+%% When the status of any component on the core device becomes
+%% `BROKEN'
 %%
 %% At a regular interval that you can configure:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html#greengrass-nucleus-component-configuration-fss,
 %% which defaults to 24 hours
 %%
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
-%% local deployment and cloud deployment
+%% local deployment and
+%% cloud deployment
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     get_core_device(Client, CoreDeviceThingName, #{}, #{}).
@@ -613,10 +677,12 @@ get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
 get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -638,10 +704,12 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap)
 get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -653,10 +721,12 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
 %% Web Services account in this Amazon Web Services Region.
 %%
 %% IoT Greengrass uses this role to verify the identity of client devices and
-%% manage core device connectivity information. For more information, see
-%% Greengrass service role:
+%% manage core device
+%% connectivity information. For more information, see Greengrass service
+%% role:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
-%% in the IoT Greengrass Version 2 Developer Guide.
+%% in
+%% the IoT Greengrass Version 2 Developer Guide.
 get_service_role_for_account(Client)
   when is_map(Client) ->
     get_service_role_for_account(Client, #{}, #{}).
@@ -669,9 +739,11 @@ get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -680,7 +752,8 @@ get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of client devices that are associated with
-%% a core device.
+%% a core
+%% device.
 list_client_devices_associated_with_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, #{}, #{}).
@@ -693,9 +766,11 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, Que
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associatedClientDevices"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -710,7 +785,8 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, Que
 
 %% @doc Retrieves a paginated list of all versions for a component.
 %%
-%% Greater versions are listed first.
+%% Greater versions are listed
+%% first.
 list_component_versions(Client, Arn)
   when is_map(Client) ->
     list_component_versions(Client, Arn, #{}, #{}).
@@ -722,10 +798,12 @@ list_component_versions(Client, Arn, QueryMap, HeadersMap)
 list_component_versions(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -740,7 +818,8 @@ list_component_versions(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of component summaries.
 %%
-%% This list includes components that you have permission to view.
+%% This list includes components that you
+%% have permission to view.
 list_components(Client)
   when is_map(Client) ->
     list_components(Client, #{}, #{}).
@@ -752,10 +831,12 @@ list_components(Client, QueryMap, HeadersMap)
 list_components(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -772,11 +853,12 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a paginated list of Greengrass core devices.
 %%
 %% IoT Greengrass relies on individual devices to send status updates to the
-%% Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
-%% running on the device, or if device isn't connected to the Amazon Web
-%% Services Cloud, then the reported status of that device might not reflect
-%% its current status. The status timestamp indicates when the device status
-%% was last updated.
+%% Amazon Web Services Cloud. If the
+%% IoT Greengrass Core software isn't running on the device, or if device
+%% isn't connected to the Amazon Web Services Cloud,
+%% then the reported status of that device might not reflect its current
+%% status. The status
+%% timestamp indicates when the device status was last updated.
 %%
 %% Core devices send status updates at the following times:
 %%
@@ -785,14 +867,16 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 %% When the core device receives a deployment from the Amazon Web Services
 %% Cloud
 %%
-%% When the status of any component on the core device becomes `BROKEN'
+%% When the status of any component on the core device becomes
+%% `BROKEN'
 %%
 %% At a regular interval that you can configure:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html#greengrass-nucleus-component-configuration-fss,
 %% which defaults to 24 hours
 %%
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
-%% local deployment and cloud deployment
+%% local deployment and
+%% cloud deployment
 list_core_devices(Client)
   when is_map(Client) ->
     list_core_devices(Client, #{}, #{}).
@@ -804,10 +888,12 @@ list_core_devices(Client, QueryMap, HeadersMap)
 list_core_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -834,10 +920,12 @@ list_deployments(Client, QueryMap, HeadersMap)
 list_deployments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/deployments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -866,10 +954,12 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap)
 list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/effectiveDeployments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -885,16 +975,20 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 %% @doc Retrieves a paginated list of the components that a Greengrass core
 %% device runs.
 %%
-%% By default, this list doesn't include components that are deployed as
-%% dependencies of other components. To include dependencies in the response,
-%% set the `topologyFilter' parameter to `ALL'.
+%% By default,
+%% this list doesn't include components that are deployed as dependencies
+%% of other components. To
+%% include dependencies in the response, set the `topologyFilter'
+%% parameter to
+%% `ALL'.
 %%
 %% IoT Greengrass relies on individual devices to send status updates to the
-%% Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
-%% running on the device, or if device isn't connected to the Amazon Web
-%% Services Cloud, then the reported status of that device might not reflect
-%% its current status. The status timestamp indicates when the device status
-%% was last updated.
+%% Amazon Web Services Cloud. If the
+%% IoT Greengrass Core software isn't running on the device, or if device
+%% isn't connected to the Amazon Web Services Cloud,
+%% then the reported status of that device might not reflect its current
+%% status. The status
+%% timestamp indicates when the device status was last updated.
 %%
 %% Core devices send status updates at the following times:
 %%
@@ -903,14 +997,16 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 %% When the core device receives a deployment from the Amazon Web Services
 %% Cloud
 %%
-%% When the status of any component on the core device becomes `BROKEN'
+%% When the status of any component on the core device becomes
+%% `BROKEN'
 %%
 %% At a regular interval that you can configure:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html#greengrass-nucleus-component-configuration-fss,
 %% which defaults to 24 hours
 %%
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
-%% local deployment and cloud deployment
+%% local deployment and
+%% cloud deployment
 list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_installed_components(Client, CoreDeviceThingName, #{}, #{}).
@@ -922,10 +1018,12 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap)
 list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/installedComponents"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -951,10 +1049,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -963,37 +1063,45 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of components that meet the component, version, and
-%% platform requirements of a deployment.
+%% platform requirements
+%% of a deployment.
 %%
 %% Greengrass core devices call this operation when they receive a deployment
-%% to identify the components to install.
+%% to
+%% identify the components to install.
 %%
 %% This operation identifies components that meet all dependency requirements
-%% for a deployment. If the requirements conflict, then this operation
-%% returns an error and the deployment fails. For example, this occurs if
-%% component `A' requires version `&gt;2.0.0' and component `B'
-%% requires version `&lt;2.0.0' of a component dependency.
+%% for a
+%% deployment. If the requirements conflict, then this operation returns an
+%% error and the
+%% deployment fails. For example, this occurs if component `A' requires
+%% version
+%% `&gt;2.0.0' and component `B' requires version `&lt;2.0.0'
+%% of a component dependency.
 %%
 %% When you specify the component candidates to resolve, IoT Greengrass
-%% compares each component's digest from the core device with the
-%% component's digest in the Amazon Web Services Cloud. If the digests
+%% compares each component's
+%% digest from the core device with the component's digest in the Amazon
+%% Web Services Cloud. If the digests
 %% don't match, then IoT Greengrass specifies to use the version from the
 %% Amazon Web Services Cloud.
 %%
 %% To use this operation, you must use the data plane API endpoint and
-%% authenticate with an IoT device certificate. For more information, see IoT
-%% Greengrass endpoints and quotas:
-%% https://docs.aws.amazon.com/general/latest/gr/greengrass.html.
+%% authenticate with an
+%% IoT device certificate. For more information, see IoT Greengrass endpoints
+%% and quotas: https://docs.aws.amazon.com/general/latest/gr/greengrass.html.
 resolve_component_candidates(Client, Input) ->
     resolve_component_candidates(Client, Input, []).
 resolve_component_candidates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/resolveComponentCandidates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1008,18 +1116,20 @@ resolve_component_candidates(Client, Input0, Options0) ->
 
 %% @doc Adds tags to an IoT Greengrass resource.
 %%
-%% If a tag already exists for the resource, this operation updates the
-%% tag's value.
+%% If a tag already exists for the resource, this operation
+%% updates the tag's value.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1038,11 +1148,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1063,8 +1175,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% calls the IoT Greengrass discovery API:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-discover-api.html,
 %% IoT Greengrass returns connectivity information for all of the core
-%% devices where the client device can connect. For more information, see
-%% Connect client devices to core devices:
+%% devices where the client device can
+%% connect. For more information, see Connect client devices to
+%% core devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
 %% in the IoT Greengrass Version 2 Developer Guide.
 update_connectivity_info(Client, ThingName, Input) ->
@@ -1073,10 +1186,12 @@ update_connectivity_info(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1092,6 +1207,11 @@ update_connectivity_info(Client, ThingName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

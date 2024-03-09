@@ -4,25 +4,33 @@
 %% @doc IoT
 %%
 %% IoT provides secure, bi-directional communication between
-%% Internet-connected devices (such as sensors, actuators, embedded devices,
-%% or smart appliances) and the Amazon Web Services cloud.
+%% Internet-connected
+%% devices (such as sensors, actuators, embedded devices, or smart
+%% appliances) and the Amazon Web Services
+%% cloud.
 %%
 %% You can discover your custom IoT-Data endpoint to communicate with,
-%% configure rules for data processing and integration with other services,
-%% organize resources associated with each device (Registry), configure
-%% logging, and create and manage policies and credentials to authenticate
-%% devices.
+%% configure
+%% rules for data processing and integration with other services, organize
+%% resources
+%% associated with each device (Registry), configure logging, and create and
+%% manage
+%% policies and credentials to authenticate devices.
 %%
-%% The service endpoints that expose this API are listed in Amazon Web
-%% Services IoT Core Endpoints and Quotas:
-%% https://docs.aws.amazon.com/general/latest/gr/iot-core.html. You must use
-%% the endpoint for the region that has the resources you want to access.
+%% The service endpoints that expose this API are listed in
+%% Amazon Web Services IoT Core Endpoints and Quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/iot-core.html.
+%% You must use the endpoint for the region that has the resources you want
+%% to access.
 %%
-%% The service name used by Amazon Web Services Signature Version 4:
+%% The service name used by Amazon Web Services
+%% Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html to
-%% sign the request is: execute-api.
+%% sign the request is:
+%% execute-api.
 %%
-%% For more information about how IoT works, see the Developer Guide:
+%% For more information about how IoT works, see the Developer
+%% Guide:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html.
 %%
 %% For information about how to use the credentials provider for IoT, see
@@ -653,10 +661,11 @@
 
 %% @doc Accepts a pending certificate transfer.
 %%
-%% The default state of the certificate is INACTIVE.
+%% The default state of the certificate is
+%% INACTIVE.
 %%
-%% To check for pending certificate transfers, call `ListCertificates' to
-%% enumerate your certificates.
+%% To check for pending certificate transfers, call `ListCertificates'
+%% to enumerate your certificates.
 %%
 %% Requires permission to access the AcceptCertificateTransfer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -666,11 +675,13 @@ accept_certificate_transfer(Client, CertificateId, Input) ->
 accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/accept-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -694,11 +705,13 @@ add_thing_to_billing_group(Client, Input) ->
 add_thing_to_billing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/billing-groups/addThingToBillingGroup"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -721,11 +734,13 @@ add_thing_to_thing_group(Client, Input) ->
 add_thing_to_thing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/addThingToThingGroup"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -742,15 +757,14 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
 %%
 %% The following criteria must be met:
 %%
-%% <ul> <li> The job must have been created with the `targetSelection'
-%% field set to &quot;CONTINUOUS&quot;.
+%% The job must have been created with the `targetSelection' field set to
+%% &quot;CONTINUOUS&quot;.
 %%
-%% </li> <li> The job status must currently be &quot;IN_PROGRESS&quot;.
+%% The job status must currently be &quot;IN_PROGRESS&quot;.
 %%
-%% </li> <li> The total number of targets associated with a job must not
-%% exceed 100.
+%% The total number of targets associated with a job must not exceed 100.
 %%
-%% </li> </ul> Requires permission to access the AssociateTargetsWithJob:
+%% Requires permission to access the AssociateTargetsWithJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 associate_targets_with_job(Client, JobId, Input) ->
@@ -758,11 +772,13 @@ associate_targets_with_job(Client, JobId, Input) ->
 associate_targets_with_job(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/targets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -777,7 +793,8 @@ associate_targets_with_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches the specified policy to the specified principal (certificate
-%% or other credential).
+%% or other
+%% credential).
 %%
 %% Requires permission to access the AttachPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -787,11 +804,13 @@ attach_policy(Client, PolicyName, Input) ->
 attach_policy(Client, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -805,11 +824,12 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches the specified policy to the specified principal (certificate
-%% or other credential).
+%% or other
+%% credential).
 %%
-%% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use `AttachPolicy'
-%% instead.
+%% Note: This action is deprecated and works as
+%% expected for backward compatibility, but we won't add enhancements.
+%% Use `AttachPolicy' instead.
 %%
 %% Requires permission to access the AttachPrincipalPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -819,11 +839,13 @@ attach_principal_policy(Client, PolicyName, Input) ->
 attach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-iot-principal">>, <<"principal">>}
@@ -841,8 +863,9 @@ attach_principal_policy(Client, PolicyName, Input0, Options0) ->
 %% @doc Associates a Device Defender security profile with a thing group or
 %% this account.
 %%
-%% Each thing group or account can have up to five security profiles
-%% associated with it.
+%% Each
+%% thing group or account can have up to five security profiles associated
+%% with it.
 %%
 %% Requires permission to access the AttachSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -852,11 +875,13 @@ attach_security_profile(Client, SecurityProfileName, Input) ->
 attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -872,8 +897,8 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 
 %% @doc Attaches the specified principal to the specified thing.
 %%
-%% A principal can be X.509 certificates, Amazon Cognito identities or
-%% federated identities.
+%% A principal can be X.509
+%% certificates, Amazon Cognito identities or federated identities.
 %%
 %% Requires permission to access the AttachThingPrincipal:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -883,11 +908,13 @@ attach_thing_principal(Client, ThingName, Input) ->
 attach_thing_principal(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-principal">>, <<"principal">>}
@@ -904,7 +931,9 @@ attach_thing_principal(Client, ThingName, Input0, Options0) ->
 
 %% @doc Cancels a mitigation action task that is in progress.
 %%
-%% If the task is not in progress, an InvalidRequestException occurs.
+%% If the task
+%% is not
+%% in progress, an InvalidRequestException occurs.
 %%
 %% Requires permission to access the CancelAuditMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -914,11 +943,13 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
 cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -944,11 +975,13 @@ cancel_audit_task(Client, TaskId, Input) ->
 cancel_audit_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -963,14 +996,16 @@ cancel_audit_task(Client, TaskId, Input0, Options0) ->
 
 %% @doc Cancels a pending transfer for the specified certificate.
 %%
-%% Note Only the transfer source account can use this operation to cancel a
-%% transfer. (Transfer destinations can use `RejectCertificateTransfer'
-%% instead.) After transfer, IoT returns the certificate to the source
-%% account in the INACTIVE state. After the destination account has accepted
-%% the transfer, the transfer cannot be cancelled.
+%% Note Only the transfer source account can use this
+%% operation to cancel a transfer. (Transfer destinations can use
+%% `RejectCertificateTransfer' instead.) After transfer, IoT returns the
+%% certificate to the source account in the INACTIVE state. After the
+%% destination account has
+%% accepted the transfer, the transfer cannot be cancelled.
 %%
 %% After a certificate transfer is cancelled, the status of the certificate
-%% changes from PENDING_TRANSFER to INACTIVE.
+%% changes from
+%% PENDING_TRANSFER to INACTIVE.
 %%
 %% Requires permission to access the CancelCertificateTransfer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -980,11 +1015,13 @@ cancel_certificate_transfer(Client, CertificateId, Input) ->
 cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/cancel-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -997,7 +1034,8 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels a Device Defender ML Detect mitigation action.
+%% @doc
+%% Cancels a Device Defender ML Detect mitigation action.
 %%
 %% Requires permission to access the CancelDetectMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1007,11 +1045,13 @@ cancel_detect_mitigation_actions_task(Client, TaskId, Input) ->
 cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1034,11 +1074,13 @@ cancel_job(Client, JobId, Input) ->
 cancel_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1062,11 +1104,13 @@ cancel_job_execution(Client, JobId, ThingName, Input) ->
 cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1090,11 +1134,13 @@ clear_default_authorizer(Client, Input) ->
 clear_default_authorizer(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/default-authorizer"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1109,9 +1155,11 @@ clear_default_authorizer(Client, Input0, Options0) ->
 
 %% @doc Confirms a topic rule destination.
 %%
-%% When you create a rule requiring a destination, IoT sends a confirmation
-%% message to the endpoint or base address you specify. The message includes
-%% a token which you pass back when calling `ConfirmTopicRuleDestination'
+%% When you create a rule requiring a destination, IoT
+%% sends a confirmation message to the endpoint or base address you specify.
+%% The message
+%% includes a token which you pass back when calling
+%% `ConfirmTopicRuleDestination'
 %% to confirm that you own or have access to the endpoint.
 %%
 %% Requires permission to access the ConfirmTopicRuleDestination:
@@ -1128,10 +1176,12 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap)
 confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/confirmdestination/", aws_util:encode_multi_segment_uri(ConfirmationToken), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1139,7 +1189,8 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates a Device Defender audit suppression.
+%% @doc
+%% Creates a Device Defender audit suppression.
 %%
 %% Requires permission to access the CreateAuditSuppression:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1149,11 +1200,13 @@ create_audit_suppression(Client, Input) ->
 create_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/create"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1176,11 +1229,13 @@ create_authorizer(Client, AuthorizerName, Input) ->
 create_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = post,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1203,11 +1258,13 @@ create_billing_group(Client, BillingGroupName, Input) ->
 create_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1228,59 +1285,72 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% action.
 %%
 %% The CSR must include a public key that is either an RSA key with a length
-%% of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST
-%% P-521 curves. For supported certificates, consult Certificate signing
-%% algorithms supported by IoT:
+%% of at least
+%% 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST P-521 curves.
+%% For supported
+%% certificates, consult Certificate signing algorithms supported by IoT:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html#x509-cert-algorithms.
 %%
-%% Reusing the same certificate signing request (CSR) results in a distinct
-%% certificate.
+%% Reusing the same certificate signing request (CSR)
+%% results in a distinct certificate.
 %%
 %% You can create multiple certificates in a batch by creating a directory,
-%% copying multiple `.csr' files into that directory, and then specifying
-%% that directory on the command line. The following commands show how to
-%% create a batch of certificates given a batch of CSRs. In the following
-%% commands, we assume that a set of CSRs are located inside of the directory
-%% my-csr-directory:
+%% copying
+%% multiple `.csr' files into that directory, and then specifying that
+%% directory on the command
+%% line. The following commands show how to create a batch of certificates
+%% given a batch of
+%% CSRs. In the following commands, we assume that a set of CSRs are located
+%% inside of the
+%% directory my-csr-directory:
 %%
 %% On Linux and OS X, the command is:
 %%
-%% `$ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr
-%% --certificate-signing-request file://my-csr-directory/{}'
+%% ```
+%% $ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr
+%% --certificate-signing-request file://my-csr-directory/{}'''
 %%
 %% This command lists all of the CSRs in my-csr-directory and pipes each CSR
-%% file name to the `aws iot create-certificate-from-csr' Amazon Web
-%% Services CLI command to create a certificate for the corresponding CSR.
+%% file name
+%% to the `aws iot create-certificate-from-csr' Amazon Web Services CLI
+%% command to create a certificate for
+%% the corresponding CSR.
 %%
 %% You can also run the `aws iot create-certificate-from-csr' part of the
 %% command in parallel to speed up the certificate creation process:
 %%
-%% `$ ls my-csr-directory/ | xargs -P 10 -I {} aws iot
+%% ```
+%% $ ls my-csr-directory/ | xargs -P 10 -I {} aws iot
 %% create-certificate-from-csr --certificate-signing-request
-%% file://my-csr-directory/{} '
+%% file://my-csr-directory/{} '''
 %%
 %% On Windows PowerShell, the command to create certificates for all CSRs in
 %% my-csr-directory is:
 %%
-%% `&gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
-%% --certificate-signing-request file://my-csr-directory/$_} '
+%% ```
+%% &gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
+%% --certificate-signing-request file://my-csr-directory/$_} '''
 %%
 %% On a Windows command prompt, the command to create certificates for all
-%% CSRs in my-csr-directory is:
+%% CSRs in
+%% my-csr-directory is:
 %%
-%% `&gt; forfiles /p my-csr-directory /c &quot;cmd /c aws iot
+%% ```
+%% &gt; forfiles /p my-csr-directory /c &quot;cmd /c aws iot
 %% create-certificate-from-csr --certificate-signing-request
-%% file://@path&quot; '
+%% file://@path&quot; '''
 create_certificate_from_csr(Client, Input) ->
     create_certificate_from_csr(Client, Input, []).
 create_certificate_from_csr(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1296,12 +1366,14 @@ create_certificate_from_csr(Client, Input0, Options0) ->
 
 %% @doc Creates an Amazon Web Services IoT Core certificate provider.
 %%
-%% You can use Amazon Web Services IoT Core certificate provider to customize
-%% how to sign a certificate signing request (CSR) in IoT fleet provisioning.
-%% For more information, see Customizing certificate signing using Amazon Web
-%% Services IoT Core certificate provider:
+%% You can use Amazon Web Services IoT Core certificate provider to
+%% customize how to sign a certificate signing request (CSR) in IoT fleet
+%% provisioning. For
+%% more information, see Customizing certificate
+%% signing using Amazon Web Services IoT Core certificate provider:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/provisioning-cert-provider.html
-%% from Amazon Web Services IoT Core Developer Guide.
+%% from Amazon Web Services IoT Core Developer
+%% Guide.
 %%
 %% Requires permission to access the CreateCertificateProvider:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1310,20 +1382,23 @@ create_certificate_from_csr(Client, Input0, Options0) ->
 %% After you create a certificate provider, the behavior of
 %% `CreateCertificateFromCsr' API for fleet provisioning:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/fleet-provision-api.html#create-cert-csr
-%% will change and all API calls to `CreateCertificateFromCsr' will
-%% invoke the certificate provider to create the certificates. It can take up
-%% to a few minutes for this behavior to change after a certificate provider
-%% is created.
+%% will
+%% change and all API calls to `CreateCertificateFromCsr' will invoke the
+%% certificate provider to create the certificates. It can take up to a few
+%% minutes for
+%% this behavior to change after a certificate provider is created.
 create_certificate_provider(Client, CertificateProviderName, Input) ->
     create_certificate_provider(Client, CertificateProviderName, Input, []).
 create_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = post,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1336,8 +1411,10 @@ create_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use this API to define a Custom Metric published by your devices to
-%% Device Defender.
+%% @doc Use this API to define a
+%% Custom
+%% Metric
+%% published by your devices to Device Defender.
 %%
 %% Requires permission to access the CreateCustomMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1347,11 +1424,13 @@ create_custom_metric(Client, MetricName, Input) ->
 create_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = post,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1379,11 +1458,13 @@ create_dimension(Client, Name, Input) ->
 create_dimension(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1406,11 +1487,13 @@ create_domain_configuration(Client, DomainConfigurationName, Input) ->
 create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = post,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1433,11 +1516,13 @@ create_dynamic_thing_group(Client, ThingGroupName, Input) ->
 create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1460,11 +1545,13 @@ create_fleet_metric(Client, MetricName, Input) ->
 create_fleet_metric(Client, MetricName, Input0, Options0) ->
     Method = put,
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1487,11 +1574,13 @@ create_job(Client, JobId, Input) ->
 create_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1514,11 +1603,13 @@ create_job_template(Client, JobTemplateId, Input) ->
 create_job_template(Client, JobTemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1532,14 +1623,15 @@ create_job_template(Client, JobTemplateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a 2048-bit RSA key pair and issues an X.509 certificate using
-%% the issued public key.
+%% the issued
+%% public key.
 %%
-%% You can also call `CreateKeysAndCertificate' over MQTT from a device,
-%% for more information, see Provisioning MQTT API:
+%% You can also call `CreateKeysAndCertificate' over MQTT from a
+%% device, for more information, see Provisioning MQTT API:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api.
 %%
-%% Note This is the only time IoT issues the private key for this
-%% certificate, so it is important to keep it in a secure location.
+%% Note This is the only time IoT issues the private key
+%% for this certificate, so it is important to keep it in a secure location.
 %%
 %% Requires permission to access the CreateKeysAndCertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1549,11 +1641,13 @@ create_keys_and_certificate(Client, Input) ->
 create_keys_and_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/keys-and-certificate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1571,7 +1665,8 @@ create_keys_and_certificate(Client, Input0, Options0) ->
 %% StartAuditMitigationActionsTask.
 %%
 %% Only certain types of mitigation actions can be applied to specific check
-%% names. For more information, see Mitigation actions:
+%% names.
+%% For more information, see Mitigation actions:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/device-defender-mitigation-actions.html.
 %% Each mitigation action can apply only one type of change.
 %%
@@ -1583,11 +1678,13 @@ create_mitigation_action(Client, ActionName, Input) ->
 create_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = post,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1610,11 +1707,13 @@ create_ota_update(Client, OtaUpdateId, Input) ->
 create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Method = post,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1640,10 +1739,12 @@ create_package(Client, PackageName, Input0, Options0) ->
     Method = put,
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1670,10 +1771,12 @@ create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
     Method = put,
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1690,8 +1793,9 @@ create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 %% @doc Creates an IoT policy.
 %%
 %% The created policy is the default version for the policy. This operation
-%% creates a policy version with a version identifier of 1 and sets 1 as the
-%% policy's default version.
+%% creates a
+%% policy version with a version identifier of 1 and sets
+%% 1 as the policy's default version.
 %%
 %% Requires permission to access the CreatePolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1701,11 +1805,13 @@ create_policy(Client, PolicyName, Input) ->
 create_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1720,15 +1826,18 @@ create_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Creates a new version of the specified IoT policy.
 %%
-%% To update a policy, create a new policy version. A managed policy can have
-%% up to five versions. If the policy has five versions, you must use
-%% `DeletePolicyVersion' to delete an existing version before you create
-%% a new one.
+%% To update a policy, create a
+%% new policy version. A managed policy can have up to five versions. If the
+%% policy has five
+%% versions, you must use `DeletePolicyVersion' to delete an existing
+%% version
+%% before you create a new one.
 %%
 %% Optionally, you can set the new version as the policy's default
-%% version. The default version is the operative version (that is, the
-%% version that is in effect for the certificates to which the policy is
-%% attached).
+%% version. The default
+%% version is the operative version (that is, the version that is in effect
+%% for the
+%% certificates to which the policy is attached).
 %%
 %% Requires permission to access the CreatePolicyVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1738,11 +1847,13 @@ create_policy_version(Client, PolicyName, Input) ->
 create_policy_version(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1766,11 +1877,13 @@ create_provisioning_claim(Client, TemplateName, Input) ->
 create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/provisioning-claim"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1793,11 +1906,13 @@ create_provisioning_template(Client, Input) ->
 create_provisioning_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1820,11 +1935,13 @@ create_provisioning_template_version(Client, TemplateName, Input) ->
 create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1848,11 +1965,13 @@ create_role_alias(Client, RoleAlias, Input) ->
 create_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = post,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1865,7 +1984,8 @@ create_role_alias(Client, RoleAlias, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a scheduled audit that is run at a specified time interval.
+%% @doc Creates a scheduled audit that is run at a specified
+%% time interval.
 %%
 %% Requires permission to access the CreateScheduledAudit:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1875,11 +1995,13 @@ create_scheduled_audit(Client, ScheduledAuditName, Input) ->
 create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = post,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1902,11 +2024,13 @@ create_security_profile(Client, SecurityProfileName, Input) ->
 create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = post,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1922,9 +2046,10 @@ create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% @doc Creates a stream for delivering one or more large files in chunks
 %% over MQTT.
 %%
-%% A stream transports data bytes in chunks or blocks packaged as MQTT
-%% messages from a source like S3. You can have one or more files associated
-%% with a stream.
+%% A stream transports data
+%% bytes in chunks or blocks packaged as MQTT messages from a source like S3.
+%% You can have one or more files
+%% associated with a stream.
 %%
 %% Requires permission to access the CreateStream:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1934,11 +2059,13 @@ create_stream(Client, StreamId, Input) ->
 create_stream(Client, StreamId, Input0, Options0) ->
     Method = post,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1953,14 +2080,16 @@ create_stream(Client, StreamId, Input0, Options0) ->
 
 %% @doc Creates a thing record in the registry.
 %%
-%% If this call is made multiple times using the same thing name and
-%% configuration, the call will succeed. If this call is made with the same
-%% thing name but different configuration a
+%% If this call is made multiple times using
+%% the same thing name and configuration, the call will succeed. If this call
+%% is made with
+%% the same thing name but different configuration a
 %% `ResourceAlreadyExistsException' is thrown.
 %%
 %% This is a control plane operation. See Authorization:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html
-%% for information about authorizing control plane actions.
+%% for
+%% information about authorizing control plane actions.
 %%
 %% Requires permission to access the CreateThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -1970,11 +2099,13 @@ create_thing(Client, ThingName, Input) ->
 create_thing(Client, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1991,10 +2122,12 @@ create_thing(Client, ThingName, Input0, Options0) ->
 %%
 %% This is a control plane operation. See Authorization:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html
-%% for information about authorizing control plane actions.
+%% for
+%% information about authorizing control plane actions.
 %%
 %% If the `ThingGroup' that you create has the exact same attributes as
-%% an existing `ThingGroup', you will get a 200 success response.
+%% an existing
+%% `ThingGroup', you will get a 200 success response.
 %%
 %% Requires permission to access the CreateThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -2004,11 +2137,13 @@ create_thing_group(Client, ThingGroupName, Input) ->
 create_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2031,11 +2166,13 @@ create_thing_type(Client, ThingTypeName, Input) ->
 create_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2062,11 +2199,13 @@ create_topic_rule(Client, RuleName, Input) ->
 create_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-tagging">>, <<"tags">>}
@@ -2093,11 +2232,13 @@ create_topic_rule_destination(Client, Input) ->
 create_topic_rule_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/destinations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2113,8 +2254,10 @@ create_topic_rule_destination(Client, Input0, Options0) ->
 %% @doc Restores the default settings for Device Defender audits for this
 %% account.
 %%
-%% Any configuration data you entered is deleted and all audit checks are
-%% reset to disabled.
+%% Any
+%% configuration data you entered is deleted and all audit checks are reset
+%% to
+%% disabled.
 %%
 %% Requires permission to access the DeleteAccountAuditConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -2124,11 +2267,13 @@ delete_account_audit_configuration(Client, Input) ->
 delete_account_audit_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2142,7 +2287,8 @@ delete_account_audit_configuration(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Device Defender audit suppression.
+%% @doc
+%% Deletes a Device Defender audit suppression.
 %%
 %% Requires permission to access the DeleteAuditSuppression:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -2152,11 +2298,13 @@ delete_audit_suppression(Client, Input) ->
 delete_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2179,11 +2327,13 @@ delete_authorizer(Client, AuthorizerName, Input) ->
 delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = delete,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2206,11 +2356,13 @@ delete_billing_group(Client, BillingGroupName, Input) ->
 delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2234,11 +2386,13 @@ delete_ca_certificate(Client, CertificateId, Input) ->
 delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Method = delete,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2254,8 +2408,9 @@ delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %% @doc Deletes the specified certificate.
 %%
 %% A certificate cannot be deleted if it has a policy or IoT thing attached
-%% to it or if its status is set to ACTIVE. To delete a certificate, first
-%% use the `DetachPolicy' action to detach all policies. Next, use the
+%% to it or if
+%% its status is set to ACTIVE. To delete a certificate, first use the
+%% `DetachPolicy' action to detach all policies. Next, use the
 %% `UpdateCertificate' action to set the certificate to the INACTIVE
 %% status.
 %%
@@ -2267,11 +2422,13 @@ delete_certificate(Client, CertificateId, Input) ->
 delete_certificate(Client, CertificateId, Input0, Options0) ->
     Method = delete,
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2299,11 +2456,13 @@ delete_certificate_provider(Client, CertificateProviderName, Input) ->
 delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = delete,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2316,15 +2475,19 @@ delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Device Defender detect custom metric.
+%% @doc
+%% Deletes a Device Defender detect custom metric.
 %%
 %% Requires permission to access the DeleteCustomMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 %%
 %% Before you can delete a custom metric, you must first remove the custom
-%% metric from all security profiles it's a part of. The security profile
-%% associated with the custom metric can be found using the
+%% metric from all
+%% security profiles it's a part of.
+%% The
+%% security
+%% profile associated with the custom metric can be found using the
 %% ListSecurityProfiles:
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html
 %% API with `metricName' set to your custom metric name.
@@ -2333,11 +2496,13 @@ delete_custom_metric(Client, MetricName, Input) ->
 delete_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = delete,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2361,11 +2526,13 @@ delete_dimension(Client, Name, Input) ->
 delete_dimension(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2388,11 +2555,13 @@ delete_domain_configuration(Client, DomainConfigurationName, Input) ->
 delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = delete,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2415,11 +2584,13 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
 delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2446,11 +2617,13 @@ delete_fleet_metric(Client, MetricName, Input) ->
 delete_fleet_metric(Client, MetricName, Input0, Options0) ->
     Method = delete,
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2466,15 +2639,16 @@ delete_fleet_metric(Client, MetricName, Input0, Options0) ->
 
 %% @doc Deletes a job and its related job executions.
 %%
-%% Deleting a job may take time, depending on the number of job executions
-%% created for the job and various other factors. While the job is being
-%% deleted, the status of the job will be shown as
+%% Deleting a job may take time, depending on the number of job
+%% executions created for the job and various other factors. While the job
+%% is being deleted, the status of the job will be shown as
 %% &quot;DELETION_IN_PROGRESS&quot;. Attempting to delete or cancel a job
-%% whose status is already &quot;DELETION_IN_PROGRESS&quot; will result in an
-%% error.
+%% whose status
+%% is already &quot;DELETION_IN_PROGRESS&quot; will result in an error.
 %%
 %% Only 10 jobs may have status &quot;DELETION_IN_PROGRESS&quot; at the same
-%% time, or a LimitExceededException will occur.
+%% time, or
+%% a LimitExceededException will occur.
 %%
 %% Requires permission to access the DeleteJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -2484,11 +2658,13 @@ delete_job(Client, JobId, Input) ->
 delete_job(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2513,11 +2689,13 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/executionNumber/", aws_util:encode_uri(ExecutionNumber), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2538,11 +2716,13 @@ delete_job_template(Client, JobTemplateId, Input) ->
 delete_job_template(Client, JobTemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2566,11 +2746,13 @@ delete_mitigation_action(Client, ActionName, Input) ->
 delete_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = delete,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2593,11 +2775,13 @@ delete_ota_update(Client, OtaUpdateId, Input) ->
 delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Method = delete,
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2626,10 +2810,12 @@ delete_package(Client, PackageName, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2654,10 +2840,12 @@ delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2674,19 +2862,22 @@ delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 %% @doc Deletes the specified policy.
 %%
 %% A policy cannot be deleted if it has non-default versions or it is
-%% attached to any certificate.
+%% attached to any
+%% certificate.
 %%
 %% To delete a policy, use the `DeletePolicyVersion' action to delete all
-%% non-default versions of the policy; use the `DetachPolicy' action to
-%% detach the policy from any certificate; and then use the DeletePolicy
-%% action to delete the policy.
+%% non-default
+%% versions of the policy; use the `DetachPolicy' action to detach the
+%% policy from any
+%% certificate; and then use the DeletePolicy action to delete the policy.
 %%
 %% When a policy is deleted using DeletePolicy, its default version is
-%% deleted with it.
+%% deleted with
+%% it.
 %%
 %% Because of the distributed nature of Amazon Web Services, it can take up
-%% to five minutes after a policy is detached before it's ready to be
-%% deleted.
+%% to five minutes after
+%% a policy is detached before it's ready to be deleted.
 %%
 %% Requires permission to access the DeletePolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -2696,11 +2887,13 @@ delete_policy(Client, PolicyName, Input) ->
 delete_policy(Client, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2715,10 +2908,11 @@ delete_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Deletes the specified version of the specified policy.
 %%
-%% You cannot delete the default version of a policy using this action. To
-%% delete the default version of a policy, use `DeletePolicy'. To find
-%% out which version of a policy is marked as the default version, use
-%% ListPolicyVersions.
+%% You cannot delete the default
+%% version of a policy using this action. To delete the default version of a
+%% policy, use `DeletePolicy'. To find out which version of a policy is
+%% marked as the default
+%% version, use ListPolicyVersions.
 %%
 %% Requires permission to access the DeletePolicyVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -2728,11 +2922,13 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2755,11 +2951,13 @@ delete_provisioning_template(Client, TemplateName, Input) ->
 delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2782,11 +2980,13 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2809,11 +3009,13 @@ delete_registration_code(Client, Input) ->
 delete_registration_code(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/registrationcode"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2836,11 +3038,13 @@ delete_role_alias(Client, RoleAlias, Input) ->
 delete_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = delete,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2863,11 +3067,13 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
 delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2890,11 +3096,13 @@ delete_security_profile(Client, SecurityProfileName, Input) ->
 delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2918,11 +3126,13 @@ delete_stream(Client, StreamId, Input) ->
 delete_stream(Client, StreamId, Input0, Options0) ->
     Method = delete,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2937,8 +3147,8 @@ delete_stream(Client, StreamId, Input0, Options0) ->
 
 %% @doc Deletes the specified thing.
 %%
-%% Returns successfully with no error if the deletion is successful or you
-%% specify a thing that doesn't exist.
+%% Returns successfully with no error if the deletion is
+%% successful or you specify a thing that doesn't exist.
 %%
 %% Requires permission to access the DeleteThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -2948,11 +3158,13 @@ delete_thing(Client, ThingName, Input) ->
 delete_thing(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2976,11 +3188,13 @@ delete_thing_group(Client, ThingGroupName, Input) ->
 delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2996,10 +3210,11 @@ delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
 
 %% @doc Deletes the specified thing type.
 %%
-%% You cannot delete a thing type if it has things associated with it. To
-%% delete a thing type, first mark it as deprecated by calling
-%% `DeprecateThingType', then remove any associated things by calling
-%% `UpdateThing' to change the thing type on any associated thing, and
+%% You cannot delete a thing type if it has things
+%% associated with it. To delete a thing type, first mark it as deprecated by
+%% calling `DeprecateThingType', then remove any associated things by
+%% calling `UpdateThing' to change the thing type on any associated
+%% thing, and
 %% finally use `DeleteThingType' to delete the thing type.
 %%
 %% Requires permission to access the DeleteThingType:
@@ -3010,11 +3225,13 @@ delete_thing_type(Client, ThingTypeName, Input) ->
 delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3037,11 +3254,13 @@ delete_topic_rule(Client, RuleName, Input) ->
 delete_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3064,11 +3283,13 @@ delete_topic_rule_destination(Client, Arn, Input) ->
 delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3091,11 +3312,13 @@ delete_v2_logging_level(Client, Input) ->
 delete_v2_logging_level(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v2LoggingLevel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3112,7 +3335,8 @@ delete_v2_logging_level(Client, Input0, Options0) ->
 
 %% @doc Deprecates a thing type.
 %%
-%% You can not associate new things with deprecated thing type.
+%% You can not associate new things with deprecated thing
+%% type.
 %%
 %% Requires permission to access the DeprecateThingType:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -3122,11 +3346,13 @@ deprecate_thing_type(Client, ThingTypeName, Input) ->
 deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Method = post,
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), "/deprecate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3143,7 +3369,8 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %% account.
 %%
 %% Settings include how audit notifications are sent and which audit checks
-%% are enabled or disabled.
+%% are
+%% enabled or disabled.
 %%
 %% Requires permission to access the DescribeAccountAuditConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -3159,10 +3386,12 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap)
 describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3172,8 +3401,11 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a single audit finding.
 %%
-%% Properties include the reason for noncompliance, the severity of the
-%% issue, and the start time when the audit that returned the finding.
+%% Properties include the reason for
+%% noncompliance, the severity of the issue,
+%% and the start time
+%% when the audit that returned the
+%% finding.
 %%
 %% Requires permission to access the DescribeAuditFinding:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -3189,10 +3421,12 @@ describe_audit_finding(Client, FindingId, QueryMap, HeadersMap)
 describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/findings/", aws_util:encode_uri(FindingId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3217,10 +3451,12 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
 describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3228,17 +3464,20 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a Device Defender audit suppression.
+%% @doc
+%% Gets information about a Device Defender audit suppression.
 describe_audit_suppression(Client, Input) ->
     describe_audit_suppression(Client, Input, []).
 describe_audit_suppression(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/describe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3267,10 +3506,12 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap)
 describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3294,10 +3535,12 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap)
 describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3321,10 +3564,12 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
 describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3348,10 +3593,12 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap)
 describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3375,10 +3622,12 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap)
 describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3402,10 +3651,12 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
 describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3413,7 +3664,8 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a Device Defender detect custom metric.
+%% @doc
+%% Gets information about a Device Defender detect custom metric.
 %%
 %% Requires permission to access the DescribeCustomMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -3429,10 +3681,12 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap)
 describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3456,10 +3710,12 @@ describe_default_authorizer(Client, QueryMap, HeadersMap)
 describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/default-authorizer"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3467,7 +3723,8 @@ describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a Device Defender ML Detect mitigation action.
+%% @doc
+%% Gets information about a Device Defender ML Detect mitigation action.
 %%
 %% Requires permission to access the DescribeDetectMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -3483,10 +3740,12 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
 describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3511,10 +3770,12 @@ describe_dimension(Client, Name, QueryMap, HeadersMap)
 describe_dimension(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3538,10 +3799,12 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3550,7 +3813,8 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns or creates a unique endpoint specific to the Amazon Web
-%% Services account making the call.
+%% Services account making the
+%% call.
 %%
 %% The first time `DescribeEndpoint' is called, an endpoint is created.
 %% All subsequent calls to `DescribeEndpoint' return the same endpoint.
@@ -3569,10 +3833,12 @@ describe_endpoint(Client, QueryMap, HeadersMap)
 describe_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoint"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3600,10 +3866,12 @@ describe_event_configurations(Client, QueryMap, HeadersMap)
 describe_event_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/event-configurations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3627,10 +3895,12 @@ describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap)
 describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3654,10 +3924,12 @@ describe_index(Client, IndexName, QueryMap, HeadersMap)
 describe_index(Client, IndexName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indices/", aws_util:encode_uri(IndexName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3681,10 +3953,12 @@ describe_job(Client, JobId, QueryMap, HeadersMap)
 describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3708,10 +3982,12 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
 describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3735,10 +4011,12 @@ describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap)
 describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3758,10 +4036,12 @@ describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap)
 describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-job-templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3789,10 +4069,12 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap)
 describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3816,10 +4098,12 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap)
 describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3843,10 +4127,12 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
 describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3870,10 +4156,12 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap)
 describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3897,10 +4185,12 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap)
 describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3924,10 +4214,12 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
 describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3951,10 +4243,12 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap)
 describe_stream(Client, StreamId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -3978,10 +4272,12 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap)
 describe_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4005,10 +4301,12 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
 describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4032,10 +4330,12 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap)
 describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4059,10 +4359,12 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap)
 describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4073,8 +4375,8 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
 %% @doc Detaches a policy from the specified target.
 %%
 %% Because of the distributed nature of Amazon Web Services, it can take up
-%% to five minutes after a policy is detached before it's ready to be
-%% deleted.
+%% to five minutes after
+%% a policy is detached before it's ready to be deleted.
 %%
 %% Requires permission to access the DetachPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4084,11 +4386,13 @@ detach_policy(Client, PolicyName, Input) ->
 detach_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4103,9 +4407,9 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Removes the specified policy from the specified certificate.
 %%
-%% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use `DetachPolicy'
-%% instead.
+%% Note: This action is deprecated and works as
+%% expected for backward compatibility, but we won't add enhancements.
+%% Use `DetachPolicy' instead.
 %%
 %% Requires permission to access the DetachPrincipalPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4115,11 +4419,13 @@ detach_principal_policy(Client, PolicyName, Input) ->
 detach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-iot-principal">>, <<"principal">>}
@@ -4145,11 +4451,13 @@ detach_security_profile(Client, SecurityProfileName, Input) ->
 detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4165,11 +4473,14 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 
 %% @doc Detaches the specified principal from the specified thing.
 %%
-%% A principal can be X.509 certificates, IAM users, groups, and roles,
-%% Amazon Cognito identities or federated identities.
+%% A principal can be X.509
+%% certificates, IAM users, groups, and roles, Amazon Cognito identities or
+%% federated
+%% identities.
 %%
 %% This call is asynchronous. It might take several seconds for the
-%% detachment to propagate.
+%% detachment to
+%% propagate.
 %%
 %% Requires permission to access the DetachThingPrincipal:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4179,11 +4490,13 @@ detach_thing_principal(Client, ThingName, Input) ->
 detach_thing_principal(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-principal">>, <<"principal">>}
@@ -4208,11 +4521,13 @@ disable_topic_rule(Client, RuleName, Input) ->
 disable_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/disable"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4235,11 +4550,13 @@ enable_topic_rule(Client, RuleName, Input) ->
 enable_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = post,
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/enable"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4252,7 +4569,8 @@ enable_topic_rule(Client, RuleName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a Device Defender's ML Detect Security Profile training
+%% @doc
+%% Returns a Device Defender's ML Detect Security Profile training
 %% model's status.
 %%
 %% Requires permission to access the GetBehaviorModelTrainingSummaries:
@@ -4269,10 +4587,12 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap)
 get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/behavior-model-training/summaries"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4297,11 +4617,13 @@ get_buckets_aggregation(Client, Input) ->
 get_buckets_aggregation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/buckets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4324,11 +4646,13 @@ get_cardinality(Client, Input) ->
 get_cardinality(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/cardinality"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4342,8 +4666,8 @@ get_cardinality(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of the policies that have an effect on the authorization
-%% behavior of the specified device when it connects to the IoT device
-%% gateway.
+%% behavior of the
+%% specified device when it connects to the IoT device gateway.
 %%
 %% Requires permission to access the GetEffectivePolicies:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4353,11 +4677,13 @@ get_effective_policies(Client, Input) ->
 get_effective_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/effective-policies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4387,10 +4713,12 @@ get_indexing_configuration(Client, QueryMap, HeadersMap)
 get_indexing_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indexing/config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4414,10 +4742,12 @@ get_job_document(Client, JobId, QueryMap, HeadersMap)
 get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/job-document"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4428,7 +4758,8 @@ get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
 %% @doc Gets the logging options.
 %%
 %% NOTE: use of this command is not recommended. Use
-%% `GetV2LoggingOptions' instead.
+%% `GetV2LoggingOptions'
+%% instead.
 %%
 %% Requires permission to access the GetLoggingOptions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4444,10 +4775,12 @@ get_logging_options(Client, QueryMap, HeadersMap)
 get_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/loggingOptions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4471,10 +4804,12 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap)
 get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4499,9 +4834,11 @@ get_package(Client, PackageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4527,9 +4864,11 @@ get_package_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/package-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4554,9 +4893,11 @@ get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, Opti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4567,16 +4908,21 @@ get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, Opti
 %% @doc Groups the aggregated values that match the query into percentile
 %% groupings.
 %%
-%% The default percentile groupings are: 1,5,25,50,75,95,99, although you can
-%% specify your own when you call `GetPercentiles'. This function returns
-%% a value for each percentile group specified (or the default percentile
-%% groupings). The percentile group &quot;1&quot; contains the aggregated
-%% field value that occurs in approximately one percent of the values that
-%% match the query. The percentile group &quot;5&quot; contains the
-%% aggregated field value that occurs in approximately five percent of the
-%% values that match the query, and so on. The result is an approximation,
-%% the more values that match the query, the more accurate the percentile
-%% values.
+%% The default
+%% percentile groupings are: 1,5,25,50,75,95,99, although you can specify
+%% your own
+%% when you call `GetPercentiles'. This function returns a value for each
+%% percentile group specified (or the default percentile groupings). The
+%% percentile group
+%% &quot;1&quot; contains the aggregated field value that occurs in
+%% approximately one percent of the
+%% values that match the query. The percentile group &quot;5&quot; contains
+%% the aggregated field value
+%% that occurs in approximately five percent of the values that match the
+%% query, and so on.
+%% The result is an approximation, the more values that match the query, the
+%% more accurate
+%% the percentile values.
 %%
 %% Requires permission to access the GetPercentiles:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4586,11 +4932,13 @@ get_percentiles(Client, Input) ->
 get_percentiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/percentiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4604,7 +4952,8 @@ get_percentiles(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified policy with the policy document
-%% of the default version.
+%% of the default
+%% version.
 %%
 %% Requires permission to access the GetPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4620,10 +4969,12 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap)
 get_policy(Client, PolicyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4647,10 +4998,12 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap)
 get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4661,9 +5014,10 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Op
 %% @doc Gets a registration code used to register a CA certificate with IoT.
 %%
 %% IoT will create a registration code as part of this API call if the
-%% registration code doesn't exist or has been deleted. If you already
-%% have a registration code, this API call will return the same registration
-%% code.
+%% registration
+%% code doesn't exist or has been deleted. If you already have a
+%% registration code, this API
+%% call will return the same registration code.
 %%
 %% Requires permission to access the GetRegistrationCode:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4679,10 +5033,12 @@ get_registration_code(Client, QueryMap, HeadersMap)
 get_registration_code(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/registrationcode"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4691,10 +5047,11 @@ get_registration_code(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the count, average, sum, minimum, maximum, sum of squares,
-%% variance, and standard deviation for the specified aggregated field.
+%% variance,
+%% and standard deviation for the specified aggregated field.
 %%
-%% If the aggregation field is of type `String', only the count statistic
-%% is returned.
+%% If the aggregation field is of type
+%% `String', only the count statistic is returned.
 %%
 %% Requires permission to access the GetStatistics:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4704,11 +5061,13 @@ get_statistics(Client, Input) ->
 get_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/statistics"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4737,10 +5096,12 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap)
 get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4764,10 +5125,12 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap)
 get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4791,10 +5154,12 @@ get_v2_logging_options(Client, QueryMap, HeadersMap)
 get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2LoggingOptions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4819,10 +5184,12 @@ list_active_violations(Client, QueryMap, HeadersMap)
 list_active_violations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/active-violations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4850,11 +5217,13 @@ list_attached_policies(Client, Target, Input) ->
 list_attached_policies(Client, Target, Input0, Options0) ->
     Method = post,
     Path = ["/attached-policies/", aws_util:encode_uri(Target), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4871,7 +5240,8 @@ list_attached_policies(Client, Target, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the findings (results) of a Device Defender audit or of the
-%% audits performed during a specified time period.
+%% audits
+%% performed during a specified time period.
 %%
 %% (Findings are retained for 90 days.)
 %%
@@ -4883,11 +5253,13 @@ list_audit_findings(Client, Input) ->
 list_audit_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/findings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -4900,7 +5272,8 @@ list_audit_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the status of audit mitigation action tasks that were executed.
+%% @doc Gets the status of audit mitigation action tasks that were
+%% executed.
 %%
 %% Requires permission to access the ListAuditMitigationActionsExecutions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4916,10 +5289,12 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
 list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/executions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4952,10 +5327,12 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
 list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/mitigationactions/tasks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -4973,7 +5350,8 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists your Device Defender audit listings.
+%% @doc
+%% Lists your Device Defender audit listings.
 %%
 %% Requires permission to access the ListAuditSuppressions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -4983,11 +5361,13 @@ list_audit_suppressions(Client, Input) ->
 list_audit_suppressions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/suppressions/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -5001,7 +5381,8 @@ list_audit_suppressions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Defender audits that have been performed during a
-%% given time period.
+%% given
+%% time period.
 %%
 %% Requires permission to access the ListAuditTasks:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5017,10 +5398,12 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
 list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/tasks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5052,11 +5435,13 @@ list_authorizers(Client, QueryMap, HeadersMap)
 
 list_authorizers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/authorizers/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/authorizers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5087,10 +5472,12 @@ list_billing_groups(Client, QueryMap, HeadersMap)
 list_billing_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5108,7 +5495,8 @@ list_billing_groups(Client, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% The results are paginated with a default page size of 25. You can use the
-%% returned marker to retrieve additional results.
+%% returned
+%% marker to retrieve additional results.
 %%
 %% Requires permission to access the ListCACertificates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5124,10 +5512,12 @@ list_ca_certificates(Client, QueryMap, HeadersMap)
 list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cacertificates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5158,11 +5548,13 @@ list_certificate_providers(Client, QueryMap, HeadersMap)
 
 list_certificate_providers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/certificate-providers/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/certificate-providers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5179,7 +5571,8 @@ list_certificate_providers(Client, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% The results are paginated with a default page size of 25. You can use the
-%% returned marker to retrieve additional results.
+%% returned
+%% marker to retrieve additional results.
 %%
 %% Requires permission to access the ListCertificates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5195,10 +5588,12 @@ list_certificates(Client, QueryMap, HeadersMap)
 list_certificates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5228,10 +5623,12 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap)
 list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates-by-ca/", aws_util:encode_uri(CaCertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5245,7 +5642,8 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists your Device Defender detect custom metrics.
+%% @doc
+%% Lists your Device Defender detect custom metrics.
 %%
 %% Requires permission to access the ListCustomMetrics:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5261,10 +5659,12 @@ list_custom_metrics(Client, QueryMap, HeadersMap)
 list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-metrics"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5277,7 +5677,8 @@ list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists mitigation actions executions for a Device Defender ML Detect
+%% @doc
+%% Lists mitigation actions executions for a Device Defender ML Detect
 %% Security Profile.
 %%
 %% Requires permission to access the ListDetectMitigationActionsExecutions:
@@ -5294,10 +5695,12 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap)
 list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/executions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5315,7 +5718,8 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List of Device Defender ML Detect mitigation actions tasks.
+%% @doc
+%% List of Device Defender ML Detect mitigation actions tasks.
 %%
 %% Requires permission to access the ListDetectMitigationActionsTasks:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5331,10 +5735,12 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
 list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detect/mitigationactions/tasks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5366,10 +5772,12 @@ list_dimensions(Client, QueryMap, HeadersMap)
 list_dimensions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dimensions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5384,7 +5792,8 @@ list_dimensions(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a list of domain configurations for the user.
 %%
-%% This list is sorted alphabetically by domain configuration name.
+%% This list is sorted
+%% alphabetically by domain configuration name.
 %%
 %% Requires permission to access the ListDomainConfigurations:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5400,10 +5809,12 @@ list_domain_configurations(Client, QueryMap, HeadersMap)
 list_domain_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainConfigurations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5433,10 +5844,12 @@ list_fleet_metrics(Client, QueryMap, HeadersMap)
 list_fleet_metrics(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/fleet-metrics"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5465,10 +5878,12 @@ list_indices(Client, QueryMap, HeadersMap)
 list_indices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/indices"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5497,10 +5912,12 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap)
 list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/things"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5530,10 +5947,12 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap)
 list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5565,10 +5984,12 @@ list_job_templates(Client, QueryMap, HeadersMap)
 list_job_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/job-templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5597,10 +6018,12 @@ list_jobs(Client, QueryMap, HeadersMap)
 list_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5630,10 +6053,12 @@ list_managed_job_templates(Client, QueryMap, HeadersMap)
 list_managed_job_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-job-templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5648,8 +6073,8 @@ list_managed_job_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the values reported for an IoT Device Defender metric
-%% (device-side metric, cloud-side metric, or custom metric) by the given
-%% thing during the specified time period.
+%% (device-side metric, cloud-side metric, or custom metric)
+%% by the given thing during the specified time period.
 list_metric_values(Client, EndTime, MetricName, StartTime, ThingName)
   when is_map(Client) ->
     list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, #{}, #{}).
@@ -5661,10 +6086,12 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, 
 list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/metric-values"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5700,10 +6127,12 @@ list_mitigation_actions(Client, QueryMap, HeadersMap)
 list_mitigation_actions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/mitigationactions/actions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5733,10 +6162,12 @@ list_ota_updates(Client, QueryMap, HeadersMap)
 list_ota_updates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/otaUpdates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5766,10 +6197,12 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap)
 list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates-out-going"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5800,9 +6233,11 @@ list_package_versions(Client, PackageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5833,9 +6268,11 @@ list_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5864,10 +6301,12 @@ list_policies(Client, QueryMap, HeadersMap)
 list_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5883,9 +6322,9 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the principals associated with the specified policy.
 %%
-%% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use
-%% `ListTargetsForPolicy' instead.
+%% Note: This action is deprecated and works as
+%% expected for backward compatibility, but we won't add enhancements.
+%% Use `ListTargetsForPolicy' instead.
 %%
 %% Requires permission to access the ListPolicyPrincipals:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5901,10 +6340,12 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap)
 list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy-principals"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -5939,10 +6380,12 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap)
 list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -5952,13 +6395,13 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the policies attached to the specified principal.
 %%
-%% If you use an Cognito identity, the ID must be in AmazonCognito Identity
-%% format:
+%% If you use an Cognito
+%% identity, the ID must be in AmazonCognito Identity format:
 %% https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax.
 %%
-%% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use
-%% `ListAttachedPolicies' instead.
+%% Note: This action is deprecated and works as
+%% expected for backward compatibility, but we won't add enhancements.
+%% Use `ListAttachedPolicies' instead.
 %%
 %% Requires permission to access the ListPrincipalPolicies:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -5974,10 +6417,12 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap)
 list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/principal-policies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -5997,8 +6442,10 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the things associated with the specified principal.
 %%
-%% A principal can be X.509 certificates, IAM users, groups, and roles,
-%% Amazon Cognito identities or federated identities.
+%% A principal can be X.509
+%% certificates, IAM users, groups, and roles, Amazon Cognito identities or
+%% federated
+%% identities.
 %%
 %% Requires permission to access the ListPrincipalThings:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -6014,10 +6461,12 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap)
 list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/principals/things"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -6050,10 +6499,12 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap)
 list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6082,10 +6533,12 @@ list_provisioning_templates(Client, QueryMap, HeadersMap)
 list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/provisioning-templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6102,33 +6555,33 @@ list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
 %%
 %% The following resources can be returned from calling this API:
 %%
-%% <ul> <li> DEVICE_CERTIFICATE
+%% DEVICE_CERTIFICATE
 %%
-%% </li> <li> CA_CERTIFICATE
+%% CA_CERTIFICATE
 %%
-%% </li> <li> IOT_POLICY
+%% IOT_POLICY
 %%
-%% </li> <li> COGNITO_IDENTITY_POOL
+%% COGNITO_IDENTITY_POOL
 %%
-%% </li> <li> CLIENT_ID
+%% CLIENT_ID
 %%
-%% </li> <li> ACCOUNT_SETTINGS
+%% ACCOUNT_SETTINGS
 %%
-%% </li> <li> ROLE_ALIAS
+%% ROLE_ALIAS
 %%
-%% </li> <li> IAM_ROLE
+%% IAM_ROLE
 %%
-%% </li> <li> ISSUER_CERTIFICATE
+%% ISSUER_CERTIFICATE
 %%
-%% </li> </ul> This API is similar to DescribeAuditFinding's
-%% RelatedResources:
+%% This API is similar to DescribeAuditFinding's RelatedResources:
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeAuditFinding.html
-%% but provides pagination and is not limited to 10 resources. When calling
-%% DescribeAuditFinding:
+%% but provides pagination and is not limited to 10 resources.
+%% When calling DescribeAuditFinding:
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeAuditFinding.html
-%% for the intermediate CA revoked for active device certificates check,
-%% RelatedResources will not be populated. You must use this API,
-%% ListRelatedResourcesForAuditFinding, to list the certificates.
+%% for the intermediate CA revoked for
+%% active device certificates check, RelatedResources will not be populated.
+%% You must use this API, ListRelatedResourcesForAuditFinding, to list the
+%% certificates.
 list_related_resources_for_audit_finding(Client, FindingId)
   when is_map(Client) ->
     list_related_resources_for_audit_finding(Client, FindingId, #{}, #{}).
@@ -6140,10 +6593,12 @@ list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap
 list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/relatedResources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6173,10 +6628,12 @@ list_role_aliases(Client, QueryMap, HeadersMap)
 list_role_aliases(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/role-aliases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6206,10 +6663,12 @@ list_scheduled_audits(Client, QueryMap, HeadersMap)
 list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/scheduledaudits"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6222,7 +6681,9 @@ list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Device Defender security profiles you've created.
+%% @doc Lists the Device Defender security profiles
+%% you've
+%% created.
 %%
 %% You can filter security profiles by dimension or custom metric.
 %%
@@ -6243,10 +6704,12 @@ list_security_profiles(Client, QueryMap, HeadersMap)
 list_security_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6278,10 +6741,12 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
 list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-for-target"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6312,10 +6777,12 @@ list_streams(Client, QueryMap, HeadersMap)
 list_streams(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/streams"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6345,10 +6812,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6371,11 +6840,13 @@ list_targets_for_policy(Client, PolicyName, Input) ->
 list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/policy-targets/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6407,10 +6878,12 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
 list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6439,10 +6912,12 @@ list_thing_groups(Client, QueryMap, HeadersMap)
 list_thing_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6474,10 +6949,12 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap)
 list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/thing-groups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6492,8 +6969,10 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the principals associated with the specified thing.
 %%
-%% A principal can be X.509 certificates, IAM users, groups, and roles,
-%% Amazon Cognito identities or federated identities.
+%% A principal can be X.509
+%% certificates, IAM users, groups, and roles, Amazon Cognito identities or
+%% federated
+%% identities.
 %%
 %% Requires permission to access the ListThingPrincipals:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -6509,10 +6988,12 @@ list_thing_principals(Client, ThingName, QueryMap, HeadersMap)
 list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6537,10 +7018,12 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
 list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/reports"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6570,10 +7053,12 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap)
 list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-registration-tasks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6603,10 +7088,12 @@ list_thing_types(Client, QueryMap, HeadersMap)
 list_thing_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6623,11 +7110,14 @@ list_thing_types(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists your things.
 %%
 %% Use the attributeName and attributeValue parameters to filter your things.
-%% For example, calling `ListThings' with attributeName=Color and
-%% attributeValue=Red retrieves all things in the registry that contain an
-%% attribute Color with the value Red. For more information, see List Things:
+%% For example,
+%% calling `ListThings' with attributeName=Color and attributeValue=Red
+%% retrieves all things in the registry that contain an attribute Color with
+%% the value Red. For more
+%% information, see List Things:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/thing-registry.html#list-things
-%% from the Amazon Web Services IoT Core Developer Guide.
+%% from the Amazon Web Services IoT Core Developer
+%% Guide.
 %%
 %% Requires permission to access the ListThings:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -6648,10 +7138,12 @@ list_things(Client, QueryMap, HeadersMap)
 list_things(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6684,10 +7176,12 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
 list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), "/things"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6716,10 +7210,12 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
 list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), "/things"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6750,10 +7246,12 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap)
 list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6782,10 +7280,12 @@ list_topic_rules(Client, QueryMap, HeadersMap)
 list_topic_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6816,10 +7316,12 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap)
 list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2LoggingLevel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6837,7 +7339,8 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
 %% during the given time period.
 %%
 %% You can use filters to limit the results to those alerts issued for a
-%% particular security profile, behavior, or thing (device).
+%% particular security profile,
+%% behavior, or thing (device).
 %%
 %% Requires permission to access the ListViolationEvents:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -6853,10 +7356,12 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap)
 list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/violation-events"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -6883,11 +7388,13 @@ put_verification_state_on_violation(Client, ViolationId, Input) ->
 put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
     Method = post,
     Path = ["/violations/verification-state/", aws_util:encode_uri(ViolationId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6902,8 +7409,9 @@ put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
 
 %% @doc Registers a CA certificate with Amazon Web Services IoT Core.
 %%
-%% There is no limit to the number of CA certificates you can register in
-%% your Amazon Web Services account. You can register up to 10 CA
+%% There is no limit to the number of CA
+%% certificates you can register in your Amazon Web Services account. You can
+%% register up to 10 CA
 %% certificates with the same `CA subject field' per Amazon Web Services
 %% account.
 %%
@@ -6915,11 +7423,13 @@ register_ca_certificate(Client, Input) ->
 register_ca_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cacertificate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6939,8 +7449,10 @@ register_ca_certificate(Client, Input0, Options0) ->
 %% as the signing CA.
 %%
 %% If you have more than one CA certificate that has the same subject field,
-%% you must specify the CA certificate that was used to sign the device
-%% certificate being registered.
+%% you must
+%% specify the CA certificate that was used to sign the device certificate
+%% being
+%% registered.
 %%
 %% Requires permission to access the RegisterCertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -6950,11 +7462,13 @@ register_certificate(Client, Input) ->
 register_certificate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificate/register"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6971,19 +7485,21 @@ register_certificate(Client, Input0, Options0) ->
 %% @doc Register a certificate that does not have a certificate authority
 %% (CA).
 %%
-%% For supported certificates, consult Certificate signing algorithms
-%% supported by IoT:
+%% For supported certificates, consult
+%% Certificate signing algorithms supported by IoT:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html#x509-cert-algorithms.
 register_certificate_without_ca(Client, Input) ->
     register_certificate_without_ca(Client, Input, []).
 register_certificate_without_ca(Client, Input0, Options0) ->
     Method = post,
     Path = ["/certificate/register-no-ca"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -6998,12 +7514,13 @@ register_certificate_without_ca(Client, Input0, Options0) ->
 
 %% @doc Provisions a thing in the device registry.
 %%
-%% RegisterThing calls other IoT control plane APIs. These calls might exceed
-%% your account level IoT Throttling Limits:
+%% RegisterThing calls other IoT control
+%% plane APIs. These calls might exceed your account level
+%% IoT Throttling Limits:
 %% https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot
 %% and cause throttle errors. Please contact Amazon Web Services Customer
-%% Support: https://console.aws.amazon.com/support/home to raise your
-%% throttling limits if necessary.
+%% Support: https://console.aws.amazon.com/support/home to raise
+%% your throttling limits if necessary.
 %%
 %% Requires permission to access the RegisterThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7013,11 +7530,13 @@ register_thing(Client, Input) ->
 register_thing(Client, Input0, Options0) ->
     Method = post,
     Path = ["/things"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7032,15 +7551,17 @@ register_thing(Client, Input0, Options0) ->
 
 %% @doc Rejects a pending certificate transfer.
 %%
-%% After IoT rejects a certificate transfer, the certificate status changes
-%% from PENDING_TRANSFER to INACTIVE.
+%% After IoT rejects a certificate transfer,
+%% the certificate status changes from PENDING_TRANSFER to
+%% INACTIVE.
 %%
-%% To check for pending certificate transfers, call `ListCertificates' to
-%% enumerate your certificates.
+%% To check for pending certificate transfers, call `ListCertificates'
+%% to enumerate your certificates.
 %%
 %% This operation can only be called by the transfer destination. After it is
-%% called, the certificate will be returned to the source's account in
-%% the INACTIVE state.
+%% called,
+%% the certificate will be returned to the source's account in the
+%% INACTIVE state.
 %%
 %% Requires permission to access the RejectCertificateTransfer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7050,11 +7571,13 @@ reject_certificate_transfer(Client, CertificateId, Input) ->
 reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/reject-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7080,11 +7603,13 @@ remove_thing_from_billing_group(Client, Input) ->
 remove_thing_from_billing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/billing-groups/removeThingFromBillingGroup"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7099,9 +7624,10 @@ remove_thing_from_billing_group(Client, Input0, Options0) ->
 
 %% @doc Remove the specified thing from the specified group.
 %%
-%% You must specify either a `thingGroupArn' or a `thingGroupName' to
-%% identify the thing group and either a `thingArn' or a `thingName'
-%% to identify the thing to remove from the thing group.
+%% You must specify either a `thingGroupArn' or a
+%% `thingGroupName' to identify the thing group and
+%% either a `thingArn' or a `thingName' to
+%% identify the thing to remove from the thing group.
 %%
 %% Requires permission to access the RemoveThingFromThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7111,11 +7637,13 @@ remove_thing_from_thing_group(Client, Input) ->
 remove_thing_from_thing_group(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/removeThingFromThingGroup"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7130,9 +7658,10 @@ remove_thing_from_thing_group(Client, Input0, Options0) ->
 
 %% @doc Replaces the rule.
 %%
-%% You must specify all parameters for the new rule. Creating rules is an
-%% administrator-level action. Any user who has permission to create rules
-%% will be able to access data processed by the rule.
+%% You must specify all parameters for the new rule. Creating rules
+%% is an administrator-level action. Any user who has permission to create
+%% rules will be able
+%% to access data processed by the rule.
 %%
 %% Requires permission to access the ReplaceTopicRule:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7142,11 +7671,13 @@ replace_topic_rule(Client, RuleName, Input) ->
 replace_topic_rule(Client, RuleName, Input0, Options0) ->
     Method = patch,
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7169,11 +7700,13 @@ search_index(Client, Input) ->
 search_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indices/search"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7188,8 +7721,8 @@ search_index(Client, Input0, Options0) ->
 
 %% @doc Sets the default authorizer.
 %%
-%% This will be used if a websocket connection is made without specifying an
-%% authorizer.
+%% This will be used if a websocket connection is made
+%% without specifying an authorizer.
 %%
 %% Requires permission to access the SetDefaultAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7199,11 +7732,13 @@ set_default_authorizer(Client, Input) ->
 set_default_authorizer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/default-authorizer"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7217,11 +7752,13 @@ set_default_authorizer(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the specified version of the specified policy as the
-%% policy's default (operative) version.
+%% policy's default
+%% (operative) version.
 %%
-%% This action affects all certificates to which the policy is attached. To
-%% list the principals the policy is attached to, use the
-%% `ListPrincipalPolicies' action.
+%% This action affects all certificates to which the policy is attached.
+%% To list the principals the policy is attached to, use the
+%% `ListPrincipalPolicies'
+%% action.
 %%
 %% Requires permission to access the SetDefaultPolicyVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7231,11 +7768,13 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     Method = patch,
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7251,7 +7790,8 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0
 %% @doc Sets the logging options.
 %%
 %% NOTE: use of this command is not recommended. Use
-%% `SetV2LoggingOptions' instead.
+%% `SetV2LoggingOptions'
+%% instead.
 %%
 %% Requires permission to access the SetLoggingOptions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7261,11 +7801,13 @@ set_logging_options(Client, Input) ->
 set_logging_options(Client, Input0, Options0) ->
     Method = post,
     Path = ["/loggingOptions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7288,11 +7830,13 @@ set_v2_logging_level(Client, Input) ->
 set_v2_logging_level(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2LoggingLevel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7315,11 +7859,13 @@ set_v2_logging_options(Client, Input) ->
 set_v2_logging_options(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2LoggingOptions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7343,11 +7889,13 @@ start_audit_mitigation_actions_task(Client, TaskId, Input) ->
 start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7360,7 +7908,8 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a Device Defender ML Detect mitigation actions task.
+%% @doc
+%% Starts a Device Defender ML Detect mitigation actions task.
 %%
 %% Requires permission to access the StartDetectMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7370,11 +7919,13 @@ start_detect_mitigation_actions_task(Client, TaskId, Input) ->
 start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7397,11 +7948,13 @@ start_on_demand_audit_task(Client, Input) ->
 start_on_demand_audit_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/tasks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7424,11 +7977,13 @@ start_thing_registration_task(Client, Input) ->
 start_thing_registration_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/thing-registration-tasks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7451,11 +8006,13 @@ stop_thing_registration_task(Client, TaskId, Input) ->
 stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
     Method = put,
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7470,7 +8027,8 @@ stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
 
 %% @doc Adds to or modifies the tags of the given resource.
 %%
-%% Tags are metadata which can be used to manage a resource.
+%% Tags are metadata which can be
+%% used to manage a resource.
 %%
 %% Requires permission to access the TagResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7480,11 +8038,13 @@ tag_resource(Client, Input) ->
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7498,7 +8058,8 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests if a specified principal is authorized to perform an IoT action
-%% on a specified resource.
+%% on a
+%% specified resource.
 %%
 %% Use this to test and debug the authorization behavior of devices that
 %% connect to the IoT device gateway.
@@ -7511,11 +8072,13 @@ test_authorization(Client, Input) ->
 test_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/test-authorization"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7532,8 +8095,10 @@ test_authorization(Client, Input0, Options0) ->
 %% @doc Tests a custom authorization behavior by invoking a specified custom
 %% authorizer.
 %%
-%% Use this to test and debug the custom authorization behavior of devices
-%% that connect to the IoT device gateway.
+%% Use
+%% this to test and debug the custom authorization behavior of devices that
+%% connect to the IoT
+%% device gateway.
 %%
 %% Requires permission to access the TestInvokeAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7543,11 +8108,13 @@ test_invoke_authorizer(Client, AuthorizerName, Input) ->
 test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = post,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), "/test"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7570,10 +8137,12 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% You can cancel the transfer until it is acknowledged by the recipient.
 %%
 %% No notification is sent to the transfer destination's account. It is
-%% up to the caller to notify the transfer target.
+%% up to the caller
+%% to notify the transfer target.
 %%
 %% The certificate being transferred must not be in the ACTIVE state. You can
-%% use the `UpdateCertificate' action to deactivate it.
+%% use the
+%% `UpdateCertificate' action to deactivate it.
 %%
 %% The certificate must not have any policies attached to it. You can use the
 %% `DetachPolicy' action to detach them.
@@ -7582,11 +8151,13 @@ transfer_certificate(Client, CertificateId, Input) ->
 transfer_certificate(Client, CertificateId, Input0, Options0) ->
     Method = patch,
     Path = ["/transfer-certificate/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7610,11 +8181,13 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untag"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7631,7 +8204,8 @@ untag_resource(Client, Input0, Options0) ->
 %% this account.
 %%
 %% Settings include how audit notifications are sent and which audit checks
-%% are enabled or disabled.
+%% are
+%% enabled or disabled.
 %%
 %% Requires permission to access the UpdateAccountAuditConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7641,11 +8215,13 @@ update_account_audit_configuration(Client, Input) ->
 update_account_audit_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7658,17 +8234,20 @@ update_account_audit_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a Device Defender audit suppression.
+%% @doc
+%% Updates a Device Defender audit suppression.
 update_audit_suppression(Client, Input) ->
     update_audit_suppression(Client, Input, []).
 update_audit_suppression(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/suppressions/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7691,11 +8270,13 @@ update_authorizer(Client, AuthorizerName, Input) ->
 update_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Method = put,
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7718,11 +8299,13 @@ update_billing_group(Client, BillingGroupName, Input) ->
 update_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7745,11 +8328,13 @@ update_ca_certificate(Client, CertificateId, Input) ->
 update_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Method = put,
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7766,7 +8351,8 @@ update_ca_certificate(Client, CertificateId, Input0, Options0) ->
 
 %% @doc Updates the status of the specified certificate.
 %%
-%% This operation is idempotent.
+%% This operation is
+%% idempotent.
 %%
 %% Requires permission to access the UpdateCertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7776,19 +8362,22 @@ update_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %% a certificate to connect to IoT.
 %%
 %% Within a few minutes of updating a certificate from the ACTIVE state to
-%% any other state, IoT disconnects all devices that used that certificate to
-%% connect. Devices cannot use a certificate that is not in the ACTIVE state
-%% to reconnect.
+%% any other
+%% state, IoT disconnects all devices that used that certificate to connect.
+%% Devices cannot
+%% use a certificate that is not in the ACTIVE state to reconnect.
 update_certificate(Client, CertificateId, Input) ->
     update_certificate(Client, CertificateId, Input, []).
 update_certificate(Client, CertificateId, Input0, Options0) ->
     Method = put,
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7812,11 +8401,13 @@ update_certificate_provider(Client, CertificateProviderName, Input) ->
 update_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
     Method = put,
     Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7829,7 +8420,8 @@ update_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a Device Defender detect custom metric.
+%% @doc Updates a
+%% Device Defender detect custom metric.
 %%
 %% Requires permission to access the UpdateCustomMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7839,11 +8431,13 @@ update_custom_metric(Client, MetricName, Input) ->
 update_custom_metric(Client, MetricName, Input0, Options0) ->
     Method = patch,
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7858,8 +8452,12 @@ update_custom_metric(Client, MetricName, Input0, Options0) ->
 
 %% @doc Updates the definition for a dimension.
 %%
-%% You cannot change the type of a dimension after it is created (you can
-%% delete it and recreate it).
+%% You
+%% cannot
+%% change the type of a dimension after
+%% it is created (you can delete it and
+%% recreate
+%% it).
 %%
 %% Requires permission to access the UpdateDimension:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7869,11 +8467,13 @@ update_dimension(Client, Name, Input) ->
 update_dimension(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7888,7 +8488,8 @@ update_dimension(Client, Name, Input0, Options0) ->
 
 %% @doc Updates values stored in the domain configuration.
 %%
-%% Domain configurations for default endpoints can't be updated.
+%% Domain configurations for default
+%% endpoints can't be updated.
 %%
 %% Requires permission to access the UpdateDomainConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -7898,11 +8499,13 @@ update_domain_configuration(Client, DomainConfigurationName, Input) ->
 update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
     Method = put,
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7925,11 +8528,13 @@ update_dynamic_thing_group(Client, ThingGroupName, Input) ->
 update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7952,11 +8557,13 @@ update_event_configurations(Client, Input) ->
 update_event_configurations(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/event-configurations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -7979,11 +8586,13 @@ update_fleet_metric(Client, MetricName, Input) ->
 update_fleet_metric(Client, MetricName, Input0, Options0) ->
     Method = patch,
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8006,11 +8615,13 @@ update_indexing_configuration(Client, Input) ->
 update_indexing_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/indexing/config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8033,11 +8644,13 @@ update_job(Client, JobId, Input) ->
 update_job(Client, JobId, Input0, Options0) ->
     Method = patch,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8061,11 +8674,13 @@ update_mitigation_action(Client, ActionName, Input) ->
 update_mitigation_action(Client, ActionName, Input0, Options0) ->
     Method = patch,
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8091,10 +8706,12 @@ update_package(Client, PackageName, Input0, Options0) ->
     Method = patch,
     Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8121,10 +8738,12 @@ update_package_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/package-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8151,10 +8770,12 @@ update_package_version(Client, PackageName, VersionName, Input0, Options0) ->
     Method = patch,
     Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8178,11 +8799,13 @@ update_provisioning_template(Client, TemplateName, Input) ->
 update_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Method = patch,
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8205,11 +8828,13 @@ update_role_alias(Client, RoleAlias, Input) ->
 update_role_alias(Client, RoleAlias, Input0, Options0) ->
     Method = put,
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8233,11 +8858,13 @@ update_scheduled_audit(Client, ScheduledAuditName, Input) ->
 update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Method = patch,
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8260,11 +8887,13 @@ update_security_profile(Client, SecurityProfileName, Input) ->
 update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Method = patch,
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8290,11 +8919,13 @@ update_stream(Client, StreamId, Input) ->
 update_stream(Client, StreamId, Input0, Options0) ->
     Method = put,
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8317,11 +8948,13 @@ update_thing(Client, ThingName, Input) ->
 update_thing(Client, ThingName, Input0, Options0) ->
     Method = patch,
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8344,11 +8977,13 @@ update_thing_group(Client, ThingGroupName, Input) ->
 update_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8371,11 +9006,13 @@ update_thing_groups_for_thing(Client, Input) ->
 update_thing_groups_for_thing(Client, Input0, Options0) ->
     Method = put,
     Path = ["/thing-groups/updateThingGroupsForThing"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8390,8 +9027,8 @@ update_thing_groups_for_thing(Client, Input0, Options0) ->
 
 %% @doc Updates a topic rule destination.
 %%
-%% You use this to change the status, endpoint URL, or confirmation URL of
-%% the destination.
+%% You use this to change the status, endpoint URL, or
+%% confirmation URL of the destination.
 %%
 %% Requires permission to access the UpdateTopicRuleDestination:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -8401,11 +9038,13 @@ update_topic_rule_destination(Client, Input) ->
 update_topic_rule_destination(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/destinations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8428,11 +9067,13 @@ validate_security_profile_behaviors(Client, Input) ->
 validate_security_profile_behaviors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/security-profile-behaviors/validate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -8448,6 +9089,11 @@ validate_security_profile_behaviors(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

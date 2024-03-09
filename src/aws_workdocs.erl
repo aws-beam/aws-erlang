@@ -3,39 +3,49 @@
 
 %% @doc The Amazon WorkDocs API is designed for the following use cases:
 %%
-%% <ul> <li> File Migration: File migration applications are supported for
-%% users who want to migrate their files from an on-premises or off-premises
-%% file system or service.
+%% File Migration: File migration applications are supported for users who
+%% want to migrate their files from an on-premises or off-premises file
+%% system or
+%% service.
 %%
-%% Users can insert files into a user directory structure, as well as allow
-%% for basic metadata changes, such as modifications to the permissions of
+%% Users can insert files into a user directory structure, as well as
+%% allow for basic metadata changes, such as modifications to the permissions
+%% of
 %% files.
 %%
-%% </li> <li> Security: Support security applications are supported for users
-%% who have additional security needs, such as antivirus or data loss
-%% prevention. The API actions, along with CloudTrail, allow these
-%% applications to detect when changes occur in Amazon WorkDocs. Then, the
-%% application can take the necessary actions and replace the target file. If
-%% the target file violates the policy, the application can also choose to
-%% email the user.
+%% Security: Support security applications are supported for users who have
+%% additional security needs, such as antivirus or data loss prevention. The
+%% API
+%% actions, along with CloudTrail, allow these applications to detect when
+%% changes occur in Amazon WorkDocs. Then, the application can take the
+%% necessary
+%% actions and replace the target file. If the target file violates the
+%% policy, the
+%% application can also choose to email the user.
 %%
-%% </li> <li> eDiscovery/Analytics: General administrative applications are
-%% supported, such as eDiscovery and analytics. These applications can choose
-%% to mimic or record the actions in an Amazon WorkDocs site, along with
-%% CloudTrail, to replicate data for eDiscovery, backup, or analytical
-%% applications.
+%% eDiscovery/Analytics: General administrative applications are supported,
+%% such as eDiscovery and analytics. These applications can choose to mimic
+%% or
+%% record the actions in an Amazon WorkDocs site, along with CloudTrail, to
+%% replicate data for eDiscovery, backup, or analytical applications.
 %%
-%% </li> </ul> All Amazon WorkDocs API actions are Amazon authenticated and
-%% certificate-signed. They not only require the use of the Amazon Web
-%% Services SDK, but also allow for the exclusive use of IAM users and roles
-%% to help facilitate access, trust, and permission policies. By creating a
-%% role and allowing an IAM user to access the Amazon WorkDocs site, the IAM
-%% user gains full administrative visibility into the entire Amazon WorkDocs
-%% site (or as set in the IAM policy). This includes, but is not limited to,
-%% the ability to modify file permissions and upload any file to any user.
-%% This allows developers to perform the three use cases above, as well as
-%% give users the ability to grant access on a selective basis using the IAM
-%% model.
+%% All Amazon WorkDocs API actions are Amazon authenticated and
+%% certificate-signed.
+%% They not only require the use of the Amazon Web Services SDK, but also
+%% allow for the exclusive use of
+%% IAM users and roles to help facilitate access, trust, and permission
+%% policies. By
+%% creating a role and allowing an IAM user to access the Amazon WorkDocs
+%% site, the
+%% IAM user gains full administrative visibility into the entire Amazon
+%% WorkDocs site (or as
+%% set in the IAM policy). This includes, but is not limited to, the ability
+%% to modify file
+%% permissions and upload any file to any user. This allows developers to
+%% perform the three
+%% use cases above, as well as give users the ability to grant access on a
+%% selective basis
+%% using the IAM model.
 %%
 %% The pricing for Amazon WorkDocs APIs varies depending on the API call type
 %% for these actions:
@@ -164,20 +174,25 @@
 %%====================================================================
 
 %% @doc Aborts the upload of the specified document version that was
-%% previously initiated by `InitiateDocumentVersionUpload'.
+%% previously initiated
+%% by `InitiateDocumentVersionUpload'.
 %%
-%% The client should make this call only when it no longer intends to upload
-%% the document version, or fails to do so.
+%% The client should make this call
+%% only when it no longer intends to upload the document version, or fails to
+%% do
+%% so.
 abort_document_version_upload(Client, DocumentId, VersionId, Input) ->
     abort_document_version_upload(Client, DocumentId, VersionId, Input, []).
 abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -194,17 +209,20 @@ abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options0) -
 
 %% @doc Activates the specified user.
 %%
-%% Only active users can access Amazon WorkDocs.
+%% Only active users can access Amazon
+%% WorkDocs.
 activate_user(Client, UserId, Input) ->
     activate_user(Client, UserId, Input, []).
 activate_user(Client, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -221,18 +239,21 @@ activate_user(Client, UserId, Input0, Options0) ->
 
 %% @doc Creates a set of permissions for the specified folder or document.
 %%
-%% The resource permissions are overwritten if the principals already have
-%% different permissions.
+%% The resource
+%% permissions are overwritten if the principals already have different
+%% permissions.
 add_resource_permissions(Client, ResourceId, Input) ->
     add_resource_permissions(Client, ResourceId, Input, []).
 add_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -254,10 +275,12 @@ create_comment(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -273,17 +296,20 @@ create_comment(Client, DocumentId, VersionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more custom properties to the specified resource (a
-%% folder, document, or version).
+%% folder, document,
+%% or version).
 create_custom_metadata(Client, ResourceId, Input) ->
     create_custom_metadata(Client, ResourceId, Input, []).
 create_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Method = put,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -306,10 +332,12 @@ create_folder(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/folders"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -325,17 +353,20 @@ create_folder(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified list of labels to the given resource (a document
-%% or folder)
+%% or
+%% folder)
 create_labels(Client, ResourceId, Input) ->
     create_labels(Client, ResourceId, Input, []).
 create_labels(Client, ResourceId, Input0, Options0) ->
     Method = put,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -352,23 +383,26 @@ create_labels(Client, ResourceId, Input0, Options0) ->
 
 %% @doc Configure Amazon WorkDocs to use Amazon SNS notifications.
 %%
-%% The endpoint receives a confirmation message, and must confirm the
-%% subscription.
+%% The endpoint receives a
+%% confirmation message, and must confirm the subscription.
 %%
 %% For more information, see Setting up notifications for an IAM user or
 %% role:
 %% https://docs.aws.amazon.com/workdocs/latest/developerguide/manage-notifications.html
-%% in the Amazon WorkDocs Developer Guide.
+%% in the Amazon WorkDocs Developer
+%% Guide.
 create_notification_subscription(Client, OrganizationId, Input) ->
     create_notification_subscription(Client, OrganizationId, Input, []).
 create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -383,18 +417,20 @@ create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
 
 %% @doc Creates a user in a Simple AD or Microsoft AD directory.
 %%
-%% The status of a newly created user is &quot;ACTIVE&quot;. New users can
-%% access Amazon WorkDocs.
+%% The status of a newly
+%% created user is &quot;ACTIVE&quot;. New users can access Amazon WorkDocs.
 create_user(Client, Input) ->
     create_user(Client, Input, []).
 create_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/users"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -410,17 +446,20 @@ create_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deactivates the specified user, which revokes the user's access
-%% to Amazon WorkDocs.
+%% to Amazon
+%% WorkDocs.
 deactivate_user(Client, UserId, Input) ->
     deactivate_user(Client, UserId, Input, []).
 deactivate_user(Client, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -442,10 +481,12 @@ delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment/", aws_util:encode_uri(CommentId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -467,10 +508,12 @@ delete_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -496,10 +539,12 @@ delete_document(Client, DocumentId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -521,10 +566,12 @@ delete_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documentVersions/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -547,10 +594,12 @@ delete_folder(Client, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -572,10 +621,12 @@ delete_folder_contents(Client, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -597,10 +648,12 @@ delete_labels(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -624,10 +677,12 @@ delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0,
     Method = delete,
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -652,10 +707,12 @@ delete_user(Client, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -683,9 +740,11 @@ describe_activities(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/activities"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -722,9 +781,11 @@ describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -756,9 +817,11 @@ describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -778,12 +841,15 @@ describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the contents of the specified folder, including its
-%% documents and subfolders.
+%% documents and
+%% subfolders.
 %%
 %% By default, Amazon WorkDocs returns the first 100 active document and
-%% folder metadata items. If there are more results, the response includes a
-%% marker that you can use to request the next set of results. You can also
-%% request initialized documents.
+%% folder
+%% metadata items. If there are more results, the response includes a marker
+%% that you can
+%% use to request the next set of results. You can also request initialized
+%% documents.
 describe_folder_contents(Client, FolderId)
   when is_map(Client) ->
     describe_folder_contents(Client, FolderId, #{}, #{}).
@@ -796,9 +862,11 @@ describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -821,7 +889,8 @@ describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes the groups specified by the query.
 %%
-%% Groups are defined by the underlying Active Directory.
+%% Groups are defined by the underlying
+%% Active Directory.
 describe_groups(Client, SearchQuery)
   when is_map(Client) ->
     describe_groups(Client, SearchQuery, #{}, #{}).
@@ -834,9 +903,11 @@ describe_groups(Client, SearchQuery, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/groups"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -868,9 +939,11 @@ describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -896,9 +969,11 @@ describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -917,17 +992,23 @@ describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the current user's special folders; the
-%% `RootFolder' and the `RecycleBin'.
+%% `RootFolder' and the
+%% `RecycleBin'.
 %%
-%% `RootFolder' is the root of user's files and folders and
-%% `RecycleBin' is the root of recycled items. This is not a valid action
-%% for SigV4 (administrative API) clients.
+%% `RootFolder' is the root of user's files and
+%% folders and `RecycleBin' is the root of recycled items. This is not a
+%% valid
+%% action for SigV4 (administrative API) clients.
 %%
 %% This action requires an authentication token. To get an authentication
-%% token, register an application with Amazon WorkDocs. For more information,
-%% see Authentication and Access Control for User Applications:
+%% token,
+%% register an application with Amazon WorkDocs. For more information, see
+%% Authentication and Access
+%% Control for User Applications:
 %% https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html
-%% in the Amazon WorkDocs Developer Guide.
+%% in the
+%% Amazon
+%% WorkDocs Developer Guide.
 describe_root_folders(Client, AuthenticationToken)
   when is_map(Client) ->
     describe_root_folders(Client, AuthenticationToken, #{}, #{}).
@@ -940,9 +1021,11 @@ describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/me/root"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -961,12 +1044,14 @@ describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, Options
 
 %% @doc Describes the specified users.
 %%
-%% You can describe all users or filter the results (for example, by status
-%% or organization).
+%% You can describe all users or filter the results
+%% (for example, by status or organization).
 %%
 %% By default, Amazon WorkDocs returns the first 24 active or pending users.
-%% If there are more results, the response includes a marker that you can use
-%% to request the next set of results.
+%% If there
+%% are more results, the response includes a marker that you can use to
+%% request the next
+%% set of results.
 describe_users(Client)
   when is_map(Client) ->
     describe_users(Client, #{}, #{}).
@@ -979,9 +1064,11 @@ describe_users(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/users"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1006,15 +1093,20 @@ describe_users(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details of the current user for whom the authentication
-%% token was generated.
+%% token was
+%% generated.
 %%
 %% This is not a valid action for SigV4 (administrative API) clients.
 %%
 %% This action requires an authentication token. To get an authentication
-%% token, register an application with Amazon WorkDocs. For more information,
-%% see Authentication and Access Control for User Applications:
+%% token,
+%% register an application with Amazon WorkDocs. For more information, see
+%% Authentication and Access
+%% Control for User Applications:
 %% https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html
-%% in the Amazon WorkDocs Developer Guide.
+%% in the
+%% Amazon
+%% WorkDocs Developer Guide.
 get_current_user(Client, AuthenticationToken)
   when is_map(Client) ->
     get_current_user(Client, AuthenticationToken, #{}, #{}).
@@ -1027,9 +1119,11 @@ get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/me"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1054,9 +1148,11 @@ get_document(Client, DocumentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1073,12 +1169,16 @@ get_document(Client, DocumentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the path information (the hierarchy from the root folder)
-%% for the requested document.
+%% for the
+%% requested document.
 %%
 %% By default, Amazon WorkDocs returns a maximum of 100 levels upwards from
-%% the requested document and only includes the IDs of the parent folders in
-%% the path. You can limit the maximum number of levels. You can also request
-%% the names of the parent folders.
+%% the
+%% requested document and only includes the IDs of the parent folders in the
+%% path. You can
+%% limit the maximum number of levels. You can also request the names of the
+%% parent
+%% folders.
 get_document_path(Client, DocumentId)
   when is_map(Client) ->
     get_document_path(Client, DocumentId, #{}, #{}).
@@ -1091,9 +1191,11 @@ get_document_path(Client, DocumentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/path"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1124,9 +1226,11 @@ get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1156,9 +1260,11 @@ get_folder(Client, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1175,12 +1281,15 @@ get_folder(Client, FolderId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the path information (the hierarchy from the root folder)
-%% for the specified folder.
+%% for the
+%% specified folder.
 %%
 %% By default, Amazon WorkDocs returns a maximum of 100 levels upwards from
-%% the requested folder and only includes the IDs of the parent folders in
-%% the path. You can limit the maximum number of levels. You can also request
-%% the parent folder names.
+%% the
+%% requested folder and only includes the IDs of the parent folders in the
+%% path. You can
+%% limit the maximum number of levels. You can also request the parent folder
+%% names.
 get_folder_path(Client, FolderId)
   when is_map(Client) ->
     get_folder_path(Client, FolderId, #{}, #{}).
@@ -1193,9 +1302,11 @@ get_folder_path(Client, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/path"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1215,7 +1326,8 @@ get_folder_path(Client, FolderId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a collection of resources, including folders and documents.
 %%
-%% The only `CollectionType' supported is `SHARED_WITH_ME'.
+%% The only
+%% `CollectionType' supported is `SHARED_WITH_ME'.
 get_resources(Client)
   when is_map(Client) ->
     get_resources(Client, #{}, #{}).
@@ -1228,9 +1340,11 @@ get_resources(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/resources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1252,10 +1366,12 @@ get_resources(Client, QueryMap, HeadersMap, Options0)
 %% @doc Creates a new document object and version object.
 %%
 %% The client specifies the parent folder ID and name of the document to
-%% upload. The ID is optionally specified when creating a new version of an
-%% existing document. This is the first step to upload a document. Next,
-%% upload the document to the URL returned from the call, and then call
-%% `UpdateDocumentVersion'.
+%% upload. The
+%% ID is optionally specified when creating a new version of an existing
+%% document. This is
+%% the first step to upload a document. Next, upload the document to the URL
+%% returned from
+%% the call, and then call `UpdateDocumentVersion'.
 %%
 %% To cancel the document upload, call `AbortDocumentVersionUpload'.
 initiate_document_version_upload(Client, Input) ->
@@ -1264,10 +1380,12 @@ initiate_document_version_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documents"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1289,10 +1407,12 @@ remove_all_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1315,10 +1435,12 @@ remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1341,10 +1463,12 @@ restore_document_versions(Client, DocumentId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documentVersions/restore/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1367,10 +1491,12 @@ search_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1387,18 +1513,20 @@ search_resources(Client, Input0, Options0) ->
 
 %% @doc Updates the specified attributes of a document.
 %%
-%% The user must have access to both the document and its parent folder, if
-%% applicable.
+%% The user must have access to both
+%% the document and its parent folder, if applicable.
 update_document(Client, DocumentId, Input) ->
     update_document(Client, DocumentId, Input, []).
 update_document(Client, DocumentId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1416,18 +1544,22 @@ update_document(Client, DocumentId, Input0, Options0) ->
 %% @doc Changes the status of the document version to ACTIVE.
 %%
 %% Amazon WorkDocs also sets its document container to ACTIVE. This is the
-%% last step in a document upload, after the client uploads the document to
-%% an S3-presigned URL returned by `InitiateDocumentVersionUpload'.
+%% last step
+%% in a document upload, after the client uploads the document to an
+%% S3-presigned URL
+%% returned by `InitiateDocumentVersionUpload'.
 update_document_version(Client, DocumentId, VersionId, Input) ->
     update_document_version(Client, DocumentId, VersionId, Input, []).
 update_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1444,18 +1576,20 @@ update_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
 
 %% @doc Updates the specified attributes of the specified folder.
 %%
-%% The user must have access to both the folder and its parent folder, if
-%% applicable.
+%% The user must have access
+%% to both the folder and its parent folder, if applicable.
 update_folder(Client, FolderId, Input) ->
     update_folder(Client, FolderId, Input, []).
 update_folder(Client, FolderId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1471,17 +1605,20 @@ update_folder(Client, FolderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified attributes of the specified user, and grants or
-%% revokes administrative privileges to the Amazon WorkDocs site.
+%% revokes
+%% administrative privileges to the Amazon WorkDocs site.
 update_user(Client, UserId, Input) ->
     update_user(Client, UserId, Input, []).
 update_user(Client, UserId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1499,6 +1636,11 @@ update_user(Client, UserId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -2,35 +2,45 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS Signer is a fully managed code-signing service to help you ensure
-%% the trust and integrity of your code.
+%% the trust and
+%% integrity of your code.
 %%
 %% Signer supports the following applications:
 %%
-%% With code signing for AWS Lambda, you can sign AWS Lambda:
-%% http://docs.aws.amazon.com/lambda/latest/dg/ deployment packages.
+%% With code signing for AWS Lambda, you can sign AWS
+%% Lambda: http://docs.aws.amazon.com/lambda/latest/dg/ deployment packages.
 %% Integrated support is provided for Amazon S3:
-%% http://docs.aws.amazon.com/AmazonS3/latest/gsg/, Amazon CloudWatch:
+%% http://docs.aws.amazon.com/AmazonS3/latest/gsg/, Amazon
+%% CloudWatch:
 %% http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/, and AWS
 %% CloudTrail: http://docs.aws.amazon.com/awscloudtrail/latest/userguide/. In
-%% order to sign code, you create a signing profile and then use Signer to
-%% sign Lambda zip files in S3.
+%% order
+%% to sign code, you create a signing profile and then use Signer to sign
+%% Lambda zip
+%% files in S3.
 %%
 %% With code signing for IoT, you can sign code for any IoT device that is
-%% supported by AWS. IoT code signing is available for Amazon FreeRTOS:
+%% supported by AWS.
+%% IoT code signing is available for Amazon FreeRTOS:
 %% http://docs.aws.amazon.com/freertos/latest/userguide/ and AWS IoT Device
 %% Management: http://docs.aws.amazon.com/iot/latest/developerguide/, and is
 %% integrated with AWS Certificate Manager (ACM):
 %% http://docs.aws.amazon.com/acm/latest/userguide/. In order to sign code,
-%% you import a third-party code-signing certificate using ACM, and use that
-%% to sign updates in Amazon FreeRTOS and AWS IoT Device Management.
+%% you import a third-party code-signing
+%% certificate using ACM, and use that to sign updates in Amazon FreeRTOS and
+%% AWS IoT Device Management.
 %%
-%% With Signer and the Notation CLI from the Notary Project:
-%% https://notaryproject.dev/, you can sign container images stored in a
-%% container registry such as Amazon Elastic Container Registry (ECR). The
-%% signatures are stored in the registry alongside the images, where they are
-%% available for verifying image authenticity and integrity.
+%% With Signer and the Notation CLI from the Notary
+%% Project: https://notaryproject.dev/, you can sign container images stored
+%% in a container registry such
+%% as Amazon Elastic Container Registry (ECR). The signatures are stored in
+%% the registry
+%% alongside the images, where they are available for verifying image
+%% authenticity and
+%% integrity.
 %%
-%% For more information about Signer, see the AWS Signer Developer Guide:
+%% For more information about Signer, see the AWS Signer Developer
+%% Guide:
 %% https://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html.
 -module(aws_signer).
 
@@ -94,11 +104,13 @@ add_profile_permission(Client, ProfileName, Input) ->
 add_profile_permission(Client, ProfileName, Input0, Options0) ->
     Method = post,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -116,17 +128,20 @@ add_profile_permission(Client, ProfileName, Input0, Options0) ->
 %%
 %% A canceled profile is still viewable with the `ListSigningProfiles'
 %% operation, but it cannot perform new signing jobs, and is deleted two
-%% years after cancelation.
+%% years after
+%% cancelation.
 cancel_signing_profile(Client, ProfileName, Input) ->
     cancel_signing_profile(Client, ProfileName, Input, []).
 cancel_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -141,8 +156,9 @@ cancel_signing_profile(Client, ProfileName, Input0, Options0) ->
 
 %% @doc Returns information about a specific code signing job.
 %%
-%% You specify the job by using the `jobId' value that is returned by the
-%% `StartSigningJob' operation.
+%% You specify the job by using the
+%% `jobId' value that is returned by the `StartSigningJob'
+%% operation.
 describe_signing_job(Client, JobId)
   when is_map(Client) ->
     describe_signing_job(Client, JobId, #{}, #{}).
@@ -154,10 +170,12 @@ describe_signing_job(Client, JobId, QueryMap, HeadersMap)
 describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -166,7 +184,8 @@ describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the revocation status of one or more of the signing
-%% profile, signing job, and signing certificate.
+%% profile, signing job,
+%% and signing certificate.
 get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp)
   when is_map(Client) ->
     get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, #{}, #{}).
@@ -178,10 +197,12 @@ get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVers
 get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/revocations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -209,10 +230,12 @@ get_signing_platform(Client, PlatformId, QueryMap, HeadersMap)
 get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-platforms/", aws_util:encode_uri(PlatformId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -232,10 +255,12 @@ get_signing_profile(Client, ProfileName, QueryMap, HeadersMap)
 get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -260,10 +285,12 @@ list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap)
 list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -277,11 +304,13 @@ list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all your signing jobs.
 %%
-%% You can use the `maxResults' parameter to limit the number of signing
-%% jobs that are returned in the response. If additional jobs remain to be
-%% listed, AWS Signer returns a `nextToken' value. Use this value in
+%% You can use the `maxResults' parameter to limit the
+%% number of signing jobs that are returned in the response. If additional
+%% jobs remain to
+%% be listed, AWS Signer returns a `nextToken' value. Use this value in
 %% subsequent calls to `ListSigningJobs' to fetch the remaining values.
-%% You can continue calling `ListSigningJobs' with your `maxResults'
+%% You can
+%% continue calling `ListSigningJobs' with your `maxResults'
 %% parameter and with new values that Signer returns in the `nextToken'
 %% parameter until all of your signing jobs have been returned.
 list_signing_jobs(Client)
@@ -295,10 +324,12 @@ list_signing_jobs(Client, QueryMap, HeadersMap)
 list_signing_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -321,12 +352,14 @@ list_signing_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all signing platforms available in AWS Signer that match the
 %% request parameters.
 %%
-%% If additional jobs remain to be listed, Signer returns a `nextToken'
-%% value. Use this value in subsequent calls to `ListSigningJobs' to
-%% fetch the remaining values. You can continue calling `ListSigningJobs'
-%% with your `maxResults' parameter and with new values that Signer
-%% returns in the `nextToken' parameter until all of your signing jobs
-%% have been returned.
+%% If
+%% additional jobs remain to be listed, Signer returns a `nextToken'
+%% value.
+%% Use this value in subsequent calls to `ListSigningJobs' to fetch the
+%% remaining values. You can continue calling `ListSigningJobs' with your
+%% `maxResults' parameter and with new values that Signer returns in the
+%% `nextToken' parameter until all of your signing jobs have been
+%% returned.
 list_signing_platforms(Client)
   when is_map(Client) ->
     list_signing_platforms(Client, #{}, #{}).
@@ -338,10 +371,12 @@ list_signing_platforms(Client, QueryMap, HeadersMap)
 list_signing_platforms(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-platforms"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -359,14 +394,17 @@ list_signing_platforms(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all available signing profiles in your AWS account.
 %%
-%% Returns only profiles with an `ACTIVE' status unless the
-%% `includeCanceled' request field is set to `true'. If additional
-%% jobs remain to be listed, AWS Signer returns a `nextToken' value. Use
-%% this value in subsequent calls to `ListSigningJobs' to fetch the
-%% remaining values. You can continue calling `ListSigningJobs' with your
-%% `maxResults' parameter and with new values that Signer returns in the
-%% `nextToken' parameter until all of your signing jobs have been
-%% returned.
+%% Returns only profiles with an
+%% `ACTIVE' status unless the `includeCanceled' request field is
+%% set to `true'. If additional jobs remain to be listed, AWS Signer
+%% returns a
+%% `nextToken' value. Use this value in subsequent calls to
+%% `ListSigningJobs' to fetch the remaining values. You can continue
+%% calling
+%% `ListSigningJobs' with your `maxResults' parameter and with
+%% new values that Signer returns in the `nextToken' parameter until all
+%% of
+%% your signing jobs have been returned.
 list_signing_profiles(Client)
   when is_map(Client) ->
     list_signing_profiles(Client, #{}, #{}).
@@ -378,10 +416,12 @@ list_signing_profiles(Client, QueryMap, HeadersMap)
 list_signing_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -410,10 +450,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -423,18 +465,20 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Creates a signing profile.
 %%
-%% A signing profile is a code-signing template that can be used to carry out
-%% a pre-defined signing job.
+%% A signing profile is a code-signing template that can be used to
+%% carry out a pre-defined signing job.
 put_signing_profile(Client, ProfileName, Input) ->
     put_signing_profile(Client, ProfileName, Input, []).
 put_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -453,11 +497,13 @@ remove_profile_permission(Client, ProfileName, StatementId, Input) ->
 remove_profile_permission(Client, ProfileName, StatementId, Input0, Options0) ->
     Method = delete,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions/", aws_util:encode_uri(StatementId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -473,17 +519,20 @@ remove_profile_permission(Client, ProfileName, StatementId, Input0, Options0) ->
 
 %% @doc Changes the state of a signing job to REVOKED.
 %%
-%% This indicates that the signature is no longer valid.
+%% This indicates that the signature is no
+%% longer valid.
 revoke_signature(Client, JobId, Input) ->
     revoke_signature(Client, JobId, Input, []).
 revoke_signature(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/signing-jobs/", aws_util:encode_uri(JobId), "/revoke"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -498,18 +547,22 @@ revoke_signature(Client, JobId, Input0, Options0) ->
 
 %% @doc Changes the state of a signing profile to REVOKED.
 %%
-%% This indicates that signatures generated using the signing profile after
-%% an effective start date are no longer valid.
+%% This indicates that signatures
+%% generated using the signing profile after an effective start date are no
+%% longer
+%% valid.
 revoke_signing_profile(Client, ProfileName, Input) ->
     revoke_signing_profile(Client, ProfileName, Input, []).
 revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/revoke"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -528,11 +581,13 @@ sign_payload(Client, Input) ->
 sign_payload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/signing-jobs/with-payload"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -547,27 +602,32 @@ sign_payload(Client, Input0, Options0) ->
 
 %% @doc Initiates a signing job to be performed on the code provided.
 %%
-%% Signing jobs are viewable by the `ListSigningJobs' operation for two
-%% years after they are performed. Note the following requirements:
+%% Signing jobs are
+%% viewable by the `ListSigningJobs' operation for two years after they
+%% are
+%% performed. Note the following requirements:
 %%
-%% <ul> <li> You must create an Amazon S3 source bucket. For more
-%% information, see Creating a Bucket:
+%% You must create an Amazon S3 source bucket. For more information, see
+%% Creating a Bucket:
 %% http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html in the
 %% Amazon S3 Getting Started Guide.
 %%
-%% </li> <li> Your S3 source bucket must be version enabled.
+%% Your S3 source bucket must be version enabled.
 %%
-%% </li> <li> You must create an S3 destination bucket. AWS Signer uses your
-%% S3 destination bucket to write your signed code.
+%% You must create an S3 destination bucket. AWS Signer uses your S3
+%% destination bucket to
+%% write your signed code.
 %%
-%% </li> <li> You specify the name of the source and destination buckets when
-%% calling the `StartSigningJob' operation.
+%% You specify the name of the source and destination buckets when calling
+%% the
+%% `StartSigningJob' operation.
 %%
-%% </li> <li> You must also specify a request token that identifies your
-%% request to Signer.
+%% You must also specify a request token that identifies your request to
+%% Signer.
 %%
-%% </li> </ul> You can call the `DescribeSigningJob' and the
-%% `ListSigningJobs' actions after you call `StartSigningJob'.
+%% You can call the `DescribeSigningJob' and the `ListSigningJobs'
+%% actions after you call
+%% `StartSigningJob'.
 %%
 %% For a Java example that shows how to use this action, see StartSigningJob:
 %% https://docs.aws.amazon.com/signer/latest/developerguide/api-startsigningjob.html.
@@ -576,11 +636,13 @@ start_signing_job(Client, Input) ->
 start_signing_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/signing-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -595,20 +657,24 @@ start_signing_job(Client, Input0, Options0) ->
 
 %% @doc Adds one or more tags to a signing profile.
 %%
-%% Tags are labels that you can use to identify and organize your AWS
-%% resources. Each tag consists of a key and an optional value. To specify
-%% the signing profile, use its Amazon Resource Name (ARN). To specify the
-%% tag, use a key-value pair.
+%% Tags are labels that you can use to
+%% identify and organize your AWS resources. Each tag consists of a key and
+%% an optional
+%% value. To specify the signing profile, use its Amazon Resource Name (ARN).
+%% To specify
+%% the tag, use a key-value pair.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -623,17 +689,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes one or more tags from a signing profile.
 %%
-%% To remove the tags, specify a list of tag keys.
+%% To remove the tags, specify a list of
+%% tag keys.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -650,6 +719,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -2,38 +2,50 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Identity and Access Management Access Analyzer helps you to set,
-%% verify, and refine your IAM policies by providing a suite of capabilities.
+%% verify, and refine your IAM policies by providing
+%% a suite of capabilities.
 %%
-%% Its features include findings for external and unused access, basic and
-%% custom policy checks for validating policies, and policy generation to
-%% generate fine-grained policies. To start using IAM Access Analyzer to
-%% identify external or unused access, you first need to create an analyzer.
+%% Its features include findings for external and unused access,
+%% basic and custom policy checks for validating policies, and policy
+%% generation to generate
+%% fine-grained policies. To start using IAM Access Analyzer to identify
+%% external or unused access,
+%% you first need to create an analyzer.
 %%
-%% External access analyzers help identify potential risks of accessing
-%% resources by enabling you to identify any resource policies that grant
-%% access to an external principal. It does this by using logic-based
-%% reasoning to analyze resource-based policies in your Amazon Web Services
-%% environment. An external principal can be another Amazon Web Services
-%% account, a root user, an IAM user or role, a federated user, an Amazon Web
-%% Services service, or an anonymous user. You can also use IAM Access
-%% Analyzer to preview public and cross-account access to your resources
-%% before deploying permissions changes.
+%% External access analyzers help identify potential risks
+%% of accessing resources by enabling you to identify any resource policies
+%% that grant access
+%% to an external principal. It does this by using logic-based reasoning to
+%% analyze
+%% resource-based policies in your Amazon Web Services environment. An
+%% external principal can be another
+%% Amazon Web Services account, a root user, an IAM user or role, a federated
+%% user, an Amazon Web Services service, or an
+%% anonymous user. You can also use IAM Access Analyzer to preview public and
+%% cross-account access
+%% to your resources before deploying permissions changes.
 %%
-%% Unused access analyzers help identify potential identity access risks by
-%% enabling you to identify unused IAM roles, unused access keys, unused
-%% console passwords, and IAM principals with unused service and action-level
+%% Unused access analyzers help identify potential
+%% identity access risks by enabling you to identify unused IAM roles, unused
+%% access keys,
+%% unused console passwords, and IAM principals with unused service and
+%% action-level
 %% permissions.
 %%
 %% Beyond findings, IAM Access Analyzer provides basic and custom policy
-%% checks to validate IAM policies before deploying permissions changes. You
-%% can use policy generation to refine permissions by attaching a policy
-%% generated using access activity logged in CloudTrail logs.
+%% checks to validate IAM
+%% policies before deploying permissions changes. You can use policy
+%% generation to refine
+%% permissions by attaching a policy generated using access activity logged
+%% in CloudTrail logs.
 %%
 %% This guide describes the IAM Access Analyzer operations that you can call
-%% programmatically. For general information about IAM Access Analyzer, see
-%% Identity and Access Management Access Analyzer:
+%% programmatically.
+%% For general information about IAM Access Analyzer, see Identity and Access
+%% Management Access Analyzer:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html
-%% in the IAM User Guide.
+%% in the
+%% IAM User Guide.
 -module(aws_accessanalyzer).
 
 -export([apply_archive_rule/2,
@@ -120,17 +132,20 @@
 %%====================================================================
 
 %% @doc Retroactively applies the archive rule to existing findings that meet
-%% the archive rule criteria.
+%% the archive rule
+%% criteria.
 apply_archive_rule(Client, Input) ->
     apply_archive_rule(Client, Input, []).
 apply_archive_rule(Client, Input0, Options0) ->
     Method = put,
     Path = ["/archive-rule"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -150,10 +165,12 @@ cancel_policy_generation(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -173,10 +190,12 @@ check_access_not_granted(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/check-access-not-granted"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -190,24 +209,29 @@ check_access_not_granted(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Checks whether new access is allowed for an updated policy when
-%% compared to the existing policy.
+%% compared to the existing
+%% policy.
 %%
 %% You can find examples for reference policies and learn how to set up and
-%% run a custom policy check for new access in the IAM Access Analyzer custom
-%% policy checks samples:
+%% run a custom
+%% policy check for new access in the IAM Access Analyzer custom policy
+%% checks samples:
 %% https://github.com/aws-samples/iam-access-analyzer-custom-policy-check-samples
-%% repository on GitHub. The reference policies in this repository are meant
-%% to be passed to the `existingPolicyDocument' request parameter.
+%% repository on GitHub. The reference
+%% policies in this repository are meant to be passed to the
+%% `existingPolicyDocument' request parameter.
 check_no_new_access(Client, Input) ->
     check_no_new_access(Client, Input, []).
 check_no_new_access(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/check-no-new-access"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -221,17 +245,20 @@ check_no_new_access(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an access preview that allows you to preview IAM Access
-%% Analyzer findings for your resource before deploying resource permissions.
+%% Analyzer findings for your
+%% resource before deploying resource permissions.
 create_access_preview(Client, Input) ->
     create_access_preview(Client, Input, []).
 create_access_preview(Client, Input0, Options0) ->
     Method = put,
     Path = ["/access-preview"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -251,10 +278,12 @@ create_analyzer(Client, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -269,8 +298,8 @@ create_analyzer(Client, Input0, Options0) ->
 
 %% @doc Creates an archive rule for the specified analyzer.
 %%
-%% Archive rules automatically archive new findings that meet the criteria
-%% you define when you create the rule.
+%% Archive rules automatically archive
+%% new findings that meet the criteria you define when you create the rule.
 %%
 %% To learn about filter keys that you can use to create an archive rule, see
 %% IAM Access Analyzer filter keys:
@@ -282,10 +311,12 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -300,20 +331,22 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 
 %% @doc Deletes the specified analyzer.
 %%
-%% When you delete an analyzer, IAM Access Analyzer is disabled for the
-%% account or organization in the current or specific Region. All findings
-%% that were generated by the analyzer are deleted. You cannot undo this
-%% action.
+%% When you delete an analyzer, IAM Access Analyzer is disabled
+%% for the account or organization in the current or specific Region. All
+%% findings that were
+%% generated by the analyzer are deleted. You cannot undo this action.
 delete_analyzer(Client, AnalyzerName, Input) ->
     delete_analyzer(Client, AnalyzerName, Input, []).
 delete_analyzer(Client, AnalyzerName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -334,10 +367,12 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -365,9 +400,11 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -392,9 +429,11 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, Op
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzed-resource"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -420,9 +459,11 @@ get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -448,9 +489,11 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -460,9 +503,10 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the specified finding.
 %%
-%% GetFinding and GetFindingV2 both use `access-analyzer:GetFinding' in
-%% the `Action' element of an IAM policy statement. You must have
-%% permission to perform the `access-analyzer:GetFinding' action.
+%% GetFinding and GetFindingV2 both use
+%% `access-analyzer:GetFinding' in the `Action' element of an IAM
+%% policy statement. You must have permission to perform the
+%% `access-analyzer:GetFinding' action.
 get_finding(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding(Client, Id, AnalyzerArn, #{}, #{}).
@@ -475,9 +519,11 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/finding/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -491,9 +537,10 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the specified finding.
 %%
-%% GetFinding and GetFindingV2 both use `access-analyzer:GetFinding' in
-%% the `Action' element of an IAM policy statement. You must have
-%% permission to perform the `access-analyzer:GetFinding' action.
+%% GetFinding and GetFindingV2 both use
+%% `access-analyzer:GetFinding' in the `Action' element of an IAM
+%% policy statement. You must have permission to perform the
+%% `access-analyzer:GetFinding' action.
 get_finding_v2(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding_v2(Client, Id, AnalyzerArn, #{}, #{}).
@@ -506,9 +553,11 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingv2/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -536,9 +585,11 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -552,17 +603,20 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of access preview findings generated by the
-%% specified access preview.
+%% specified access
+%% preview.
 list_access_preview_findings(Client, AccessPreviewId, Input) ->
     list_access_preview_findings(Client, AccessPreviewId, Input, []).
 list_access_preview_findings(Client, AccessPreviewId, Input0, Options0) ->
     Method = post,
     Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -588,9 +642,11 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-preview"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -605,19 +661,23 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of resources of the specified type that have been
-%% analyzed by the specified external access analyzer.
+%% analyzed by the
+%% specified external access analyzer.
 %%
-%% This action is not supported for unused access analyzers.
+%% This action is not supported for unused access
+%% analyzers.
 list_analyzed_resources(Client, Input) ->
     list_analyzed_resources(Client, Input, []).
 list_analyzed_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/analyzed-resource"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -643,9 +703,11 @@ list_analyzers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -672,9 +734,11 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -689,10 +753,11 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of findings generated by the specified analyzer.
 %%
-%% ListFindings and ListFindingsV2 both use
-%% `access-analyzer:ListFindings' in the `Action' element of an IAM
-%% policy statement. You must have permission to perform the
-%% `access-analyzer:ListFindings' action.
+%% ListFindings and
+%% ListFindingsV2 both use `access-analyzer:ListFindings' in the
+%% `Action' element of an IAM policy statement. You must have permission
+%% to
+%% perform the `access-analyzer:ListFindings' action.
 %%
 %% To learn about filter keys that you can use to retrieve a list of
 %% findings, see IAM Access Analyzer filter keys:
@@ -704,10 +769,12 @@ list_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/finding"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -722,10 +789,11 @@ list_findings(Client, Input0, Options0) ->
 
 %% @doc Retrieves a list of findings generated by the specified analyzer.
 %%
-%% ListFindings and ListFindingsV2 both use
-%% `access-analyzer:ListFindings' in the `Action' element of an IAM
-%% policy statement. You must have permission to perform the
-%% `access-analyzer:ListFindings' action.
+%% ListFindings and
+%% ListFindingsV2 both use `access-analyzer:ListFindings' in the
+%% `Action' element of an IAM policy statement. You must have permission
+%% to
+%% perform the `access-analyzer:ListFindings' action.
 %%
 %% To learn about filter keys that you can use to retrieve a list of
 %% findings, see IAM Access Analyzer filter keys:
@@ -737,10 +805,12 @@ list_findings_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingv2"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -766,9 +836,11 @@ list_policy_generations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy/generation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -795,9 +867,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -812,10 +886,12 @@ start_policy_generation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -836,10 +912,12 @@ start_resource_scan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resource/scan"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -859,10 +937,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -882,10 +962,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -906,10 +988,12 @@ update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -929,10 +1013,12 @@ update_findings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/finding"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -947,19 +1033,22 @@ update_findings(Client, Input0, Options0) ->
 
 %% @doc Requests the validation of a policy and returns a list of findings.
 %%
-%% The findings help you identify issues and provide actionable
-%% recommendations to resolve the issue and enable you to author functional
-%% policies that meet security best practices.
+%% The findings help
+%% you identify issues and provide actionable recommendations to resolve the
+%% issue and enable
+%% you to author functional policies that meet security best practices.
 validate_policy(Client, Input) ->
     validate_policy(Client, Input, []).
 validate_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/validation"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -977,6 +1066,11 @@ validate_policy(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

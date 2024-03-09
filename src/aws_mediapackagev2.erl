@@ -1,22 +1,24 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This guide is intended for creating AWS Elemental MediaPackage
-%% resources in MediaPackage Version 2 (v2) starting from May 2023.
+%% @doc
+%% This guide is intended for creating AWS Elemental MediaPackage resources
+%% in MediaPackage Version 2 (v2) starting from May 2023.
 %%
 %% To get started with MediaPackage v2, create your MediaPackage resources.
-%% There isn't an automated process to migrate your resources from
-%% MediaPackage v1 to MediaPackage v2.
+%% There isn't an automated process to
+%% migrate your resources from MediaPackage v1 to MediaPackage v2.
 %%
 %% The names of the entities that you use to access this API, like URLs and
-%% ARNs, all have the versioning information added, like &quot;v2&quot;, to
-%% distinguish from the prior version. If you used MediaPackage prior to this
-%% release, you can't use the MediaPackage v2 CLI or the MediaPackage v2
-%% API to access any MediaPackage v1 resources.
+%% ARNs, all have the versioning information
+%% added, like &quot;v2&quot;, to distinguish from the prior version. If you
+%% used MediaPackage prior to this release, you can't use
+%% the MediaPackage v2 CLI or the MediaPackage v2 API to access any
+%% MediaPackage v1 resources.
 %%
 %% If you created resources in MediaPackage v1, use video on demand (VOD)
-%% workflows, and aren't looking to migrate to MediaPackage v2 yet, see
-%% the MediaPackage v1 Live API Reference:
+%% workflows, and aren't looking to migrate to MediaPackage v2 yet,
+%% see the MediaPackage v1 Live API Reference:
 %% https://docs.aws.amazon.com/mediapackage/latest/apireference/what-is.html.
 %%
 %% This is the AWS Elemental MediaPackage v2 Live REST API Reference. It
@@ -109,10 +111,12 @@ create_channel(Client, ChannelGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-client-token">>, <<"ClientToken">>}
@@ -140,10 +144,12 @@ create_channel_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-client-token">>, <<"ClientToken">>}
@@ -171,10 +177,12 @@ create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input0, Options0) 
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amzn-client-token">>, <<"ClientToken">>}
@@ -200,10 +208,12 @@ delete_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -228,10 +238,12 @@ delete_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -251,10 +263,12 @@ delete_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) -
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -278,10 +292,12 @@ delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -301,10 +317,12 @@ delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpo
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -332,9 +350,11 @@ get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -357,9 +377,11 @@ get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -384,9 +406,11 @@ get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -409,9 +433,11 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -433,9 +459,11 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -458,9 +486,11 @@ list_channel_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -488,9 +518,11 @@ list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -517,9 +549,11 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -545,9 +579,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -566,10 +602,12 @@ put_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -591,10 +629,12 @@ put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -611,23 +651,27 @@ put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 %% MediaPackage resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions, by granting a user permission to access or
-%% change only resources with certain tag values. You can use the TagResource
-%% operation with a resource that already has tags. If you specify a new tag
+%% them to scope user
+%% permissions, by granting a user permission to access or change only
+%% resources with certain tag values.
+%% You can use the TagResource operation with a resource that already has
+%% tags. If you specify a new tag
 %% key for the resource, this tag is appended to the list of tags associated
-%% with the resource. If you specify a tag key that is already associated
-%% with the resource, the new tag value that you specify replaces the
-%% previous value for that tag.
+%% with the resource. If you
+%% specify a tag key that is already associated with the resource, the new
+%% tag value that you specify replaces the previous value for that tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -647,10 +691,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -679,10 +725,12 @@ update_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -709,10 +757,12 @@ update_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -738,10 +788,12 @@ update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -757,6 +809,11 @@ update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

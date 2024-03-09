@@ -1,103 +1,80 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services Mainframe Modernization provides tools and
-%% resources to help you plan and implement migration and
-%% modernization from mainframes to Amazon Web Services managed runtime
-%% environments.
-%%
-%% It provides tools for
-%% analyzing existing mainframe applications, developing or updating
-%% mainframe applications
-%% using COBOL or PL/I, and implementing an automated pipeline for continuous
-%% integration and
-%% continuous delivery (CI/CD) of the applications.
--module(aws_m2).
+%% @doc Neptune Analytics is a new analytics database engine for Amazon
+%% Neptune that helps customers get to
+%% insights faster by quickly processing large amounts of graph data,
+%% invoking popular graph analytic
+%% algorithms in low-latency queries, and getting analytics results in
+%% seconds.
+-module(aws_neptune_graph).
 
--export([cancel_batch_job_execution/4,
-         cancel_batch_job_execution/5,
-         create_application/2,
-         create_application/3,
-         create_data_set_import_task/3,
-         create_data_set_import_task/4,
-         create_deployment/3,
-         create_deployment/4,
-         create_environment/2,
-         create_environment/3,
-         delete_application/3,
-         delete_application/4,
-         delete_application_from_environment/4,
-         delete_application_from_environment/5,
-         delete_environment/3,
-         delete_environment/4,
-         get_application/2,
-         get_application/4,
-         get_application/5,
-         get_application_version/3,
-         get_application_version/5,
-         get_application_version/6,
-         get_batch_job_execution/3,
-         get_batch_job_execution/5,
-         get_batch_job_execution/6,
-         get_data_set_details/3,
-         get_data_set_details/5,
-         get_data_set_details/6,
-         get_data_set_import_task/3,
-         get_data_set_import_task/5,
-         get_data_set_import_task/6,
-         get_deployment/3,
-         get_deployment/5,
-         get_deployment/6,
-         get_environment/2,
-         get_environment/4,
-         get_environment/5,
-         get_signed_bluinsights_url/1,
-         get_signed_bluinsights_url/3,
-         get_signed_bluinsights_url/4,
-         list_application_versions/2,
-         list_application_versions/4,
-         list_application_versions/5,
-         list_applications/1,
-         list_applications/3,
-         list_applications/4,
-         list_batch_job_definitions/2,
-         list_batch_job_definitions/4,
-         list_batch_job_definitions/5,
-         list_batch_job_executions/2,
-         list_batch_job_executions/4,
-         list_batch_job_executions/5,
-         list_data_set_import_history/2,
-         list_data_set_import_history/4,
-         list_data_set_import_history/5,
-         list_data_sets/2,
-         list_data_sets/4,
-         list_data_sets/5,
-         list_deployments/2,
-         list_deployments/4,
-         list_deployments/5,
-         list_engine_versions/1,
-         list_engine_versions/3,
-         list_engine_versions/4,
-         list_environments/1,
-         list_environments/3,
-         list_environments/4,
+-export([cancel_import_task/3,
+         cancel_import_task/4,
+         cancel_query/3,
+         cancel_query/4,
+         create_graph/2,
+         create_graph/3,
+         create_graph_snapshot/2,
+         create_graph_snapshot/3,
+         create_graph_using_import_task/2,
+         create_graph_using_import_task/3,
+         create_private_graph_endpoint/3,
+         create_private_graph_endpoint/4,
+         delete_graph/3,
+         delete_graph/4,
+         delete_graph_snapshot/3,
+         delete_graph_snapshot/4,
+         delete_private_graph_endpoint/4,
+         delete_private_graph_endpoint/5,
+         execute_query/2,
+         execute_query/3,
+         get_graph/2,
+         get_graph/4,
+         get_graph/5,
+         get_graph_snapshot/2,
+         get_graph_snapshot/4,
+         get_graph_snapshot/5,
+         get_graph_summary/2,
+         get_graph_summary/4,
+         get_graph_summary/5,
+         get_import_task/2,
+         get_import_task/4,
+         get_import_task/5,
+         get_private_graph_endpoint/3,
+         get_private_graph_endpoint/5,
+         get_private_graph_endpoint/6,
+         get_query/3,
+         get_query/5,
+         get_query/6,
+         list_graph_snapshots/1,
+         list_graph_snapshots/3,
+         list_graph_snapshots/4,
+         list_graphs/1,
+         list_graphs/3,
+         list_graphs/4,
+         list_import_tasks/1,
+         list_import_tasks/3,
+         list_import_tasks/4,
+         list_private_graph_endpoints/2,
+         list_private_graph_endpoints/4,
+         list_private_graph_endpoints/5,
+         list_queries/3,
+         list_queries/5,
+         list_queries/6,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
-         start_application/3,
-         start_application/4,
-         start_batch_job/3,
-         start_batch_job/4,
-         stop_application/3,
-         stop_application/4,
+         reset_graph/3,
+         reset_graph/4,
+         restore_graph_from_snapshot/3,
+         restore_graph_from_snapshot/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
-         update_application/3,
-         update_application/4,
-         update_environment/3,
-         update_environment/4]).
+         update_graph/3,
+         update_graph/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -105,144 +82,12 @@
 %% API
 %%====================================================================
 
-%% @doc Cancels the running of a specific batch job execution.
-cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input) ->
-    cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input, []).
-cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input0, Options0) ->
-    Method = post,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-executions/", aws_util:encode_uri(ExecutionId), "/cancel"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Creates a new application with given parameters.
-%%
-%% Requires an existing runtime
-%% environment and application definition file.
-create_application(Client, Input) ->
-    create_application(Client, Input, []).
-create_application(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/applications"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Starts a data set import task for a specific application.
-create_data_set_import_task(Client, ApplicationId, Input) ->
-    create_data_set_import_task(Client, ApplicationId, Input, []).
-create_data_set_import_task(Client, ApplicationId, Input0, Options0) ->
-    Method = post,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-import-task"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Creates and starts a deployment to deploy an application into a
-%% runtime
-%% environment.
-create_deployment(Client, ApplicationId, Input) ->
-    create_deployment(Client, ApplicationId, Input, []).
-create_deployment(Client, ApplicationId, Input0, Options0) ->
-    Method = post,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/deployments"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Creates a runtime environment for a given runtime engine.
-create_environment(Client, Input) ->
-    create_environment(Client, Input, []).
-create_environment(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/environments"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Deletes a specific application.
-%%
-%% You cannot delete a running application.
-delete_application(Client, ApplicationId, Input) ->
-    delete_application(Client, ApplicationId, Input, []).
-delete_application(Client, ApplicationId, Input0, Options0) ->
+%% @doc Deletes the specified import task.
+cancel_import_task(Client, TaskIdentifier, Input) ->
+    cancel_import_task(Client, TaskIdentifier, Input, []).
+cancel_import_task(Client, TaskIdentifier, Input0, Options0) ->
     Method = delete,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
+    Path = ["/importtasks/", aws_util:encode_uri(TaskIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -262,21 +107,40 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a specific application from the specific runtime environment
-%% where it was
-%% previously deployed.
-%%
-%% You cannot delete a runtime environment using DeleteEnvironment if any
-%% application has ever been deployed to it. This API removes the association
-%% of the
-%% application with the runtime environment so you can delete the environment
-%% smoothly.
-delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input) ->
-    delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input, []).
-delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
+%% @doc Cancels a specified query.
+cancel_query(Client, QueryId, Input) ->
+    cancel_query(Client, QueryId, Input, []).
+cancel_query(Client, QueryId, Input0, Options0) ->
     Method = delete,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environment/", aws_util:encode_uri(EnvironmentId), ""],
+    Path = ["/queries/", aws_util:encode_uri(QueryId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"graphIdentifier">>, <<"graphIdentifier">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Neptune Analytics graph.
+create_graph(Client, Input) ->
+    create_graph(Client, Input, []).
+create_graph(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/graphs"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -295,17 +159,129 @@ delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a specific runtime environment.
+%% @doc Creates a snapshot of the specific graph.
+create_graph_snapshot(Client, Input) ->
+    create_graph_snapshot(Client, Input, []).
+create_graph_snapshot(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/snapshots"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Neptune Analytics graph and imports data into it,
+%% either from Amazon Simple Storage Service (S3) or from a Neptune database
+%% or a Neptune database snapshot.
 %%
-%% The environment cannot contain deployed
-%% applications. If it does, you must delete those applications before you
-%% delete the
-%% environment.
-delete_environment(Client, EnvironmentId, Input) ->
-    delete_environment(Client, EnvironmentId, Input, []).
-delete_environment(Client, EnvironmentId, Input0, Options0) ->
+%% The data can be loaded from files in S3 that in either the Gremlin CSV
+%% format:
+%% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-format-gremlin.html
+%% or the openCypher
+%% load format:
+%% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-format-opencypher.html.
+create_graph_using_import_task(Client, Input) ->
+    create_graph_using_import_task(Client, Input, []).
+create_graph_using_import_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/importtasks"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a private graph endpoint to allow private access from to the
+%% graph from within
+%% a VPC.
+%%
+%% You can attach security groups to the private graph endpoint. VPC endpoint
+%% charges apply.
+create_private_graph_endpoint(Client, GraphIdentifier, Input) ->
+    create_private_graph_endpoint(Client, GraphIdentifier, Input, []).
+create_private_graph_endpoint(Client, GraphIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified graph.
+%%
+%% Graphs cannot be deleted if delete-protection is enabled.
+delete_graph(Client, GraphIdentifier, Input) ->
+    delete_graph(Client, GraphIdentifier, Input, []).
+delete_graph(Client, GraphIdentifier, Input0, Options0) ->
     Method = delete,
-    Path = ["/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"skipSnapshot">>, <<"skipSnapshot">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specifed graph snapshot.
+delete_graph_snapshot(Client, SnapshotIdentifier, Input) ->
+    delete_graph_snapshot(Client, SnapshotIdentifier, Input, []).
+delete_graph_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -325,438 +301,288 @@ delete_environment(Client, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the details of a specific application.
-get_application(Client, ApplicationId)
-  when is_map(Client) ->
-    get_application(Client, ApplicationId, #{}, #{}).
-
-get_application(Client, ApplicationId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
-
-get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
+%% @doc Deletes a private graph endpoint.
+delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input) ->
+    delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input, []).
+delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/", aws_util:encode_uri(VpcId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
 
     Query_ = [],
+    Input = Input2,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns details about a specific version of a specific application.
-get_application_version(Client, ApplicationId, ApplicationVersion)
-  when is_map(Client) ->
-    get_application_version(Client, ApplicationId, ApplicationVersion, #{}, #{}).
-
-get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, HeadersMap, []).
-
-get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions/", aws_util:encode_uri(ApplicationVersion), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Gets the details of a specific batch job execution for a specific
-%% application.
-get_batch_job_execution(Client, ApplicationId, ExecutionId)
-  when is_map(Client) ->
-    get_batch_job_execution(Client, ApplicationId, ExecutionId, #{}, #{}).
-
-get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap, []).
-
-get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-executions/", aws_util:encode_uri(ExecutionId), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Gets the details of a specific data set.
-get_data_set_details(Client, ApplicationId, DataSetName)
-  when is_map(Client) ->
-    get_data_set_details(Client, ApplicationId, DataSetName, #{}, #{}).
-
-get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, []).
-
-get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/datasets/", aws_util:encode_uri(DataSetName), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Gets the status of a data set import task initiated with the
-%% `CreateDataSetImportTask' operation.
-get_data_set_import_task(Client, ApplicationId, TaskId)
-  when is_map(Client) ->
-    get_data_set_import_task(Client, ApplicationId, TaskId, #{}, #{}).
-
-get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, []).
-
-get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-import-tasks/", aws_util:encode_uri(TaskId), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Gets details of a specific deployment with a given deployment
-%% identifier.
-get_deployment(Client, ApplicationId, DeploymentId)
-  when is_map(Client) ->
-    get_deployment(Client, ApplicationId, DeploymentId, #{}, #{}).
-
-get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap, []).
-
-get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Describes a specific runtime environment.
-get_environment(Client, EnvironmentId)
-  when is_map(Client) ->
-    get_environment(Client, EnvironmentId, #{}, #{}).
-
-get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
-
-get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/environments/", aws_util:encode_uri(EnvironmentId), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Gets a single sign-on URL that can be used to connect to AWS Blu
-%% Insights.
-get_signed_bluinsights_url(Client)
-  when is_map(Client) ->
-    get_signed_bluinsights_url(Client, #{}, #{}).
-
-get_signed_bluinsights_url(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_signed_bluinsights_url(Client, QueryMap, HeadersMap, []).
-
-get_signed_bluinsights_url(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/signed-bi-url"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Returns a list of the application versions for a specific
-%% application.
-list_application_versions(Client, ApplicationId)
-  when is_map(Client) ->
-    list_application_versions(Client, ApplicationId, #{}, #{}).
-
-list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, []).
-
-list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Lists the applications associated with a specific Amazon Web Services
-%% account.
+%% @doc Execute an openCypher query.
 %%
-%% You can provide the
-%% unique identifier of a specific runtime environment in a query parameter
-%% to see all
-%% applications associated with that environment.
-list_applications(Client)
-  when is_map(Client) ->
-    list_applications(Client, #{}, #{}).
-
-list_applications(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_applications(Client, QueryMap, HeadersMap, []).
-
-list_applications(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"environmentId">>, maps:get(<<"environmentId">>, QueryMap, undefined)},
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"names">>, maps:get(<<"names">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Lists all the available batch job definitions based on the batch job
-%% resources uploaded
-%% during the application creation.
+%% Currently, the SDK does not support parameterized queries. If you want to
+%% make a
+%% parameterized query call, you can use an HTTP request.
 %%
-%% You can use the batch job definitions in the list to start
-%% a batch job.
-list_batch_job_definitions(Client, ApplicationId)
-  when is_map(Client) ->
-    list_batch_job_definitions(Client, ApplicationId, #{}, #{}).
-
-list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap, []).
-
-list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-definitions"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Lists historical, current, and scheduled batch job executions for a
-%% specific
-%% application.
-list_batch_job_executions(Client, ApplicationId)
-  when is_map(Client) ->
-    list_batch_job_executions(Client, ApplicationId, #{}, #{}).
-
-list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, []).
-
-list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-executions"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"executionIds">>, maps:get(<<"executionIds">>, QueryMap, undefined)},
-        {<<"jobName">>, maps:get(<<"jobName">>, QueryMap, undefined)},
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"startedAfter">>, maps:get(<<"startedAfter">>, QueryMap, undefined)},
-        {<<"startedBefore">>, maps:get(<<"startedBefore">>, QueryMap, undefined)},
-        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Lists the data set imports for the specified application.
-list_data_set_import_history(Client, ApplicationId)
-  when is_map(Client) ->
-    list_data_set_import_history(Client, ApplicationId, #{}, #{}).
-
-list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, []).
-
-list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-import-tasks"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Lists the data sets imported for a specific application.
+%% When invoking this operation in a Neptune Analytics cluster, the IAM user
+%% or role making the request must have a policy attached
+%% that allows one of the following IAM actions in that cluster, depending on
+%% the query:
 %%
-%% In Amazon Web Services Mainframe Modernization, data sets are
-%% associated with applications deployed on runtime environments. This is
-%% known as importing
-%% data sets. Currently, Amazon Web Services Mainframe Modernization can
-%% import data sets into catalogs using CreateDataSetImportTask:
-%% https://docs.aws.amazon.com/m2/latest/APIReference/API_CreateDataSetImportTask.html.
-list_data_sets(Client, ApplicationId)
-  when is_map(Client) ->
-    list_data_sets(Client, ApplicationId, #{}, #{}).
-
-list_data_sets(Client, ApplicationId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, []).
-
-list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/datasets"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nameFilter">>, maps:get(<<"nameFilter">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Returns a list of all deployments of a specific application.
+%% neptune-graph:ReadDataViaQuery
 %%
-%% A deployment is a
-%% combination of a specific application and a specific version of that
-%% application. Each
-%% deployment is mapped to a particular application version.
-list_deployments(Client, ApplicationId)
+%% neptune-graph:WriteDataViaQuery
+%%
+%% neptune-graph:DeleteDataViaQuery
+%%
+%% Non-parametrized queries are not considered for plan caching. You can
+%% force plan caching with
+%% `planCache=enabled'. The plan cache will be reused only for the same
+%% exact query. Slight variations
+%% in the query will not be able to reuse the query plan cache.
+execute_query(Client, Input) ->
+    execute_query(Client, Input, []).
+execute_query(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/queries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"graphIdentifier">>, <<"graphIdentifier">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets information about a specified graph.
+get_graph(Client, GraphIdentifier)
   when is_map(Client) ->
-    list_deployments(Client, ApplicationId, #{}, #{}).
+    get_graph(Client, GraphIdentifier, #{}, #{}).
 
-list_deployments(Client, ApplicationId, QueryMap, HeadersMap)
+get_graph(Client, GraphIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_deployments(Client, ApplicationId, QueryMap, HeadersMap, []).
+    get_graph(Client, GraphIdentifier, QueryMap, HeadersMap, []).
 
-list_deployments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+get_graph(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/deployments"],
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a specified graph snapshot.
+get_graph_snapshot(Client, SnapshotIdentifier)
+  when is_map(Client) ->
+    get_graph_snapshot(Client, SnapshotIdentifier, #{}, #{}).
+
+get_graph_snapshot(Client, SnapshotIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_graph_snapshot(Client, SnapshotIdentifier, QueryMap, HeadersMap, []).
+
+get_graph_snapshot(Client, SnapshotIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a graph summary for a property graph.
+get_graph_summary(Client, GraphIdentifier)
+  when is_map(Client) ->
+    get_graph_summary(Client, GraphIdentifier, #{}, #{}).
+
+get_graph_summary(Client, GraphIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_graph_summary(Client, GraphIdentifier, QueryMap, HeadersMap, []).
+
+get_graph_summary(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/summary"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"graphIdentifier">>, GraphIdentifier}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"mode">>, maps:get(<<"mode">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a specified import task.
+get_import_task(Client, TaskIdentifier)
+  when is_map(Client) ->
+    get_import_task(Client, TaskIdentifier, #{}, #{}).
+
+get_import_task(Client, TaskIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_import_task(Client, TaskIdentifier, QueryMap, HeadersMap, []).
+
+get_import_task(Client, TaskIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/importtasks/", aws_util:encode_uri(TaskIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a specified private endpoint.
+get_private_graph_endpoint(Client, GraphIdentifier, VpcId)
+  when is_map(Client) ->
+    get_private_graph_endpoint(Client, GraphIdentifier, VpcId, #{}, #{}).
+
+get_private_graph_endpoint(Client, GraphIdentifier, VpcId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_private_graph_endpoint(Client, GraphIdentifier, VpcId, QueryMap, HeadersMap, []).
+
+get_private_graph_endpoint(Client, GraphIdentifier, VpcId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/", aws_util:encode_uri(VpcId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the status of a specified query.
+%%
+%% When invoking this operation in a Neptune Analytics cluster, the IAM user
+%% or role making the request must have the
+%% `neptune-graph:GetQueryStatus' IAM action attached.
+get_query(Client, QueryId, GraphIdentifier)
+  when is_map(Client) ->
+    get_query(Client, QueryId, GraphIdentifier, #{}, #{}).
+
+get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap, []).
+
+get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/queries/", aws_util:encode_uri(QueryId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"graphIdentifier">>, GraphIdentifier}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists available snapshots of a specified Neptune Analytics graph.
+list_graph_snapshots(Client)
+  when is_map(Client) ->
+    list_graph_snapshots(Client, #{}, #{}).
+
+list_graph_snapshots(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_graph_snapshots(Client, QueryMap, HeadersMap, []).
+
+list_graph_snapshots(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/snapshots"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"graphIdentifier">>, maps:get(<<"graphIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists available Neptune Analytics graphs.
+list_graphs(Client)
+  when is_map(Client) ->
+    list_graphs(Client, #{}, #{}).
+
+list_graphs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_graphs(Client, QueryMap, HeadersMap, []).
+
+list_graphs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/graphs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -775,18 +601,18 @@ list_deployments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the available engine versions.
-list_engine_versions(Client)
+%% @doc Lists import tasks.
+list_import_tasks(Client)
   when is_map(Client) ->
-    list_engine_versions(Client, #{}, #{}).
+    list_import_tasks(Client, #{}, #{}).
 
-list_engine_versions(Client, QueryMap, HeadersMap)
+list_import_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_engine_versions(Client, QueryMap, HeadersMap, []).
+    list_import_tasks(Client, QueryMap, HeadersMap, []).
 
-list_engine_versions(Client, QueryMap, HeadersMap, Options0)
+list_import_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/engine-versions"],
+    Path = ["/importtasks"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -798,7 +624,6 @@ list_engine_versions(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
-        {<<"engineType">>, maps:get(<<"engineType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -806,18 +631,18 @@ list_engine_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the runtime environments.
-list_environments(Client)
+%% @doc Lists private endpoints for a specified Neptune Analytics graph.
+list_private_graph_endpoints(Client, GraphIdentifier)
   when is_map(Client) ->
-    list_environments(Client, #{}, #{}).
+    list_private_graph_endpoints(Client, GraphIdentifier, #{}, #{}).
 
-list_environments(Client, QueryMap, HeadersMap)
+list_private_graph_endpoints(Client, GraphIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_environments(Client, QueryMap, HeadersMap, []).
+    list_private_graph_endpoints(Client, GraphIdentifier, QueryMap, HeadersMap, []).
 
-list_environments(Client, QueryMap, HeadersMap, Options0)
+list_private_graph_endpoints(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/environments"],
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -829,16 +654,48 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
-        {<<"engineType">>, maps:get(<<"engineType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"names">>, maps:get(<<"names">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the tags for the specified resource.
+%% @doc Lists active openCypher queries.
+list_queries(Client, MaxResults, GraphIdentifier)
+  when is_map(Client) ->
+    list_queries(Client, MaxResults, GraphIdentifier, #{}, #{}).
+
+list_queries(Client, MaxResults, GraphIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queries(Client, MaxResults, GraphIdentifier, QueryMap, HeadersMap, []).
+
+list_queries(Client, MaxResults, GraphIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/queries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"graphIdentifier">>, GraphIdentifier}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists tags associated with a specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -863,12 +720,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Starts an application that is currently stopped.
-start_application(Client, ApplicationId, Input) ->
-    start_application(Client, ApplicationId, Input, []).
-start_application(Client, ApplicationId, Input0, Options0) ->
-    Method = post,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/start"],
+%% @doc Empties the data from a specified Neptune Analytics graph.
+reset_graph(Client, GraphIdentifier, Input) ->
+    reset_graph(Client, GraphIdentifier, Input, []).
+reset_graph(Client, GraphIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -888,17 +745,13 @@ start_application(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a batch job and returns the unique identifier of this
-%% execution of the batch job.
-%%
-%% The associated application must be running in order to start the batch
-%% job.
-start_batch_job(Client, ApplicationId, Input) ->
-    start_batch_job(Client, ApplicationId, Input, []).
-start_batch_job(Client, ApplicationId, Input0, Options0) ->
+%% @doc Restores a graph from a snapshot.
+restore_graph_from_snapshot(Client, SnapshotIdentifier, Input) ->
+    restore_graph_from_snapshot(Client, SnapshotIdentifier, Input, []).
+restore_graph_from_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
     Method = post,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job"],
-    SuccessStatusCode = 200,
+    Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), "/restore"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -917,32 +770,7 @@ start_batch_job(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a running application.
-stop_application(Client, ApplicationId, Input) ->
-    stop_application(Client, ApplicationId, Input, []).
-stop_application(Client, ApplicationId, Input0, Options0) ->
-    Method = post,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/stop"],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Adds one or more tags to the specified resource.
+%% @doc Adds tags to the specified resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -967,7 +795,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes one or more tags from the specified resource.
+%% @doc Removes the specified tags from the specified resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -993,37 +821,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an application and creates a new version.
-update_application(Client, ApplicationId, Input) ->
-    update_application(Client, ApplicationId, Input, []).
-update_application(Client, ApplicationId, Input0, Options0) ->
+%% @doc Updates the configuration of a specified Neptune Analytics graph
+update_graph(Client, GraphIdentifier, Input) ->
+    update_graph(Client, GraphIdentifier, Input, []).
+update_graph(Client, GraphIdentifier, Input0, Options0) ->
     Method = patch,
-    Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Updates the configuration details for a specific runtime environment.
-update_environment(Client, EnvironmentId, Input) ->
-    update_environment(Client, EnvironmentId, Input, []).
-update_environment(Client, EnvironmentId, Input0, Options0) ->
-    Method = patch,
-    Path = ["/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1065,8 +868,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"m2">>},
-    Host = build_host(<<"m2">>, Client1),
+    Client1 = Client#{service => <<"neptune-graph">>},
+    Host = build_host(<<"neptune-graph">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}

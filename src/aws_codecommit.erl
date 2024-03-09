@@ -12,289 +12,291 @@
 %%
 %% Repositories, by calling the following:
 %%
-%% <ul> <li> `BatchGetRepositories', which returns information about one
-%% or more repositories associated with your Amazon Web Services account.
+%% `BatchGetRepositories', which returns information about one or more
+%% repositories associated with your Amazon Web Services account.
 %%
-%% </li> <li> `CreateRepository', which creates an CodeCommit repository.
+%% `CreateRepository', which creates an CodeCommit repository.
 %%
-%% </li> <li> `DeleteRepository', which deletes an CodeCommit repository.
+%% `DeleteRepository', which deletes an CodeCommit repository.
 %%
-%% </li> <li> `GetRepository', which returns information about a
-%% specified repository.
-%%
-%% </li> <li> `ListRepositories', which lists all CodeCommit repositories
-%% associated with your Amazon Web Services account.
-%%
-%% </li> <li> `UpdateRepositoryDescription', which sets or updates the
-%% description of the repository.
-%%
-%% </li> <li> `UpdateRepositoryEncryptionKey', which updates the Key
-%% Management Service encryption key used to encrypt and decrypt a
+%% `GetRepository', which returns information about a specified
 %% repository.
 %%
-%% </li> <li> `UpdateRepositoryName', which changes the name of the
+%% `ListRepositories', which lists all CodeCommit repositories associated
+%% with your Amazon Web Services account.
+%%
+%% `UpdateRepositoryDescription', which sets or updates the description
+%% of the repository.
+%%
+%% `UpdateRepositoryEncryptionKey', which updates the Key Management
+%% Service encryption key used
+%% to encrypt and decrypt a repository.
+%%
+%% `UpdateRepositoryName', which changes the name of the
 %% repository. If you change the name of a repository, no other users of that
 %% repository can access it until you send them the new HTTPS or SSH URL to
 %% use.
 %%
-%% </li> </ul> Branches, by calling the following:
+%% Branches, by calling the following:
 %%
-%% <ul> <li> `CreateBranch', which creates a branch in a specified
+%% `CreateBranch', which creates a branch in a specified
 %% repository.
 %%
-%% </li> <li> `DeleteBranch', which deletes the specified branch in a
-%% repository unless it is the default branch.
+%% `DeleteBranch', which deletes the specified branch in a repository
+%% unless it is the default branch.
 %%
-%% </li> <li> `GetBranch', which returns information about a specified
-%% branch.
+%% `GetBranch', which returns information about a specified branch.
 %%
-%% </li> <li> `ListBranches', which lists all branches for a specified
+%% `ListBranches', which lists all branches for a specified repository.
+%%
+%% `UpdateDefaultBranch', which changes the default branch for a
 %% repository.
 %%
-%% </li> <li> `UpdateDefaultBranch', which changes the default branch for
-%% a repository.
+%% Files, by calling the following:
 %%
-%% </li> </ul> Files, by calling the following:
+%% `DeleteFile', which deletes the content of a specified file from a
+%% specified branch.
 %%
-%% <ul> <li> `DeleteFile', which deletes the content of a specified file
-%% from a specified branch.
-%%
-%% </li> <li> `GetBlob', which returns the base-64 encoded content of an
+%% `GetBlob', which returns the base-64 encoded content of an
 %% individual Git blob object in a repository.
 %%
-%% </li> <li> `GetFile', which returns the base-64 encoded content of a
-%% specified file.
+%% `GetFile', which returns the base-64 encoded content of a specified
+%% file.
 %%
-%% </li> <li> `GetFolder', which returns the contents of a specified
-%% folder or directory.
+%% `GetFolder', which returns the contents of a specified folder or
+%% directory.
 %%
-%% </li> <li> `ListFileCommitHistory', which retrieves a list of commits
-%% and changes to a specified file.
+%% `ListFileCommitHistory', which retrieves a list of commits and changes
+%% to a specified file.
 %%
-%% </li> <li> `PutFile', which adds or modifies a single file in a
-%% specified repository and branch.
+%% `PutFile', which adds or modifies a single file in a specified
+%% repository and branch.
 %%
-%% </li> </ul> Commits, by calling the following:
+%% Commits, by calling the following:
 %%
-%% <ul> <li> `BatchGetCommits', which returns information about one or
-%% more commits in a repository.
+%% `BatchGetCommits', which returns information about one or more commits
+%% in a repository.
 %%
-%% </li> <li> `CreateCommit', which creates a commit for changes to a
+%% `CreateCommit', which creates a commit for changes to a repository.
+%%
+%% `GetCommit', which returns information about a commit, including
+%% commit
+%% messages and author and committer information.
+%%
+%% `GetDifferences', which returns information about the
+%% differences in a valid commit specifier (such as a branch, tag, HEAD,
+%% commit ID,
+%% or other fully qualified reference).
+%%
+%% Merges, by calling the following:
+%%
+%% `BatchDescribeMergeConflicts', which returns information about
+%% conflicts in a merge between commits in a repository.
+%%
+%% `CreateUnreferencedMergeCommit', which creates an unreferenced commit
+%% between two branches or commits for the
+%% purpose of comparing them and identifying any potential conflicts.
+%%
+%% `DescribeMergeConflicts', which returns information about merge
+%% conflicts between the base, source, and destination versions
+%% of a file in a potential merge.
+%%
+%% `GetMergeCommit', which returns information about the merge between a
+%% source and destination commit.
+%%
+%% `GetMergeConflicts', which returns information about merge conflicts
+%% between the source and destination branch in a pull request.
+%%
+%% `GetMergeOptions', which returns information about the available merge
+%% options between two branches or commit specifiers.
+%%
+%% `MergeBranchesByFastForward', which merges two branches using the
+%% fast-forward merge option.
+%%
+%% `MergeBranchesBySquash', which merges two branches using the squash
+%% merge option.
+%%
+%% `MergeBranchesByThreeWay', which merges two branches using the
+%% three-way merge option.
+%%
+%% Pull requests, by calling the following:
+%%
+%% `CreatePullRequest', which creates a pull request in a specified
 %% repository.
 %%
-%% </li> <li> `GetCommit', which returns information about a commit,
-%% including commit messages and author and committer information.
-%%
-%% </li> <li> `GetDifferences', which returns information about the
-%% differences in a valid commit specifier (such as a branch, tag, HEAD,
-%% commit ID, or other fully qualified reference).
-%%
-%% </li> </ul> Merges, by calling the following:
-%%
-%% <ul> <li> `BatchDescribeMergeConflicts', which returns information
-%% about conflicts in a merge between commits in a repository.
-%%
-%% </li> <li> `CreateUnreferencedMergeCommit', which creates an
-%% unreferenced commit between two branches or commits for the purpose of
-%% comparing them and identifying any potential conflicts.
-%%
-%% </li> <li> `DescribeMergeConflicts', which returns information about
-%% merge conflicts between the base, source, and destination versions of a
-%% file in a potential merge.
-%%
-%% </li> <li> `GetMergeCommit', which returns information about the merge
-%% between a source and destination commit.
-%%
-%% </li> <li> `GetMergeConflicts', which returns information about merge
-%% conflicts between the source and destination branch in a pull request.
-%%
-%% </li> <li> `GetMergeOptions', which returns information about the
-%% available merge options between two branches or commit specifiers.
-%%
-%% </li> <li> `MergeBranchesByFastForward', which merges two branches
-%% using the fast-forward merge option.
-%%
-%% </li> <li> `MergeBranchesBySquash', which merges two branches using
-%% the squash merge option.
-%%
-%% </li> <li> `MergeBranchesByThreeWay', which merges two branches using
-%% the three-way merge option.
-%%
-%% </li> </ul> Pull requests, by calling the following:
-%%
-%% <ul> <li> `CreatePullRequest', which creates a pull request in a
-%% specified repository.
-%%
-%% </li> <li> `CreatePullRequestApprovalRule', which creates an approval
-%% rule for a specified pull request.
-%%
-%% </li> <li> `DeletePullRequestApprovalRule', which deletes an approval
-%% rule for a specified pull request.
-%%
-%% </li> <li> `DescribePullRequestEvents', which returns information
-%% about one or more pull request events.
-%%
-%% </li> <li> `EvaluatePullRequestApprovalRules', which evaluates whether
-%% a pull request has met all the conditions specified in its associated
-%% approval rules.
-%%
-%% </li> <li> `GetCommentsForPullRequest', which returns information
-%% about comments on a specified pull request.
-%%
-%% </li> <li> `GetPullRequest', which returns information about a
+%% `CreatePullRequestApprovalRule', which creates an approval rule for a
 %% specified pull request.
 %%
-%% </li> <li> `GetPullRequestApprovalStates', which returns information
-%% about the approval states for a specified pull request.
+%% `DeletePullRequestApprovalRule', which deletes an approval rule for a
+%% specified pull request.
 %%
-%% </li> <li> `GetPullRequestOverrideState', which returns information
-%% about whether approval rules have been set aside (overriden) for a pull
-%% request, and if so, the Amazon Resource Name (ARN) of the user or identity
-%% that overrode the rules and their requirements for the pull request.
+%% `DescribePullRequestEvents', which returns information about one or
+%% more pull request events.
 %%
-%% </li> <li> `ListPullRequests', which lists all pull requests for a
-%% repository.
+%% `EvaluatePullRequestApprovalRules', which evaluates whether a pull
+%% request has met all the conditions specified in its associated approval
+%% rules.
 %%
-%% </li> <li> `MergePullRequestByFastForward', which merges the source
-%% destination branch of a pull request into the specified destination branch
-%% for that pull request using the fast-forward merge option.
+%% `GetCommentsForPullRequest', which returns information about comments
+%% on a specified pull request.
 %%
-%% </li> <li> `MergePullRequestBySquash', which merges the source
-%% destination branch of a pull request into the specified destination branch
-%% for that pull request using the squash merge option.
-%%
-%% </li> <li> `MergePullRequestByThreeWay', which merges the source
-%% destination branch of a pull request into the specified destination branch
-%% for that pull request using the three-way merge option.
-%%
-%% </li> <li> `OverridePullRequestApprovalRules', which sets aside all
-%% approval rule requirements for a pull request.
-%%
-%% </li> <li> `PostCommentForPullRequest', which posts a comment to a
-%% pull request at the specified line, file, or request.
-%%
-%% </li> <li> `UpdatePullRequestApprovalRuleContent', which updates the
-%% structure of an approval rule for a pull request.
-%%
-%% </li> <li> `UpdatePullRequestApprovalState', which updates the state
-%% of an approval on a pull request.
-%%
-%% </li> <li> `UpdatePullRequestDescription', which updates the
-%% description of a pull request.
-%%
-%% </li> <li> `UpdatePullRequestStatus', which updates the status of a
-%% pull request.
-%%
-%% </li> <li> `UpdatePullRequestTitle', which updates the title of a pull
+%% `GetPullRequest', which returns information about a specified pull
 %% request.
 %%
-%% </li> </ul> Approval rule templates, by calling the following:
+%% `GetPullRequestApprovalStates', which returns information about the
+%% approval states for a specified pull request.
 %%
-%% <ul> <li> `AssociateApprovalRuleTemplateWithRepository', which
-%% associates a template with a specified repository. After the template is
+%% `GetPullRequestOverrideState', which returns information about whether
+%% approval rules have been set aside (overriden) for a
+%% pull request, and if so, the Amazon Resource Name (ARN) of the user or
+%% identity that overrode the rules and their requirements for the pull
+%% request.
+%%
+%% `ListPullRequests', which lists all pull requests for a repository.
+%%
+%% `MergePullRequestByFastForward', which merges the source destination
+%% branch of a pull request into the specified destination
+%% branch for that pull request using the fast-forward merge option.
+%%
+%% `MergePullRequestBySquash', which merges the source destination branch
+%% of a pull request into the specified destination
+%% branch for that pull request using the squash merge option.
+%%
+%% `MergePullRequestByThreeWay', which merges the source destination
+%% branch of a pull request into the specified destination
+%% branch for that pull request using the three-way merge option.
+%%
+%% `OverridePullRequestApprovalRules', which sets aside all approval rule
+%% requirements for a pull request.
+%%
+%% `PostCommentForPullRequest', which posts a comment to a pull request
+%% at the specified line, file, or request.
+%%
+%% `UpdatePullRequestApprovalRuleContent', which updates the structure of
+%% an approval rule for a pull request.
+%%
+%% `UpdatePullRequestApprovalState', which updates the state of an
+%% approval on a pull request.
+%%
+%% `UpdatePullRequestDescription', which updates the description of a
+%% pull request.
+%%
+%% `UpdatePullRequestStatus', which updates the status of a pull request.
+%%
+%% `UpdatePullRequestTitle', which updates the title of a pull request.
+%%
+%% Approval rule templates, by calling the following:
+%%
+%% `AssociateApprovalRuleTemplateWithRepository', which associates a
+%% template
+%% with a specified repository. After the template is associated with a
+%% repository,
+%% CodeCommit creates approval rules that match the template conditions on
+%% every pull request created in the specified repository.
+%%
+%% `BatchAssociateApprovalRuleTemplateWithRepositories', which associates
+%% a
+%% template with one or more specified repositories. After the template is
 %% associated with a repository, CodeCommit creates approval rules that match
 %% the template conditions on every pull request created in the specified
-%% repository.
-%%
-%% </li> <li> `BatchAssociateApprovalRuleTemplateWithRepositories', which
-%% associates a template with one or more specified repositories. After the
-%% template is associated with a repository, CodeCommit creates approval
-%% rules that match the template conditions on every pull request created in
-%% the specified repositories.
-%%
-%% </li> <li> `BatchDisassociateApprovalRuleTemplateFromRepositories',
-%% which removes the association between a template and specified
-%% repositories so that approval rules based on the template are not
-%% automatically created when pull requests are created in those
 %% repositories.
 %%
-%% </li> <li> `CreateApprovalRuleTemplate', which creates a template for
-%% approval rules that can then be associated with one or more repositories
+%% `BatchDisassociateApprovalRuleTemplateFromRepositories', which removes
+%% the
+%% association between a template and specified repositories so that approval
+%% rules
+%% based on the template are not automatically created when pull requests are
+%% created in those repositories.
+%%
+%% `CreateApprovalRuleTemplate', which creates a template for approval
+%% rules that can then be associated with one or more repositories
 %% in your Amazon Web Services account.
 %%
-%% </li> <li> `DeleteApprovalRuleTemplate', which deletes the specified
-%% template. It does not remove approval rules on pull requests already
-%% created with the template.
+%% `DeleteApprovalRuleTemplate', which deletes the specified template. It
+%% does not remove approval rules on pull requests already created with the
+%% template.
 %%
-%% </li> <li> `DisassociateApprovalRuleTemplateFromRepository', which
-%% removes the association between a template and a repository so that
-%% approval rules based on the template are not automatically created when
-%% pull requests are created in the specified repository.
+%% `DisassociateApprovalRuleTemplateFromRepository', which removes the
+%% association between a template and a repository so that approval rules
+%% based on
+%% the template are not automatically created when pull requests are created
+%% in the
+%% specified repository.
 %%
-%% </li> <li> `GetApprovalRuleTemplate', which returns information about
-%% an approval rule template.
+%% `GetApprovalRuleTemplate', which returns information about an approval
+%% rule template.
 %%
-%% </li> <li> `ListApprovalRuleTemplates', which lists all approval rule
-%% templates in the Amazon Web Services Region in your Amazon Web Services
-%% account.
+%% `ListApprovalRuleTemplates', which lists all approval rule templates
+%% in the Amazon Web Services Region in your Amazon Web Services account.
 %%
-%% </li> <li> `ListAssociatedApprovalRuleTemplatesForRepository', which
-%% lists all approval rule templates that are associated with a specified
-%% repository.
+%% `ListAssociatedApprovalRuleTemplatesForRepository', which lists all
+%% approval rule templates that are associated with a specified repository.
 %%
-%% </li> <li> `ListRepositoriesForApprovalRuleTemplate', which lists all
+%% `ListRepositoriesForApprovalRuleTemplate', which lists all
 %% repositories associated with the specified approval rule template.
 %%
-%% </li> <li> `UpdateApprovalRuleTemplateDescription', which updates the
-%% description of an approval rule template.
+%% `UpdateApprovalRuleTemplateDescription', which updates the description
+%% of an
+%% approval rule template.
 %%
-%% </li> <li> `UpdateApprovalRuleTemplateName', which updates the name of
-%% an approval rule template.
+%% `UpdateApprovalRuleTemplateName', which updates the name of an
+%% approval rule template.
 %%
-%% </li> <li> `UpdateApprovalRuleTemplateContent', which updates the
-%% content of an approval rule template.
+%% `UpdateApprovalRuleTemplateContent', which updates the content of an
+%% approval rule template.
 %%
-%% </li> </ul> Comments in a repository, by calling the following:
+%% Comments in a repository, by calling the following:
 %%
-%% <ul> <li> `DeleteCommentContent', which deletes the content of a
-%% comment on a commit in a repository.
+%% `DeleteCommentContent', which deletes the content of a comment on a
+%% commit in a repository.
 %%
-%% </li> <li> `GetComment', which returns information about a comment on
-%% a commit.
+%% `GetComment', which returns information about a comment on a commit.
 %%
-%% </li> <li> `GetCommentReactions', which returns information about
-%% emoji reactions to comments.
+%% `GetCommentReactions', which returns information about emoji reactions
+%% to comments.
 %%
-%% </li> <li> `GetCommentsForComparedCommit', which returns information
-%% about comments on the comparison between two commit specifiers in a
-%% repository.
+%% `GetCommentsForComparedCommit', which returns information about
+%% comments on the comparison between two commit specifiers
+%% in a repository.
 %%
-%% </li> <li> `PostCommentForComparedCommit', which creates a comment on
-%% the comparison between two commit specifiers in a repository.
+%% `PostCommentForComparedCommit', which creates a comment on the
+%% comparison between two commit specifiers in a repository.
 %%
-%% </li> <li> `PostCommentReply', which creates a reply to a comment.
+%% `PostCommentReply', which creates a reply to a comment.
 %%
-%% </li> <li> `PutCommentReaction', which creates or updates an emoji
-%% reaction to a comment.
+%% `PutCommentReaction', which creates or updates an emoji reaction to a
+%% comment.
 %%
-%% </li> <li> `UpdateComment', which updates the content of a comment on
-%% a commit in a repository.
+%% `UpdateComment', which updates the content of a comment on a commit in
+%% a repository.
 %%
-%% </li> </ul> Tags used to tag resources in CodeCommit (not Git tags), by
-%% calling the following:
+%% Tags used to tag resources in CodeCommit (not Git tags), by calling the
+%% following:
 %%
-%% <ul> <li> `ListTagsForResource', which gets information about Amazon
-%% Web Servicestags for a specified Amazon Resource Name (ARN) in CodeCommit.
+%% `ListTagsForResource', which gets information about Amazon Web
+%% Servicestags for a specified Amazon Resource Name (ARN) in CodeCommit.
 %%
-%% </li> <li> `TagResource', which adds or updates tags for a resource in
+%% `TagResource', which adds or updates tags for a resource in
 %% CodeCommit.
 %%
-%% </li> <li> `UntagResource', which removes tags for a resource in
-%% CodeCommit.
+%% `UntagResource', which removes tags for a resource in CodeCommit.
 %%
-%% </li> </ul> Triggers, by calling the following:
+%% Triggers, by calling the following:
 %%
-%% <ul> <li> `GetRepositoryTriggers', which returns information about
-%% triggers configured for a repository.
+%% `GetRepositoryTriggers', which returns information about triggers
+%% configured
+%% for a repository.
 %%
-%% </li> <li> `PutRepositoryTriggers', which replaces all triggers for a
-%% repository and can be used to create or delete triggers.
+%% `PutRepositoryTriggers', which replaces all triggers for a repository
+%% and can
+%% be used to create or delete triggers.
 %%
-%% </li> <li> `TestRepositoryTriggers', which tests the functionality of
-%% a repository trigger by sending data to the trigger target.
+%% `TestRepositoryTriggers', which tests the functionality of a
+%% repository trigger
+%% by sending data to the trigger target.
 %%
-%% </li> </ul> For information about how to use CodeCommit, see the
-%% CodeCommit User Guide:
+%% For information about how to use CodeCommit, see the CodeCommit User
+%% Guide:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html.
 -module(aws_codecommit).
 
@@ -467,11 +469,15 @@
 %% specified repository.
 %%
 %% Then, the next time a pull request is created in the repository where the
-%% destination reference (if specified) matches the destination reference
-%% (branch) for the pull request, an approval rule that matches the template
-%% conditions is automatically created for that pull request. If no
-%% destination references are specified in the template, an approval rule
-%% that matches the template contents is created for all pull requests in
+%% destination
+%% reference (if specified) matches the destination reference (branch) for
+%% the pull
+%% request, an approval rule that matches the template conditions is
+%% automatically created
+%% for that pull request. If no destination references are specified in the
+%% template, an
+%% approval rule that matches the template contents is created for all pull
+%% requests in
 %% that repository.
 associate_approval_rule_template_with_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -520,11 +526,14 @@ batch_get_commits(Client, Input, Options)
 %% @doc Returns information about one or more repositories.
 %%
 %% The description field for a repository accepts all HTML characters and all
-%% valid Unicode characters. Applications that do not HTML-encode the
-%% description and display it in a webpage can expose users to potentially
-%% malicious code. Make sure that you HTML-encode the description field in
-%% any application that uses this API to display the repository description
-%% on a webpage.
+%% valid
+%% Unicode characters. Applications that do not HTML-encode the description
+%% and display
+%% it in a webpage can expose users to potentially malicious code. Make sure
+%% that you
+%% HTML-encode the description field in any application that uses this API to
+%% display
+%% the repository description on a webpage.
 batch_get_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_repositories(Client, Input, []).
@@ -533,12 +542,15 @@ batch_get_repositories(Client, Input, Options)
     request(Client, <<"BatchGetRepositories">>, Input, Options).
 
 %% @doc Creates a template for approval rules that can then be associated
-%% with one or more repositories in your Amazon Web Services account.
+%% with one or more
+%% repositories in your Amazon Web Services account.
 %%
-%% When you associate a template with a repository, CodeCommit creates an
-%% approval rule that matches the conditions of the template for all pull
-%% requests that meet the conditions of the template. For more information,
-%% see `AssociateApprovalRuleTemplateWithRepository'.
+%% When you associate a template with a repository,
+%% CodeCommit creates an approval rule that matches the conditions of the
+%% template for all
+%% pull requests that meet the conditions of the template. For more
+%% information, see
+%% `AssociateApprovalRuleTemplateWithRepository'.
 create_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_approval_rule_template(Client, Input, []).
@@ -590,15 +602,18 @@ create_repository(Client, Input, Options)
     request(Client, <<"CreateRepository">>, Input, Options).
 
 %% @doc Creates an unreferenced commit that represents the result of merging
-%% two branches using a specified merge strategy.
+%% two branches
+%% using a specified merge strategy.
 %%
-%% This can help you determine the outcome of a potential merge. This API
-%% cannot be used with the fast-forward merge strategy because that strategy
-%% does not create a merge commit.
+%% This can help you determine the outcome of a potential
+%% merge. This API cannot be used with the fast-forward merge strategy
+%% because that
+%% strategy does not create a merge commit.
 %%
-%% This unreferenced merge commit can only be accessed using the GetCommit
-%% API or through git commands such as git fetch. To retrieve this commit,
-%% you must specify its commit ID or otherwise reference it.
+%% This unreferenced merge commit
+%% can only be accessed using the GetCommit API or through git commands such
+%% as git fetch. To retrieve this commit, you must specify its commit ID or
+%% otherwise reference it.
 create_unreferenced_merge_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_unreferenced_merge_commit(Client, Input, []).
@@ -637,9 +652,10 @@ delete_comment_content(Client, Input, Options)
 
 %% @doc Deletes a specified file from a specified branch.
 %%
-%% A commit is created on the branch that contains the revision. The file
-%% still exists in the commits earlier to the commit that contains the
-%% deletion.
+%% A commit is created on the branch
+%% that contains the revision. The file still exists in the commits earlier
+%% to the commit
+%% that contains the deletion.
 delete_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file(Client, Input, []).
@@ -650,10 +666,12 @@ delete_file(Client, Input, Options)
 %% @doc Deletes an approval rule from a specified pull request.
 %%
 %% Approval rules can be deleted from a pull request only if the pull request
-%% is open, and if the approval rule was created specifically for a pull
-%% request and not generated from an approval rule template associated with
-%% the repository where the pull request was created. You cannot delete an
-%% approval rule from a merged or closed pull request.
+%% is open, and if the
+%% approval rule was created specifically for a pull request and not
+%% generated from an approval rule template associated with the repository
+%% where the
+%% pull request was created. You cannot delete an approval rule from a merged
+%% or closed pull request.
 delete_pull_request_approval_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pull_request_approval_rule(Client, Input, []).
@@ -663,12 +681,12 @@ delete_pull_request_approval_rule(Client, Input, Options)
 
 %% @doc Deletes a repository.
 %%
-%% If a specified repository was already deleted, a null repository ID is
-%% returned.
+%% If a specified repository was already deleted, a null repository
+%% ID is returned.
 %%
 %% Deleting a repository also deletes all associated objects and metadata.
-%% After a repository is deleted, all future push calls to the deleted
-%% repository fail.
+%% After a repository is
+%% deleted, all future push calls to the deleted repository fail.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -677,11 +695,12 @@ delete_repository(Client, Input, Options)
     request(Client, <<"DeleteRepository">>, Input, Options).
 
 %% @doc Returns information about one or more merge conflicts in the
-%% attempted merge of two commit specifiers using the squash or three-way
-%% merge strategy.
+%% attempted merge of two
+%% commit specifiers using the squash or three-way merge strategy.
 %%
-%% If the merge option for the attempted merge is specified as
-%% FAST_FORWARD_MERGE, an exception is thrown.
+%% If the merge option for
+%% the attempted merge is specified as FAST_FORWARD_MERGE, an exception is
+%% thrown.
 describe_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_merge_conflicts(Client, Input, []).
@@ -698,11 +717,13 @@ describe_pull_request_events(Client, Input, Options)
     request(Client, <<"DescribePullRequestEvents">>, Input, Options).
 
 %% @doc Removes the association between a template and a repository so that
-%% approval rules based on the template are not automatically created when
-%% pull requests are created in the specified repository.
+%% approval rules
+%% based on the template are not automatically created when pull requests are
+%% created in
+%% the specified repository.
 %%
-%% This does not delete any approval rules previously created for pull
-%% requests through the template association.
+%% This does not delete any approval rules previously created for
+%% pull requests through the template association.
 disassociate_approval_rule_template_from_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_approval_rule_template_from_repository(Client, Input, []).
@@ -749,8 +770,8 @@ get_branch(Client, Input, Options)
 %% a repository.
 %%
 %% Reaction counts might include numbers from user identities who were
-%% deleted after the reaction was made. For a count of reactions from active
-%% identities, use GetCommentReactions.
+%% deleted after the reaction was made. For a count of
+%% reactions from active identities, use GetCommentReactions.
 get_comment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comment(Client, Input, []).
@@ -773,8 +794,8 @@ get_comment_reactions(Client, Input, Options)
 %% commits.
 %%
 %% Reaction counts might include numbers from user identities who were
-%% deleted after the reaction was made. For a count of reactions from active
-%% identities, use GetCommentReactions.
+%% deleted after the reaction was made. For a count of
+%% reactions from active identities, use GetCommentReactions.
 get_comments_for_compared_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_compared_commit(Client, Input, []).
@@ -785,8 +806,8 @@ get_comments_for_compared_commit(Client, Input, Options)
 %% @doc Returns comments made on a pull request.
 %%
 %% Reaction counts might include numbers from user identities who were
-%% deleted after the reaction was made. For a count of reactions from active
-%% identities, use GetCommentReactions.
+%% deleted after the reaction was made. For a count of
+%% reactions from active identities, use GetCommentReactions.
 get_comments_for_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_pull_request(Client, Input, []).
@@ -804,10 +825,11 @@ get_commit(Client, Input, Options)
     request(Client, <<"GetCommit">>, Input, Options).
 
 %% @doc Returns information about the differences in a valid commit specifier
-%% (such as a branch, tag, HEAD, commit ID, or other fully qualified
-%% reference).
+%% (such as a
+%% branch, tag, HEAD, commit ID, or other fully qualified reference).
 %%
-%% Results can be limited to a specified path.
+%% Results can be
+%% limited to a specified path.
 get_differences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_differences(Client, Input, []).
@@ -850,10 +872,12 @@ get_merge_conflicts(Client, Input, Options)
     request(Client, <<"GetMergeConflicts">>, Input, Options).
 
 %% @doc Returns information about the merge options available for merging two
-%% specified branches.
+%% specified
+%% branches.
 %%
 %% For details about why a merge option is not available, use
-%% GetMergeConflicts or DescribeMergeConflicts.
+%% GetMergeConflicts
+%% or DescribeMergeConflicts.
 get_merge_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_options(Client, Input, []).
@@ -872,8 +896,8 @@ get_pull_request(Client, Input, Options)
 %% @doc Gets information about the approval states for a specified pull
 %% request.
 %%
-%% Approval states only apply to pull requests that have one or more approval
-%% rules applied to them.
+%% Approval states only apply to pull requests that have one or more
+%% approval rules applied to them.
 get_pull_request_approval_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_approval_states(Client, Input, []).
@@ -882,9 +906,10 @@ get_pull_request_approval_states(Client, Input, Options)
     request(Client, <<"GetPullRequestApprovalStates">>, Input, Options).
 
 %% @doc Returns information about whether approval rules have been set aside
-%% (overridden) for a pull request, and if so, the Amazon Resource Name (ARN)
-%% of the user or identity that overrode the rules and their requirements for
-%% the pull request.
+%% (overridden) for a
+%% pull request, and if so, the Amazon Resource Name (ARN) of the user or
+%% identity that overrode the rules and their requirements for the pull
+%% request.
 get_pull_request_override_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_override_state(Client, Input, []).
@@ -895,11 +920,14 @@ get_pull_request_override_state(Client, Input, Options)
 %% @doc Returns information about a repository.
 %%
 %% The description field for a repository accepts all HTML characters and all
-%% valid Unicode characters. Applications that do not HTML-encode the
-%% description and display it in a webpage can expose users to potentially
-%% malicious code. Make sure that you HTML-encode the description field in
-%% any application that uses this API to display the repository description
-%% on a webpage.
+%% valid
+%% Unicode characters. Applications that do not HTML-encode the description
+%% and display
+%% it in a webpage can expose users to potentially malicious code. Make sure
+%% that you
+%% HTML-encode the description field in any application that uses this API to
+%% display
+%% the repository description on a webpage.
 get_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository(Client, Input, []).
@@ -918,7 +946,8 @@ get_repository_triggers(Client, Input, Options)
 %% @doc Lists all approval rule templates in the specified Amazon Web
 %% Services Region in your Amazon Web Services account.
 %%
-%% If an Amazon Web Services Region is not specified, the Amazon Web Services
+%% If
+%% an Amazon Web Services Region is not specified, the Amazon Web Services
 %% Region where you are signed in is used.
 list_approval_rule_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -954,8 +983,8 @@ list_file_commit_history(Client, Input, Options)
 
 %% @doc Returns a list of pull requests for a specified repository.
 %%
-%% The return list can be refined by pull request status or pull request
-%% author ARN.
+%% The return list can be refined by pull request
+%% status or pull request author ARN.
 list_pull_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pull_requests(Client, Input, []).
@@ -986,7 +1015,8 @@ list_repositories_for_approval_rule_template(Client, Input, Options)
 %% For a list of valid resources in CodeCommit, see CodeCommit Resources and
 %% Operations:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
-%% in the CodeCommit User Guide.
+%% in the CodeCommit User
+%% Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1019,8 +1049,9 @@ merge_branches_by_three_way(Client, Input, Options)
     request(Client, <<"MergeBranchesByThreeWay">>, Input, Options).
 
 %% @doc Attempts to merge the source commit of a pull request into the
-%% specified destination branch for that pull request at the specified commit
-%% using the fast-forward merge strategy.
+%% specified destination
+%% branch for that pull request at the specified commit using the
+%% fast-forward merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
 merge_pull_request_by_fast_forward(Client, Input)
@@ -1031,8 +1062,9 @@ merge_pull_request_by_fast_forward(Client, Input, Options)
     request(Client, <<"MergePullRequestByFastForward">>, Input, Options).
 
 %% @doc Attempts to merge the source commit of a pull request into the
-%% specified destination branch for that pull request at the specified commit
-%% using the squash merge strategy.
+%% specified destination
+%% branch for that pull request at the specified commit using the squash
+%% merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
 merge_pull_request_by_squash(Client, Input)
@@ -1043,8 +1075,9 @@ merge_pull_request_by_squash(Client, Input, Options)
     request(Client, <<"MergePullRequestBySquash">>, Input, Options).
 
 %% @doc Attempts to merge the source commit of a pull request into the
-%% specified destination branch for that pull request at the specified commit
-%% using the three-way merge strategy.
+%% specified destination
+%% branch for that pull request at the specified commit using the three-way
+%% merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
 merge_pull_request_by_three_way(Client, Input)
@@ -1091,8 +1124,9 @@ post_comment_reply(Client, Input, Options)
 %% @doc Adds or updates a reaction to a specified comment for the user whose
 %% identity is used to make the request.
 %%
-%% You can only add or update a reaction for yourself. You cannot add,
-%% modify, or delete a reaction for another user.
+%% You can only add or
+%% update a reaction for yourself. You cannot add, modify, or delete a
+%% reaction for another user.
 put_comment_reaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_comment_reaction(Client, Input, []).
@@ -1121,10 +1155,11 @@ put_repository_triggers(Client, Input, Options)
 
 %% @doc Adds or updates tags for a resource in CodeCommit.
 %%
-%% For a list of valid resources in CodeCommit, see CodeCommit Resources and
-%% Operations:
+%% For a list of valid resources
+%% in CodeCommit, see CodeCommit Resources and Operations:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
-%% in the CodeCommit User Guide.
+%% in the CodeCommit User
+%% Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1133,10 +1168,12 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Tests the functionality of repository triggers by sending information
-%% to the trigger target.
+%% to the trigger
+%% target.
 %%
 %% If real data is available in the repository, the test sends data from the
-%% last commit. If no data is available, sample data is generated.
+%% last
+%% commit. If no data is available, sample data is generated.
 test_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_repository_triggers(Client, Input, []).
@@ -1149,7 +1186,8 @@ test_repository_triggers(Client, Input, Options)
 %% For a list of valid resources in CodeCommit, see CodeCommit Resources and
 %% Operations:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
-%% in the CodeCommit User Guide.
+%% in the CodeCommit User
+%% Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1159,8 +1197,10 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates the content of an approval rule template.
 %%
-%% You can change the number of required approvals, the membership of the
-%% approval rule, and whether an approval pool is defined.
+%% You can change the number of
+%% required approvals, the membership of the approval rule, and whether an
+%% approval pool is
+%% defined.
 update_approval_rule_template_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_content(Client, Input, []).
@@ -1207,8 +1247,8 @@ update_default_branch(Client, Input, Options)
 %% @doc Updates the structure of an approval rule created specifically for a
 %% pull request.
 %%
-%% For example, you can change the number of required approvers and the
-%% approval pool for approvers.
+%% For example, you can change the number of required approvers and
+%% the approval pool for approvers.
 update_pull_request_approval_rule_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_approval_rule_content(Client, Input, []).
@@ -1253,11 +1293,14 @@ update_pull_request_title(Client, Input, Options)
 %% @doc Sets or changes the comment or description for a repository.
 %%
 %% The description field for a repository accepts all HTML characters and all
-%% valid Unicode characters. Applications that do not HTML-encode the
-%% description and display it in a webpage can expose users to potentially
-%% malicious code. Make sure that you HTML-encode the description field in
-%% any application that uses this API to display the repository description
-%% on a webpage.
+%% valid
+%% Unicode characters. Applications that do not HTML-encode the description
+%% and display
+%% it in a webpage can expose users to potentially malicious code. Make sure
+%% that you
+%% HTML-encode the description field in any application that uses this API to
+%% display
+%% the repository description on a webpage.
 update_repository_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_description(Client, Input, []).
@@ -1277,12 +1320,14 @@ update_repository_encryption_key(Client, Input, Options)
 %% @doc Renames a repository.
 %%
 %% The repository name must be unique across the calling Amazon Web Services
-%% account. Repository names are limited to 100 alphanumeric, dash, and
-%% underscore characters, and cannot include certain characters. The suffix
-%% .git is prohibited. For more information about the limits on repository
-%% names, see Quotas:
+%% account.
+%% Repository names are limited to 100 alphanumeric, dash, and underscore
+%% characters, and cannot include certain characters. The suffix .git is
+%% prohibited. For
+%% more information about the limits on repository names, see Quotas:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html in the
-%% CodeCommit User Guide.
+%% CodeCommit
+%% User Guide.
 update_repository_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_name(Client, Input, []).

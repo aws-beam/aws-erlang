@@ -3,21 +3,28 @@
 
 %% @doc This is the Recycle Bin API Reference.
 %%
-%% This documentation provides descriptions and syntax for each of the
-%% actions and data types in Recycle Bin.
+%% This documentation provides
+%% descriptions and syntax for each of the actions and data types in Recycle
+%% Bin.
 %%
 %% Recycle Bin is a resource recovery feature that enables you to restore
-%% accidentally deleted snapshots and EBS-backed AMIs. When using Recycle
-%% Bin, if your resources are deleted, they are retained in the Recycle Bin
-%% for a time period that you specify.
+%% accidentally
+%% deleted snapshots and EBS-backed AMIs. When using Recycle Bin, if your
+%% resources are
+%% deleted, they are retained in the Recycle Bin for a time period that you
+%% specify.
 %%
 %% You can restore a resource from the Recycle Bin at any time before its
-%% retention period expires. After you restore a resource from the Recycle
-%% Bin, the resource is removed from the Recycle Bin, and you can then use it
-%% in the same way you use any other resource of that type in your account.
-%% If the retention period expires and the resource is not restored, the
-%% resource is permanently deleted from the Recycle Bin and is no longer
-%% available for recovery. For more information about Recycle Bin, see
+%% retention period
+%% expires. After you restore a resource from the Recycle Bin, the resource
+%% is removed from the
+%% Recycle Bin, and you can then use it in the same way you use any other
+%% resource of that type
+%% in your account. If the retention period expires and the resource is not
+%% restored, the resource
+%% is permanently deleted from the Recycle Bin and is no longer available for
+%% recovery. For more
+%% information about Recycle Bin, see
 %% Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
 %% the Amazon Elastic Compute Cloud User Guide.
@@ -54,7 +61,8 @@
 
 %% @doc Creates a Recycle Bin retention rule.
 %%
-%% For more information, see Create Recycle Bin retention rules:
+%% For more information, see
+%% Create Recycle Bin retention rules:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule
 %% in the Amazon Elastic Compute Cloud User Guide.
 create_rule(Client, Input) ->
@@ -63,10 +71,12 @@ create_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/rules"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -81,7 +91,8 @@ create_rule(Client, Input0, Options0) ->
 
 %% @doc Deletes a Recycle Bin retention rule.
 %%
-%% For more information, see Delete Recycle Bin retention rules:
+%% For more information, see
+%% Delete Recycle Bin retention rules:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule
 %% in the Amazon Elastic Compute Cloud User Guide.
 delete_rule(Client, Identifier, Input) ->
@@ -90,10 +101,12 @@ delete_rule(Client, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/rules/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -119,9 +132,11 @@ get_rule(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/rules/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -136,10 +151,12 @@ list_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-rules"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -165,9 +182,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -184,10 +203,12 @@ lock_rule(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/rules/", aws_util:encode_uri(Identifier), "/lock"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -207,10 +228,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -225,18 +248,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Unlocks a retention rule.
 %%
-%% After a retention rule is unlocked, it can be modified or deleted only
-%% after the unlock delay period expires.
+%% After a retention rule is unlocked, it can be modified or deleted
+%% only after the unlock delay period expires.
 unlock_rule(Client, Identifier, Input) ->
     unlock_rule(Client, Identifier, Input, []).
 unlock_rule(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/rules/", aws_util:encode_uri(Identifier), "/unlock"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -256,10 +281,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -275,10 +302,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an existing Recycle Bin retention rule.
 %%
-%% You can update a retention rule's description, resource tags, and
-%% retention period at any time after creation. You can't update a
-%% retention rule's resource type after creation. For more information,
-%% see Update Recycle Bin retention rules:
+%% You can update a retention rule's description,
+%% resource tags, and retention period at any time after creation. You
+%% can't update a retention rule's
+%% resource type after creation. For more information, see
+%% Update Recycle Bin retention rules:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule
 %% in the Amazon Elastic Compute Cloud User Guide.
 update_rule(Client, Identifier, Input) ->
@@ -287,10 +315,12 @@ update_rule(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/rules/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -306,6 +336,11 @@ update_rule(Client, Identifier, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

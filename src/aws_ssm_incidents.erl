@@ -2,18 +2,23 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Systems Manager Incident Manager is an incident management console
-%% designed to help users mitigate and recover from incidents affecting their
-%% Amazon Web Services-hosted applications.
+%% designed to help users
+%% mitigate and recover from incidents affecting their Amazon Web
+%% Services-hosted applications.
 %%
-%% An incident is any unplanned interruption or reduction in quality of
+%% An
+%% incident is any unplanned interruption or reduction in quality of
 %% services.
 %%
 %% Incident Manager increases incident resolution by notifying responders of
-%% impact, highlighting relevant troubleshooting data, and providing
-%% collaboration tools to get services back up and running. To achieve the
-%% primary goal of reducing the time-to-resolution of critical incidents,
-%% Incident Manager automates response plans and enables responder team
-%% escalation.
+%% impact,
+%% highlighting relevant troubleshooting data, and providing collaboration
+%% tools to get services
+%% back up and running. To achieve the primary goal of reducing the
+%% time-to-resolution of
+%% critical incidents, Incident Manager automates response plans and enables
+%% responder
+%% team escalation.
 -module(aws_ssm_incidents).
 
 -export([batch_get_incident_findings/2,
@@ -93,19 +98,23 @@
 %% @doc Retrieves details about all specified findings for an incident,
 %% including descriptive details about each finding.
 %%
-%% A finding represents a recent application environment change made by an
-%% CodeDeploy deployment or an CloudFormation stack creation or update that
-%% can be investigated as a potential cause of the incident.
+%% A finding
+%% represents a recent application environment change made by an CodeDeploy
+%% deployment or an CloudFormation stack creation or update that can be
+%% investigated as a
+%% potential cause of the incident.
 batch_get_incident_findings(Client, Input) ->
     batch_get_incident_findings(Client, Input, []).
 batch_get_incident_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batchGetIncidentFindings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -119,17 +128,20 @@ batch_get_incident_findings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc A replication set replicates and encrypts your data to the provided
-%% Regions with the provided KMS key.
+%% Regions with the
+%% provided KMS key.
 create_replication_set(Client, Input) ->
     create_replication_set(Client, Input, []).
 create_replication_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createReplicationSet"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -145,18 +157,22 @@ create_replication_set(Client, Input0, Options0) ->
 %% @doc Creates a response plan that automates the initial response to
 %% incidents.
 %%
-%% A response plan engages contacts, starts chat channel collaboration, and
-%% initiates runbooks at the beginning of an incident.
+%% A response plan
+%% engages contacts, starts chat channel collaboration, and initiates
+%% runbooks at the beginning
+%% of an incident.
 create_response_plan(Client, Input) ->
     create_response_plan(Client, Input, []).
 create_response_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createResponsePlan"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -173,18 +189,22 @@ create_response_plan(Client, Input0, Options0) ->
 %% incident record.
 %%
 %% Incident Manager automatically creates timeline events that mark key
-%% moments during an incident. You can create custom timeline events to mark
-%% important events that Incident Manager can detect automatically.
+%% moments during an incident.
+%% You can create custom timeline events to mark important events that
+%% Incident Manager can detect
+%% automatically.
 create_timeline_event(Client, Input) ->
     create_timeline_event(Client, Input, []).
 create_timeline_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createTimelineEvent"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -204,10 +224,12 @@ delete_incident_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteIncidentRecord"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -222,17 +244,20 @@ delete_incident_record(Client, Input0, Options0) ->
 
 %% @doc Deletes all Regions in your replication set.
 %%
-%% Deleting the replication set deletes all Incident Manager data.
+%% Deleting the replication set deletes all
+%% Incident Manager data.
 delete_replication_set(Client, Input) ->
     delete_replication_set(Client, Input, []).
 delete_replication_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteReplicationSet"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -247,17 +272,20 @@ delete_replication_set(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource policy that Resource Access Manager uses to
-%% share your Incident Manager resource.
+%% share your Incident Manager
+%% resource.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 delete_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteResourcePolicy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -273,17 +301,20 @@ delete_resource_policy(Client, Input0, Options0) ->
 %% @doc Deletes the specified response plan.
 %%
 %% Deleting a response plan stops all linked CloudWatch alarms and
-%% EventBridge events from creating an incident with this response plan.
+%% EventBridge events from creating an incident with this response
+%% plan.
 delete_response_plan(Client, Input) ->
     delete_response_plan(Client, Input, []).
 delete_response_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteResponsePlan"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -303,10 +334,12 @@ delete_timeline_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteTimelineEvent"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -332,9 +365,11 @@ get_incident_record(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getIncidentRecord"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -359,9 +394,11 @@ get_replication_set(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getReplicationSet"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -381,10 +418,12 @@ get_resource_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getResourcePolicies"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -411,9 +450,11 @@ get_response_plan(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getResponsePlan"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -438,9 +479,11 @@ get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getTimelineEvent"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -454,21 +497,24 @@ get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the IDs of findings, plus their last modified
-%% times, that have been identified for a specified incident.
+%% times, that have been
+%% identified for a specified incident.
 %%
-%% A finding represents a recent application environment change made by an
-%% CloudFormation stack creation or update or an CodeDeploy deployment that
-%% can be investigated as a potential cause of the incident.
+%% A finding represents a recent application environment
+%% change made by an CloudFormation stack creation or update or an CodeDeploy
+%% deployment that can be investigated as a potential cause of the incident.
 list_incident_findings(Client, Input) ->
     list_incident_findings(Client, Input, []).
 list_incident_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listIncidentFindings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -483,18 +529,20 @@ list_incident_findings(Client, Input0, Options0) ->
 
 %% @doc Lists all incident records in your account.
 %%
-%% Use this command to retrieve the Amazon Resource Name (ARN) of the
-%% incident record you want to update.
+%% Use this command to retrieve the Amazon
+%% Resource Name (ARN) of the incident record you want to update.
 list_incident_records(Client, Input) ->
     list_incident_records(Client, Input, []).
 list_incident_records(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listIncidentRecords"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -514,10 +562,12 @@ list_related_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRelatedItems"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -537,10 +587,12 @@ list_replication_sets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listReplicationSets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -560,10 +612,12 @@ list_response_plans(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listResponsePlans"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -590,9 +644,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -607,10 +663,12 @@ list_timeline_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTimelineEvents"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -625,9 +683,10 @@ list_timeline_events(Client, Input0, Options0) ->
 
 %% @doc Adds a resource policy to the specified response plan.
 %%
-%% The resource policy is used to share the response plan using Resource
-%% Access Manager (RAM). For more information about cross-account sharing,
-%% see Cross-Region and cross-account incident management:
+%% The resource policy is used to
+%% share the response plan using Resource Access Manager (RAM). For more
+%% information about cross-account sharing, see Cross-Region and
+%% cross-account incident management:
 %% https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-manager-cross-account-cross-region.html.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
@@ -635,10 +694,12 @@ put_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putResourcePolicy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -652,17 +713,20 @@ put_resource_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to start an incident from CloudWatch alarms, EventBridge events,
-%% or manually.
+%% or
+%% manually.
 start_incident(Client, Input) ->
     start_incident(Client, Input, []).
 start_incident(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startIncident"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -682,10 +746,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -705,10 +771,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -723,17 +791,20 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update deletion protection to either allow or deny deletion of the
-%% final Region in a replication set.
+%% final Region in a
+%% replication set.
 update_deletion_protection(Client, Input) ->
     update_deletion_protection(Client, Input, []).
 update_deletion_protection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDeletionProtection"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -748,9 +819,10 @@ update_deletion_protection(Client, Input0, Options0) ->
 
 %% @doc Update the details of an incident record.
 %%
-%% You can use this operation to update an incident record from the defined
-%% chat channel. For more information about using actions in chat channels,
-%% see Interacting through chat:
+%% You can use this operation to update an incident
+%% record from the defined chat channel. For more information about using
+%% actions in chat
+%% channels, see Interacting through chat:
 %% https://docs.aws.amazon.com/incident-manager/latest/userguide/chat.html#chat-interact.
 update_incident_record(Client, Input) ->
     update_incident_record(Client, Input, []).
@@ -758,10 +830,12 @@ update_incident_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateIncidentRecord"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -782,10 +856,12 @@ update_related_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateRelatedItems"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -805,10 +881,12 @@ update_replication_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateReplicationSet"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -828,10 +906,12 @@ update_response_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateResponsePlan"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -853,10 +933,12 @@ update_timeline_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateTimelineEvent"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -872,6 +954,11 @@ update_timeline_event(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

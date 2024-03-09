@@ -3,45 +3,60 @@
 
 %% @doc Amazon Security Lake is a fully managed security data lake service.
 %%
-%% You can use Security Lake to automatically centralize security data from
-%% cloud, on-premises, and custom sources into a data lake that's stored
-%% in your Amazon Web Services account. Amazon Web Services Organizations is
-%% an account management service that lets you consolidate multiple Amazon
-%% Web Services accounts into an organization that you create and centrally
-%% manage. With Organizations, you can create member accounts and invite
-%% existing accounts to join your organization. Security Lake helps you
-%% analyze security data for a more complete understanding of your security
-%% posture across the entire organization. It can also help you improve the
+%% You can use Security Lake to
+%% automatically centralize security data from cloud, on-premises, and custom
+%% sources into a
+%% data lake that's stored in your Amazon Web Services account. Amazon
+%% Web Services Organizations
+%% is an account management service that lets you consolidate multiple Amazon
+%% Web Services
+%% accounts into an organization that you create and centrally manage. With
+%% Organizations, you
+%% can create member accounts and invite existing accounts to join your
+%% organization.
+%% Security Lake helps you analyze security data for a more complete
+%% understanding of your
+%% security posture across the entire organization. It can also help you
+%% improve the
 %% protection of your workloads, applications, and data.
 %%
 %% The data lake is backed by Amazon Simple Storage Service (Amazon S3)
-%% buckets, and you retain ownership over your data.
+%% buckets, and you
+%% retain ownership over your data.
 %%
 %% Amazon Security Lake integrates with CloudTrail, a service that provides a
-%% record of actions taken by a user, role, or an Amazon Web Services
-%% service. In Security Lake, CloudTrail captures API calls for Security Lake
-%% as events. The calls captured include calls from the Security Lake console
-%% and code calls to the Security Lake API operations. If you create a trail,
-%% you can enable continuous delivery of CloudTrail events to an Amazon S3
-%% bucket, including events for Security Lake. If you don't configure a
-%% trail, you can still view the most recent events in the CloudTrail console
-%% in Event history. Using the information collected by CloudTrail you can
-%% determine the request that was made to Security Lake, the IP address from
-%% which the request was made, who made the request, when it was made, and
-%% additional details. To learn more about Security Lake information in
-%% CloudTrail, see the Amazon Security Lake User Guide:
+%% record of
+%% actions taken by a user, role, or an Amazon Web Services service. In
+%% Security Lake, CloudTrail captures API calls for Security Lake as events.
+%% The calls captured include calls
+%% from the Security Lake console and code calls to the Security Lake API
+%% operations. If you create a
+%% trail, you can enable continuous delivery of CloudTrail events to an
+%% Amazon S3 bucket, including events for Security Lake. If you don't
+%% configure a trail, you can still
+%% view the most recent events in the CloudTrail console in Event history.
+%% Using the
+%% information collected by CloudTrail you can determine the request that was
+%% made to
+%% Security Lake, the IP address from which the request was made, who made
+%% the request, when it
+%% was made, and additional details. To learn more about Security Lake
+%% information in CloudTrail, see the Amazon Security Lake User Guide:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/securitylake-cloudtrail.html.
 %%
 %% Security Lake automates the collection of security-related log and event
-%% data from integrated Amazon Web Services and third-party services. It also
-%% helps you manage the lifecycle of data with customizable retention and
-%% replication settings. Security Lake converts ingested data into Apache
-%% Parquet format and a standard open-source schema called the Open
-%% Cybersecurity Schema Framework (OCSF).
+%% data from
+%% integrated Amazon Web Services and third-party services. It also helps you
+%% manage
+%% the lifecycle of data with customizable retention and replication
+%% settings. Security Lake
+%% converts ingested data into Apache Parquet format and a standard
+%% open-source schema called
+%% the Open Cybersecurity Schema Framework (OCSF).
 %%
 %% Other Amazon Web Services and third-party services can subscribe to the
-%% data that's stored in Security Lake for incident response and security
-%% data analytics.
+%% data that's stored in Security Lake for
+%% incident response and security data analytics.
 -module(aws_securitylake).
 
 -export([create_aws_log_source/2,
@@ -122,25 +137,32 @@
 %% @doc Adds a natively supported Amazon Web Service as an Amazon Security
 %% Lake source.
 %%
-%% Enables source types for member accounts in required Amazon Web Services
-%% Regions, based on the parameters you specify. You can choose any source
-%% type in any Region for either accounts that are part of a trusted
-%% organization or standalone accounts. Once you add an Amazon Web Service as
-%% a source, Security Lake starts collecting logs and events from it.
+%% Enables
+%% source types for member accounts in required Amazon Web Services Regions,
+%% based on the
+%% parameters you specify. You can choose any source type in any Region for
+%% either accounts
+%% that are part of a trusted organization or standalone accounts. Once you
+%% add an Amazon Web Service as a source, Security Lake starts collecting
+%% logs and events from it.
 %%
 %% You can use this API only to enable natively supported Amazon Web Services
-%% as a source. Use `CreateCustomLogSource' to enable data collection
-%% from a custom source.
+%% as a
+%% source. Use `CreateCustomLogSource' to enable data collection from a
+%% custom
+%% source.
 create_aws_log_source(Client, Input) ->
     create_aws_log_source(Client, Input, []).
 create_aws_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/aws"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -154,24 +176,30 @@ create_aws_log_source(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a third-party custom source in Amazon Security Lake, from the
-%% Amazon Web Services Region where you want to create a custom source.
+%% Amazon Web Services Region
+%% where you want to create a custom source.
 %%
-%% Security Lake can collect logs and events from third-party custom sources.
-%% After creating the appropriate IAM role to invoke Glue crawler, use this
-%% API to add a custom source name in Security Lake. This operation creates a
-%% partition in the Amazon S3 bucket for Security Lake as the target location
-%% for log files from the custom source. In addition, this operation also
-%% creates an associated Glue table and an Glue crawler.
+%% Security Lake can collect logs and events from
+%% third-party custom sources. After creating the appropriate IAM role to
+%% invoke Glue crawler, use this API to add a custom source name in Security
+%% Lake. This
+%% operation creates a partition in the Amazon S3 bucket for Security Lake as
+%% the target
+%% location for log files from the custom source. In addition, this operation
+%% also creates an
+%% associated Glue table and an Glue crawler.
 create_custom_log_source(Client, Input) ->
     create_custom_log_source(Client, Input, []).
 create_custom_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/custom"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -187,22 +215,30 @@ create_custom_log_source(Client, Input0, Options0) ->
 %% @doc Initializes an Amazon Security Lake instance with the provided (or
 %% default) configuration.
 %%
-%% You can enable Security Lake in Amazon Web Services Regions with
-%% customized settings before enabling log collection in Regions. To specify
-%% particular Regions, configure these Regions using the `configurations'
-%% parameter. If you have already enabled Security Lake in a Region when you
-%% call this command, the command will update the Region if you provide new
+%% You
+%% can enable Security Lake in Amazon Web Services Regions with customized
+%% settings before enabling
+%% log collection in Regions. To specify particular Regions, configure these
+%% Regions using the
+%% `configurations' parameter. If you have already enabled Security Lake
+%% in a Region
+%% when you call this command, the command will update the Region if you
+%% provide new
 %% configuration parameters. If you have not already enabled Security Lake in
-%% the Region when you call this API, it will set up the data lake in the
-%% Region with the specified configurations.
+%% the Region when you
+%% call this API, it will set up the data lake in the Region with the
+%% specified
+%% configurations.
 %%
 %% When you enable Security Lake, it starts ingesting security data after the
 %% `CreateAwsLogSource' call. This includes ingesting security data from
 %% sources, storing data, and making data accessible to subscribers. Security
-%% Lake also enables all the existing settings and resources that it stores
-%% or maintains for your Amazon Web Services account in the current Region,
-%% including security log and event data. For more information, see the
-%% Amazon Security Lake User Guide:
+%% Lake also enables
+%% all the existing settings and resources that it stores or maintains for
+%% your Amazon Web Services account in the current Region, including security
+%% log and event data. For
+%% more information, see the Amazon Security Lake User
+%% Guide:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html.
 create_data_lake(Client, Input) ->
     create_data_lake(Client, Input, []).
@@ -210,10 +246,12 @@ create_data_lake(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -227,17 +265,20 @@ create_data_lake(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates the specified notification subscription in Amazon Security
-%% Lake for the organization you specify.
+%% Lake for the organization
+%% you specify.
 create_data_lake_exception_subscription(Client, Input) ->
     create_data_lake_exception_subscription(Client, Input, []).
 create_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/exceptions/subscription"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -254,17 +295,20 @@ create_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% your organization.
 %%
 %% Security Lake is not automatically enabled for any existing member
-%% accounts in your organization.
+%% accounts in your
+%% organization.
 create_data_lake_organization_configuration(Client, Input) ->
     create_data_lake_organization_configuration(Client, Input, []).
 create_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/organization/configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -278,7 +322,8 @@ create_data_lake_organization_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a subscription permission for accounts that are already
-%% enabled in Amazon Security Lake.
+%% enabled in
+%% Amazon Security Lake.
 %%
 %% You can create a subscriber with access to data in the current Amazon Web
 %% Services Region.
@@ -288,10 +333,12 @@ create_subscriber(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/subscribers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -305,19 +352,23 @@ create_subscriber(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Notifies the subscriber when new data is written to the data lake for
-%% the sources that the subscriber consumes in Security Lake.
+%% the sources that
+%% the subscriber consumes in Security Lake.
 %%
-%% You can create only one subscriber notification per subscriber.
+%% You can create only one subscriber notification per
+%% subscriber.
 create_subscriber_notification(Client, SubscriberId, Input) ->
     create_subscriber_notification(Client, SubscriberId, Input, []).
 create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -333,25 +384,30 @@ create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %% @doc Removes a natively supported Amazon Web Service as an Amazon Security
 %% Lake source.
 %%
-%% You can remove a source for one or more Regions. When you remove the
-%% source, Security Lake stops collecting data from that source in the
-%% specified Regions and accounts, and subscribers can no longer consume new
-%% data from the source. However, subscribers can still consume data that
-%% Security Lake collected from the source before removal.
+%% You
+%% can remove a source for one or more Regions. When you remove the source,
+%% Security Lake stops
+%% collecting data from that source in the specified Regions and accounts,
+%% and subscribers can
+%% no longer consume new data from the source. However, subscribers can still
+%% consume data
+%% that Security Lake collected from the source before removal.
 %%
 %% You can choose any source type in any Amazon Web Services Region for
-%% either accounts that are part of a trusted organization or standalone
-%% accounts.
+%% either accounts that
+%% are part of a trusted organization or standalone accounts.
 delete_aws_log_source(Client, Input) ->
     delete_aws_log_source(Client, Input, []).
 delete_aws_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/aws/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -365,17 +421,20 @@ delete_aws_log_source(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a custom log source from Amazon Security Lake, to stop
-%% sending data from the custom source to Security Lake.
+%% sending data from the custom
+%% source to Security Lake.
 delete_custom_log_source(Client, SourceName, Input) ->
     delete_custom_log_source(Client, SourceName, Input, []).
 delete_custom_log_source(Client, SourceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/logsources/custom/", aws_util:encode_uri(SourceName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -393,14 +452,19 @@ delete_custom_log_source(Client, SourceName, Input0, Options0) ->
 %% Lake is disabled in all Amazon Web Services Regions and it stops
 %% collecting data from your sources.
 %%
-%% Also, this API automatically takes steps to remove the account from
-%% Security Lake. However, Security Lake retains all of your existing
-%% settings and the resources that it created in your Amazon Web Services
+%% Also, this API
+%% automatically takes steps to remove the account from Security Lake.
+%% However, Security Lake retains
+%% all of your existing settings and the resources that it created in your
+%% Amazon Web Services
 %% account in the current Amazon Web Services Region.
 %%
 %% The `DeleteDataLake' operation does not delete the data that is stored
-%% in your Amazon S3 bucket, which is owned by your Amazon Web Services
-%% account. For more information, see the Amazon Security Lake User Guide:
+%% in
+%% your Amazon S3 bucket, which is owned by your Amazon Web Services account.
+%% For more
+%% information, see the Amazon Security Lake User
+%% Guide:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/disable-security-lake.html.
 delete_data_lake(Client, Input) ->
     delete_data_lake(Client, Input, []).
@@ -408,10 +472,12 @@ delete_data_lake(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -425,17 +491,20 @@ delete_data_lake(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified notification subscription in Amazon Security
-%% Lake for the organization you specify.
+%% Lake for the organization
+%% you specify.
 delete_data_lake_exception_subscription(Client, Input) ->
     delete_data_lake_exception_subscription(Client, Input, []).
 delete_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/exceptions/subscription"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -451,20 +520,23 @@ delete_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% @doc Turns off automatic enablement of Amazon Security Lake for member
 %% accounts that are added to an organization in Organizations.
 %%
-%% Only the delegated Security Lake administrator for an organization can
-%% perform this operation. If the delegated Security Lake administrator
-%% performs this operation, new member accounts won't automatically
-%% contribute data to the data lake.
+%% Only the delegated
+%% Security Lake administrator for an organization can perform this
+%% operation. If the delegated Security Lake administrator performs this
+%% operation, new member
+%% accounts won't automatically contribute data to the data lake.
 delete_data_lake_organization_configuration(Client, Input) ->
     delete_data_lake_organization_configuration(Client, Input, []).
 delete_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/organization/configuration/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -478,22 +550,26 @@ delete_data_lake_organization_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the subscription permission and all notification settings for
-%% accounts that are already enabled in Amazon Security Lake.
+%% accounts that are
+%% already enabled in Amazon Security Lake.
 %%
-%% When you run `DeleteSubscriber', the subscriber will no longer consume
-%% data from Security Lake and the subscriber is removed. This operation
-%% deletes the subscriber and removes access to data in the current Amazon
-%% Web Services Region.
+%% When you run `DeleteSubscriber', the
+%% subscriber will no longer consume data from Security Lake and the
+%% subscriber is removed. This
+%% operation deletes the subscriber and removes access to data in the current
+%% Amazon Web Services Region.
 delete_subscriber(Client, SubscriberId, Input) ->
     delete_subscriber(Client, SubscriberId, Input, []).
 delete_subscriber(Client, SubscriberId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -507,17 +583,20 @@ delete_subscriber(Client, SubscriberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified notification subscription in Amazon Security
-%% Lake for the organization you specify.
+%% Lake for the organization
+%% you specify.
 delete_subscriber_notification(Client, SubscriberId, Input) ->
     delete_subscriber_notification(Client, SubscriberId, Input, []).
 delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -533,19 +612,22 @@ delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %% @doc Deletes the Amazon Security Lake delegated administrator account for
 %% the organization.
 %%
-%% This API can only be called by the organization management account. The
-%% organization management account cannot be the delegated administrator
-%% account.
+%% This API
+%% can only be called by the organization management account. The
+%% organization management
+%% account cannot be the delegated administrator account.
 deregister_data_lake_delegated_administrator(Client, Input) ->
     deregister_data_lake_delegated_administrator(Client, Input, []).
 deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/delegate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -572,9 +654,11 @@ get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalake/exceptions/subscription"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -583,10 +667,11 @@ get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the configuration that will be automatically set up for
-%% accounts added to the organization after the organization has onboarded to
-%% Amazon Security Lake.
+%% accounts added to the
+%% organization after the organization has onboarded to Amazon Security Lake.
 %%
-%% This API does not take input parameters.
+%% This API does not take
+%% input parameters.
 get_data_lake_organization_configuration(Client)
   when is_map(Client) ->
     get_data_lake_organization_configuration(Client, #{}, #{}).
@@ -599,9 +684,11 @@ get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalake/organization/configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -610,18 +697,21 @@ get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a snapshot of the current Region, including whether Amazon
-%% Security Lake is enabled for those accounts and which sources Security
-%% Lake is collecting data from.
+%% Security Lake is enabled
+%% for those accounts and which sources Security Lake is collecting data
+%% from.
 get_data_lake_sources(Client, Input) ->
     get_data_lake_sources(Client, Input, []).
 get_data_lake_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/sources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -637,7 +727,8 @@ get_data_lake_sources(Client, Input0, Options0) ->
 %% @doc Retrieves the subscription information for the specified subscription
 %% ID.
 %%
-%% You can get information about a specific subscriber.
+%% You can get
+%% information about a specific subscriber.
 get_subscriber(Client, SubscriberId)
   when is_map(Client) ->
     get_subscriber(Client, SubscriberId, #{}, #{}).
@@ -650,9 +741,11 @@ get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -661,17 +754,20 @@ get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Security Lake exceptions that you can use to find
-%% the source of problems and fix them.
+%% the source of problems and
+%% fix them.
 list_data_lake_exceptions(Client, Input) ->
     list_data_lake_exceptions(Client, Input, []).
 list_data_lake_exceptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/exceptions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -687,8 +783,8 @@ list_data_lake_exceptions(Client, Input0, Options0) ->
 %% @doc Retrieves the Amazon Security Lake configuration object for the
 %% specified Amazon Web Services Regions.
 %%
-%% You can use this operation to determine whether Security Lake is enabled
-%% for a Region.
+%% You can use this operation to determine whether
+%% Security Lake is enabled for a Region.
 list_data_lakes(Client)
   when is_map(Client) ->
     list_data_lakes(Client, #{}, #{}).
@@ -701,9 +797,11 @@ list_data_lakes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalakes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -722,10 +820,12 @@ list_log_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -741,8 +841,9 @@ list_log_sources(Client, Input0, Options0) ->
 %% @doc List all subscribers for the specific Amazon Security Lake account
 %% ID.
 %%
-%% You can retrieve a list of subscriptions associated with a specific
-%% organization or Amazon Web Services account.
+%% You can retrieve a list
+%% of subscriptions associated with a specific organization or Amazon Web
+%% Services account.
 list_subscribers(Client)
   when is_map(Client) ->
     list_subscribers(Client, #{}, #{}).
@@ -755,9 +856,11 @@ list_subscribers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/subscribers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -772,8 +875,9 @@ list_subscribers(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the tags (keys and values) that are associated with an
 %% Amazon Security Lake resource: a subscriber, or the data lake
-%% configuration for your Amazon Web Services account in a particular Amazon
-%% Web Services Region.
+%% configuration for
+%% your Amazon Web Services account in a particular Amazon Web Services
+%% Region.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -786,9 +890,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -799,19 +905,22 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Designates the Amazon Security Lake delegated administrator account
 %% for the organization.
 %%
-%% This API can only be called by the organization management account. The
-%% organization management account cannot be the delegated administrator
-%% account.
+%% This
+%% API can only be called by the organization management account. The
+%% organization management
+%% account cannot be the delegated administrator account.
 register_data_lake_delegated_administrator(Client, Input) ->
     register_data_lake_delegated_administrator(Client, Input, []).
 register_data_lake_delegated_administrator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/delegate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -826,28 +935,34 @@ register_data_lake_delegated_administrator(Client, Input0, Options0) ->
 
 %% @doc Adds or updates one or more tags that are associated with an Amazon
 %% Security Lake resource: a subscriber, or the data lake configuration for
-%% your Amazon Web Services account in a particular Amazon Web Services
-%% Region.
+%% your
+%% Amazon Web Services account in a particular Amazon Web Services Region.
 %%
-%% A tag is a label that you can define and associate with Amazon Web
-%% Services resources. Each tag consists of a required tag key and an
-%% associated tag value. A tag key is a general label that acts as a category
-%% for a more specific tag value. A tag value acts as a descriptor for a tag
-%% key. Tags can help you identify, categorize, and manage resources in
-%% different ways, such as by owner, environment, or other criteria. For more
-%% information, see Tagging Amazon Security Lake resources:
+%% A tag is a label that you can define and associate with
+%% Amazon Web Services resources. Each tag consists of a required tag key and
+%% an associated tag value. A
+%% tag key is a general label that acts as a category for a more specific tag
+%% value. A tag value acts as a
+%% descriptor for a tag key. Tags can help you identify, categorize, and
+%% manage resources in different ways, such as by owner, environment, or
+%% other
+%% criteria. For more information, see
+%% Tagging Amazon Security Lake resources:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/tagging-resources.html
-%% in the Amazon Security Lake User Guide.
+%% in the
+%% Amazon Security Lake User Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -869,10 +984,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -888,18 +1005,20 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Specifies where to store your security data and for how long.
 %%
-%% You can add a rollup Region to consolidate data from multiple Amazon Web
-%% Services Regions.
+%% You can add a rollup
+%% Region to consolidate data from multiple Amazon Web Services Regions.
 update_data_lake(Client, Input) ->
     update_data_lake(Client, Input, []).
 update_data_lake(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -913,17 +1032,20 @@ update_data_lake(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified notification subscription in Amazon Security
-%% Lake for the organization you specify.
+%% Lake for the organization
+%% you specify.
 update_data_lake_exception_subscription(Client, Input) ->
     update_data_lake_exception_subscription(Client, Input, []).
 update_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake/exceptions/subscription"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -939,18 +1061,21 @@ update_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% @doc Updates an existing subscription for the given Amazon Security Lake
 %% account ID.
 %%
-%% You can update a subscriber by changing the sources that the subscriber
-%% consumes data from.
+%% You can update
+%% a subscriber by changing the sources that the subscriber consumes data
+%% from.
 update_subscriber(Client, SubscriberId, Input) ->
     update_subscriber(Client, SubscriberId, Input, []).
 update_subscriber(Client, SubscriberId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -964,18 +1089,20 @@ update_subscriber(Client, SubscriberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing notification method for the subscription (SQS or
-%% HTTPs endpoint) or switches the notification subscription endpoint for a
-%% subscriber.
+%% HTTPs endpoint) or
+%% switches the notification subscription endpoint for a subscriber.
 update_subscriber_notification(Client, SubscriberId, Input) ->
     update_subscriber_notification(Client, SubscriberId, Input, []).
 update_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -991,6 +1118,11 @@ update_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

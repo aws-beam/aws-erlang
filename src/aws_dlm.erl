@@ -6,12 +6,14 @@
 %% With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
 %% Amazon Web Services resources.
 %%
-%% You create lifecycle policies, which are used to automate operations on
-%% the specified resources.
+%% You create
+%% lifecycle policies, which are used to automate operations on the specified
+%% resources.
 %%
 %% Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
-%% For information about using Amazon Data Lifecycle Manager with Amazon EBS,
-%% see Amazon Data Lifecycle Manager:
+%% For information about using Amazon Data Lifecycle Manager
+%% with Amazon EBS, see
+%% Amazon Data Lifecycle Manager:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html
 %% in the Amazon EC2 User Guide.
 -module(aws_dlm).
@@ -46,32 +48,35 @@
 %%
 %% Amazon Data Lifecycle Manager supports the following policy types:
 %%
-%% <ul> <li> Custom EBS snapshot policy
+%% Custom EBS snapshot policy
 %%
-%% </li> <li> Custom EBS-backed AMI policy
+%% Custom EBS-backed AMI policy
 %%
-%% </li> <li> Cross-account copy event policy
+%% Cross-account copy event policy
 %%
-%% </li> <li> Default policy for EBS snapshots
+%% Default policy for EBS snapshots
 %%
-%% </li> <li> Default policy for EBS-backed AMIs
+%% Default policy for EBS-backed AMIs
 %%
-%% </li> </ul> For more information, see Default policies vs custom policies:
+%% For more information, see
+%% Default policies vs custom policies:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/policy-differences.html.
 %%
 %% If you create a default policy, you can specify the request parameters
-%% either in the request body, or in the PolicyDetails request structure, but
-%% not both.
+%% either in
+%% the request body, or in the PolicyDetails request structure, but not both.
 create_lifecycle_policy(Client, Input) ->
     create_lifecycle_policy(Client, Input, []).
 create_lifecycle_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -85,7 +90,8 @@ create_lifecycle_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified lifecycle policy and halts the automated
-%% operations that the policy specified.
+%% operations that the
+%% policy specified.
 %%
 %% For more information about deleting a policy, see Delete lifecycle
 %% policies:
@@ -95,11 +101,13 @@ delete_lifecycle_policy(Client, PolicyId, Input) ->
 delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
     Method = delete,
     Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -128,10 +136,12 @@ get_lifecycle_policies(Client, QueryMap, HeadersMap)
 get_lifecycle_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -160,10 +170,12 @@ get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap)
 get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -183,10 +195,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -200,11 +214,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -223,11 +239,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -251,11 +269,13 @@ update_lifecycle_policy(Client, PolicyId, Input) ->
 update_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
     Method = patch,
     Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -271,6 +291,11 @@ update_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

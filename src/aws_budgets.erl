@@ -10,45 +10,42 @@
 %%
 %% Budgets provide you with a way to see the following information:
 %%
-%% <ul> <li> How close your plan is to your budgeted amount or to the free
-%% tier limits
+%% How close your plan is to your budgeted amount or to the free tier limits
 %%
-%% </li> <li> Your usage-to-date, including how much you've used of your
-%% Reserved Instances (RIs)
+%% Your usage-to-date, including how much you've used of your Reserved
+%% Instances (RIs)
 %%
-%% </li> <li> Your current estimated charges from Amazon Web Services, and
-%% how much your predicted usage will accrue in charges by the end of the
-%% month
+%% Your current estimated charges from Amazon Web Services, and how much your
+%% predicted usage will accrue in charges by the end of the month
 %%
-%% </li> <li> How much of your budget has been used
+%% How much of your budget has been used
 %%
-%% </li> </ul> Amazon Web Services updates your budget status several times a
-%% day. Budgets track your unblended costs, subscriptions, refunds, and RIs.
-%% You can create the following types of budgets:
+%% Amazon Web Services updates your budget status several times a day.
+%% Budgets track your unblended costs, subscriptions, refunds, and RIs. You
+%% can create the following types of budgets:
 %%
-%% <ul> <li> Cost budgets - Plan how much you want to spend on a service.
+%% Cost budgets - Plan how much you want to spend on a service.
 %%
-%% </li> <li> Usage budgets - Plan how much you want to use one or more
-%% services.
+%% Usage budgets - Plan how much you want to use one or more services.
 %%
-%% </li> <li> RI utilization budgets - Define a utilization threshold, and
-%% receive alerts when your RI usage falls below that threshold. This lets
-%% you see if your RIs are unused or under-utilized.
+%% RI utilization budgets - Define a utilization threshold, and receive
+%% alerts when your RI usage falls below that threshold. This lets you see if
+%% your RIs are unused or under-utilized.
 %%
-%% </li> <li> RI coverage budgets - Define a coverage threshold, and receive
-%% alerts when the number of your instance hours that are covered by RIs fall
-%% below that threshold. This lets you see how much of your instance usage is
-%% covered by a reservation.
+%% RI coverage budgets - Define a coverage threshold, and receive alerts when
+%% the number of your instance hours that are covered by RIs fall below that
+%% threshold. This lets you see how much of your instance usage is covered by
+%% a reservation.
 %%
-%% </li> </ul> Service Endpoint
+%% Service Endpoint
 %%
 %% The Amazon Web Services Budgets API provides the following endpoint:
 %%
-%% <ul> <li> https://budgets.amazonaws.com
+%% https://budgets.amazonaws.com
 %%
-%% </li> </ul> For information about costs that are associated with the
-%% Amazon Web Services Budgets API, see Amazon Web Services Cost Management
-%% Pricing: https://aws.amazon.com/aws-cost-management/pricing/.
+%% For information about costs that are associated with the Amazon Web
+%% Services Budgets API, see Amazon Web Services Cost Management Pricing:
+%% https://aws.amazon.com/aws-cost-management/pricing/.
 -module(aws_budgets).
 
 -export([create_budget/2,
@@ -119,7 +116,8 @@ create_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBudget">>, Input, Options).
 
-%% @doc Creates a budget action.
+%% @doc
+%% Creates a budget action.
 create_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_budget_action(Client, Input, []).
@@ -161,7 +159,8 @@ delete_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBudget">>, Input, Options).
 
-%% @doc Deletes a budget action.
+%% @doc
+%% Deletes a budget action.
 delete_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_budget_action(Client, Input, []).
@@ -204,7 +203,8 @@ describe_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudget">>, Input, Options).
 
-%% @doc Describes a budget action detail.
+%% @doc
+%% Describes a budget action detail.
 describe_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_action(Client, Input, []).
@@ -212,7 +212,8 @@ describe_budget_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetAction">>, Input, Options).
 
-%% @doc Describes a budget action history detail.
+%% @doc
+%% Describes a budget action history detail.
 describe_budget_action_histories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_action_histories(Client, Input, []).
@@ -220,7 +221,8 @@ describe_budget_action_histories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionHistories">>, Input, Options).
 
-%% @doc Describes all of the budget actions for an account.
+%% @doc
+%% Describes all of the budget actions for an account.
 describe_budget_actions_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_actions_for_account(Client, Input, []).
@@ -228,7 +230,8 @@ describe_budget_actions_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionsForAccount">>, Input, Options).
 
-%% @doc Describes all of the budget actions for a budget.
+%% @doc
+%% Describes all of the budget actions for a budget.
 describe_budget_actions_for_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_actions_for_budget(Client, Input, []).
@@ -236,7 +239,8 @@ describe_budget_actions_for_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionsForBudget">>, Input, Options).
 
-%% @doc Lists the budget names and notifications that are associated with an
+%% @doc
+%% Lists the budget names and notifications that are associated with an
 %% account.
 describe_budget_notifications_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -285,7 +289,8 @@ describe_subscribers_for_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscribersForNotification">>, Input, Options).
 
-%% @doc Executes a budget action.
+%% @doc
+%% Executes a budget action.
 execute_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_budget_action(Client, Input, []).
@@ -313,7 +318,8 @@ update_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBudget">>, Input, Options).
 
-%% @doc Updates a budget action.
+%% @doc
+%% Updates a budget action.
 update_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_budget_action(Client, Input, []).

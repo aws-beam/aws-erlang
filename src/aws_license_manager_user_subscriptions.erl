@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With License Manager, you can create user-based subscriptions to
-%% utilize licensed software with a per user subscription fee on Amazon EC2
-%% instances.
+%% utilize licensed software with
+%% a per user subscription fee on Amazon EC2 instances.
 -module(aws_license_manager_user_subscriptions).
 
 -export([associate_user/2,
@@ -39,9 +39,11 @@
 %% subscriptions.
 %%
 %% Your estimated bill for charges on the number of users and related costs
-%% will take 48 hours to appear for billing periods that haven't closed
-%% (marked as Pending billing status) in Amazon Web Services Billing. For
-%% more information, see Viewing your monthly charges:
+%% will take 48
+%% hours to appear for billing periods that haven't closed (marked as
+%% Pending billing status) in Amazon Web Services Billing. For more
+%% information, see Viewing your
+%% monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
 associate_user(Client, Input) ->
@@ -50,10 +52,12 @@ associate_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/AssociateUser"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -74,10 +78,12 @@ deregister_identity_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/DeregisterIdentityProvider"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -98,10 +104,12 @@ disassociate_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/DisassociateUser"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -121,10 +129,12 @@ list_identity_providers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/ListIdentityProviders"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -144,10 +154,12 @@ list_instances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/instance/ListInstances"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -168,10 +180,12 @@ list_product_subscriptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/ListProductSubscriptions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -191,10 +205,12 @@ list_user_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/ListUserAssociations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -214,10 +230,12 @@ register_identity_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/RegisterIdentityProvider"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -234,9 +252,11 @@ register_identity_provider(Client, Input0, Options0) ->
 %% provider.
 %%
 %% Your estimated bill for charges on the number of users and related costs
-%% will take 48 hours to appear for billing periods that haven't closed
-%% (marked as Pending billing status) in Amazon Web Services Billing. For
-%% more information, see Viewing your monthly charges:
+%% will take 48
+%% hours to appear for billing periods that haven't closed (marked as
+%% Pending billing status) in Amazon Web Services Billing. For more
+%% information, see Viewing your
+%% monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
 start_product_subscription(Client, Input) ->
@@ -245,10 +265,12 @@ start_product_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/StartProductSubscription"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -269,10 +291,12 @@ stop_product_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/StopProductSubscription"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -286,17 +310,20 @@ stop_product_subscription(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates additional product configuration settings for the registered
-%% identity provider.
+%% identity
+%% provider.
 update_identity_provider_settings(Client, Input) ->
     update_identity_provider_settings(Client, Input, []).
 update_identity_provider_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/UpdateIdentityProviderSettings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -312,6 +339,11 @@ update_identity_provider_settings(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

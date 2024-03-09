@@ -1,99 +1,223 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc An example service, deployed with the Octane Service creator,
-%% which will echo the string
--module(aws_bedrock_agent).
+%% @doc Welcome to the Amazon CodeCatalyst API reference.
+%%
+%% This reference provides descriptions of operations and data types for
+%% Amazon CodeCatalyst. You can use the Amazon CodeCatalyst
+%% API to work with the following objects.
+%%
+%% Spaces, by calling the following:
+%%
+%% `DeleteSpace', which deletes a space.
+%%
+%% `GetSpace', which returns information about a space.
+%%
+%% `GetSubscription', which returns information about the Amazon Web
+%% Services account used for billing purposes
+%% and the billing plan for the space.
+%%
+%% `ListSpaces', which retrieves a list of spaces.
+%%
+%% `UpdateSpace', which changes one or more values for a space.
+%%
+%% Projects, by calling the following:
+%%
+%% `CreateProject' which creates a project in a specified space.
+%%
+%% `GetProject', which returns information about a project.
+%%
+%% `ListProjects', which retrieves a list of projects in a space.
+%%
+%% Users, by calling the following:
+%%
+%% `GetUserDetails', which returns information about a user in Amazon
+%% CodeCatalyst.
+%%
+%% Source repositories, by calling the following:
+%%
+%% `CreateSourceRepository', which creates an empty Git-based source
+%% repository in a specified project.
+%%
+%% `CreateSourceRepositoryBranch', which creates a branch in a specified
+%% repository where you can work on code.
+%%
+%% `DeleteSourceRepository', which deletes a source repository.
+%%
+%% `GetSourceRepository', which returns information about a source
+%% repository.
+%%
+%% `GetSourceRepositoryCloneUrls', which returns information about the
+%% URLs that can be used with a Git client to clone a source
+%% repository.
+%%
+%% `ListSourceRepositories', which retrieves a list of source
+%% repositories in a project.
+%%
+%% `ListSourceRepositoryBranches', which retrieves a list of branches in
+%% a source repository.
+%%
+%% Dev Environments and the Amazon Web Services Toolkits, by calling the
+%% following:
+%%
+%% `CreateDevEnvironment', which creates a Dev Environment,
+%% where you can quickly work on the code stored in the source repositories
+%% of your project.
+%%
+%% `DeleteDevEnvironment', which deletes a Dev Environment.
+%%
+%% `GetDevEnvironment', which returns information about a Dev
+%% Environment.
+%%
+%% `ListDevEnvironments', which retrieves a list of Dev Environments in a
+%% project.
+%%
+%% `ListDevEnvironmentSessions', which retrieves a list of active Dev
+%% Environment sessions in a project.
+%%
+%% `StartDevEnvironment', which starts a specified Dev Environment and
+%% puts it into an active state.
+%%
+%% `StartDevEnvironmentSession', which starts a session to a specified
+%% Dev Environment.
+%%
+%% `StopDevEnvironment', which stops a specified Dev Environment and puts
+%% it into an stopped state.
+%%
+%% `StopDevEnvironmentSession', which stops a session for a specified Dev
+%% Environment.
+%%
+%% `UpdateDevEnvironment', which changes one or more values for a Dev
+%% Environment.
+%%
+%% Workflows, by calling the following:
+%%
+%% `GetWorkflow', which returns information about a workflow.
+%%
+%% `GetWorkflowRun', which returns information about a specified run of a
+%% workflow.
+%%
+%% `ListWorkflowRuns', which retrieves a list of runs of a specified
+%% workflow.
+%%
+%% `ListWorkflows', which retrieves a list of workflows in a specified
+%% project.
+%%
+%% `StartWorkflowRun', which starts a run of a specified workflow.
+%%
+%% Security, activity, and resource management in Amazon CodeCatalyst, by
+%% calling the following:
+%%
+%% `CreateAccessToken', which creates a personal access token (PAT) for
+%% the current user.
+%%
+%% `DeleteAccessToken', which deletes a specified personal access token
+%% (PAT).
+%%
+%% `ListAccessTokens', which lists all personal access tokens (PATs)
+%% associated with a user.
+%%
+%% `ListEventLogs', which retrieves a list of events that occurred during
+%% a specified time period in a space.
+%%
+%% `VerifySession', which verifies whether the calling user has a valid
+%% Amazon CodeCatalyst login and session.
+%%
+%% If you are using the Amazon CodeCatalyst APIs with an SDK or the CLI, you
+%% must configure your computer to work with Amazon CodeCatalyst and single
+%% sign-on (SSO).
+%% For more information, see Setting up to use the CLI with Amazon
+%% CodeCatalyst:
+%% https://docs.aws.amazon.com/codecatalyst/latest/userguide/set-up-cli.html
+%% and the SSO documentation for your SDK.
+-module(aws_codecatalyst).
 
--export([associate_agent_knowledge_base/4,
-         associate_agent_knowledge_base/5,
-         create_agent/2,
-         create_agent/3,
-         create_agent_action_group/4,
-         create_agent_action_group/5,
-         create_agent_alias/3,
-         create_agent_alias/4,
-         create_data_source/3,
-         create_data_source/4,
-         create_knowledge_base/2,
-         create_knowledge_base/3,
-         delete_agent/3,
-         delete_agent/4,
-         delete_agent_action_group/5,
-         delete_agent_action_group/6,
-         delete_agent_alias/4,
-         delete_agent_alias/5,
-         delete_agent_version/4,
-         delete_agent_version/5,
-         delete_data_source/4,
-         delete_data_source/5,
-         delete_knowledge_base/3,
-         delete_knowledge_base/4,
-         disassociate_agent_knowledge_base/5,
-         disassociate_agent_knowledge_base/6,
-         get_agent/2,
-         get_agent/4,
-         get_agent/5,
-         get_agent_action_group/4,
-         get_agent_action_group/6,
-         get_agent_action_group/7,
-         get_agent_alias/3,
-         get_agent_alias/5,
-         get_agent_alias/6,
-         get_agent_knowledge_base/4,
-         get_agent_knowledge_base/6,
-         get_agent_knowledge_base/7,
-         get_agent_version/3,
-         get_agent_version/5,
-         get_agent_version/6,
-         get_data_source/3,
-         get_data_source/5,
-         get_data_source/6,
-         get_ingestion_job/4,
-         get_ingestion_job/6,
-         get_ingestion_job/7,
-         get_knowledge_base/2,
-         get_knowledge_base/4,
-         get_knowledge_base/5,
-         list_agent_action_groups/4,
-         list_agent_action_groups/5,
-         list_agent_aliases/3,
-         list_agent_aliases/4,
-         list_agent_knowledge_bases/4,
-         list_agent_knowledge_bases/5,
-         list_agent_versions/3,
-         list_agent_versions/4,
-         list_agents/2,
-         list_agents/3,
-         list_data_sources/3,
-         list_data_sources/4,
-         list_ingestion_jobs/4,
-         list_ingestion_jobs/5,
-         list_knowledge_bases/2,
-         list_knowledge_bases/3,
-         list_tags_for_resource/2,
-         list_tags_for_resource/4,
-         list_tags_for_resource/5,
-         prepare_agent/3,
-         prepare_agent/4,
-         start_ingestion_job/4,
-         start_ingestion_job/5,
-         tag_resource/3,
-         tag_resource/4,
-         untag_resource/3,
-         untag_resource/4,
-         update_agent/3,
-         update_agent/4,
-         update_agent_action_group/5,
-         update_agent_action_group/6,
-         update_agent_alias/4,
-         update_agent_alias/5,
-         update_agent_knowledge_base/5,
-         update_agent_knowledge_base/6,
-         update_data_source/4,
-         update_data_source/5,
-         update_knowledge_base/3,
-         update_knowledge_base/4]).
+-export([create_access_token/2,
+         create_access_token/3,
+         create_dev_environment/4,
+         create_dev_environment/5,
+         create_project/3,
+         create_project/4,
+         create_source_repository/5,
+         create_source_repository/6,
+         create_source_repository_branch/6,
+         create_source_repository_branch/7,
+         delete_access_token/3,
+         delete_access_token/4,
+         delete_dev_environment/5,
+         delete_dev_environment/6,
+         delete_project/4,
+         delete_project/5,
+         delete_source_repository/5,
+         delete_source_repository/6,
+         delete_space/3,
+         delete_space/4,
+         get_dev_environment/4,
+         get_dev_environment/6,
+         get_dev_environment/7,
+         get_project/3,
+         get_project/5,
+         get_project/6,
+         get_source_repository/4,
+         get_source_repository/6,
+         get_source_repository/7,
+         get_source_repository_clone_urls/4,
+         get_source_repository_clone_urls/6,
+         get_source_repository_clone_urls/7,
+         get_space/2,
+         get_space/4,
+         get_space/5,
+         get_subscription/2,
+         get_subscription/4,
+         get_subscription/5,
+         get_user_details/1,
+         get_user_details/3,
+         get_user_details/4,
+         get_workflow/4,
+         get_workflow/6,
+         get_workflow/7,
+         get_workflow_run/4,
+         get_workflow_run/6,
+         get_workflow_run/7,
+         list_access_tokens/2,
+         list_access_tokens/3,
+         list_dev_environment_sessions/5,
+         list_dev_environment_sessions/6,
+         list_dev_environments/3,
+         list_dev_environments/4,
+         list_event_logs/3,
+         list_event_logs/4,
+         list_projects/3,
+         list_projects/4,
+         list_source_repositories/4,
+         list_source_repositories/5,
+         list_source_repository_branches/5,
+         list_source_repository_branches/6,
+         list_spaces/2,
+         list_spaces/3,
+         list_workflow_runs/4,
+         list_workflow_runs/5,
+         list_workflows/4,
+         list_workflows/5,
+         start_dev_environment/5,
+         start_dev_environment/6,
+         start_dev_environment_session/5,
+         start_dev_environment_session/6,
+         start_workflow_run/4,
+         start_workflow_run/5,
+         stop_dev_environment/5,
+         stop_dev_environment/6,
+         stop_dev_environment_session/6,
+         stop_dev_environment_session/7,
+         update_dev_environment/5,
+         update_dev_environment/6,
+         update_project/4,
+         update_project/5,
+         update_space/3,
+         update_space/4,
+         verify_session/1,
+         verify_session/3,
+         verify_session/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -101,13 +225,23 @@
 %% API
 %%====================================================================
 
-%% @doc Associate a Knowledge Base to an existing Amazon Bedrock Agent
-associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input) ->
-    associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input, []).
-associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) ->
+%% @doc Creates a personal access token (PAT) for the current user.
+%%
+%% A personal access token (PAT) is similar to a password.
+%% It is associated with your user identity for use across all spaces and
+%% projects in Amazon CodeCatalyst. You use PATs to access CodeCatalyst
+%% from resources that include integrated development environments (IDEs) and
+%% Git-based source repositories.
+%% PATs represent you in Amazon CodeCatalyst and you can manage them in your
+%% user settings.For more information, see
+%% Managing personal access tokens in Amazon CodeCatalyst:
+%% https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-tokens-keys.html.
+create_access_token(Client, Input) ->
+    create_access_token(Client, Input, []).
+create_access_token(Client, Input0, Options0) ->
     Method = put,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/"],
-    SuccessStatusCode = 200,
+    Path = ["/v1/accessTokens"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -126,13 +260,21 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Bedrock Agent
-create_agent(Client, Input) ->
-    create_agent(Client, Input, []).
-create_agent(Client, Input0, Options0) ->
+%% @doc Creates a Dev Environment in Amazon CodeCatalyst, a cloud-based
+%% development environment that you can use to quickly work on the code
+%% stored
+%% in the source repositories of your project.
+%%
+%% When created in the Amazon CodeCatalyst console, by default a Dev
+%% Environment is configured to have a 2 core processor, 4GB of RAM, and 16GB
+%% of persistent storage. None of these
+%% defaults apply to a Dev Environment created programmatically.
+create_dev_environment(Client, ProjectName, SpaceName, Input) ->
+    create_dev_environment(Client, ProjectName, SpaceName, Input, []).
+create_dev_environment(Client, ProjectName, SpaceName, Input0, Options0) ->
     Method = put,
-    Path = ["/agents/"],
-    SuccessStatusCode = 202,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -151,13 +293,13 @@ create_agent(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Action Group for existing Amazon Bedrock Agent
-create_agent_action_group(Client, AgentId, AgentVersion, Input) ->
-    create_agent_action_group(Client, AgentId, AgentVersion, Input, []).
-create_agent_action_group(Client, AgentId, AgentVersion, Input0, Options0) ->
+%% @doc Creates a project in a specified space.
+create_project(Client, SpaceName, Input) ->
+    create_project(Client, SpaceName, Input, []).
+create_project(Client, SpaceName, Input0, Options0) ->
     Method = put,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/"],
-    SuccessStatusCode = 200,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -176,13 +318,17 @@ create_agent_action_group(Client, AgentId, AgentVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Alias for an existing Amazon Bedrock Agent
-create_agent_alias(Client, AgentId, Input) ->
-    create_agent_alias(Client, AgentId, Input, []).
-create_agent_alias(Client, AgentId, Input0, Options0) ->
+%% @doc Creates an empty Git-based source repository in a specified project.
+%%
+%% The repository is
+%% created with an initial empty commit with a default branch named
+%% `main'.
+create_source_repository(Client, Name, ProjectName, SpaceName, Input) ->
+    create_source_repository(Client, Name, ProjectName, SpaceName, Input, []).
+create_source_repository(Client, Name, ProjectName, SpaceName, Input0, Options0) ->
     Method = put,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/"],
-    SuccessStatusCode = 202,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/sourceRepositories/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -201,13 +347,18 @@ create_agent_alias(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new data source
-create_data_source(Client, KnowledgeBaseId, Input) ->
-    create_data_source(Client, KnowledgeBaseId, Input, []).
-create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
+%% @doc Creates a branch in a specified source repository in Amazon
+%% CodeCatalyst.
+%%
+%% This API only creates a branch in a source repository hosted in Amazon
+%% CodeCatalyst. You cannot use this API to create a branch in a linked
+%% repository.
+create_source_repository_branch(Client, Name, ProjectName, SourceRepositoryName, SpaceName, Input) ->
+    create_source_repository_branch(Client, Name, ProjectName, SourceRepositoryName, SpaceName, Input, []).
+create_source_repository_branch(Client, Name, ProjectName, SourceRepositoryName, SpaceName, Input0, Options0) ->
     Method = put,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/"],
-    SuccessStatusCode = 200,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/sourceRepositories/", aws_util:encode_uri(SourceRepositoryName), "/branches/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -226,38 +377,15 @@ create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new knowledge base
-create_knowledge_base(Client, Input) ->
-    create_knowledge_base(Client, Input, []).
-create_knowledge_base(Client, Input0, Options0) ->
-    Method = put,
-    Path = ["/knowledgebases/"],
-    SuccessStatusCode = 202,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Deletes an Agent for existing Amazon Bedrock Agent
-delete_agent(Client, AgentId, Input) ->
-    delete_agent(Client, AgentId, Input, []).
-delete_agent(Client, AgentId, Input0, Options0) ->
+%% @doc Deletes a specified personal access token (PAT).
+%%
+%% A personal access token can only be deleted by the user who created it.
+delete_access_token(Client, Id, Input) ->
+    delete_access_token(Client, Id, Input, []).
+delete_access_token(Client, Id, Input0, Options0) ->
     Method = delete,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
-    SuccessStatusCode = 202,
+    Path = ["/v1/accessTokens/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -271,19 +399,18 @@ delete_agent(Client, AgentId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    QueryMapping = [
-                     {<<"skipResourceInUseCheck">>, <<"skipResourceInUseCheck">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Action Group for existing Amazon Bedrock Agent.
-delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
-    delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
-delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, Options0) ->
+%% @doc Deletes a Dev Environment.
+delete_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
+    delete_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
+delete_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
     Method = delete,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/", aws_util:encode_uri(ActionGroupId), "/"],
-    SuccessStatusCode = 204,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -297,19 +424,18 @@ delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
     CustomHeaders = [],
     Input2 = Input1,
 
-    QueryMapping = [
-                     {<<"skipResourceInUseCheck">>, <<"skipResourceInUseCheck">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Alias for a Amazon Bedrock Agent
-delete_agent_alias(Client, AgentAliasId, AgentId, Input) ->
-    delete_agent_alias(Client, AgentAliasId, AgentId, Input, []).
-delete_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
+%% @doc Deletes a project in a space.
+delete_project(Client, Name, SpaceName, Input) ->
+    delete_project(Client, Name, SpaceName, Input, []).
+delete_project(Client, Name, SpaceName, Input0, Options0) ->
     Method = delete,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
-    SuccessStatusCode = 202,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -328,13 +454,16 @@ delete_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Agent version for existing Amazon Bedrock Agent
-delete_agent_version(Client, AgentId, AgentVersion, Input) ->
-    delete_agent_version(Client, AgentId, AgentVersion, Input, []).
-delete_agent_version(Client, AgentId, AgentVersion, Input0, Options0) ->
+%% @doc Deletes a source repository in Amazon CodeCatalyst.
+%%
+%% You cannot use this API to delete a linked repository. It can only be used
+%% to delete a Amazon CodeCatalyst source repository.
+delete_source_repository(Client, Name, ProjectName, SpaceName, Input) ->
+    delete_source_repository(Client, Name, ProjectName, SpaceName, Input, []).
+delete_source_repository(Client, Name, ProjectName, SpaceName, Input0, Options0) ->
     Method = delete,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/"],
-    SuccessStatusCode = 202,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/sourceRepositories/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -348,19 +477,22 @@ delete_agent_version(Client, AgentId, AgentVersion, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    QueryMapping = [
-                     {<<"skipResourceInUseCheck">>, <<"skipResourceInUseCheck">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an existing data source
-delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
-    delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
-delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+%% @doc Deletes a space.
+%%
+%% Deleting a space cannot be undone. Additionally, since space names must be
+%% unique across Amazon CodeCatalyst, you cannot reuse names of deleted
+%% spaces.
+delete_space(Client, Name, Input) ->
+    delete_space(Client, Name, Input, []).
+delete_space(Client, Name, Input0, Options0) ->
     Method = delete,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
-    SuccessStatusCode = 202,
+    Path = ["/v1/spaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -379,68 +511,21 @@ delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an existing knowledge base
-delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
-    delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
-delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
-    Method = delete,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), ""],
-    SuccessStatusCode = 202,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Disassociate an existing Knowledge Base from an Amazon Bedrock Agent
-disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
-    disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
-disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input0, Options0) ->
-    Method = delete,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/"],
-    SuccessStatusCode = 204,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Gets an Agent for existing Amazon Bedrock Agent
-get_agent(Client, AgentId)
+%% @doc Returns information about a Dev Environment for a source repository
+%% in a project.
+%%
+%% Dev Environments are specific to the user who creates them.
+get_dev_environment(Client, Id, ProjectName, SpaceName)
   when is_map(Client) ->
-    get_agent(Client, AgentId, #{}, #{}).
+    get_dev_environment(Client, Id, ProjectName, SpaceName, #{}, #{}).
 
-get_agent(Client, AgentId, QueryMap, HeadersMap)
+get_dev_environment(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_agent(Client, AgentId, QueryMap, HeadersMap, []).
+    get_dev_environment(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, []).
 
-get_agent(Client, AgentId, QueryMap, HeadersMap, Options0)
+get_dev_environment(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -454,18 +539,18 @@ get_agent(Client, AgentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an Action Group for existing Amazon Bedrock Agent Version
-get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion)
+%% @doc Returns information about a project.
+get_project(Client, Name, SpaceName)
   when is_map(Client) ->
-    get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, #{}, #{}).
+    get_project(Client, Name, SpaceName, #{}, #{}).
 
-get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, HeadersMap)
+get_project(Client, Name, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, HeadersMap, []).
+    get_project(Client, Name, SpaceName, QueryMap, HeadersMap, []).
 
-get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
+get_project(Client, Name, SpaceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/", aws_util:encode_uri(ActionGroupId), "/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -479,18 +564,18 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an Alias for a Amazon Bedrock Agent
-get_agent_alias(Client, AgentAliasId, AgentId)
+%% @doc Returns information about a source repository.
+get_source_repository(Client, Name, ProjectName, SpaceName)
   when is_map(Client) ->
-    get_agent_alias(Client, AgentAliasId, AgentId, #{}, #{}).
+    get_source_repository(Client, Name, ProjectName, SpaceName, #{}, #{}).
 
-get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap)
+get_source_repository(Client, Name, ProjectName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, []).
+    get_source_repository(Client, Name, ProjectName, SpaceName, QueryMap, HeadersMap, []).
 
-get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, Options0)
+get_source_repository(Client, Name, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/sourceRepositories/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -504,19 +589,20 @@ get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a knowledge base associated to an existing Amazon Bedrock Agent
-%% Version
-get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId)
+%% @doc Returns information about the URLs that can be used with a Git client
+%% to clone a source
+%% repository.
+get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName)
   when is_map(Client) ->
-    get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, #{}, #{}).
+    get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, #{}, #{}).
 
-get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMap, HeadersMap)
+get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMap, HeadersMap, []).
+    get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, QueryMap, HeadersMap, []).
 
-get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/sourceRepositories/", aws_util:encode_uri(SourceRepositoryName), "/cloneUrls"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -530,18 +616,18 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an Agent version for existing Amazon Bedrock Agent
-get_agent_version(Client, AgentId, AgentVersion)
+%% @doc Returns information about an space.
+get_space(Client, Name)
   when is_map(Client) ->
-    get_agent_version(Client, AgentId, AgentVersion, #{}, #{}).
+    get_space(Client, Name, #{}, #{}).
 
-get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap)
+get_space(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, []).
+    get_space(Client, Name, QueryMap, HeadersMap, []).
 
-get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
+get_space(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -555,18 +641,20 @@ get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get an existing data source
-get_data_source(Client, DataSourceId, KnowledgeBaseId)
+%% @doc Returns information about the Amazon Web Services account used for
+%% billing purposes
+%% and the billing plan for the space.
+get_subscription(Client, SpaceName)
   when is_map(Client) ->
-    get_data_source(Client, DataSourceId, KnowledgeBaseId, #{}, #{}).
+    get_subscription(Client, SpaceName, #{}, #{}).
 
-get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap)
+get_subscription(Client, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+    get_subscription(Client, SpaceName, QueryMap, HeadersMap, []).
 
-get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+get_subscription(Client, SpaceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/subscription"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -580,18 +668,48 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get an ingestion job
-get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId)
+%% @doc Returns information about a user.
+get_user_details(Client)
   when is_map(Client) ->
-    get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, #{}, #{}).
+    get_user_details(Client, #{}, #{}).
 
-get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMap, HeadersMap)
+get_user_details(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+    get_user_details(Client, QueryMap, HeadersMap, []).
 
-get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+get_user_details(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/", aws_util:encode_uri(IngestionJobId), ""],
+    Path = ["/userDetails"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"id">>, maps:get(<<"id">>, QueryMap, undefined)},
+        {<<"userName">>, maps:get(<<"userName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a workflow.
+get_workflow(Client, Id, ProjectName, SpaceName)
+  when is_map(Client) ->
+    get_workflow(Client, Id, ProjectName, SpaceName, #{}, #{}).
+
+get_workflow(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workflow(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, []).
+
+get_workflow(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/workflows/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -605,18 +723,18 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get an existing knowledge base
-get_knowledge_base(Client, KnowledgeBaseId)
+%% @doc Returns information about a specified run of a workflow.
+get_workflow_run(Client, Id, ProjectName, SpaceName)
   when is_map(Client) ->
-    get_knowledge_base(Client, KnowledgeBaseId, #{}, #{}).
+    get_workflow_run(Client, Id, ProjectName, SpaceName, #{}, #{}).
 
-get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
+get_workflow_run(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
+    get_workflow_run(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, []).
 
-get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+get_workflow_run(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), ""],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/workflowRuns/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -630,12 +748,16 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists an Action Group for existing Amazon Bedrock Agent Version
-list_agent_action_groups(Client, AgentId, AgentVersion, Input) ->
-    list_agent_action_groups(Client, AgentId, AgentVersion, Input, []).
-list_agent_action_groups(Client, AgentId, AgentVersion, Input0, Options0) ->
+%% @doc Lists all personal access tokens (PATs) associated with the user who
+%% calls the API.
+%%
+%% You can only list PATs associated with your Amazon Web Services Builder
+%% ID.
+list_access_tokens(Client, Input) ->
+    list_access_tokens(Client, Input, []).
+list_access_tokens(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/"],
+    Path = ["/v1/accessTokens"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -655,12 +777,13 @@ list_agent_action_groups(Client, AgentId, AgentVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all the Aliases for an Amazon Bedrock Agent
-list_agent_aliases(Client, AgentId, Input) ->
-    list_agent_aliases(Client, AgentId, Input, []).
-list_agent_aliases(Client, AgentId, Input0, Options0) ->
+%% @doc Retrieves a list of active sessions for a Dev Environment in a
+%% project.
+list_dev_environment_sessions(Client, DevEnvironmentId, ProjectName, SpaceName, Input) ->
+    list_dev_environment_sessions(Client, DevEnvironmentId, ProjectName, SpaceName, Input, []).
+list_dev_environment_sessions(Client, DevEnvironmentId, ProjectName, SpaceName, Input0, Options0) ->
     Method = post,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(DevEnvironmentId), "/sessions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -680,13 +803,12 @@ list_agent_aliases(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List of Knowledge Bases associated to an existing Amazon Bedrock
-%% Agent Version
-list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input) ->
-    list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input, []).
-list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input0, Options0) ->
+%% @doc Retrieves a list of Dev Environments in a project.
+list_dev_environments(Client, SpaceName, Input) ->
+    list_dev_environments(Client, SpaceName, Input, []).
+list_dev_environments(Client, SpaceName, Input0, Options0) ->
     Method = post,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/devEnvironments"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -706,12 +828,33 @@ list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Agent Versions
-list_agent_versions(Client, AgentId, Input) ->
-    list_agent_versions(Client, AgentId, Input, []).
-list_agent_versions(Client, AgentId, Input0, Options0) ->
+%% @doc Retrieves a list of events that occurred during a specific time in a
+%% space.
+%%
+%% You can
+%% use these events to audit user and system activity in a space. For more
+%% information, see
+%% Monitoring:
+%% https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-monitoring.html
+%% in the Amazon CodeCatalyst User Guide.
+%%
+%% ListEventLogs guarantees events for the last 30 days in a given space. You
+%% can also
+%% view and retrieve a list of management events over the last 90 days for
+%% Amazon CodeCatalyst in the
+%% CloudTrail console by viewing Event history, or by creating a trail to
+%% create
+%% and maintain a record of events that extends past 90 days. For more
+%% information, see Working with CloudTrail Event History:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html
+%% and Working with
+%% CloudTrail trails:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-getting-started.html.
+list_event_logs(Client, SpaceName, Input) ->
+    list_event_logs(Client, SpaceName, Input, []).
+list_event_logs(Client, SpaceName, Input0, Options0) ->
     Method = post,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/eventLogs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -731,12 +874,12 @@ list_agent_versions(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Agents
-list_agents(Client, Input) ->
-    list_agents(Client, Input, []).
-list_agents(Client, Input0, Options0) ->
+%% @doc Retrieves a list of projects.
+list_projects(Client, SpaceName, Input) ->
+    list_projects(Client, SpaceName, Input, []).
+list_projects(Client, SpaceName, Input0, Options0) ->
     Method = post,
-    Path = ["/agents/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -756,12 +899,12 @@ list_agents(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List data sources
-list_data_sources(Client, KnowledgeBaseId, Input) ->
-    list_data_sources(Client, KnowledgeBaseId, Input, []).
-list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
+%% @doc Retrieves a list of source repositories in a project.
+list_source_repositories(Client, ProjectName, SpaceName, Input) ->
+    list_source_repositories(Client, ProjectName, SpaceName, Input, []).
+list_source_repositories(Client, ProjectName, SpaceName, Input0, Options0) ->
     Method = post,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/sourceRepositories"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -781,12 +924,12 @@ list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List ingestion jobs
-list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input) ->
-    list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input, []).
-list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+%% @doc Retrieves a list of branches in a specified source repository.
+list_source_repository_branches(Client, ProjectName, SourceRepositoryName, SpaceName, Input) ->
+    list_source_repository_branches(Client, ProjectName, SourceRepositoryName, SpaceName, Input, []).
+list_source_repository_branches(Client, ProjectName, SourceRepositoryName, SpaceName, Input0, Options0) ->
     Method = post,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/sourceRepositories/", aws_util:encode_uri(SourceRepositoryName), "/branches"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -806,12 +949,12 @@ list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List Knowledge Bases
-list_knowledge_bases(Client, Input) ->
-    list_knowledge_bases(Client, Input, []).
-list_knowledge_bases(Client, Input0, Options0) ->
+%% @doc Retrieves a list of spaces.
+list_spaces(Client, Input) ->
+    list_spaces(Client, Input, []).
+list_spaces(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/knowledgebases/"],
+    Path = ["/v1/spaces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -831,112 +974,12 @@ list_knowledge_bases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List tags for a resource
-list_tags_for_resource(Client, ResourceArn)
-  when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
-
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
-
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
-               | Options2],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Prepares an existing Amazon Bedrock Agent to receive runtime requests
-prepare_agent(Client, AgentId, Input) ->
-    prepare_agent(Client, AgentId, Input, []).
-prepare_agent(Client, AgentId, Input0, Options0) ->
+%% @doc Retrieves a list of workflow runs of a specified workflow.
+list_workflow_runs(Client, ProjectName, SpaceName, Input) ->
+    list_workflow_runs(Client, ProjectName, SpaceName, Input, []).
+list_workflow_runs(Client, ProjectName, SpaceName, Input0, Options0) ->
     Method = post,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
-    SuccessStatusCode = 202,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Start a new ingestion job
-start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input) ->
-    start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input, []).
-start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
-    Method = put,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/ingestionjobs/"],
-    SuccessStatusCode = 202,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Tag a resource
-tag_resource(Client, ResourceArn, Input) ->
-    tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options0) ->
-    Method = post,
-    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = 200,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Untag a resource
-untag_resource(Client, ResourceArn, Input) ->
-    untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options0) ->
-    Method = delete,
-    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/workflowRuns"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -952,18 +995,20 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"tagKeys">>, <<"tagKeys">>}
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>},
+                     {<<"workflowId">>, <<"workflowId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Bedrock Agent
-update_agent(Client, AgentId, Input) ->
-    update_agent(Client, AgentId, Input, []).
-update_agent(Client, AgentId, Input0, Options0) ->
-    Method = put,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
-    SuccessStatusCode = 202,
+%% @doc Retrieves a list of workflows in a specified project.
+list_workflows(Client, ProjectName, SpaceName, Input) ->
+    list_workflows(Client, ProjectName, SpaceName, Input, []).
+list_workflows(Client, ProjectName, SpaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/workflows"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -977,17 +1022,19 @@ update_agent(Client, AgentId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Action Group for Amazon Bedrock Agent
-update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
-    update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
-update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, Options0) ->
+%% @doc Starts a specified Dev Environment and puts it into an active state.
+start_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
+    start_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
+start_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
     Method = put,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/actiongroups/", aws_util:encode_uri(ActionGroupId), "/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(Id), "/start"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1007,38 +1054,12 @@ update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Alias for an Amazon Bedrock Agent
-update_agent_alias(Client, AgentAliasId, AgentId, Input) ->
-    update_agent_alias(Client, AgentAliasId, AgentId, Input, []).
-update_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
+%% @doc Starts a session for a specified Dev Environment.
+start_dev_environment_session(Client, Id, ProjectName, SpaceName, Input) ->
+    start_dev_environment_session(Client, Id, ProjectName, SpaceName, Input, []).
+start_dev_environment_session(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
     Method = put,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentaliases/", aws_util:encode_uri(AgentAliasId), "/"],
-    SuccessStatusCode = 202,
-    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
-    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
-    Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary},
-               {append_sha256_content_hash, false}
-               | Options2],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Updates an existing Knowledge Base associated to an Amazon Bedrock
-%% Agent
-update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
-    update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
-update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input0, Options0) ->
-    Method = put,
-    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentversions/", aws_util:encode_uri(AgentVersion), "/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/"],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(Id), "/session"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1058,12 +1079,41 @@ update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update an existing data source
-update_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
-    update_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
-update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+%% @doc Begins a run of a specified workflow.
+start_workflow_run(Client, ProjectName, SpaceName, Input) ->
+    start_workflow_run(Client, ProjectName, SpaceName, Input, []).
+start_workflow_run(Client, ProjectName, SpaceName, Input0, Options0) ->
     Method = put,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/workflowRuns"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"workflowId">>, <<"workflowId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Pauses a specified Dev Environment and places it in a non-running
+%% state.
+%%
+%% Stopped Dev Environments do not consume compute minutes.
+stop_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
+    stop_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
+stop_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(Id), "/stop"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1083,13 +1133,13 @@ update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update an existing knowledge base
-update_knowledge_base(Client, KnowledgeBaseId, Input) ->
-    update_knowledge_base(Client, KnowledgeBaseId, Input, []).
-update_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
-    Method = put,
-    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), ""],
-    SuccessStatusCode = 202,
+%% @doc Stops a session for a specified Dev Environment.
+stop_dev_environment_session(Client, Id, ProjectName, SessionId, SpaceName, Input) ->
+    stop_dev_environment_session(Client, Id, ProjectName, SessionId, SpaceName, Input, []).
+stop_dev_environment_session(Client, Id, ProjectName, SessionId, SpaceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(Id), "/session/", aws_util:encode_uri(SessionId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1107,6 +1157,111 @@ update_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Changes one or more values for a Dev Environment.
+%%
+%% Updating certain values of the Dev Environment will cause a restart.
+update_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
+    update_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
+update_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(ProjectName), "/devEnvironments/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Changes one or more values for a project.
+update_project(Client, Name, SpaceName, Input) ->
+    update_project(Client, Name, SpaceName, Input, []).
+update_project(Client, Name, SpaceName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v1/spaces/", aws_util:encode_uri(SpaceName), "/projects/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Changes one or more values for a space.
+update_space(Client, Name, Input) ->
+    update_space(Client, Name, Input, []).
+update_space(Client, Name, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v1/spaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Verifies whether the calling user has a valid Amazon CodeCatalyst
+%% login and session.
+%%
+%% If successful, this returns the ID of the user in Amazon CodeCatalyst.
+verify_session(Client)
+  when is_map(Client) ->
+    verify_session(Client, #{}, #{}).
+
+verify_session(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    verify_session(Client, QueryMap, HeadersMap, []).
+
+verify_session(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/session"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
@@ -1130,8 +1285,9 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"bedrock">>},
-    Host = build_host(<<"bedrock-agent">>, Client1),
+    Client1 = Client#{service => <<"codecatalyst">>,
+                      region => <<"">>},
+    Host = build_host(<<"codecatalyst">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}
@@ -1215,8 +1371,8 @@ build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
 
 build_url(Host, Path0, Client) ->
     Proto = aws_client:proto(Client),

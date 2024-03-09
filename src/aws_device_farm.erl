@@ -4,23 +4,24 @@
 %% @doc Welcome to the AWS Device Farm API documentation, which contains APIs
 %% for:
 %%
-%% <ul> <li> Testing on desktop browsers
+%% Testing on desktop browsers
 %%
 %% Device Farm makes it possible for you to test your web applications on
-%% desktop browsers using Selenium.
+%% desktop browsers using
+%% Selenium.
 %%
 %% The APIs for desktop browser testing contain `TestGrid' in their
-%% names. For more information, see Testing Web Applications on Selenium with
-%% Device Farm: https://docs.aws.amazon.com/devicefarm/latest/testgrid/.
+%% names. For
+%% more information, see Testing Web
+%% Applications on Selenium with Device Farm:
+%% https://docs.aws.amazon.com/devicefarm/latest/testgrid/.
 %%
-%% </li> <li> Testing on real mobile devices
+%% Testing on real mobile devices
 %%
 %% Device Farm makes it possible for you to test apps on physical phones,
-%% tablets, and other devices in the cloud. For more information, see the
-%% Device Farm Developer Guide:
-%% https://docs.aws.amazon.com/devicefarm/latest/developerguide/.
-%%
-%% </li> </ul>
+%% tablets, and other
+%% devices in the cloud. For more information, see the Device Farm Developer
+%% Guide: https://docs.aws.amazon.com/devicefarm/latest/developerguide/.
 -module(aws_device_farm).
 
 -export([create_device_pool/2,
@@ -193,7 +194,8 @@ create_device_pool(Client, Input, Options)
     request(Client, <<"CreateDevicePool">>, Input, Options).
 
 %% @doc Creates a profile that can be applied to one or more private fleet
-%% device instances.
+%% device
+%% instances.
 create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
@@ -227,7 +229,8 @@ create_remote_access_session(Client, Input, Options)
 
 %% @doc Creates a Selenium testing project.
 %%
-%% Projects are used to track `TestGridSession' instances.
+%% Projects are used to track `TestGridSession'
+%% instances.
 create_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_project(Client, Input, []).
@@ -236,7 +239,8 @@ create_test_grid_project(Client, Input, Options)
     request(Client, <<"CreateTestGridProject">>, Input, Options).
 
 %% @doc Creates a signed, short-term URL that can be passed to a Selenium
-%% `RemoteWebDriver' constructor.
+%% `RemoteWebDriver'
+%% constructor.
 create_test_grid_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_url(Client, Input, []).
@@ -253,7 +257,8 @@ create_upload(Client, Input, Options)
     request(Client, <<"CreateUpload">>, Input, Options).
 
 %% @doc Creates a configuration record in Device Farm for your Amazon Virtual
-%% Private Cloud (VPC) endpoint.
+%% Private Cloud
+%% (VPC) endpoint.
 create_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpce_configuration(Client, Input, []).
@@ -263,7 +268,8 @@ create_vpce_configuration(Client, Input, Options)
 
 %% @doc Deletes a device pool given the pool ARN.
 %%
-%% Does not allow deletion of curated pools owned by the system.
+%% Does not allow deletion of curated pools
+%% owned by the system.
 delete_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_pool(Client, Input, []).
@@ -347,7 +353,8 @@ delete_vpce_configuration(Client, Input, Options)
     request(Client, <<"DeleteVPCEConfiguration">>, Input, Options).
 
 %% @doc Returns the number of unmetered iOS or unmetered Android devices that
-%% have been purchased by the account.
+%% have been purchased by the
+%% account.
 get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
@@ -415,9 +422,11 @@ get_network_profile(Client, Input, Options)
 %% @doc Gets the current status and future status of all offerings purchased
 %% by an AWS account.
 %%
-%% The response indicates how many offerings are currently available and the
-%% offerings that will be available in the next period. The API returns a
-%% `NotEligible' error if the user is not permitted to invoke the
+%% The response
+%% indicates how many offerings are currently available and the offerings
+%% that will be available in the next
+%% period. The API returns a `NotEligible' error if the user is not
+%% permitted to invoke the
 %% operation. If you must be able to invoke this operation, contact
 %% aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
@@ -481,13 +490,11 @@ get_test_grid_project(Client, Input, Options)
 %%
 %% You can use the following to look up sessions:
 %%
-%% <ul> <li> The session ARN (`GetTestGridSessionRequest$sessionArn').
+%% The session ARN (`GetTestGridSessionRequest$sessionArn').
 %%
-%% </li> <li> The project ARN and a session ID
+%% The project ARN and a session ID
 %% (`GetTestGridSessionRequest$projectArn' and
 %% `GetTestGridSessionRequest$sessionId').
-%%
-%% </li> </ul>
 get_test_grid_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test_grid_session(Client, Input, []).
@@ -504,7 +511,8 @@ get_upload(Client, Input, Options)
     request(Client, <<"GetUpload">>, Input, Options).
 
 %% @doc Returns information about the configuration settings for your Amazon
-%% Virtual Private Cloud (VPC) endpoint.
+%% Virtual Private
+%% Cloud (VPC) endpoint.
 get_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vpce_configuration(Client, Input, []).
@@ -514,8 +522,10 @@ get_vpce_configuration(Client, Input, Options)
 
 %% @doc Installs an application to the device in a remote access session.
 %%
-%% For Android applications, the file must be in .apk format. For iOS
-%% applications, the file must be in .ipa format.
+%% For Android
+%% applications, the file must be in .apk format. For iOS applications, the
+%% file must be in
+%% .ipa format.
 install_to_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     install_to_remote_access_session(Client, Input, []).
@@ -532,7 +542,8 @@ list_artifacts(Client, Input, Options)
     request(Client, <<"ListArtifacts">>, Input, Options).
 
 %% @doc Returns information about the private device instances associated
-%% with one or more AWS accounts.
+%% with one or more AWS
+%% accounts.
 list_device_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_instances(Client, Input, []).
@@ -583,10 +594,10 @@ list_network_profiles(Client, Input, Options)
 
 %% @doc Returns a list of offering promotions.
 %%
-%% Each offering promotion record contains the ID and description of the
-%% promotion. The API returns a `NotEligible' error if the caller is not
-%% permitted to invoke the operation. Contact
-%% aws-devicefarm-support@amazon.com:
+%% Each offering promotion record contains the ID and description
+%% of the promotion. The API returns a `NotEligible' error if the caller
+%% is not permitted to invoke
+%% the operation. Contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com if you must be able to invoke
 %% this operation.
 list_offering_promotions(Client, Input)
@@ -597,12 +608,15 @@ list_offering_promotions(Client, Input, Options)
     request(Client, <<"ListOfferingPromotions">>, Input, Options).
 
 %% @doc Returns a list of all historical purchases, renewals, and system
-%% renewal transactions for an AWS account.
+%% renewal transactions for an AWS
+%% account.
 %%
 %% The list is paginated and ordered by a descending timestamp (most recent
-%% transactions are first). The API returns a `NotEligible' error if the
-%% user is not permitted to invoke the operation. If you must be able to
-%% invoke this operation, contact aws-devicefarm-support@amazon.com:
+%% transactions are first).
+%% The API returns a `NotEligible' error if the user is not permitted to
+%% invoke the operation. If
+%% you must be able to invoke this operation, contact
+%% aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
 list_offering_transactions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -614,10 +628,12 @@ list_offering_transactions(Client, Input, Options)
 %% @doc Returns a list of products or offerings that the user can manage
 %% through the API.
 %%
-%% Each offering record indicates the recurring price per unit and the
-%% frequency for that offering. The API returns a `NotEligible' error if
-%% the user is not permitted to invoke the operation. If you must be able to
-%% invoke this operation, contact aws-devicefarm-support@amazon.com:
+%% Each offering record
+%% indicates the recurring price per unit and the frequency for that
+%% offering. The API returns a
+%% `NotEligible' error if the user is not permitted to invoke the
+%% operation. If you must be
+%% able to invoke this operation, contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
 list_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -718,10 +734,12 @@ list_tests(Client, Input, Options)
 %% crashes.
 %%
 %% Unique problems are defined as a single instance of an error across a run,
-%% job, or suite. For example, if a call in your application consistently
-%% raises an exception (`OutOfBoundsException in MyActivity.java:386'),
-%% `ListUniqueProblems' returns a single entry instead of many individual
-%% entries for that exception.
+%% job, or suite. For example,
+%% if a call in your application consistently raises an exception (
+%% ```
+%% OutOfBoundsException in MyActivity.java:386'''),
+%% `ListUniqueProblems' returns a single entry instead of many
+%% individual entries for that exception.
 list_unique_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_unique_problems(Client, Input, []).
@@ -738,7 +756,8 @@ list_uploads(Client, Input, Options)
     request(Client, <<"ListUploads">>, Input, Options).
 
 %% @doc Returns information about all Amazon Virtual Private Cloud (VPC)
-%% endpoint configurations in the AWS account.
+%% endpoint
+%% configurations in the AWS account.
 list_vpce_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vpce_configurations(Client, Input, []).
@@ -748,10 +767,12 @@ list_vpce_configurations(Client, Input, Options)
 
 %% @doc Immediately purchases offerings for an AWS account.
 %%
-%% Offerings renew with the latest total purchased quantity for an offering,
-%% unless the renewal was overridden. The API returns a `NotEligible'
+%% Offerings renew with the latest total purchased
+%% quantity for an offering, unless the renewal was overridden. The API
+%% returns a `NotEligible'
 %% error if the user is not permitted to invoke the operation. If you must be
-%% able to invoke this operation, contact aws-devicefarm-support@amazon.com:
+%% able to invoke this operation,
+%% contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
 purchase_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -761,11 +782,12 @@ purchase_offering(Client, Input, Options)
     request(Client, <<"PurchaseOffering">>, Input, Options).
 
 %% @doc Explicitly sets the quantity of devices to renew for an offering,
-%% starting from the `effectiveDate' of the next period.
+%% starting from the
+%% `effectiveDate' of the next period.
 %%
-%% The API returns a `NotEligible' error if the user is not permitted to
-%% invoke the operation. If you must be able to invoke this operation,
-%% contact aws-devicefarm-support@amazon.com:
+%% The API returns a `NotEligible' error if the
+%% user is not permitted to invoke the operation. If you must be able to
+%% invoke this operation, contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
 renew_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -784,11 +806,12 @@ schedule_run(Client, Input, Options)
 
 %% @doc Initiates a stop request for the current job.
 %%
-%% AWS Device Farm immediately stops the job on the device where tests have
-%% not started. You are not billed for this device. On the device where tests
-%% have started, setup suite and teardown suite tests run to completion on
-%% the device. You are billed for setup, teardown, and any tests that were in
-%% progress or already completed.
+%% AWS Device Farm immediately stops the job on the device
+%% where tests have not started. You are not billed for this device. On the
+%% device where tests have started,
+%% setup suite and teardown suite tests run to completion on the device. You
+%% are billed for setup, teardown,
+%% and any tests that were in progress or already completed.
 stop_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_job(Client, Input, []).
@@ -806,11 +829,12 @@ stop_remote_access_session(Client, Input, Options)
 
 %% @doc Initiates a stop request for the current test run.
 %%
-%% AWS Device Farm immediately stops the run on devices where tests have not
-%% started. You are not billed for these devices. On devices where tests have
-%% started executing, setup suite and teardown suite tests run to completion
-%% on those devices. You are billed for setup, teardown, and any tests that
-%% were in progress or already completed.
+%% AWS Device Farm immediately stops the run on devices
+%% where tests have not started. You are not billed for these devices. On
+%% devices where tests have started
+%% executing, setup suite and teardown suite tests run to completion on those
+%% devices. You are billed for
+%% setup, teardown, and any tests that were in progress or already completed.
 stop_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_run(Client, Input, []).
@@ -821,9 +845,10 @@ stop_run(Client, Input, Options)
 %% @doc Associates the specified tags to a resource with the specified
 %% `resourceArn'.
 %%
-%% If existing tags on a resource are not specified in the request
-%% parameters, they are not changed. When a resource is deleted, the tags
-%% associated with that resource are also deleted.
+%% If existing tags
+%% on a resource are not specified in the request parameters, they are not
+%% changed. When a resource is deleted,
+%% the tags associated with that resource are also deleted.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -848,7 +873,8 @@ update_device_instance(Client, Input, Options)
     request(Client, <<"UpdateDeviceInstance">>, Input, Options).
 
 %% @doc Modifies the name, description, and rules in a device pool given the
-%% attributes and the pool ARN.
+%% attributes and
+%% the pool ARN.
 %%
 %% Rule updates are all-or-nothing, meaning they can only be updated as a
 %% whole (or not at all).

@@ -18,41 +18,52 @@
 %%====================================================================
 
 %% @doc After you deploy a model into production using Amazon SageMaker
-%% hosting services, your client applications use this API to get inferences
-%% from the model hosted at the specified endpoint.
+%% hosting services,
+%% your client applications use this API to get inferences from the model
+%% hosted at the
+%% specified endpoint.
 %%
 %% For an overview of Amazon SageMaker, see How It Works:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
 %%
 %% Amazon SageMaker strips all POST headers except those supported by the
-%% API. Amazon SageMaker might add additional headers. You should not rely on
-%% the behavior of headers outside those enumerated in the request syntax.
+%% API. Amazon SageMaker might add
+%% additional headers. You should not rely on the behavior of headers outside
+%% those
+%% enumerated in the request syntax.
 %%
 %% Calls to `InvokeEndpoint' are authenticated by using Amazon Web
-%% Services Signature Version 4. For information, see Authenticating Requests
-%% (Amazon Web Services Signature Version 4):
+%% Services
+%% Signature Version 4. For information, see Authenticating
+%% Requests (Amazon Web Services Signature Version 4):
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
 %% in the Amazon S3 API Reference.
 %%
 %% A customer's model containers must respond to requests within 60
-%% seconds. The model itself can have a maximum processing time of 60 seconds
-%% before responding to invocations. If your model is going to take 50-60
-%% seconds of processing time, the SDK socket timeout should be set to be 70
-%% seconds.
+%% seconds. The model
+%% itself can have a maximum processing time of 60 seconds before responding
+%% to
+%% invocations. If your model is going to take 50-60 seconds of processing
+%% time, the SDK
+%% socket timeout should be set to be 70 seconds.
 %%
 %% Endpoints are scoped to an individual account, and are not public. The URL
-%% does not contain the account ID, but Amazon SageMaker determines the
-%% account ID from the authentication token that is supplied by the caller.
+%% does
+%% not contain the account ID, but Amazon SageMaker determines the account ID
+%% from
+%% the authentication token that is supplied by the caller.
 invoke_endpoint(Client, EndpointName, Input) ->
     invoke_endpoint(Client, EndpointName, Input, []).
 invoke_endpoint(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, true},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, true),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Accept">>, <<"Accept">>},
@@ -94,22 +105,28 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
     end.
 
 %% @doc After you deploy a model into production using Amazon SageMaker
-%% hosting services, your client applications use this API to get inferences
-%% from the model hosted at the specified endpoint in an asynchronous manner.
+%% hosting services,
+%% your client applications use this API to get inferences from the model
+%% hosted at the
+%% specified endpoint in an asynchronous manner.
 %%
 %% Inference requests sent to this API are enqueued for asynchronous
-%% processing. The processing of the inference request may or may not
-%% complete before you receive a response from this API. The response from
-%% this API will not contain the result of the inference request but contain
-%% information about where you can locate it.
+%% processing. The
+%% processing of the inference request may or may not complete before you
+%% receive a
+%% response from this API. The response from this API will not contain the
+%% result of the
+%% inference request but contain information about where you can locate it.
 %%
 %% Amazon SageMaker strips all POST headers except those supported by the
-%% API. Amazon SageMaker might add additional headers. You should not rely on
-%% the behavior of headers outside those enumerated in the request syntax.
+%% API. Amazon SageMaker might add
+%% additional headers. You should not rely on the behavior of headers outside
+%% those
+%% enumerated in the request syntax.
 %%
 %% Calls to `InvokeEndpointAsync' are authenticated by using Amazon Web
-%% Services Signature Version 4. For information, see Authenticating Requests
-%% (Amazon Web Services Signature Version 4):
+%% Services Signature Version 4. For information, see Authenticating
+%% Requests (Amazon Web Services Signature Version 4):
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
 %% in the Amazon S3 API Reference.
 invoke_endpoint_async(Client, EndpointName, Input) ->
@@ -118,10 +135,12 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/async-invocations"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amzn-SageMaker-Accept">>, <<"Accept">>},
@@ -160,51 +179,61 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
     end.
 
 %% @doc Invokes a model at the specified endpoint to return the inference
-%% response as a stream.
+%% response as a
+%% stream.
 %%
 %% The inference stream provides the response payload incrementally as a
-%% series of parts. Before you can get an inference stream, you must have
-%% access to a model that's deployed using Amazon SageMaker hosting
-%% services, and the container for that model must support inference
-%% streaming.
+%% series of
+%% parts. Before you can get an inference stream, you must have access to a
+%% model that's
+%% deployed using Amazon SageMaker hosting services, and the container for
+%% that model
+%% must support inference streaming.
 %%
 %% For more information that can help you use this API, see the following
-%% sections in the Amazon SageMaker Developer Guide:
+%% sections in the
+%% Amazon SageMaker Developer Guide:
 %%
-%% <ul> <li> For information about how to add streaming support to a model,
-%% see How Containers Serve Requests:
+%% For information about how to add streaming support to a model, see How
+%% Containers Serve Requests:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-code-how-containe-serves-requests.
 %%
-%% </li> <li> For information about how to process the streaming response,
-%% see Invoke real-time endpoints:
+%% For information about how to process the streaming response, see Invoke
+%% real-time endpoints:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-test-endpoints.html.
 %%
-%% </li> </ul> Before you can use this operation, your IAM permissions must
-%% allow the `sagemaker:InvokeEndpoint' action. For more information
-%% about Amazon SageMaker actions for IAM policies, see Actions, resources,
-%% and condition keys for Amazon SageMaker:
+%% Before you can use this operation, your IAM permissions must allow the
+%% `sagemaker:InvokeEndpoint' action. For more information about Amazon
+%% SageMaker actions for IAM policies, see Actions, resources, and condition
+%% keys for Amazon SageMaker:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html
-%% in the IAM Service Authorization Reference.
+%% in the IAM Service Authorization
+%% Reference.
 %%
 %% Amazon SageMaker strips all POST headers except those supported by the
-%% API. Amazon SageMaker might add additional headers. You should not rely on
-%% the behavior of headers outside those enumerated in the request syntax.
+%% API. Amazon SageMaker might add
+%% additional headers. You should not rely on the behavior of headers outside
+%% those
+%% enumerated in the request syntax.
 %%
 %% Calls to `InvokeEndpointWithResponseStream' are authenticated by using
 %% Amazon Web Services Signature Version 4. For information, see
 %% Authenticating Requests (Amazon Web Services Signature Version 4):
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
-%% in the Amazon S3 API Reference.
+%% in the
+%% Amazon S3 API Reference.
 invoke_endpoint_with_response_stream(Client, EndpointName, Input) ->
     invoke_endpoint_with_response_stream(Client, EndpointName, Input, []).
 invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations-response-stream"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"X-Amzn-SageMaker-Accept">>, <<"Accept">>},
@@ -246,6 +275,11 @@ invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

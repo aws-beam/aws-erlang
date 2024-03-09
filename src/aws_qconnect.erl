@@ -1,33 +1,43 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Powered by Amazon Bedrock: Amazon Web Services implements automated
-%% abuse detection:
+%% @doc
+%%
+%% Powered by Amazon Bedrock: Amazon Web Services implements automated abuse
+%% detection:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/abuse-detection.html.
 %%
 %% Because Amazon Q in Connect is built on Amazon Bedrock, users can take
-%% full advantage of the controls implemented in Amazon Bedrock to enforce
-%% safety, security, and the responsible use of artificial intelligence (AI).
+%% full
+%% advantage of the controls implemented in Amazon Bedrock to enforce safety,
+%% security, and the
+%% responsible use of artificial intelligence (AI).
 %%
 %% Amazon Q in Connect is a generative AI customer service assistant. It is
-%% an LLM-enhanced evolution of Amazon Connect Wisdom that delivers real-time
-%% recommendations to help contact center agents resolve customer issues
-%% quickly and accurately.
+%% an LLM-enhanced evolution
+%% of Amazon Connect Wisdom that delivers real-time recommendations to help
+%% contact center
+%% agents resolve customer issues quickly and accurately.
 %%
 %% Amazon Q automatically detects customer intent during calls and chats
-%% using conversational analytics and natural language understanding (NLU).
-%% It then provides agents with immediate, real-time generative responses and
-%% suggested actions, and links to relevant documents and articles. Agents
-%% can also query Amazon Q directly using natural language or keywords to
-%% answer customer requests.
+%% using
+%% conversational analytics and natural language understanding (NLU). It then
+%% provides agents
+%% with immediate, real-time generative responses and suggested actions, and
+%% links to relevant
+%% documents and articles. Agents can also query Amazon Q directly using
+%% natural language or
+%% keywords to answer customer requests.
 %%
 %% Use the Amazon Q in Connect APIs to create an assistant and a knowledge
-%% base, for example, or manage content by uploading custom files.
+%% base, for example, or
+%% manage content by uploading custom files.
 %%
 %% For more information, see Use Amazon Q in Connect for generative AI
 %% powered agent assistance in real-time:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-q-connect.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Amazon Connect
+%% Administrator Guide.
 -module(aws_qconnect).
 
 -export([create_assistant/2,
@@ -144,10 +154,12 @@ create_assistant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assistants"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -163,18 +175,22 @@ create_assistant(Client, Input0, Options0) ->
 %% @doc Creates an association between an Amazon Q in Connect assistant and
 %% another resource.
 %%
-%% Currently, the only supported association is with a knowledge base. An
-%% assistant can have only a single association.
+%% Currently, the
+%% only supported association is with a knowledge base. An assistant can have
+%% only a single
+%% association.
 create_assistant_association(Client, AssistantId, Input) ->
     create_assistant_association(Client, AssistantId, Input, []).
 create_assistant_association(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -191,17 +207,20 @@ create_assistant_association(Client, AssistantId, Input0, Options0) ->
 %%
 %% Before to calling this API, use StartContentUpload:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_StartContentUpload.html
-%% to upload an asset.
+%% to
+%% upload an asset.
 create_content(Client, KnowledgeBaseId, Input) ->
     create_content(Client, KnowledgeBaseId, Input, []).
 create_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -219,12 +238,14 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %% When using this API, you cannot reuse Amazon AppIntegrations:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html
 %% DataIntegrations with external knowledge bases such as Salesforce and
-%% ServiceNow. If you do, you'll get an `InvalidRequestException'
-%% error.
+%% ServiceNow. If you do,
+%% you'll get an `InvalidRequestException' error.
 %%
 %% For example, you're programmatically managing your external knowledge
-%% base, and you want to add or remove one of the fields that is being
-%% ingested from Salesforce. Do the following:
+%% base, and you want
+%% to add or remove one of the fields that is being ingested from Salesforce.
+%% Do the
+%% following:
 %%
 %% Call DeleteKnowledgeBase:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_DeleteKnowledgeBase.html.
@@ -234,7 +255,8 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% Call CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
-%% to recreate the DataIntegration or a create different one.
+%% to recreate the DataIntegration or a create different
+%% one.
 %%
 %% Call CreateKnowledgeBase.
 create_knowledge_base(Client, Input) ->
@@ -243,10 +265,12 @@ create_knowledge_base(Client, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -266,10 +290,12 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -284,8 +310,9 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Creates a session.
 %%
-%% A session is a contextual container used for generating recommendations.
-%% Amazon Connect creates a new Amazon Q session for each contact on which
+%% A session is a contextual container used for generating
+%% recommendations. Amazon Connect creates a new Amazon Q session for each
+%% contact on which
 %% Amazon Q is enabled.
 create_session(Client, AssistantId, Input) ->
     create_session(Client, AssistantId, Input, []).
@@ -293,10 +320,12 @@ create_session(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -316,10 +345,12 @@ delete_assistant(Client, AssistantId, Input0, Options0) ->
     Method = delete,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -339,10 +370,12 @@ delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input0
     Method = delete,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations/", aws_util:encode_uri(AssistantAssociationId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -362,10 +395,12 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -385,10 +420,12 @@ delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -404,25 +441,31 @@ delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Deletes the knowledge base.
 %%
 %% When you use this API to delete an external knowledge base such as
-%% Salesforce or ServiceNow, you must also delete the Amazon AppIntegrations:
+%% Salesforce or
+%% ServiceNow, you must also delete the Amazon AppIntegrations:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html
 %% DataIntegration. This is because you can't reuse the DataIntegration
-%% after it's been associated with an external knowledge base. However,
-%% you can delete and recreate it. See DeleteDataIntegration:
+%% after it's been
+%% associated with an external knowledge base. However, you can delete and
+%% recreate it. See
+%% DeleteDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html
 %% and CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
-%% in the Amazon AppIntegrations API Reference.
+%% in the Amazon AppIntegrations API
+%% Reference.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
 delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -442,10 +485,12 @@ delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -471,9 +516,11 @@ get_assistant(Client, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -494,9 +541,11 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations/", aws_util:encode_uri(AssistantAssociationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -518,9 +567,11 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -541,9 +592,11 @@ get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Op
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), "/summary"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -564,9 +617,11 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -587,9 +642,11 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -610,9 +667,11 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -622,11 +681,12 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 
 %% @doc Retrieves recommendations for the specified session.
 %%
-%% To avoid retrieving the same recommendations in subsequent calls, use
-%% NotifyRecommendationsReceived:
+%% To avoid retrieving the same
+%% recommendations in subsequent calls, use NotifyRecommendationsReceived:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_NotifyRecommendationsReceived.html.
-%% This API supports long-polling behavior with the `waitTimeSeconds'
-%% parameter. Short poll is the default behavior and only returns
+%% This API supports long-polling behavior with the
+%% `waitTimeSeconds' parameter. Short poll is the default behavior and
+%% only returns
 %% recommendations already available. To perform a manual query against an
 %% assistant, use QueryAssistant:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_QueryAssistant.html.
@@ -642,9 +702,11 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -670,9 +732,11 @@ get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -693,9 +757,11 @@ list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -721,9 +787,11 @@ list_assistants(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -749,9 +817,11 @@ list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -777,9 +847,11 @@ list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -805,9 +877,11 @@ list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -833,9 +907,11 @@ list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -861,9 +937,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -872,22 +950,25 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Removes the specified recommendations from the specified
-%% assistant's queue of newly available recommendations.
+%% assistant's queue of newly
+%% available recommendations.
 %%
 %% You can use this API in conjunction with GetRecommendations:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_GetRecommendations.html
-%% and a `waitTimeSeconds' input for long-polling behavior and avoiding
-%% duplicate recommendations.
+%% and a `waitTimeSeconds' input for long-polling
+%% behavior and avoiding duplicate recommendations.
 notify_recommendations_received(Client, AssistantId, SessionId, Input) ->
     notify_recommendations_received(Client, AssistantId, SessionId, Input, []).
 notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/recommendations/notify"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -910,10 +991,12 @@ put_feedback(Client, AssistantId, Input0, Options0) ->
     Method = put,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/feedback"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -928,7 +1011,8 @@ put_feedback(Client, AssistantId, Input0, Options0) ->
 
 %% @doc Performs a manual search against the specified assistant.
 %%
-%% To retrieve recommendations for an assistant, use GetRecommendations:
+%% To retrieve recommendations for
+%% an assistant, use GetRecommendations:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_GetRecommendations.html.
 query_assistant(Client, AssistantId, Input) ->
     query_assistant(Client, AssistantId, Input, []).
@@ -936,10 +1020,12 @@ query_assistant(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/query"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -959,10 +1045,12 @@ remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -977,17 +1065,20 @@ remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Searches for content in a specified knowledge base.
 %%
-%% Can be used to get a specific content resource by its name.
+%% Can be used to get a specific content
+%% resource by its name.
 search_content(Client, KnowledgeBaseId, Input) ->
     search_content(Client, KnowledgeBaseId, Input, []).
 search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1010,10 +1101,12 @@ search_quick_responses(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search/quickResponses"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1035,10 +1128,12 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/searchSessions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1055,23 +1150,27 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
 
 %% @doc Get a URL to upload content to a knowledge base.
 %%
-%% To upload content, first make a PUT request to the returned URL with your
-%% file, making sure to include the required headers. Then use CreateContent:
+%% To upload content, first make a PUT
+%% request to the returned URL with your file, making sure to include the
+%% required headers. Then
+%% use CreateContent:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_CreateContent.html
 %% to finalize the content creation process or UpdateContent:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_UpdateContent.html
-%% to modify an existing resource. You can only upload content to a knowledge
-%% base of type CUSTOM.
+%% to modify an existing resource. You can only upload content to a
+%% knowledge base of type CUSTOM.
 start_content_upload(Client, KnowledgeBaseId, Input) ->
     start_content_upload(Client, KnowledgeBaseId, Input, []).
 start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/upload"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1089,24 +1188,25 @@ start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% Before calling this API, use StartContentUpload:
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_StartContentUpload.html
-%% to upload an asset that contains the resource data.
+%% to
+%% upload an asset that contains the resource data.
 %%
-%% <ul> <li> For importing Amazon Q quick responses, you need to upload a csv
-%% file including the quick responses. For information about how to format
-%% the csv file for importing quick responses, see Import quick responses:
+%% For importing Amazon Q quick responses, you need to upload a csv file
+%% including the quick responses. For information about how to format the csv
+%% file for importing quick responses, see Import quick responses:
 %% https://docs.aws.amazon.com/console/connect/quick-responses/add-data.
-%%
-%% </li> </ul>
 start_import_job(Client, KnowledgeBaseId, Input) ->
     start_import_job(Client, KnowledgeBaseId, Input, []).
 start_import_job(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1126,10 +1226,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1149,10 +1251,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1173,10 +1277,12 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1191,10 +1297,12 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Updates the template URI of a knowledge base.
 %%
-%% This is only supported for knowledge bases of type EXTERNAL. Include a
-%% single variable in `${variable}' format; this interpolated by Amazon Q
-%% using ingested content. For example, if you ingest a Salesforce article,
-%% it has an `Id' value, and you can set the template URI to
+%% This is only supported for knowledge bases
+%% of type EXTERNAL. Include a single variable in `${variable}' format;
+%% this
+%% interpolated by Amazon Q using ingested content. For example, if you
+%% ingest a Salesforce
+%% article, it has an `Id' value, and you can set the template URI to
 %% `https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view'.
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).
@@ -1202,10 +1310,12 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1225,10 +1335,12 @@ update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1244,6 +1356,11 @@ update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

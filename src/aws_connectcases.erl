@@ -2,12 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With Amazon Connect Cases, your agents can track and manage customer
-%% issues that require multiple interactions, follow-up tasks, and teams in
-%% your contact center.
+%% issues that require
+%% multiple interactions, follow-up tasks, and teams in your contact center.
 %%
-%% A case represents a customer issue. It records the issue, the steps and
-%% interactions taken to resolve the issue, and the outcome. For more
-%% information, see Amazon Connect Cases:
+%% A case represents a
+%% customer issue. It records the issue, the steps and interactions taken to
+%% resolve the issue,
+%% and the outcome. For more information, see Amazon Connect Cases:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/cases.html in the
 %% Amazon Connect Administrator Guide.
 -module(aws_connectcases).
@@ -90,10 +91,12 @@ batch_get_field(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields-batch"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -107,17 +110,20 @@ batch_get_field(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and updates a set of field options for a single select field
-%% in a Cases domain.
+%% in a Cases
+%% domain.
 batch_put_field_options(Client, DomainId, FieldId, Input) ->
     batch_put_field_options(Client, DomainId, FieldId, Input, []).
 batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), "/options"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -130,32 +136,39 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc If you provide a value for `PerformedBy.UserArn' you must also
-%% have connect:DescribeUser:
+%% @doc
+%% If you provide a value for `PerformedBy.UserArn' you must also have
+%% connect:DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the User ARN resource that you provide
 %%
-%% &lt;p&gt;Creates a case in the specified Cases domain.
+%% Creates a case in the specified Cases domain.
 %%
-%% Case system and custom fields are taken as an array id/value pairs with a
-%% declared data types.&lt;/p&gt; &lt;p&gt;The following fields are required
-%% when creating a case:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;
-%% &lt;code&gt;customer_id&lt;/code&gt; - You must provide the full customer
-%% profile ARN in this format:
-%% &lt;code&gt;arn:aws:profile:your_AWS_Region:your_AWS_account
-%% ID:domains/your_profiles_domain_name/profiles/profile_ID&lt;/code&gt;
-%% &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;title&lt;/code&gt;
-%% &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+%% Case system and custom fields are taken
+%% as an array id/value pairs with a declared data types.
+%%
+%% The following fields are required when creating a case:
+%%
+%% `customer_id' - You must provide the full customer profile ARN in this
+%% format:
+%%
+%% ```
+%% arn:aws:profile:your_AWS_Region:your_AWS_account
+%% ID:domains/your_profiles_domain_name/profiles/profile_ID'''
+%%
+%% `title'
 create_case(Client, DomainId, Input) ->
     create_case(Client, DomainId, Input, []).
 create_case(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -169,28 +182,34 @@ create_case(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a domain, which is a container for all case data, such as
-%% cases, fields, templates and layouts.
+%% cases, fields, templates
+%% and layouts.
 %%
-%% Each Amazon Connect instance can be associated with only one Cases domain.
+%% Each Amazon Connect instance can be associated with only one Cases
+%% domain.
 %%
 %% This will not associate your connect instance to Cases domain. Instead,
-%% use the Amazon Connect CreateIntegrationAssociation:
+%% use the
+%% Amazon Connect
+%% CreateIntegrationAssociation:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateIntegrationAssociation.html
-%% API. You need specific IAM permissions to successfully associate the Cases
-%% domain. For more information, see Onboard to Cases:
+%% API. You need specific IAM
+%% permissions to successfully associate the Cases domain. For more
+%% information, see
+%% Onboard to Cases:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/required-permissions-iam-cases.html#onboard-cases-iam.
-%%
-%% &lt;/important&gt;
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/domains"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -205,18 +224,21 @@ create_domain(Client, Input0, Options0) ->
 
 %% @doc Creates a field in the Cases domain.
 %%
-%% This field is used to define the case object model (that is, defines what
-%% data can be captured on cases) in a Cases domain.
+%% This field is used to define the case object
+%% model (that is, defines what data can be captured on cases) in a Cases
+%% domain.
 create_field(Client, DomainId, Input) ->
     create_field(Client, DomainId, Input, []).
 create_field(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -231,25 +253,27 @@ create_field(Client, DomainId, Input0, Options0) ->
 
 %% @doc Creates a layout in the Cases domain.
 %%
-%% Layouts define the following configuration in the top section and More
-%% Info tab of the Cases user interface:
+%% Layouts define the following configuration in
+%% the top section and More Info tab of the Cases user interface:
 %%
-%% <ul> <li> Fields to display to the users
+%% Fields to display to the users
 %%
-%% </li> <li> Field ordering
+%% Field ordering
 %%
-%% </li> </ul> Title and Status fields cannot be part of layouts since they
-%% are not configurable.
+%% Title and Status fields cannot be part of layouts since they are not
+%% configurable.
 create_layout(Client, DomainId, Input) ->
     create_layout(Client, DomainId, Input, []).
 create_layout(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -263,30 +287,33 @@ create_layout(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a related item (comments, tasks, and contacts) and associates
-%% it with a case.
+%% it with a
+%% case.
 %%
 %% A Related Item is a resource that is associated with a case. It may or may
-%% not have an external identifier linking it to an external resource (for
-%% example, a `contactArn'). All Related Items have their own internal
-%% identifier, the `relatedItemArn'. Examples of related items include
-%% `comments' and `contacts'.
+%% not have
+%% an external identifier linking it to an external resource (for example, a
+%% `contactArn'). All Related Items have their own internal identifier,
+%% the
+%% `relatedItemArn'. Examples of related items include `comments'
+%% and `contacts'.
 %%
 %% If you provide a value for `performedBy.userArn' you must also have
 %% DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the ARN of the user that you provide.
-%%
-%% &lt;/note&gt;
 create_related_item(Client, CaseId, DomainId, Input) ->
     create_related_item(Client, CaseId, DomainId, Input, []).
 create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items/"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -301,23 +328,28 @@ create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
 
 %% @doc Creates a template in the Cases domain.
 %%
-%% This template is used to define the case object model (that is, to define
-%% what data can be captured on cases) in a Cases domain. A template must
-%% have a unique name within a domain, and it must reference existing field
-%% IDs and layout IDs. Additionally, multiple fields with same IDs are not
-%% allowed within the same Template. A template can be either Active or
-%% Inactive, as indicated by its status. Inactive templates cannot be used to
-%% create cases.
+%% This template is used to define the case object
+%% model (that is, to define what data can be captured on cases) in a Cases
+%% domain. A template
+%% must have a unique name within a domain, and it must reference existing
+%% field IDs and layout
+%% IDs. Additionally, multiple fields with same IDs are not allowed within
+%% the same Template. A
+%% template can be either Active or Inactive, as indicated by its status.
+%% Inactive templates
+%% cannot be used to create cases.
 create_template(Client, DomainId, Input) ->
     create_template(Client, DomainId, Input, []).
 create_template(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -332,22 +364,23 @@ create_template(Client, DomainId, Input0, Options0) ->
 
 %% @doc Deletes a Cases domain.
 %%
-%% &lt;note&gt; &lt;p&gt;After deleting your domain you must disassociate the
-%% deleted domain from your Amazon Connect instance with another API call
-%% before being able to use Cases again with this Amazon Connect instance.
-%% See &lt;a
-%% href=&quot;https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html&quot;&gt;DeleteIntegrationAssociation&lt;/a&gt;.&lt;/p&gt;
-%% &lt;/note&gt;
+%% After deleting your domain you must disassociate the deleted domain from
+%% your Amazon Connect instance with another API call before being able to
+%% use Cases again with this
+%% Amazon Connect instance. See DeleteIntegrationAssociation:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html.
 delete_domain(Client, DomainId, Input) ->
     delete_domain(Client, DomainId, Input, []).
 delete_domain(Client, DomainId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -367,10 +400,12 @@ get_case(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -390,10 +425,12 @@ get_case_audit_events(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/audit-history"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -413,10 +450,12 @@ get_case_event_configuration(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-event-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -436,10 +475,12 @@ get_domain(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -459,10 +500,12 @@ get_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -482,10 +525,12 @@ get_template(Client, DomainId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -505,10 +550,12 @@ list_cases_for_contact(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/list-cases-for-contact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -523,17 +570,20 @@ list_cases_for_contact(Client, DomainId, Input0, Options0) ->
 
 %% @doc Lists all cases domains in the Amazon Web Services account.
 %%
-%% Each list item is a condensed summary object of the domain.
+%% Each list item is a condensed
+%% summary object of the domain.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
 list_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/domains-list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -555,10 +605,12 @@ list_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), "/options-list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -581,10 +633,12 @@ list_fields(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields-list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -601,17 +655,20 @@ list_fields(Client, DomainId, Input0, Options0) ->
 
 %% @doc Lists all layouts in the given cases domain.
 %%
-%% Each list item is a condensed summary object of the layout.
+%% Each list item is a condensed summary object
+%% of the layout.
 list_layouts(Client, DomainId, Input) ->
     list_layouts(Client, DomainId, Input, []).
 list_layouts(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts-list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -639,9 +696,11 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -651,17 +710,20 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all of the templates in a Cases domain.
 %%
-%% Each list item is a condensed summary object of the template.
+%% Each list item is a condensed summary
+%% object of the template.
 list_templates(Client, DomainId, Input) ->
     list_templates(Client, DomainId, Input, []).
 list_templates(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates-list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -679,20 +741,23 @@ list_templates(Client, DomainId, Input0, Options0) ->
 
 %% @doc Adds case event publishing configuration.
 %%
-%% For a complete list of fields you can add to the event message, see Create
-%% case fields:
+%% For a complete list of fields you can add to the
+%% event message, see Create case fields:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html in
-%% the Amazon Connect Administrator Guide
+%% the
+%% Amazon Connect Administrator Guide
 put_case_event_configuration(Client, DomainId, Input) ->
     put_case_event_configuration(Client, DomainId, Input, []).
 put_case_event_configuration(Client, DomainId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-event-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -707,22 +772,27 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
 
 %% @doc Searches for cases within their associated Cases domain.
 %%
-%% Search results are returned as a paginated list of abridged case
-%% documents.
+%% Search results are returned
+%% as a paginated list of abridged case documents.
 %%
 %% For `customer_id' you must provide the full customer profile ARN in
-%% this format: ` arn:aws:profile:your AWS Region:your AWS account
-%% ID:domains/profiles domain name/profiles/profile ID'.
+%% this
+%% format:
+%% ```
+%% arn:aws:profile:your AWS Region:your AWS account ID:domains/profiles
+%% domain name/profiles/profile ID'''.
 search_cases(Client, DomainId, Input) ->
     search_cases(Client, DomainId, Input, []).
 search_cases(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases-search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -738,17 +808,20 @@ search_cases(Client, DomainId, Input0, Options0) ->
 %% @doc Searches for related items that are associated with a case.
 %%
 %% If no filters are provided, this returns all related items associated with
-%% a case.
+%% a
+%% case.
 search_related_items(Client, CaseId, DomainId, Input) ->
     search_related_items(Client, CaseId, DomainId, Input, []).
 search_related_items(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items-search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -768,10 +841,12 @@ tag_resource(Client, Arn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -791,10 +866,12 @@ untag_resource(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -808,27 +885,32 @@ untag_resource(Client, Arn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc If you provide a value for `PerformedBy.UserArn' you must also
-%% have connect:DescribeUser:
+%% @doc
+%% If you provide a value for `PerformedBy.UserArn' you must also have
+%% connect:DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the User ARN resource that you provide
 %%
-%% &lt;p&gt;Updates the values of fields on a case.
+%% Updates the values of fields on a case.
 %%
-%% Fields to be updated are received as an array of id/value pairs identical
-%% to the &lt;code&gt;CreateCase&lt;/code&gt; input .&lt;/p&gt; &lt;p&gt;If
-%% the action is successful, the service sends back an HTTP 200 response with
-%% an empty HTTP body.&lt;/p&gt;
+%% Fields to be updated are received as an array of
+%% id/value pairs identical to the `CreateCase' input .
+%%
+%% If the action is successful, the service sends back an HTTP 200 response
+%% with an empty
+%% HTTP body.
 update_case(Client, CaseId, DomainId, Input) ->
     update_case(Client, CaseId, DomainId, Input, []).
 update_case(Client, CaseId, DomainId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -848,10 +930,12 @@ update_field(Client, DomainId, FieldId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -867,7 +951,8 @@ update_field(Client, DomainId, FieldId, Input0, Options0) ->
 %% @doc Updates the attributes of an existing layout.
 %%
 %% If the action is successful, the service sends back an HTTP 200 response
-%% with an empty HTTP body.
+%% with an empty
+%% HTTP body.
 %%
 %% A `ValidationException' is returned when you add non-existent
 %% `fieldIds' to a layout.
@@ -880,10 +965,12 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -898,21 +985,24 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 
 %% @doc Updates the attributes of an existing template.
 %%
-%% The template attributes that can be modified include `name',
-%% `description', `layoutConfiguration', `requiredFields', and
-%% `status'. At least one of these attributes must not be null. If a null
-%% value is provided for a given attribute, that attribute is ignored and its
-%% current value is preserved.
+%% The template attributes that can be
+%% modified include `name', `description',
+%% `layoutConfiguration', `requiredFields', and `status'. At
+%% least one of these attributes must not be null. If a null value is
+%% provided for a given
+%% attribute, that attribute is ignored and its current value is preserved.
 update_template(Client, DomainId, TemplateId, Input) ->
     update_template(Client, DomainId, TemplateId, Input, []).
 update_template(Client, DomainId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -928,6 +1018,11 @@ update_template(Client, DomainId, TemplateId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

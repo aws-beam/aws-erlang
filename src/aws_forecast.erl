@@ -140,26 +140,28 @@
 %% @doc Creates an Amazon Forecast predictor.
 %%
 %% Amazon Forecast creates predictors with AutoPredictor, which involves
-%% applying the optimal combination of algorithms to each time series in your
-%% datasets. You can use `CreateAutoPredictor' to create new predictors
-%% or upgrade/retrain existing predictors.
+%% applying the
+%% optimal combination of algorithms to each time series in your datasets.
+%% You can use
+%% `CreateAutoPredictor' to create new predictors or upgrade/retrain
+%% existing predictors.
 %%
 %% Creating new predictors
 %%
 %% The following parameters are required when creating a new predictor:
 %%
-%% <ul> <li> `PredictorName' - A unique name for the predictor.
+%% `PredictorName' - A unique name for the predictor.
 %%
-%% </li> <li> `DatasetGroupArn' - The ARN of the dataset group used to
-%% train the predictor.
+%% `DatasetGroupArn' - The ARN of the dataset group used to train the
+%% predictor.
 %%
-%% </li> <li> `ForecastFrequency' - The granularity of your forecasts
-%% (hourly, daily, weekly, etc).
+%% `ForecastFrequency' - The granularity of your forecasts (hourly,
+%% daily, weekly, etc).
 %%
-%% </li> <li> `ForecastHorizon' - The number of time-steps that the model
+%% `ForecastHorizon' - The number of time-steps that the model
 %% predicts. The forecast horizon is also called the prediction length.
 %%
-%% </li> </ul> When creating a new predictor, do not specify a value for
+%% When creating a new predictor, do not specify a value for
 %% `ReferencePredictorArn'.
 %%
 %% Upgrading and retraining predictors
@@ -167,13 +169,13 @@
 %% The following parameters are required when retraining or upgrading a
 %% predictor:
 %%
-%% <ul> <li> `PredictorName' - A unique name for the predictor.
+%% `PredictorName' - A unique name for the predictor.
 %%
-%% </li> <li> `ReferencePredictorArn' - The ARN of the predictor to
-%% retrain or upgrade.
+%% `ReferencePredictorArn' - The ARN of the predictor to retrain or
+%% upgrade.
 %%
-%% </li> </ul> When upgrading or retraining a predictor, only specify values
-%% for the `ReferencePredictorArn' and `PredictorName'.
+%% When upgrading or retraining a predictor, only specify values for the
+%% `ReferencePredictorArn' and `PredictorName'.
 create_auto_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_predictor(Client, Input, []).
@@ -183,25 +185,36 @@ create_auto_predictor(Client, Input, Options)
 
 %% @doc Creates an Amazon Forecast dataset.
 %%
-%% The information about the dataset that you provide helps Forecast
-%% understand how to consume the data for model training. This includes the
+%% The information about the dataset that you provide helps
+%% Forecast understand how to consume the data for model training. This
+%% includes the
 %% following:
 %%
-%% <ul> <li> `DataFrequency' - How frequently your historical time-series
-%% data is collected.
+%% `DataFrequency'
+%% - How frequently your historical
+%% time-series data is collected.
 %%
-%% </li> <li> `Domain' and `DatasetType' - Each dataset has an
-%% associated dataset domain and a type within the domain. Amazon Forecast
-%% provides a list of predefined domains and types within each domain. For
-%% each unique dataset domain and type within the domain, Amazon Forecast
-%% requires your data to include a minimum set of predefined fields.
+%% `Domain'
+%% and
 %%
-%% </li> <li> `Schema' - A schema specifies the fields in the dataset,
+%% `DatasetType'
+%% - Each dataset has an associated dataset
+%% domain and a type within the domain. Amazon Forecast provides a list of
+%% predefined domains and
+%% types within each domain. For each unique dataset domain and type within
+%% the domain,
+%% Amazon Forecast requires your data to include a minimum set of predefined
+%% fields.
+%%
+%% `Schema'
+%% - A schema specifies the fields in the dataset,
 %% including the field name and data type.
 %%
-%% </li> </ul> After creating a dataset, you import your training data into
-%% it and add the dataset to a dataset group. You use the dataset group to
-%% create a predictor. For more information, see Importing datasets:
+%% After creating a dataset, you import your training data into it and add
+%% the dataset to a
+%% dataset group. You use the dataset group to create a predictor. For more
+%% information, see
+%% Importing datasets:
 %% https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html.
 %%
 %% To get a list of all your datasets, use the ListDatasets:
@@ -214,7 +227,8 @@ create_auto_predictor(Client, Input, Options)
 %% The `Status' of a dataset must be `ACTIVE' before you can import
 %% training data. Use the DescribeDataset:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
-%% operation to get the status.
+%% operation to get
+%% the status.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -225,14 +239,15 @@ create_dataset(Client, Input, Options)
 %% @doc Creates a dataset group, which holds a collection of related
 %% datasets.
 %%
-%% You can add datasets to the dataset group when you create the dataset
-%% group, or later by using the UpdateDatasetGroup:
+%% You can add
+%% datasets to the dataset group when you create the dataset group, or later
+%% by using the UpdateDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_UpdateDatasetGroup.html
 %% operation.
 %%
 %% After creating a dataset group and adding datasets, you use the dataset
-%% group when you create a predictor. For more information, see Dataset
-%% groups:
+%% group when you
+%% create a predictor. For more information, see Dataset groups:
 %% https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html.
 %%
 %% To get a list of all your datasets groups, use the ListDatasetGroups:
@@ -253,33 +268,41 @@ create_dataset_group(Client, Input, Options)
 
 %% @doc Imports your training data to an Amazon Forecast dataset.
 %%
-%% You provide the location of your training data in an Amazon Simple Storage
-%% Service (Amazon S3) bucket and the Amazon Resource Name (ARN) of the
-%% dataset that you want to import the data to.
+%% You provide the location of your
+%% training data in an Amazon Simple Storage Service (Amazon S3) bucket and
+%% the Amazon Resource Name (ARN) of the dataset
+%% that you want to import the data to.
 %%
 %% You must specify a DataSource:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DataSource.html object
-%% that includes an Identity and Access Management (IAM) role that Amazon
-%% Forecast can assume to access the data, as Amazon Forecast makes a copy of
-%% your data and processes it in an internal Amazon Web Services system. For
-%% more information, see Set up permissions:
+%% that includes an
+%% Identity and Access Management (IAM) role that Amazon Forecast can assume
+%% to access the data, as Amazon Forecast makes a copy
+%% of your data and processes it in an internal Amazon Web Services system.
+%% For more information, see Set up
+%% permissions:
 %% https://docs.aws.amazon.com/forecast/latest/dg/aws-forecast-iam-roles.html.
 %%
 %% The training data must be in CSV or Parquet format. The delimiter must be
 %% a comma (,).
 %%
 %% You can specify the path to a specific file, the S3 bucket, or to a folder
-%% in the S3 bucket. For the latter two cases, Amazon Forecast imports all
-%% files up to the limit of 10,000 files.
+%% in the S3
+%% bucket. For the latter two cases, Amazon Forecast imports all files up to
+%% the limit of 10,000
+%% files.
 %%
 %% Because dataset imports are not aggregated, your most recent dataset
-%% import is the one that is used when training a predictor or generating a
-%% forecast. Make sure that your most recent dataset import contains all of
-%% the data you want to model off of, and not just the new data collected
-%% since the previous import.
+%% import is the one
+%% that is used when training a predictor or generating a forecast. Make sure
+%% that your most
+%% recent dataset import contains all of the data you want to model off of,
+%% and not just the new
+%% data collected since the previous import.
 %%
 %% To get a list of all your dataset import jobs, filtered by specified
-%% criteria, use the ListDatasetImportJobs:
+%% criteria, use the
+%% ListDatasetImportJobs:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_ListDatasetImportJobs.html
 %% operation.
 create_dataset_import_job(Client, Input)
@@ -289,88 +312,97 @@ create_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetImportJob">>, Input, Options).
 
-%% @doc Explainability is only available for Forecasts and Predictors
-%% generated from an AutoPredictor (`CreateAutoPredictor')
+%% @doc
+%% Explainability is only available for Forecasts and Predictors generated
+%% from an
+%% AutoPredictor (`CreateAutoPredictor')
 %%
 %% Creates an Amazon Forecast Explainability.
 %%
 %% Explainability helps you better understand how the attributes in your
-%% datasets impact forecast. Amazon Forecast uses a metric called Impact
-%% scores to quantify the relative impact of each attribute and determine
-%% whether they increase or decrease forecast values.
+%% datasets impact
+%% forecast. Amazon Forecast uses a metric called Impact scores to quantify
+%% the relative
+%% impact of each attribute and determine whether they increase or decrease
+%% forecast
+%% values.
 %%
 %% To enable Forecast Explainability, your predictor must include at least
-%% one of the following: related time series, item metadata, or additional
-%% datasets like Holidays and the Weather Index.
+%% one of the
+%% following: related time series, item metadata, or additional datasets like
+%% Holidays and
+%% the Weather Index.
 %%
 %% CreateExplainability accepts either a Predictor ARN or Forecast ARN. To
-%% receive aggregated Impact scores for all time series and time points in
-%% your datasets, provide a Predictor ARN. To receive Impact scores for
-%% specific time series and time points, provide a Forecast ARN.
+%% receive
+%% aggregated Impact scores for all time series and time points in your
+%% datasets, provide a
+%% Predictor ARN. To receive Impact scores for specific time series and time
+%% points,
+%% provide a Forecast ARN.
 %%
 %% CreateExplainability with a Predictor ARN
 %%
 %% You can only have one Explainability resource per predictor. If you
-%% already enabled `ExplainPredictor' in `CreateAutoPredictor', that
+%% already
+%% enabled `ExplainPredictor' in `CreateAutoPredictor', that
 %% predictor already has an Explainability resource.
 %%
 %% The following parameters are required when providing a Predictor ARN:
 %%
-%% <ul> <li> `ExplainabilityName' - A unique name for the Explainability.
+%% `ExplainabilityName' - A unique name for the Explainability.
 %%
-%% </li> <li> `ResourceArn' - The Arn of the predictor.
+%% `ResourceArn' - The Arn of the predictor.
 %%
-%% </li> <li> `TimePointGranularity' - Must be set to “ALL”.
+%% `TimePointGranularity' - Must be set to “ALL”.
 %%
-%% </li> <li> `TimeSeriesGranularity' - Must be set to “ALL”.
+%% `TimeSeriesGranularity' - Must be set to “ALL”.
 %%
-%% </li> </ul> Do not specify a value for the following parameters:
+%% Do not specify a value for the following parameters:
 %%
-%% <ul> <li> `DataSource' - Only valid when TimeSeriesGranularity is
+%% `DataSource' - Only valid when TimeSeriesGranularity is
 %% “SPECIFIC”.
 %%
-%% </li> <li> `Schema' - Only valid when TimeSeriesGranularity is
+%% `Schema' - Only valid when TimeSeriesGranularity is
 %% “SPECIFIC”.
 %%
-%% </li> <li> `StartDateTime' - Only valid when TimePointGranularity is
+%% `StartDateTime' - Only valid when TimePointGranularity is
 %% “SPECIFIC”.
 %%
-%% </li> <li> `EndDateTime' - Only valid when TimePointGranularity is
+%% `EndDateTime' - Only valid when TimePointGranularity is
 %% “SPECIFIC”.
 %%
-%% </li> </ul> CreateExplainability with a Forecast ARN
+%% CreateExplainability with a Forecast ARN
 %%
 %% You can specify a maximum of 50 time series and 500 time points.
 %%
 %% The following parameters are required when providing a Predictor ARN:
 %%
-%% <ul> <li> `ExplainabilityName' - A unique name for the Explainability.
+%% `ExplainabilityName' - A unique name for the Explainability.
 %%
-%% </li> <li> `ResourceArn' - The Arn of the forecast.
+%% `ResourceArn' - The Arn of the forecast.
 %%
-%% </li> <li> `TimePointGranularity' - Either “ALL” or “SPECIFIC”.
+%% `TimePointGranularity' - Either “ALL” or “SPECIFIC”.
 %%
-%% </li> <li> `TimeSeriesGranularity' - Either “ALL” or “SPECIFIC”.
+%% `TimeSeriesGranularity' - Either “ALL” or “SPECIFIC”.
 %%
-%% </li> </ul> If you set TimeSeriesGranularity to “SPECIFIC”, you must also
-%% provide the following:
+%% If you set TimeSeriesGranularity to “SPECIFIC”, you must also provide the
+%% following:
 %%
-%% <ul> <li> `DataSource' - The S3 location of the CSV file specifying
-%% your time series.
+%% `DataSource' - The S3 location of the CSV file specifying your time
+%% series.
 %%
-%% </li> <li> `Schema' - The Schema defines the attributes and attribute
-%% types listed in the Data Source.
+%% `Schema' - The Schema defines the attributes and attribute types
+%% listed in the Data Source.
 %%
-%% </li> </ul> If you set TimePointGranularity to “SPECIFIC”, you must also
-%% provide the following:
+%% If you set TimePointGranularity to “SPECIFIC”, you must also provide the
+%% following:
 %%
-%% <ul> <li> `StartDateTime' - The first timestamp in the range of time
+%% `StartDateTime' - The first timestamp in the range of time
 %% points.
 %%
-%% </li> <li> `EndDateTime' - The last timestamp in the range of time
+%% `EndDateTime' - The last timestamp in the range of time
 %% points.
-%%
-%% </li> </ul>
 create_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_explainability(Client, Input, []).
@@ -386,11 +418,11 @@ create_explainability(Client, Input, Options)
 %%
 %% You must specify a `DataDestination' object that includes an Amazon S3
 %% bucket and an Identity and Access Management (IAM) role that Amazon
-%% Forecast can assume to access the Amazon S3 bucket. For more information,
-%% see `aws-forecast-iam-roles'.
+%% Forecast can assume to access the Amazon S3
+%% bucket. For more information, see `aws-forecast-iam-roles'.
 %%
-%% The `Status' of the export job must be `ACTIVE' before you can
-%% access the export in your Amazon S3 bucket. To get the status, use the
+%% The `Status' of the export job must be `ACTIVE' before you
+%% can access the export in your Amazon S3 bucket. To get the status, use the
 %% `DescribeExplainabilityExport' operation.
 create_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -400,36 +432,41 @@ create_explainability_export(Client, Input, Options)
     request(Client, <<"CreateExplainabilityExport">>, Input, Options).
 
 %% @doc Creates a forecast for each item in the `TARGET_TIME_SERIES'
-%% dataset that was used to train the predictor.
+%% dataset that was
+%% used to train the predictor.
 %%
-%% This is known as inference. To retrieve the forecast for a single item at
-%% low latency, use the operation. To export the complete forecast into your
-%% Amazon Simple Storage Service (Amazon S3) bucket, use the
-%% `CreateForecastExportJob' operation.
+%% This is known as inference. To retrieve the forecast for a single
+%% item at low latency, use the operation. To
+%% export the complete forecast into your Amazon Simple Storage Service
+%% (Amazon S3) bucket, use the `CreateForecastExportJob' operation.
 %%
 %% The range of the forecast is determined by the `ForecastHorizon'
-%% value, which you specify in the `CreatePredictor' request. When you
-%% query a forecast, you can request a specific date range within the
-%% forecast.
+%% value, which
+%% you specify in the `CreatePredictor' request. When you query a
+%% forecast, you
+%% can request a specific date range within the forecast.
 %%
 %% To get a list of all your forecasts, use the `ListForecasts'
 %% operation.
 %%
 %% The forecasts generated by Amazon Forecast are in the same time zone as
-%% the dataset that was used to create the predictor.
+%% the dataset that was
+%% used to create the predictor.
 %%
 %% For more information, see `howitworks-forecast'.
 %%
 %% The `Status' of the forecast must be `ACTIVE' before you can query
 %% or export the forecast. Use the `DescribeForecast' operation to get
-%% the status.
+%% the
+%% status.
 %%
 %% By default, a forecast includes predictions for every item (`item_id')
-%% in the dataset group that was used to train the predictor. However, you
-%% can use the `TimeSeriesSelector' object to generate a forecast on a
-%% subset of time series. Forecast creation is skipped for any time series
-%% that you specify that are not in the input dataset. The forecast export
-%% file will not contain these time series or their forecasted values.
+%% in the dataset group that was used to train the predictor.
+%% However, you can use the `TimeSeriesSelector' object to generate a
+%% forecast on a subset of time series. Forecast creation is skipped for any
+%% time series that you specify that are not in the input dataset. The
+%% forecast export file will not contain these time series or their
+%% forecasted values.
 create_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_forecast(Client, Input, []).
@@ -438,18 +475,20 @@ create_forecast(Client, Input, Options)
     request(Client, <<"CreateForecast">>, Input, Options).
 
 %% @doc Exports a forecast created by the `CreateForecast' operation to
-%% your Amazon Simple Storage Service (Amazon S3) bucket.
+%% your
+%% Amazon Simple Storage Service (Amazon S3) bucket.
 %%
 %% The forecast file name will match the following conventions:
 %%
-%% &lt;ForecastExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;
+%% __
 %%
-%% where the &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
+%% where the component is in Java SimpleDateFormat
 %% (yyyy-MM-ddTHH-mm-ssZ).
 %%
 %% You must specify a `DataDestination' object that includes an Identity
-%% and Access Management (IAM) role that Amazon Forecast can assume to access
-%% the Amazon S3 bucket. For more information, see
+%% and Access Management
+%% (IAM) role that Amazon Forecast can assume to access the Amazon S3 bucket.
+%% For more information, see
 %% `aws-forecast-iam-roles'.
 %%
 %% For more information, see `howitworks-forecast'.
@@ -470,8 +509,8 @@ create_forecast_export_job(Client, Input, Options)
 %% @doc Creates a predictor monitor resource for an existing auto predictor.
 %%
 %% Predictor monitoring allows you to see how your predictor's
-%% performance changes over time. For more information, see Predictor
-%% Monitoring:
+%% performance changes over time.
+%% For more information, see Predictor Monitoring:
 %% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html.
 create_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -480,64 +519,77 @@ create_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMonitor">>, Input, Options).
 
-%% @doc This operation creates a legacy predictor that does not include all
-%% the predictor functionalities provided by Amazon Forecast.
+%% @doc
+%% This operation creates a legacy predictor that does not include all the
+%% predictor
+%% functionalities provided by Amazon Forecast.
 %%
-%% To create a predictor that is compatible with all aspects of Forecast, use
-%% `CreateAutoPredictor'.
+%% To create a predictor that is compatible with all
+%% aspects of Forecast, use `CreateAutoPredictor'.
 %%
 %% Creates an Amazon Forecast predictor.
 %%
 %% In the request, provide a dataset group and either specify an algorithm or
-%% let Amazon Forecast choose an algorithm for you using AutoML. If you
-%% specify an algorithm, you also can override algorithm-specific
-%% hyperparameters.
+%% let Amazon Forecast
+%% choose an algorithm for you using AutoML. If you specify an algorithm, you
+%% also can override
+%% algorithm-specific hyperparameters.
 %%
 %% Amazon Forecast uses the algorithm to train a predictor using the latest
-%% version of the datasets in the specified dataset group. You can then
-%% generate a forecast using the `CreateForecast' operation.
+%% version of the datasets
+%% in the specified dataset group. You can then generate a forecast using the
+%% `CreateForecast' operation.
 %%
 %% To see the evaluation metrics, use the `GetAccuracyMetrics' operation.
 %%
 %% You can specify a featurization configuration to fill and aggregate the
-%% data fields in the `TARGET_TIME_SERIES' dataset to improve model
-%% training. For more information, see `FeaturizationConfig'.
+%% data fields in the
+%% `TARGET_TIME_SERIES' dataset to improve model training. For more
+%% information, see
+%% `FeaturizationConfig'.
 %%
 %% For RELATED_TIME_SERIES datasets, `CreatePredictor' verifies that the
 %% `DataFrequency' specified when the dataset was created matches the
 %% `ForecastFrequency'. TARGET_TIME_SERIES datasets don't have this
-%% restriction. Amazon Forecast also verifies the delimiter and timestamp
-%% format. For more information, see `howitworks-datasets-groups'.
+%% restriction.
+%% Amazon Forecast also verifies the delimiter and timestamp format. For more
+%% information, see `howitworks-datasets-groups'.
 %%
 %% By default, predictors are trained and evaluated at the 0.1 (P10), 0.5
-%% (P50), and 0.9 (P90) quantiles. You can choose custom forecast types to
-%% train and evaluate your predictor by setting the `ForecastTypes'.
+%% (P50), and 0.9
+%% (P90) quantiles. You can choose custom forecast types to train and
+%% evaluate your predictor by
+%% setting the `ForecastTypes'.
 %%
 %% AutoML
 %%
 %% If you want Amazon Forecast to evaluate each algorithm and choose the one
-%% that minimizes the `objective function', set `PerformAutoML' to
-%% `true'. The `objective function' is defined as the mean of the
-%% weighted losses over the forecast types. By default, these are the p10,
-%% p50, and p90 quantile losses. For more information, see
-%% `EvaluationResult'.
+%% that minimizes the
+%% `objective function', set `PerformAutoML' to `true'. The
+%% `objective function' is defined as the mean of the weighted losses
+%% over the
+%% forecast types. By default, these are the p10, p50, and p90 quantile
+%% losses. For more
+%% information, see `EvaluationResult'.
 %%
 %% When AutoML is enabled, the following properties are disallowed:
 %%
-%% <ul> <li> `AlgorithmArn'
+%% `AlgorithmArn'
 %%
-%% </li> <li> `HPOConfig'
+%% `HPOConfig'
 %%
-%% </li> <li> `PerformHPO'
+%% `PerformHPO'
 %%
-%% </li> <li> `TrainingParameters'
+%% `TrainingParameters'
 %%
-%% </li> </ul> To get a list of all of your predictors, use the
-%% `ListPredictors' operation.
+%% To get a list of all of your predictors, use the `ListPredictors'
+%% operation.
 %%
 %% Before you can use the predictor to create a forecast, the `Status' of
-%% the predictor must be `ACTIVE', signifying that training has
-%% completed. To get the status, use the `DescribePredictor' operation.
+%% the
+%% predictor must be `ACTIVE', signifying that training has completed. To
+%% get the
+%% status, use the `DescribePredictor' operation.
 create_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_predictor(Client, Input, []).
@@ -548,23 +600,24 @@ create_predictor(Client, Input, Options)
 %% @doc Exports backtest forecasts and accuracy metrics generated by the
 %% `CreateAutoPredictor' or `CreatePredictor' operations.
 %%
-%% Two folders containing CSV or Parquet files are exported to your specified
-%% S3 bucket.
+%% Two
+%% folders containing CSV or Parquet files are exported to your specified S3
+%% bucket.
 %%
 %% The export file names will match the following conventions:
 %%
-%% `&lt;ExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;.csv'
+%% `__.csv'
 %%
-%% The &lt;ExportTimestamp&gt; component is in Java SimpleDate format
+%% The component is in Java SimpleDate format
 %% (yyyy-MM-ddTHH-mm-ssZ).
 %%
 %% You must specify a `DataDestination' object that includes an Amazon S3
 %% bucket and an Identity and Access Management (IAM) role that Amazon
-%% Forecast can assume to access the Amazon S3 bucket. For more information,
-%% see `aws-forecast-iam-roles'.
+%% Forecast can assume to access the Amazon S3
+%% bucket. For more information, see `aws-forecast-iam-roles'.
 %%
-%% The `Status' of the export job must be `ACTIVE' before you can
-%% access the export in your Amazon S3 bucket. To get the status, use the
+%% The `Status' of the export job must be `ACTIVE' before you
+%% can access the export in your Amazon S3 bucket. To get the status, use the
 %% `DescribePredictorBacktestExportJob' operation.
 create_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -574,23 +627,29 @@ create_predictor_backtest_export_job(Client, Input, Options)
     request(Client, <<"CreatePredictorBacktestExportJob">>, Input, Options).
 
 %% @doc What-if analysis is a scenario modeling technique where you make a
-%% hypothetical change to a time series and compare the forecasts generated
-%% by these changes against the baseline, unchanged time series.
+%% hypothetical change to a time series and
+%% compare the forecasts generated by these changes against the baseline,
+%% unchanged time series.
 %%
-%% It is important to remember that the purpose of a what-if analysis is to
-%% understand how a forecast can change given different modifications to the
-%% baseline time series.
+%% It is important to
+%% remember that the purpose of a what-if analysis is to understand how a
+%% forecast can change given different
+%% modifications to the baseline time series.
 %%
 %% For example, imagine you are a clothing retailer who is considering an end
-%% of season sale to clear space for new styles. After creating a baseline
-%% forecast, you can use a what-if analysis to investigate how different
-%% sales tactics might affect your goals.
+%% of season sale
+%% to clear space for new styles. After creating a baseline forecast, you can
+%% use a what-if
+%% analysis to investigate how different sales tactics might affect your
+%% goals.
 %%
 %% You could create a scenario where everything is given a 25% markdown, and
-%% another where everything is given a fixed dollar markdown. You could
-%% create a scenario where the sale lasts for one week and another where the
-%% sale lasts for one month. With a what-if analysis, you can compare many
-%% different scenarios against each other.
+%% another where
+%% everything is given a fixed dollar markdown. You could create a scenario
+%% where the sale lasts for one week and
+%% another where the sale lasts for one month.
+%% With a what-if analysis, you can compare many different scenarios against
+%% each other.
 %%
 %% Note that a what-if analysis is meant to display what the forecasting
 %% model has learned and how it will behave in the scenarios that you are
@@ -611,8 +670,9 @@ create_what_if_analysis(Client, Input, Options)
 %% @doc A what-if forecast is a forecast that is created from a modified
 %% version of the baseline forecast.
 %%
-%% Each what-if forecast incorporates either a replacement dataset or a set
-%% of transformations to the original dataset.
+%% Each
+%% what-if forecast incorporates either a replacement dataset or a set of
+%% transformations to the original dataset.
 create_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_forecast(Client, Input, []).
@@ -621,24 +681,27 @@ create_what_if_forecast(Client, Input, Options)
     request(Client, <<"CreateWhatIfForecast">>, Input, Options).
 
 %% @doc Exports a forecast created by the `CreateWhatIfForecast'
-%% operation to your Amazon Simple Storage Service (Amazon S3) bucket.
+%% operation to your
+%% Amazon Simple Storage Service (Amazon S3) bucket.
 %%
 %% The forecast file name will match the following conventions:
 %%
-%% `≈&lt;ForecastExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;'
+%% `≈__'
 %%
-%% The &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
+%% The component is in Java SimpleDateFormat
 %% (yyyy-MM-ddTHH-mm-ssZ).
 %%
 %% You must specify a `DataDestination' object that includes an Identity
-%% and Access Management (IAM) role that Amazon Forecast can assume to access
-%% the Amazon S3 bucket. For more information, see
+%% and Access Management
+%% (IAM) role that Amazon Forecast can assume to access the Amazon S3 bucket.
+%% For more information, see
 %% `aws-forecast-iam-roles'.
 %%
 %% For more information, see `howitworks-forecast'.
 %%
 %% To get a list of all your what-if forecast export jobs, use the
-%% `ListWhatIfForecastExports' operation.
+%% `ListWhatIfForecastExports'
+%% operation.
 %%
 %% The `Status' of the forecast export job must be `ACTIVE' before
 %% you can access the forecast in your Amazon S3 bucket. To get the status,
@@ -655,16 +718,19 @@ create_what_if_forecast_export(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDataset.html
 %% operation.
 %%
-%% You can only delete datasets that have a status of `ACTIVE' or
-%% `CREATE_FAILED'. To get the status use the DescribeDataset:
+%% You can
+%% only delete datasets that have a status of `ACTIVE' or
+%% `CREATE_FAILED'.
+%% To get the status use the DescribeDataset:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
 %% operation.
 %%
 %% Forecast does not automatically update any dataset groups that contain the
-%% deleted dataset. In order to update the dataset group, use the
-%% UpdateDatasetGroup:
+%% deleted dataset.
+%% In order to update the dataset group, use the UpdateDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_UpdateDatasetGroup.html
-%% operation, omitting the deleted dataset's ARN.
+%% operation,
+%% omitting the deleted dataset's ARN.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -730,12 +796,14 @@ delete_explainability_export(Client, Input, Options)
 
 %% @doc Deletes a forecast created using the `CreateForecast' operation.
 %%
-%% You can delete only forecasts that have a status of `ACTIVE' or
-%% `CREATE_FAILED'. To get the status, use the `DescribeForecast'
-%% operation.
+%% You can
+%% delete only forecasts that have a status of `ACTIVE' or
+%% `CREATE_FAILED'.
+%% To get the status, use the `DescribeForecast' operation.
 %%
 %% You can't delete a forecast while it is being exported. After a
-%% forecast is deleted, you can no longer query the forecast.
+%% forecast is deleted, you
+%% can no longer query the forecast.
 delete_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_forecast(Client, Input, []).
@@ -744,7 +812,8 @@ delete_forecast(Client, Input, Options)
     request(Client, <<"DeleteForecast">>, Input, Options).
 
 %% @doc Deletes a forecast export job created using the
-%% `CreateForecastExportJob' operation.
+%% `CreateForecastExportJob'
+%% operation.
 %%
 %% You can delete only export jobs that have a status of `ACTIVE' or
 %% `CREATE_FAILED'. To get the status, use the
@@ -770,9 +839,9 @@ delete_monitor(Client, Input, Options)
 %% @doc Deletes a predictor created using the `DescribePredictor' or
 %% `CreatePredictor' operations.
 %%
-%% You can delete only predictor that have a status of `ACTIVE' or
-%% `CREATE_FAILED'. To get the status, use the `DescribePredictor'
-%% operation.
+%% You can delete only predictor that have a status of
+%% `ACTIVE' or `CREATE_FAILED'. To get the status, use the
+%% `DescribePredictor' operation.
 delete_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_predictor(Client, Input, []).
@@ -790,28 +859,31 @@ delete_predictor_backtest_export_job(Client, Input, Options)
 
 %% @doc Deletes an entire resource tree.
 %%
-%% This operation will delete the parent resource and its child resources.
+%% This operation will delete the parent resource and
+%% its child resources.
 %%
 %% Child resources are resources that were created from another resource. For
-%% example, when a forecast is generated from a predictor, the forecast is
-%% the child resource and the predictor is the parent resource.
+%% example,
+%% when a forecast is generated from a predictor, the forecast is the child
+%% resource and
+%% the predictor is the parent resource.
 %%
 %% Amazon Forecast resources possess the following parent-child resource
 %% hierarchies:
 %%
-%% <ul> <li> Dataset: dataset import jobs
+%% Dataset: dataset import jobs
 %%
-%% </li> <li> Dataset Group: predictors, predictor backtest export jobs,
+%% Dataset Group: predictors, predictor backtest
+%% export jobs, forecasts, forecast export jobs
+%%
+%% Predictor: predictor backtest export jobs,
 %% forecasts, forecast export jobs
 %%
-%% </li> <li> Predictor: predictor backtest export jobs, forecasts, forecast
-%% export jobs
+%% Forecast: forecast export jobs
 %%
-%% </li> <li> Forecast: forecast export jobs
-%%
-%% </li> </ul> `DeleteResourceTree' will only delete Amazon Forecast
-%% resources, and will not delete datasets or exported files stored in Amazon
-%% S3.
+%% `DeleteResourceTree' will only delete Amazon Forecast resources, and
+%% will not
+%% delete datasets or exported files stored in Amazon S3.
 delete_resource_tree(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_tree(Client, Input, []).
@@ -820,7 +892,8 @@ delete_resource_tree(Client, Input, Options)
     request(Client, <<"DeleteResourceTree">>, Input, Options).
 
 %% @doc Deletes a what-if analysis created using the
-%% `CreateWhatIfAnalysis' operation.
+%% `CreateWhatIfAnalysis'
+%% operation.
 %%
 %% You can delete only what-if analyses that have a status of `ACTIVE' or
 %% `CREATE_FAILED'. To get the status, use the
@@ -836,7 +909,8 @@ delete_what_if_analysis(Client, Input, Options)
     request(Client, <<"DeleteWhatIfAnalysis">>, Input, Options).
 
 %% @doc Deletes a what-if forecast created using the
-%% `CreateWhatIfForecast' operation.
+%% `CreateWhatIfForecast'
+%% operation.
 %%
 %% You can delete only what-if forecasts that have a status of `ACTIVE'
 %% or `CREATE_FAILED'. To get the status, use the
@@ -853,7 +927,8 @@ delete_what_if_forecast(Client, Input, Options)
     request(Client, <<"DeleteWhatIfForecast">>, Input, Options).
 
 %% @doc Deletes a what-if forecast export created using the
-%% `CreateWhatIfForecastExport' operation.
+%% `CreateWhatIfForecastExport'
+%% operation.
 %%
 %% You can delete only what-if forecast exports that have a status of
 %% `ACTIVE' or `CREATE_FAILED'. To get the status, use the
@@ -879,15 +954,14 @@ describe_auto_predictor(Client, Input, Options)
 %% operation.
 %%
 %% In addition to listing the parameters specified in the `CreateDataset'
-%% request, this operation includes the following dataset properties:
+%% request,
+%% this operation includes the following dataset properties:
 %%
-%% <ul> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Status'
-%%
-%% </li> </ul>
+%% `Status'
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -900,18 +974,16 @@ describe_dataset(Client, Input, Options)
 %% operation.
 %%
 %% In addition to listing the parameters provided in the
-%% `CreateDatasetGroup' request, this operation includes the following
-%% properties:
+%% `CreateDatasetGroup'
+%% request, this operation includes the following properties:
 %%
-%% <ul> <li> `DatasetArns' - The datasets belonging to the group.
+%% `DatasetArns' - The datasets belonging to the group.
 %%
-%% </li> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Status'
-%%
-%% </li> </ul>
+%% `Status'
 describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_group(Client, Input, []).
@@ -925,23 +997,20 @@ describe_dataset_group(Client, Input, Options)
 %% operation.
 %%
 %% In addition to listing the parameters provided in the
-%% `CreateDatasetImportJob' request, this operation includes the
-%% following properties:
+%% `CreateDatasetImportJob'
+%% request, this operation includes the following properties:
 %%
-%% <ul> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `DataSize'
+%% `DataSize'
 %%
-%% </li> <li> `FieldStatistics'
+%% `FieldStatistics'
 %%
-%% </li> <li> `Status'
+%% `Status'
 %%
-%% </li> <li> `Message' - If an error occurred, information about the
-%% error.
-%%
-%% </li> </ul>
+%% `Message' - If an error occurred, information about the error.
 describe_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_import_job(Client, Input, []).
@@ -971,21 +1040,19 @@ describe_explainability_export(Client, Input, Options)
 %% operation.
 %%
 %% In addition to listing the properties provided in the `CreateForecast'
-%% request, this operation lists the following properties:
+%% request,
+%% this operation lists the following properties:
 %%
-%% <ul> <li> `DatasetGroupArn' - The dataset group that provided the
-%% training data.
+%% `DatasetGroupArn' - The dataset group that provided the training
+%% data.
 %%
-%% </li> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Status'
+%% `Status'
 %%
-%% </li> <li> `Message' - If an error occurred, information about the
-%% error.
-%%
-%% </li> </ul>
+%% `Message' - If an error occurred, information about the error.
 describe_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast(Client, Input, []).
@@ -1000,16 +1067,13 @@ describe_forecast(Client, Input, Options)
 %% `CreateForecastExportJob' request, this operation lists the following
 %% properties:
 %%
-%% <ul> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Status'
+%% `Status'
 %%
-%% </li> <li> `Message' - If an error occurred, information about the
-%% error.
-%%
-%% </li> </ul>
+%% `Message' - If an error occurred, information about the error.
 describe_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast_export_job(Client, Input, []).
@@ -1022,21 +1086,19 @@ describe_forecast_export_job(Client, Input, Options)
 %% In addition to listing the properties provided in the `CreateMonitor'
 %% request, this operation lists the following properties:
 %%
-%% <ul> <li> `Baseline'
+%% `Baseline'
 %%
-%% </li> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastEvaluationTime'
+%% `LastEvaluationTime'
 %%
-%% </li> <li> `LastEvaluationState'
+%% `LastEvaluationState'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Message'
+%% `Message'
 %%
-%% </li> <li> `Status'
-%%
-%% </li> </ul>
+%% `Status'
 describe_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_monitor(Client, Input, []).
@@ -1044,33 +1106,35 @@ describe_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMonitor">>, Input, Options).
 
-%% @doc This operation is only valid for legacy predictors created with
+%% @doc
+%% This operation is only valid for legacy predictors created with
 %% CreatePredictor.
 %%
-%% If you are not using a legacy predictor, use `DescribeAutoPredictor'.
+%% If you
+%% are not using a legacy predictor, use `DescribeAutoPredictor'.
 %%
-%% Describes a predictor created using the `CreatePredictor' operation.
+%% Describes a predictor created using the `CreatePredictor'
+%% operation.
 %%
 %% In addition to listing the properties provided in the
-%% `CreatePredictor' request, this operation lists the following
-%% properties:
+%% `CreatePredictor'
+%% request, this operation lists the following properties:
 %%
-%% <ul> <li> `DatasetImportJobArns' - The dataset import jobs used to
-%% import training data.
+%% `DatasetImportJobArns' - The dataset import jobs used to import
+%% training
+%% data.
 %%
-%% </li> <li> `AutoMLAlgorithmArns' - If AutoML is performed, the
-%% algorithms that were evaluated.
+%% `AutoMLAlgorithmArns' - If AutoML is performed, the algorithms that
+%% were
+%% evaluated.
 %%
-%% </li> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Status'
+%% `Status'
 %%
-%% </li> <li> `Message' - If an error occurred, information about the
-%% error.
-%%
-%% </li> </ul>
+%% `Message' - If an error occurred, information about the error.
 describe_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor(Client, Input, []).
@@ -1085,15 +1149,13 @@ describe_predictor(Client, Input, Options)
 %% `CreatePredictorBacktestExportJob' request, this operation lists the
 %% following properties:
 %%
-%% <ul> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Status'
+%% `Status'
 %%
-%% </li> <li> `Message' (if an error occurred)
-%%
-%% </li> </ul>
+%% `Message' (if an error occurred)
 describe_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor_backtest_export_job(Client, Input, []).
@@ -1108,16 +1170,13 @@ describe_predictor_backtest_export_job(Client, Input, Options)
 %% `CreateWhatIfAnalysis' request, this operation lists the following
 %% properties:
 %%
-%% <ul> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Message' - If an error occurred, information about the
-%% error.
+%% `Message' - If an error occurred, information about the error.
 %%
-%% </li> <li> `Status'
-%%
-%% </li> </ul>
+%% `Status'
 describe_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_analysis(Client, Input, []).
@@ -1132,16 +1191,13 @@ describe_what_if_analysis(Client, Input, Options)
 %% `CreateWhatIfForecast' request, this operation lists the following
 %% properties:
 %%
-%% <ul> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Message' - If an error occurred, information about the
-%% error.
+%% `Message' - If an error occurred, information about the error.
 %%
-%% </li> <li> `Status'
-%%
-%% </li> </ul>
+%% `Status'
 describe_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast(Client, Input, []).
@@ -1156,16 +1212,13 @@ describe_what_if_forecast(Client, Input, Options)
 %% `CreateWhatIfForecastExport' request, this operation lists the
 %% following properties:
 %%
-%% <ul> <li> `CreationTime'
+%% `CreationTime'
 %%
-%% </li> <li> `LastModificationTime'
+%% `LastModificationTime'
 %%
-%% </li> <li> `Message' - If an error occurred, information about the
-%% error.
+%% `Message' - If an error occurred, information about the error.
 %%
-%% </li> <li> `Status'
-%%
-%% </li> </ul>
+%% `Status'
 describe_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast_export(Client, Input, []).
@@ -1176,27 +1229,32 @@ describe_what_if_forecast_export(Client, Input, Options)
 %% @doc Provides metrics on the accuracy of the models that were trained by
 %% the `CreatePredictor' operation.
 %%
-%% Use metrics to see how well the model performed and to decide whether to
-%% use the predictor to generate a forecast. For more information, see
-%% Predictor Metrics:
-%% https://docs.aws.amazon.com/forecast/latest/dg/metrics.html.
+%% Use metrics to see how well the model performed and
+%% to decide whether to use the predictor to generate a forecast. For more
+%% information, see
+%% Predictor
+%% Metrics: https://docs.aws.amazon.com/forecast/latest/dg/metrics.html.
 %%
 %% This operation generates metrics for each backtest window that was
-%% evaluated. The number of backtest windows (`NumberOfBacktestWindows')
-%% is specified using the `EvaluationParameters' object, which is
-%% optionally included in the `CreatePredictor' request. If
-%% `NumberOfBacktestWindows' isn't specified, the number defaults to
-%% one.
+%% evaluated. The number
+%% of backtest windows (`NumberOfBacktestWindows') is specified using the
+%% `EvaluationParameters' object, which is optionally included in the
+%% `CreatePredictor' request. If `NumberOfBacktestWindows' isn't
+%% specified, the number defaults to one.
 %%
 %% The parameters of the `filling' method determine which items
-%% contribute to the metrics. If you want all items to contribute, specify
-%% `zero'. If you want only those items that have complete data in the
-%% range being evaluated to contribute, specify `nan'. For more
-%% information, see `FeaturizationMethod'.
+%% contribute to the
+%% metrics. If you want all items to contribute, specify `zero'. If you
+%% want only
+%% those items that have complete data in the range being evaluated to
+%% contribute, specify
+%% `nan'. For more information, see `FeaturizationMethod'.
 %%
 %% Before you can get accuracy metrics, the `Status' of the predictor
-%% must be `ACTIVE', signifying that training has completed. To get the
-%% status, use the `DescribePredictor' operation.
+%% must be
+%% `ACTIVE', signifying that training has completed. To get the status,
+%% use the
+%% `DescribePredictor' operation.
 get_accuracy_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_accuracy_metrics(Client, Input, []).
@@ -1210,9 +1268,10 @@ get_accuracy_metrics(Client, Input, Options)
 %% operation.
 %%
 %% For each dataset group, this operation returns a summary of its
-%% properties, including its Amazon Resource Name (ARN). You can retrieve the
-%% complete set of properties by using the dataset group ARN with the
-%% DescribeDatasetGroup:
+%% properties, including its
+%% Amazon Resource Name (ARN). You can retrieve the complete set of
+%% properties by using the
+%% dataset group ARN with the DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation.
 list_dataset_groups(Client, Input)
@@ -1228,8 +1287,10 @@ list_dataset_groups(Client, Input, Options)
 %% operation.
 %%
 %% For each import job, this operation returns a summary of its properties,
-%% including its Amazon Resource Name (ARN). You can retrieve the complete
-%% set of properties by using the ARN with the DescribeDatasetImportJob:
+%% including
+%% its Amazon Resource Name (ARN). You can retrieve the complete set of
+%% properties by using the
+%% ARN with the DescribeDatasetImportJob:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetImportJob.html
 %% operation. You can filter the list by providing an array of Filter:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_Filter.html objects.
@@ -1244,9 +1305,11 @@ list_dataset_import_jobs(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDataset.html
 %% operation.
 %%
-%% For each dataset, a summary of its properties, including its Amazon
-%% Resource Name (ARN), is returned. To retrieve the complete set of
-%% properties, use the ARN with the DescribeDataset:
+%% For each
+%% dataset, a summary of its properties, including its Amazon Resource Name
+%% (ARN), is returned.
+%% To retrieve the complete set of properties, use the ARN with the
+%% DescribeDataset:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
 %% operation.
 list_datasets(Client, Input)
@@ -1259,11 +1322,14 @@ list_datasets(Client, Input, Options)
 %% @doc Returns a list of Explainability resources created using the
 %% `CreateExplainability' operation.
 %%
-%% This operation returns a summary for each Explainability. You can filter
-%% the list using an array of `Filter' objects.
+%% This operation returns a summary for
+%% each Explainability. You can filter the list using an array of
+%% `Filter'
+%% objects.
 %%
 %% To retrieve the complete set of properties for a particular Explainability
-%% resource, use the ARN with the `DescribeExplainability' operation.
+%% resource,
+%% use the ARN with the `DescribeExplainability' operation.
 list_explainabilities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainabilities(Client, Input, []).
@@ -1274,11 +1340,13 @@ list_explainabilities(Client, Input, Options)
 %% @doc Returns a list of Explainability exports created using the
 %% `CreateExplainabilityExport' operation.
 %%
-%% This operation returns a summary for each Explainability export. You can
-%% filter the list using an array of `Filter' objects.
+%% This operation returns a summary
+%% for each Explainability export. You can filter the list using an array of
+%% `Filter' objects.
 %%
 %% To retrieve the complete set of properties for a particular Explainability
-%% export, use the ARN with the `DescribeExplainability' operation.
+%% export, use
+%% the ARN with the `DescribeExplainability' operation.
 list_explainability_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainability_exports(Client, Input, []).
@@ -1289,11 +1357,12 @@ list_explainability_exports(Client, Input, Options)
 %% @doc Returns a list of forecast export jobs created using the
 %% `CreateForecastExportJob' operation.
 %%
-%% For each forecast export job, this operation returns a summary of its
-%% properties, including its Amazon Resource Name (ARN). To retrieve the
+%% For each forecast export job, this operation
+%% returns a summary of its properties, including its Amazon Resource Name
+%% (ARN). To retrieve the
 %% complete set of properties, use the ARN with the
-%% `DescribeForecastExportJob' operation. You can filter the list using
-%% an array of `Filter' objects.
+%% `DescribeForecastExportJob'
+%% operation. You can filter the list using an array of `Filter' objects.
 list_forecast_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecast_export_jobs(Client, Input, []).
@@ -1305,9 +1374,12 @@ list_forecast_export_jobs(Client, Input, Options)
 %% operation.
 %%
 %% For each forecast, this operation returns a summary of its properties,
-%% including its Amazon Resource Name (ARN). To retrieve the complete set of
-%% properties, specify the ARN with the `DescribeForecast' operation. You
-%% can filter the list using an array of `Filter' objects.
+%% including its Amazon
+%% Resource Name (ARN). To retrieve the complete set of properties, specify
+%% the ARN with the
+%% `DescribeForecast' operation. You can filter the list using an array
+%% of
+%% `Filter' objects.
 list_forecasts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecasts(Client, Input, []).
@@ -1316,11 +1388,12 @@ list_forecasts(Client, Input, Options)
     request(Client, <<"ListForecasts">>, Input, Options).
 
 %% @doc Returns a list of the monitoring evaluation results and predictor
-%% events collected by the monitor resource during different windows of time.
+%% events collected by
+%% the monitor resource during different windows of time.
 %%
-%% For information about monitoring see `predictor-monitoring'. For more
-%% information about retrieving monitoring results see Viewing Monitoring
-%% Results:
+%% For information about monitoring see `predictor-monitoring'. For
+%% more information about retrieving monitoring results see Viewing
+%% Monitoring Results:
 %% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring-results.html.
 list_monitor_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1333,9 +1406,9 @@ list_monitor_evaluations(Client, Input, Options)
 %% operation and `CreateAutoPredictor' operation.
 %%
 %% For each monitor resource, this operation returns of a summary of its
-%% properties, including its Amazon Resource Name (ARN). You can retrieve a
-%% complete set of properties of a monitor resource by specify the
-%% monitor's ARN in the `DescribeMonitor' operation.
+%% properties, including its Amazon Resource Name (ARN). You
+%% can retrieve a complete set of properties of a monitor resource by specify
+%% the monitor's ARN in the `DescribeMonitor' operation.
 list_monitors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitors(Client, Input, []).
@@ -1346,12 +1419,13 @@ list_monitors(Client, Input, Options)
 %% @doc Returns a list of predictor backtest export jobs created using the
 %% `CreatePredictorBacktestExportJob' operation.
 %%
-%% This operation returns a summary for each backtest export job. You can
-%% filter the list using an array of `Filter' objects.
+%% This operation returns a
+%% summary for each backtest export job. You can filter the list using an
+%% array of `Filter' objects.
 %%
 %% To retrieve the complete set of properties for a particular backtest
-%% export job, use the ARN with the `DescribePredictorBacktestExportJob'
-%% operation.
+%% export job, use
+%% the ARN with the `DescribePredictorBacktestExportJob' operation.
 list_predictor_backtest_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictor_backtest_export_jobs(Client, Input, []).
@@ -1360,10 +1434,11 @@ list_predictor_backtest_export_jobs(Client, Input, Options)
     request(Client, <<"ListPredictorBacktestExportJobs">>, Input, Options).
 
 %% @doc Returns a list of predictors created using the
-%% `CreateAutoPredictor' or `CreatePredictor' operations.
+%% `CreateAutoPredictor' or
+%% `CreatePredictor' operations.
 %%
-%% For each predictor, this operation returns a summary of its properties,
-%% including its Amazon Resource Name (ARN).
+%% For each predictor, this operation returns a
+%% summary of its properties, including its Amazon Resource Name (ARN).
 %%
 %% You can retrieve the complete set of properties by using the ARN with the
 %% `DescribeAutoPredictor' and `DescribePredictor' operations. You
@@ -1440,23 +1515,22 @@ resume_resource(Client, Input, Options)
 %% stopped.
 %%
 %% This operation can be applied to the following resources (and their
-%% corresponding child resources):
+%% corresponding child
+%% resources):
 %%
-%% <ul> <li> Dataset Import Job
+%% Dataset Import Job
 %%
-%% </li> <li> Predictor Job
+%% Predictor Job
 %%
-%% </li> <li> Forecast Job
+%% Forecast Job
 %%
-%% </li> <li> Forecast Export Job
+%% Forecast Export Job
 %%
-%% </li> <li> Predictor Backtest Export Job
+%% Predictor Backtest Export Job
 %%
-%% </li> <li> Explainability Job
+%% Explainability Job
 %%
-%% </li> <li> Explainability Export Job
-%%
-%% </li> </ul>
+%% Explainability Export Job
 stop_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_resource(Client, Input, []).
@@ -1468,8 +1542,10 @@ stop_resource(Client, Input, Options)
 %% `resourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
-%% parameters, they are not changed. When a resource is deleted, the tags
-%% associated with that resource are also deleted.
+%% parameters, they are not
+%% changed. When a resource is deleted, the tags associated with that
+%% resource are also
+%% deleted.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

@@ -145,8 +145,10 @@
 %% @doc Creates an association between a geofence collection and a tracker
 %% resource.
 %%
-%% This allows the tracker resource to communicate location data to the
-%% linked geofence collection.
+%% This
+%% allows the tracker resource to communicate location data to the linked
+%% geofence
+%% collection.
 %%
 %% You can associate up to five geofence collections to each tracker
 %% resource.
@@ -160,10 +162,12 @@ associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -184,10 +188,12 @@ batch_delete_device_position_history(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/delete-positions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -209,10 +215,12 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/delete-geofences"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -226,24 +234,31 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Evaluates device positions against the geofence geometries from a
-%% given geofence collection.
+%% given geofence
+%% collection.
 %%
 %% This operation always returns an empty response because geofences are
-%% asynchronously evaluated. The evaluation determines if the device has
-%% entered or exited a geofenced area, and then publishes one of the
-%% following events to Amazon EventBridge:
+%% asynchronously
+%% evaluated. The evaluation determines if the device has entered or exited a
+%% geofenced
+%% area, and then publishes one of the following events to Amazon
+%% EventBridge:
 %%
-%% <ul> <li> `ENTER' if Amazon Location determines that the tracked
-%% device has entered a geofenced area.
+%% `ENTER' if Amazon Location determines that the tracked device has
+%% entered
+%% a geofenced area.
 %%
-%% </li> <li> `EXIT' if Amazon Location determines that the tracked
-%% device has exited a geofenced area.
+%% `EXIT' if Amazon Location determines that the tracked device has
+%% exited a
+%% geofenced area.
 %%
-%% </li> </ul> The last geofence that a device was observed within is tracked
-%% for 30 days after the most recent device position update.
+%% The last geofence that a device was observed within is tracked for 30 days
+%% after
+%% the most recent device position update.
 %%
 %% Geofence evaluation uses the given device position. It does not account
-%% for the optional `Accuracy' of a `DevicePositionUpdate'.
+%% for the
+%% optional `Accuracy' of a `DevicePositionUpdate'.
 %%
 %% The `DeviceID' is used as a string to represent the device. You do not
 %% need to have a `Tracker' associated with the `DeviceID'.
@@ -253,10 +268,12 @@ batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/positions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -276,10 +293,12 @@ batch_get_device_position(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/get-positions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -293,18 +312,21 @@ batch_get_device_position(Client, TrackerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc A batch request for storing geofence geometries into a given geofence
-%% collection, or updates the geometry of an existing geofence if a geofence
-%% ID is included in the request.
+%% collection, or
+%% updates the geometry of an existing geofence if a geofence ID is included
+%% in the request.
 batch_put_geofence(Client, CollectionName, Input) ->
     batch_put_geofence(Client, CollectionName, Input, []).
 batch_put_geofence(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/put-geofences"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -318,31 +340,38 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Uploads position update data for one or more devices to a tracker
-%% resource (up to 10 devices per batch).
+%% resource (up to
+%% 10 devices per batch).
 %%
 %% Amazon Location uses the data when it reports the last known device
 %% position and position history. Amazon Location retains location data for
 %% 30 days.
 %%
-%% Position updates are handled based on the `PositionFiltering' property
-%% of the tracker. When `PositionFiltering' is set to `TimeBased',
-%% updates are evaluated against linked geofence collections, and location
-%% data is stored at a maximum of one position per 30 second interval. If
-%% your update frequency is more often than every 30 seconds, only one update
-%% per 30 seconds is stored for each unique device ID.
+%% Position updates are handled based on the `PositionFiltering'
+%% property of the tracker. When `PositionFiltering' is set to
+%% `TimeBased', updates are evaluated against linked geofence
+%% collections,
+%% and location data is stored at a maximum of one position per 30 second
+%% interval.
+%% If your update frequency is more often than every 30 seconds, only one
+%% update per
+%% 30 seconds is stored for each unique device ID.
 %%
-%% When `PositionFiltering' is set to `DistanceBased' filtering,
-%% location data is stored and evaluated against linked geofence collections
-%% only if the device has moved more than 30 m (98.4 ft).
+%% When `PositionFiltering' is set to `DistanceBased'
+%% filtering, location data is stored and evaluated against linked geofence
+%% collections only if the device has moved more than 30 m (98.4 ft).
 %%
-%% When `PositionFiltering' is set to `AccuracyBased' filtering,
-%% location data is stored and evaluated against linked geofence collections
-%% only if the device has moved more than the measured accuracy. For example,
-%% if two consecutive updates from a device have a horizontal accuracy of 5 m
-%% and 10 m, the second update is neither stored or evaluated if the device
-%% has moved less than 15 m. If `PositionFiltering' is set to
-%% `AccuracyBased' filtering, Amazon Location uses the default value `{
-%% &quot;Horizontal&quot;: 0}' when accuracy is not provided on a
+%% When `PositionFiltering' is set to `AccuracyBased'
+%% filtering, location data is stored and evaluated against linked geofence
+%% collections only if the device has moved more than the measured accuracy.
+%% For
+%% example, if two consecutive updates from a device have a horizontal
+%% accuracy of
+%% 5 m and 10 m, the second update is neither stored or evaluated if the
+%% device has
+%% moved less than 15 m. If `PositionFiltering' is set to
+%% `AccuracyBased' filtering, Amazon Location uses the default value
+%% `{ &quot;Horizontal&quot;: 0}' when accuracy is not provided on a
 %% `DevicePositionUpdate'.
 batch_update_device_position(Client, TrackerName, Input) ->
     batch_update_device_position(Client, TrackerName, Input, []).
@@ -350,10 +379,12 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/positions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -366,49 +397,56 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Calculates a route:
+%% @doc
+%% Calculates a route:
 %% https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html
-%% given the following required parameters: `DeparturePosition' and
-%% `DestinationPosition'.
+%% given the following required parameters:
+%% `DeparturePosition' and `DestinationPosition'.
 %%
-%% Requires that you first create a route calculator resource:
+%% Requires that
+%% you first create a
+%% route calculator resource:
 %% https://docs.aws.amazon.com/location-routes/latest/APIReference/API_CreateRouteCalculator.html.
 %%
 %% By default, a request that doesn't specify a departure time uses the
-%% best time of day to travel with the best traffic conditions when
-%% calculating the route.
+%% best time of day
+%% to travel with the best traffic conditions when calculating the route.
 %%
 %% Additional options include:
 %%
-%% <ul> <li> Specifying a departure time:
+%% Specifying a
+%% departure time:
 %% https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html
-%% using either `DepartureTime' or `DepartNow'. This calculates a
-%% route based on predictive traffic data at the given time.
+%% using either `DepartureTime' or
+%% `DepartNow'. This calculates a route based on predictive traffic
+%% data at the given time.
 %%
-%% You can't specify both `DepartureTime' and `DepartNow' in a
-%% single request. Specifying both parameters returns a validation error.
+%% You can't specify both `DepartureTime' and
+%% `DepartNow' in a single request. Specifying both parameters
+%% returns a validation error.
 %%
-%% </li> <li> Specifying a travel mode:
+%% Specifying a travel
+%% mode:
 %% https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html
-%% using TravelMode sets the transportation mode used to calculate the
-%% routes. This also lets you specify additional route preferences in
-%% `CarModeOptions' if traveling by `Car', or `TruckModeOptions'
-%% if traveling by `Truck'.
+%% using TravelMode sets the transportation mode used to calculate
+%% the routes. This also lets you specify additional route preferences in
+%% `CarModeOptions' if traveling by `Car', or
+%% `TruckModeOptions' if traveling by `Truck'.
 %%
-%% If you specify `walking' for the travel mode and your data provider is
-%% Esri, the start and destination must be within 40km.
-%%
-%% </li> </ul>
+%% If you specify `walking' for the travel mode and your data
+%% provider is Esri, the start and destination must be within 40km.
 calculate_route(Client, CalculatorName, Input) ->
     calculate_route(Client, CalculatorName, Input, []).
 calculate_route(Client, CalculatorName, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -422,58 +460,70 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Calculates a route matrix:
+%% @doc
+%% Calculates a route
+%% matrix:
 %% https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html
-%% given the following required parameters: `DeparturePositions' and
-%% `DestinationPositions'.
+%% given the following required parameters:
+%% `DeparturePositions' and `DestinationPositions'.
 %%
 %% `CalculateRouteMatrix' calculates routes and returns the travel time
-%% and travel distance from each departure position to each destination
-%% position in the request. For example, given departure positions A and B,
-%% and destination positions X and Y, `CalculateRouteMatrix' will return
-%% time and distance for routes from A to X, A to Y, B to X, and B to Y (in
-%% that order). The number of results returned (and routes calculated) will
-%% be the number of `DeparturePositions' times the number of
-%% `DestinationPositions'.
+%% and
+%% travel distance from each departure position to each destination position
+%% in the
+%% request. For example, given departure positions A and B, and destination
+%% positions X and
+%% Y, `CalculateRouteMatrix' will return time and distance for routes
+%% from A to
+%% X, A to Y, B to X, and B to Y (in that order). The number of results
+%% returned (and
+%% routes calculated) will be the number of `DeparturePositions' times
+%% the
+%% number of `DestinationPositions'.
 %%
 %% Your account is charged for each route calculated, not the number of
 %% requests.
 %%
-%% Requires that you first create a route calculator resource:
+%% Requires that you first create a
+%% route calculator resource:
 %% https://docs.aws.amazon.com/location-routes/latest/APIReference/API_CreateRouteCalculator.html.
 %%
 %% By default, a request that doesn't specify a departure time uses the
-%% best time of day to travel with the best traffic conditions when
-%% calculating routes.
+%% best time of day
+%% to travel with the best traffic conditions when calculating routes.
 %%
 %% Additional options include:
 %%
-%% <ul> <li> Specifying a departure time:
+%% Specifying a
+%% departure time:
 %% https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html
-%% using either `DepartureTime' or `DepartNow'. This calculates
-%% routes based on predictive traffic data at the given time.
+%% using either `DepartureTime' or
+%% `DepartNow'. This calculates routes based on predictive traffic
+%% data at the given time.
 %%
-%% You can't specify both `DepartureTime' and `DepartNow' in a
-%% single request. Specifying both parameters returns a validation error.
+%% You can't specify both `DepartureTime' and
+%% `DepartNow' in a single request. Specifying both parameters
+%% returns a validation error.
 %%
-%% </li> <li> Specifying a travel mode:
+%% Specifying a travel
+%% mode:
 %% https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html
-%% using TravelMode sets the transportation mode used to calculate the
-%% routes. This also lets you specify additional route preferences in
-%% `CarModeOptions' if traveling by `Car', or `TruckModeOptions'
-%% if traveling by `Truck'.
-%%
-%% </li> </ul>
+%% using TravelMode sets the transportation mode used to calculate
+%% the routes. This also lets you specify additional route preferences in
+%% `CarModeOptions' if traveling by `Car', or
+%% `TruckModeOptions' if traveling by `Truck'.
 calculate_route_matrix(Client, CalculatorName, Input) ->
     calculate_route_matrix(Client, CalculatorName, Input, []).
 calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route-matrix"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -494,10 +544,12 @@ create_geofence_collection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -511,8 +563,8 @@ create_geofence_collection(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an API key resource in your Amazon Web Services account,
-%% which lets you grant actions for Amazon Location resources to the API key
-%% bearer.
+%% which lets you grant
+%% actions for Amazon Location resources to the API key bearer.
 %%
 %% For more information, see Using API keys:
 %% https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html.
@@ -522,10 +574,12 @@ create_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metadata/v0/keys"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -539,12 +593,14 @@ create_key(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a map resource in your Amazon Web Services account, which
-%% provides map tiles of different styles sourced from global location data
-%% providers.
+%% provides map tiles of different
+%% styles sourced from global location data providers.
 %%
 %% If your application is tracking or routing assets you use in your
-%% business, such as delivery vehicles or employees, you must not use Esri as
-%% your geolocation provider. See section 82 of the Amazon Web Services
+%% business, such
+%% as delivery vehicles or employees, you must not use Esri as your
+%% geolocation
+%% provider. See section 82 of the Amazon Web Services
 %% service terms: http://aws.amazon.com/service-terms for more details.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
@@ -552,10 +608,12 @@ create_map(Client, Input0, Options0) ->
     Method = post,
     Path = ["/maps/v0/maps"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -570,15 +628,19 @@ create_map(Client, Input0, Options0) ->
 
 %% @doc Creates a place index resource in your Amazon Web Services account.
 %%
-%% Use a place index resource to geocode addresses and other text queries by
-%% using the `SearchPlaceIndexForText' operation, and reverse geocode
-%% coordinates by using the `SearchPlaceIndexForPosition' operation, and
-%% enable autosuggestions by using the `SearchPlaceIndexForSuggestions'
-%% operation.
+%% Use a place index resource to
+%% geocode addresses and other text queries by using the
+%% `SearchPlaceIndexForText' operation, and reverse geocode coordinates
+%% by
+%% using the `SearchPlaceIndexForPosition' operation, and enable
+%% autosuggestions
+%% by using the `SearchPlaceIndexForSuggestions' operation.
 %%
 %% If your application is tracking or routing assets you use in your
-%% business, such as delivery vehicles or employees, you must not use Esri as
-%% your geolocation provider. See section 82 of the Amazon Web Services
+%% business, such
+%% as delivery vehicles or employees, you must not use Esri as your
+%% geolocation
+%% provider. See section 82 of the Amazon Web Services
 %% service terms: http://aws.amazon.com/service-terms for more details.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
@@ -586,10 +648,12 @@ create_place_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -606,12 +670,16 @@ create_place_index(Client, Input0, Options0) ->
 %% account.
 %%
 %% You can send requests to a route calculator resource to estimate travel
-%% time, distance, and get directions. A route calculator sources traffic and
-%% road network data from your chosen data provider.
+%% time,
+%% distance, and get directions. A route calculator sources traffic and road
+%% network data
+%% from your chosen data provider.
 %%
 %% If your application is tracking or routing assets you use in your
-%% business, such as delivery vehicles or employees, you must not use Esri as
-%% your geolocation provider. See section 82 of the Amazon Web Services
+%% business, such
+%% as delivery vehicles or employees, you must not use Esri as your
+%% geolocation
+%% provider. See section 82 of the Amazon Web Services
 %% service terms: http://aws.amazon.com/service-terms for more details.
 create_route_calculator(Client, Input) ->
     create_route_calculator(Client, Input, []).
@@ -619,10 +687,12 @@ create_route_calculator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/calculators"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -636,17 +706,20 @@ create_route_calculator(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a tracker resource in your Amazon Web Services account, which
-%% lets you retrieve current and historical location of devices.
+%% lets you retrieve current and
+%% historical location of devices.
 create_tracker(Client, Input) ->
     create_tracker(Client, Input, []).
 create_tracker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -662,18 +735,20 @@ create_tracker(Client, Input0, Options0) ->
 %% @doc Deletes a geofence collection from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently. If the geofence
-%% collection is the target of a tracker resource, the devices will no longer
-%% be monitored.
+%% collection is the
+%% target of a tracker resource, the devices will no longer be monitored.
 delete_geofence_collection(Client, CollectionName, Input) ->
     delete_geofence_collection(Client, CollectionName, Input, []).
 delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Method = delete,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -688,17 +763,20 @@ delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
 
 %% @doc Deletes the specified API key.
 %%
-%% The API key must have been deactivated more than 90 days previously.
+%% The API key must have been deactivated more than
+%% 90 days previously.
 delete_key(Client, KeyName, Input) ->
     delete_key(Client, KeyName, Input, []).
 delete_key(Client, KeyName, Input0, Options0) ->
     Method = delete,
     Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -715,17 +793,20 @@ delete_key(Client, KeyName, Input0, Options0) ->
 %% @doc Deletes a map resource from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently. If the map is being used
-%% in an application, the map may not render.
+%% in an application,
+%% the map may not render.
 delete_map(Client, MapName, Input) ->
     delete_map(Client, MapName, Input, []).
 delete_map(Client, MapName, Input0, Options0) ->
     Method = delete,
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -747,10 +828,12 @@ delete_place_index(Client, IndexName, Input0, Options0) ->
     Method = delete,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -773,10 +856,12 @@ delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
     Method = delete,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -792,18 +877,22 @@ delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
 %% @doc Deletes a tracker resource from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently. If the tracker resource
-%% is in use, you may encounter an error. Make sure that the target resource
-%% isn't a dependency for your applications.
+%% is in use, you may
+%% encounter an error. Make sure that the target resource isn't a
+%% dependency for your
+%% applications.
 delete_tracker(Client, TrackerName, Input) ->
     delete_tracker(Client, TrackerName, Input, []).
 delete_tracker(Client, TrackerName, Input0, Options0) ->
     Method = delete,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -829,9 +918,11 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -852,9 +943,11 @@ describe_key(Client, KeyName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -875,9 +968,11 @@ describe_map(Client, MapName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -898,9 +993,11 @@ describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -921,9 +1018,11 @@ describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -944,9 +1043,11 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -965,10 +1066,12 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0
     Method = delete,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers/", aws_util:encode_uri(ConsumerArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -997,9 +1100,11 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/positions/latest"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1008,7 +1113,8 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the device position history from a tracker resource within
-%% a specified range of time.
+%% a specified range
+%% of time.
 %%
 %% Device positions are deleted after 30 days.
 get_device_position_history(Client, DeviceId, TrackerName, Input) ->
@@ -1017,10 +1123,12 @@ get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/list-positions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1046,9 +1154,11 @@ get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1069,9 +1179,11 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/glyphs/", aws_util:encode_uri(FontStack), "/", aws_util:encode_uri(FontUnicodeRange), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1102,8 +1214,10 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
 
 %% @doc Retrieves the sprite sheet corresponding to a map resource.
 %%
-%% The sprite sheet is a PNG image paired with a JSON document describing the
-%% offsets of individual icons that will be displayed on a rendered map.
+%% The sprite sheet is a PNG
+%% image paired with a JSON document describing the offsets of individual
+%% icons that will
+%% be displayed on a rendered map.
 get_map_sprites(Client, FileName, MapName)
   when is_map(Client) ->
     get_map_sprites(Client, FileName, MapName, #{}, #{}).
@@ -1116,9 +1230,11 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/sprites/", aws_util:encode_uri(FileName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1150,9 +1266,10 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the map style descriptor from a map resource.
 %%
 %% The style descriptor contains speciﬁcations on how features render on a
-%% map. For example, what data to display, what order to display the data in,
-%% and the style for the data. Style descriptors follow the Mapbox Style
-%% Specification.
+%% map. For
+%% example, what data to display, what order to display the data in, and the
+%% style for the
+%% data. Style descriptors follow the Mapbox Style Specification.
 get_map_style_descriptor(Client, MapName)
   when is_map(Client) ->
     get_map_style_descriptor(Client, MapName, #{}, #{}).
@@ -1165,9 +1282,11 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/style-descriptor"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1198,13 +1317,16 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a vector data tile from the map resource.
 %%
-%% Map tiles are used by clients to render a map. they're addressed using
-%% a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
+%% Map tiles are used by clients to
+%% render a map. they're addressed using a grid arrangement with an X
+%% coordinate, Y
+%% coordinate, and Z (zoom) level.
 %%
 %% The origin (0, 0) is the top left of the map. Increasing the zoom level by
-%% 1 doubles both the X and Y dimensions, so a tile containing data for the
-%% entire world at (0/0/0) will be split into 4 tiles at zoom 1 (1/0/0,
-%% 1/0/1, 1/1/0, 1/1/1).
+%% 1 doubles
+%% both the X and Y dimensions, so a tile containing data for the entire
+%% world at (0/0/0)
+%% will be split into 4 tiles at zoom 1 (1/0/0, 1/0/1, 1/1/0, 1/1/1).
 get_map_tile(Client, MapName, X, Y, Z)
   when is_map(Client) ->
     get_map_tile(Client, MapName, X, Y, Z, #{}, #{}).
@@ -1217,9 +1339,11 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), "/tiles/", aws_util:encode_uri(Z), "/", aws_util:encode_uri(X), "/", aws_util:encode_uri(Y), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1250,10 +1374,12 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
 
 %% @doc Finds a place by its unique ID.
 %%
-%% A `PlaceId' is returned by other search operations.
+%% A `PlaceId' is returned by other search
+%% operations.
 %%
 %% A PlaceId is valid only if all of the following are the same in the
-%% original search request and the call to `GetPlace'.
+%% original
+%% search request and the call to `GetPlace'.
 %%
 %% Customer Amazon Web Services account
 %%
@@ -1272,9 +1398,11 @@ get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/places/", aws_util:encode_uri(PlaceId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1294,10 +1422,12 @@ list_device_positions(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-positions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1317,10 +1447,12 @@ list_geofence_collections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/list-collections"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1340,10 +1472,12 @@ list_geofences(Client, CollectionName, Input0, Options0) ->
     Method = post,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/list-geofences"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1363,10 +1497,12 @@ list_keys(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metadata/v0/list-keys"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1386,10 +1522,12 @@ list_maps(Client, Input0, Options0) ->
     Method = post,
     Path = ["/maps/v0/list-maps"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1409,10 +1547,12 @@ list_place_indexes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/list-indexes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1432,10 +1572,12 @@ list_route_calculators(Client, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/list-calculators"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1462,9 +1604,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1480,10 +1624,12 @@ list_tracker_consumers(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-consumers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1503,10 +1649,12 @@ list_trackers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/list-trackers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1520,18 +1668,20 @@ list_trackers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stores a geofence geometry in a given geofence collection, or updates
-%% the geometry of an existing geofence if a geofence ID is included in the
-%% request.
+%% the geometry of
+%% an existing geofence if a geofence ID is included in the request.
 put_geofence(Client, CollectionName, GeofenceId, Input) ->
     put_geofence(Client, CollectionName, GeofenceId, Input, []).
 put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
     Method = put,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1546,18 +1696,20 @@ put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
 
 %% @doc Reverse geocodes a given coordinate and returns a legible address.
 %%
-%% Allows you to search for Places or points of interest near a given
-%% position.
+%% Allows you to
+%% search for Places or points of interest near a given position.
 search_place_index_for_position(Client, IndexName, Input) ->
     search_place_index_for_position(Client, IndexName, Input, []).
 search_place_index_for_position(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/position"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1572,29 +1724,34 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates suggestions for addresses and points of interest based on
-%% partial or misspelled free-form text.
+%% partial or
+%% misspelled free-form text.
 %%
-%% This operation is also known as autocomplete, autosuggest, or fuzzy
-%% matching.
+%% This operation is also known as autocomplete, autosuggest, or
+%% fuzzy matching.
 %%
 %% Optional parameters let you narrow your search results by bounding box or
-%% country, or bias your search toward a specific position on the globe.
+%% country, or
+%% bias your search toward a specific position on the globe.
 %%
 %% You can search for suggested place names near a specified position by
-%% using `BiasPosition', or filter results within a bounding box by using
+%% using
+%% `BiasPosition', or filter results within a bounding box by using
 %% `FilterBBox'. These parameters are mutually exclusive; using both
-%% `BiasPosition' and `FilterBBox' in the same command returns an
-%% error.
+%% `BiasPosition' and `FilterBBox' in the same command
+%% returns an error.
 search_place_index_for_suggestions(Client, IndexName, Input) ->
     search_place_index_for_suggestions(Client, IndexName, Input, []).
 search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/suggestions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1609,10 +1766,12 @@ search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Geocodes free-form text, such as an address, name, city, or region to
-%% allow you to search for Places or points of interest.
+%% allow you to
+%% search for Places or points of interest.
 %%
 %% Optional parameters let you narrow your search results by bounding box or
-%% country, or bias your search toward a specific position on the globe.
+%% country, or
+%% bias your search toward a specific position on the globe.
 %%
 %% You can search for places near a given position using `BiasPosition',
 %% or filter results within a bounding box using `FilterBBox'. Providing
@@ -1625,10 +1784,12 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/text"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1643,18 +1804,24 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
-%% Location Service resource.
+%% Location Service
+%% resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions, by granting a user permission to access or
-%% change only resources with certain tag values.
+%% them to
+%% scope user permissions, by granting a user permission to access or change
+%% only resources
+%% with certain tag values.
 %%
 %% You can use the `TagResource' operation with an Amazon Location
-%% Service resource that already has tags. If you specify a new tag key for
-%% the resource, this tag is appended to the tags already associated with the
-%% resource. If you specify a tag key that's already associated with the
-%% resource, the new tag value that you specify replaces the previous value
-%% for that tag.
+%% Service
+%% resource that already has tags. If you specify a new tag key for the
+%% resource, this tag
+%% is appended to the tags already associated with the resource. If you
+%% specify a tag key
+%% that's already associated with the resource, the new tag value that
+%% you specify replaces
+%% the previous value for that tag.
 %%
 %% You can associate up to 50 tags with a resource.
 tag_resource(Client, ResourceArn, Input) ->
@@ -1663,10 +1830,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1686,10 +1855,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1710,10 +1881,12 @@ update_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Method = patch,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1733,10 +1906,12 @@ update_key(Client, KeyName, Input0, Options0) ->
     Method = patch,
     Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1756,10 +1931,12 @@ update_map(Client, MapName, Input0, Options0) ->
     Method = patch,
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1779,10 +1956,12 @@ update_place_index(Client, IndexName, Input0, Options0) ->
     Method = patch,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1803,10 +1982,12 @@ update_route_calculator(Client, CalculatorName, Input0, Options0) ->
     Method = patch,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1826,10 +2007,12 @@ update_tracker(Client, TrackerName, Input0, Options0) ->
     Method = patch,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1845,6 +2028,11 @@ update_tracker(Client, TrackerName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

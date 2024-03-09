@@ -1,16 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Elastic Inference public APIs.
+%% @doc
+%% Elastic Inference public APIs.
 %%
 %% February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
 %% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% performance.
+%% After April 15, 2023, new customers will not be able to launch instances
+%% with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon
+%% EC2.
+%% However, customers who have used Amazon EI at least once during the past
+%% 30-day period are considered current customers and will be able to
+%% continue using the service.
 -module(aws_elastic_inference).
 
 -export([describe_accelerator_offerings/2,
@@ -34,27 +37,32 @@
 %% API
 %%====================================================================
 
-%% @doc Describes the locations in which a given accelerator type or set of
-%% types is present in a given region.
+%% @doc
+%% Describes the locations in which a given accelerator type or set of types
+%% is present in a given region.
 %%
 %% February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
 %% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% performance.
+%% After April 15, 2023, new customers will not be able to launch instances
+%% with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon
+%% EC2.
+%% However, customers who have used Amazon EI at least once during the past
+%% 30-day period are considered current customers and will be able to
+%% continue using the service.
 describe_accelerator_offerings(Client, Input) ->
     describe_accelerator_offerings(Client, Input, []).
 describe_accelerator_offerings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-accelerator-offerings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -67,17 +75,20 @@ describe_accelerator_offerings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the accelerator types available in a given region, as well
-%% as their characteristics, such as memory and throughput.
+%% @doc
+%% Describes the accelerator types available in a given region, as well as
+%% their characteristics, such as memory and throughput.
 %%
 %% February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
 %% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% performance.
+%% After April 15, 2023, new customers will not be able to launch instances
+%% with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon
+%% EC2.
+%% However, customers who have used Amazon EI at least once during the past
+%% 30-day period are considered current customers and will be able to
+%% continue using the service.
 describe_accelerator_types(Client)
   when is_map(Client) ->
     describe_accelerator_types(Client, #{}, #{}).
@@ -89,10 +100,12 @@ describe_accelerator_types(Client, QueryMap, HeadersMap)
 describe_accelerator_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/describe-accelerator-types"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -100,27 +113,32 @@ describe_accelerator_types(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes information over a provided set of accelerators belonging
-%% to an account.
+%% @doc
+%% Describes information over a provided set of accelerators belonging to an
+%% account.
 %%
 %% February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
 %% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% performance.
+%% After April 15, 2023, new customers will not be able to launch instances
+%% with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon
+%% EC2.
+%% However, customers who have used Amazon EI at least once during the past
+%% 30-day period are considered current customers and will be able to
+%% continue using the service.
 describe_accelerators(Client, Input) ->
     describe_accelerators(Client, Input, []).
 describe_accelerators(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-accelerators"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -133,16 +151,19 @@ describe_accelerators(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns all tags of an Elastic Inference Accelerator.
+%% @doc
+%% Returns all tags of an Elastic Inference Accelerator.
 %%
 %% February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
 %% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% performance.
+%% After April 15, 2023, new customers will not be able to launch instances
+%% with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon
+%% EC2.
+%% However, customers who have used Amazon EI at least once during the past
+%% 30-day period are considered current customers and will be able to
+%% continue using the service.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -154,10 +175,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -165,26 +188,31 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Adds the specified tags to an Elastic Inference Accelerator.
+%% @doc
+%% Adds the specified tags to an Elastic Inference Accelerator.
 %%
 %% February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
 %% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% performance.
+%% After April 15, 2023, new customers will not be able to launch instances
+%% with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon
+%% EC2.
+%% However, customers who have used Amazon EI at least once during the past
+%% 30-day period are considered current customers and will be able to
+%% continue using the service.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -197,26 +225,31 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified tags from an Elastic Inference Accelerator.
+%% @doc
+%% Removes the specified tags from an Elastic Inference Accelerator.
 %%
 %% February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
 %% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% performance.
+%% After April 15, 2023, new customers will not be able to launch instances
+%% with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon
+%% EC2.
+%% However, customers who have used Amazon EI at least once during the past
+%% 30-day period are considered current customers and will be able to
+%% continue using the service.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -233,6 +266,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

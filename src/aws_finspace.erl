@@ -137,11 +137,13 @@ create_environment(Client, Input) ->
 create_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/environment"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -154,7 +156,8 @@ create_environment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a changeset for a kdb database.
+%% @doc
+%% Creates a changeset for a kdb database.
 %%
 %% A changeset allows you to add and delete existing files by using an
 %% ordered list of change requests.
@@ -163,11 +166,13 @@ create_kx_changeset(Client, DatabaseName, EnvironmentId, Input) ->
 create_kx_changeset(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -186,11 +191,13 @@ create_kx_cluster(Client, EnvironmentId, Input) ->
 create_kx_cluster(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -209,11 +216,13 @@ create_kx_database(Client, EnvironmentId, Input) ->
 create_kx_database(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -226,8 +235,9 @@ create_kx_database(Client, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a snapshot of kdb database with tiered storage capabilities
-%% and a pre-warmed cache, ready for mounting on kdb clusters.
+%% @doc
+%% Creates a snapshot of kdb database with tiered storage capabilities and a
+%% pre-warmed cache, ready for mounting on kdb clusters.
 %%
 %% Dataviews are only available for clusters running on a scaling group. They
 %% are not supported on dedicated clusters.
@@ -236,11 +246,13 @@ create_kx_dataview(Client, DatabaseName, EnvironmentId, Input) ->
 create_kx_dataview(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -259,11 +271,13 @@ create_kx_environment(Client, Input) ->
 create_kx_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -282,11 +296,13 @@ create_kx_scaling_group(Client, EnvironmentId, Input) ->
 create_kx_scaling_group(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -306,11 +322,13 @@ create_kx_user(Client, EnvironmentId, Input) ->
 create_kx_user(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -323,18 +341,21 @@ create_kx_user(Client, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new volume with a specific amount of throughput and storage
+%% @doc
+%% Creates a new volume with a specific amount of throughput and storage
 %% capacity.
 create_kx_volume(Client, EnvironmentId, Input) ->
     create_kx_volume(Client, EnvironmentId, Input, []).
 create_kx_volume(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -353,11 +374,13 @@ delete_environment(Client, EnvironmentId, Input) ->
 delete_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -376,11 +399,13 @@ delete_kx_cluster(Client, ClusterName, EnvironmentId, Input) ->
 delete_kx_cluster(Client, ClusterName, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -403,11 +428,13 @@ delete_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
 delete_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -421,7 +448,8 @@ delete_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified dataview.
+%% @doc
+%% Deletes the specified dataview.
 %%
 %% Before deleting a dataview, make sure that it is not in use by any
 %% cluster.
@@ -430,11 +458,13 @@ delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
 delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -457,11 +487,13 @@ delete_kx_environment(Client, EnvironmentId, Input) ->
 delete_kx_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -475,7 +507,8 @@ delete_kx_environment(Client, EnvironmentId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified scaling group.
+%% @doc
+%% Deletes the specified scaling group.
 %%
 %% This action is irreversible. You cannot delete a scaling group until all
 %% the clusters running on it have been deleted.
@@ -484,11 +517,13 @@ delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input) ->
 delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups/", aws_util:encode_uri(ScalingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -508,11 +543,13 @@ delete_kx_user(Client, EnvironmentId, UserName, Input) ->
 delete_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -526,7 +563,8 @@ delete_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a volume.
+%% @doc
+%% Deletes a volume.
 %%
 %% You can only delete a volume if it's not attached to a cluster or a
 %% dataview. When a volume is deleted, any data on the volume is lost. This
@@ -536,11 +574,13 @@ delete_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
 delete_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
     Method = delete,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -566,10 +606,12 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
 get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -589,10 +631,12 @@ get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, Hea
 get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets/", aws_util:encode_uri(ChangesetId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -612,10 +656,12 @@ get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
 get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -638,10 +684,12 @@ get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, 
 get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/connectionString"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -666,10 +714,12 @@ get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
 get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -677,7 +727,8 @@ get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves details of the dataview.
+%% @doc
+%% Retrieves details of the dataview.
 get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId)
   when is_map(Client) ->
     get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, #{}, #{}).
@@ -689,10 +740,12 @@ get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, Hea
 get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -712,10 +765,12 @@ get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap)
 get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -723,7 +778,8 @@ get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves details of a scaling group.
+%% @doc
+%% Retrieves details of a scaling group.
 get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName)
   when is_map(Client) ->
     get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, #{}, #{}).
@@ -735,10 +791,12 @@ get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersM
 get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups/", aws_util:encode_uri(ScalingGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -758,10 +816,12 @@ get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap)
 get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -769,7 +829,8 @@ get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the information about the volume.
+%% @doc
+%% Retrieves the information about the volume.
 get_kx_volume(Client, EnvironmentId, VolumeName)
   when is_map(Client) ->
     get_kx_volume(Client, EnvironmentId, VolumeName, #{}, #{}).
@@ -781,10 +842,12 @@ get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap)
 get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -804,10 +867,12 @@ list_environments(Client, QueryMap, HeadersMap)
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environment"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -832,10 +897,12 @@ list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
 list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -860,10 +927,12 @@ list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
 list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/nodes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -888,10 +957,12 @@ list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap)
 list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -917,10 +988,12 @@ list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap)
 list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -933,7 +1006,8 @@ list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all the dataviews in the database.
+%% @doc
+%% Returns a list of all the dataviews in the database.
 list_kx_dataviews(Client, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     list_kx_dataviews(Client, DatabaseName, EnvironmentId, #{}, #{}).
@@ -945,10 +1019,12 @@ list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
 list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -973,10 +1049,12 @@ list_kx_environments(Client, QueryMap, HeadersMap)
 list_kx_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -989,7 +1067,8 @@ list_kx_environments(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of scaling groups in a kdb environment.
+%% @doc
+%% Returns a list of scaling groups in a kdb environment.
 list_kx_scaling_groups(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_scaling_groups(Client, EnvironmentId, #{}, #{}).
@@ -1001,10 +1080,12 @@ list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap)
 list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1029,10 +1110,12 @@ list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap)
 list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1045,7 +1128,8 @@ list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the volumes in a kdb environment.
+%% @doc
+%% Lists all the volumes in a kdb environment.
 list_kx_volumes(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_volumes(Client, EnvironmentId, #{}, #{}).
@@ -1057,10 +1141,12 @@ list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap)
 list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1086,10 +1172,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1103,11 +1191,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1126,11 +1216,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1150,11 +1242,13 @@ update_environment(Client, EnvironmentId, Input) ->
 update_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1167,22 +1261,25 @@ update_environment(Client, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows you to update code configuration on a running cluster.
+%% @doc
+%% Allows you to update code configuration on a running cluster.
 %%
 %% By using this API you can update the code, the initialization script path,
-%% and the command line arguments for a specific cluster. The configuration
-%% that you want to update will override any existing configurations on the
-%% cluster.
+%% and the command line arguments for a specific cluster.
+%% The configuration that you want to update will override any existing
+%% configurations on the cluster.
 update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input) ->
     update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input, []).
 update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/configuration/code"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1208,11 +1305,13 @@ update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input) ->
 update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/configuration/databases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1231,11 +1330,13 @@ update_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
 update_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1248,7 +1349,8 @@ update_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the specified dataview.
+%% @doc
+%% Updates the specified dataview.
 %%
 %% The dataviews get automatically updated when any new changesets are
 %% ingested. Each update of the dataview creates a new version, including
@@ -1258,11 +1360,13 @@ update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
 update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1281,11 +1385,13 @@ update_kx_environment(Client, EnvironmentId, Input) ->
 update_kx_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1313,11 +1419,13 @@ update_kx_environment_network(Client, EnvironmentId, Input) ->
 update_kx_environment_network(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/network"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1338,11 +1446,13 @@ update_kx_user(Client, EnvironmentId, UserName, Input) ->
 update_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1355,20 +1465,24 @@ update_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the throughput or capacity of a volume.
+%% @doc
+%% Updates the throughput or capacity of a volume.
 %%
-%% During the update process, the filesystem might be unavailable for a few
-%% minutes. You can retry any operations after the update is complete.
+%% During the update process, the filesystem
+%% might be unavailable for a few minutes. You can retry any operations after
+%% the update is complete.
 update_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
     update_kx_volume(Client, EnvironmentId, VolumeName, Input, []).
 update_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
     Method = patch,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1384,6 +1498,11 @@ update_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

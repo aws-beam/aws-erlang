@@ -5,8 +5,9 @@
 %% to create PSTN calling solutions that use Amazon Chime SDK Voice
 %% Connectors, and Amazon Chime SDK SIP media applications.
 %%
-%% Developers can also order and manage phone numbers, create and manage
-%% Voice Connectors and SIP media applications, and run voice analytics.
+%% Developers can
+%% also order and manage phone numbers, create and manage Voice Connectors
+%% and SIP media applications, and run voice analytics.
 -module(aws_chime_sdk_voice).
 
 -export([associate_phone_numbers_with_voice_connector/3,
@@ -246,10 +247,12 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -270,10 +273,12 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -286,23 +291,27 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves phone numbers into the Deletion queue.
+%% @doc
+%% Moves phone numbers into the
+%% Deletion queue.
 %%
 %% Phone numbers must be disassociated from any users or Amazon Chime SDK
 %% Voice Connectors before they can be deleted.
 %%
-%% Phone numbers remain in the Deletion queue for 7 days before they are
-%% deleted permanently.
+%% Phone numbers remain in the
+%% Deletion queue for 7 days before they are deleted permanently.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
 batch_delete_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -322,10 +331,12 @@ batch_update_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-update"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -348,10 +359,12 @@ create_phone_number_order(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -365,17 +378,20 @@ create_phone_number_order(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a proxy session for the specified Amazon Chime SDK Voice
-%% Connector for the specified participant phone numbers.
+%% Connector for
+%% the specified participant phone numbers.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -391,7 +407,8 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
 %% @doc Creates a SIP media application.
 %%
 %% For more information about SIP media applications, see Managing SIP media
-%% applications and rules:
+%% applications
+%% and rules:
 %% https://docs.aws.amazon.com/chime-sdk/latest/ag/manage-sip-applications.html
 %% in the Amazon Chime SDK Administrator Guide.
 create_sip_media_application(Client, Input) ->
@@ -400,10 +417,12 @@ create_sip_media_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -417,7 +436,8 @@ create_sip_media_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an outbound call to a phone number from the phone number
-%% specified in the request, and it invokes the endpoint of the specified
+%% specified
+%% in the request, and it invokes the endpoint of the specified
 %% `sipMediaApplicationId'.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
@@ -425,10 +445,12 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -454,10 +476,12 @@ create_sip_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-rules"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -472,20 +496,24 @@ create_sip_rule(Client, Input0, Options0) ->
 
 %% @doc Creates an Amazon Chime SDK Voice Connector.
 %%
-%% For more information about Voice Connectors, see Managing Amazon Chime SDK
-%% Voice Connector groups:
+%% For more information about
+%% Voice Connectors,
+%% see Managing Amazon Chime SDK Voice Connector groups:
 %% https://docs.aws.amazon.com/chime-sdk/latest/ag/voice-connector-groups.html
-%% in the Amazon Chime SDK Administrator Guide.
+%% in the Amazon Chime SDK
+%% Administrator Guide.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 create_voice_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -499,10 +527,12 @@ create_voice_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Chime SDK Voice Connector group under the
-%% administrator's AWS account.
+%% administrator's
+%% AWS account.
 %%
-%% You can associate Amazon Chime SDK Voice Connectors with the Voice
-%% Connector group by including `VoiceConnectorItems' in the request.
+%% You can associate Amazon Chime SDK Voice Connectors with the
+%% Voice Connector group by including `VoiceConnectorItems' in the
+%% request.
 %%
 %% You can include Voice Connectors from different AWS Regions in your group.
 %% This creates a fault tolerant mechanism for fallback in case of
@@ -513,10 +543,12 @@ create_voice_connector_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -534,8 +566,9 @@ create_voice_connector_group(Client, Input0, Options0) ->
 %%
 %% Before creating any voice profiles, you must provide all notices and
 %% obtain all consents from the speaker as required under applicable privacy
-%% and biometrics laws, and as required under the AWS service terms:
-%% https://aws.amazon.com/service-terms/ for the Amazon Chime SDK.
+%% and biometrics laws, and as required under the
+%% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
+%% Chime SDK.
 %%
 %% For more information about voice profiles and voice analytics, see Using
 %% Amazon Chime SDK Voice Analytics:
@@ -547,10 +580,12 @@ create_voice_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-profiles"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -568,8 +603,9 @@ create_voice_profile(Client, Input0, Options0) ->
 %%
 %% Before creating any voice profiles, you must provide all notices and
 %% obtain all consents from the speaker as required under applicable privacy
-%% and biometrics laws, and as required under the AWS service terms:
-%% https://aws.amazon.com/service-terms/ for the Amazon Chime SDK.
+%% and biometrics laws, and as required under the
+%% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
+%% Chime SDK.
 %%
 %% For more information about voice profile domains, see Using Amazon Chime
 %% SDK Voice Analytics:
@@ -581,10 +617,12 @@ create_voice_profile_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-profile-domains"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -597,12 +635,16 @@ create_voice_profile_domain(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves the specified phone number into the Deletion queue.
+%% @doc Moves the specified phone number into the
+%% Deletion queue.
 %%
-%% A phone number must be disassociated from any users or Amazon Chime SDK
-%% Voice Connectors before it can be deleted.
+%% A phone number must
+%% be disassociated from any users or Amazon Chime SDK Voice Connectors
+%% before it can be
+%% deleted.
 %%
-%% Deleted phone numbers remain in the Deletion queue queue for 7 days before
+%% Deleted phone numbers remain in the
+%% Deletion queue queue for 7 days before
 %% they are deleted permanently.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
@@ -610,10 +652,12 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -627,17 +671,20 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified proxy session from the specified Amazon Chime
-%% SDK Voice Connector.
+%% SDK Voice
+%% Connector.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -657,10 +704,12 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -680,10 +729,12 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -698,18 +749,22 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 
 %% @doc Deletes an Amazon Chime SDK Voice Connector.
 %%
-%% Any phone numbers associated with the Amazon Chime SDK Voice Connector
-%% must be disassociated from it before it can be deleted.
+%% Any phone numbers associated
+%% with the Amazon Chime SDK Voice Connector must be disassociated from it
+%% before it
+%% can be deleted.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -723,17 +778,20 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the emergency calling details from the specified Amazon Chime
-%% SDK Voice Connector.
+%% SDK Voice
+%% Connector.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -748,18 +806,22 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 
 %% @doc Deletes an Amazon Chime SDK Voice Connector group.
 %%
-%% Any `VoiceConnectorItems' and phone numbers associated with the group
-%% must be removed before it can be deleted.
+%% Any `VoiceConnectorItems'
+%% and phone numbers associated with the group must be removed before it can
+%% be
+%% deleted.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -783,10 +845,12 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -807,10 +871,12 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -830,10 +896,12 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -857,10 +925,12 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -881,10 +951,12 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=delete"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -907,10 +979,12 @@ delete_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -932,10 +1006,12 @@ delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -948,18 +1024,20 @@ delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates the specified phone numbers from the specified Amazon
-%% Chime SDK Voice Connector.
+%% @doc Disassociates the specified phone numbers from the specified
+%% Amazon Chime SDK Voice Connector.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -973,17 +1051,20 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates the specified phone numbers from the specified Amazon
-%% Chime SDK Voice Connector group.
+%% Chime SDK Voice
+%% Connector group.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1010,9 +1091,11 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1021,7 +1104,8 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified phone number ID, such as
-%% associations, capabilities, and product type.
+%% associations,
+%% capabilities, and product type.
 get_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     get_phone_number(Client, PhoneNumberId, #{}, #{}).
@@ -1033,10 +1117,12 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
 get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1045,7 +1131,8 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified phone number order, such as the
-%% order creation timestamp, phone numbers in E.164 format, product type, and
+%% order
+%% creation timestamp, phone numbers in E.164 format, product type, and
 %% order status.
 get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
@@ -1059,9 +1146,11 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders/", aws_util:encode_uri(PhoneNumberOrderId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1070,7 +1159,8 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the phone number settings for the administrator's AWS
-%% account, such as the default outbound calling name.
+%% account,
+%% such as the default outbound calling name.
 get_phone_number_settings(Client)
   when is_map(Client) ->
     get_phone_number_settings(Client, #{}, #{}).
@@ -1083,9 +1173,11 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1107,9 +1199,11 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1118,7 +1212,8 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the information for a SIP media application, including
-%% name, AWS Region, and endpoints.
+%% name,
+%% AWS Region, and endpoints.
 get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
@@ -1131,9 +1226,11 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1154,9 +1251,11 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/alexa-skill-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1178,9 +1277,11 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1189,7 +1290,8 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of a SIP rule, such as the rule ID, name,
-%% triggers, and target endpoints.
+%% triggers, and
+%% target endpoints.
 get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
@@ -1202,9 +1304,11 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1225,9 +1329,11 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1236,7 +1342,8 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified Amazon Chime SDK Voice Connector,
-%% such as timestamps,name, outbound host, and encryption requirements.
+%% such as
+%% timestamps,name, outbound host, and encryption requirements.
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
@@ -1249,9 +1356,11 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1273,9 +1382,11 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1284,7 +1395,8 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified Amazon Chime SDK Voice Connector
-%% group, such as timestamps,name, and associated `VoiceConnectorItems'.
+%% group,
+%% such as timestamps,name, and associated `VoiceConnectorItems'.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
@@ -1297,9 +1409,11 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1324,9 +1438,11 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1347,9 +1463,11 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1358,7 +1476,8 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the proxy configuration details for the specified Amazon
-%% Chime SDK Voice Connector.
+%% Chime SDK Voice
+%% Connector.
 get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
@@ -1371,9 +1490,11 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1382,10 +1503,12 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the streaming configuration details for the specified
-%% Amazon Chime SDK Voice Connector.
+%% Amazon Chime SDK
+%% Voice Connector.
 %%
-%% Shows whether media streaming is enabled for sending to Amazon Kinesis. It
-%% also shows the retention period, in hours, for the Amazon Kinesis data.
+%% Shows whether media streaming is enabled for sending to Amazon
+%% Kinesis. It also shows the retention period, in hours, for the Amazon
+%% Kinesis data.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -1398,9 +1521,11 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1422,9 +1547,11 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1434,7 +1561,8 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 
 %% @doc Retrieves information about the last time a `SIP OPTIONS' ping
 %% was received from your SIP infrastructure for the specified Amazon Chime
-%% SDK Voice Connector.
+%% SDK Voice
+%% Connector.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
@@ -1447,9 +1575,11 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/health"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1470,9 +1600,11 @@ get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1493,9 +1625,11 @@ get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1516,9 +1650,11 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1544,9 +1680,11 @@ list_available_voice_connector_regions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-regions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1568,9 +1706,11 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1585,7 +1725,8 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the phone numbers for the specified Amazon Chime SDK account,
 %% Amazon Chime SDK user, Amazon Chime SDK Voice Connector, or Amazon Chime
-%% SDK Voice Connector group.
+%% SDK Voice
+%% Connector group.
 list_phone_numbers(Client)
   when is_map(Client) ->
     list_phone_numbers(Client, #{}, #{}).
@@ -1597,10 +1738,12 @@ list_phone_numbers(Client, QueryMap, HeadersMap)
 list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1631,9 +1774,11 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1661,9 +1806,11 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1689,9 +1836,11 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1718,9 +1867,11 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-countries"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1744,10 +1895,12 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1760,7 +1913,8 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Chime SDK Voice Connector groups in the
-%% administrator's AWS account.
+%% administrator's AWS
+%% account.
 list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
@@ -1773,9 +1927,11 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1802,9 +1958,11 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1812,8 +1970,8 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon Chime SDK Voice Connectors in the administrators AWS
-%% account.
+%% @doc Lists the Amazon Chime SDK Voice Connectors in the administrators
+%% AWS account.
 list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
@@ -1826,9 +1984,11 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1855,9 +2015,11 @@ list_voice_profile_domains(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profile-domains"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1883,9 +2045,11 @@ list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-profiles"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1906,10 +2070,12 @@ put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/alexa-skill-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1930,10 +2096,12 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1953,10 +2121,12 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1976,10 +2146,12 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1999,10 +2171,12 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2022,11 +2196,13 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
 put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2046,10 +2222,12 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2069,10 +2247,12 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2092,10 +2272,12 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=put"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2115,10 +2297,12 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), "?operation=restore"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2143,10 +2327,12 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap)
 search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/search?type=phone-numbers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2169,18 +2355,21 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Before starting any speaker search tasks, you must provide all notices and
 %% obtain all consents from the speaker as required under applicable privacy
-%% and biometrics laws, and as required under the AWS service terms:
-%% https://aws.amazon.com/service-terms/ for the Amazon Chime SDK.
+%% and biometrics laws, and as required under the
+%% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
+%% Chime SDK.
 start_speaker_search_task(Client, VoiceConnectorId, Input) ->
     start_speaker_search_task(Client, VoiceConnectorId, Input, []).
 start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2195,26 +2384,28 @@ start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
 
 %% @doc Starts a voice tone analysis task.
 %%
-%% For more information about voice tone analysis, see Using Amazon Chime SDK
-%% voice analytics:
+%% For more information about voice tone analysis, see
+%% Using Amazon Chime SDK voice analytics:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/pstn-voice-analytics.html
 %% in the Amazon Chime SDK Developer Guide.
 %%
 %% Before starting any voice tone analysis tasks, you must provide all
 %% notices and obtain all consents from the speaker as required under
-%% applicable privacy and biometrics laws, and as required under the AWS
-%% service terms: https://aws.amazon.com/service-terms/ for the Amazon Chime
-%% SDK.
+%% applicable privacy and biometrics laws, and as required under the
+%% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
+%% Chime SDK.
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input) ->
     start_voice_tone_analysis_task(Client, VoiceConnectorId, Input, []).
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2234,10 +2425,12 @@ stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input0, 
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), "?operation=stop"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2257,10 +2450,12 @@ stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId,
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), "?operation=stop"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2280,10 +2475,12 @@ tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2303,10 +2500,12 @@ untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2327,10 +2526,12 @@ update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2344,27 +2545,32 @@ update_global_settings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates phone number details, such as product type or calling name,
-%% for the specified phone number ID.
+%% for the
+%% specified phone number ID.
 %%
-%% You can update one phone number detail at a time. For example, you can
-%% update either the product type or the calling name in one action.
+%% You can update one phone number detail at a time. For
+%% example, you can update either the product type or the calling name in one
+%% action.
 %%
 %% For numbers outside the U.S., you must use the Amazon Chime SDK SIP Media
 %% Application Dial-In product type.
 %%
 %% Updates to outbound calling names can take 72 hours to complete. Pending
 %% updates to outbound calling names must be complete before you can request
-%% another update.
+%% another
+%% update.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2378,20 +2584,25 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the phone number settings for the administrator's AWS
-%% account, such as the default outbound calling name.
+%% account, such
+%% as the default outbound calling name.
 %%
-%% You can update the default outbound calling name once every seven days.
-%% Outbound calling names can take up to 72 hours to update.
+%% You can update the default outbound calling
+%% name once every seven days. Outbound calling names can take up to 72 hours
+%% to
+%% update.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
 update_phone_number_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2412,10 +2623,12 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2435,10 +2648,12 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2452,19 +2667,23 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Invokes the AWS Lambda function associated with the SIP media
-%% application and transaction ID in an update request.
+%% application and
+%% transaction ID in an update request.
 %%
-%% The Lambda function can then return a new set of actions.
+%% The Lambda function can then return a new set
+%% of actions.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls/", aws_util:encode_uri(TransactionId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2484,10 +2703,12 @@ update_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2508,10 +2729,12 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2532,10 +2755,12 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2552,15 +2777,18 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% expiration timestamp.
 %%
 %% As a condition of using this feature, you acknowledge that the collection,
-%% use, storage, and retention of your caller’s biometric identifiers and
-%% biometric information (“biometric data”) in the form of a digital
-%% voiceprint requires the caller’s informed consent via a written release.
-%% Such consent is required under various state laws, including biometrics
-%% laws in Illinois, Texas, Washington and other state privacy laws.
+%% use, storage, and retention of
+%% your caller’s biometric identifiers and biometric information (“biometric
+%% data”) in the form of a digital voiceprint
+%% requires the caller’s informed consent via a written release. Such consent
+%% is required under various state laws,
+%% including biometrics laws in Illinois, Texas, Washington and other state
+%% privacy laws.
 %%
 %% You must provide a written release to each caller through a process that
-%% clearly reflects each caller’s informed consent before using Amazon Chime
-%% SDK Voice Insights service, as required under the terms of your agreement
+%% clearly reflects each caller’s informed
+%% consent before using Amazon Chime SDK Voice Insights service, as required
+%% under the terms of your agreement
 %% with AWS governing your use of the service.
 update_voice_profile(Client, VoiceProfileId, Input) ->
     update_voice_profile(Client, VoiceProfileId, Input, []).
@@ -2568,10 +2796,12 @@ update_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2591,10 +2821,12 @@ update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2608,22 +2840,25 @@ update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Validates an address to be used for 911 calls made with Amazon Chime
-%% SDK Voice Connectors.
+%% SDK Voice
+%% Connectors.
 %%
 %% You can use validated addresses in a Presence Information Data Format
 %% Location Object file that you include in SIP requests. That helps ensure
-%% that addresses are routed to the appropriate Public Safety Answering
-%% Point.
+%% that addresses
+%% are routed to the appropriate Public Safety Answering Point.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
 validate_e911_address(Client, Input0, Options0) ->
     Method = post,
     Path = ["/emergency-calling/address"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2639,6 +2874,11 @@ validate_e911_address(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

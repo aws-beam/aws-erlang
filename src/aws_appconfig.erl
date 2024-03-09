@@ -2,143 +2,177 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AppConfig feature flags and dynamic configurations help software
-%% builders quickly and securely adjust application behavior in production
-%% environments without full code deployments.
+%% builders
+%% quickly and securely adjust application behavior in production
+%% environments without full
+%% code deployments.
 %%
-%% AppConfig speeds up software release frequency, improves application
-%% resiliency, and helps you address emergent issues more quickly. With
-%% feature flags, you can gradually release new capabilities to users and
-%% measure the impact of those changes before fully deploying the new
-%% capabilities to all users. With operational flags and dynamic
-%% configurations, you can update block lists, allow lists, throttling
-%% limits, logging verbosity, and perform other operational tuning to quickly
-%% respond to issues in production environments.
+%% AppConfig speeds up software release frequency, improves
+%% application resiliency, and helps you address emergent issues more
+%% quickly. With feature
+%% flags, you can gradually release new capabilities to users and measure the
+%% impact of those
+%% changes before fully deploying the new capabilities to all users. With
+%% operational flags
+%% and dynamic configurations, you can update block lists, allow lists,
+%% throttling limits,
+%% logging verbosity, and perform other operational tuning to quickly respond
+%% to issues in
+%% production environments.
 %%
 %% AppConfig is a capability of Amazon Web Services Systems Manager.
 %%
 %% Despite the fact that application configuration content can vary greatly
-%% from application to application, AppConfig supports the following use
-%% cases, which cover a broad spectrum of customer needs:
+%% from
+%% application to application, AppConfig supports the following use cases,
+%% which
+%% cover a broad spectrum of customer needs:
 %%
-%% <ul> <li> Feature flags and toggles - Safely release new capabilities to
-%% your customers in a controlled environment. Instantly roll back changes if
-%% you experience a problem.
+%% Feature flags and toggles - Safely release new
+%% capabilities to your customers in a controlled environment. Instantly roll
+%% back
+%% changes if you experience a problem.
 %%
-%% </li> <li> Application tuning - Carefully introduce application changes
-%% while testing the impact of those changes with users in production
-%% environments.
+%% Application tuning - Carefully introduce
+%% application changes while testing the impact of those changes with users
+%% in
+%% production environments.
 %%
-%% </li> <li> Allow list or block list - Control access to premium features
-%% or instantly block specific users without deploying new code.
+%% Allow list or block list - Control access to
+%% premium features or instantly block specific users without deploying new
+%% code.
 %%
-%% </li> <li> Centralized configuration storage - Keep your configuration
-%% data organized and consistent across all of your workloads. You can use
-%% AppConfig to deploy configuration data stored in the AppConfig hosted
-%% configuration store, Secrets Manager, Systems Manager, Parameter Store, or
-%% Amazon S3.
+%% Centralized configuration storage - Keep your
+%% configuration data organized and consistent across all of your workloads.
+%% You can use
+%% AppConfig to deploy configuration data stored in the AppConfig
+%% hosted configuration store, Secrets Manager, Systems Manager, Parameter
+%% Store, or Amazon S3.
 %%
-%% </li> </ul> How AppConfig works
+%% How AppConfig works
 %%
 %% This section provides a high-level description of how AppConfig works and
-%% how you get started.
+%% how
+%% you get started.
 %%
-%% <dl> <dt>1. Identify configuration values in code you want to manage in
-%% the cloud</dt> <dd> Before you start creating AppConfig artifacts, we
-%% recommend you identify configuration data in your code that you want to
-%% dynamically manage using AppConfig. Good examples include feature flags or
-%% toggles, allow and block lists, logging verbosity, service limits, and
-%% throttling rules, to name a few.
+%% 1. Identify configuration values in code you want to manage in the cloud
+%%
+%% Before you start creating AppConfig artifacts, we recommend you
+%% identify configuration data in your code that you want to dynamically
+%% manage using
+%% AppConfig. Good examples include feature flags or toggles, allow and
+%% block lists, logging verbosity, service limits, and throttling rules, to
+%% name a
+%% few.
 %%
 %% If your configuration data already exists in the cloud, you can take
-%% advantage of AppConfig validation, deployment, and extension features to
-%% further streamline configuration data management.
+%% advantage
+%% of AppConfig validation, deployment, and extension features to further
+%% streamline configuration data management.
 %%
-%% </dd> <dt>2. Create an application namespace</dt> <dd> To create a
-%% namespace, you create an AppConfig artifact called an application. An
-%% application is simply an organizational construct like a folder.
+%% 2. Create an application namespace
 %%
-%% </dd> <dt>3. Create environments</dt> <dd> For each AppConfig application,
-%% you define one or more environments. An environment is a logical grouping
-%% of targets, such as applications in a `Beta' or `Production'
-%% environment, Lambda functions, or containers. You can also define
-%% environments for application subcomponents, such as the `Web',
-%% `Mobile', and `Back-end'.
+%% To create a namespace, you create an AppConfig artifact called an
+%% application. An application is simply an organizational construct like a
+%% folder.
+%%
+%% 3. Create environments
+%%
+%% For each AppConfig application, you define one or more environments.
+%% An environment is a logical grouping of targets, such as applications in a
+%% `Beta' or `Production' environment, Lambda functions,
+%% or containers. You can also define environments for application
+%% subcomponents,
+%% such as the `Web', `Mobile', and
+%% `Back-end'.
 %%
 %% You can configure Amazon CloudWatch alarms for each environment. The
-%% system monitors alarms during a configuration deployment. If an alarm is
-%% triggered, the system rolls back the configuration.
+%% system monitors
+%% alarms during a configuration deployment. If an alarm is triggered, the
+%% system
+%% rolls back the configuration.
 %%
-%% </dd> <dt>4. Create a configuration profile</dt> <dd> A configuration
-%% profile includes, among other things, a URI that enables AppConfig to
-%% locate your configuration data in its stored location and a profile type.
-%% AppConfig supports two configuration profile types: feature flags and
-%% freeform configurations. Feature flag configuration profiles store their
-%% data in the AppConfig hosted configuration store and the URI is simply
-%% `hosted'. For freeform configuration profiles, you can store your data
-%% in the AppConfig hosted configuration store or any Amazon Web Services
-%% service that integrates with AppConfig, as described in Creating a free
-%% form configuration profile:
+%% 4. Create a configuration profile
+%%
+%% A configuration profile includes, among other things, a URI that enables
+%% AppConfig to locate your configuration data in its stored location
+%% and a profile type. AppConfig supports two configuration profile types:
+%% feature flags and freeform configurations. Feature flag configuration
+%% profiles
+%% store their data in the AppConfig hosted configuration store and the URI
+%% is simply `hosted'. For freeform configuration profiles, you can store
+%% your data in the AppConfig hosted configuration store or any Amazon Web
+%% Services
+%% service that integrates with AppConfig, as described in Creating
+%% a free form configuration profile:
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-free-form-configurations-creating.html
 %% in the the AppConfig User Guide.
 %%
 %% A configuration profile can also include optional validators to ensure
-%% your configuration data is syntactically and semantically correct.
-%% AppConfig performs a check using the validators when you start a
-%% deployment. If any errors are detected, the deployment rolls back to the
-%% previous configuration data.
+%% your
+%% configuration data is syntactically and semantically correct. AppConfig
+%% performs a check using the validators when you start a deployment. If any
+%% errors
+%% are detected, the deployment rolls back to the previous configuration
+%% data.
 %%
-%% </dd> <dt>5. Deploy configuration data</dt> <dd> When you create a new
-%% deployment, you specify the following:
+%% 5. Deploy configuration data
 %%
-%% <ul> <li> An application ID
+%% When you create a new deployment, you specify the following:
 %%
-%% </li> <li> A configuration profile ID
+%% An application ID
 %%
-%% </li> <li> A configuration version
+%% A configuration profile ID
 %%
-%% </li> <li> An environment ID where you want to deploy the configuration
-%% data
+%% A configuration version
 %%
-%% </li> <li> A deployment strategy ID that defines how fast you want the
-%% changes to take effect
+%% An environment ID where you want to deploy the configuration data
 %%
-%% </li> </ul> When you call the StartDeployment:
+%% A deployment strategy ID that defines how fast you want the changes to
+%% take effect
+%%
+%% When you call the StartDeployment:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_StartDeployment.html
-%% API action, AppConfig performs the following tasks:
+%% API action, AppConfig performs the following
+%% tasks:
 %%
-%% <ol> <li> Retrieves the configuration data from the underlying data store
-%% by using the location URI in the configuration profile.
+%% Retrieves the configuration data from the underlying data store by using
+%% the location URI in the configuration profile.
 %%
-%% </li> <li> Verifies the configuration data is syntactically and
-%% semantically correct by using the validators you specified when you
-%% created your configuration profile.
+%% Verifies the configuration data is syntactically and semantically correct
+%% by using the validators you specified when you created your configuration
+%% profile.
 %%
-%% </li> <li> Caches a copy of the data so it is ready to be retrieved by
-%% your application. This cached copy is called the deployed data.
+%% Caches a copy of the data so it is ready to be retrieved by your
+%% application. This cached copy is called the deployed
+%% data.
 %%
-%% </li> </ol> </dd> <dt>6. Retrieve the configuration</dt> <dd> You can
-%% configure AppConfig Agent as a local host and have the agent poll
-%% AppConfig for configuration updates. The agent calls the
+%% 6. Retrieve the configuration
+%%
+%% You can configure AppConfig Agent as a local host and have the agent
+%% poll AppConfig for configuration updates. The agent calls the
 %% StartConfigurationSession:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
 %% and GetLatestConfiguration:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
-%% API actions and caches your configuration data locally. To retrieve the
-%% data, your application makes an HTTP call to the localhost server.
-%% AppConfig Agent supports several use cases, as described in Simplified
+%% API actions and caches your configuration data
+%% locally. To retrieve the data, your application makes an HTTP call to the
+%% localhost server. AppConfig Agent supports several use cases, as
+%% described in Simplified
 %% retrieval methods:
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-simplified-methods.html
-%% in the the AppConfig User Guide.
+%% in the the AppConfig User
+%% Guide.
 %%
 %% If AppConfig Agent isn't supported for your use case, you can
-%% configure your application to poll AppConfig for configuration updates by
-%% directly calling the StartConfigurationSession:
+%% configure your application to poll AppConfig for configuration updates
+%% by directly calling the StartConfigurationSession:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
 %% and GetLatestConfiguration:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
 %% API actions.
 %%
-%% </dd> </dl> This reference is intended to be used with the AppConfig User
+%% This reference is intended to be used with the AppConfig User
 %% Guide:
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html.
 -module(aws_appconfig).
@@ -256,21 +290,26 @@
 
 %% @doc Creates an application.
 %%
-%% In AppConfig, an application is simply an organizational construct like a
-%% folder. This organizational construct has a relationship with some unit of
-%% executable code. For example, you could create an application called
+%% In AppConfig, an application is simply an
+%% organizational construct like a folder. This organizational construct has
+%% a relationship
+%% with some unit of executable code. For example, you could create an
+%% application called
 %% MyMobileApp to organize and manage configuration data for a mobile
-%% application installed by your users.
+%% application installed by
+%% your users.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -284,50 +323,57 @@ create_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a configuration profile, which is information that enables
-%% AppConfig to access the configuration source.
+%% AppConfig
+%% to access the configuration source.
 %%
-%% Valid configuration sources include the following:
+%% Valid configuration sources include the
+%% following:
 %%
-%% <ul> <li> Configuration data in YAML, JSON, and other formats stored in
-%% the AppConfig hosted configuration store
+%% Configuration data in YAML, JSON, and other formats stored in the
+%% AppConfig hosted configuration store
 %%
-%% </li> <li> Configuration data stored as objects in an Amazon Simple
-%% Storage Service (Amazon S3) bucket
+%% Configuration data stored as objects in an Amazon Simple Storage Service
+%% (Amazon S3)
+%% bucket
 %%
-%% </li> <li> Pipelines stored in CodePipeline
+%% Pipelines stored in CodePipeline
 %%
-%% </li> <li> Secrets stored in Secrets Manager
+%% Secrets stored in Secrets Manager
 %%
-%% </li> <li> Standard and secure string parameters stored in Amazon Web
-%% Services Systems Manager Parameter Store
+%% Standard and secure string parameters stored in Amazon Web Services
+%% Systems Manager Parameter Store
 %%
-%% </li> <li> Configuration data in SSM documents stored in the Systems
-%% Manager document store
+%% Configuration data in SSM documents stored in the Systems Manager document
+%% store
 %%
-%% </li> </ul> A configuration profile includes the following information:
+%% A configuration profile includes the following information:
 %%
-%% <ul> <li> The URI location of the configuration data.
+%% The URI location of the configuration data.
 %%
-%% </li> <li> The Identity and Access Management (IAM) role that provides
-%% access to the configuration data.
+%% The Identity and Access Management (IAM) role that provides access to the
+%% configuration data.
 %%
-%% </li> <li> A validator for the configuration data. Available validators
-%% include either a JSON Schema or an Amazon Web Services Lambda function.
+%% A validator for the configuration data. Available validators include
+%% either a JSON
+%% Schema or an Amazon Web Services Lambda function.
 %%
-%% </li> </ul> For more information, see Create a Configuration and a
-%% Configuration Profile:
+%% For more information, see Create a
+%% Configuration and a Configuration Profile:
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html
-%% in the AppConfig User Guide.
+%% in the AppConfig
+%% User Guide.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
 create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -341,21 +387,25 @@ create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a deployment strategy that defines important criteria for
-%% rolling out your configuration to the designated targets.
+%% rolling out your
+%% configuration to the designated targets.
 %%
-%% A deployment strategy includes the overall duration required, a percentage
-%% of targets to receive the deployment during each interval, an algorithm
-%% that defines how percentage grows, and bake time.
+%% A deployment strategy includes the overall
+%% duration required, a percentage of targets to receive the deployment
+%% during each interval,
+%% an algorithm that defines how percentage grows, and bake time.
 create_deployment_strategy(Client, Input) ->
     create_deployment_strategy(Client, Input, []).
 create_deployment_strategy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deploymentstrategies"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -370,24 +420,29 @@ create_deployment_strategy(Client, Input0, Options0) ->
 
 %% @doc Creates an environment.
 %%
-%% For each application, you define one or more environments. An environment
-%% is a deployment group of AppConfig targets, such as applications in a
+%% For each application, you define one or more environments. An
+%% environment is a deployment group of AppConfig targets, such as
+%% applications in a
 %% `Beta' or `Production' environment. You can also define
 %% environments for application subcomponents such as the `Web',
 %% `Mobile' and `Back-end' components for your application. You can
 %% configure Amazon CloudWatch alarms for each environment. The system
-%% monitors alarms during a configuration deployment. If an alarm is
-%% triggered, the system rolls back the configuration.
+%% monitors alarms during a
+%% configuration deployment. If an alarm is triggered, the system rolls back
+%% the
+%% configuration.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
 create_environment(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -402,28 +457,34 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Creates an AppConfig extension.
 %%
-%% An extension augments your ability to inject logic or behavior at
-%% different points during the AppConfig workflow of creating or deploying a
-%% configuration.
+%% An extension augments your ability to inject
+%% logic or behavior at different points during the AppConfig workflow of
+%% creating
+%% or deploying a configuration.
 %%
 %% You can create your own extensions or use the Amazon Web Services authored
-%% extensions provided by AppConfig. For an AppConfig extension that uses
-%% Lambda, you must create a Lambda function to perform any computation and
-%% processing defined in the extension. If you plan to create custom versions
-%% of the Amazon Web Services authored notification extensions, you only need
-%% to specify an Amazon Resource Name (ARN) in the `Uri' field for the
-%% new extension version.
+%% extensions provided by
+%% AppConfig. For an AppConfig extension that uses Lambda, you must create a
+%% Lambda function to perform any computation and processing
+%% defined in the extension. If you plan to create custom versions of the
+%% Amazon Web Services
+%% authored notification extensions, you only need to specify an Amazon
+%% Resource Name (ARN) in
+%% the `Uri' field for the new extension version.
 %%
-%% <ul> <li> For a custom EventBridge notification extension, enter the ARN
-%% of the EventBridge default events in the `Uri' field.
+%% For a custom EventBridge notification extension, enter the ARN of the
+%% EventBridge
+%% default events in the `Uri' field.
 %%
-%% </li> <li> For a custom Amazon SNS notification extension, enter the ARN
-%% of an Amazon SNS topic in the `Uri' field.
+%% For a custom Amazon SNS notification extension, enter the ARN of an Amazon
+%% SNS
+%% topic in the `Uri' field.
 %%
-%% </li> <li> For a custom Amazon SQS notification extension, enter the ARN
-%% of an Amazon SQS message queue in the `Uri' field.
+%% For a custom Amazon SQS notification extension, enter the ARN of an Amazon
+%% SQS
+%% message queue in the `Uri' field.
 %%
-%% </li> </ul> For more information about extensions, see Extending
+%% For more information about extensions, see Extending
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
@@ -433,10 +494,12 @@ create_extension(Client, Input0, Options0) ->
     Method = post,
     Path = ["/extensions"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Latest-Version-Number">>, <<"LatestVersionNumber">>}
@@ -452,17 +515,23 @@ create_extension(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When you create an extension or configure an Amazon Web Services
-%% authored extension, you associate the extension with an AppConfig
-%% application, environment, or configuration profile.
+%% authored extension, you
+%% associate the extension with an AppConfig application, environment, or
+%% configuration profile.
 %%
-%% For example, you can choose to run the `AppConfig deployment events to
-%% Amazon SNS' Amazon Web Services authored extension and receive
-%% notifications on an Amazon SNS topic anytime a configuration deployment is
-%% started for a specific application. Defining which extension to associate
-%% with an AppConfig resource is called an extension association. An
-%% extension association is a specified relationship between an extension and
-%% an AppConfig resource, such as an application or a configuration profile.
-%% For more information about extensions and associations, see Extending
+%% For example, you can choose to run the
+%% ```
+%% AppConfig deployment events to Amazon SNS'''
+%% Amazon Web Services authored extension and receive notifications on an
+%% Amazon SNS
+%% topic anytime a configuration deployment is started for a specific
+%% application. Defining
+%% which extension to associate with an AppConfig resource is called an
+%% extension association. An extension association is a specified
+%% relationship between an extension and an AppConfig resource, such as an
+%% application or a configuration profile. For more information about
+%% extensions and
+%% associations, see Extending
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
@@ -472,10 +541,12 @@ create_extension_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/extensionassociations"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -496,10 +567,12 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Content-Type">>, <<"ContentType">>},
@@ -541,17 +614,20 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 
 %% @doc Deletes an application.
 %%
-%% Deleting an application does not delete a configuration from a host.
+%% Deleting an application does not delete a configuration from a
+%% host.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -566,18 +642,20 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes a configuration profile.
 %%
-%% Deleting a configuration profile does not delete a configuration from a
-%% host.
+%% Deleting a configuration profile does not delete a
+%% configuration from a host.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -592,18 +670,20 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 
 %% @doc Deletes a deployment strategy.
 %%
-%% Deleting a deployment strategy does not delete a configuration from a
-%% host.
+%% Deleting a deployment strategy does not delete a
+%% configuration from a host.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     delete_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = delete,
     Path = ["/deployementstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -618,17 +698,20 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
 
 %% @doc Deletes an environment.
 %%
-%% Deleting an environment does not delete a configuration from a host.
+%% Deleting an environment does not delete a configuration from a
+%% host.
 delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_environment(Client, ApplicationId, EnvironmentId, Input, []).
 delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -643,18 +726,20 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 
 %% @doc Deletes an AppConfig extension.
 %%
-%% You must delete all associations to an extension before you delete the
-%% extension.
+%% You must delete all associations to an
+%% extension before you delete the extension.
 delete_extension(Client, ExtensionIdentifier, Input) ->
     delete_extension(Client, ExtensionIdentifier, Input, []).
 delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -670,17 +755,20 @@ delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 
 %% @doc Deletes an extension association.
 %%
-%% This action doesn't delete extensions defined in the association.
+%% This action doesn't delete extensions defined in the
+%% association.
 delete_extension_association(Client, ExtensionAssociationId, Input) ->
     delete_extension_association(Client, ExtensionAssociationId, Input, []).
 delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -694,17 +782,20 @@ delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a version of a configuration from the AppConfig hosted
-%% configuration store.
+%% configuration
+%% store.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input) ->
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -730,9 +821,11 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -745,7 +838,8 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% Note the following important information.
 %%
 %% This API action is deprecated. Calls to receive configuration data should
-%% use the StartConfigurationSession:
+%% use
+%% the StartConfigurationSession:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
 %% and GetLatestConfiguration:
 %% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
@@ -765,9 +859,11 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/environments/", aws_util:encode_uri(Environment), "/configurations/", aws_util:encode_uri(Configuration), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -810,9 +906,11 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -833,9 +931,11 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -845,10 +945,13 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
 
 %% @doc Retrieves information about a deployment strategy.
 %%
-%% A deployment strategy defines important criteria for rolling out your
-%% configuration to the designated targets. A deployment strategy includes
-%% the overall duration required, a percentage of targets to receive the
-%% deployment during each interval, an algorithm that defines how percentage
+%% A deployment strategy defines
+%% important criteria for rolling out your configuration to the designated
+%% targets. A
+%% deployment strategy includes the overall duration required, a percentage
+%% of targets to
+%% receive the deployment during each interval, an algorithm that defines how
+%% percentage
 %% grows, and bake time.
 get_deployment_strategy(Client, DeploymentStrategyId)
   when is_map(Client) ->
@@ -862,9 +965,11 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Opti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -874,11 +979,13 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Opti
 
 %% @doc Retrieves information about an environment.
 %%
-%% An environment is a deployment group of AppConfig applications, such as
-%% applications in a `Production' environment or in an `EU_Region'
-%% environment. Each configuration deployment targets an environment. You can
-%% enable one or more Amazon CloudWatch alarms for an environment. If an
-%% alarm is triggered during a deployment, AppConfig roles back the
+%% An environment is a deployment group of
+%% AppConfig applications, such as applications in a `Production'
+%% environment or in an `EU_Region' environment. Each configuration
+%% deployment
+%% targets an environment. You can enable one or more Amazon CloudWatch
+%% alarms for an environment. If
+%% an alarm is triggered during a deployment, AppConfig roles back the
 %% configuration.
 get_environment(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
@@ -892,9 +999,11 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -915,9 +1024,11 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -931,7 +1042,8 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about an AppConfig extension association.
 %%
-%% For more information about extensions and associations, see Extending
+%% For more
+%% information about extensions and associations, see Extending
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
@@ -947,9 +1059,11 @@ get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -970,9 +1084,11 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1015,9 +1131,11 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1043,9 +1161,11 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1072,9 +1192,11 @@ list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1101,9 +1223,11 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1129,9 +1253,11 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1146,7 +1272,8 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all AppConfig extension associations in the account.
 %%
-%% For more information about extensions and associations, see Extending
+%% For more
+%% information about extensions and associations, see Extending
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
@@ -1162,9 +1289,11 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensionassociations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1181,9 +1310,11 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all custom and Amazon Web Services authored AppConfig
-%% extensions in the account.
+%% extensions in the
+%% account.
 %%
-%% For more information about extensions, see Extending workflows:
+%% For more information about extensions, see Extending
+%% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 list_extensions(Client)
@@ -1198,9 +1329,11 @@ list_extensions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1215,7 +1348,8 @@ list_extensions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists configurations stored in the AppConfig hosted configuration
-%% store by version.
+%% store by
+%% version.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
@@ -1228,9 +1362,11 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1257,9 +1393,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1274,10 +1412,12 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1301,10 +1441,12 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1319,19 +1461,22 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
 
 %% @doc Assigns metadata to an AppConfig resource.
 %%
-%% Tags help organize and categorize your AppConfig resources. Each tag
-%% consists of a key and an optional value, both of which you define. You can
-%% specify a maximum of 50 tags for a resource.
+%% Tags help organize and categorize
+%% your AppConfig resources. Each tag consists of a key and an optional
+%% value, both
+%% of which you define. You can specify a maximum of 50 tags for a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1351,10 +1496,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1375,10 +1522,12 @@ update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1398,10 +1547,12 @@ update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1421,10 +1572,12 @@ update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = patch,
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1444,10 +1597,12 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1462,7 +1617,9 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 
 %% @doc Updates an AppConfig extension.
 %%
-%% For more information about extensions, see Extending workflows:
+%% For more information about extensions, see
+%% Extending
+%% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 update_extension(Client, ExtensionIdentifier, Input) ->
@@ -1471,10 +1628,12 @@ update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1489,7 +1648,8 @@ update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 
 %% @doc Updates an association.
 %%
-%% For more information about extensions and associations, see Extending
+%% For more information about extensions and associations, see
+%% Extending
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
@@ -1499,10 +1659,12 @@ update_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
     Method = patch,
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1523,10 +1685,12 @@ validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Op
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/validators"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1543,6 +1707,11 @@ validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Op
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

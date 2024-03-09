@@ -2,35 +2,43 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use the Amazon Elastic Block Store (Amazon EBS) direct APIs
-%% to create Amazon EBS snapshots, write data directly to your snapshots,
-%% read data on your snapshots, and identify the differences or changes
-%% between two snapshots.
+%% to create Amazon EBS snapshots, write data directly to
+%% your snapshots, read data on your snapshots, and identify the differences
+%% or changes between
+%% two snapshots.
 %%
 %% If you’re an independent software vendor (ISV) who offers backup services
-%% for Amazon EBS, the EBS direct APIs make it more efficient and
-%% cost-effective to track incremental changes on your Amazon EBS volumes
-%% through snapshots. This can be done without having to create new volumes
+%% for
+%% Amazon EBS, the EBS direct APIs make it more efficient and cost-effective
+%% to track incremental changes on
+%% your Amazon EBS volumes through snapshots. This can be done without having
+%% to create new volumes
 %% from snapshots, and then use Amazon Elastic Compute Cloud (Amazon EC2)
 %% instances to compare the differences.
 %%
 %% You can create incremental snapshots directly from data on-premises into
-%% volumes and the cloud to use for quick disaster recovery. With the ability
-%% to write and read snapshots, you can write your on-premises data to an
-%% snapshot during a disaster. Then after recovery, you can restore it back
-%% to Amazon Web Services or on-premises from the snapshot. You no longer
-%% need to build and maintain complex mechanisms to copy data to and from
-%% Amazon EBS.
+%% volumes and the
+%% cloud to use for quick disaster recovery. With the ability to write and
+%% read snapshots, you can
+%% write your on-premises data to an snapshot during a disaster. Then after
+%% recovery, you can
+%% restore it back to Amazon Web Services or on-premises from the snapshot.
+%% You no longer need to build and
+%% maintain complex mechanisms to copy data to and from Amazon EBS.
 %%
 %% This API reference provides detailed information about the actions, data
-%% types, parameters, and errors of the EBS direct APIs. For more information
-%% about the elements that make up the EBS direct APIs, and examples of how
-%% to use them effectively, see Accessing the Contents of an Amazon EBS
-%% Snapshot:
+%% types,
+%% parameters, and errors of the EBS direct APIs. For more information about
+%% the elements that
+%% make up the EBS direct APIs, and examples of how to use them effectively,
+%% see Accessing the Contents of an Amazon EBS Snapshot:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html
-%% in the Amazon Elastic Compute Cloud User Guide. For more information about
-%% the supported Amazon Web Services Regions, endpoints, and service quotas
-%% for the EBS direct APIs, see Amazon Elastic Block Store Endpoints and
-%% Quotas: https://docs.aws.amazon.com/general/latest/gr/ebs-service.html in
+%% in the Amazon Elastic Compute Cloud User
+%% Guide. For more information about the supported Amazon Web Services
+%% Regions, endpoints,
+%% and service quotas for the EBS direct APIs, see Amazon Elastic Block Store
+%% Endpoints and Quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/ebs-service.html in
 %% the Amazon Web Services General Reference.
 -module(aws_ebs).
 
@@ -57,27 +65,31 @@
 %%====================================================================
 
 %% @doc Seals and completes the snapshot after all of the required blocks of
-%% data have been written to it.
+%% data have been
+%% written to it.
 %%
-%% Completing the snapshot changes the status to `completed'. You cannot
-%% write new blocks to a snapshot after it has been completed.
+%% Completing the snapshot changes the status to `completed'. You
+%% cannot write new blocks to a snapshot after it has been completed.
 %%
-%% You should always retry requests that receive server (`5xx') error
-%% responses, and `ThrottlingException' and
-%% `RequestThrottledException' client error responses. For more
-%% information see Error retries:
+%% You should always retry requests that receive server (`5xx')
+%% error responses, and `ThrottlingException' and
+%% `RequestThrottledException'
+%% client error responses. For more information see Error retries:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the
+%% Amazon Elastic Compute Cloud User Guide.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
 complete_snapshot(Client, SnapshotId, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots/completion/", aws_util:encode_uri(SnapshotId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-ChangedBlocksCount">>, <<"ChangedBlocksCount">>},
@@ -98,12 +110,13 @@ complete_snapshot(Client, SnapshotId, Input0, Options0) ->
 %% @doc Returns the data in a block in an Amazon Elastic Block Store
 %% snapshot.
 %%
-%% You should always retry requests that receive server (`5xx') error
-%% responses, and `ThrottlingException' and
-%% `RequestThrottledException' client error responses. For more
-%% information see Error retries:
+%% You should always retry requests that receive server (`5xx')
+%% error responses, and `ThrottlingException' and
+%% `RequestThrottledException'
+%% client error responses. For more information see Error retries:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the
+%% Amazon Elastic Compute Cloud User Guide.
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
   when is_map(Client) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, #{}, #{}).
@@ -115,10 +128,12 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -151,12 +166,13 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
 %% @doc Returns information about the blocks that are different between two
 %% Amazon Elastic Block Store snapshots of the same volume/snapshot lineage.
 %%
-%% You should always retry requests that receive server (`5xx') error
-%% responses, and `ThrottlingException' and
-%% `RequestThrottledException' client error responses. For more
-%% information see Error retries:
+%% You should always retry requests that receive server (`5xx')
+%% error responses, and `ThrottlingException' and
+%% `RequestThrottledException'
+%% client error responses. For more information see Error retries:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the
+%% Amazon Elastic Compute Cloud User Guide.
 list_changed_blocks(Client, SecondSnapshotId)
   when is_map(Client) ->
     list_changed_blocks(Client, SecondSnapshotId, #{}, #{}).
@@ -168,10 +184,12 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap)
 list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SecondSnapshotId), "/changedblocks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -189,12 +207,13 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about the blocks in an Amazon Elastic Block Store
 %% snapshot.
 %%
-%% You should always retry requests that receive server (`5xx') error
-%% responses, and `ThrottlingException' and
-%% `RequestThrottledException' client error responses. For more
-%% information see Error retries:
+%% You should always retry requests that receive server (`5xx')
+%% error responses, and `ThrottlingException' and
+%% `RequestThrottledException'
+%% client error responses. For more information see Error retries:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the
+%% Amazon Elastic Compute Cloud User Guide.
 list_snapshot_blocks(Client, SnapshotId)
   when is_map(Client) ->
     list_snapshot_blocks(Client, SnapshotId, #{}, #{}).
@@ -206,10 +225,12 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap)
 list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -225,27 +246,31 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
 
 %% @doc Writes a block of data to a snapshot.
 %%
-%% If the specified block contains data, the existing data is overwritten.
-%% The target snapshot must be in the `pending' state.
+%% If the specified block contains
+%% data, the existing data is overwritten. The target snapshot must be in the
+%% `pending' state.
 %%
 %% Data written to a snapshot must be aligned with 512-KiB sectors.
 %%
-%% You should always retry requests that receive server (`5xx') error
-%% responses, and `ThrottlingException' and
-%% `RequestThrottledException' client error responses. For more
-%% information see Error retries:
+%% You should always retry requests that receive server (`5xx')
+%% error responses, and `ThrottlingException' and
+%% `RequestThrottledException'
+%% client error responses. For more information see Error retries:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the
+%% Amazon Elastic Compute Cloud User Guide.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
     Method = put,
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotId), "/blocks/", aws_util:encode_uri(BlockIndex), ""],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-Checksum">>, <<"Checksum">>},
@@ -282,29 +307,33 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
 
 %% @doc Creates a new Amazon EBS snapshot.
 %%
-%% The new snapshot enters the `pending' state after the request
-%% completes.
+%% The new snapshot enters the `pending' state
+%% after the request completes.
 %%
 %% After creating the snapshot, use PutSnapshotBlock:
 %% https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html
-%% to write blocks of data to the snapshot.
+%% to
+%% write blocks of data to the snapshot.
 %%
-%% You should always retry requests that receive server (`5xx') error
-%% responses, and `ThrottlingException' and
-%% `RequestThrottledException' client error responses. For more
-%% information see Error retries:
+%% You should always retry requests that receive server (`5xx')
+%% error responses, and `ThrottlingException' and
+%% `RequestThrottledException'
+%% client error responses. For more information see Error retries:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the
+%% Amazon Elastic Compute Cloud User Guide.
 start_snapshot(Client, Input) ->
     start_snapshot(Client, Input, []).
 start_snapshot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -320,6 +349,11 @@ start_snapshot(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

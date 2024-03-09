@@ -2,14 +2,18 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Managed Service for Prometheus is a serverless,
-%% Prometheus-compatible monitoring service for container metrics that makes
-%% it easier to securely monitor container environments at scale.
+%% Prometheus-compatible monitoring service for
+%% container metrics that makes it easier to securely monitor container
+%% environments at
+%% scale.
 %%
 %% With Amazon Managed Service for Prometheus, you can use the same
-%% open-source Prometheus data model and query language that you use today to
-%% monitor the performance of your containerized workloads, and also enjoy
-%% improved scalability, availability, and security without having to manage
-%% the underlying infrastructure.
+%% open-source Prometheus data
+%% model and query language that you use today to monitor the performance of
+%% your
+%% containerized workloads, and also enjoy improved scalability,
+%% availability, and security
+%% without having to manage the underlying infrastructure.
 %%
 %% For more information about Amazon Managed Service for Prometheus, see the
 %% Amazon Managed Service for Prometheus:
@@ -18,15 +22,15 @@
 %%
 %% Amazon Managed Service for Prometheus includes two APIs.
 %%
-%% <ul> <li> Use the Amazon Web Services API described in this guide to
-%% manage Amazon Managed Service for Prometheus resources, such as
-%% workspaces, rule groups, and alert managers.
+%% Use the Amazon Web Services API described in this guide to manage Amazon
+%% Managed Service for Prometheus resources, such as workspaces, rule groups,
+%% and alert
+%% managers.
 %%
-%% </li> <li> Use the Prometheus-compatible API:
+%% Use the Prometheus-compatible API:
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference.html#AMP-APIReference-Prometheus-Compatible-Apis
-%% to work within your Prometheus workspace.
-%%
-%% </li> </ul>
+%% to work within your Prometheus
+%% workspace.
 -module(aws_amp).
 
 -export([create_alert_manager_definition/3,
@@ -99,20 +103,24 @@
 %%====================================================================
 
 %% @doc The `CreateAlertManagerDefinition' operation creates the alert
-%% manager definition in a workspace.
+%% manager
+%% definition in a workspace.
 %%
-%% If a workspace already has an alert manager definition, don't use this
-%% operation to update it. Instead, use `PutAlertManagerDefinition'.
+%% If a workspace already has an alert manager definition, don't
+%% use this operation to update it. Instead, use
+%% `PutAlertManagerDefinition'.
 create_alert_manager_definition(Client, WorkspaceId, Input) ->
     create_alert_manager_definition(Client, WorkspaceId, Input, []).
 create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -126,20 +134,23 @@ create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `CreateLoggingConfiguration' operation creates a logging
-%% configuration for the workspace.
+%% configuration
+%% for the workspace.
 %%
-%% Use this operation to set the CloudWatch log group to which the logs will
-%% be published to.
+%% Use this operation to set the CloudWatch log group to which
+%% the logs will be published to.
 create_logging_configuration(Client, WorkspaceId, Input) ->
     create_logging_configuration(Client, WorkspaceId, Input, []).
 create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -153,23 +164,27 @@ create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `CreateRuleGroupsNamespace' operation creates a rule groups
-%% namespace within a workspace.
+%% namespace
+%% within a workspace.
 %%
 %% A rule groups namespace is associated with exactly one rules file. A
 %% workspace can have multiple rule groups namespaces.
 %%
 %% Use this operation only to create new rule groups namespaces. To update an
-%% existing rule groups namespace, use `PutRuleGroupsNamespace'.
+%% existing
+%% rule groups namespace, use `PutRuleGroupsNamespace'.
 create_rule_groups_namespace(Client, WorkspaceId, Input) ->
     create_rule_groups_namespace(Client, WorkspaceId, Input, []).
 create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -185,39 +200,50 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 %% @doc The `CreateScraper' operation creates a scraper to collect
 %% metrics.
 %%
-%% A scraper pulls metrics from Prometheus-compatible sources within an
-%% Amazon EKS cluster, and sends them to your Amazon Managed Service for
-%% Prometheus workspace. You can configure the scraper to control what
-%% metrics are collected, and what transformations are applied prior to
-%% sending them to your workspace.
+%% A
+%% scraper pulls metrics from Prometheus-compatible sources within an Amazon
+%% EKS
+%% cluster, and sends them to your Amazon Managed Service for Prometheus
+%% workspace. You can configure the
+%% scraper to control what metrics are collected, and what transformations
+%% are applied
+%% prior to sending them to your workspace.
 %%
 %% If needed, an IAM role will be created for you that gives Amazon Managed
 %% Service for Prometheus access to the metrics in your cluster. For more
-%% information, see Using roles for scraping metrics from EKS:
+%% information, see
+%% Using roles for scraping metrics from EKS:
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/using-service-linked-roles.html#using-service-linked-roles-prom-scraper
-%% in the Amazon Managed Service for Prometheus User Guide.
+%% in the Amazon Managed Service for Prometheus User
+%% Guide.
 %%
 %% You cannot update a scraper. If you want to change the configuration of
-%% the scraper, create a new scraper and delete the old one.
+%% the scraper,
+%% create a new scraper and delete the old one.
 %%
 %% The `scrapeConfiguration' parameter contains the base64-encoded
-%% version of the YAML configuration file.
+%% version of
+%% the YAML configuration file.
 %%
 %% For more information about collectors, including what metrics are
-%% collected, and how to configure the scraper, see Amazon Web Services
-%% managed collectors:
+%% collected, and
+%% how to configure the scraper, see Amazon Web Services managed
+%% collectors:
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector.html
-%% in the Amazon Managed Service for Prometheus User Guide.
+%% in the Amazon Managed Service for Prometheus User
+%% Guide.
 create_scraper(Client, Input) ->
     create_scraper(Client, Input, []).
 create_scraper(Client, Input0, Options0) ->
     Method = post,
     Path = ["/scrapers"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -232,19 +258,22 @@ create_scraper(Client, Input0, Options0) ->
 
 %% @doc Creates a Prometheus workspace.
 %%
-%% A workspace is a logical space dedicated to the storage and querying of
-%% Prometheus metrics. You can have one or more workspaces in each Region in
-%% your account.
+%% A workspace is a logical space dedicated to the
+%% storage and querying of Prometheus metrics. You can have one or more
+%% workspaces in each
+%% Region in your account.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
 create_workspace(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -264,10 +293,12 @@ delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -288,10 +319,12 @@ delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -313,10 +346,12 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -331,17 +366,20 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `DeleteScraper' operation deletes one scraper, and stops any
-%% metrics collection that the scraper performs.
+%% metrics
+%% collection that the scraper performs.
 delete_scraper(Client, ScraperId, Input) ->
     delete_scraper(Client, ScraperId, Input, []).
 delete_scraper(Client, ScraperId, Input0, Options0) ->
     Method = delete,
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -358,17 +396,20 @@ delete_scraper(Client, ScraperId, Input0, Options0) ->
 %% @doc Deletes an existing workspace.
 %%
 %% When you delete a workspace, the data that has been ingested into it is
-%% not immediately deleted. It will be permanently deleted within one month.
+%% not
+%% immediately deleted. It will be permanently deleted within one month.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
 delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -383,7 +424,8 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the full information about the alert manager definition for
-%% a workspace.
+%% a
+%% workspace.
 describe_alert_manager_definition(Client, WorkspaceId)
   when is_map(Client) ->
     describe_alert_manager_definition(Client, WorkspaceId, #{}, #{}).
@@ -396,9 +438,11 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -407,7 +451,8 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns complete information about the current logging configuration
-%% of the workspace.
+%% of the
+%% workspace.
 describe_logging_configuration(Client, WorkspaceId)
   when is_map(Client) ->
     describe_logging_configuration(Client, WorkspaceId, #{}, #{}).
@@ -420,9 +465,11 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Option
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -432,8 +479,8 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Option
 
 %% @doc Returns complete information about one rule groups namespace.
 %%
-%% To retrieve a list of rule groups namespaces, use
-%% `ListRuleGroupsNamespaces'.
+%% To retrieve a list of
+%% rule groups namespaces, use `ListRuleGroupsNamespaces'.
 describe_rule_groups_namespace(Client, Name, WorkspaceId)
   when is_map(Client) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, #{}, #{}).
@@ -446,9 +493,11 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -457,7 +506,8 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `DescribeScraper' operation displays information about an
-%% existing scraper.
+%% existing
+%% scraper.
 describe_scraper(Client, ScraperId)
   when is_map(Client) ->
     describe_scraper(Client, ScraperId, #{}, #{}).
@@ -470,9 +520,11 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -493,9 +545,11 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -504,8 +558,8 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `GetDefaultScraperConfiguration' operation returns the
-%% default scraper configuration used when Amazon EKS creates a scraper for
-%% you.
+%% default
+%% scraper configuration used when Amazon EKS creates a scraper for you.
 get_default_scraper_configuration(Client)
   when is_map(Client) ->
     get_default_scraper_configuration(Client, #{}, #{}).
@@ -518,9 +572,11 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scraperconfiguration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -541,9 +597,11 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -557,11 +615,11 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The `ListScrapers' operation lists all of the scrapers in your
-%% account.
+%% @doc The `ListScrapers' operation lists all of the scrapers in
+%% your account.
 %%
-%% This includes scrapers being created or deleted. You can optionally filter
-%% the returned list.
+%% This includes scrapers being created or deleted. You can optionally
+%% filter the returned list.
 list_scrapers(Client)
   when is_map(Client) ->
     list_scrapers(Client, #{}, #{}).
@@ -574,15 +632,17 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scrapers"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
     Query0_ =
       [
-        {<<"">>, maps:get(<<"">>, QueryMap, undefined)},
+        {<<"filters">>, maps:get(<<"filters">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -591,10 +651,11 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `ListTagsForResource' operation returns the tags that are
-%% associated with an Amazon Managed Service for Prometheus resource.
+%% associated
+%% with an Amazon Managed Service for Prometheus resource.
 %%
-%% Currently, the only resources that can be tagged are workspaces and rule
-%% groups namespaces.
+%% Currently, the only resources that can be
+%% tagged are workspaces and rule groups namespaces.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -607,9 +668,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -620,7 +683,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists all of the Amazon Managed Service for Prometheus workspaces in
 %% your account.
 %%
-%% This includes workspaces being created or deleted.
+%% This includes
+%% workspaces being created or deleted.
 list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
@@ -633,9 +697,11 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -651,19 +717,22 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Updates an existing alert manager definition in a workspace.
 %%
-%% If the workspace does not already have an alert manager definition,
-%% don't use this operation to create it. Instead, use
-%% `CreateAlertManagerDefinition'.
+%% If the workspace does not
+%% already have an alert manager definition, don't use this operation to
+%% create it.
+%% Instead, use `CreateAlertManagerDefinition'.
 put_alert_manager_definition(Client, WorkspaceId, Input) ->
     put_alert_manager_definition(Client, WorkspaceId, Input, []).
 put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -678,24 +747,30 @@ put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Updates an existing rule groups namespace within a workspace.
 %%
-%% A rule groups namespace is associated with exactly one rules file. A
-%% workspace can have multiple rule groups namespaces.
+%% A rule groups namespace
+%% is associated with exactly one rules file. A workspace can have multiple
+%% rule groups
+%% namespaces.
 %%
 %% Use this operation only to update existing rule groups namespaces. To
-%% create a new rule groups namespace, use `CreateRuleGroupsNamespace'.
+%% create a new
+%% rule groups namespace, use `CreateRuleGroupsNamespace'.
 %%
 %% You can't use this operation to add tags to an existing rule groups
-%% namespace. Instead, use `TagResource'.
+%% namespace.
+%% Instead, use `TagResource'.
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     put_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -709,25 +784,31 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The `TagResource' operation associates tags with an Amazon
-%% Managed Service for Prometheus resource.
+%% Managed Service for Prometheus
+%% resource.
 %%
 %% The only resources that can be tagged are workspaces and rule groups
 %% namespaces.
 %%
 %% If you specify a new tag key for the resource, this tag is appended to the
-%% list of tags associated with the resource. If you specify a tag key that
-%% is already associated with the resource, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% list of
+%% tags associated with the resource. If you specify a tag key that is
+%% already associated
+%% with the resource, the new tag value that you specify replaces the
+%% previous value for
+%% that tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -743,18 +824,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes the specified tags from an Amazon Managed Service for
 %% Prometheus resource.
 %%
-%% The only resources that can be tagged are workspaces and rule groups
-%% namespaces.
+%% The only resources
+%% that can be tagged are workspaces and rule groups namespaces.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -776,10 +859,12 @@ update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -799,10 +884,12 @@ update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alias"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -818,6 +905,11 @@ update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Route 53 API actions let you register domain names and perform
-%% related operations.
+%% related
+%% operations.
 -module(aws_route53_domains).
 
 -export([accept_domain_transfer_from_another_aws_account/2,
@@ -81,7 +82,8 @@
 %%====================================================================
 
 %% @doc Accepts the transfer of a domain from another Amazon Web Services
-%% account to the currentAmazon Web Services account.
+%% account to the
+%% currentAmazon Web Services account.
 %%
 %% You initiate a transfer between Amazon Web Services accounts using
 %% TransferDomainToAnotherAwsAccount:
@@ -90,8 +92,9 @@
 %% If you use the CLI command at
 %% accept-domain-transfer-from-another-aws-account:
 %% https://docs.aws.amazon.com/cli/latest/reference/route53domains/accept-domain-transfer-from-another-aws-account.html,
-%% use JSON format as input instead of text because otherwise CLI will throw
-%% an error from domain transfer input that includes single quotes.
+%% use JSON format as input
+%% instead of text because otherwise CLI will throw an error from domain
+%% transfer input that includes single quotes.
 %%
 %% Use either ListOperations:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html
@@ -99,8 +102,8 @@
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% to determine whether the operation succeeded. GetOperationDetail:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
-%% provides additional information, for example, `Domain Transfer from Aws
-%% Account 111122223333 has been cancelled'.
+%% provides additional information, for example,
+%% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
 accept_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -109,15 +112,20 @@ accept_domain_transfer_from_another_aws_account(Client, Input, Options)
     request(Client, <<"AcceptDomainTransferFromAnotherAwsAccount">>, Input, Options).
 
 %% @doc Creates a delegation signer (DS) record in the registry zone for this
-%% domain name.
+%% domain
+%% name.
 %%
 %% Note that creating DS record at the registry impacts DNSSEC validation of
-%% your DNS records. This action may render your domain name unavailable on
-%% the internet if the steps are completed in the wrong order, or with
-%% incorrect timing. For more information about DNSSEC signing, see
-%% Configuring DNSSEC signing:
+%% your DNS
+%% records. This action may render your domain name unavailable on the
+%% internet if the
+%% steps are completed in the wrong order, or with incorrect timing. For more
+%% information
+%% about DNSSEC signing, see Configuring DNSSEC
+%% signing:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html
-%% in the Route 53 developer guide.
+%% in the Route 53 developer
+%% guide.
 associate_delegation_signer_to_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_delegation_signer_to_domain(Client, Input, []).
@@ -126,14 +134,16 @@ associate_delegation_signer_to_domain(Client, Input, Options)
     request(Client, <<"AssociateDelegationSignerToDomain">>, Input, Options).
 
 %% @doc Cancels the transfer of a domain from the current Amazon Web Services
-%% account to another Amazon Web Services account.
+%% account to
+%% another Amazon Web Services account.
 %%
 %% You initiate a transfer betweenAmazon Web Services accounts using
 %% TransferDomainToAnotherAwsAccount:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html.
 %%
 %% You must cancel the transfer before the other Amazon Web Services account
-%% accepts the transfer using AcceptDomainTransferFromAnotherAwsAccount:
+%% accepts
+%% the transfer using AcceptDomainTransferFromAnotherAwsAccount:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html.
 %%
 %% Use either ListOperations:
@@ -142,8 +152,8 @@ associate_delegation_signer_to_domain(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% to determine whether the operation succeeded. GetOperationDetail:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
-%% provides additional information, for example, `Domain Transfer from Aws
-%% Account 111122223333 has been cancelled'.
+%% provides additional information, for example,
+%% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
 cancel_domain_transfer_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_domain_transfer_to_another_aws_account(Client, Input, []).
@@ -153,8 +163,10 @@ cancel_domain_transfer_to_another_aws_account(Client, Input, Options)
 
 %% @doc This operation checks the availability of one domain name.
 %%
-%% Note that if the availability status of a domain is pending, you must
-%% submit another request to determine the availability of the domain name.
+%% Note that if the
+%% availability status of a domain is pending, you must submit another
+%% request to determine
+%% the availability of the domain name.
 check_domain_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_domain_availability(Client, Input, []).
@@ -172,27 +184,28 @@ check_domain_transferability(Client, Input, Options)
 
 %% @doc This operation deletes the specified domain.
 %%
-%% This action is permanent. For more information, see Deleting a domain name
+%% This action is permanent. For more
+%% information, see Deleting a domain name
 %% registration:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-delete.html.
 %%
 %% To transfer the domain registration to another registrar, use the transfer
-%% process that’s provided by the registrar to which you want to transfer the
-%% registration. Otherwise, the following apply:
-%%
-%% <ol> <li> You can’t get a refund for the cost of a deleted domain
+%% process
+%% that’s provided by the registrar to which you want to transfer the
 %% registration.
+%% Otherwise, the following apply:
 %%
-%% </li> <li> The registry for the top-level domain might hold the domain
-%% name for a brief time before releasing it for other users to register
-%% (varies by registry).
+%% You can’t get a refund for the cost of a deleted domain registration.
 %%
-%% </li> <li> When the registration has been deleted, we'll send you a
-%% confirmation to the registrant contact. The email will come from
+%% The registry for the top-level domain might hold the domain name for a
+%% brief
+%% time before releasing it for other users to register (varies by registry).
+%%
+%% When the registration has been deleted, we'll send you a confirmation
+%% to the
+%% registrant contact. The email will come from
 %% `noreply@domainnameverification.net' or
 %% `noreply@registrar.amazon.com'.
-%%
-%% </li> </ol>
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -203,7 +216,8 @@ delete_domain(Client, Input, Options)
 %% @doc This operation deletes the specified tags for a domain.
 %%
 %% All tag operations are eventually consistent; subsequent operations might
-%% not immediately represent all issued operations.
+%% not
+%% immediately represent all issued operations.
 delete_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags_for_domain(Client, Input, []).
@@ -212,7 +226,8 @@ delete_tags_for_domain(Client, Input, Options)
     request(Client, <<"DeleteTagsForDomain">>, Input, Options).
 
 %% @doc This operation disables automatic renewal of domain registration for
-%% the specified domain.
+%% the specified
+%% domain.
 disable_domain_auto_renew(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_domain_auto_renew(Client, Input, []).
@@ -221,13 +236,17 @@ disable_domain_auto_renew(Client, Input, Options)
     request(Client, <<"DisableDomainAutoRenew">>, Input, Options).
 
 %% @doc This operation removes the transfer lock on the domain (specifically
-%% the `clientTransferProhibited' status) to allow domain transfers.
+%% the
+%% `clientTransferProhibited' status) to allow domain transfers.
 %%
-%% We recommend you refrain from performing this action unless you intend to
-%% transfer the domain to a different registrar. Successful submission
-%% returns an operation ID that you can use to track the progress and
-%% completion of the action. If the request is not completed successfully,
-%% the domain registrant will be notified by email.
+%% We
+%% recommend you refrain from performing this action unless you intend to
+%% transfer the
+%% domain to a different registrar. Successful submission returns an
+%% operation ID that you
+%% can use to track the progress and completion of the action. If the request
+%% is not
+%% completed successfully, the domain registrant will be notified by email.
 disable_domain_transfer_lock(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_domain_transfer_lock(Client, Input, []).
@@ -236,7 +255,8 @@ disable_domain_transfer_lock(Client, Input, Options)
     request(Client, <<"DisableDomainTransferLock">>, Input, Options).
 
 %% @doc Deletes a delegation signer (DS) record in the registry zone for this
-%% domain name.
+%% domain
+%% name.
 disassociate_delegation_signer_from_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_delegation_signer_from_domain(Client, Input, []).
@@ -245,18 +265,20 @@ disassociate_delegation_signer_from_domain(Client, Input, Options)
     request(Client, <<"DisassociateDelegationSignerFromDomain">>, Input, Options).
 
 %% @doc This operation configures Amazon Route 53 to automatically renew the
-%% specified domain before the domain registration expires.
+%% specified domain
+%% before the domain registration expires.
 %%
-%% The cost of renewing your domain registration is billed to your Amazon Web
-%% Services account.
+%% The cost of renewing your domain registration is
+%% billed to your Amazon Web Services account.
 %%
 %% The period during which you can renew a domain name varies by TLD. For a
-%% list of TLDs and their renewal policies, see Domains That You Can Register
-%% with Amazon Route 53:
+%% list of TLDs
+%% and their renewal policies, see Domains That You Can
+%% Register with Amazon Route 53:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html
-%% in the Amazon Route 53 Developer Guide. Route 53 requires that you renew
-%% before the end of the renewal period so we can complete processing before
-%% the deadline.
+%% in the Amazon Route 53 Developer
+%% Guide. Route 53 requires that you renew before the end of the renewal
+%% period so we can complete processing before the deadline.
 enable_domain_auto_renew(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_domain_auto_renew(Client, Input, []).
@@ -268,8 +290,10 @@ enable_domain_auto_renew(Client, Input, Options)
 %% `clientTransferProhibited' status) to prevent domain transfers.
 %%
 %% Successful submission returns an operation ID that you can use to track
-%% the progress and completion of the action. If the request is not completed
-%% successfully, the domain registrant will be notified by email.
+%% the progress and
+%% completion of the action. If the request is not completed successfully,
+%% the domain
+%% registrant will be notified by email.
 enable_domain_transfer_lock(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_domain_transfer_lock(Client, Input, []).
@@ -278,9 +302,10 @@ enable_domain_transfer_lock(Client, Input, Options)
     request(Client, <<"EnableDomainTransferLock">>, Input, Options).
 
 %% @doc For operations that require confirmation that the email address for
-%% the registrant contact is valid, such as registering a new domain, this
-%% operation returns information about whether the registrant contact has
-%% responded.
+%% the registrant
+%% contact is valid, such as registering a new domain, this operation returns
+%% information
+%% about whether the registrant contact has responded.
 %%
 %% If you want us to resend the email, use the
 %% `ResendContactReachabilityEmail' operation.
@@ -292,9 +317,11 @@ get_contact_reachability_status(Client, Input, Options)
     request(Client, <<"GetContactReachabilityStatus">>, Input, Options).
 
 %% @doc This operation returns detailed information about a specified domain
-%% that is associated with the current Amazon Web Services account.
+%% that is
+%% associated with the current Amazon Web Services account.
 %%
-%% Contact information for the domain is also returned as part of the output.
+%% Contact information for the
+%% domain is also returned as part of the output.
 get_domain_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domain_detail(Client, Input, []).
@@ -321,8 +348,8 @@ get_operation_detail(Client, Input, Options)
     request(Client, <<"GetOperationDetail">>, Input, Options).
 
 %% @doc This operation returns all the domain names registered with Amazon
-%% Route 53 for the current Amazon Web Services account if no filtering
-%% conditions are used.
+%% Route 53 for the
+%% current Amazon Web Services account if no filtering conditions are used.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
@@ -331,8 +358,9 @@ list_domains(Client, Input, Options)
     request(Client, <<"ListDomains">>, Input, Options).
 
 %% @doc Returns information about all of the operations that return an
-%% operation ID and that have ever been performed on domains that were
-%% registered by the current account.
+%% operation ID and that
+%% have ever been performed on domains that were registered by the current
+%% account.
 %%
 %% This command runs only in the us-east-1 Region.
 list_operations(Client, Input)
@@ -343,19 +371,18 @@ list_operations(Client, Input, Options)
     request(Client, <<"ListOperations">>, Input, Options).
 
 %% @doc Lists the following prices for either all the TLDs supported by
-%% Route 53, or the specified TLD:
+%% Route 53, or
+%% the specified TLD:
 %%
-%% <ul> <li> Registration
+%% Registration
 %%
-%% </li> <li> Transfer
+%% Transfer
 %%
-%% </li> <li> Owner change
+%% Owner change
 %%
-%% </li> <li> Domain renewal
+%% Domain renewal
 %%
-%% </li> <li> Domain restoration
-%%
-%% </li> </ul>
+%% Domain restoration
 list_prices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_prices(Client, Input, []).
@@ -364,10 +391,12 @@ list_prices(Client, Input, Options)
     request(Client, <<"ListPrices">>, Input, Options).
 
 %% @doc This operation returns all of the tags that are associated with the
-%% specified domain.
+%% specified
+%% domain.
 %%
 %% All tag operations are eventually consistent; subsequent operations might
-%% not immediately represent all issued operations.
+%% not
+%% immediately represent all issued operations.
 list_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_domain(Client, Input, []).
@@ -379,11 +408,9 @@ list_tags_for_domain(Client, Input, Options)
 %%
 %% Supported actions:
 %%
-%% <ul> <li> Changes the IPS tags of a .uk domain, and pushes it to transit.
-%% Transit means that the domain is ready to be transferred to another
-%% registrar.
-%%
-%% </li> </ul>
+%% Changes the IPS tags of a .uk domain, and pushes it to transit. Transit
+%% means
+%% that the domain is ready to be transferred to another registrar.
 push_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     push_domain(Client, Input, []).
@@ -393,38 +420,44 @@ push_domain(Client, Input, Options)
 
 %% @doc This operation registers a domain.
 %%
-%% For some top-level domains (TLDs), this operation requires extra
-%% parameters.
+%% For some top-level domains (TLDs), this operation
+%% requires extra parameters.
 %%
 %% When you register a domain, Amazon Route 53 does the following:
 %%
-%% <ul> <li> Creates a Route 53 hosted zone that has the same name as the
-%% domain. Route 53 assigns four name servers to your hosted zone and
-%% automatically updates your domain registration with the names of these
-%% name servers.
+%% Creates a Route 53 hosted zone that has the same name as the domain. Route
+%% 53
+%% assigns four name servers to your hosted zone and automatically updates
+%% your
+%% domain registration with the names of these name servers.
 %%
-%% </li> <li> Enables auto renew, so your domain registration will renew
-%% automatically each year. We'll notify you in advance of the renewal
-%% date so you can choose whether to renew the registration.
+%% Enables auto renew, so your domain registration will renew automatically
+%% each
+%% year. We'll notify you in advance of the renewal date so you can
+%% choose whether
+%% to renew the registration.
 %%
-%% </li> <li> Optionally enables privacy protection, so WHOIS queries return
-%% contact for the registrar or the phrase &quot;REDACTED FOR PRIVACY&quot;,
-%% or &quot;On behalf of &lt;domain name&gt; owner.&quot; If you don't
-%% enable privacy protection, WHOIS queries return the information that you
-%% entered for the administrative, registrant, and technical contacts.
+%% Optionally enables privacy protection, so WHOIS queries return contact for
+%% the registrar
+%% or the phrase &quot;REDACTED FOR PRIVACY&quot;, or &quot;On behalf of
+%% owner.&quot;
+%% If you don't enable privacy protection, WHOIS queries return the
+%% information
+%% that you entered for the administrative, registrant, and technical
+%% contacts.
 %%
 %% While some domains may allow different privacy settings per contact, we
-%% recommend specifying the same privacy setting for all contacts.
+%% recommend
+%% specifying the same privacy setting for all contacts.
 %%
-%% </li> <li> If registration is successful, returns an operation ID that you
-%% can use to track the progress and completion of the action. If the request
-%% is not completed successfully, the domain registrant is notified by email.
+%% If registration is successful, returns an operation ID that you can use to
+%% track the progress and completion of the action. If the request is not
+%% completed
+%% successfully, the domain registrant is notified by email.
 %%
-%% </li> <li> Charges your Amazon Web Services account an amount based on the
-%% top-level domain. For more information, see Amazon Route 53 Pricing:
+%% Charges your Amazon Web Services account an amount based on the top-level
+%% domain. For more information, see Amazon Route 53 Pricing:
 %% http://aws.amazon.com/route53/pricing/.
-%%
-%% </li> </ul>
 register_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_domain(Client, Input, []).
@@ -433,7 +466,8 @@ register_domain(Client, Input, Options)
     request(Client, <<"RegisterDomain">>, Input, Options).
 
 %% @doc Rejects the transfer of a domain from another Amazon Web Services
-%% account to the current Amazon Web Services account.
+%% account to the
+%% current Amazon Web Services account.
 %%
 %% You initiate a transfer betweenAmazon Web Services accounts using
 %% TransferDomainToAnotherAwsAccount:
@@ -445,8 +479,8 @@ register_domain(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% to determine whether the operation succeeded. GetOperationDetail:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
-%% provides additional information, for example, `Domain Transfer from Aws
-%% Account 111122223333 has been cancelled'.
+%% provides additional information, for example,
+%% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
 reject_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -456,16 +490,19 @@ reject_domain_transfer_from_another_aws_account(Client, Input, Options)
 
 %% @doc This operation renews a domain for the specified number of years.
 %%
-%% The cost of renewing your domain is billed to your Amazon Web Services
-%% account.
+%% The cost of renewing
+%% your domain is billed to your Amazon Web Services account.
 %%
 %% We recommend that you renew your domain several weeks before the
-%% expiration date. Some TLD registries delete domains before the expiration
-%% date if you haven't renewed far enough in advance. For more
-%% information about renewing domain registration, see Renewing Registration
-%% for a Domain:
+%% expiration date. Some
+%% TLD registries delete domains before the expiration date if you
+%% haven't renewed far
+%% enough in advance. For more information about renewing domain
+%% registration, see Renewing
+%% Registration for a Domain:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the Amazon Route 53 Developer
+%% Guide.
 renew_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_domain(Client, Input, []).
@@ -474,9 +511,11 @@ renew_domain(Client, Input, Options)
     request(Client, <<"RenewDomain">>, Input, Options).
 
 %% @doc For operations that require confirmation that the email address for
-%% the registrant contact is valid, such as registering a new domain, this
-%% operation resends the confirmation email to the current email address for
-%% the registrant contact.
+%% the registrant
+%% contact is valid, such as registering a new domain, this operation resends
+%% the
+%% confirmation email to the current email address for the registrant
+%% contact.
 resend_contact_reachability_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_contact_reachability_email(Client, Input, []).
@@ -494,8 +533,8 @@ resend_operation_authorization(Client, Input, Options)
 
 %% @doc This operation returns the authorization code for the domain.
 %%
-%% To transfer a domain to another registrar, you provide this value to the
-%% new registrar.
+%% To transfer a domain to
+%% another registrar, you provide this value to the new registrar.
 retrieve_domain_auth_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_domain_auth_code(Client, Input, []).
@@ -507,46 +546,58 @@ retrieve_domain_auth_code(Client, Input, Options)
 %%
 %% For more information about transferring domains, see the following topics:
 %%
-%% <ul> <li> For transfer requirements, a detailed procedure, and information
-%% about viewing the status of a domain that you're transferring to Route
-%% 53, see Transferring Registration for a Domain to Amazon Route 53:
+%% For transfer requirements, a detailed procedure, and information about
+%% viewing
+%% the status of a domain that you're transferring to Route 53, see
+%% Transferring Registration for a Domain to Amazon Route 53:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the
+%% Amazon Route 53 Developer Guide.
 %%
-%% </li> <li> For information about how to transfer a domain from one Amazon
-%% Web Services account to another, see TransferDomainToAnotherAwsAccount:
+%% For information about how to transfer a domain from one Amazon Web
+%% Services account to another, see TransferDomainToAnotherAwsAccount:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html.
 %%
-%% </li> <li> For information about how to transfer a domain to another
-%% domain registrar, see Transferring a Domain from Amazon Route 53 to
-%% Another Registrar:
+%% For information about how to transfer a domain to another domain
+%% registrar,
+%% see Transferring a Domain from Amazon Route 53 to Another Registrar:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html
-%% in the Amazon Route 53 Developer Guide.
+%% in
+%% the Amazon Route 53 Developer Guide.
 %%
-%% </li> </ul> During the transfer of any country code top-level domains
-%% (ccTLDs) to Route 53, except for .cc and .tv, updates to the owner contact
-%% are ignored and the owner contact data from the registry is used. You can
+%% During the transfer of any country code top-level domains (ccTLDs) to
+%% Route 53, except for .cc and .tv,
+%% updates to the owner contact are ignored and the owner contact data from
+%% the registry is used.
+%% You can
 %% update the owner contact after the transfer is complete. For more
-%% information, see UpdateDomainContact:
+%% information, see
+%% UpdateDomainContact:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainContact.html.
 %%
 %% If the registrar for your domain is also the DNS service provider for the
-%% domain, we highly recommend that you transfer your DNS service to Route 53
-%% or to another DNS service provider before you transfer your registration.
-%% Some registrars provide free DNS service when you purchase a domain
-%% registration. When you transfer the registration, the previous registrar
-%% will not renew your domain registration and could end your DNS service at
-%% any time.
+%% domain, we
+%% highly recommend that you transfer your DNS service to Route 53 or to
+%% another DNS
+%% service provider before you transfer your registration. Some registrars
+%% provide free DNS
+%% service when you purchase a domain registration. When you transfer the
+%% registration, the
+%% previous registrar will not renew your domain registration and could end
+%% your DNS
+%% service at any time.
 %%
 %% If the registrar for your domain is also the DNS service provider for the
-%% domain and you don't transfer DNS service to another provider, your
-%% website, email, and the web applications associated with the domain might
-%% become unavailable.
+%% domain
+%% and you don't transfer DNS service to another provider, your website,
+%% email, and the
+%% web applications associated with the domain might become unavailable.
 %%
 %% If the transfer is successful, this method returns an operation ID that
-%% you can use to track the progress and completion of the action. If the
-%% transfer doesn't complete successfully, the domain registrant will be
-%% notified by email.
+%% you can use to
+%% track the progress and completion of the action. If the transfer
+%% doesn't complete
+%% successfully, the domain registrant will be notified by email.
 transfer_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain(Client, Input, []).
@@ -559,29 +610,36 @@ transfer_domain(Client, Input, Options)
 %%
 %% Note the following:
 %%
-%% <ul> <li> The Amazon Web Services account that you're transferring the
-%% domain to must accept the transfer. If the other account doesn't
-%% accept the transfer within 3 days, we cancel the transfer. See
+%% The Amazon Web Services account that you're transferring the domain to
+%% must
+%% accept the transfer. If the other account doesn't accept the transfer
+%% within 3
+%% days, we cancel the transfer. See
 %% AcceptDomainTransferFromAnotherAwsAccount:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html.
 %%
-%% </li> <li> You can cancel the transfer before the other account accepts
-%% it. See CancelDomainTransferToAnotherAwsAccount:
+%% You can cancel the transfer before the other account accepts it. See
+%% CancelDomainTransferToAnotherAwsAccount:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_CancelDomainTransferToAnotherAwsAccount.html.
 %%
-%% </li> <li> The other account can reject the transfer. See
+%% The other account can reject the transfer. See
 %% RejectDomainTransferFromAnotherAwsAccount:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_RejectDomainTransferFromAnotherAwsAccount.html.
 %%
-%% </li> </ul> When you transfer a domain from one Amazon Web Services
-%% account to another, Route 53 doesn't transfer the hosted zone that is
-%% associated with the domain. DNS resolution isn't affected if the
-%% domain and the hosted zone are owned by separate accounts, so transferring
-%% the hosted zone is optional. For information about transferring the hosted
-%% zone to another Amazon Web Services account, see Migrating a Hosted Zone
-%% to a Different Amazon Web Services Account:
+%% When you transfer a domain from one Amazon Web Services account to
+%% another, Route
+%% 53 doesn't transfer the hosted zone that is associated with the
+%% domain. DNS
+%% resolution isn't affected if the domain and the hosted zone are owned
+%% by separate
+%% accounts, so transferring the hosted zone is optional. For information
+%% about
+%% transferring the hosted zone to another Amazon Web Services account, see
+%% Migrating a
+%% Hosted Zone to a Different Amazon Web Services Account:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the
+%% Amazon Route 53 Developer Guide.
 %%
 %% Use either ListOperations:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html
@@ -589,8 +647,8 @@ transfer_domain(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% to determine whether the operation succeeded. GetOperationDetail:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
-%% provides additional information, for example, `Domain Transfer from Aws
-%% Account 111122223333 has been cancelled'.
+%% provides additional information, for example,
+%% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
 transfer_domain_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain_to_another_aws_account(Client, Input, []).
@@ -601,13 +659,16 @@ transfer_domain_to_another_aws_account(Client, Input, Options)
 %% @doc This operation updates the contact information for a particular
 %% domain.
 %%
-%% You must specify information for at least one contact: registrant,
-%% administrator, or technical.
+%% You must
+%% specify information for at least one contact: registrant, administrator,
+%% or
+%% technical.
 %%
 %% If the update is successful, this method returns an operation ID that you
-%% can use to track the progress and completion of the operation. If the
-%% request is not completed successfully, the domain registrant will be
-%% notified by email.
+%% can use to
+%% track the progress and completion of the operation. If the request is not
+%% completed
+%% successfully, the domain registrant will be notified by email.
 update_domain_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_contact(Client, Input, []).
@@ -618,32 +679,41 @@ update_domain_contact(Client, Input, Options)
 %% @doc This operation updates the specified domain contact's privacy
 %% setting.
 %%
-%% When privacy protection is enabled, your contact information is replaced
-%% with contact information for the registrar or with the phrase
-%% &quot;REDACTED FOR PRIVACY&quot;, or &quot;On behalf of &lt;domain
-%% name&gt; owner.&quot;
+%% When privacy
+%% protection is enabled, your contact information is replaced with contact
+%% information for
+%% the registrar or with the phrase &quot;REDACTED FOR PRIVACY&quot;, or
+%% &quot;On behalf of owner.&quot;
 %%
 %% While some domains may allow different privacy settings per contact, we
-%% recommend specifying the same privacy setting for all contacts.
+%% recommend
+%% specifying the same privacy setting for all contacts.
 %%
 %% This operation affects only the contact information for the specified
-%% contact type (administrative, registrant, or technical). If the request
-%% succeeds, Amazon Route 53 returns an operation ID that you can use with
-%% GetOperationDetail:
+%% contact type
+%% (administrative, registrant, or technical). If the request succeeds,
+%% Amazon Route 53
+%% returns an operation ID that you can use with GetOperationDetail:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
-%% to track the progress and completion of the action. If the request
-%% doesn't complete successfully, the domain registrant will be notified
-%% by email.
+%% to track the progress and completion of the action. If
+%% the request doesn't complete successfully, the domain registrant will
+%% be notified by
+%% email.
 %%
 %% By disabling the privacy service via API, you consent to the publication
-%% of the contact information provided for this domain via the public WHOIS
-%% database. You certify that you are the registrant of this domain name and
-%% have the authority to make this decision. You may withdraw your consent at
-%% any time by enabling privacy protection using either
-%% `UpdateDomainContactPrivacy' or the Route 53 console. Enabling privacy
-%% protection removes the contact information provided for this domain from
-%% the WHOIS database. For more information on our privacy practices, see
-%% [https://aws.amazon.com/privacy/].
+%% of the
+%% contact information provided for this domain via the public WHOIS
+%% database. You
+%% certify that you are the registrant of this domain name and have the
+%% authority to
+%% make this decision. You may withdraw your consent at any time by enabling
+%% privacy
+%% protection using either `UpdateDomainContactPrivacy' or the Route 53
+%% console. Enabling privacy protection removes the contact information
+%% provided for
+%% this domain from the WHOIS database. For more information on our privacy
+%% practices,
+%% see [https://aws.amazon.com/privacy/].
 update_domain_contact_privacy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_contact_privacy(Client, Input, []).
@@ -652,14 +722,18 @@ update_domain_contact_privacy(Client, Input, Options)
     request(Client, <<"UpdateDomainContactPrivacy">>, Input, Options).
 
 %% @doc This operation replaces the current set of name servers for the
-%% domain with the specified set of name servers.
+%% domain with the
+%% specified set of name servers.
 %%
-%% If you use Amazon Route 53 as your DNS service, specify the four name
-%% servers in the delegation set for the hosted zone for the domain.
+%% If you use Amazon Route 53 as your DNS service, specify
+%% the four name servers in the delegation set for the hosted zone for the
+%% domain.
 %%
 %% If successful, this operation returns an operation ID that you can use to
-%% track the progress and completion of the action. If the request is not
-%% completed successfully, the domain registrant will be notified by email.
+%% track the
+%% progress and completion of the action. If the request is not completed
+%% successfully, the
+%% domain registrant will be notified by email.
 update_domain_nameservers(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_nameservers(Client, Input, []).
@@ -670,7 +744,8 @@ update_domain_nameservers(Client, Input, Options)
 %% @doc This operation adds or updates tags for a specified domain.
 %%
 %% All tag operations are eventually consistent; subsequent operations might
-%% not immediately represent all issued operations.
+%% not
+%% immediately represent all issued operations.
 update_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tags_for_domain(Client, Input, []).

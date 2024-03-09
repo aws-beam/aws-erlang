@@ -6,17 +6,21 @@
 %% Amazon Elastic Container Registry (Amazon ECR) is a managed container
 %% image registry service.
 %%
-%% Customers can use the familiar Docker CLI, or their preferred client, to
-%% push, pull, and manage images. Amazon ECR provides a secure, scalable, and
-%% reliable registry for your Docker or Open Container Initiative (OCI)
-%% images. Amazon ECR supports private repositories with resource-based
+%% Customers can use the
+%% familiar Docker CLI, or their preferred client, to push, pull, and manage
+%% images. Amazon ECR
+%% provides a secure, scalable, and reliable registry for your Docker or Open
+%% Container
+%% Initiative (OCI) images. Amazon ECR supports private repositories with
+%% resource-based
 %% permissions using IAM so that specific users or Amazon EC2 instances can
-%% access repositories and images.
+%% access
+%% repositories and images.
 %%
 %% Amazon ECR has service endpoints in each supported Region. For more
 %% information, see Amazon ECR endpoints:
-%% https://docs.aws.amazon.com/general/latest/gr/ecr.html in the Amazon Web
-%% Services General Reference.
+%% https://docs.aws.amazon.com/general/latest/gr/ecr.html in the
+%% Amazon Web Services General Reference.
 -module(aws_ecr).
 
 -export([batch_check_layer_availability/2,
@@ -115,11 +119,13 @@
 %% @doc Checks the availability of one or more image layers in a repository.
 %%
 %% When an image is pushed to a repository, each image layer is checked to
-%% verify if it has been uploaded before. If it has been uploaded, then the
-%% image layer is skipped.
+%% verify if it
+%% has been uploaded before. If it has been uploaded, then the image layer is
+%% skipped.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
-%% by customers for pulling and pushing images. In most cases, you should use
+%% by
+%% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
 batch_check_layer_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -130,14 +136,17 @@ batch_check_layer_availability(Client, Input, Options)
 
 %% @doc Deletes a list of specified images within a repository.
 %%
-%% Images are specified with either an `imageTag' or `imageDigest'.
+%% Images are specified with
+%% either an `imageTag' or `imageDigest'.
 %%
 %% You can remove a tag from an image by specifying the image's tag in
-%% your request. When you remove the last tag from an image, the image is
-%% deleted from your repository.
+%% your request. When
+%% you remove the last tag from an image, the image is deleted from your
+%% repository.
 %%
 %% You can completely delete an image (and all of its tags) by specifying the
-%% image's digest in your request.
+%% image's
+%% digest in your request.
 batch_delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_image(Client, Input, []).
@@ -147,10 +156,12 @@ batch_delete_image(Client, Input, Options)
 
 %% @doc Gets detailed information for an image.
 %%
-%% Images are specified with either an `imageTag' or `imageDigest'.
+%% Images are specified with either an
+%% `imageTag' or `imageDigest'.
 %%
 %% When an image is pulled, the BatchGetImage API is called once to retrieve
-%% the image manifest.
+%% the image
+%% manifest.
 batch_get_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_image(Client, Input, []).
@@ -167,16 +178,19 @@ batch_get_repository_scanning_configuration(Client, Input, Options)
     request(Client, <<"BatchGetRepositoryScanningConfiguration">>, Input, Options).
 
 %% @doc Informs Amazon ECR that the image layer upload has completed for a
-%% specified registry, repository name, and upload ID.
+%% specified registry,
+%% repository name, and upload ID.
 %%
-%% You can optionally provide a `sha256' digest of the image layer for
-%% data validation purposes.
+%% You can optionally provide a `sha256' digest
+%% of the image layer for data validation purposes.
 %%
 %% When an image is pushed, the CompleteLayerUpload API is called once per
-%% each new image layer to verify that the upload has completed.
+%% each new image
+%% layer to verify that the upload has completed.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
-%% by customers for pulling and pushing images. In most cases, you should use
+%% by
+%% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
 complete_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -187,9 +201,11 @@ complete_layer_upload(Client, Input, Options)
 
 %% @doc Creates a pull through cache rule.
 %%
-%% A pull through cache rule provides a way to cache images from an upstream
-%% registry source in your Amazon ECR private registry. For more information,
-%% see Using pull through cache rules:
+%% A pull through cache rule provides a way to cache
+%% images from an upstream registry source in your Amazon ECR private
+%% registry. For more
+%% information, see Using pull through cache
+%% rules:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache.html
 %% in the Amazon Elastic Container Registry User Guide.
 create_pull_through_cache_rule(Client, Input)
@@ -203,7 +219,8 @@ create_pull_through_cache_rule(Client, Input, Options)
 %%
 %% For more information, see Amazon ECR repositories:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html
-%% in the Amazon Elastic Container Registry User Guide.
+%% in the
+%% Amazon Elastic Container Registry User Guide.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -238,9 +255,10 @@ delete_registry_policy(Client, Input, Options)
 
 %% @doc Deletes a repository.
 %%
-%% If the repository isn't empty, you must either delete the contents of
-%% the repository or use the `force' option to delete the repository and
-%% have Amazon ECR delete all of its contents on your behalf.
+%% If the repository isn't empty, you must either delete the
+%% contents of the repository or use the `force' option to delete the
+%% repository
+%% and have Amazon ECR delete all of its contents on your behalf.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -276,10 +294,12 @@ describe_image_scan_findings(Client, Input, Options)
 %% @doc Returns metadata about the images in a repository.
 %%
 %% Beginning with Docker version 1.9, the Docker client compresses image
-%% layers before pushing them to a V2 Docker registry. The output of the
-%% `docker images' command shows the uncompressed image size, so it may
-%% return a larger image size than the image sizes returned by
-%% `DescribeImages'.
+%% layers
+%% before pushing them to a V2 Docker registry. The output of the
+%% ```
+%% docker images''' command shows the uncompressed image size, so
+%% it may return a
+%% larger image size than the image sizes returned by `DescribeImages'.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
@@ -297,8 +317,9 @@ describe_pull_through_cache_rules(Client, Input, Options)
 
 %% @doc Describes the settings for a registry.
 %%
-%% The replication configuration for a repository can be created or updated
-%% with the `PutReplicationConfiguration' API action.
+%% The replication configuration for a repository
+%% can be created or updated with the `PutReplicationConfiguration' API
+%% action.
 describe_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registry(Client, Input, []).
@@ -316,14 +337,18 @@ describe_repositories(Client, Input, Options)
 
 %% @doc Retrieves an authorization token.
 %%
-%% An authorization token represents your IAM authentication credentials and
-%% can be used to access any Amazon ECR registry that your IAM principal has
-%% access to. The authorization token is valid for 12 hours.
+%% An authorization token represents your IAM
+%% authentication credentials and can be used to access any Amazon ECR
+%% registry that your IAM
+%% principal has access to. The authorization token is valid for 12 hours.
 %%
 %% The `authorizationToken' returned is a base64 encoded string that can
-%% be decoded and used in a `docker login' command to authenticate to a
-%% registry. The CLI offers an `get-login-password' command that
-%% simplifies the login process. For more information, see Registry
+%% be
+%% decoded and used in a `docker login' command to authenticate to a
+%% registry.
+%% The CLI offers an `get-login-password' command that simplifies the
+%% login
+%% process. For more information, see Registry
 %% authentication:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth
 %% in the Amazon Elastic Container Registry User Guide.
@@ -337,13 +362,16 @@ get_authorization_token(Client, Input, Options)
 %% @doc Retrieves the pre-signed Amazon S3 download URL corresponding to an
 %% image layer.
 %%
-%% You can only get URLs for image layers that are referenced in an image.
+%% You can
+%% only get URLs for image layers that are referenced in an image.
 %%
 %% When an image is pulled, the GetDownloadUrlForLayer API is called once per
-%% image layer that is not already cached.
+%% image layer
+%% that is not already cached.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
-%% by customers for pulling and pushing images. In most cases, you should use
+%% by
+%% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
 get_download_url_for_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -361,7 +389,8 @@ get_lifecycle_policy(Client, Input, Options)
     request(Client, <<"GetLifecyclePolicy">>, Input, Options).
 
 %% @doc Retrieves the results of the lifecycle policy preview request for the
-%% specified repository.
+%% specified
+%% repository.
 get_lifecycle_policy_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy_preview(Client, Input, []).
@@ -396,12 +425,14 @@ get_repository_policy(Client, Input, Options)
 %% @doc Notifies Amazon ECR that you intend to upload an image layer.
 %%
 %% When an image is pushed, the InitiateLayerUpload API is called once per
-%% image layer that has not already been uploaded. Whether or not an image
-%% layer has been uploaded is determined by the BatchCheckLayerAvailability
-%% API action.
+%% image layer
+%% that has not already been uploaded. Whether or not an image layer has been
+%% uploaded is
+%% determined by the BatchCheckLayerAvailability API action.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
-%% by customers for pulling and pushing images. In most cases, you should use
+%% by
+%% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
 initiate_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -413,9 +444,9 @@ initiate_layer_upload(Client, Input, Options)
 %% @doc Lists all the image IDs for the specified repository.
 %%
 %% You can filter images based on whether or not they are tagged by using the
-%% `tagStatus' filter and specifying either `TAGGED', `UNTAGGED'
-%% or `ANY'. For example, you can filter your results to return only
-%% `UNTAGGED' images and then pipe that result to a
+%% `tagStatus' filter and specifying either `TAGGED',
+%% `UNTAGGED' or `ANY'. For example, you can filter your results
+%% to return only `UNTAGGED' images and then pipe that result to a
 %% `BatchDeleteImage' operation to delete them. Or, you can filter your
 %% results to return only `TAGGED' images to list all of the tags in your
 %% repository.
@@ -438,11 +469,14 @@ list_tags_for_resource(Client, Input, Options)
 %% image.
 %%
 %% When an image is pushed and all new image layers have been uploaded, the
-%% PutImage API is called once to create or update the image manifest and the
-%% tags associated with the image.
+%% PutImage API
+%% is called once to create or update the image manifest and the tags
+%% associated with the
+%% image.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
-%% by customers for pulling and pushing images. In most cases, you should use
+%% by
+%% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
 put_image(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -451,11 +485,12 @@ put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
 
-%% @doc The `PutImageScanningConfiguration' API is being deprecated, in
-%% favor of specifying the image scanning configuration at the registry
-%% level.
+%% @doc
+%% The `PutImageScanningConfiguration' API is being deprecated, in favor
+%% of specifying the image scanning configuration at the registry level.
 %%
-%% For more information, see `PutRegistryScanningConfiguration'.
+%% For more
+%% information, see `PutRegistryScanningConfiguration'.
 %%
 %% Updates the image scanning configuration for the specified repository.
 put_image_scanning_configuration(Client, Input)
@@ -468,7 +503,9 @@ put_image_scanning_configuration(Client, Input, Options)
 %% @doc Updates the image tag mutability settings for the specified
 %% repository.
 %%
-%% For more information, see Image tag mutability:
+%% For more
+%% information, see Image tag
+%% mutability:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html
 %% in the Amazon Elastic Container Registry User Guide.
 put_image_tag_mutability(Client, Input)
@@ -480,7 +517,9 @@ put_image_tag_mutability(Client, Input, Options)
 
 %% @doc Creates or updates the lifecycle policy for the specified repository.
 %%
-%% For more information, see Lifecycle policy template:
+%% For more
+%% information, see Lifecycle policy
+%% template:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html.
 put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -492,8 +531,9 @@ put_lifecycle_policy(Client, Input, Options)
 %% @doc Creates or updates the permissions policy for your registry.
 %%
 %% A registry policy is used to specify permissions for another Amazon Web
-%% Services account and is used when configuring cross-account replication.
-%% For more information, see Registry permissions:
+%% Services account and is used
+%% when configuring cross-account replication. For more information, see
+%% Registry permissions:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html
 %% in the Amazon Elastic Container Registry User Guide.
 put_registry_policy(Client, Input)
@@ -514,17 +554,22 @@ put_registry_scanning_configuration(Client, Input, Options)
 
 %% @doc Creates or updates the replication configuration for a registry.
 %%
-%% The existing replication configuration for a repository can be retrieved
-%% with the `DescribeRegistry' API action. The first time the
+%% The existing
+%% replication configuration for a repository can be retrieved with the
+%% `DescribeRegistry' API action. The first time the
 %% PutReplicationConfiguration API is called, a service-linked IAM role is
-%% created in your account for the replication process. For more information,
-%% see Using service-linked roles for Amazon ECR:
+%% created in
+%% your account for the replication process. For more information, see Using
+%% service-linked roles for Amazon ECR:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html
-%% in the Amazon Elastic Container Registry User Guide.
+%% in the
+%% Amazon Elastic Container Registry User Guide.
 %%
 %% When configuring cross-account replication, the destination account must
-%% grant the source account permission to replicate. This permission is
-%% controlled using a registry permissions policy. For more information, see
+%% grant the
+%% source account permission to replicate. This permission is controlled
+%% using a
+%% registry permissions policy. For more information, see
 %% `PutRegistryPolicy'.
 put_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -536,7 +581,8 @@ put_replication_configuration(Client, Input, Options)
 %% @doc Applies a repository policy to the specified repository to control
 %% access permissions.
 %%
-%% For more information, see Amazon ECR Repository policies:
+%% For more information, see Amazon ECR Repository
+%% policies:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html
 %% in the Amazon Elastic Container Registry User Guide.
 set_repository_policy(Client, Input)
@@ -548,11 +594,13 @@ set_repository_policy(Client, Input, Options)
 
 %% @doc Starts an image vulnerability scan.
 %%
-%% An image scan can only be started once per 24 hours on an individual
-%% image. This limit includes if an image was scanned on initial push. For
-%% more information, see Image scanning:
+%% An image scan can only be started once per 24
+%% hours on an individual image. This limit includes if an image was scanned
+%% on initial
+%% push. For more information, see Image scanning:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html
-%% in the Amazon Elastic Container Registry User Guide.
+%% in the
+%% Amazon Elastic Container Registry User Guide.
 start_image_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_image_scan(Client, Input, []).
@@ -562,8 +610,9 @@ start_image_scan(Client, Input, Options)
 
 %% @doc Starts a preview of a lifecycle policy for the specified repository.
 %%
-%% This allows you to see the results before associating the lifecycle policy
-%% with the repository.
+%% This allows you
+%% to see the results before associating the lifecycle policy with the
+%% repository.
 start_lifecycle_policy_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_lifecycle_policy_preview(Client, Input, []).
@@ -573,8 +622,8 @@ start_lifecycle_policy_preview(Client, Input, Options)
 
 %% @doc Adds specified tags to a resource with the specified ARN.
 %%
-%% Existing tags on a resource are not changed if they are not specified in
-%% the request parameters.
+%% Existing tags on a resource
+%% are not changed if they are not specified in the request parameters.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -601,12 +650,14 @@ update_pull_through_cache_rule(Client, Input, Options)
 %% @doc Uploads an image layer part to Amazon ECR.
 %%
 %% When an image is pushed, each new image layer is uploaded in parts. The
-%% maximum size of each image layer part can be 20971520 bytes (or about
-%% 20MB). The UploadLayerPart API is called once per each new image layer
-%% part.
+%% maximum size
+%% of each image layer part can be 20971520 bytes (or about 20MB). The
+%% UploadLayerPart API
+%% is called once per each new image layer part.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
-%% by customers for pulling and pushing images. In most cases, you should use
+%% by
+%% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
 upload_layer_part(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -616,11 +667,13 @@ upload_layer_part(Client, Input, Options)
     request(Client, <<"UploadLayerPart">>, Input, Options).
 
 %% @doc Validates an existing pull through cache rule for an upstream
-%% registry that requires authentication.
+%% registry that requires
+%% authentication.
 %%
 %% This will retrieve the contents of the Amazon Web Services Secrets Manager
-%% secret, verify the syntax, and then validate that authentication to the
-%% upstream registry is successful.
+%% secret, verify the
+%% syntax, and then validate that authentication to the upstream registry is
+%% successful.
 validate_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_pull_through_cache_rule(Client, Input, []).

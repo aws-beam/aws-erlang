@@ -2,12 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Use the Amazon OpenSearch Service configuration API to create,
-%% configure, and manage OpenSearch Service domains.
+%% configure, and manage
+%% OpenSearch Service domains.
 %%
 %% The endpoint for configuration service requests is Region specific:
 %% es.region.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a
 %% current list of supported Regions and endpoints, see Amazon Web Services
-%% service endpoints:
+%% service
+%% endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/rande.html#service-regions.
 -module(aws_opensearch).
 
@@ -173,21 +175,24 @@
 %%====================================================================
 
 %% @doc Allows the destination Amazon OpenSearch Service domain owner to
-%% accept an inbound cross-cluster search connection request.
+%% accept an inbound
+%% cross-cluster search connection request.
 %%
-%% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service:
+%% For more information, see Cross-cluster search
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 accept_inbound_connection(Client, ConnectionId, Input) ->
     accept_inbound_connection(Client, ConnectionId, Input, []).
 accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), "/accept"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -202,19 +207,22 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 
 %% @doc Creates a new direct-query data source to the specified domain.
 %%
-%% For more information, see Creating Amazon OpenSearch Service data source
-%% integrations with Amazon S3:
+%% For more information, see
+%% Creating Amazon OpenSearch Service data source integrations with Amazon
+%% S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
 add_data_source(Client, DomainName, Input) ->
     add_data_source(Client, DomainName, Input, []).
 add_data_source(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -229,20 +237,23 @@ add_data_source(Client, DomainName, Input0, Options0) ->
 
 %% @doc Attaches tags to an existing Amazon OpenSearch Service domain.
 %%
-%% Tags are a set of case-sensitive key-value pairs. A domain can have up to
-%% 10 tags. For more information, see Tagging Amazon OpenSearch Service
-%% domains:
+%% Tags are a set of
+%% case-sensitive key-value pairs. A domain can have up to 10 tags. For more
+%% information, see
+%% Tagging Amazon OpenSearch Service domains:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 add_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -257,18 +268,22 @@ add_tags(Client, Input0, Options0) ->
 
 %% @doc Associates a package with an Amazon OpenSearch Service domain.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more information, see
+%% Custom packages
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -282,17 +297,20 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides access to an Amazon OpenSearch Service domain through the
-%% use of an interface VPC endpoint.
+%% use of an interface VPC
+%% endpoint.
 authorize_vpc_endpoint_access(Client, DomainName, Input) ->
     authorize_vpc_endpoint_access(Client, DomainName, Input, []).
 authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/authorizeVpcEndpointAccess"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -312,11 +330,13 @@ cancel_domain_config_change(Client, DomainName, Input) ->
 cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -332,21 +352,24 @@ cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
 %% @doc Cancels a scheduled service software update for an Amazon OpenSearch
 %% Service domain.
 %%
-%% You can only perform this operation before the `AutomatedUpdateDate'
-%% and when the domain's `UpdateStatus' is `PENDING_UPDATE'. For
-%% more information, see Service software updates in Amazon OpenSearch
-%% Service:
+%% You can
+%% only perform this operation before the `AutomatedUpdateDate' and when
+%% the domain's
+%% `UpdateStatus' is `PENDING_UPDATE'. For more information, see
+%% Service software updates in Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html.
 cancel_service_software_update(Client, Input) ->
     cancel_service_software_update(Client, Input, []).
 cancel_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -369,11 +392,13 @@ create_domain(Client, Input) ->
 create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -387,21 +412,24 @@ create_domain(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new cross-cluster search connection from a source Amazon
-%% OpenSearch Service domain to a destination domain.
+%% OpenSearch Service domain
+%% to a destination domain.
 %%
-%% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service:
+%% For more information, see Cross-cluster search
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 create_outbound_connection(Client, Input) ->
     create_outbound_connection(Client, Input, []).
 create_outbound_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/cc/outboundConnection"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -416,18 +444,21 @@ create_outbound_connection(Client, Input0, Options0) ->
 
 %% @doc Creates a package for use with Amazon OpenSearch Service domains.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more information, see
+%% Custom packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 create_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -446,11 +477,13 @@ create_vpc_endpoint(Client, Input) ->
 create_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -473,11 +506,13 @@ delete_data_source(Client, DomainName, Name, Input) ->
 delete_data_source(Client, DomainName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -492,17 +527,20 @@ delete_data_source(Client, DomainName, Name, Input0, Options0) ->
 
 %% @doc Deletes an Amazon OpenSearch Service domain and all of its data.
 %%
-%% You can't recover a domain after you delete it.
+%% You can't recover a domain
+%% after you delete it.
 delete_domain(Client, DomainName, Input) ->
     delete_domain(Client, DomainName, Input, []).
 delete_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -516,21 +554,24 @@ delete_domain(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the destination Amazon OpenSearch Service domain owner to
-%% delete an existing inbound cross-cluster search connection.
+%% delete an existing inbound
+%% cross-cluster search connection.
 %%
-%% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service:
+%% For more information, see Cross-cluster search
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 delete_inbound_connection(Client, ConnectionId, Input) ->
     delete_inbound_connection(Client, ConnectionId, Input, []).
 delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -544,21 +585,24 @@ delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the source Amazon OpenSearch Service domain owner to delete an
-%% existing outbound cross-cluster search connection.
+%% existing outbound
+%% cross-cluster search connection.
 %%
-%% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service:
+%% For more information, see Cross-cluster search
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 delete_outbound_connection(Client, ConnectionId, Input) ->
     delete_outbound_connection(Client, ConnectionId, Input, []).
 delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/cc/outboundConnection/", aws_util:encode_uri(ConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -573,18 +617,21 @@ delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
 
 %% @doc Deletes an Amazon OpenSearch Service package.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more information, see Custom
+%% packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 delete_package(Client, PackageID, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/packages/", aws_util:encode_uri(PackageID), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -603,11 +650,13 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input) ->
 delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-01-01/opensearch/vpcEndpoints/", aws_util:encode_uri(VpcEndpointId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -621,8 +670,8 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the domain configuration for the specified Amazon
-%% OpenSearch Service domain, including the domain ID, domain service
-%% endpoint, and domain ARN.
+%% OpenSearch Service domain,
+%% including the domain ID, domain service endpoint, and domain ARN.
 describe_domain(Client, DomainName)
   when is_map(Client) ->
     describe_domain(Client, DomainName, #{}, #{}).
@@ -634,10 +683,12 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap)
 describe_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -646,9 +697,11 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the list of optimizations that Auto-Tune has made to an
-%% Amazon OpenSearch Service domain.
+%% Amazon OpenSearch Service
+%% domain.
 %%
-%% For more information, see Auto-Tune for Amazon OpenSearch Service:
+%% For more information, see Auto-Tune for Amazon OpenSearch
+%% Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html.
 describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
@@ -661,10 +714,12 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
 describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/autoTunes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -673,7 +728,8 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the current blue/green deployment happening
-%% on an Amazon OpenSearch Service domain.
+%% on an Amazon
+%% OpenSearch Service domain.
 %%
 %% For more information, see Making configuration changes in Amazon
 %% OpenSearch Service:
@@ -689,10 +745,12 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
 describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/progress"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -716,10 +774,12 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap)
 describe_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -741,10 +801,12 @@ describe_domain_health(Client, DomainName, QueryMap, HeadersMap)
 describe_domain_health(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/health"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -753,8 +815,9 @@ describe_domain_health(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about domain and nodes, including data nodes,
-%% master nodes, ultrawarm nodes, Availability Zone(s), standby nodes, node
-%% configurations, and node states.
+%% master nodes, ultrawarm
+%% nodes, Availability Zone(s), standby nodes, node configurations, and node
+%% states.
 describe_domain_nodes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_nodes(Client, DomainName, #{}, #{}).
@@ -766,10 +829,12 @@ describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap)
 describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/nodes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -778,17 +843,20 @@ describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns domain configuration information about the specified Amazon
-%% OpenSearch Service domains.
+%% OpenSearch Service
+%% domains.
 describe_domains(Client, Input) ->
     describe_domains(Client, Input, []).
 describe_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain-info"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -802,7 +870,8 @@ describe_domains(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the progress of a pre-update dry run analysis on an Amazon
-%% OpenSearch Service domain.
+%% OpenSearch
+%% Service domain.
 %%
 %% For more information, see Determining whether a change will cause a
 %% blue/green deployment:
@@ -818,10 +887,12 @@ describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap)
 describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dryRun"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -835,21 +906,24 @@ describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the inbound cross-cluster search connections for a
-%% destination (remote) Amazon OpenSearch Service domain.
+%% destination (remote) Amazon
+%% OpenSearch Service domain.
 %%
-%% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service:
+%% For more information, see Cross-cluster search
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 describe_inbound_connections(Client, Input) ->
     describe_inbound_connections(Client, Input, []).
 describe_inbound_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/search"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -863,7 +937,8 @@ describe_inbound_connections(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the instance count, storage, and master node limits for a
-%% given OpenSearch or Elasticsearch version and instance type.
+%% given OpenSearch or
+%% Elasticsearch version and instance type.
 describe_instance_type_limits(Client, EngineVersion, InstanceType)
   when is_map(Client) ->
     describe_instance_type_limits(Client, EngineVersion, InstanceType, #{}, #{}).
@@ -875,10 +950,12 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
 describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/instanceTypeLimits/", aws_util:encode_uri(EngineVersion), "/", aws_util:encode_uri(InstanceType), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -891,21 +968,24 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the outbound cross-cluster connections for a local (source)
-%% Amazon OpenSearch Service domain.
+%% Amazon OpenSearch
+%% Service domain.
 %%
-%% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service:
+%% For more information, see Cross-cluster search
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 describe_outbound_connections(Client, Input) ->
     describe_outbound_connections(Client, Input, []).
 describe_outbound_connections(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/cc/outboundConnection/search"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -920,18 +1000,21 @@ describe_outbound_connections(Client, Input0, Options0) ->
 
 %% @doc Describes all packages available to OpenSearch Service.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more information, see Custom
+%% packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 describe_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/describe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -945,7 +1028,8 @@ describe_packages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the available Amazon OpenSearch Service Reserved Instance
-%% offerings for a given Region.
+%% offerings for a given
+%% Region.
 %%
 %% For more information, see Reserved Instances in Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html.
@@ -960,10 +1044,12 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap)
 describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/reservedInstanceOfferings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -980,7 +1066,8 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, Options0)
 %% @doc Describes the Amazon OpenSearch Service instances that you have
 %% reserved in a given Region.
 %%
-%% For more information, see Reserved Instances in Amazon OpenSearch Service:
+%% For more information, see Reserved Instances in Amazon OpenSearch
+%% Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html.
 describe_reserved_instances(Client)
   when is_map(Client) ->
@@ -993,10 +1080,12 @@ describe_reserved_instances(Client, QueryMap, HeadersMap)
 describe_reserved_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/reservedInstances"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1017,11 +1106,13 @@ describe_vpc_endpoints(Client, Input) ->
 describe_vpc_endpoints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints/describe"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1037,21 +1128,25 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
 %% @doc Removes a package from the specified Amazon OpenSearch Service
 %% domain.
 %%
-%% The package can't be in use with any OpenSearch index for the
-%% dissociation to succeed. The package is still available in OpenSearch
-%% Service for association later. For more information, see Custom packages
-%% for Amazon OpenSearch Service:
+%% The package can't be
+%% in use with any OpenSearch index for the dissociation to succeed. The
+%% package is still available
+%% in OpenSearch Service for association later. For more information, see
+%% Custom
+%% packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/dissociate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1065,7 +1160,8 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a map of OpenSearch or Elasticsearch versions and the
-%% versions you can upgrade them to.
+%% versions you can upgrade them
+%% to.
 get_compatible_versions(Client)
   when is_map(Client) ->
     get_compatible_versions(Client, #{}, #{}).
@@ -1077,10 +1173,12 @@ get_compatible_versions(Client, QueryMap, HeadersMap)
 get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/compatibleVersions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1104,10 +1202,12 @@ get_data_source(Client, DomainName, Name, QueryMap, HeadersMap)
 get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1127,10 +1227,12 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
 get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1146,7 +1248,8 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
 %% with their creation time, commit message, and plugin properties (if the
 %% package is a zip plugin package).
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more information, see Custom packages for Amazon
+%% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 get_package_version_history(Client, PackageID)
   when is_map(Client) ->
@@ -1159,10 +1262,12 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
 get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/packages/", aws_util:encode_uri(PackageID), "/history"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1176,7 +1281,8 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the complete history of the last 10 upgrades performed on
-%% an Amazon OpenSearch Service domain.
+%% an Amazon OpenSearch
+%% Service domain.
 get_upgrade_history(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_history(Client, DomainName, #{}, #{}).
@@ -1188,10 +1294,12 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
 get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/upgradeDomain/", aws_util:encode_uri(DomainName), "/history"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1205,7 +1313,8 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the most recent status of the last upgrade or upgrade
-%% eligibility check performed on an Amazon OpenSearch Service domain.
+%% eligibility check performed on
+%% an Amazon OpenSearch Service domain.
 get_upgrade_status(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_status(Client, DomainName, #{}, #{}).
@@ -1217,10 +1326,12 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
 get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/upgradeDomain/", aws_util:encode_uri(DomainName), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1230,8 +1341,9 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists direct-query data sources for a specific domain.
 %%
-%% For more information, see For more information, see Working with Amazon
-%% OpenSearch Service direct queries with Amazon S3:
+%% For more information, see
+%% For more information, see
+%% Working with Amazon OpenSearch Service direct queries with Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3.html.
 list_data_sources(Client, DomainName)
   when is_map(Client) ->
@@ -1244,10 +1356,12 @@ list_data_sources(Client, DomainName, QueryMap, HeadersMap)
 list_data_sources(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1267,10 +1381,12 @@ list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap)
 list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenances"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1286,7 +1402,8 @@ list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the names of all Amazon OpenSearch Service domains owned by
-%% the current user in the active Region.
+%% the current user in the
+%% active Region.
 list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
@@ -1298,10 +1415,12 @@ list_domain_names(Client, QueryMap, HeadersMap)
 list_domain_names(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/domain"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1316,7 +1435,9 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all Amazon OpenSearch Service domains associated with a given
 %% package.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more
+%% information, see Custom packages for Amazon
+%% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
@@ -1329,10 +1450,12 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
 list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/packages/", aws_util:encode_uri(PackageID), "/domains"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1346,7 +1469,8 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all instance types and available features for a given
-%% OpenSearch or Elasticsearch version.
+%% OpenSearch or Elasticsearch
+%% version.
 list_instance_type_details(Client, EngineVersion)
   when is_map(Client) ->
     list_instance_type_details(Client, EngineVersion, #{}, #{}).
@@ -1358,10 +1482,12 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap)
 list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/instanceTypeDetails/", aws_util:encode_uri(EngineVersion), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1380,7 +1506,9 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0
 %% @doc Lists all packages associated with an Amazon OpenSearch Service
 %% domain.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more
+%% information, see Custom packages for Amazon
+%% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
@@ -1393,10 +1521,12 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
 list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/domain/", aws_util:encode_uri(DomainName), "/packages"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1412,9 +1542,12 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of configuration changes that are scheduled for a
 %% domain.
 %%
-%% These changes can be service software updates:
+%% These changes can
+%% be service software
+%% updates:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html
-%% or blue/green Auto-Tune enhancements:
+%% or blue/green
+%% Auto-Tune enhancements:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types.
 list_scheduled_actions(Client, DomainName)
   when is_map(Client) ->
@@ -1427,10 +1560,12 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap)
 list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/scheduledActions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1445,7 +1580,8 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns all resource tags for an Amazon OpenSearch Service domain.
 %%
-%% For more information, see Tagging Amazon OpenSearch Service domains:
+%% For more information, see
+%% Tagging Amazon OpenSearch Service domains:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
 list_tags(Client, ARN)
   when is_map(Client) ->
@@ -1457,11 +1593,13 @@ list_tags(Client, ARN, QueryMap, HeadersMap)
 
 list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/2021-01-01/tags/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/2021-01-01/tags"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1474,7 +1612,8 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all versions of OpenSearch and Elasticsearch that Amazon
-%% OpenSearch Service supports.
+%% OpenSearch Service
+%% supports.
 list_versions(Client)
   when is_map(Client) ->
     list_versions(Client, #{}, #{}).
@@ -1486,10 +1625,12 @@ list_versions(Client, QueryMap, HeadersMap)
 list_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1503,8 +1644,9 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about each Amazon Web Services principal that
-%% is allowed to access a given Amazon OpenSearch Service domain through the
-%% use of an interface VPC endpoint.
+%% is allowed to access a
+%% given Amazon OpenSearch Service domain through the use of an interface VPC
+%% endpoint.
 list_vpc_endpoint_access(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoint_access(Client, DomainName, #{}, #{}).
@@ -1516,10 +1658,12 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
 list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/listVpcEndpointAccess"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1544,10 +1688,12 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap)
 list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/vpcEndpoints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1560,7 +1706,8 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints
-%% associated with a particular domain.
+%% associated with a particular
+%% domain.
 list_vpc_endpoints_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoints_for_domain(Client, DomainName, #{}, #{}).
@@ -1572,10 +1719,12 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
 list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/vpcEndpoints"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1593,11 +1742,13 @@ purchase_reserved_instance_offering(Client, Input) ->
 purchase_reserved_instance_offering(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/purchaseReservedInstanceOffering"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1611,17 +1762,20 @@ purchase_reserved_instance_offering(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the remote Amazon OpenSearch Service domain owner to reject an
-%% inbound cross-cluster connection request.
+%% inbound cross-cluster
+%% connection request.
 reject_inbound_connection(Client, ConnectionId, Input) ->
     reject_inbound_connection(Client, ConnectionId, Input, []).
 reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), "/reject"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1637,18 +1791,21 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% @doc Removes the specified set of tags from an Amazon OpenSearch Service
 %% domain.
 %%
-%% For more information, see Tagging Amazon OpenSearch Service domains:
+%% For more
+%% information, see Tagging Amazon OpenSearch Service domains:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains.html#managedomains-awsresorcetagging.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
 remove_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/tags-removal"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1662,17 +1819,20 @@ remove_tags(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Revokes access to an Amazon OpenSearch Service domain that was
-%% provided through an interface VPC endpoint.
+%% provided through an interface
+%% VPC endpoint.
 revoke_vpc_endpoint_access(Client, DomainName, Input) ->
     revoke_vpc_endpoint_access(Client, DomainName, Input, []).
 revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1688,17 +1848,20 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 %% @doc Starts the node maintenance process on the data node.
 %%
 %% These processes can include a node reboot, an Opensearch or Elasticsearch
-%% process restart, or a Dashboard or Kibana restart.
+%% process restart,
+%% or a Dashboard or Kibana restart.
 start_domain_maintenance(Client, DomainName, Input) ->
     start_domain_maintenance(Client, DomainName, Input, []).
 start_domain_maintenance(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1714,19 +1877,22 @@ start_domain_maintenance(Client, DomainName, Input0, Options0) ->
 %% @doc Schedules a service software update for an Amazon OpenSearch Service
 %% domain.
 %%
-%% For more information, see Service software updates in Amazon OpenSearch
-%% Service:
+%% For more
+%% information, see Service software updates in
+%% Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html.
 start_service_software_update(Client, Input) ->
     start_service_software_update(Client, Input, []).
 start_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/start"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1741,19 +1907,22 @@ start_service_software_update(Client, Input0, Options0) ->
 
 %% @doc Updates a direct-query data source.
 %%
-%% For more information, see Working with Amazon OpenSearch Service data
-%% source integrations with Amazon S3:
+%% For more information, see
+%% Working with Amazon OpenSearch Service data source integrations with
+%% Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
 update_data_source(Client, DomainName, Name, Input) ->
     update_data_source(Client, DomainName, Name, Input, []).
 update_data_source(Client, DomainName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1767,17 +1936,20 @@ update_data_source(Client, DomainName, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies the cluster configuration of the specified Amazon OpenSearch
-%% Service domain.
+%% Service
+%% domain.
 update_domain_config(Client, DomainName, Input) ->
     update_domain_config(Client, DomainName, Input, []).
 update_domain_config(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1792,18 +1964,21 @@ update_domain_config(Client, DomainName, Input0, Options0) ->
 
 %% @doc Updates a package for use with Amazon OpenSearch Service domains.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% For more information, see
+%% Custom packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
 update_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1818,20 +1993,25 @@ update_package(Client, Input0, Options0) ->
 
 %% @doc Reschedules a planned domain configuration change for a later time.
 %%
-%% This change can be a scheduled service software update:
+%% This change can be a
+%% scheduled service software
+%% update:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html
-%% or a blue/green Auto-Tune enhancement:
+%% or a blue/green
+%% Auto-Tune enhancement:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types.
 update_scheduled_action(Client, DomainName, Input) ->
     update_scheduled_action(Client, DomainName, Input, []).
 update_scheduled_action(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/scheduledAction/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1850,11 +2030,13 @@ update_vpc_endpoint(Client, Input) ->
 update_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1868,18 +2050,20 @@ update_vpc_endpoint(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows you to either upgrade your Amazon OpenSearch Service domain or
-%% perform an upgrade eligibility check to a compatible version of OpenSearch
-%% or Elasticsearch.
+%% perform an upgrade
+%% eligibility check to a compatible version of OpenSearch or Elasticsearch.
 upgrade_domain(Client, Input) ->
     upgrade_domain(Client, Input, []).
 upgrade_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/upgradeDomain"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1895,6 +2079,11 @@ upgrade_domain(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

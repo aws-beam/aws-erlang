@@ -2,15 +2,20 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Managed Blockchain (AMB) Query provides you with convenient
-%% access to multi-blockchain network data, which makes it easier for you to
-%% extract contextual data related to blockchain activity.
+%% access to multi-blockchain network data, which makes
+%% it easier for you to extract contextual data related to blockchain
+%% activity.
 %%
-%% You can use AMB Query to read data from public blockchain networks, such
-%% as Bitcoin Mainnet and Ethereum Mainnet. You can also get information such
-%% as the current and historical balances of addresses, or you can get a list
-%% of blockchain transactions for a given time period. Additionally, you can
-%% get details of a given transaction, such as transaction events, which you
-%% can further analyze or use in business logic for your applications.
+%% You can use AMB Query to
+%% read data from public blockchain networks, such as Bitcoin Mainnet and
+%% Ethereum Mainnet. You can
+%% also get information such as the current and historical balances of
+%% addresses, or you can get a
+%% list of blockchain transactions for a given time period. Additionally, you
+%% can get details of a
+%% given transaction, such as transaction events, which you can further
+%% analyze or use in business
+%% logic for your applications.
 -module(aws_managedblockchain_query).
 
 -export([batch_get_token_balance/2,
@@ -37,20 +42,23 @@
 %%====================================================================
 
 %% @doc Gets the token balance for a batch of tokens by using the
-%% `BatchGetTokenBalance' action for every token in the request.
+%% `BatchGetTokenBalance'
+%% action for every token in the request.
 %%
-%% Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155
-%% token standards are supported.
+%% Only the native tokens BTC and ETH, and the ERC-20,
+%% ERC-721, and ERC 1155 token standards are supported.
 batch_get_token_balance(Client, Input) ->
     batch_get_token_balance(Client, Input, []).
 batch_get_token_balance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batch-get-token-balance"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -66,7 +74,8 @@ batch_get_token_balance(Client, Input0, Options0) ->
 %% @doc Gets the information about a specific contract deployed on the
 %% blockchain.
 %%
-%% The Bitcoin blockchain networks do not support this operation.
+%% The Bitcoin blockchain networks do not support this
+%% operation.
 %%
 %% Metadata is currently only available for some `ERC-20' contracts.
 %% Metadata will be available for additional contracts in the future.
@@ -76,10 +85,12 @@ get_asset_contract(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-asset-contract"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -95,18 +106,20 @@ get_asset_contract(Client, Input0, Options0) ->
 %% @doc Gets the balance of a specific token, including native tokens, for a
 %% given address (wallet or contract) on the blockchain.
 %%
-%% Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155
-%% token standards are supported.
+%% Only the native tokens BTC and ETH, and the ERC-20,
+%% ERC-721, and ERC 1155 token standards are supported.
 get_token_balance(Client, Input) ->
     get_token_balance(Client, Input, []).
 get_token_balance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-token-balance"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -121,8 +134,9 @@ get_token_balance(Client, Input0, Options0) ->
 
 %% @doc Gets the details of a transaction.
 %%
-%% This action will return transaction details for all transactions that are
-%% confirmed on the blockchain, even if they have not reached finality:
+%% This action will return transaction details for all transactions
+%% that are confirmed on the blockchain, even if they have not reached
+%% finality:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
 get_transaction(Client, Input) ->
     get_transaction(Client, Input, []).
@@ -130,10 +144,12 @@ get_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-transaction"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -147,19 +163,23 @@ get_transaction(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the contracts for a given contract type deployed by an
-%% address (either a contract address or a wallet address).
+%% address
+%% (either a contract address or a wallet address).
 %%
-%% The Bitcoin blockchain networks do not support this operation.
+%% The Bitcoin blockchain networks do not support this
+%% operation.
 list_asset_contracts(Client, Input) ->
     list_asset_contracts(Client, Input, []).
 list_asset_contracts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-asset-contracts"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -174,25 +194,27 @@ list_asset_contracts(Client, Input0, Options0) ->
 
 %% @doc This action returns the following for a given blockchain network:
 %%
-%% <ul> <li> Lists all token balances owned by an address (either a contract
+%% Lists all token balances owned by an address (either a contract
 %% address or a wallet address).
 %%
-%% </li> <li> Lists all token balances for all tokens created by a contract.
+%% Lists all token balances for all tokens created by a contract.
 %%
-%% </li> <li> Lists all token balances for a given token.
+%% Lists all token balances for a given token.
 %%
-%% </li> </ul> You must always specify the network property of the
-%% `tokenFilter' when using this operation.
+%% You must always specify the network property of
+%% the `tokenFilter' when using this operation.
 list_token_balances(Client, Input) ->
     list_token_balances(Client, Input, []).
 list_token_balances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-token-balances"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -207,10 +229,12 @@ list_token_balances(Client, Input0, Options0) ->
 
 %% @doc An array of `TransactionEvent' objects.
 %%
-%% Each object contains details about the transaction event.
+%% Each object contains details
+%% about the transaction event.
 %%
-%% This action will return transaction details for all transactions that are
-%% confirmed on the blockchain, even if they have not reached finality:
+%% This action will return transaction details for all transactions
+%% that are confirmed on the blockchain, even if they have not reached
+%% finality:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
 list_transaction_events(Client, Input) ->
     list_transaction_events(Client, Input, []).
@@ -218,10 +242,12 @@ list_transaction_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-transaction-events"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -242,10 +268,12 @@ list_transactions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-transactions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -261,6 +289,11 @@ list_transactions(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

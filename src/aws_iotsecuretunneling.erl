@@ -6,8 +6,8 @@
 %% IoT Secure Tunneling creates remote connections to devices deployed in the
 %% field.
 %%
-%% For more information about how IoT Secure Tunneling works, see IoT Secure
-%% Tunneling:
+%% For more information about how IoT Secure Tunneling works, see IoT
+%% Secure Tunneling:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/secure-tunneling.html.
 -module(aws_iotsecuretunneling).
 
@@ -36,9 +36,10 @@
 
 %% @doc Closes a tunnel identified by the unique tunnel id.
 %%
-%% When a `CloseTunnel' request is received, we close the WebSocket
-%% connections between the client and proxy server so no data can be
-%% transmitted.
+%% When a `CloseTunnel'
+%% request is received, we close the WebSocket connections between the client
+%% and proxy
+%% server so no data can be transmitted.
 %%
 %% Requires permission to access the CloseTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -72,8 +73,8 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc List all tunnels for an Amazon Web Services account.
 %%
-%% Tunnels are listed by creation time in descending order, newer tunnels
-%% will be listed before older tunnels.
+%% Tunnels are listed by creation time in
+%% descending order, newer tunnels will be listed before older tunnels.
 %%
 %% Requires permission to access the ListTunnels:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -86,7 +87,8 @@ list_tunnels(Client, Input, Options)
     request(Client, <<"ListTunnels">>, Input, Options).
 
 %% @doc Creates a new tunnel, and returns two client access tokens for
-%% clients to use to connect to the IoT Secure Tunneling proxy server.
+%% clients to use to
+%% connect to the IoT Secure Tunneling proxy server.
 %%
 %% Requires permission to access the OpenTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -99,17 +101,20 @@ open_tunnel(Client, Input, Options)
     request(Client, <<"OpenTunnel">>, Input, Options).
 
 %% @doc Revokes the current client access token (CAT) and returns new CAT for
-%% clients to use when reconnecting to secure tunneling to access the same
-%% tunnel.
+%% clients to
+%% use when reconnecting to secure tunneling to access the same tunnel.
 %%
 %% Requires permission to access the RotateTunnelAccessToken:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 %%
 %% Rotating the CAT doesn't extend the tunnel duration. For example, say
-%% the tunnel duration is 12 hours and the tunnel has already been open for 4
-%% hours. When you rotate the access tokens, the new tokens that are
-%% generated can only be used for the remaining 8 hours.
+%% the tunnel
+%% duration is 12 hours and the tunnel has already been open for 4 hours.
+%% When you
+%% rotate the access tokens, the new tokens that are generated can only be
+%% used for the
+%% remaining 8 hours.
 rotate_tunnel_access_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_tunnel_access_token(Client, Input, []).
@@ -148,7 +153,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"IoTSecuredTunneling">>},
+    Client1 = Client#{service => <<"tunneling.iot">>},
     Host = build_host(<<"api.tunneling.iot">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

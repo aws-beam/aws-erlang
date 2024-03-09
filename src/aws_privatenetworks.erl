@@ -2,12 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Web Services Private 5G is a managed service that makes it
-%% easy to deploy, operate, and scale your own private mobile network at your
-%% on-premises location.
+%% easy to deploy, operate, and scale
+%% your own private mobile network at your on-premises location.
 %%
-%% Private 5G provides the pre-configured hardware and software for mobile
-%% networks, helps automate setup, and scales capacity on demand to support
-%% additional devices as needed.
+%% Private 5G provides the
+%% pre-configured hardware and software for mobile networks, helps automate
+%% setup, and
+%% scales capacity on demand to support additional devices as needed.
 -module(aws_privatenetworks).
 
 -export([acknowledge_order_receipt/2,
@@ -83,10 +84,12 @@ acknowledge_order_receipt(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/orders/acknowledge"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -106,10 +109,12 @@ activate_device_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/device-identifiers/activate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -129,10 +134,12 @@ activate_network_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-sites/activate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -148,21 +155,25 @@ activate_network_site(Client, Input0, Options0) ->
 %% @doc Configures the specified network resource.
 %%
 %% Use this action to specify the geographic position of the hardware. You
-%% must provide Certified Professional Installer (CPI) credentials in the
-%% request so that we can obtain spectrum grants. For more information, see
-%% Radio units:
+%% must provide
+%% Certified Professional Installer (CPI) credentials in the request so that
+%% we can obtain
+%% spectrum grants. For more information, see Radio units:
 %% https://docs.aws.amazon.com/private-networks/latest/userguide/radio-units.html
-%% in the Amazon Web Services Private 5G User Guide.
+%% in the
+%% Amazon Web Services Private 5G User Guide.
 configure_access_point(Client, Input) ->
     configure_access_point(Client, Input, []).
 configure_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-resources/configure"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -182,10 +193,12 @@ create_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/networks"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -205,10 +218,12 @@ create_network_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-sites"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -228,10 +243,12 @@ deactivate_device_identifier(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/device-identifiers/deactivate"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -246,20 +263,23 @@ deactivate_device_identifier(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified network.
 %%
-%% You must delete network sites before you delete the network. For more
-%% information, see DeleteNetworkSite:
+%% You must delete network sites before you delete the
+%% network. For more information, see DeleteNetworkSite:
 %% https://docs.aws.amazon.com/private-networks/latest/APIReference/API_DeleteNetworkSite.html
-%% in the API Reference for Amazon Web Services Private 5G.
+%% in the API Reference for Amazon Web Services Private
+%% 5G.
 delete_network(Client, NetworkArn, Input) ->
     delete_network(Client, NetworkArn, Input, []).
 delete_network(Client, NetworkArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/networks/", aws_util:encode_uri(NetworkArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -275,20 +295,25 @@ delete_network(Client, NetworkArn, Input0, Options0) ->
 
 %% @doc Deletes the specified network site.
 %%
-%% Return the hardware after you delete the network site. You are responsible
-%% for minimum charges. For more information, see Hardware returns:
+%% Return the hardware after you delete the network
+%% site. You are responsible for minimum charges. For more information, see
+%% Hardware
+%% returns:
 %% https://docs.aws.amazon.com/private-networks/latest/userguide/hardware-maintenance.html
-%% in the Amazon Web Services Private 5G User Guide.
+%% in the Amazon Web Services Private 5G User
+%% Guide.
 delete_network_site(Client, NetworkSiteArn, Input) ->
     delete_network_site(Client, NetworkSiteArn, Input, []).
 delete_network_site(Client, NetworkSiteArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/network-sites/", aws_util:encode_uri(NetworkSiteArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -315,9 +340,11 @@ get_device_identifier(Client, DeviceIdentifierArn, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/device-identifiers/", aws_util:encode_uri(DeviceIdentifierArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -338,9 +365,11 @@ get_network(Client, NetworkArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/networks/", aws_util:encode_uri(NetworkArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -361,9 +390,11 @@ get_network_resource(Client, NetworkResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/network-resources/", aws_util:encode_uri(NetworkResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -384,9 +415,11 @@ get_network_site(Client, NetworkSiteArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/network-sites/", aws_util:encode_uri(NetworkSiteArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -407,9 +440,11 @@ get_order(Client, OrderArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/orders/", aws_util:encode_uri(OrderArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -419,22 +454,26 @@ get_order(Client, OrderArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists device identifiers.
 %%
-%% Add filters to your request to return a more specific list of results. Use
-%% filters to match the Amazon Resource Name (ARN) of an order, the status of
-%% device identifiers, or the ARN of the traffic group.
+%% Add filters to your request to return a more specific list
+%% of results. Use filters to match the Amazon Resource Name (ARN) of an
+%% order, the status
+%% of device identifiers, or the ARN of the traffic group.
 %%
 %% If you specify multiple filters, filters are joined with an OR, and the
-%% request returns results that match all of the specified filters.
+%% request
+%% returns results that match all of the specified filters.
 list_device_identifiers(Client, Input) ->
     list_device_identifiers(Client, Input, []).
 list_device_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/device-identifiers/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -449,22 +488,26 @@ list_device_identifiers(Client, Input0, Options0) ->
 
 %% @doc Lists network resources.
 %%
-%% Add filters to your request to return a more specific list of results. Use
-%% filters to match the Amazon Resource Name (ARN) of an order or the status
+%% Add filters to your request to return a more specific list of
+%% results. Use filters to match the Amazon Resource Name (ARN) of an order
+%% or the status
 %% of network resources.
 %%
 %% If you specify multiple filters, filters are joined with an OR, and the
-%% request returns results that match all of the specified filters.
+%% request
+%% returns results that match all of the specified filters.
 list_network_resources(Client, Input) ->
     list_network_resources(Client, Input, []).
 list_network_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-resources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -479,18 +522,20 @@ list_network_resources(Client, Input0, Options0) ->
 
 %% @doc Lists network sites.
 %%
-%% Add filters to your request to return a more specific list of results. Use
-%% filters to match the status of the network site.
+%% Add filters to your request to return a more specific list of
+%% results. Use filters to match the status of the network site.
 list_network_sites(Client, Input) ->
     list_network_sites(Client, Input, []).
 list_network_sites(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-sites/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -505,18 +550,20 @@ list_network_sites(Client, Input0, Options0) ->
 
 %% @doc Lists networks.
 %%
-%% Add filters to your request to return a more specific list of results. Use
-%% filters to match the status of the network.
+%% Add filters to your request to return a more specific list of results.
+%% Use filters to match the status of the network.
 list_networks(Client, Input) ->
     list_networks(Client, Input, []).
 list_networks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/networks/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -531,22 +578,26 @@ list_networks(Client, Input0, Options0) ->
 
 %% @doc Lists orders.
 %%
-%% Add filters to your request to return a more specific list of results. Use
-%% filters to match the Amazon Resource Name (ARN) of the network site or the
-%% status of the order.
+%% Add filters to your request to return a more specific list of results.
+%% Use filters to match the Amazon Resource Name (ARN) of the network site or
+%% the status of
+%% the order.
 %%
 %% If you specify multiple filters, filters are joined with an OR, and the
-%% request returns results that match all of the specified filters.
+%% request
+%% returns results that match all of the specified filters.
 list_orders(Client, Input) ->
     list_orders(Client, Input, []).
 list_orders(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/orders/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -572,9 +623,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -595,9 +648,11 @@ ping(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ping"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -607,21 +662,24 @@ ping(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Use this action to do the following tasks:
 %%
-%% <ul> <li> Update the duration and renewal status of the commitment period
-%% for a radio unit.
+%% Update the duration and renewal status of the commitment period for a
+%% radio
+%% unit.
 %%
 %% The update goes into effect immediately.
 %%
-%% </li> <li> Request a replacement for a network resource.
+%% Request a replacement for a network resource.
 %%
-%% </li> <li> Request that you return a network resource.
+%% Request that you return a network resource.
 %%
-%% </li> </ul> After you submit a request to replace or return a network
-%% resource, the status of the network resource changes to
-%% `CREATING_SHIPPING_LABEL'. The shipping label is available when the
-%% status of the network resource is `PENDING_RETURN'. After the network
-%% resource is successfully returned, its status changes to `DELETED'.
-%% For more information, see Return a radio unit:
+%% After you submit a request to replace or return a network resource, the
+%% status of the
+%% network resource changes to `CREATING_SHIPPING_LABEL'. The shipping
+%% label is
+%% available when the status of the network resource is `PENDING_RETURN'.
+%% After
+%% the network resource is successfully returned, its status changes to
+%% `DELETED'. For more information, see Return a radio unit:
 %% https://docs.aws.amazon.com/private-networks/latest/userguide/radio-units.html#return-radio-unit.
 start_network_resource_update(Client, Input) ->
     start_network_resource_update(Client, Input, []).
@@ -629,10 +687,12 @@ start_network_resource_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/network-resources/update"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -652,10 +712,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -675,10 +737,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -699,10 +763,12 @@ update_network_site(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/network-sites/site"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -722,10 +788,12 @@ update_network_site_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/network-sites/plan"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -741,6 +809,11 @@ update_network_site_plan(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

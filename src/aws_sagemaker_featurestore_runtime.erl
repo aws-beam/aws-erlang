@@ -2,7 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Contains all data plane API operations and data types for the Amazon
-%% SageMaker Feature Store.
+%% SageMaker Feature
+%% Store.
 %%
 %% Use this API to put, delete, and retrieve (get) features from a feature
 %% store.
@@ -10,19 +11,17 @@
 %% Use the following operations to configure your `OnlineStore' and
 %% `OfflineStore' features, and to create and manage feature groups:
 %%
-%% <ul> <li> CreateFeatureGroup:
+%% CreateFeatureGroup:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFeatureGroup.html
 %%
-%% </li> <li> DeleteFeatureGroup:
+%% DeleteFeatureGroup:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFeatureGroup.html
 %%
-%% </li> <li> DescribeFeatureGroup:
+%% DescribeFeatureGroup:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html
 %%
-%% </li> <li> ListFeatureGroups:
+%% ListFeatureGroups:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListFeatureGroups.html
-%%
-%% </li> </ul>
 -module(aws_sagemaker_featurestore_runtime).
 
 -export([batch_get_record/2,
@@ -47,11 +46,13 @@ batch_get_record(Client, Input) ->
 batch_get_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetRecord"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -67,14 +68,17 @@ batch_get_record(Client, Input0, Options0) ->
 %% @doc Deletes a `Record' from a `FeatureGroup' in the
 %% `OnlineStore'.
 %%
-%% Feature Store supports both `SoftDelete' and `HardDelete'. For
-%% `SoftDelete' (default), feature columns are set to `null' and the
-%% record is no longer retrievable by `GetRecord' or
-%% `BatchGetRecord'. For `HardDelete', the complete `Record' is
-%% removed from the `OnlineStore'. In both cases, Feature Store appends
-%% the deleted record marker to the `OfflineStore'. The deleted record
-%% marker is a record with the same `RecordIdentifer' as the original,
-%% but with `is_deleted' value set to `True', `EventTime' set to
+%% Feature Store supports both `SoftDelete' and
+%% `HardDelete'. For `SoftDelete' (default), feature columns are set
+%% to `null' and the record is no longer retrievable by `GetRecord'
+%% or
+%% `BatchGetRecord'. For `HardDelete', the complete
+%% `Record' is removed from the `OnlineStore'. In both cases, Feature
+%% Store appends the deleted record marker to the `OfflineStore'. The
+%% deleted
+%% record marker is a record with the same `RecordIdentifer' as the
+%% original, but
+%% with `is_deleted' value set to `True', `EventTime' set to
 %% the delete input `EventTime', and other feature values set to
 %% `null'.
 %%
@@ -83,32 +87,39 @@ batch_get_record(Client, Input0, Options0) ->
 %% `OnlineStore' for that `RecordIdentifer'. If it is not, the
 %% deletion does not occur:
 %%
-%% <ul> <li> For `SoftDelete', the existing (not deleted) record remains
-%% in the `OnlineStore', though the delete record marker is still written
-%% to the `OfflineStore'.
+%% For `SoftDelete', the existing (not deleted) record remains in the
+%% `OnlineStore', though the delete record marker is still written to the
+%% `OfflineStore'.
 %%
-%% </li> <li> `HardDelete' returns `EventTime': `400
-%% ValidationException' to indicate that the delete operation failed. No
-%% delete record marker is written to the `OfflineStore'.
+%% `HardDelete' returns `EventTime':
+%% ```
+%% 400 ValidationException''' to indicate that the delete
+%% operation failed. No delete
+%% record marker is written to the `OfflineStore'.
 %%
-%% </li> </ul> When a record is deleted from the `OnlineStore', the
-%% deleted record marker is appended to the `OfflineStore'. If you have
-%% the Iceberg table format enabled for your `OfflineStore', you can
-%% remove all history of a record from the `OfflineStore' using Amazon
-%% Athena or Apache Spark. For information on how to hard delete a record
-%% from the `OfflineStore' with the Iceberg table format enabled, see
-%% Delete records from the offline store:
+%% When a record is deleted from the `OnlineStore', the deleted record
+%% marker is
+%% appended to the `OfflineStore'. If you have the Iceberg table format
+%% enabled for
+%% your `OfflineStore', you can remove all history of a record from the
+%% `OfflineStore' using Amazon Athena or Apache Spark. For information on
+%% how to
+%% hard delete a record from the `OfflineStore' with the Iceberg table
+%% format
+%% enabled, see Delete records from the offline store:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-delete-records-offline-store.html#feature-store-delete-records-offline-store.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 delete_record(Client, FeatureGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -127,9 +138,10 @@ delete_record(Client, FeatureGroupName, Input0, Options0) ->
 
 %% @doc Use for `OnlineStore' serving from a `FeatureStore'.
 %%
-%% Only the latest records stored in the `OnlineStore' can be retrieved.
-%% If no Record with `RecordIdentifierValue' is found, then an empty
-%% result is returned.
+%% Only the
+%% latest records stored in the `OnlineStore' can be retrieved. If no
+%% Record with
+%% `RecordIdentifierValue' is found, then an empty result is returned.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString)
   when is_map(Client) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, #{}, #{}).
@@ -141,10 +153,12 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -159,34 +173,41 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `PutRecord' API is used to ingest a list of `Records'
-%% into your feature group.
+%% into
+%% your feature group.
 %%
 %% If a new record’s `EventTime' is greater, the new record is written to
-%% both the `OnlineStore' and `OfflineStore'. Otherwise, the record
-%% is a historic record and it is written only to the `OfflineStore'.
+%% both
+%% the `OnlineStore' and `OfflineStore'. Otherwise, the record is a
+%% historic record and it is written only to the `OfflineStore'.
 %%
 %% You can specify the ingestion to be applied to the `OnlineStore',
 %% `OfflineStore', or both by using the `TargetStores' request
 %% parameter.
 %%
 %% You can set the ingested record to expire at a given time to live (TTL)
-%% duration after the record’s event time, `ExpiresAt' = `EventTime'
-%% + `TtlDuration', by specifying the `TtlDuration' parameter. A
-%% record level `TtlDuration' is set when specifying the
-%% `TtlDuration' parameter using the `PutRecord' API call. If the
-%% input `TtlDuration' is `null' or unspecified, `TtlDuration' is
-%% set to the default feature group level `TtlDuration'. A record level
-%% `TtlDuration' supersedes the group level `TtlDuration'.
+%% duration after
+%% the record’s event time, `ExpiresAt' = `EventTime' +
+%% `TtlDuration', by specifying the `TtlDuration' parameter. A record
+%% level `TtlDuration' is set when specifying the `TtlDuration'
+%% parameter using the `PutRecord' API call. If the input
+%% `TtlDuration'
+%% is `null' or unspecified, `TtlDuration' is set to the default
+%% feature
+%% group level `TtlDuration'. A record level `TtlDuration' supersedes
+%% the group level `TtlDuration'.
 put_record(Client, FeatureGroupName, Input) ->
     put_record(Client, FeatureGroupName, Input, []).
 put_record(Client, FeatureGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -202,6 +223,11 @@ put_record(Client, FeatureGroupName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

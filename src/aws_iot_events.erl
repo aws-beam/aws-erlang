@@ -2,10 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS IoT Events monitors your equipment or device fleets for failures
-%% or changes in operation, and triggers actions when such events occur.
+%% or changes in operation, and
+%% triggers actions when such events occur.
 %%
-%% You can use AWS IoT Events API operations to create, read, update, and
-%% delete inputs and detector models, and to list their versions.
+%% You can use AWS IoT Events API operations to create, read,
+%% update, and delete inputs and detector models, and to list their versions.
 -module(aws_iot_events).
 
 -export([create_alarm_model/2,
@@ -81,8 +82,10 @@
 
 %% @doc Creates an alarm model to monitor an AWS IoT Events input attribute.
 %%
-%% You can use the alarm to get notified when the value is outside a
-%% specified range. For more information, see Create an alarm model:
+%% You can use the alarm to get
+%% notified when the value is outside a specified range. For more
+%% information, see Create an
+%% alarm model:
 %% https://docs.aws.amazon.com/iotevents/latest/developerguide/create-alarms.html
 %% in the AWS IoT Events Developer Guide.
 create_alarm_model(Client, Input) ->
@@ -90,11 +93,13 @@ create_alarm_model(Client, Input) ->
 create_alarm_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarm-models"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -113,11 +118,13 @@ create_detector_model(Client, Input) ->
 create_detector_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detector-models"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -137,10 +144,12 @@ create_input(Client, Input0, Options0) ->
     Method = post,
     Path = ["/inputs"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -155,18 +164,20 @@ create_input(Client, Input0, Options0) ->
 
 %% @doc Deletes an alarm model.
 %%
-%% Any alarm instances that were created based on this alarm model are also
-%% deleted. This action can't be undone.
+%% Any alarm instances that were created based on this alarm model
+%% are also deleted. This action can't be undone.
 delete_alarm_model(Client, AlarmModelName, Input) ->
     delete_alarm_model(Client, AlarmModelName, Input, []).
 delete_alarm_model(Client, AlarmModelName, Input0, Options0) ->
     Method = delete,
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -181,17 +192,20 @@ delete_alarm_model(Client, AlarmModelName, Input0, Options0) ->
 
 %% @doc Deletes a detector model.
 %%
-%% Any active instances of the detector model are also deleted.
+%% Any active instances of the detector model are also
+%% deleted.
 delete_detector_model(Client, DetectorModelName, Input) ->
     delete_detector_model(Client, DetectorModelName, Input, []).
 delete_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Method = delete,
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -210,11 +224,13 @@ delete_input(Client, InputName, Input) ->
 delete_input(Client, InputName, Input0, Options0) ->
     Method = delete,
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -229,8 +245,8 @@ delete_input(Client, InputName, Input0, Options0) ->
 
 %% @doc Retrieves information about an alarm model.
 %%
-%% If you don't specify a value for the `alarmModelVersion'
-%% parameter, the latest version is returned.
+%% If you don't specify a value for the
+%% `alarmModelVersion' parameter, the latest version is returned.
 describe_alarm_model(Client, AlarmModelName)
   when is_map(Client) ->
     describe_alarm_model(Client, AlarmModelName, #{}, #{}).
@@ -242,10 +258,12 @@ describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap)
 describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -259,8 +277,8 @@ describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a detector model.
 %%
-%% If the `version' parameter is not specified, information about the
-%% latest version is returned.
+%% If the `version' parameter is not specified,
+%% information about the latest version is returned.
 describe_detector_model(Client, DetectorModelName)
   when is_map(Client) ->
     describe_detector_model(Client, DetectorModelName, #{}, #{}).
@@ -272,10 +290,12 @@ describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap)
 describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -302,10 +322,12 @@ describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap)
 describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -325,10 +347,12 @@ describe_input(Client, InputName, QueryMap, HeadersMap)
 describe_input(Client, InputName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -348,10 +372,12 @@ describe_logging_options(Client, QueryMap, HeadersMap)
 describe_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -374,10 +400,12 @@ get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap)
 get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), "/results"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -392,8 +420,8 @@ get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Op
 
 %% @doc Lists all the versions of an alarm model.
 %%
-%% The operation returns only the metadata associated with each alarm model
-%% version.
+%% The operation returns only the metadata
+%% associated with each alarm model version.
 list_alarm_model_versions(Client, AlarmModelName)
   when is_map(Client) ->
     list_alarm_model_versions(Client, AlarmModelName, #{}, #{}).
@@ -405,10 +433,12 @@ list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap)
 list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -423,7 +453,8 @@ list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap, Options0
 
 %% @doc Lists the alarm models that you created.
 %%
-%% The operation returns only the metadata associated with each alarm model.
+%% The operation returns only the metadata
+%% associated with each alarm model.
 list_alarm_models(Client)
   when is_map(Client) ->
     list_alarm_models(Client, #{}, #{}).
@@ -435,10 +466,12 @@ list_alarm_models(Client, QueryMap, HeadersMap)
 list_alarm_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarm-models"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -453,7 +486,8 @@ list_alarm_models(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all the versions of a detector model.
 %%
-%% Only the metadata associated with each detector model version is returned.
+%% Only the metadata associated with each
+%% detector model version is returned.
 list_detector_model_versions(Client, DetectorModelName)
   when is_map(Client) ->
     list_detector_model_versions(Client, DetectorModelName, #{}, #{}).
@@ -465,10 +499,12 @@ list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap)
 list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -483,7 +519,8 @@ list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Op
 
 %% @doc Lists the detector models you have created.
 %%
-%% Only the metadata associated with each detector model is returned.
+%% Only the metadata associated with each
+%% detector model is returned.
 list_detector_models(Client)
   when is_map(Client) ->
     list_detector_models(Client, #{}, #{}).
@@ -495,10 +532,12 @@ list_detector_models(Client, QueryMap, HeadersMap)
 list_detector_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -511,17 +550,20 @@ list_detector_models(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists one or more input routings.
+%% @doc
+%% Lists one or more input routings.
 list_input_routings(Client, Input) ->
     list_input_routings(Client, Input, []).
 list_input_routings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/input-routings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -546,10 +588,12 @@ list_inputs(Client, QueryMap, HeadersMap)
 list_inputs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/inputs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -574,10 +618,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -592,20 +638,24 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Sets or updates the AWS IoT Events logging options.
 %%
 %% If you update the value of any `loggingOptions' field, it takes up to
-%% one minute for the change to take effect. If you change the policy
-%% attached to the role you specified in the `roleArn' field (for
-%% example, to correct an invalid policy), it takes up to five minutes for
-%% that change to take effect.
+%% one
+%% minute for the change to take effect. If you change the policy attached to
+%% the role you
+%% specified in the `roleArn' field (for example, to correct an invalid
+%% policy), it
+%% takes up to five minutes for that change to take effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -620,19 +670,22 @@ put_logging_options(Client, Input0, Options0) ->
 
 %% @doc Performs an analysis of your detector model.
 %%
-%% For more information, see Troubleshooting a detector model:
+%% For more information,
+%% see Troubleshooting a detector model:
 %% https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-analyze-api.html
 %% in the AWS IoT Events Developer Guide.
 start_detector_model_analysis(Client, Input) ->
     start_detector_model_analysis(Client, Input, []).
 start_detector_model_analysis(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/analysis/detector-models/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/analysis/detector-models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -647,17 +700,20 @@ start_detector_model_analysis(Client, Input0, Options0) ->
 
 %% @doc Adds to or modifies the tags of the given resource.
 %%
-%% Tags are metadata that can be used to manage a resource.
+%% Tags are metadata that can be used to
+%% manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -677,11 +733,13 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -698,18 +756,20 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates an alarm model.
 %%
-%% Any alarms that were created based on the previous version are deleted and
-%% then created again as new data arrives.
+%% Any alarms that were created based on the previous version are
+%% deleted and then created again as new data arrives.
 update_alarm_model(Client, AlarmModelName, Input) ->
     update_alarm_model(Client, AlarmModelName, Input, []).
 update_alarm_model(Client, AlarmModelName, Input0, Options0) ->
     Method = post,
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -724,18 +784,20 @@ update_alarm_model(Client, AlarmModelName, Input0, Options0) ->
 
 %% @doc Updates a detector model.
 %%
-%% Detectors (instances) spawned by the previous version are deleted and then
-%% re-created as new inputs arrive.
+%% Detectors (instances) spawned by the previous version are
+%% deleted and then re-created as new inputs arrive.
 update_detector_model(Client, DetectorModelName, Input) ->
     update_detector_model(Client, DetectorModelName, Input, []).
 update_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Method = post,
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -754,11 +816,13 @@ update_input(Client, InputName, Input) ->
 update_input(Client, InputName, Input0, Options0) ->
     Method = put,
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -774,6 +838,11 @@ update_input(Client, InputName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

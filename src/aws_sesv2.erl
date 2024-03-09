@@ -4,13 +4,15 @@
 %% @doc Amazon SES API v2
 %%
 %% Amazon SES: http://aws.amazon.com/ses is an Amazon Web Services service
-%% that you can use to send email messages to your customers.
+%% that
+%% you can use to send email messages to your customers.
 %%
 %% If you're new to Amazon SES API v2, you might find it helpful to
-%% review the Amazon Simple Email Service Developer Guide:
-%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/. The Amazon SES
-%% Developer Guide provides information and code samples that demonstrate how
-%% to use Amazon SES API v2 features programmatically.
+%% review the Amazon Simple Email Service Developer
+%% Guide: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/. The Amazon
+%% SES Developer Guide provides information
+%% and code samples that demonstrate how to use Amazon SES API v2 features
+%% programmatically.
 -module(aws_sesv2).
 
 -export([batch_get_metric_data/2,
@@ -240,18 +242,20 @@
 %% @doc Retrieves batches of metric data collected based on your sending
 %% activity.
 %%
-%% You can execute this operation no more than 16 times per second, and with
-%% at most 160 queries from the batches per second (cumulative).
+%% You can execute this operation no more than 16 times per second,
+%% and with at most 160 queries from the batches per second (cumulative).
 batch_get_metric_data(Client, Input) ->
     batch_get_metric_data(Client, Input, []).
 batch_get_metric_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/metrics/batch"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -270,11 +274,13 @@ cancel_export_job(Client, JobId, Input) ->
 cancel_export_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/export-jobs/", aws_util:encode_uri(JobId), "/cancel"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -289,21 +295,26 @@ cancel_export_job(Client, JobId, Input0, Options0) ->
 
 %% @doc Create a configuration set.
 %%
-%% Configuration sets are groups of rules that you can apply to the emails
-%% that you send. You apply a configuration set to an email by specifying the
-%% name of the configuration set when you call the Amazon SES API v2. When
+%% Configuration sets are groups of
+%% rules that you can apply to the emails that you send. You apply a
+%% configuration set to
+%% an email by specifying the name of the configuration set when you call the
+%% Amazon SES API v2. When
 %% you apply a configuration set to an email, all of the rules in that
-%% configuration set are applied to the email.
+%% configuration set
+%% are applied to the email.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 create_configuration_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/configuration-sets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -318,12 +329,14 @@ create_configuration_set(Client, Input0, Options0) ->
 
 %% @doc Create an event destination.
 %%
-%% Events include message sends, deliveries, opens, clicks, bounces, and
-%% complaints. Event destinations are places that you can send information
-%% about these events to. For example, you can send event data to Amazon SNS
-%% to receive notifications when you receive bounces or complaints, or you
-%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
-%% long-term storage.
+%% Events include message sends,
+%% deliveries, opens, clicks, bounces, and complaints. Event
+%% destinations are places that you can send information about these events
+%% to. For example, you can send event data to Amazon SNS to receive
+%% notifications when you
+%% receive bounces or complaints, or you can use Amazon Kinesis Data Firehose
+%% to stream data to Amazon S3 for long-term
+%% storage.
 %%
 %% A single configuration set can include more than one event destination.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
@@ -331,11 +344,13 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input) 
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -349,17 +364,20 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a contact, which is an end-user who is receiving the email,
-%% and adds them to a contact list.
+%% and adds them to a
+%% contact list.
 create_contact(Client, ContactListName, Input) ->
     create_contact(Client, ContactListName, Input, []).
 create_contact(Client, ContactListName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -378,11 +396,13 @@ create_contact_list(Client, Input) ->
 create_contact_list(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/contact-lists"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -400,7 +420,8 @@ create_contact_list(Client, Input0, Options0) ->
 %% For more information about custom verification email templates, see Using
 %% custom verification email templates:
 %% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
-%% in the Amazon SES Developer Guide.
+%% in the Amazon SES Developer
+%% Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_custom_verification_email_template(Client, Input) ->
@@ -408,11 +429,13 @@ create_custom_verification_email_template(Client, Input) ->
 create_custom_verification_email_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/custom-verification-email-templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -427,20 +450,24 @@ create_custom_verification_email_template(Client, Input0, Options0) ->
 
 %% @doc Create a new pool of dedicated IP addresses.
 %%
-%% A pool can include one or more dedicated IP addresses that are associated
-%% with your Amazon Web Services account. You can associate a pool with a
-%% configuration set. When you send an email that uses that configuration
-%% set, the message is sent from one of the addresses in the associated pool.
+%% A pool can include one or more dedicated
+%% IP addresses that are associated with your Amazon Web Services account.
+%% You can associate a pool with
+%% a configuration set. When you send an email that uses that configuration
+%% set, the
+%% message is sent from one of the addresses in the associated pool.
 create_dedicated_ip_pool(Client, Input) ->
     create_dedicated_ip_pool(Client, Input, []).
 create_dedicated_ip_pool(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/dedicated-ip-pools"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -456,23 +483,28 @@ create_dedicated_ip_pool(Client, Input0, Options0) ->
 %% @doc Create a new predictive inbox placement test.
 %%
 %% Predictive inbox placement tests can help you predict how your messages
-%% will be handled by various email providers around the world. When you
-%% perform a predictive inbox placement test, you provide a sample message
-%% that contains the content that you plan to send to your customers. Amazon
-%% SES then sends that message to special email addresses spread across
-%% several major email providers. After about 24 hours, the test is complete,
-%% and you can use the `GetDeliverabilityTestReport' operation to view
-%% the results of the test.
+%% will be handled
+%% by various email providers around the world. When you perform a predictive
+%% inbox placement test, you provide a
+%% sample message that contains the content that you plan to send to your
+%% customers. Amazon SES
+%% then sends that message to special email addresses spread across several
+%% major email
+%% providers. After about 24 hours, the test is complete, and you can use the
+%% `GetDeliverabilityTestReport' operation to view the results of the
+%% test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
 create_deliverability_test_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/deliverability-dashboard/test"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -487,38 +519,52 @@ create_deliverability_test_report(Client, Input0, Options0) ->
 
 %% @doc Starts the process of verifying an email identity.
 %%
-%% An identity is an email address or domain that you use when you send
-%% email. Before you can use an identity to send email, you first have to
-%% verify it. By verifying an identity, you demonstrate that you're the
-%% owner of the identity, and that you've given Amazon SES API v2
+%% An identity is
+%% an email address or domain that you use when you send email. Before you
+%% can use an
+%% identity to send email, you first have to verify it. By verifying an
+%% identity, you
+%% demonstrate that you're the owner of the identity, and that you've
+%% given Amazon SES API v2
 %% permission to send email from the identity.
 %%
 %% When you verify an email address, Amazon SES sends an email to the
-%% address. Your email address is verified as soon as you follow the link in
-%% the verification email.
+%% address. Your email
+%% address is verified as soon as you follow the link in the verification
+%% email.
 %%
 %% When you verify a domain without specifying the
-%% `DkimSigningAttributes' object, this operation provides a set of DKIM
-%% tokens. You can convert these tokens into CNAME records, which you then
-%% add to the DNS configuration for your domain. Your domain is verified when
-%% Amazon SES detects these records in the DNS configuration for your domain.
+%% `DkimSigningAttributes'
+%% object, this operation provides a set of DKIM tokens. You can convert
+%% these tokens into
+%% CNAME records, which you then add to the DNS configuration for your
+%% domain. Your domain
+%% is verified when Amazon SES detects these records in the DNS configuration
+%% for your domain.
 %% This verification method is known as Easy DKIM:
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html.
 %%
 %% Alternatively, you can perform the verification process by providing your
-%% own public-private key pair. This verification method is known as Bring
-%% Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
-%% `CreateEmailIdentity' operation has to include the
-%% `DkimSigningAttributes' object. When you specify this object, you
-%% provide a selector (a component of the DNS record name that identifies the
+%% own
+%% public-private key pair. This verification method is known as Bring Your
+%% Own DKIM
+%% (BYODKIM). To use BYODKIM, your call to the `CreateEmailIdentity'
+%% operation
+%% has to include the `DkimSigningAttributes' object. When you specify
+%% this
+%% object, you provide a selector (a component of the DNS record name that
+%% identifies the
 %% public key to use for DKIM authentication) and a private key.
 %%
 %% When you verify a domain, this operation provides a set of DKIM tokens,
-%% which you can convert into CNAME tokens. You add these CNAME tokens to the
-%% DNS configuration for your domain. Your domain is verified when Amazon SES
-%% detects these records in the DNS configuration for your domain. For some
-%% DNS providers, it can take 72 hours or more to complete the domain
-%% verification process.
+%% which you can
+%% convert into CNAME tokens. You add these CNAME tokens to the DNS
+%% configuration for your
+%% domain. Your domain is verified when Amazon SES detects these records in
+%% the DNS
+%% configuration for your domain. For some DNS providers, it can take 72
+%% hours or more to
+%% complete the domain verification process.
 %%
 %% Additionally, you can associate an existing configuration set with the
 %% email identity that you're verifying.
@@ -527,11 +573,13 @@ create_email_identity(Client, Input) ->
 create_email_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/identities"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -545,14 +593,19 @@ create_email_identity(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates the specified sending authorization policy for the given
-%% identity (an email address or a domain).
+%% identity (an email
+%% address or a domain).
 %%
 %% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% identity,
+%% this API will return an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
-%% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide:
+%% authorize other
+%% senders to use its identities. For information about using sending
+%% authorization, see
+%% the Amazon SES Developer
+%% Guide:
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
@@ -561,11 +614,13 @@ create_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
 create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -580,9 +635,10 @@ create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 
 %% @doc Creates an email template.
 %%
-%% Email templates enable you to send personalized email to one or more
-%% destinations in a single API operation. For more information, see the
-%% Amazon SES Developer Guide:
+%% Email templates enable you to send personalized email to
+%% one or more destinations in a single API operation. For more information,
+%% see the Amazon SES Developer
+%% Guide:
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
@@ -591,11 +647,13 @@ create_email_template(Client, Input) ->
 create_email_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -616,11 +674,13 @@ create_export_job(Client, Input) ->
 create_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/export-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -639,11 +699,13 @@ create_import_job(Client, Input) ->
 create_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/import-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -658,21 +720,25 @@ create_import_job(Client, Input0, Options0) ->
 
 %% @doc Delete an existing configuration set.
 %%
-%% Configuration sets are groups of rules that you can apply to the emails
-%% you send. You apply a configuration set to an email by including a
-%% reference to the configuration set in the headers of the email. When you
-%% apply a configuration set to an email, all of the rules in that
-%% configuration set are applied to the email.
+%% Configuration sets are groups of rules that you can apply to the
+%% emails you send. You apply a configuration set to an email by including a
+%% reference to
+%% the configuration set in the headers of the email. When you apply a
+%% configuration set to
+%% an email, all of the rules in that configuration set are applied to the
+%% email.
 delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -687,22 +753,25 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
 
 %% @doc Delete an event destination.
 %%
-%% Events include message sends, deliveries, opens, clicks, bounces, and
-%% complaints. Event destinations are places that you can send information
-%% about these events to. For example, you can send event data to Amazon SNS
-%% to receive notifications when you receive bounces or complaints, or you
-%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
-%% long-term storage.
+%% Events include message sends, deliveries, opens, clicks, bounces,
+%% and complaints. Event destinations are places that you can send
+%% information about these events to. For example, you can send event data to
+%% Amazon SNS to
+%% receive notifications when you receive bounces or complaints, or you can
+%% use Amazon Kinesis Data Firehose to
+%% stream data to Amazon S3 for long-term storage.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -721,11 +790,13 @@ delete_contact(Client, ContactListName, EmailAddress, Input) ->
 delete_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -744,11 +815,13 @@ delete_contact_list(Client, ContactListName, Input) ->
 delete_contact_list(Client, ContactListName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -766,7 +839,8 @@ delete_contact_list(Client, ContactListName, Input0, Options0) ->
 %% For more information about custom verification email templates, see Using
 %% custom verification email templates:
 %% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
-%% in the Amazon SES Developer Guide.
+%% in the Amazon SES Developer
+%% Guide.
 %%
 %% You can execute this operation no more than once per second.
 delete_custom_verification_email_template(Client, TemplateName, Input) ->
@@ -774,11 +848,13 @@ delete_custom_verification_email_template(Client, TemplateName, Input) ->
 delete_custom_verification_email_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -797,11 +873,13 @@ delete_dedicated_ip_pool(Client, PoolName, Input) ->
 delete_dedicated_ip_pool(Client, PoolName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -816,17 +894,20 @@ delete_dedicated_ip_pool(Client, PoolName, Input0, Options0) ->
 
 %% @doc Deletes an email identity.
 %%
-%% An identity can be either an email address or a domain name.
+%% An identity can be either an email address or a domain
+%% name.
 delete_email_identity(Client, EmailIdentity, Input) ->
     delete_email_identity(Client, EmailIdentity, Input, []).
 delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -840,17 +921,22 @@ delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified sending authorization policy for the given
-%% identity (an email address or a domain).
+%% identity (an email
+%% address or a domain).
 %%
-%% This API returns successfully even if a policy with the specified name
-%% does not exist.
+%% This API returns successfully even if a policy with the specified
+%% name does not exist.
 %%
 %% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% identity,
+%% this API will return an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
-%% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide:
+%% authorize other
+%% senders to use its identities. For information about using sending
+%% authorization, see
+%% the Amazon SES Developer
+%% Guide:
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
@@ -859,11 +945,13 @@ delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
 delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -884,11 +972,13 @@ delete_email_template(Client, TemplateName, Input) ->
 delete_email_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -907,11 +997,13 @@ delete_suppressed_destination(Client, EmailAddress, Input) ->
 delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/suppression/addresses/", aws_util:encode_uri(EmailAddress), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -925,7 +1017,8 @@ delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Obtain information about the email-sending status and capabilities of
-%% your Amazon SES account in the current Amazon Web Services Region.
+%% your Amazon SES
+%% account in the current Amazon Web Services Region.
 get_account(Client)
   when is_map(Client) ->
     get_account(Client, #{}, #{}).
@@ -937,10 +1030,12 @@ get_account(Client, QueryMap, HeadersMap)
 get_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/account"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -961,10 +1056,12 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap)
 get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/blacklist-report"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -977,14 +1074,18 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about an existing configuration set, including the
-%% dedicated IP pool that it's associated with, whether or not it's
-%% enabled for sending email, and more.
+%% dedicated IP pool
+%% that it's associated with, whether or not it's enabled for sending
+%% email, and
+%% more.
 %%
-%% Configuration sets are groups of rules that you can apply to the emails
-%% you send. You apply a configuration set to an email by including a
-%% reference to the configuration set in the headers of the email. When you
-%% apply a configuration set to an email, all of the rules in that
-%% configuration set are applied to the email.
+%% Configuration sets are groups of rules that you can apply to the
+%% emails you send. You apply a configuration set to an email by including a
+%% reference to
+%% the configuration set in the headers of the email. When you apply a
+%% configuration set to
+%% an email, all of the rules in that configuration set are applied to the
+%% email.
 get_configuration_set(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set(Client, ConfigurationSetName, #{}, #{}).
@@ -996,10 +1097,12 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap)
 get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1008,14 +1111,16 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of event destinations that are associated with a
-%% configuration set.
+%% configuration
+%% set.
 %%
-%% Events include message sends, deliveries, opens, clicks, bounces, and
-%% complaints. Event destinations are places that you can send information
-%% about these events to. For example, you can send event data to Amazon SNS
-%% to receive notifications when you receive bounces or complaints, or you
-%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
-%% long-term storage.
+%% Events include message sends, deliveries, opens, clicks, bounces,
+%% and complaints. Event destinations are places that you can send
+%% information about these events to. For example, you can send event data to
+%% Amazon SNS to
+%% receive notifications when you receive bounces or complaints, or you can
+%% use Amazon Kinesis Data Firehose to
+%% stream data to Amazon S3 for long-term storage.
 get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, #{}, #{}).
@@ -1027,10 +1132,12 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
 get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1050,10 +1157,12 @@ get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap)
 get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1063,7 +1172,8 @@ get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap, Options
 
 %% @doc Returns contact list metadata.
 %%
-%% It does not return any information about the contacts present in the list.
+%% It does not return any information about the contacts
+%% present in the list.
 get_contact_list(Client, ContactListName)
   when is_map(Client) ->
     get_contact_list(Client, ContactListName, #{}, #{}).
@@ -1075,10 +1185,12 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap)
 get_contact_list(Client, ContactListName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1087,12 +1199,14 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the custom email verification template for the template name
-%% you specify.
+%% you
+%% specify.
 %%
 %% For more information about custom verification email templates, see Using
 %% custom verification email templates:
 %% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
-%% in the Amazon SES Developer Guide.
+%% in the Amazon SES Developer
+%% Guide.
 %%
 %% You can execute this operation no more than once per second.
 get_custom_verification_email_template(Client, TemplateName)
@@ -1106,10 +1220,12 @@ get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMa
 get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1118,8 +1234,10 @@ get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about a dedicated IP address, including the name of
-%% the dedicated IP pool that it's associated with, as well information
-%% about the automatic warm-up process for the address.
+%% the dedicated IP
+%% pool that it's associated with, as well information about the
+%% automatic warm-up process
+%% for the address.
 get_dedicated_ip(Client, Ip)
   when is_map(Client) ->
     get_dedicated_ip(Client, Ip, #{}, #{}).
@@ -1131,10 +1249,12 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap)
 get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1154,10 +1274,12 @@ get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap)
 get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1166,7 +1288,8 @@ get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the dedicated IP addresses that are associated with your Amazon
-%% Web Services account.
+%% Web Services
+%% account.
 get_dedicated_ips(Client)
   when is_map(Client) ->
     get_dedicated_ips(Client, #{}, #{}).
@@ -1178,10 +1301,12 @@ get_dedicated_ips(Client, QueryMap, HeadersMap)
 get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ips"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1198,16 +1323,19 @@ get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieve information about the status of the Deliverability dashboard
 %% for your account.
 %%
-%% When the Deliverability dashboard is enabled, you gain access to
-%% reputation, deliverability, and other metrics for the domains that you use
-%% to send email. You also gain the ability to perform predictive inbox
-%% placement tests.
+%% When
+%% the Deliverability dashboard is enabled, you gain access to reputation,
+%% deliverability, and other
+%% metrics for the domains that you use to send email. You also gain the
+%% ability to perform
+%% predictive inbox placement tests.
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
-%% charge, in addition to any other fees that you accrue by using Amazon SES
-%% and other Amazon Web Services services. For more information about the
-%% features and cost of a Deliverability dashboard subscription, see Amazon
-%% SES Pricing: http://aws.amazon.com/ses/pricing/.
+%% charge, in addition
+%% to any other fees that you accrue by using Amazon SES and other Amazon Web
+%% Services services. For more
+%% information about the features and cost of a Deliverability dashboard
+%% subscription, see Amazon SES Pricing: http://aws.amazon.com/ses/pricing/.
 get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
     get_deliverability_dashboard_options(Client, #{}, #{}).
@@ -1219,10 +1347,12 @@ get_deliverability_dashboard_options(Client, QueryMap, HeadersMap)
 get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1242,10 +1372,12 @@ get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap)
 get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/test-reports/", aws_util:encode_uri(ReportId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1255,8 +1387,9 @@ get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieve all the deliverability data for a specific campaign.
 %%
-%% This data is available for a campaign only if the campaign sent email by
-%% using a domain that the Deliverability dashboard is enabled for.
+%% This data is available
+%% for a campaign only if the campaign sent email by using a domain that the
+%% Deliverability dashboard is enabled for.
 get_domain_deliverability_campaign(Client, CampaignId)
   when is_map(Client) ->
     get_domain_deliverability_campaign(Client, CampaignId, #{}, #{}).
@@ -1268,10 +1401,12 @@ get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap)
 get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/campaigns/", aws_util:encode_uri(CampaignId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1280,7 +1415,8 @@ get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve inbox placement and engagement rates for the domains that
-%% you use to send email.
+%% you use to send
+%% email.
 get_domain_statistics_report(Client, Domain, EndDate, StartDate)
   when is_map(Client) ->
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, #{}, #{}).
@@ -1292,10 +1428,12 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
 get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/statistics-report/", aws_util:encode_uri(Domain), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1309,8 +1447,10 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about a specific identity, including the
-%% identity's verification status, sending authorization policies, its
-%% DKIM authentication status, and its custom Mail-From settings.
+%% identity's verification
+%% status, sending authorization policies, its DKIM authentication status,
+%% and its custom
+%% Mail-From settings.
 get_email_identity(Client, EmailIdentity)
   when is_map(Client) ->
     get_email_identity(Client, EmailIdentity, #{}, #{}).
@@ -1322,10 +1462,12 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap)
 get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1334,17 +1476,22 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the requested sending authorization policies for the given
-%% identity (an email address or a domain).
+%% identity (an email
+%% address or a domain).
 %%
-%% The policies are returned as a map of policy names to policy contents. You
-%% can retrieve a maximum of 20 policies at a time.
+%% The policies are returned as a map of policy names to policy
+%% contents. You can retrieve a maximum of 20 policies at a time.
 %%
 %% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% identity,
+%% this API will return an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
-%% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide:
+%% authorize other
+%% senders to use its identities. For information about using sending
+%% authorization, see
+%% the Amazon SES Developer
+%% Guide:
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
@@ -1359,10 +1506,12 @@ get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap)
 get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1371,7 +1520,8 @@ get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the template object (which includes the subject line, HTML
-%% part and text part) for the template you specify.
+%% part and text
+%% part) for the template you specify.
 %%
 %% You can execute this operation no more than once per second.
 get_email_template(Client, TemplateName)
@@ -1385,10 +1535,12 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap)
 get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1408,10 +1560,12 @@ get_export_job(Client, JobId, QueryMap, HeadersMap)
 get_export_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/export-jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1431,10 +1585,12 @@ get_import_job(Client, JobId, QueryMap, HeadersMap)
 get_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/import-jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1443,8 +1599,9 @@ get_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about a specific message, including the from
-%% address, the subject, the recipient address, email tags, as well as events
-%% associated with the message.
+%% address, the
+%% subject, the recipient address, email tags, as well as events associated
+%% with the message.
 %%
 %% You can execute this operation no more than once per second.
 get_message_insights(Client, MessageId)
@@ -1457,11 +1614,13 @@ get_message_insights(Client, MessageId, QueryMap, HeadersMap)
 
 get_message_insights(Client, MessageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v2/email/insights/", aws_util:encode_uri(MessageId), "/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/v2/email/insights/", aws_util:encode_uri(MessageId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1470,7 +1629,8 @@ get_message_insights(Client, MessageId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a specific email address that's on
-%% the suppression list for your account.
+%% the suppression list
+%% for your account.
 get_suppressed_destination(Client, EmailAddress)
   when is_map(Client) ->
     get_suppressed_destination(Client, EmailAddress, #{}, #{}).
@@ -1482,10 +1642,12 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap)
 get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/suppression/addresses/", aws_util:encode_uri(EmailAddress), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1494,13 +1656,16 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all of the configuration sets associated with your account in
-%% the current region.
+%% the current
+%% region.
 %%
-%% Configuration sets are groups of rules that you can apply to the emails
-%% you send. You apply a configuration set to an email by including a
-%% reference to the configuration set in the headers of the email. When you
-%% apply a configuration set to an email, all of the rules in that
-%% configuration set are applied to the email.
+%% Configuration sets are groups of rules that you can apply to the
+%% emails you send. You apply a configuration set to an email by including a
+%% reference to
+%% the configuration set in the headers of the email. When you apply a
+%% configuration set to
+%% an email, all of the rules in that configuration set are applied to the
+%% email.
 list_configuration_sets(Client)
   when is_map(Client) ->
     list_configuration_sets(Client, #{}, #{}).
@@ -1512,10 +1677,12 @@ list_configuration_sets(Client, QueryMap, HeadersMap)
 list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/configuration-sets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1540,10 +1707,12 @@ list_contact_lists(Client, QueryMap, HeadersMap)
 list_contact_lists(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1568,10 +1737,12 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap)
 list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1585,12 +1756,14 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the existing custom verification email templates for your
-%% account in the current Amazon Web Services Region.
+%% account in the current
+%% Amazon Web Services Region.
 %%
 %% For more information about custom verification email templates, see Using
 %% custom verification email templates:
 %% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
-%% in the Amazon SES Developer Guide.
+%% in the Amazon SES Developer
+%% Guide.
 %%
 %% You can execute this operation no more than once per second.
 list_custom_verification_email_templates(Client)
@@ -1604,10 +1777,12 @@ list_custom_verification_email_templates(Client, QueryMap, HeadersMap)
 list_custom_verification_email_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/custom-verification-email-templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1621,7 +1796,8 @@ list_custom_verification_email_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all of the dedicated IP pools that exist in your Amazon Web
-%% Services account in the current Region.
+%% Services account in the current
+%% Region.
 list_dedicated_ip_pools(Client)
   when is_map(Client) ->
     list_dedicated_ip_pools(Client, #{}, #{}).
@@ -1633,10 +1809,12 @@ list_dedicated_ip_pools(Client, QueryMap, HeadersMap)
 list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ip-pools"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1652,8 +1830,10 @@ list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options0)
 %% @doc Show a list of the predictive inbox placement tests that you've
 %% performed, regardless of their statuses.
 %%
-%% For predictive inbox placement tests that are complete, you can use the
-%% `GetDeliverabilityTestReport' operation to view the results.
+%% For
+%% predictive inbox placement tests that are complete, you can use the
+%% `GetDeliverabilityTestReport'
+%% operation to view the results.
 list_deliverability_test_reports(Client)
   when is_map(Client) ->
     list_deliverability_test_reports(Client, #{}, #{}).
@@ -1665,10 +1845,12 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap)
 list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/test-reports"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1682,10 +1864,11 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve deliverability data for all the campaigns that used a
-%% specific domain to send email during a specified time range.
+%% specific domain to send
+%% email during a specified time range.
 %%
-%% This data is available for a domain only if you enabled the Deliverability
-%% dashboard for the domain.
+%% This data is available for a domain only if you
+%% enabled the Deliverability dashboard for the domain.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate)
   when is_map(Client) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, #{}, #{}).
@@ -1697,10 +1880,12 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/domains/", aws_util:encode_uri(SubscribedDomain), "/campaigns"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1716,12 +1901,14 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all of the email identities that are associated
-%% with your Amazon Web Services account.
+%% with your Amazon Web Services
+%% account.
 %%
 %% An identity can be either an email address or a domain. This operation
-%% returns identities that are verified as well as those that aren't.
-%% This operation returns identities that are associated with Amazon SES and
-%% Amazon Pinpoint.
+%% returns
+%% identities that are verified as well as those that aren't. This
+%% operation returns
+%% identities that are associated with Amazon SES and Amazon Pinpoint.
 list_email_identities(Client)
   when is_map(Client) ->
     list_email_identities(Client, #{}, #{}).
@@ -1733,10 +1920,12 @@ list_email_identities(Client, QueryMap, HeadersMap)
 list_email_identities(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/identities"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1750,7 +1939,8 @@ list_email_identities(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the email templates present in your Amazon SES account in the
-%% current Amazon Web Services Region.
+%% current Amazon Web Services
+%% Region.
 %%
 %% You can execute this operation no more than once per second.
 list_email_templates(Client)
@@ -1764,10 +1954,12 @@ list_email_templates(Client, QueryMap, HeadersMap)
 list_email_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/templates"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1786,11 +1978,13 @@ list_export_jobs(Client, Input) ->
 list_export_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/list-export-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1815,10 +2009,12 @@ list_import_jobs(Client, QueryMap, HeadersMap)
 list_import_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/import-jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1840,11 +2036,13 @@ list_recommendations(Client, Input) ->
 list_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/vdm/recommendations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1858,7 +2056,8 @@ list_recommendations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of email addresses that are on the suppression list
-%% for your account.
+%% for your
+%% account.
 list_suppressed_destinations(Client)
   when is_map(Client) ->
     list_suppressed_destinations(Client, #{}, #{}).
@@ -1870,10 +2069,12 @@ list_suppressed_destinations(Client, QueryMap, HeadersMap)
 list_suppressed_destinations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/suppression/addresses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1890,12 +2091,15 @@ list_suppressed_destinations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of the tags (keys and values) that are associated
-%% with a specified resource.
+%% with a specified
+%% resource.
 %%
-%% A tag is a label that you optionally define and associate with a resource.
-%% Each tag consists of a required tag key and an optional associated tag
-%% value. A tag key is a general label that acts as a category for more
-%% specific tag values. A tag value acts as a descriptor within a tag key.
+%% A tag is a label that you optionally define and associate
+%% with a resource. Each tag consists of a required tag key and an
+%% optional associated tag value. A tag key is a general label that
+%% acts as a category for more specific tag values. A tag value acts as a
+%% descriptor within
+%% a tag key.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1907,10 +2111,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1929,11 +2135,13 @@ put_account_dedicated_ip_warmup_attributes(Client, Input) ->
 put_account_dedicated_ip_warmup_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/dedicated-ips/warmup"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1952,11 +2160,13 @@ put_account_details(Client, Input) ->
 put_account_details(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/account/details"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1975,11 +2185,13 @@ put_account_sending_attributes(Client, Input) ->
 put_account_sending_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/sending"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1998,11 +2210,13 @@ put_account_suppression_attributes(Client, Input) ->
 put_account_suppression_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/suppression"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2023,11 +2237,13 @@ put_account_vdm_attributes(Client, Input) ->
 put_account_vdm_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/vdm"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2042,18 +2258,21 @@ put_account_vdm_attributes(Client, Input0, Options0) ->
 
 %% @doc Associate a configuration set with a dedicated IP pool.
 %%
-%% You can use dedicated IP pools to create groups of dedicated IP addresses
-%% for sending specific types of email.
+%% You can use dedicated IP pools
+%% to create groups of dedicated IP addresses for sending specific types of
+%% email.
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_delivery_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/delivery-options"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2067,18 +2286,20 @@ put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enable or disable collection of reputation metrics for emails that
-%% you send using a particular configuration set in a specific Amazon Web
-%% Services Region.
+%% you send using a
+%% particular configuration set in a specific Amazon Web Services Region.
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_reputation_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/reputation-options"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2092,17 +2313,20 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enable or disable email sending for messages that use a particular
-%% configuration set in a specific Amazon Web Services Region.
+%% configuration set
+%% in a specific Amazon Web Services Region.
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_sending_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/sending"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2122,11 +2346,13 @@ put_configuration_set_suppression_options(Client, ConfigurationSetName, Input) -
 put_configuration_set_suppression_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/suppression-options"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2140,17 +2366,20 @@ put_configuration_set_suppression_options(Client, ConfigurationSetName, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Specify a custom domain to use for open and click tracking elements
-%% in email that you send.
+%% in email that you
+%% send.
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_tracking_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/tracking-options"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2172,11 +2401,13 @@ put_configuration_set_vdm_options(Client, ConfigurationSetName, Input) ->
 put_configuration_set_vdm_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/vdm-options"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2195,17 +2426,20 @@ put_configuration_set_vdm_options(Client, ConfigurationSetName, Input0, Options0
 %% associated with your Amazon Web Services account.
 %%
 %% The dedicated IP pool you specify must already exist. You can create a new
-%% pool by using the `CreateDedicatedIpPool' operation.
+%% pool by
+%% using the `CreateDedicatedIpPool' operation.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), "/pool"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2226,11 +2460,13 @@ put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input) ->
 put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), "/scaling"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2249,11 +2485,13 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input) ->
 put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), "/warmup"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2268,26 +2506,30 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
 
 %% @doc Enable or disable the Deliverability dashboard.
 %%
-%% When you enable the Deliverability dashboard, you gain access to
-%% reputation, deliverability, and other metrics for the domains that you use
-%% to send email. You also gain the ability to perform predictive inbox
+%% When you enable the Deliverability dashboard, you gain
+%% access to reputation, deliverability, and other metrics for the domains
+%% that you use to
+%% send email. You also gain the ability to perform predictive inbox
 %% placement tests.
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
-%% charge, in addition to any other fees that you accrue by using Amazon SES
-%% and other Amazon Web Services services. For more information about the
-%% features and cost of a Deliverability dashboard subscription, see Amazon
-%% SES Pricing: http://aws.amazon.com/ses/pricing/.
+%% charge, in addition
+%% to any other fees that you accrue by using Amazon SES and other Amazon Web
+%% Services services. For more
+%% information about the features and cost of a Deliverability dashboard
+%% subscription, see Amazon SES Pricing: http://aws.amazon.com/ses/pricing/.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
 put_deliverability_dashboard_option(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/deliverability-dashboard"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2306,11 +2548,13 @@ put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input) ->
 put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/configuration-set"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2329,11 +2573,13 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input) ->
 put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2347,34 +2593,36 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to configure or change the DKIM authentication settings for an
-%% email domain identity.
+%% email domain
+%% identity.
 %%
 %% You can use this operation to do any of the following:
 %%
-%% <ul> <li> Update the signing attributes for an identity that uses Bring
-%% Your Own DKIM (BYODKIM).
+%% Update the signing attributes for an identity that uses Bring Your Own
+%% DKIM
+%% (BYODKIM).
 %%
-%% </li> <li> Update the key length that should be used for Easy DKIM.
+%% Update the key length that should be used for Easy DKIM.
 %%
-%% </li> <li> Change from using no DKIM authentication to using Easy DKIM.
+%% Change from using no DKIM authentication to using Easy DKIM.
 %%
-%% </li> <li> Change from using no DKIM authentication to using BYODKIM.
+%% Change from using no DKIM authentication to using BYODKIM.
 %%
-%% </li> <li> Change from using Easy DKIM to using BYODKIM.
+%% Change from using Easy DKIM to using BYODKIM.
 %%
-%% </li> <li> Change from using BYODKIM to using Easy DKIM.
-%%
-%% </li> </ul>
+%% Change from using BYODKIM to using Easy DKIM.
 put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim/signing"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2389,28 +2637,35 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Option
 
 %% @doc Used to enable or disable feedback forwarding for an identity.
 %%
-%% This setting determines what happens when an identity is used to send an
-%% email that results in a bounce or complaint event.
+%% This setting determines
+%% what happens when an identity is used to send an email that results in a
+%% bounce or
+%% complaint event.
 %%
 %% If the value is `true', you receive email notifications when bounce or
 %% complaint events occur. These notifications are sent to the address that
-%% you specified in the `Return-Path' header of the original email.
+%% you specified
+%% in the `Return-Path' header of the original email.
 %%
 %% You're required to have a method of tracking bounces and complaints.
-%% If you haven't set up another mechanism for receiving bounce or
-%% complaint notifications (for example, by setting up an event destination),
-%% you receive an email notification when these events occur (even if this
-%% setting is disabled).
+%% If you haven't
+%% set up another mechanism for receiving bounce or complaint notifications
+%% (for example,
+%% by setting up an event destination), you receive an email notification
+%% when these events
+%% occur (even if this setting is disabled).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/feedback"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2424,17 +2679,20 @@ put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to enable or disable the custom Mail-From domain configuration
-%% for an email identity.
+%% for an email
+%% identity.
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_mail_from_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/mail-from"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2453,11 +2711,13 @@ put_suppressed_destination(Client, Input) ->
 put_suppressed_destination(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/suppression/addresses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2476,11 +2736,13 @@ send_bulk_email(Client, Input) ->
 send_bulk_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/outbound-bulk-emails"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2494,18 +2756,22 @@ send_bulk_email(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an email address to the list of identities for your Amazon SES
-%% account in the current Amazon Web Services Region and attempts to verify
-%% it.
+%% account in the current
+%% Amazon Web Services Region and attempts to verify it.
 %%
-%% As a result of executing this operation, a customized verification email
-%% is sent to the specified address.
+%% As a result of executing this
+%% operation, a customized verification email is sent to the specified
+%% address.
 %%
 %% To use this operation, you must first create a custom verification email
-%% template. For more information about creating and using custom
-%% verification email templates, see Using custom verification email
-%% templates:
+%% template. For
+%% more information about creating and using custom verification email
+%% templates, see
+%% Using
+%% custom verification email templates:
 %% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
-%% in the Amazon SES Developer Guide.
+%% in the Amazon SES Developer
+%% Guide.
 %%
 %% You can execute this operation no more than once per second.
 send_custom_verification_email(Client, Input) ->
@@ -2513,11 +2779,13 @@ send_custom_verification_email(Client, Input) ->
 send_custom_verification_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/outbound-custom-verification-emails"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2532,33 +2800,38 @@ send_custom_verification_email(Client, Input0, Options0) ->
 
 %% @doc Sends an email message.
 %%
-%% You can use the Amazon SES API v2 to send the following types of messages:
+%% You can use the Amazon SES API v2 to send the following types of
+%% messages:
 %%
-%% <ul> <li> Simple – A standard email message. When you create this type of
-%% message, you specify the sender, the recipient, and the message body, and
-%% Amazon SES assembles the message for you.
+%% Simple – A standard email message. When
+%% you create this type of message, you specify the sender, the recipient,
+%% and the
+%% message body, and Amazon SES assembles the message for you.
 %%
-%% </li> <li> Raw – A raw, MIME-formatted email message. When you send this
-%% type of email, you have to specify all of the message headers, as well as
-%% the message body. You can use this message type to send messages that
-%% contain attachments. The message that you specify has to be a valid MIME
-%% message.
+%% Raw – A raw, MIME-formatted email
+%% message. When you send this type of email, you have to specify all of the
+%% message headers, as well as the message body. You can use this message
+%% type to
+%% send messages that contain attachments. The message that you specify has
+%% to be a
+%% valid MIME message.
 %%
-%% </li> <li> Templated – A message that contains personalization tags. When
-%% you send this type of email, Amazon SES API v2 automatically replaces the
-%% tags with values that you specify.
-%%
-%% </li> </ul>
+%% Templated – A message that contains
+%% personalization tags. When you send this type of email, Amazon SES API v2
+%% automatically
+%% replaces the tags with values that you specify.
 send_email(Client, Input) ->
     send_email(Client, Input, []).
 send_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/outbound-emails"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2573,25 +2846,31 @@ send_email(Client, Input0, Options0) ->
 
 %% @doc Add one or more tags (keys and values) to a specified resource.
 %%
-%% A tag is a label that you optionally define and associate with a resource.
-%% Tags can help you categorize and manage resources in different ways, such
-%% as by purpose, owner, environment, or other criteria. A resource can have
-%% as many as 50 tags.
+%% A
+%% tag is a label that you optionally define and associate with a
+%% resource. Tags can help you categorize and manage resources in different
+%% ways, such as
+%% by purpose, owner, environment, or other criteria. A resource can have as
+%% many as 50
+%% tags.
 %%
-%% Each tag consists of a required tag key and an associated tag value, both
-%% of which you define. A tag key is a general label that acts as a category
-%% for more specific tag values. A tag value acts as a descriptor within a
-%% tag key.
+%% Each tag consists of a required tag key and an
+%% associated tag value, both of which you define. A tag key is a
+%% general label that acts as a category for more specific tag values. A tag
+%% value acts as
+%% a descriptor within a tag key.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2605,7 +2884,8 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a preview of the MIME content of an email when provided with
-%% a template and a set of replacement data.
+%% a template and a
+%% set of replacement data.
 %%
 %% You can execute this operation no more than once per second.
 test_render_email_template(Client, TemplateName, Input) ->
@@ -2613,11 +2893,13 @@ test_render_email_template(Client, TemplateName, Input) ->
 test_render_email_template(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), "/render"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2636,11 +2918,13 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/tags"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2658,22 +2942,25 @@ untag_resource(Client, Input0, Options0) ->
 %% @doc Update the configuration of an event destination for a configuration
 %% set.
 %%
-%% Events include message sends, deliveries, opens, clicks, bounces, and
-%% complaints. Event destinations are places that you can send information
-%% about these events to. For example, you can send event data to Amazon SNS
-%% to receive notifications when you receive bounces or complaints, or you
-%% can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
-%% long-term storage.
+%% Events include message sends, deliveries, opens, clicks, bounces,
+%% and complaints. Event destinations are places that you can send
+%% information about these events to. For example, you can send event data to
+%% Amazon SNS to
+%% receive notifications when you receive bounces or complaints, or you can
+%% use Amazon Kinesis Data Firehose to
+%% stream data to Amazon S3 for long-term storage.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2696,11 +2983,13 @@ update_contact(Client, ContactListName, EmailAddress, Input) ->
 update_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2721,11 +3010,13 @@ update_contact_list(Client, ContactListName, Input) ->
 update_contact_list(Client, ContactListName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2743,7 +3034,8 @@ update_contact_list(Client, ContactListName, Input0, Options0) ->
 %% For more information about custom verification email templates, see Using
 %% custom verification email templates:
 %% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
-%% in the Amazon SES Developer Guide.
+%% in the Amazon SES Developer
+%% Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_custom_verification_email_template(Client, TemplateName, Input) ->
@@ -2751,11 +3043,13 @@ update_custom_verification_email_template(Client, TemplateName, Input) ->
 update_custom_verification_email_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2769,17 +3063,22 @@ update_custom_verification_email_template(Client, TemplateName, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified sending authorization policy for the given
-%% identity (an email address or a domain).
+%% identity (an email
+%% address or a domain).
 %%
-%% This API returns successfully even if a policy with the specified name
-%% does not exist.
+%% This API returns successfully even if a policy with the specified
+%% name does not exist.
 %%
 %% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% identity,
+%% this API will return an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
-%% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide:
+%% authorize other
+%% senders to use its identities. For information about using sending
+%% authorization, see
+%% the Amazon SES Developer
+%% Guide:
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
@@ -2788,11 +3087,13 @@ update_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
 update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2807,9 +3108,10 @@ update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 
 %% @doc Updates an email template.
 %%
-%% Email templates enable you to send personalized email to one or more
-%% destinations in a single API operation. For more information, see the
-%% Amazon SES Developer Guide:
+%% Email templates enable you to send personalized email to
+%% one or more destinations in a single API operation. For more information,
+%% see the Amazon SES Developer
+%% Guide:
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
@@ -2818,11 +3120,13 @@ update_email_template(Client, TemplateName, Input) ->
 update_email_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2838,6 +3142,11 @@ update_email_template(Client, TemplateName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

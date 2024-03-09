@@ -2,13 +2,16 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Resilience Hub helps you proactively prepare and protect your Amazon
-%% Web Services applications from disruptions.
+%% Web Services applications from
+%% disruptions.
 %%
 %% It offers continual resiliency assessment and validation that integrates
 %% into your software development lifecycle. This enables you to uncover
-%% resiliency weaknesses, ensure recovery time objective (RTO) and recovery
-%% point objective (RPO) targets for your applications are met, and resolve
-%% issues before they are released into production.
+%% resiliency weaknesses,
+%% ensure recovery time objective (RTO) and recovery point objective (RPO)
+%% targets for your
+%% applications are met, and resolve issues before they are released into
+%% production.
 -module(aws_resiliencehub).
 
 -export([add_draft_app_version_resource_mappings/2,
@@ -148,10 +151,12 @@ add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/add-draft-app-version-resource-mappings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -172,10 +177,12 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batch-update-recommendation-status"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -190,22 +197,28 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
 
 %% @doc Creates an Resilience Hub application.
 %%
-%% An Resilience Hub application is a collection of Amazon Web Services
-%% resources structured to prevent and recover Amazon Web Services
-%% application disruptions. To describe a Resilience Hub application, you
-%% provide an application name, resources from one or more CloudFormation
-%% stacks, Resource Groups, Terraform state files, AppRegistry applications,
-%% and an appropriate resiliency policy. In addition, you can also add
-%% resources that are located on Amazon Elastic Kubernetes Service (Amazon
-%% EKS) clusters as optional resources. For more information about the number
-%% of resources supported per application, see Service quotas:
+%% An Resilience Hub application is a
+%% collection of Amazon Web Services resources structured to prevent and
+%% recover Amazon Web Services application disruptions. To describe a
+%% Resilience Hub application, you provide an
+%% application name, resources from one or more CloudFormation stacks,
+%% Resource Groups, Terraform state files, AppRegistry applications, and an
+%% appropriate
+%% resiliency policy. In addition, you can also add resources that are
+%% located on Amazon Elastic Kubernetes Service (Amazon EKS) clusters as
+%% optional resources. For more information
+%% about the number of resources supported per application, see Service
+%% quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub.
 %%
 %% After you create an Resilience Hub application, you publish it so that you
-%% can run a resiliency assessment on it. You can then use recommendations
-%% from the assessment to improve resiliency by running another assessment,
-%% comparing results, and then iterating the process until you achieve your
-%% goals for recovery time objective (RTO) and recovery point objective
+%% can run a resiliency
+%% assessment on it. You can then use recommendations from the assessment to
+%% improve resiliency
+%% by running another assessment, comparing results, and then iterating the
+%% process until you
+%% achieve your goals for recovery time objective (RTO) and recovery point
+%% objective
 %% (RPO).
 create_app(Client, Input) ->
     create_app(Client, Input, []).
@@ -213,10 +226,12 @@ create_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -241,10 +256,12 @@ create_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app-version-app-component"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -258,16 +275,20 @@ create_app_version_app_component(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a resource to the Resilience Hub application and assigns it to
-%% the specified Application Components.
+%% the specified
+%% Application Components.
 %%
 %% If you specify a new Application Component, Resilience Hub will
-%% automatically create the Application Component.
+%% automatically
+%% create the Application Component.
 %%
 %% This action has no effect outside Resilience Hub.
 %%
 %% This API updates the Resilience Hub application draft version. To use this
-%% resource for running resiliency assessments, you must publish the
-%% Resilience Hub application using the `PublishAppVersion' API.
+%% resource
+%% for running resiliency assessments, you must publish the Resilience Hub
+%% application using
+%% the `PublishAppVersion' API.
 %%
 %% To update application version with new `physicalResourceID', you must
 %% call `ResolveAppVersionResources' API.
@@ -277,10 +298,12 @@ create_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app-version-resource"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -301,10 +324,12 @@ create_recommendation_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-recommendation-template"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -320,11 +345,13 @@ create_recommendation_template(Client, Input0, Options0) ->
 %% @doc Creates a resiliency policy for an application.
 %%
 %% Resilience Hub allows you to provide a value of zero for `rtoInSecs'
-%% and `rpoInSecs' of your resiliency policy. But, while assessing your
+%% and
+%% `rpoInSecs' of your resiliency policy. But, while assessing your
 %% application, the lowest possible assessment result is near zero. Hence, if
-%% you provide value zero for `rtoInSecs' and `rpoInSecs', the
-%% estimated workload RTO and estimated workload RPO result will be near zero
-%% and the Compliance status for your application will be set to Policy
+%% you provide value
+%% zero for `rtoInSecs' and `rpoInSecs', the estimated workload RTO
+%% and estimated workload RPO result will be near zero and the Compliance
+%% status for your application will be set to Policy
 %% breached.
 create_resiliency_policy(Client, Input) ->
     create_resiliency_policy(Client, Input, []).
@@ -332,10 +359,12 @@ create_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-resiliency-policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -350,17 +379,20 @@ create_resiliency_policy(Client, Input0, Options0) ->
 
 %% @doc Deletes an Resilience Hub application.
 %%
-%% This is a destructive action that can't be undone.
+%% This is a destructive action that can't be
+%% undone.
 delete_app(Client, Input) ->
     delete_app(Client, Input, []).
 delete_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -375,17 +407,20 @@ delete_app(Client, Input0, Options0) ->
 
 %% @doc Deletes an Resilience Hub application assessment.
 %%
-%% This is a destructive action that can't be undone.
+%% This is a destructive action that can't
+%% be undone.
 delete_app_assessment(Client, Input) ->
     delete_app_assessment(Client, Input, []).
 delete_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-assessment"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -406,10 +441,12 @@ delete_app_input_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-input-source"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -436,10 +473,12 @@ delete_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-version-app-component"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -468,10 +507,12 @@ delete_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-version-resource"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -486,17 +527,20 @@ delete_app_version_resource(Client, Input0, Options0) ->
 
 %% @doc Deletes a recommendation template.
 %%
-%% This is a destructive action that can't be undone.
+%% This is a destructive action that can't be
+%% undone.
 delete_recommendation_template(Client, Input) ->
     delete_recommendation_template(Client, Input, []).
 delete_recommendation_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-recommendation-template"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -518,10 +562,12 @@ delete_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-resiliency-policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -541,10 +587,12 @@ describe_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -564,10 +612,12 @@ describe_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-assessment"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -587,10 +637,12 @@ describe_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -610,10 +662,12 @@ describe_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-app-component"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -636,17 +690,20 @@ describe_app_version_app_component(Client, Input0, Options0) ->
 %% `logicalResourceId'
 %%
 %% `physicalResourceId' (Along with `physicalResourceId', you can
-%% also provide `awsAccountId', and `awsRegion')
+%% also
+%% provide `awsAccountId', and `awsRegion')
 describe_app_version_resource(Client, Input) ->
     describe_app_version_resource(Client, Input, []).
 describe_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-resource"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -660,7 +717,8 @@ describe_app_version_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the resolution status for the specified resolution identifier
-%% for an application version.
+%% for an application
+%% version.
 %%
 %% If `resolutionId' is not specified, the current resolution status is
 %% returned.
@@ -670,10 +728,12 @@ describe_app_version_resources_resolution_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-resources-resolution-status"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -693,10 +753,12 @@ describe_app_version_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-template"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -715,18 +777,21 @@ describe_app_version_template(Client, Input0, Options0) ->
 %% If you get a 404 error with
 %% `ResourceImportStatusNotFoundAppMetadataException', you must call
 %% `importResourcesToDraftAppVersion' after creating the application and
-%% before calling `describeDraftAppVersionResourcesImportStatus' to
-%% obtain the status.
+%% before
+%% calling `describeDraftAppVersionResourcesImportStatus' to obtain the
+%% status.
 describe_draft_app_version_resources_import_status(Client, Input) ->
     describe_draft_app_version_resources_import_status(Client, Input, []).
 describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-draft-app-version-resources-import-status"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -742,19 +807,22 @@ describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
 %% @doc Describes a specified resiliency policy for an Resilience Hub
 %% application.
 %%
-%% The returned policy object includes creation time, data location
-%% constraints, the Amazon Resource Name (ARN) for the policy, tags, tier,
-%% and more.
+%% The
+%% returned policy object includes creation time, data location constraints,
+%% the Amazon Resource
+%% Name (ARN) for the policy, tags, tier, and more.
 describe_resiliency_policy(Client, Input) ->
     describe_resiliency_policy(Client, Input, []).
 describe_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-resiliency-policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -771,7 +839,8 @@ describe_resiliency_policy(Client, Input0, Options0) ->
 %% different input sources.
 %%
 %% For more information about the input sources supported by Resilience Hub,
-%% see Discover the structure and describe your Resilience Hub application:
+%% see Discover
+%% the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
 import_resources_to_draft_app_version(Client, Input) ->
     import_resources_to_draft_app_version(Client, Input, []).
@@ -779,10 +848,12 @@ import_resources_to_draft_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/import-resources-to-draft-app-version"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -802,10 +873,12 @@ list_alarm_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-alarm-recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -826,10 +899,12 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-assessment-compliance-drifts"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -844,8 +919,8 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
 
 %% @doc Lists the assessments for an Resilience Hub application.
 %%
-%% You can use request parameters to refine the results for the response
-%% object.
+%% You can use request parameters to
+%% refine the results for the response object.
 list_app_assessments(Client)
   when is_map(Client) ->
     list_app_assessments(Client, #{}, #{}).
@@ -858,9 +933,11 @@ list_app_assessments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-app-assessments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -886,10 +963,12 @@ list_app_component_compliances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-component-compliances"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -910,10 +989,12 @@ list_app_component_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-component-recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -928,8 +1009,9 @@ list_app_component_recommendations(Client, Input0, Options0) ->
 
 %% @doc Lists all the input sources of the Resilience Hub application.
 %%
-%% For more information about the input sources supported by Resilience Hub,
-%% see Discover the structure and describe your Resilience Hub application:
+%% For more information about the
+%% input sources supported by Resilience Hub, see Discover
+%% the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
 list_app_input_sources(Client, Input) ->
     list_app_input_sources(Client, Input, []).
@@ -937,10 +1019,12 @@ list_app_input_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-input-sources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -961,10 +1045,12 @@ list_app_version_app_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-app-components"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -980,18 +1066,22 @@ list_app_version_app_components(Client, Input0, Options0) ->
 %% @doc Lists how the resources in an application version are mapped/sourced
 %% from.
 %%
-%% Mappings can be physical resource identifiers, CloudFormation stacks,
-%% resource-groups, or an application registry app.
+%% Mappings can be
+%% physical resource identifiers, CloudFormation stacks, resource-groups, or
+%% an application registry
+%% app.
 list_app_version_resource_mappings(Client, Input) ->
     list_app_version_resource_mappings(Client, Input, []).
 list_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-resource-mappings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1011,10 +1101,12 @@ list_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-resources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1034,10 +1126,12 @@ list_app_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-versions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1053,11 +1147,14 @@ list_app_versions(Client, Input0, Options0) ->
 %% @doc Lists your Resilience Hub applications.
 %%
 %% You can filter applications using only one filter at a time or without
-%% using any filter. If you try to filter applications using multiple
-%% filters, you will get the following error:
+%% using any filter.
+%% If you try to filter applications using multiple filters, you will get the
+%% following
+%% error:
 %%
-%% `An error occurred (ValidationException) when calling the ListApps
-%% operation: Only one filter is supported for this operation.'
+%% ```
+%% An error occurred (ValidationException) when calling the ListApps
+%% operation: Only one filter is supported for this operation.'''
 list_apps(Client)
   when is_map(Client) ->
     list_apps(Client, #{}, #{}).
@@ -1070,9 +1167,11 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-apps"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1104,9 +1203,11 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-recommendation-templates"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1137,9 +1238,11 @@ list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-resiliency-policies"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1154,17 +1257,20 @@ list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the standard operating procedure (SOP) recommendations for the
-%% Resilience Hub applications.
+%% Resilience Hub
+%% applications.
 list_sop_recommendations(Client, Input) ->
     list_sop_recommendations(Client, Input, []).
 list_sop_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-sop-recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1191,9 +1297,11 @@ list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-suggested-resiliency-policies"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1220,9 +1328,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1237,10 +1347,12 @@ list_test_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-test-recommendations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1256,18 +1368,22 @@ list_test_recommendations(Client, Input0, Options0) ->
 %% @doc Lists the resources that are not currently supported in Resilience
 %% Hub.
 %%
-%% An unsupported resource is a resource that exists in the object that was
-%% used to create an app, but is not supported by Resilience Hub.
+%% An unsupported
+%% resource is a resource that exists in the object that was used to create
+%% an app, but is not
+%% supported by Resilience Hub.
 list_unsupported_app_version_resources(Client, Input) ->
     list_unsupported_app_version_resources(Client, Input, []).
 list_unsupported_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-unsupported-app-version-resources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1287,10 +1403,12 @@ publish_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/publish-app-version"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1311,10 +1429,12 @@ put_draft_app_version_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-draft-app-version-template"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1334,10 +1454,12 @@ remove_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/remove-draft-app-version-resource-mappings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1357,10 +1479,12 @@ resolve_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resolve-app-version-resources"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1380,10 +1504,12 @@ start_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-app-assessment"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1403,10 +1529,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1426,10 +1554,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1450,10 +1580,12 @@ update_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1469,18 +1601,22 @@ update_app(Client, Input0, Options0) ->
 %% @doc Updates the Resilience Hub application version.
 %%
 %% This API updates the Resilience Hub application draft version. To use this
-%% information for running resiliency assessments, you must publish the
-%% Resilience Hub application using the `PublishAppVersion' API.
+%% information
+%% for running resiliency assessments, you must publish the Resilience Hub
+%% application using the
+%% `PublishAppVersion' API.
 update_app_version(Client, Input) ->
     update_app_version(Client, Input, []).
 update_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1505,10 +1641,12 @@ update_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version-app-component"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1530,17 +1668,20 @@ update_app_version_app_component(Client, Input0, Options0) ->
 %% Resilience Hub application using the `PublishAppVersion' API.
 %%
 %% To update application version with new `physicalResourceID', you must
-%% call `ResolveAppVersionResources' API.
+%% call
+%% `ResolveAppVersionResources' API.
 update_app_version_resource(Client, Input) ->
     update_app_version_resource(Client, Input, []).
 update_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version-resource"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1556,11 +1697,15 @@ update_app_version_resource(Client, Input0, Options0) ->
 %% @doc Updates a resiliency policy.
 %%
 %% Resilience Hub allows you to provide a value of zero for `rtoInSecs'
-%% and `rpoInSecs' of your resiliency policy. But, while assessing your
-%% application, the lowest possible assessment result is near zero. Hence, if
-%% you provide value zero for `rtoInSecs' and `rpoInSecs', the
-%% estimated workload RTO and estimated workload RPO result will be near zero
-%% and the Compliance status for your application will be set to Policy
+%% and
+%% `rpoInSecs' of your resiliency policy. But, while assessing your
+%% application,
+%% the lowest possible assessment result is near zero. Hence, if you provide
+%% value
+%% zero for `rtoInSecs' and `rpoInSecs', the estimated workload RTO
+%% and
+%% estimated workload RPO result will be near zero and the Compliance
+%% status for your application will be set to Policy
 %% breached.
 update_resiliency_policy(Client, Input) ->
     update_resiliency_policy(Client, Input, []).
@@ -1568,10 +1713,12 @@ update_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-resiliency-policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1587,6 +1734,11 @@ update_resiliency_policy(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

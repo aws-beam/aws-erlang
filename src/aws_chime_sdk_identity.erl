@@ -2,12 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Chime SDK Identity APIs in this section allow software
-%% developers to create and manage unique instances of their messaging
-%% applications.
+%% developers to create
+%% and manage unique instances of their messaging applications.
 %%
-%% These APIs provide the overarching framework for creating and sending
-%% messages. For more information about the identity APIs, refer to Amazon
-%% Chime SDK identity:
+%% These APIs provide the
+%% overarching framework for creating and sending messages. For more
+%% information about the
+%% identity APIs, refer to Amazon Chime SDK identity:
 %% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Identity.html.
 -module(aws_chime_sdk_identity).
 
@@ -94,7 +95,8 @@
 %% account.
 %%
 %% Only SDK messaging customers use this API. `CreateAppInstance'
-%% supports idempotency behavior as described in the AWS API Standard.
+%% supports
+%% idempotency behavior as described in the AWS API Standard.
 %%
 %% identity
 create_app_instance(Client, Input) ->
@@ -103,10 +105,12 @@ create_app_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -122,25 +126,29 @@ create_app_instance(Client, Input0, Options0) ->
 %% @doc Promotes an `AppInstanceUser' or `AppInstanceBot' to an
 %% `AppInstanceAdmin'.
 %%
-%% The promoted entity can perform the following actions.
+%% The
+%% promoted entity can perform the following actions.
 %%
-%% <ul> <li> `ChannelModerator' actions across all channels in the
+%% `ChannelModerator' actions across all channels in the
 %% `AppInstance'.
 %%
-%% </li> <li> `DeleteChannelMessage' actions.
+%% `DeleteChannelMessage' actions.
 %%
-%% </li> </ul> Only an `AppInstanceUser' and `AppInstanceBot' can be
-%% promoted to an `AppInstanceAdmin' role.
+%% Only an `AppInstanceUser' and `AppInstanceBot' can be promoted to
+%% an `AppInstanceAdmin'
+%% role.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
 create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -155,18 +163,20 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 
 %% @doc Creates a bot under an Amazon Chime `AppInstance'.
 %%
-%% The request consists of a unique `Configuration' and `Name' for
-%% that bot.
+%% The request consists of a
+%% unique `Configuration' and `Name' for that bot.
 create_app_instance_bot(Client, Input) ->
     create_app_instance_bot(Client, Input, []).
 create_app_instance_bot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-bots"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -181,18 +191,20 @@ create_app_instance_bot(Client, Input0, Options0) ->
 
 %% @doc Creates a user under an Amazon Chime `AppInstance'.
 %%
-%% The request consists of a unique `appInstanceUserId' and `Name'
-%% for that user.
+%% The request consists of a
+%% unique `appInstanceUserId' and `Name' for that user.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
 create_app_instance_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-users"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -212,10 +224,12 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -231,17 +245,20 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% @doc Demotes an `AppInstanceAdmin' to an `AppInstanceUser' or
 %% `AppInstanceBot'.
 %%
-%% This action does not delete the user.
+%% This action
+%% does not delete the user.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -261,10 +278,12 @@ delete_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -284,10 +303,12 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -307,10 +328,12 @@ deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, In
     Method = delete,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -335,10 +358,12 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
 describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -359,9 +384,11 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -381,10 +408,12 @@ describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap)
 describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -404,10 +433,12 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
 describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -428,9 +459,11 @@ describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Quer
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -451,9 +484,11 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -474,9 +509,11 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -502,10 +539,12 @@ list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap)
 list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-bots"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -533,9 +572,11 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -561,10 +602,12 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
 list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -591,10 +634,12 @@ list_app_instances(Client, QueryMap, HeadersMap)
 list_app_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -620,9 +665,11 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -635,17 +682,20 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sets the amount of time in days that a given `AppInstance'
-%% retains data.
+%% retains
+%% data.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
 put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -662,21 +712,24 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 %% automatically deleted.
 %%
 %% A background process deletes expired `AppInstanceUsers' within 6 hours
-%% of expiration. Actual deletion times may vary.
+%% of expiration.
+%% Actual deletion times may vary.
 %%
 %% Expired `AppInstanceUsers' that have not yet been deleted appear as
-%% active, and you can update their expiration settings. The system honors
-%% the new settings.
+%% active, and you can update
+%% their expiration settings. The system honors the new settings.
 put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input) ->
     put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input, []).
 put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/expiration-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -700,10 +753,12 @@ register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input0, Options0
     Method = post,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -724,10 +779,12 @@ tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -748,10 +805,12 @@ untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -771,10 +830,12 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -794,10 +855,12 @@ update_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -812,17 +875,20 @@ update_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
 
 %% @doc Updates the details of an `AppInstanceUser'.
 %%
-%% You can update names and metadata.
+%% You can update names and
+%% metadata.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
 update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -844,10 +910,12 @@ update_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input0
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -863,6 +931,11 @@ update_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input0
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

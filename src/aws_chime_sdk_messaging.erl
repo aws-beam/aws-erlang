@@ -2,11 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Chime SDK messaging APIs in this section allow software
-%% developers to send and receive messages in custom messaging applications.
+%% developers to send
+%% and receive messages in custom messaging applications.
 %%
-%% These APIs depend on the frameworks provided by the Amazon Chime SDK
-%% identity APIs. For more information about the messaging APIs, see Amazon
-%% Chime SDK messaging:
+%% These APIs depend on the frameworks
+%% provided by the Amazon Chime SDK identity APIs. For more information about
+%% the messaging
+%% APIs, see Amazon Chime SDK messaging:
 %% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Messaging.html.
 -module(aws_chime_sdk_messaging).
 
@@ -145,22 +147,26 @@
 %% @doc Associates a channel flow with a channel.
 %%
 %% Once associated, all messages to that channel go through channel flow
-%% processors. To stop processing, use the `DisassociateChannelFlow' API.
+%% processors. To stop processing, use the
+%% `DisassociateChannelFlow' API.
 %%
 %% Only administrators or channel moderators can associate a channel flow.
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The
+%% `x-amz-chime-bearer' request header is mandatory. Use the ARN of the
+%% `AppInstanceUser' or `AppInstanceBot'
+%% that makes the API call as the value in the header.
 associate_channel_flow(Client, ChannelArn, Input) ->
     associate_channel_flow(Client, ChannelArn, Input, []).
 associate_channel_flow(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/channel-flow"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -182,10 +188,12 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships?operation=batch-create"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -207,23 +215,23 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %%
 %% You can return one of the following processing responses:
 %%
-%% <ul> <li> Update message content or metadata
+%% Update message content or metadata
 %%
-%% </li> <li> Deny a message
+%% Deny a message
 %%
-%% </li> <li> Make no changes to the message
-%%
-%% </li> </ul>
+%% Make no changes to the message
 channel_flow_callback(Client, ChannelArn, Input) ->
     channel_flow_callback(Client, ChannelArn, Input, []).
 channel_flow_callback(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?operation=channel-flow-callback"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -238,21 +246,25 @@ channel_flow_callback(Client, ChannelArn, Input0, Options0) ->
 
 %% @doc Creates a channel to which you can add users and send messages.
 %%
-%% Restriction: You can't change a channel's privacy.
+%% Restriction: You can't change a channel's
+%% privacy.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -269,27 +281,32 @@ create_channel(Client, Input0, Options0) ->
 
 %% @doc Permanently bans a member from a channel.
 %%
-%% Moderators can't add banned members to a channel. To undo a ban, you
-%% first have to `DeleteChannelBan', and then
+%% Moderators can't add banned members to a
+%% channel. To undo a ban, you first have to `DeleteChannelBan', and then
 %% `CreateChannelMembership'. Bans are cleaned up when you delete users
-%% or channels.
+%% or
+%% channels.
 %%
 %% If you ban a user who is already part of a channel, that user is
-%% automatically kicked from the channel.
+%% automatically kicked
+%% from the channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
 create_channel_ban(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -306,22 +323,25 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 
 %% @doc Creates a channel flow, a container for processors.
 %%
-%% Processors are AWS Lambda functions that perform actions on chat messages,
-%% such as stripping out profanity. You can associate channel flows with
-%% channels, and the processors in the channel flow then take action on all
+%% Processors are AWS Lambda functions
+%% that perform actions on chat messages, such as stripping out profanity.
+%% You can associate
+%% channel flows with channels, and the processors in the channel flow then
+%% take action on all
 %% messages sent to that channel. This is a developer API.
 %%
 %% Channel flows process the following items:
 %%
-%% <ol> <li> New and updated messages
+%% New and updated messages
 %%
-%% </li> <li> Persistent and non-persistent messages
+%% Persistent and non-persistent messages
 %%
-%% </li> <li> The Standard message type
+%% The Standard message type
 %%
-%% </li> </ol> Channel flows don't process Control or System messages.
-%% For more information about the message types provided by Chime SDK
-%% messaging, refer to Message types:
+%% Channel flows don't process Control or System messages. For more
+%% information about the message types provided by Chime SDK messaging, refer
+%% to
+%% Message types:
 %% https://docs.aws.amazon.com/chime/latest/dg/using-the-messaging-sdk.html#msg-types
 %% in the Amazon Chime developer guide.
 create_channel_flow(Client, Input) ->
@@ -330,10 +350,12 @@ create_channel_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channel-flows"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -348,40 +370,43 @@ create_channel_flow(Client, Input0, Options0) ->
 
 %% @doc Adds a member to a channel.
 %%
-%% The `InvitedBy' field in `ChannelMembership' is derived from the
-%% request header. A channel member can:
+%% The `InvitedBy' field in `ChannelMembership'
+%% is derived from the request header. A channel member can:
 %%
-%% <ul> <li> List messages
+%% List messages
 %%
-%% </li> <li> Send messages
+%% Send messages
 %%
-%% </li> <li> Receive messages
+%% Receive messages
 %%
-%% </li> <li> Edit their own messages
+%% Edit their own messages
 %%
-%% </li> <li> Leave the channel
+%% Leave the channel
 %%
-%% </li> </ul> Privacy settings impact this action as follows:
+%% Privacy settings impact this action as follows:
 %%
-%% <ul> <li> Public Channels: You do not need to be a member to list
-%% messages, but you must be a member to send messages.
+%% Public Channels: You do not need to be a member to list messages, but you
+%% must be
+%% a member to send messages.
 %%
-%% </li> <li> Private Channels: You must be a member to list or send
-%% messages.
+%% Private Channels: You must be a member to list or send messages.
 %%
-%% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the ARN of the `AppInstanceUserArn' or `AppInstanceBot' that makes
-%% the API call as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUserArn' or `AppInstanceBot' that makes the
+%% API call
+%% as the value in the header.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
 create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -400,29 +425,32 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %%
 %% A channel moderator can:
 %%
-%% <ul> <li> Add and remove other members of the channel.
+%% Add and remove other members of the channel.
 %%
-%% </li> <li> Add and remove other moderators of the channel.
+%% Add and remove other moderators of the channel.
 %%
-%% </li> <li> Add and remove user bans for the channel.
+%% Add and remove user bans for the channel.
 %%
-%% </li> <li> Redact messages in the channel.
+%% Redact messages in the channel.
 %%
-%% </li> <li> List messages in the channel.
+%% List messages in the channel.
 %%
-%% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the ARN of the `AppInstanceUser' or `AppInstanceBot'of the user
-%% that makes the API call as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot'of the user that
+%% makes the API call as the value in
+%% the header.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
 create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -438,23 +466,27 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Immediately makes a channel and its memberships inaccessible and
-%% marks them for deletion.
+%% marks them for
+%% deletion.
 %%
 %% This is an irreversible process.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUserArn' or `AppInstanceBot' that makes the API
-%% call as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUserArn' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
 delete_channel(Client, ChannelArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -471,19 +503,22 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
 
 %% @doc Removes a member from a channel's ban list.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
 delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -504,7 +539,8 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %%
 %% This API works only when the channel flow is not associated with any
 %% channel. To get a list of all channels that a channel flow is associated
-%% with, use the `ListChannelsAssociatedWithChannelFlow' API. Use the
+%% with, use the
+%% `ListChannelsAssociatedWithChannelFlow' API. Use the
 %% `DisassociateChannelFlow' API to disassociate a channel flow from all
 %% channels.
 delete_channel_flow(Client, ChannelFlowArn, Input) ->
@@ -513,10 +549,12 @@ delete_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channel-flows/", aws_util:encode_uri(ChannelFlowArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -533,17 +571,20 @@ delete_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
 delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -561,23 +602,27 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 
 %% @doc Deletes a channel message.
 %%
-%% Only admins can perform this action. Deletion makes messages inaccessible
-%% immediately. A background process deletes any revisions created by
+%% Only admins can perform this action. Deletion makes messages
+%% inaccessible immediately. A background process deletes any revisions
+%% created by
 %% `UpdateChannelMessage'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
 delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -595,19 +640,22 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
 %% @doc Deletes a channel moderator.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -624,7 +672,8 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
 
 %% @doc Deletes the streaming configurations for an `AppInstance'.
 %%
-%% For more information, see Streaming messaging data:
+%% For more information, see
+%% Streaming messaging data:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
 %% the Amazon Chime SDK Developer Guide.
 delete_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
@@ -633,10 +682,12 @@ delete_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Option
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -652,9 +703,10 @@ delete_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Option
 %% @doc Returns the full details of a channel in an Amazon Chime
 %% `AppInstance'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 describe_channel(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -667,9 +719,11 @@ describe_channel(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options0
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -683,9 +737,10 @@ describe_channel(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options0
 
 %% @doc Returns the full details of a channel ban.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
@@ -698,9 +753,11 @@ describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -728,9 +785,11 @@ describe_channel_flow(Client, ChannelFlowArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channel-flows/", aws_util:encode_uri(ChannelFlowArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -740,9 +799,10 @@ describe_channel_flow(Client, ChannelFlowArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the full details of a user's channel membership.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
@@ -755,9 +815,11 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -774,11 +836,13 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the details of a channel based on the membership of the
-%% specified `AppInstanceUser' or `AppInstanceBot'.
+%% specified
+%% `AppInstanceUser' or `AppInstanceBot'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, #{}, #{}).
@@ -791,9 +855,11 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-membership"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -812,9 +878,10 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %% @doc Returns the full details of a channel moderated by the specified
 %% `AppInstanceUser' or `AppInstanceBot'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, #{}, #{}).
@@ -827,9 +894,11 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-moderated-channel"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -849,7 +918,8 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %%
 %% The `x-amz-chime-bearer' request header is mandatory. Use the
 %% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% in
+%% the header.
 describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer, #{}, #{}).
@@ -862,9 +932,11 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -878,24 +950,27 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer,
 
 %% @doc Disassociates a channel flow from all its channels.
 %%
-%% Once disassociated, all messages to that channel stop going through the
-%% channel flow processor.
+%% Once disassociated, all messages to
+%% that channel stop going through the channel flow processor.
 %%
 %% Only administrators or channel moderators can disassociate a channel flow.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input) ->
     disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input, []).
 disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/channel-flow/", aws_util:encode_uri(ChannelFlowArn), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -911,18 +986,21 @@ disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the membership preferences of an `AppInstanceUser' or
-%% `AppInstanceBot' for the specified channel.
+%% `AppInstanceBot'
+%% for the specified channel.
 %%
 %% A user or a bot must be a member of the channel and own the membership in
-%% order to retrieve membership preferences. Users or bots in the
-%% `AppInstanceAdmin' and channel moderator roles can't retrieve
-%% preferences for other users or bots. Banned users or bots can't
-%% retrieve membership preferences for the channel from which they are
-%% banned.
+%% order to retrieve membership preferences.
+%% Users or bots in the `AppInstanceAdmin' and channel moderator roles
+%% can't
+%% retrieve preferences for other users or bots. Banned users or bots
+%% can't retrieve membership preferences for the
+%% channel from which they are banned.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
@@ -935,9 +1013,11 @@ get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), "/preferences"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -951,9 +1031,10 @@ get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, Q
 
 %% @doc Gets the full details of a channel message.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 get_channel_message(Client, ChannelArn, MessageId, ChimeBearer)
   when is_map(Client) ->
     get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, #{}, #{}).
@@ -966,9 +1047,11 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -993,22 +1076,31 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, Header
 %%
 %% Messages can have any one of these statuses.
 %%
-%% <dl> <dt>SENT</dt> <dd> Message processed successfully
+%% SENT
 %%
-%% </dd> <dt>PENDING</dt> <dd> Ongoing processing
+%% Message processed successfully
 %%
-%% </dd> <dt>FAILED</dt> <dd> Processing failed
+%% PENDING
 %%
-%% </dd> <dt>DENIED</dt> <dd> Message denied by the processor
+%% Ongoing processing
 %%
-%% </dd> </dl> This API does not return statuses for denied messages, because
-%% we don't store them once the processor denies them.
+%% FAILED
+%%
+%% Processing failed
+%%
+%% DENIED
+%%
+%% Message denied by the processor
+%%
+%% This API does not return statuses for denied messages, because we
+%% don't store them once the processor denies them.
 %%
 %% Only the message sender can invoke this API.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer)
   when is_map(Client) ->
     get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, #{}, #{}).
@@ -1021,9 +1113,11 @@ get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?scope=message-status"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1052,9 +1146,11 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoints/messaging-session"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1064,7 +1160,8 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the data streaming configuration for an `AppInstance'.
 %%
-%% For more information, see Streaming messaging data:
+%% For more information, see
+%% Streaming messaging data:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
 %% the Amazon Chime SDK Developer Guide.
 get_messaging_streaming_configurations(Client, AppInstanceArn)
@@ -1079,9 +1176,11 @@ get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1091,9 +1190,10 @@ get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, Headers
 
 %% @doc Lists all the users and bots banned from a particular channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 list_channel_bans(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_bans(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -1106,9 +1206,11 @@ list_channel_bans(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1141,9 +1243,11 @@ list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channel-flows"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1159,12 +1263,14 @@ list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all channel memberships in a channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 %%
 %% If you want to list the channels to which a specific app instance user
-%% belongs, see the ListChannelMembershipsForAppInstanceUser:
+%% belongs, see the
+%% ListChannelMembershipsForAppInstanceUser:
 %% https://docs.aws.amazon.com/chime/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html
 %% API.
 list_channel_memberships(Client, ChannelArn, ChimeBearer)
@@ -1179,9 +1285,11 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1206,9 +1314,10 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, 
 %% Only an `AppInstanceAdmin' can call the API with a user ARN that is
 %% not their own.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 list_channel_memberships_for_app_instance_user(Client, ChimeBearer)
   when is_map(Client) ->
     list_channel_memberships_for_app_instance_user(Client, ChimeBearer, #{}, #{}).
@@ -1221,9 +1330,11 @@ list_channel_memberships_for_app_instance_user(Client, ChimeBearer, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-memberships"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1243,16 +1354,21 @@ list_channel_memberships_for_app_instance_user(Client, ChimeBearer, QueryMap, He
 
 %% @doc List all the messages in a channel.
 %%
-%% Returns a paginated list of `ChannelMessages'. By default, sorted by
-%% creation timestamp in descending order.
+%% Returns a paginated list of
+%% `ChannelMessages'. By default, sorted by creation timestamp in
+%% descending
+%% order.
 %%
 %% Redacted messages appear in the results as empty, since they are only
-%% redacted, not deleted. Deleted messages do not appear in the results. This
-%% action always returns the latest version of an edited message.
+%% redacted, not
+%% deleted. Deleted messages do not appear in the results. This action always
+%% returns the
+%% latest version of an edited message.
 %%
 %% Also, the `x-amz-chime-bearer' request header is mandatory. Use the
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
-%% API call as the value in the header.
+%% API call as the value in
+%% the header.
 list_channel_messages(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_messages(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -1265,9 +1381,11 @@ list_channel_messages(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Opt
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1290,9 +1408,10 @@ list_channel_messages(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Opt
 
 %% @doc Lists all the moderators for a channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 list_channel_moderators(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_moderators(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -1305,9 +1424,11 @@ list_channel_moderators(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, O
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1327,19 +1448,21 @@ list_channel_moderators(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, O
 %% @doc Lists all Channels created under a single Chime App as a paginated
 %% list.
 %%
-%% You can specify filters to narrow results.
+%% You can specify
+%% filters to narrow results.
 %%
 %% == Functionality &amp; restrictions ==
 %%
-%% <ul> <li> Use privacy = `PUBLIC' to retrieve all public channels in
-%% the account.
+%% Use privacy = `PUBLIC' to retrieve all public channels in the
+%% account.
 %%
-%% </li> <li> Only an `AppInstanceAdmin' can set privacy = `PRIVATE'
-%% to list the private channels in an account.
+%% Only an `AppInstanceAdmin' can set privacy = `PRIVATE' to
+%% list the private channels in an account.
 %%
-%% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the ARN of the `AppInstanceUser' or `AppInstanceBot' that makes
-%% the API call as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 list_channels(Client, AppInstanceArn, ChimeBearer)
   when is_map(Client) ->
     list_channels(Client, AppInstanceArn, ChimeBearer, #{}, #{}).
@@ -1352,9 +1475,11 @@ list_channels(Client, AppInstanceArn, ChimeBearer, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1389,9 +1514,11 @@ list_channels_associated_with_channel_flow(Client, ChannelFlowArn, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=channel-flow-associations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1407,9 +1534,10 @@ list_channels_associated_with_channel_flow(Client, ChannelFlowArn, QueryMap, Hea
 
 %% @doc A list of the channels moderated by an `AppInstanceUser'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 list_channels_moderated_by_app_instance_user(Client, ChimeBearer)
   when is_map(Client) ->
     list_channels_moderated_by_app_instance_user(Client, ChimeBearer, #{}, #{}).
@@ -1422,9 +1550,11 @@ list_channels_moderated_by_app_instance_user(Client, ChimeBearer, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-moderated-channels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1459,9 +1589,11 @@ list_sub_channels(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/subchannels"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers0 =
       [
@@ -1491,9 +1623,11 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1508,24 +1642,29 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% @doc Sets the number of days before the channel is automatically deleted.
 %%
 %% A background process deletes expired channels within 6 hours of
-%% expiration. Actual deletion times may vary.
+%% expiration.
+%% Actual deletion times may vary.
 %%
 %% Expired channels that have not yet been deleted appear as active, and you
-%% can update their expiration settings. The system honors the new settings.
+%% can update
+%% their expiration settings. The system honors the new settings.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 put_channel_expiration_settings(Client, ChannelArn, Input) ->
     put_channel_expiration_settings(Client, ChannelArn, Input, []).
 put_channel_expiration_settings(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/expiration-settings"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1541,27 +1680,33 @@ put_channel_expiration_settings(Client, ChannelArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the membership preferences of an `AppInstanceUser' or
-%% `AppInstanceBot' for the specified channel.
+%% `AppInstanceBot'
+%% for the specified channel.
 %%
 %% The user or bot must be a member of the channel. Only the user or bot who
-%% owns the membership can set preferences. Users or bots in the
+%% owns the
+%% membership can set preferences. Users or bots in the
 %% `AppInstanceAdmin' and channel moderator roles can't set
 %% preferences for other users. Banned users or bots can't set membership
-%% preferences for the channel from which they are banned.
+%% preferences for the channel from
+%% which they are banned.
 %%
 %% The x-amz-chime-bearer request header is mandatory. Use the ARN of an
 %% `AppInstanceUser' or `AppInstanceBot' that makes the API call as
-%% the value in the header.
+%% the value in the
+%% header.
 put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input) ->
     put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input, []).
 put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), "/preferences"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1578,7 +1723,8 @@ put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input0, Option
 
 %% @doc Sets the data streaming configuration for an `AppInstance'.
 %%
-%% For more information, see Streaming messaging data:
+%% For more information, see
+%% Streaming messaging data:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
 %% the Amazon Chime SDK Developer Guide.
 put_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
@@ -1587,10 +1733,12 @@ put_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0)
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1605,22 +1753,25 @@ put_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0)
 
 %% @doc Redacts message content, but not metadata.
 %%
-%% The message exists in the back end, but the action returns null content,
-%% and the state shows as redacted.
+%% The message exists in the back end, but the
+%% action returns null content, and the state shows as redacted.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
 redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1637,22 +1788,27 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
 %% @doc Allows the `ChimeBearer' to search channels by channel members.
 %%
-%% Users or bots can search across the channels that they belong to. Users in
-%% the `AppInstanceAdmin' role can search across all channels.
+%% Users or bots can search
+%% across the channels that they belong to. Users in the
+%% `AppInstanceAdmin' role can search across
+%% all channels.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 search_channels(Client, Input) ->
     search_channels(Client, Input, []).
 search_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels?operation=search"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1671,13 +1827,15 @@ search_channels(Client, Input0, Options0) ->
 
 %% @doc Sends a message to a particular channel that the member is a part of.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 %%
 %% Also, `STANDARD' messages can be up to 4KB in size and contain
-%% metadata. Metadata is arbitrary, and you can use it in a variety of ways,
-%% such as containing a link to an attachment.
+%% metadata. Metadata is arbitrary,
+%% and you can use it in a variety of ways, such as containing a link to an
+%% attachment.
 %%
 %% `CONTROL' messages are limited to 30 bytes and do not contain
 %% metadata.
@@ -1687,10 +1845,12 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1713,10 +1873,12 @@ tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1737,10 +1899,12 @@ untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1757,19 +1921,22 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Restriction: You can't change a channel's privacy.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
 update_channel(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1793,10 +1960,12 @@ update_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
     Method = put,
     Path = ["/channel-flows/", aws_util:encode_uri(ChannelFlowArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1811,19 +1980,22 @@ update_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
 
 %% @doc Updates the content of a message.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
 update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1840,19 +2012,22 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
 %% @doc The details of the time when a user last read messages in a channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
-%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
-%% as the value in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in
+%% the header.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
 update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/readMarker"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1870,6 +2045,11 @@ update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

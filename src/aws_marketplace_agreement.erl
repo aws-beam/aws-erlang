@@ -10,20 +10,19 @@
 %% listing, searching, and filtering agreements.
 %%
 %% To manage agreements in AWS Marketplace, you must ensure that your AWS
-%% Identity and Access Management (IAM) policies and roles are set up. The
-%% user must have the required policies/permissions that allow them to carry
-%% out the actions in AWS:
+%% Identity and
+%% Access Management (IAM) policies and roles are set up. The user must have
+%% the required
+%% policies/permissions that allow them to carry out the actions in AWS:
 %%
-%% <ul> <li> `DescribeAgreement' – Grants permission to users to obtain
-%% detailed meta data about any of their agreements.
+%% `DescribeAgreement' – Grants permission to users to obtain detailed
+%% meta data about any of their agreements.
 %%
-%% </li> <li> `GetAgreementTerms' – Grants permission to users to obtain
-%% details about the terms of an agreement.
+%% `GetAgreementTerms' – Grants permission to users to obtain details
+%% about the terms of an agreement.
 %%
-%% </li> <li> `SearchAgreements' – Grants permission to users to search
-%% through all their agreements.
-%%
-%% </li> </ul>
+%% `SearchAgreements' – Grants permission to users to search through all
+%% their agreements.
 -module(aws_marketplace_agreement).
 
 -export([describe_agreement/2,
@@ -49,26 +48,28 @@ describe_agreement(Client, Input, Options)
     request(Client, <<"DescribeAgreement">>, Input, Options).
 
 %% @doc Obtains details about the terms in an agreement that you participated
-%% in as proposer or acceptor.
+%% in as proposer or
+%% acceptor.
 %%
 %% The details include:
 %%
-%% <ul> <li> `TermType' – The type of term, such as `LegalTerm',
+%% `TermType' – The type of term, such as `LegalTerm',
 %% `RenewalTerm', or `ConfigurableUpfrontPricingTerm'.
 %%
-%% </li> <li> `TermID' – The ID of the particular term, which is common
-%% between offer and agreement.
+%% `TermID' – The ID of the particular term, which is common between
+%% offer
+%% and agreement.
 %%
-%% </li> <li> `TermPayload' – The key information contained in the term,
-%% such as the EULA for `LegalTerm' or pricing and dimensions for various
-%% pricing terms, such as `ConfigurableUpfrontPricingTerm' or
+%% `TermPayload' – The key information contained in the term, such as the
+%% EULA for `LegalTerm' or pricing and dimensions for various pricing
+%% terms,
+%% such as `ConfigurableUpfrontPricingTerm' or
 %% `UsageBasedPricingTerm'.
 %%
-%% </li> </ul> <ul> <li> `Configuration' – The buyer/acceptor's
-%% selection at the time of agreement creation, such as the number of units
-%% purchased for a dimension or setting the `EnableAutoRenew' flag.
-%%
-%% </li> </ul>
+%% `Configuration' – The buyer/acceptor's selection at the time of
+%% agreement creation, such as the number of units purchased for a dimension
+%% or setting
+%% the `EnableAutoRenew' flag.
 get_agreement_terms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_agreement_terms(Client, Input, []).
@@ -83,49 +84,49 @@ get_agreement_terms(Client, Input, Options)
 %%
 %% The following filter combinations are supported:
 %%
-%% <ul> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `ResourceIdentifier'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `OfferId'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `AcceptorAccountId'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `ResourceIdentifier' + `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `OfferId' + `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `AcceptorAccountId' + `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `ResourceType' + `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `ResourceType' + `Status'
+%% `PartyType' as `Proposer' + `AgreementType' +
+%% `AcceptorAccountId' + `ResourceType' +
+%% `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `AcceptorAccountId' + `OfferId'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `AcceptorAccountId' + `OfferId' + `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `AcceptorAccountId' + `ResourceIdentifier'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
-%% `AcceptorAccountId' + `ResourceIdentifier' + `Status'
+%% `PartyType' as `Proposer' + `AgreementType' +
+%% `AcceptorAccountId' + `ResourceIdentifier' +
+%% `Status'
 %%
-%% </li> <li> `PartyType' as `Proposer' + `AgreementType' +
+%% `PartyType' as `Proposer' + `AgreementType' +
 %% `AcceptorAccountId' + `ResourceType'
-%%
-%% </li> </ul>
 search_agreements(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_agreements(Client, Input, []).
@@ -148,7 +149,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"aws-marketplace">>},
+    Client1 = Client#{service => <<"agreement-marketplace">>},
     Host = build_host(<<"agreement-marketplace">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

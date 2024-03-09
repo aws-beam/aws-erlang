@@ -2,28 +2,27 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Route 53 is a highly available and scalable Domain Name System
-%% (DNS) web service.
+%% (DNS) web
+%% service.
 %%
 %% You can use Route 53 to:
 %%
-%% <ul> <li> Register domain names.
+%% Register domain names.
 %%
 %% For more information, see How domain registration works:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html.
 %%
-%% </li> <li> Route internet traffic to the resources for your domain
+%% Route internet traffic to the resources for your domain
 %%
 %% For more information, see How internet traffic is routed to your website
 %% or web application:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html.
 %%
-%% </li> <li> Check the health of your resources.
+%% Check the health of your resources.
 %%
 %% For more information, see How Route 53 checks the health of your
 %% resources:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html.
-%%
-%% </li> </ul>
 -module(aws_route53).
 
 -export([activate_key_signing_key/4,
@@ -213,17 +212,20 @@
 %% @doc Activates a key-signing key (KSK) so that it can be used for signing
 %% by DNSSEC.
 %%
-%% This operation changes the KSK status to `ACTIVE'.
+%% This
+%% operation changes the KSK status to `ACTIVE'.
 activate_key_signing_key(Client, HostedZoneId, Name, Input) ->
     activate_key_signing_key(Client, HostedZoneId, Name, Input, []).
 activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/activate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -239,19 +241,22 @@ activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %% @doc Associates an Amazon VPC with a private hosted zone.
 %%
 %% To perform the association, the VPC and the private hosted zone must
-%% already exist. You can't convert a public hosted zone into a private
-%% hosted zone.
+%% already
+%% exist. You can't convert a public hosted zone into a private hosted
+%% zone.
 %%
 %% If you want to associate a VPC that was created by using one Amazon Web
 %% Services account with a private hosted zone that was created by using a
 %% different account, the Amazon Web Services account that created the
-%% private hosted zone must first submit a
-%% `CreateVPCAssociationAuthorization' request. Then the account that
-%% created the VPC must submit an `AssociateVPCWithHostedZone' request.
+%% private hosted
+%% zone must first submit a `CreateVPCAssociationAuthorization' request.
+%% Then the account that created the VPC must submit an
+%% `AssociateVPCWithHostedZone' request.
 %%
 %% When granting access, the hosted zone and the Amazon VPC must belong to
 %% the same partition. A partition is a group of Amazon Web Services Regions.
-%% Each Amazon Web Services account is scoped to one partition.
+%% Each
+%% Amazon Web Services account is scoped to one partition.
 %%
 %% The following are the supported partitions:
 %%
@@ -269,11 +274,13 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/associatevpc"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -288,38 +295,41 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
 
 %% @doc Creates, changes, or deletes CIDR blocks within a collection.
 %%
-%% Contains authoritative IP information mapping blocks to one or multiple
-%% locations.
+%% Contains authoritative
+%% IP information mapping blocks to one or multiple locations.
 %%
 %% A change request can update multiple locations in a collection at a time,
-%% which is helpful if you want to move one or more CIDR blocks from one
-%% location to another in one transaction, without downtime.
+%% which is
+%% helpful if you want to move one or more CIDR blocks from one location to
+%% another in one
+%% transaction, without downtime.
 %%
 %% Limits
 %%
 %% The max number of CIDR blocks included in the request is 1000. As a
-%% result, big updates require multiple API calls.
+%% result, big updates
+%% require multiple API calls.
 %%
 %% PUT and DELETE_IF_EXISTS
 %%
 %% Use `ChangeCidrCollection' to perform the following actions:
 %%
-%% <ul> <li> `PUT': Create a CIDR block within the specified collection.
+%% `PUT': Create a CIDR block within the specified collection.
 %%
-%% </li> <li> ` DELETE_IF_EXISTS': Delete an existing CIDR block from the
+%% ` DELETE_IF_EXISTS': Delete an existing CIDR block from the
 %% collection.
-%%
-%% </li> </ul>
 change_cidr_collection(Client, Id, Input) ->
     change_cidr_collection(Client, Id, Input, []).
 change_cidr_collection(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -333,112 +343,135 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates, changes, or deletes a resource record set, which contains
-%% authoritative DNS information for a specified domain name or subdomain
-%% name.
+%% authoritative DNS
+%% information for a specified domain name or subdomain name.
 %%
-%% For example, you can use `ChangeResourceRecordSets' to create a
-%% resource record set that routes traffic for test.example.com to a web
-%% server that has an IP address of 192.0.2.44.
+%% For example, you can use
+%% `ChangeResourceRecordSets' to create a resource record set that routes
+%% traffic for test.example.com to a web server that has an IP address of
+%% 192.0.2.44.
 %%
 %% Deleting Resource Record Sets
 %%
 %% To delete a resource record set, you must specify all the same values that
-%% you specified when you created it.
+%% you
+%% specified when you created it.
 %%
 %% Change Batches and Transactional Changes
 %%
 %% The request body must include a document with a
 %% `ChangeResourceRecordSetsRequest' element. The request body contains a
 %% list of change items, known as a change batch. Change batches are
-%% considered transactional changes. Route 53 validates the changes in the
-%% request and then either makes all or none of the changes in the change
-%% batch request. This ensures that DNS routing isn't adversely affected
-%% by partial changes to the resource record sets in a hosted zone.
+%% considered
+%% transactional changes. Route 53 validates the changes in the request and
+%% then either
+%% makes all or none of the changes in the change batch request. This ensures
+%% that DNS
+%% routing isn't adversely affected by partial changes to the resource
+%% record sets in a
+%% hosted zone.
 %%
 %% For example, suppose a change batch request contains two changes: it
-%% deletes the `CNAME' resource record set for www.example.com and
-%% creates an alias resource record set for www.example.com. If validation
-%% for both records succeeds, Route 53 deletes the first resource record set
-%% and creates the second resource record set in a single operation. If
-%% validation for either the `DELETE' or the `CREATE' action fails,
-%% then the request is canceled, and the original `CNAME' record
-%% continues to exist.
+%% deletes the
+%% `CNAME' resource record set for www.example.com and creates an alias
+%% resource record set for www.example.com. If validation for both records
+%% succeeds, Route
+%% 53 deletes the first resource record set and creates the second resource
+%% record set in a
+%% single operation. If validation for either the `DELETE' or the
+%% `CREATE' action fails, then the request is canceled, and the original
+%% `CNAME' record continues to exist.
 %%
 %% If you try to delete the same resource record set more than once in a
-%% single change batch, Route 53 returns an `InvalidChangeBatch' error.
+%% single
+%% change batch, Route 53 returns an `InvalidChangeBatch' error.
 %%
 %% Traffic Flow
 %%
 %% To create resource record sets for complex routing configurations, use
-%% either the traffic flow visual editor in the Route 53 console or the API
-%% actions for traffic policies and traffic policy instances. Save the
-%% configuration as a traffic policy, then associate the traffic policy with
-%% one or more domain names (such as example.com) or subdomain names (such as
-%% www.example.com), in the same hosted zone or in multiple hosted zones. You
-%% can roll back the updates if the new configuration isn't performing as
-%% expected. For more information, see Using Traffic Flow to Route DNS
-%% Traffic:
+%% either the
+%% traffic flow visual editor in the Route 53 console or the API actions for
+%% traffic
+%% policies and traffic policy instances. Save the configuration as a traffic
+%% policy, then
+%% associate the traffic policy with one or more domain names (such as
+%% example.com) or
+%% subdomain names (such as www.example.com), in the same hosted zone or in
+%% multiple hosted
+%% zones. You can roll back the updates if the new configuration isn't
+%% performing as
+%% expected. For more information, see Using Traffic Flow to Route
+%% DNS Traffic:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the Amazon Route 53 Developer
+%% Guide.
 %%
 %% Create, Delete, and Upsert
 %%
 %% Use `ChangeResourceRecordsSetsRequest' to perform the following
 %% actions:
 %%
-%% <ul> <li> `CREATE': Creates a resource record set that has the
+%% `CREATE': Creates a resource record set that has the specified
+%% values.
+%%
+%% `DELETE': Deletes an existing resource record set that has the
 %% specified values.
 %%
-%% </li> <li> `DELETE': Deletes an existing resource record set that has
-%% the specified values.
+%% `UPSERT': If a resource set doesn't exist, Route 53 creates it. If
+%% a resource
+%% set exists Route 53 updates it with the values in the request.
 %%
-%% </li> <li> `UPSERT': If a resource set doesn't exist, Route 53
-%% creates it. If a resource set exists Route 53 updates it with the values
-%% in the request.
-%%
-%% </li> </ul> Syntaxes for Creating, Updating, and Deleting Resource Record
+%% Syntaxes for Creating, Updating, and Deleting Resource Record
 %% Sets
 %%
 %% The syntax for a request depends on the type of resource record set that
-%% you want to create, delete, or update, such as weighted, alias, or
-%% failover. The XML elements in your request must appear in the order listed
-%% in the syntax.
+%% you want to
+%% create, delete, or update, such as weighted, alias, or failover. The XML
+%% elements in
+%% your request must appear in the order listed in the syntax.
 %%
 %% For an example for each type of resource record set, see
 %% &quot;Examples.&quot;
 %%
 %% Don't refer to the syntax in the &quot;Parameter Syntax&quot; section,
-%% which includes all of the elements for every kind of resource record set
-%% that you can create, delete, or update by using
-%% `ChangeResourceRecordSets'.
+%% which includes
+%% all of the elements for every kind of resource record set that you can
+%% create, delete,
+%% or update by using `ChangeResourceRecordSets'.
 %%
 %% Change Propagation to Route 53 DNS Servers
 %%
 %% When you submit a `ChangeResourceRecordSets' request, Route 53
-%% propagates your changes to all of the Route 53 authoritative DNS servers
-%% managing the hosted zone. While your changes are propagating,
-%% `GetChange' returns a status of `PENDING'. When propagation is
-%% complete, `GetChange' returns a status of `INSYNC'. Changes
-%% generally propagate to all Route 53 name servers managing the hosted zone
-%% within 60 seconds. For more information, see GetChange:
+%% propagates your
+%% changes to all of the Route 53 authoritative DNS servers managing the
+%% hosted zone. While
+%% your changes are propagating, `GetChange' returns a status of
+%% `PENDING'. When propagation is complete, `GetChange' returns a
+%% status of `INSYNC'. Changes generally propagate to all Route 53 name
+%% servers
+%% managing the hosted zone within 60 seconds. For more information, see
+%% GetChange:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html.
 %%
 %% Limits on ChangeResourceRecordSets Requests
 %%
 %% For information about the limits on a `ChangeResourceRecordSets'
-%% request, see Limits:
+%% request,
+%% see Limits:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
 %% in the Amazon Route 53 Developer Guide.
 change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
 change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
-    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -454,7 +487,8 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
 %% @doc Adds, edits, or deletes tags for a health check or a hosted zone.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags:
+%% Allocation
+%% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
 change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
@@ -462,11 +496,13 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
 change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -486,10 +522,12 @@ create_cidr_collection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/cidrcollection"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -529,43 +567,54 @@ create_cidr_collection(Client, Input0, Options0) ->
 %% ELB Load Balancers
 %%
 %% If you're registering EC2 instances with an Elastic Load Balancing
-%% (ELB) load balancer, do not create Amazon Route 53 health checks for the
-%% EC2 instances. When you register an EC2 instance with a load balancer, you
-%% configure settings for an ELB health check, which performs a similar
-%% function to a Route 53 health check.
+%% (ELB) load
+%% balancer, do not create Amazon Route 53 health checks for the EC2
+%% instances. When you
+%% register an EC2 instance with a load balancer, you configure settings for
+%% an ELB health
+%% check, which performs a similar function to a Route 53 health check.
 %%
 %% Private Hosted Zones
 %%
 %% You can associate health checks with failover resource record sets in a
-%% private hosted zone. Note the following:
+%% private hosted
+%% zone. Note the following:
 %%
-%% <ul> <li> Route 53 health checkers are outside the VPC. To check the
-%% health of an endpoint within a VPC by IP address, you must assign a public
-%% IP address to the instance in the VPC.
+%% Route 53 health checkers are outside the VPC. To check the health of an
+%% endpoint within a VPC by IP address, you must assign a public IP address
+%% to the
+%% instance in the VPC.
 %%
-%% </li> <li> You can configure a health checker to check the health of an
-%% external resource that the instance relies on, such as a database server.
+%% You can configure a health checker to check the health of an external
+%% resource
+%% that the instance relies on, such as a database server.
 %%
-%% </li> <li> You can create a CloudWatch metric, associate an alarm with the
-%% metric, and then create a health check that is based on the state of the
-%% alarm. For example, you might create a CloudWatch metric that checks the
-%% status of the Amazon EC2 `StatusCheckFailed' metric, add an alarm to
-%% the metric, and then create a health check that is based on the state of
-%% the alarm. For information about creating CloudWatch metrics and alarms by
-%% using the CloudWatch console, see the Amazon CloudWatch User Guide:
+%% You can create a CloudWatch metric, associate an alarm with the metric,
+%% and
+%% then create a health check that is based on the state of the alarm. For
+%% example,
+%% you might create a CloudWatch metric that checks the status of the Amazon
+%% EC2
+%% `StatusCheckFailed' metric, add an alarm to the metric, and then
+%% create a health check that is based on the state of the alarm. For
+%% information
+%% about creating CloudWatch metrics and alarms by using the CloudWatch
+%% console,
+%% see the Amazon
+%% CloudWatch User Guide:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html.
-%%
-%% </li> </ul>
 create_health_check(Client, Input) ->
     create_health_check(Client, Input, []).
 create_health_check(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -596,48 +645,61 @@ create_health_check(Client, Input0, Options0) ->
 
 %% @doc Creates a new public or private hosted zone.
 %%
-%% You create records in a public hosted zone to define how you want to route
-%% traffic on the internet for a domain, such as example.com, and its
-%% subdomains (apex.example.com, acme.example.com). You create records in a
-%% private hosted zone to define how you want to route traffic for a domain
-%% and its subdomains within one or more Amazon Virtual Private Clouds
-%% (Amazon VPCs).
+%% You create records in a public hosted
+%% zone to define how you want to route traffic on the internet for a domain,
+%% such as
+%% example.com, and its subdomains (apex.example.com, acme.example.com). You
+%% create records
+%% in a private hosted zone to define how you want to route traffic for a
+%% domain and its
+%% subdomains within one or more Amazon Virtual Private Clouds (Amazon VPCs).
 %%
 %% You can't convert a public hosted zone to a private hosted zone or
-%% vice versa. Instead, you must create a new hosted zone with the same name
-%% and create new resource record sets.
+%% vice versa.
+%% Instead, you must create a new hosted zone with the same name and create
+%% new
+%% resource record sets.
 %%
 %% For more information about charges for hosted zones, see Amazon Route 53
 %% Pricing: http://aws.amazon.com/route53/pricing/.
 %%
 %% Note the following:
 %%
-%% <ul> <li> You can't create a hosted zone for a top-level domain (TLD)
-%% such as .com.
+%% You can't create a hosted zone for a top-level domain (TLD) such as
+%% .com.
 %%
-%% </li> <li> For public hosted zones, Route 53 automatically creates a
-%% default SOA record and four NS records for the zone. For more information
-%% about SOA and NS records, see NS and SOA Records that Route 53 Creates for
-%% a Hosted Zone:
+%% For public hosted zones, Route 53 automatically creates a default SOA
+%% record
+%% and four NS records for the zone. For more information about SOA and NS
+%% records,
+%% see NS and SOA Records
+%% that Route 53 Creates for a Hosted Zone:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the
+%% Amazon Route 53 Developer Guide.
 %%
 %% If you want to use the same name servers for multiple public hosted zones,
-%% you can optionally associate a reusable delegation set with the hosted
-%% zone. See the `DelegationSetId' element.
+%% you
+%% can optionally associate a reusable delegation set with the hosted zone.
+%% See the
+%% `DelegationSetId' element.
 %%
-%% </li> <li> If your domain is registered with a registrar other than
-%% Route 53, you must update the name servers with your registrar to make
-%% Route 53 the DNS service for the domain. For more information, see
-%% Migrating DNS Service for an Existing Domain to Amazon Route 53:
+%% If your domain is registered with a registrar other than Route 53,
+%% you must update the name servers with your registrar to make Route 53 the
+%% DNS
+%% service for the domain. For more information, see Migrating DNS Service
+%% for an Existing Domain to Amazon Route 53:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the
+%% Amazon Route 53 Developer Guide.
 %%
-%% </li> </ul> When you submit a `CreateHostedZone' request, the initial
-%% status of the hosted zone is `PENDING'. For public hosted zones, this
-%% means that the NS and SOA records are not yet available on all Route 53
-%% DNS servers. When the NS and SOA records are available, the status of the
-%% zone changes to `INSYNC'.
+%% When you submit a `CreateHostedZone' request, the initial status of
+%% the
+%% hosted zone is `PENDING'. For public hosted zones, this means that the
+%% NS and
+%% SOA records are not yet available on all Route 53 DNS servers. When the NS
+%% and
+%% SOA records are available, the status of the zone changes to `INSYNC'.
 %%
 %% The `CreateHostedZone' request requires the caller to have an
 %% `ec2:DescribeVpcs' permission.
@@ -645,7 +707,8 @@ create_health_check(Client, Input0, Options0) ->
 %% When creating private hosted zones, the Amazon VPC must belong to the same
 %% partition where the hosted zone is created. A partition is a group of
 %% Amazon Web Services Regions. Each Amazon Web Services account is scoped to
-%% one partition.
+%% one
+%% partition.
 %%
 %% The following are the supported partitions:
 %%
@@ -664,10 +727,12 @@ create_hosted_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -698,17 +763,20 @@ create_hosted_zone(Client, Input0, Options0) ->
 
 %% @doc Creates a new key-signing key (KSK) associated with a hosted zone.
 %%
-%% You can only have two KSKs per hosted zone.
+%% You can only have
+%% two KSKs per hosted zone.
 create_key_signing_key(Client, Input) ->
     create_key_signing_key(Client, Input, []).
 create_key_signing_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -739,140 +807,174 @@ create_key_signing_key(Client, Input0, Options0) ->
 
 %% @doc Creates a configuration for DNS query logging.
 %%
-%% After you create a query logging configuration, Amazon Route 53 begins to
-%% publish log data to an Amazon CloudWatch Logs log group.
+%% After you create a query logging
+%% configuration, Amazon Route 53 begins to publish log data to an Amazon
+%% CloudWatch Logs
+%% log group.
 %%
 %% DNS query logs contain information about the queries that Route 53
-%% receives for a specified public hosted zone, such as the following:
+%% receives for a
+%% specified public hosted zone, such as the following:
 %%
-%% <ul> <li> Route 53 edge location that responded to the DNS query
+%% Route 53 edge location that responded to the DNS query
 %%
-%% </li> <li> Domain or subdomain that was requested
+%% Domain or subdomain that was requested
 %%
-%% </li> <li> DNS record type, such as A or AAAA
+%% DNS record type, such as A or AAAA
 %%
-%% </li> <li> DNS response code, such as `NoError' or `ServFail'
+%% DNS response code, such as `NoError' or
+%% `ServFail'
 %%
-%% </li> </ul> <dl> <dt>Log Group and Resource Policy</dt> <dd> Before you
-%% create a query logging configuration, perform the following operations.
+%% Log Group and Resource Policy
 %%
-%% If you create a query logging configuration using the Route 53 console,
-%% Route 53 performs these operations automatically.
+%% Before you create a query logging configuration, perform the following
+%% operations.
 %%
-%% <ol> <li> Create a CloudWatch Logs log group, and make note of the ARN,
-%% which you specify when you create a query logging configuration. Note the
-%% following:
+%% If you create a query logging configuration using the Route 53
+%% console, Route 53 performs these operations automatically.
 %%
-%% <ul> <li> You must create the log group in the us-east-1 region.
+%% Create a CloudWatch Logs log group, and make note of the ARN,
+%% which you specify when you create a query logging configuration.
+%% Note the following:
 %%
-%% </li> <li> You must use the same Amazon Web Services account to create the
-%% log group and the hosted zone that you want to configure query logging
-%% for.
+%% You must create the log group in the us-east-1
+%% region.
 %%
-%% </li> <li> When you create log groups for query logging, we recommend that
-%% you use a consistent prefix, for example:
+%% You must use the same Amazon Web Services account to create
+%% the log group and the hosted zone that you want to configure
+%% query logging for.
 %%
-%% `/aws/route53/hosted zone name '
+%% When you create log groups for query logging, we recommend
+%% that you use a consistent prefix, for example:
 %%
-%% In the next step, you'll create a resource policy, which controls
-%% access to one or more log groups and the associated Amazon Web Services
-%% resources, such as Route 53 hosted zones. There's a limit on the
-%% number of resource policies that you can create, so we recommend that you
-%% use a consistent prefix so you can use the same resource policy for all
-%% the log groups that you create for query logging.
+%% ```
+%% /aws/route53/hosted zone name '''
 %%
-%% </li> </ul> </li> <li> Create a CloudWatch Logs resource policy, and give
-%% it the permissions that Route 53 needs to create log streams and to send
-%% query logs to log streams. For the value of `Resource', specify the
-%% ARN for the log group that you created in the previous step. To use the
-%% same resource policy for all the CloudWatch Logs log groups that you
-%% created for query logging configurations, replace the hosted zone name
-%% with `*', for example:
+%% In the next step, you'll create a resource policy, which
+%% controls access to one or more log groups and the associated
+%% Amazon Web Services resources, such as Route 53 hosted
+%% zones. There's a limit on the number of resource policies
+%% that you can create, so we recommend that you use a
+%% consistent prefix so you can use the same resource policy
+%% for all the log groups that you create for query
+%% logging.
+%%
+%% Create a CloudWatch Logs resource policy, and give it the
+%% permissions that Route 53 needs to create log streams and to send
+%% query logs to log streams. For the value of `Resource',
+%% specify the ARN for the log group that you created in the previous
+%% step. To use the same resource policy for all the CloudWatch Logs
+%% log groups that you created for query logging configurations,
+%% replace the hosted zone name with `*', for
+%% example:
 %%
 %% `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*'
 %%
-%% To avoid the confused deputy problem, a security issue where an entity
-%% without a permission for an action can coerce a more-privileged entity to
-%% perform it, you can optionally limit the permissions that a service has to
-%% a resource in a resource-based policy by supplying the following values:
+%% To avoid the confused deputy problem, a security issue where an
+%% entity without a permission for an action can coerce a
+%% more-privileged entity to perform it, you can optionally limit the
+%% permissions that a service has to a resource in a resource-based
+%% policy by supplying the following values:
 %%
-%% <ul> <li> For `aws:SourceArn', supply the hosted zone ARN used in
-%% creating the query logging configuration. For example, `aws:SourceArn:
-%% arn:aws:route53:::hostedzone/hosted zone ID'.
+%% For `aws:SourceArn', supply the hosted zone ARN
+%% used in creating the query logging configuration. For
+%% example,
+%% ```
+%% aws:SourceArn: arn:aws:route53:::hostedzone/hosted zone ID'''.
 %%
-%% </li> <li> For `aws:SourceAccount', supply the account ID for the
-%% account that creates the query logging configuration. For example,
+%% For `aws:SourceAccount', supply the account ID
+%% for the account that creates the query logging
+%% configuration. For example,
 %% `aws:SourceAccount:111111111111'.
 %%
-%% </li> </ul> For more information, see The confused deputy problem:
+%% For more information, see The confused
+%% deputy problem:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html in
-%% the Amazon Web Services IAM User Guide.
+%% the Amazon Web Services
+%% IAM User Guide.
 %%
-%% You can't use the CloudWatch console to create or edit a resource
-%% policy. You must use the CloudWatch API, one of the Amazon Web Services
-%% SDKs, or the CLI.
+%% You can't use the CloudWatch console to create or edit a
+%% resource policy. You must use the CloudWatch API, one of the
+%% Amazon Web Services SDKs, or the CLI.
 %%
-%% </li> </ol> </dd> <dt>Log Streams and Edge Locations</dt> <dd> When Route
-%% 53 finishes creating the configuration for DNS query logging, it does the
-%% following:
+%% Log Streams and Edge Locations
 %%
-%% <ul> <li> Creates a log stream for an edge location the first time that
-%% the edge location responds to DNS queries for the specified hosted zone.
-%% That log stream is used to log all queries that Route 53 responds to for
-%% that edge location.
+%% When Route 53 finishes creating the configuration for DNS query logging,
+%% it does the following:
 %%
-%% </li> <li> Begins to send query logs to the applicable log stream.
+%% Creates a log stream for an edge location the first time that the
+%% edge location responds to DNS queries for the specified hosted zone.
+%% That log stream is used to log all queries that Route 53 responds to
+%% for that edge location.
 %%
-%% </li> </ul> The name of each log stream is in the following format:
+%% Begins to send query logs to the applicable log stream.
 %%
-%% ` hosted zone ID/edge location code '
+%% The name of each log stream is in the following format:
+%%
+%% ```
+%% hosted zone ID/edge location code '''
 %%
 %% The edge location code is a three-letter code and an arbitrarily assigned
 %% number, for example, DFW3. The three-letter code typically corresponds
-%% with the International Air Transport Association airport code for an
-%% airport near the edge location. (These abbreviations might change in the
-%% future.) For a list of edge locations, see &quot;The Route 53 Global
-%% Network&quot; on the Route 53 Product Details:
-%% http://aws.amazon.com/route53/details/ page.
+%% with
+%% the International Air Transport Association airport code for an airport
+%% near
+%% the edge location. (These abbreviations might change in the future.) For a
+%% list of edge locations, see &quot;The Route 53 Global Network&quot; on the
+%% Route 53 Product Details: http://aws.amazon.com/route53/details/
+%% page.
 %%
-%% </dd> <dt>Queries That Are Logged</dt> <dd> Query logs contain only the
-%% queries that DNS resolvers forward to Route 53. If a DNS resolver has
-%% already cached the response to a query (such as the IP address for a load
-%% balancer for example.com), the resolver will continue to return the cached
-%% response. It doesn't forward another query to Route 53 until the TTL
-%% for the corresponding resource record set expires. Depending on how many
-%% DNS queries are submitted for a resource record set, and depending on the
-%% TTL for that resource record set, query logs might contain information
-%% about only one query out of every several thousand queries that are
-%% submitted to DNS. For more information about how DNS works, see Routing
+%% Queries That Are Logged
+%%
+%% Query logs contain only the queries that DNS resolvers forward to Route
+%% 53. If a DNS resolver has already cached the response to a query (such as
+%% the IP address for a load balancer for example.com), the resolver will
+%% continue to return the cached response. It doesn't forward another
+%% query to
+%% Route 53 until the TTL for the corresponding resource record set expires.
+%% Depending on how many DNS queries are submitted for a resource record set,
+%% and depending on the TTL for that resource record set, query logs might
+%% contain information about only one query out of every several thousand
+%% queries that are submitted to DNS. For more information about how DNS
+%% works,
+%% see Routing
 %% Internet Traffic to Your Website or Web Application:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the
+%% Amazon Route 53 Developer Guide.
 %%
-%% </dd> <dt>Log File Format</dt> <dd> For a list of the values in each query
-%% log and the format of each value, see Logging DNS Queries:
+%% Log File Format
+%%
+%% For a list of the values in each query log and the format of each value,
+%% see Logging DNS
+%% Queries:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the Amazon Route 53 Developer
+%% Guide.
 %%
-%% </dd> <dt>Pricing</dt> <dd> For information about charges for query logs,
-%% see Amazon CloudWatch Pricing: http://aws.amazon.com/cloudwatch/pricing/.
+%% Pricing
 %%
-%% </dd> <dt>How to Stop Logging</dt> <dd> If you want Route 53 to stop
-%% sending query logs to CloudWatch Logs, delete the query logging
-%% configuration. For more information, see DeleteQueryLoggingConfig:
+%% For information about charges for query logs, see Amazon CloudWatch
+%% Pricing: http://aws.amazon.com/cloudwatch/pricing/.
+%%
+%% How to Stop Logging
+%%
+%% If you want Route 53 to stop sending query logs to CloudWatch Logs, delete
+%% the query logging configuration. For more information, see
+%% DeleteQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html.
-%%
-%% </dd> </dl>
 create_query_logging_config(Client, Input) ->
     create_query_logging_config(Client, Input, []).
 create_query_logging_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/queryloggingconfig"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -902,68 +1004,81 @@ create_query_logging_config(Client, Input0, Options0) ->
     end.
 
 %% @doc Creates a delegation set (a group of four name servers) that can be
-%% reused by multiple hosted zones that were created by the same Amazon Web
-%% Services account.
+%% reused by multiple
+%% hosted zones that were created by the same Amazon Web Services account.
 %%
 %% You can also create a reusable delegation set that uses the four name
-%% servers that are associated with an existing hosted zone. Specify the
-%% hosted zone ID in the `CreateReusableDelegationSet' request.
+%% servers that are
+%% associated with an existing hosted zone. Specify the hosted zone ID in the
+%% `CreateReusableDelegationSet' request.
 %%
 %% You can't associate a reusable delegation set with a private hosted
 %% zone.
 %%
 %% For information about using a reusable delegation set to configure white
-%% label name servers, see Configuring White Label Name Servers:
+%% label name
+%% servers, see Configuring White
+%% Label Name Servers:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html.
 %%
 %% The process for migrating existing hosted zones to use a reusable
-%% delegation set is comparable to the process for configuring white label
-%% name servers. You need to perform the following steps:
+%% delegation set is
+%% comparable to the process for configuring white label name servers. You
+%% need to perform
+%% the following steps:
 %%
-%% <ol> <li> Create a reusable delegation set.
+%% Create a reusable delegation set.
 %%
-%% </li> <li> Recreate hosted zones, and reduce the TTL to 60 seconds or
-%% less.
+%% Recreate hosted zones, and reduce the TTL to 60 seconds or less.
 %%
-%% </li> <li> Recreate resource record sets in the new hosted zones.
+%% Recreate resource record sets in the new hosted zones.
 %%
-%% </li> <li> Change the registrar's name servers to use the name servers
-%% for the new hosted zones.
+%% Change the registrar's name servers to use the name servers for the
+%% new hosted
+%% zones.
 %%
-%% </li> <li> Monitor traffic for the website or application.
+%% Monitor traffic for the website or application.
 %%
-%% </li> <li> Change TTLs back to their original values.
+%% Change TTLs back to their original values.
 %%
-%% </li> </ol> If you want to migrate existing hosted zones to use a reusable
-%% delegation set, the existing hosted zones can't use any of the name
-%% servers that are assigned to the reusable delegation set. If one or more
-%% hosted zones do use one or more name servers that are assigned to the
-%% reusable delegation set, you can do one of the following:
+%% If you want to migrate existing hosted zones to use a reusable delegation
+%% set, the
+%% existing hosted zones can't use any of the name servers that are
+%% assigned to the
+%% reusable delegation set. If one or more hosted zones do use one or more
+%% name servers
+%% that are assigned to the reusable delegation set, you can do one of the
+%% following:
 %%
-%% <ul> <li> For small numbers of hosted zones—up to a few hundred—it's
+%% For small numbers of hosted zones—up to a few hundred—it's
 %% relatively easy to create reusable delegation sets until you get one that
-%% has four name servers that don't overlap with any of the name servers
-%% in your hosted zones.
+%% has
+%% four name servers that don't overlap with any of the name servers in
+%% your hosted
+%% zones.
 %%
-%% </li> <li> For larger numbers of hosted zones, the easiest solution is to
-%% use more than one reusable delegation set.
+%% For larger numbers of hosted zones, the easiest solution is to use more
+%% than
+%% one reusable delegation set.
 %%
-%% </li> <li> For larger numbers of hosted zones, you can also migrate hosted
-%% zones that have overlapping name servers to hosted zones that don't
-%% have overlapping name servers, then migrate the hosted zones again to use
-%% the reusable delegation set.
-%%
-%% </li> </ul>
+%% For larger numbers of hosted zones, you can also migrate hosted zones that
+%% have overlapping name servers to hosted zones that don't have
+%% overlapping name
+%% servers, then migrate the hosted zones again to use the reusable
+%% delegation
+%% set.
 create_reusable_delegation_set(Client, Input) ->
     create_reusable_delegation_set(Client, Input, []).
 create_reusable_delegation_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/delegationset"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -993,18 +1108,21 @@ create_reusable_delegation_set(Client, Input0, Options0) ->
     end.
 
 %% @doc Creates a traffic policy, which you use to create multiple DNS
-%% resource record sets for one domain name (such as example.com) or one
-%% subdomain name (such as www.example.com).
+%% resource record sets
+%% for one domain name (such as example.com) or one subdomain name (such as
+%% www.example.com).
 create_traffic_policy(Client, Input) ->
     create_traffic_policy(Client, Input, []).
 create_traffic_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1034,31 +1152,38 @@ create_traffic_policy(Client, Input0, Options0) ->
     end.
 
 %% @doc Creates resource record sets in a specified hosted zone based on the
-%% settings in a specified traffic policy version.
+%% settings in a
+%% specified traffic policy version.
 %%
-%% In addition, `CreateTrafficPolicyInstance' associates the resource
-%% record sets with a specified domain name (such as example.com) or
-%% subdomain name (such as www.example.com). Amazon Route 53 responds to DNS
-%% queries for the domain or subdomain name by using the resource record sets
-%% that `CreateTrafficPolicyInstance' created.
+%% In addition, `CreateTrafficPolicyInstance'
+%% associates the resource record sets with a specified domain name (such as
+%% example.com)
+%% or subdomain name (such as www.example.com). Amazon Route 53 responds to
+%% DNS queries for
+%% the domain or subdomain name by using the resource record sets that
+%% `CreateTrafficPolicyInstance' created.
 %%
 %% After you submit an `CreateTrafficPolicyInstance' request, there's
-%% a brief delay while Amazon Route 53 creates the resource record sets that
-%% are specified in the traffic policy definition. Use
-%% `GetTrafficPolicyInstance' with the `id' of new traffic policy
-%% instance to confirm that the `CreateTrafficPolicyInstance' request
-%% completed successfully. For more information, see the `State' response
-%% element.
+%% a
+%% brief delay while Amazon Route 53 creates the resource record sets that
+%% are
+%% specified in the traffic policy definition.
+%% Use `GetTrafficPolicyInstance' with the `id' of new traffic policy
+%% instance to confirm that the `CreateTrafficPolicyInstance'
+%% request completed successfully. For more information, see the
+%% `State' response element.
 create_traffic_policy_instance(Client, Input) ->
     create_traffic_policy_instance(Client, Input, []).
 create_traffic_policy_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1089,24 +1214,30 @@ create_traffic_policy_instance(Client, Input0, Options0) ->
 
 %% @doc Creates a new version of an existing traffic policy.
 %%
-%% When you create a new version of a traffic policy, you specify the ID of
-%% the traffic policy that you want to update and a JSON-formatted document
-%% that describes the new version. You use traffic policies to create
-%% multiple DNS resource record sets for one domain name (such as
-%% example.com) or one subdomain name (such as www.example.com). You can
-%% create a maximum of 1000 versions of a traffic policy. If you reach the
-%% limit and need to create another version, you'll need to start a new
-%% traffic policy.
+%% When you create a new version of
+%% a traffic policy, you specify the ID of the traffic policy that you want
+%% to update and a
+%% JSON-formatted document that describes the new version. You use traffic
+%% policies to
+%% create multiple DNS resource record sets for one domain name (such as
+%% example.com) or
+%% one subdomain name (such as www.example.com). You can create a maximum of
+%% 1000 versions
+%% of a traffic policy. If you reach the limit and need to create another
+%% version, you'll
+%% need to start a new traffic policy.
 create_traffic_policy_version(Client, Id, Input) ->
     create_traffic_policy_version(Client, Id, Input, []).
 create_traffic_policy_version(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1136,27 +1267,33 @@ create_traffic_policy_version(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Authorizes the Amazon Web Services account that created a specified
-%% VPC to submit an `AssociateVPCWithHostedZone' request to associate the
-%% VPC with a specified hosted zone that was created by a different account.
+%% VPC to submit an
+%% `AssociateVPCWithHostedZone' request to associate the VPC with a
+%% specified hosted zone that was created by a different account.
 %%
-%% To submit a `CreateVPCAssociationAuthorization' request, you must use
-%% the account that created the hosted zone. After you authorize the
-%% association, use the account that created the VPC to submit an
-%% `AssociateVPCWithHostedZone' request.
+%% To submit a
+%% `CreateVPCAssociationAuthorization' request, you must use the account
+%% that created the hosted zone. After you authorize the association, use the
+%% account that
+%% created the VPC to submit an `AssociateVPCWithHostedZone' request.
 %%
 %% If you want to associate multiple VPCs that you created by using one
-%% account with a hosted zone that you created by using a different account,
-%% you must submit one authorization request for each VPC.
+%% account with
+%% a hosted zone that you created by using a different account, you must
+%% submit one
+%% authorization request for each VPC.
 create_vpc_association_authorization(Client, HostedZoneId, Input) ->
     create_vpc_association_authorization(Client, HostedZoneId, Input, []).
 create_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1178,11 +1315,13 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input) ->
 deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/deactivate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1197,17 +1336,20 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 
 %% @doc Deletes a CIDR collection in the current Amazon Web Services account.
 %%
-%% The collection must be empty before it can be deleted.
+%% The collection
+%% must be empty before it can be deleted.
 delete_cidr_collection(Client, Id, Input) ->
     delete_cidr_collection(Client, Id, Input, []).
 delete_cidr_collection(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1223,31 +1365,40 @@ delete_cidr_collection(Client, Id, Input0, Options0) ->
 %% @doc Deletes a health check.
 %%
 %% Amazon Route 53 does not prevent you from deleting a health check even if
-%% the health check is associated with one or more resource record sets. If
-%% you delete a health check and you don't update the associated resource
-%% record sets, the future status of the health check can't be predicted
-%% and may change. This will affect the routing of DNS queries for your DNS
-%% failover configuration. For more information, see Replacing and Deleting
-%% Health Checks:
+%% the
+%% health check is associated with one or more resource record sets. If you
+%% delete a
+%% health check and you don't update the associated resource record sets,
+%% the future
+%% status of the health check can't be predicted and may change. This
+%% will affect the
+%% routing of DNS queries for your DNS failover configuration. For more
+%% information,
+%% see Replacing and Deleting Health Checks:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the Amazon Route 53
+%% Developer Guide.
 %%
 %% If you're using Cloud Map and you configured Cloud Map to create a
-%% Route 53 health check when you register an instance, you can't use the
-%% Route 53 `DeleteHealthCheck' command to delete the health check. The
-%% health check is deleted automatically when you deregister the instance;
-%% there can be a delay of several hours before the health check is deleted
-%% from Route 53.
+%% Route 53
+%% health check when you register an instance, you can't use the Route 53
+%% `DeleteHealthCheck' command to delete the health check. The health
+%% check
+%% is deleted automatically when you deregister the instance; there can be a
+%% delay of
+%% several hours before the health check is deleted from Route 53.
 delete_health_check(Client, HealthCheckId, Input) ->
     delete_health_check(Client, HealthCheckId, Input, []).
 delete_health_check(Client, HealthCheckId, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1265,63 +1416,79 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% If the hosted zone was created by another service, such as Cloud Map, see
 %% Deleting Public Hosted Zones That Were Created by Another Service:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service
-%% in the Amazon Route 53 Developer Guide for information about how to delete
-%% it. (The process is the same for public and private hosted zones that were
-%% created by another service.)
+%% in the
+%% Amazon Route 53 Developer Guide for information
+%% about how to delete it. (The process is the same for public and private
+%% hosted zones
+%% that were created by another service.)
 %%
 %% If you want to keep your domain registration but you want to stop routing
-%% internet traffic to your website or web application, we recommend that you
-%% delete resource record sets in the hosted zone instead of deleting the
-%% hosted zone.
+%% internet
+%% traffic to your website or web application, we recommend that you delete
+%% resource record
+%% sets in the hosted zone instead of deleting the hosted zone.
 %%
 %% If you delete a hosted zone, you can't undelete it. You must create a
-%% new hosted zone and update the name servers for your domain registration,
-%% which can require up to 48 hours to take effect. (If you delegated
-%% responsibility for a subdomain to a hosted zone and you delete the child
-%% hosted zone, you must update the name servers in the parent hosted zone.)
-%% In addition, if you delete a hosted zone, someone could hijack the domain
-%% and route traffic to their own resources using your domain name.
+%% new hosted
+%% zone and update the name servers for your domain registration, which can
+%% require up
+%% to 48 hours to take effect. (If you delegated responsibility for a
+%% subdomain to a
+%% hosted zone and you delete the child hosted zone, you must update the name
+%% servers
+%% in the parent hosted zone.) In addition, if you delete a hosted zone,
+%% someone could
+%% hijack the domain and route traffic to their own resources using your
+%% domain
+%% name.
 %%
 %% If you want to avoid the monthly charge for the hosted zone, you can
-%% transfer DNS service for the domain to a free DNS service. When you
-%% transfer DNS service, you have to update the name servers for the domain
-%% registration. If the domain is registered with Route 53, see
-%% UpdateDomainNameservers:
+%% transfer DNS
+%% service for the domain to a free DNS service. When you transfer DNS
+%% service, you have to
+%% update the name servers for the domain registration. If the domain is
+%% registered with
+%% Route 53, see UpdateDomainNameservers:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html
 %% for information about how to replace Route 53 name servers with name
-%% servers for the new DNS service. If the domain is registered with another
-%% registrar, use the method provided by the registrar to update name servers
-%% for the domain registration. For more information, perform an internet
+%% servers for the new DNS service. If the domain is
+%% registered with another registrar, use the method provided by the
+%% registrar to update
+%% name servers for the domain registration. For more information, perform an
+%% internet
 %% search on &quot;free DNS service.&quot;
 %%
 %% You can delete a hosted zone only if it contains only the default SOA
-%% record and NS resource record sets. If the hosted zone contains other
-%% resource record sets, you must delete them before you can delete the
-%% hosted zone. If you try to delete a hosted zone that contains other
-%% resource record sets, the request fails, and Route 53 returns a
-%% `HostedZoneNotEmpty' error. For information about deleting records
+%% record and NS
+%% resource record sets. If the hosted zone contains other resource record
+%% sets, you must
+%% delete them before you can delete the hosted zone. If you try to delete a
+%% hosted zone
+%% that contains other resource record sets, the request fails, and Route 53
+%% returns a `HostedZoneNotEmpty' error. For information about deleting
+%% records
 %% from your hosted zone, see ChangeResourceRecordSets:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html.
 %%
 %% To verify that the hosted zone has been deleted, do one of the following:
 %%
-%% <ul> <li> Use the `GetHostedZone' action to request information about
-%% the hosted zone.
+%% Use the `GetHostedZone' action to request information about the
+%% hosted zone.
 %%
-%% </li> <li> Use the `ListHostedZones' action to get a list of the
-%% hosted zones associated with the current Amazon Web Services account.
-%%
-%% </li> </ul>
+%% Use the `ListHostedZones' action to get a list of the hosted zones
+%% associated with the current Amazon Web Services account.
 delete_hosted_zone(Client, Id, Input) ->
     delete_hosted_zone(Client, Id, Input, []).
 delete_hosted_zone(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1336,9 +1503,10 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes a key-signing key (KSK).
 %%
-%% Before you can delete a KSK, you must deactivate it. The KSK must be
-%% deactivated before you can delete it regardless of whether the hosted zone
-%% is enabled for DNSSEC signing.
+%% Before you can delete a KSK, you must deactivate it.
+%% The KSK must be deactivated before you can delete it regardless of whether
+%% the hosted
+%% zone is enabled for DNSSEC signing.
 %%
 %% You can use DeactivateKeySigningKey:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeactivateKeySigningKey.html
@@ -1346,17 +1514,20 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
 %%
 %% Use GetDNSSEC:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetDNSSEC.html
-%% to verify that the KSK is in an `INACTIVE' status.
+%% to verify that the KSK is in an `INACTIVE'
+%% status.
 delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
     delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
 delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1371,9 +1542,10 @@ delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 
 %% @doc Deletes a configuration for DNS query logging.
 %%
-%% If you delete a configuration, Amazon Route 53 stops sending query logs to
-%% CloudWatch Logs. Route 53 doesn't delete any logs that are already in
-%% CloudWatch Logs.
+%% If you delete a configuration, Amazon
+%% Route 53 stops sending query logs to CloudWatch Logs. Route 53 doesn't
+%% delete any logs
+%% that are already in CloudWatch Logs.
 %%
 %% For more information about DNS query logs, see CreateQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html.
@@ -1382,11 +1554,13 @@ delete_query_logging_config(Client, Id, Input) ->
 delete_query_logging_config(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1402,23 +1576,27 @@ delete_query_logging_config(Client, Id, Input0, Options0) ->
 %% @doc Deletes a reusable delegation set.
 %%
 %% You can delete a reusable delegation set only if it isn't associated
-%% with any hosted zones.
+%% with any
+%% hosted zones.
 %%
 %% To verify that the reusable delegation set is not associated with any
-%% hosted zones, submit a GetReusableDelegationSet:
+%% hosted zones,
+%% submit a GetReusableDelegationSet:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html
-%% request and specify the ID of the reusable delegation set that you want to
-%% delete.
+%% request and specify the ID of the reusable
+%% delegation set that you want to delete.
 delete_reusable_delegation_set(Client, Id, Input) ->
     delete_reusable_delegation_set(Client, Id, Input, []).
 delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1434,31 +1612,32 @@ delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
 %% @doc Deletes a traffic policy.
 %%
 %% When you delete a traffic policy, Route 53 sets a flag on the policy to
-%% indicate that it has been deleted. However, Route 53 never fully deletes
-%% the traffic policy. Note the following:
+%% indicate that
+%% it has been deleted. However, Route 53 never fully deletes the traffic
+%% policy. Note the
+%% following:
 %%
-%% <ul> <li> Deleted traffic policies aren't listed if you run
-%% ListTrafficPolicies:
+%% Deleted traffic policies aren't listed if you run ListTrafficPolicies:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListTrafficPolicies.html.
 %%
-%% </li> <li> There's no way to get a list of deleted policies.
+%% There's no way to get a list of deleted policies.
 %%
-%% </li> <li> If you retain the ID of the policy, you can get information
-%% about the policy, including the traffic policy document, by running
-%% GetTrafficPolicy:
+%% If you retain the ID of the policy, you can get information about the
+%% policy,
+%% including the traffic policy document, by running GetTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html.
-%%
-%% </li> </ul>
 delete_traffic_policy(Client, Id, Version, Input) ->
     delete_traffic_policy(Client, Id, Version, Input, []).
 delete_traffic_policy(Client, Id, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1472,7 +1651,8 @@ delete_traffic_policy(Client, Id, Version, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a traffic policy instance and all of the resource record sets
-%% that Amazon Route 53 created when you created the instance.
+%% that Amazon
+%% Route 53 created when you created the instance.
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
 %% records.
@@ -1481,11 +1661,13 @@ delete_traffic_policy_instance(Client, Id, Input) ->
 delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1499,28 +1681,34 @@ delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes authorization to submit an `AssociateVPCWithHostedZone'
-%% request to associate a specified VPC with a hosted zone that was created
-%% by a different account.
+%% request to
+%% associate a specified VPC with a hosted zone that was created by a
+%% different account.
 %%
 %% You must use the account that created the hosted zone to submit a
 %% `DeleteVPCAssociationAuthorization' request.
 %%
 %% Sending this request only prevents the Amazon Web Services account that
-%% created the VPC from associating the VPC with the Amazon Route 53 hosted
-%% zone in the future. If the VPC is already associated with the hosted zone,
+%% created the
+%% VPC from associating the VPC with the Amazon Route 53 hosted zone in the
+%% future. If
+%% the VPC is already associated with the hosted zone,
 %% `DeleteVPCAssociationAuthorization' won't disassociate the VPC
-%% from the hosted zone. If you want to delete an existing association, use
+%% from
+%% the hosted zone. If you want to delete an existing association, use
 %% `DisassociateVPCFromHostedZone'.
 delete_vpc_association_authorization(Client, HostedZoneId, Input) ->
     delete_vpc_association_authorization(Client, HostedZoneId, Input, []).
 delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/deauthorizevpcassociation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1535,18 +1723,20 @@ delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
 
 %% @doc Disables DNSSEC signing in a specific hosted zone.
 %%
-%% This action does not deactivate any key-signing keys (KSKs) that are
-%% active in the hosted zone.
+%% This action does not deactivate any
+%% key-signing keys (KSKs) that are active in the hosted zone.
 disable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
     disable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
 disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disable-dnssec"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1560,37 +1750,40 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
-%% Amazon Route 53 private hosted zone.
+%% Amazon Route 53
+%% private hosted zone.
 %%
 %% Note the following:
 %%
-%% <ul> <li> You can't disassociate the last Amazon VPC from a private
-%% hosted zone.
+%% You can't disassociate the last Amazon VPC from a private hosted zone.
 %%
-%% </li> <li> You can't convert a private hosted zone into a public
-%% hosted zone.
+%% You can't convert a private hosted zone into a public hosted zone.
 %%
-%% </li> <li> You can submit a `DisassociateVPCFromHostedZone' request
-%% using either the account that created the hosted zone or the account that
-%% created the Amazon VPC.
+%% You can submit a `DisassociateVPCFromHostedZone' request using
+%% either the account that created the hosted zone or the account that
+%% created the
+%% Amazon VPC.
 %%
-%% </li> <li> Some services, such as Cloud Map and Amazon Elastic File System
+%% Some services, such as Cloud Map and Amazon Elastic File System
 %% (Amazon EFS) automatically create hosted zones and associate VPCs with the
 %% hosted zones. A service can create a hosted zone using your account or
-%% using its own account. You can disassociate a VPC from a hosted zone only
-%% if the service created the hosted zone using your account.
+%% using its
+%% own account. You can disassociate a VPC from a hosted zone only if the
+%% service
+%% created the hosted zone using your account.
 %%
 %% When you run DisassociateVPCFromHostedZone:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListHostedZonesByVPC.html,
-%% if the hosted zone has a value for `OwningAccount', you can use
-%% `DisassociateVPCFromHostedZone'. If the hosted zone has a value for
-%% `OwningService', you can't use
+%% if the hosted zone has a value for
+%% `OwningAccount', you can use
+%% `DisassociateVPCFromHostedZone'. If the hosted zone has a value
+%% for `OwningService', you can't use
 %% `DisassociateVPCFromHostedZone'.
 %%
-%% </li> </ul> When revoking access, the hosted zone and the Amazon VPC must
-%% belong to the same partition. A partition is a group of Amazon Web
-%% Services Regions. Each Amazon Web Services account is scoped to one
-%% partition.
+%% When revoking access, the hosted zone and the Amazon VPC must belong to
+%% the same partition. A partition is a group of Amazon Web Services Regions.
+%% Each
+%% Amazon Web Services account is scoped to one partition.
 %%
 %% The following are the supported partitions:
 %%
@@ -1608,11 +1801,13 @@ disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input) ->
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disassociatevpc"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1631,11 +1826,13 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
 enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/enable-dnssec"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1649,17 +1846,20 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified limit for the current account, for example, the
-%% maximum number of health checks that you can create using the account.
+%% maximum number of
+%% health checks that you can create using the account.
 %%
 %% For the default limit, see Limits:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
-%% in the Amazon Route 53 Developer Guide. To request a higher limit, open a
-%% case:
+%% in the
+%% Amazon Route 53 Developer Guide. To request a higher limit,
+%% open a case:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
 %%
 %% You can also view account limits in Amazon Web Services Trusted Advisor.
-%% Sign in to the Amazon Web Services Management Console and open the Trusted
-%% Advisor console at https://console.aws.amazon.com/trustedadvisor/:
+%% Sign in to
+%% the Amazon Web Services Management Console and open the Trusted Advisor
+%% console at https://console.aws.amazon.com/trustedadvisor/:
 %% https://console.aws.amazon.com/trustedadvisor. Then choose Service limits
 %% in the navigation pane.
 get_account_limit(Client, Type)
@@ -1673,10 +1873,12 @@ get_account_limit(Client, Type, QueryMap, HeadersMap)
 get_account_limit(Client, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/accountlimit/", aws_util:encode_uri(Type), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1686,16 +1888,16 @@ get_account_limit(Client, Type, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the current status of a change batch request.
 %%
-%% The status is one of the following values:
+%% The status is one of the
+%% following values:
 %%
-%% <ul> <li> `PENDING' indicates that the changes in this request have
-%% not propagated to all Amazon Route 53 DNS servers managing the hosted
-%% zone. This is the initial status of all change batch requests.
+%% `PENDING' indicates that the changes in this request have not
+%% propagated to all Amazon Route 53 DNS servers managing the hosted zone.
+%% This is the initial status of all
+%% change batch requests.
 %%
-%% </li> <li> `INSYNC' indicates that the changes have propagated to all
-%% Route 53 DNS servers managing the hosted zone.
-%%
-%% </li> </ul>
+%% `INSYNC' indicates that the changes have propagated to all Route 53
+%% DNS servers managing the hosted zone.
 get_change(Client, Id)
   when is_map(Client) ->
     get_change(Client, Id, #{}, #{}).
@@ -1707,10 +1909,12 @@ get_change(Client, Id, QueryMap, HeadersMap)
 get_change(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/change/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1719,14 +1923,17 @@ get_change(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Route 53 does not perform authorization for this API because it
-%% retrieves information that is already available to the public.
+%% retrieves information
+%% that is already available to the public.
 %%
 %% `GetCheckerIpRanges' still works, but we recommend that you download
 %% ip-ranges.json, which includes IP address ranges for all Amazon Web
-%% Services services. For more information, see IP Address Ranges of Amazon
-%% Route 53 Servers:
+%% Services
+%% services. For more information, see IP Address Ranges
+%% of Amazon Route 53 Servers:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the Amazon Route 53 Developer
+%% Guide.
 get_checker_ip_ranges(Client)
   when is_map(Client) ->
     get_checker_ip_ranges(Client, #{}, #{}).
@@ -1738,10 +1945,12 @@ get_checker_ip_ranges(Client, QueryMap, HeadersMap)
 get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/checkeripranges"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1750,7 +1959,8 @@ get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about DNSSEC for a specific hosted zone,
-%% including the key-signing keys (KSKs) in the hosted zone.
+%% including the key-signing
+%% keys (KSKs) in the hosted zone.
 get_dns_sec(Client, HostedZoneId)
   when is_map(Client) ->
     get_dns_sec(Client, HostedZoneId, #{}, #{}).
@@ -1762,10 +1972,12 @@ get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap)
 get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/dnssec"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1774,27 +1986,34 @@ get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about whether a specified geographic location is
-%% supported for Amazon Route 53 geolocation resource record sets.
+%% supported for Amazon
+%% Route 53 geolocation resource record sets.
 %%
 %% Route 53 does not perform authorization for this API because it retrieves
-%% information that is already available to the public.
+%% information
+%% that is already available to the public.
 %%
 %% Use the following syntax to determine whether a continent is supported for
 %% geolocation:
 %%
-%% `GET /2013-04-01/geolocation?continentcode=two-letter abbreviation for a
-%% continent '
+%% ```
+%% GET /2013-04-01/geolocation?continentcode=two-letter abbreviation for a
+%% continent '''
 %%
 %% Use the following syntax to determine whether a country is supported for
 %% geolocation:
 %%
-%% `GET /2013-04-01/geolocation?countrycode=two-character country code '
+%% ```
+%% GET /2013-04-01/geolocation?countrycode=two-character country code
+%% '''
 %%
 %% Use the following syntax to determine whether a subdivision of a country
-%% is supported for geolocation:
+%% is supported
+%% for geolocation:
 %%
-%% `GET /2013-04-01/geolocation?countrycode=two-character country
-%% code&amp;subdivisioncode=subdivision code '
+%% ```
+%% GET /2013-04-01/geolocation?countrycode=two-character country
+%% code&amp;subdivisioncode=subdivision code '''
 get_geo_location(Client)
   when is_map(Client) ->
     get_geo_location(Client, #{}, #{}).
@@ -1806,10 +2025,12 @@ get_geo_location(Client, QueryMap, HeadersMap)
 get_geo_location(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/geolocation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1835,10 +2056,12 @@ get_health_check(Client, HealthCheckId, QueryMap, HeadersMap)
 get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1859,10 +2082,12 @@ get_health_check_count(Client, QueryMap, HeadersMap)
 get_health_check_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheckcount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1882,10 +2107,12 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
 get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/lastfailurereason"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1896,8 +2123,10 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
 %% @doc Gets status of a specified health check.
 %%
 %% This API is intended for use during development to diagnose behavior. It
-%% doesn’t support production use-cases with high query rates that require
-%% immediate and actionable responses.
+%% doesn’t
+%% support production use-cases with high query rates that require immediate
+%% and
+%% actionable responses.
 get_health_check_status(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check_status(Client, HealthCheckId, #{}, #{}).
@@ -1909,10 +2138,12 @@ get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap)
 get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/status"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1921,7 +2152,8 @@ get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified hosted zone including the four
-%% name servers assigned to the hosted zone.
+%% name servers
+%% assigned to the hosted zone.
 get_hosted_zone(Client, Id)
   when is_map(Client) ->
     get_hosted_zone(Client, Id, #{}, #{}).
@@ -1933,10 +2165,12 @@ get_hosted_zone(Client, Id, QueryMap, HeadersMap)
 get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1957,10 +2191,12 @@ get_hosted_zone_count(Client, QueryMap, HeadersMap)
 get_hosted_zone_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonecount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1969,12 +2205,14 @@ get_hosted_zone_count(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the specified limit for a specified hosted zone, for example,
-%% the maximum number of records that you can create in the hosted zone.
+%% the maximum number
+%% of records that you can create in the hosted zone.
 %%
 %% For the default limit, see Limits:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
-%% in the Amazon Route 53 Developer Guide. To request a higher limit, open a
-%% case:
+%% in the
+%% Amazon Route 53 Developer Guide. To request a higher limit,
+%% open a case:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
 get_hosted_zone_limit(Client, HostedZoneId, Type)
   when is_map(Client) ->
@@ -1987,10 +2225,12 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap)
 get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonelimit/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Type), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2003,7 +2243,8 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options0
 %%
 %% For more information about DNS query logs, see CreateQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html
-%% and Logging DNS Queries:
+%% and Logging DNS
+%% Queries:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html.
 get_query_logging_config(Client, Id)
   when is_map(Client) ->
@@ -2016,10 +2257,12 @@ get_query_logging_config(Client, Id, QueryMap, HeadersMap)
 get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2028,7 +2271,8 @@ get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a specified reusable delegation set,
-%% including the four name servers that are assigned to the delegation set.
+%% including the four
+%% name servers that are assigned to the delegation set.
 get_reusable_delegation_set(Client, Id)
   when is_map(Client) ->
     get_reusable_delegation_set(Client, Id, #{}, #{}).
@@ -2040,10 +2284,12 @@ get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap)
 get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2052,12 +2298,14 @@ get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the maximum number of hosted zones that you can associate with
-%% the specified reusable delegation set.
+%% the specified
+%% reusable delegation set.
 %%
 %% For the default limit, see Limits:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
-%% in the Amazon Route 53 Developer Guide. To request a higher limit, open a
-%% case:
+%% in the
+%% Amazon Route 53 Developer Guide. To request a higher limit,
+%% open a case:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type)
   when is_map(Client) ->
@@ -2070,10 +2318,12 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, Heade
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/reusabledelegationsetlimit/", aws_util:encode_uri(DelegationSetId), "/", aws_util:encode_uri(Type), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2084,7 +2334,8 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, Heade
 %% @doc Gets information about a specific traffic policy version.
 %%
 %% For information about how of deleting a traffic policy affects the
-%% response from `GetTrafficPolicy', see DeleteTrafficPolicy:
+%% response from
+%% `GetTrafficPolicy', see DeleteTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
 get_traffic_policy(Client, Id, Version)
   when is_map(Client) ->
@@ -2097,10 +2348,12 @@ get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap)
 get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2111,9 +2364,11 @@ get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about a specified traffic policy instance.
 %%
 %% Use `GetTrafficPolicyInstance' with the `id' of new traffic policy
-%% instance to confirm that the `CreateTrafficPolicyInstance' or an
-%% `UpdateTrafficPolicyInstance' request completed successfully. For more
-%% information, see the `State' response element.
+%% instance to confirm that the
+%% `CreateTrafficPolicyInstance' or an `UpdateTrafficPolicyInstance'
+%% request completed successfully.
+%% For more information, see the `State' response
+%% element.
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
 %% records.
@@ -2128,10 +2383,12 @@ get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap)
 get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2140,7 +2397,8 @@ get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the number of traffic policy instances that are associated with
-%% the current Amazon Web Services account.
+%% the current
+%% Amazon Web Services account.
 get_traffic_policy_instance_count(Client)
   when is_map(Client) ->
     get_traffic_policy_instance_count(Client, #{}, #{}).
@@ -2152,10 +2410,12 @@ get_traffic_policy_instance_count(Client, QueryMap, HeadersMap)
 get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstancecount"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2175,10 +2435,12 @@ list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap)
 list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(CollectionId), "/cidrblocks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2193,7 +2455,8 @@ list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of CIDR collections in the Amazon Web
-%% Services account (metadata only).
+%% Services account
+%% (metadata only).
 list_cidr_collections(Client)
   when is_map(Client) ->
     list_cidr_collections(Client, #{}, #{}).
@@ -2205,10 +2468,12 @@ list_cidr_collections(Client, QueryMap, HeadersMap)
 list_cidr_collections(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/cidrcollection"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2222,7 +2487,8 @@ list_cidr_collections(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of CIDR locations for the given collection
-%% (metadata only, does not include CIDR blocks).
+%% (metadata only,
+%% does not include CIDR blocks).
 list_cidr_locations(Client, CollectionId)
   when is_map(Client) ->
     list_cidr_locations(Client, CollectionId, #{}, #{}).
@@ -2234,10 +2500,12 @@ list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap)
 list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(CollectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2253,16 +2521,21 @@ list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of supported geographic locations.
 %%
 %% Countries are listed first, and continents are listed last. If Amazon
-%% Route 53 supports subdivisions for a country (for example, states or
-%% provinces), the subdivisions for that country are listed in alphabetical
-%% order immediately after the corresponding country.
+%% Route 53
+%% supports subdivisions for a country (for example, states or provinces),
+%% the subdivisions
+%% for that country are listed in alphabetical order immediately after the
+%% corresponding
+%% country.
 %%
 %% Route 53 does not perform authorization for this API because it retrieves
-%% information that is already available to the public.
+%% information
+%% that is already available to the public.
 %%
 %% For a list of supported geolocation codes, see the GeoLocation:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html
-%% data type.
+%% data
+%% type.
 list_geo_locations(Client)
   when is_map(Client) ->
     list_geo_locations(Client, #{}, #{}).
@@ -2274,10 +2547,12 @@ list_geo_locations(Client, QueryMap, HeadersMap)
 list_geo_locations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/geolocations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2305,10 +2580,12 @@ list_health_checks(Client, QueryMap, HeadersMap)
 list_health_checks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2322,14 +2599,17 @@ list_health_checks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the public and private hosted zones that are
-%% associated with the current Amazon Web Services account.
+%% associated with the
+%% current Amazon Web Services account.
 %%
-%% The response includes a `HostedZones' child element for each hosted
-%% zone.
+%% The response includes a `HostedZones'
+%% child element for each hosted zone.
 %%
 %% Amazon Route 53 returns a maximum of 100 items in each response. If you
-%% have a lot of hosted zones, you can use the `maxitems' parameter to
-%% list them in groups of up to 100.
+%% have a lot of
+%% hosted zones, you can use the `maxitems' parameter to list them in
+%% groups of
+%% up to 100.
 list_hosted_zones(Client)
   when is_map(Client) ->
     list_hosted_zones(Client, #{}, #{}).
@@ -2341,10 +2621,12 @@ list_hosted_zones(Client, QueryMap, HeadersMap)
 list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2361,8 +2643,10 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of your hosted zones in lexicographic order.
 %%
-%% The response includes a `HostedZones' child element for each hosted
-%% zone created by the current Amazon Web Services account.
+%% The response includes a
+%% `HostedZones' child element for each hosted zone created by the
+%% current
+%% Amazon Web Services account.
 %%
 %% `ListHostedZonesByName' sorts hosted zones by name with the labels
 %% reversed. For example:
@@ -2374,50 +2658,57 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 %%
 %% If the domain name includes escape characters or Punycode,
 %% `ListHostedZonesByName' alphabetizes the domain name using the escaped
-%% or Punycoded value, which is the format that Amazon Route 53 saves in its
-%% database. For example, to create a hosted zone for exämple.com, you
-%% specify ex\344mple.com for the domain name. `ListHostedZonesByName'
-%% alphabetizes it as:
+%% or
+%% Punycoded value, which is the format that Amazon Route 53 saves in its
+%% database. For
+%% example, to create a hosted zone for exämple.com, you specify
+%% ex\344mple.com for
+%% the domain name. `ListHostedZonesByName' alphabetizes it as:
 %%
 %% `com.ex\344mple.'
 %%
 %% The labels are reversed and alphabetized using the escaped value. For more
-%% information about valid domain name formats, including internationalized
-%% domain names, see DNS Domain Name Format:
+%% information
+%% about valid domain name formats, including internationalized domain names,
+%% see DNS
+%% Domain Name Format:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the Amazon Route 53 Developer
+%% Guide.
 %%
 %% Route 53 returns up to 100 items in each response. If you have a lot of
-%% hosted zones, use the `MaxItems' parameter to list them in groups of
-%% up to 100. The response includes values that help navigate from one group
-%% of `MaxItems' hosted zones to the next:
+%% hosted zones,
+%% use the `MaxItems' parameter to list them in groups of up to 100. The
+%% response includes values that help navigate from one group of
+%% `MaxItems'
+%% hosted zones to the next:
 %%
-%% <ul> <li> The `DNSName' and `HostedZoneId' elements in the
+%% The `DNSName' and `HostedZoneId' elements in the
 %% response contain the values, if any, specified for the `dnsname' and
-%% `hostedzoneid' parameters in the request that produced the current
+%% `hostedzoneid' parameters in the request that produced the
+%% current response.
+%%
+%% The `MaxItems' element in the response contains the value, if any,
+%% that you specified for the `maxitems' parameter in the request that
+%% produced the current response.
+%%
+%% If the value of `IsTruncated' in the response is true, there are
+%% more hosted zones associated with the current Amazon Web Services account.
+%%
+%% If `IsTruncated' is false, this response includes the last hosted
+%% zone that is associated with the current account. The `NextDNSName'
+%% element and `NextHostedZoneId' elements are omitted from the
 %% response.
 %%
-%% </li> <li> The `MaxItems' element in the response contains the value,
-%% if any, that you specified for the `maxitems' parameter in the request
-%% that produced the current response.
-%%
-%% </li> <li> If the value of `IsTruncated' in the response is true,
-%% there are more hosted zones associated with the current Amazon Web
-%% Services account.
-%%
-%% If `IsTruncated' is false, this response includes the last hosted zone
-%% that is associated with the current account. The `NextDNSName' element
-%% and `NextHostedZoneId' elements are omitted from the response.
-%%
-%% </li> <li> The `NextDNSName' and `NextHostedZoneId' elements in
-%% the response contain the domain name and the hosted zone ID of the next
-%% hosted zone that is associated with the current Amazon Web Services
-%% account. If you want to list more hosted zones, make another call to
-%% `ListHostedZonesByName', and specify the value of `NextDNSName'
-%% and `NextHostedZoneId' in the `dnsname' and `hostedzoneid'
-%% parameters, respectively.
-%%
-%% </li> </ul>
+%% The `NextDNSName' and `NextHostedZoneId' elements in the
+%% response contain the domain name and the hosted zone ID of the next hosted
+%% zone
+%% that is associated with the current Amazon Web Services account. If you
+%% want to
+%% list more hosted zones, make another call to `ListHostedZonesByName',
+%% and specify the value of `NextDNSName' and
+%% `NextHostedZoneId' in the `dnsname' and
+%% `hostedzoneid' parameters, respectively.
 list_hosted_zones_by_name(Client)
   when is_map(Client) ->
     list_hosted_zones_by_name(Client, #{}, #{}).
@@ -2429,10 +2720,12 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap)
 list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonesbyname"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2447,26 +2740,31 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the private hosted zones that a specified VPC is associated
-%% with, regardless of which Amazon Web Services account or Amazon Web
-%% Services service owns the hosted zones.
+%% with, regardless
+%% of which Amazon Web Services account or Amazon Web Services service owns
+%% the hosted zones.
 %%
 %% The `HostedZoneOwner' structure in the response contains one of the
-%% following values:
+%% following
+%% values:
 %%
-%% <ul> <li> An `OwningAccount' element, which contains the account
-%% number of either the current Amazon Web Services account or another Amazon
-%% Web Services account. Some services, such as Cloud Map, create hosted
-%% zones using the current account.
+%% An `OwningAccount' element, which contains the account number of
+%% either the current Amazon Web Services account or another Amazon Web
+%% Services account. Some services, such as Cloud Map, create
+%% hosted zones using the current account.
 %%
-%% </li> <li> An `OwningService' element, which identifies the Amazon Web
-%% Services service that created and owns the hosted zone. For example, if a
-%% hosted zone was created by Amazon Elastic File System (Amazon EFS), the
-%% value of `Owner' is `efs.amazonaws.com'.
+%% An `OwningService' element, which identifies the Amazon Web Services
+%% service that created and owns the hosted zone. For example, if a hosted
+%% zone was
+%% created by Amazon Elastic File System (Amazon EFS), the value of
+%% `Owner' is `efs.amazonaws.com'.
 %%
-%% </li> </ul> When listing private hosted zones, the hosted zone and the
-%% Amazon VPC must belong to the same partition where the hosted zones were
-%% created. A partition is a group of Amazon Web Services Regions. Each
-%% Amazon Web Services account is scoped to one partition.
+%% When listing private hosted zones, the hosted zone and the Amazon VPC must
+%% belong to the same partition where the hosted zones were created. A
+%% partition is a
+%% group of Amazon Web Services Regions. Each Amazon Web Services account is
+%% scoped to
+%% one partition.
 %%
 %% The following are the supported partitions:
 %%
@@ -2490,10 +2788,12 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap)
 list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonesbyvpc"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2509,15 +2809,18 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the configurations for DNS query logging that are associated
-%% with the current Amazon Web Services account or the configuration that is
-%% associated with a specified hosted zone.
+%% with the current
+%% Amazon Web Services account or the configuration that is associated with a
+%% specified
+%% hosted zone.
 %%
 %% For more information about DNS query logs, see CreateQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html.
-%% Additional information, including the format of DNS query logs, appears in
-%% Logging DNS Queries:
+%% Additional information, including the format of
+%% DNS query logs, appears in Logging DNS Queries:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html
-%% in the Amazon Route 53 Developer Guide.
+%% in
+%% the Amazon Route 53 Developer Guide.
 list_query_logging_configs(Client)
   when is_map(Client) ->
     list_query_logging_configs(Client, #{}, #{}).
@@ -2529,10 +2832,12 @@ list_query_logging_configs(Client, QueryMap, HeadersMap)
 list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/queryloggingconfig"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2549,20 +2854,24 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the resource record sets in a specified hosted zone.
 %%
 %% `ListResourceRecordSets' returns up to 300 resource record sets at a
-%% time in ASCII order, beginning at a position specified by the `name'
-%% and `type' elements.
+%% time
+%% in ASCII order, beginning at a position specified by the `name' and
+%% `type' elements.
 %%
 %% Sort order
 %%
 %% `ListResourceRecordSets' sorts results first by DNS name with the
-%% labels reversed, for example:
+%% labels
+%% reversed, for example:
 %%
 %% `com.example.www.'
 %%
 %% Note the trailing dot, which can change the sort order when the record
-%% name contains characters that appear before `.' (decimal 46) in the
-%% ASCII table. These characters include the following: `! &quot; # $ % &amp;
-%% ' ( ) * + , -'
+%% name contains
+%% characters that appear before `.' (decimal 46) in the ASCII table.
+%% These
+%% characters include the following: `! &quot; # $ % &amp; ' ( ) * + ,
+%% -'
 %%
 %% When multiple records have the same DNS name, `ListResourceRecordSets'
 %% sorts results by the record type.
@@ -2570,37 +2879,47 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
 %% Specifying where to start listing records
 %%
 %% You can use the name and type elements to specify the resource record set
-%% that the list begins with:
+%% that the
+%% list begins with:
 %%
-%% <dl> <dt>If you do not specify Name or Type</dt> <dd> The results begin
-%% with the first resource record set that the hosted zone contains.
+%% If you do not specify Name or Type
 %%
-%% </dd> <dt>If you specify Name but not Type</dt> <dd> The results begin
-%% with the first resource record set in the list whose name is greater than
-%% or equal to `Name'.
+%% The results begin with the first resource record set that the hosted zone
+%% contains.
 %%
-%% </dd> <dt>If you specify Type but not Name</dt> <dd> Amazon Route 53
-%% returns the `InvalidInput' error.
+%% If you specify Name but not Type
 %%
-%% </dd> <dt>If you specify both Name and Type</dt> <dd> The results begin
-%% with the first resource record set in the list whose name is greater than
-%% or equal to `Name', and whose type is greater than or equal to
-%% `Type'.
+%% The results begin with the first resource record set in the list whose
+%% name is greater than or equal to `Name'.
 %%
-%% </dd> </dl> Resource record sets that are PENDING
+%% If you specify Type but not Name
+%%
+%% Amazon Route 53 returns the `InvalidInput' error.
+%%
+%% If you specify both Name and Type
+%%
+%% The results begin with the first resource record set in the list whose
+%% name is greater than or equal to `Name', and whose type is
+%% greater than or equal to `Type'.
+%%
+%% Resource record sets that are PENDING
 %%
 %% This action returns the most current version of the records. This includes
-%% records that are `PENDING', and that are not yet available on all
-%% Route 53 DNS servers.
+%% records
+%% that are `PENDING', and that are not yet available on all Route 53 DNS
+%% servers.
 %%
 %% Changing resource record sets
 %%
 %% To ensure that you get an accurate listing of the resource record sets for
-%% a hosted zone at a point in time, do not submit a
-%% `ChangeResourceRecordSets' request while you're paging through the
-%% results of a `ListResourceRecordSets' request. If you do, some pages
-%% may display results without the latest changes while other pages display
-%% results with the latest changes.
+%% a hosted
+%% zone at a point in time, do not submit a `ChangeResourceRecordSets'
+%% request
+%% while you're paging through the results of a
+%% `ListResourceRecordSets'
+%% request. If you do, some pages may display results without the latest
+%% changes while
+%% other pages display results with the latest changes.
 %%
 %% Displaying the next page of results
 %%
@@ -2609,7 +2928,8 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
 %% page of results, get the values of `NextRecordName',
 %% `NextRecordType', and `NextRecordIdentifier' (if any) from the
 %% response. Then submit another `ListResourceRecordSets' request, and
-%% specify those values for `StartRecordName', `StartRecordType', and
+%% specify
+%% those values for `StartRecordName', `StartRecordType', and
 %% `StartRecordIdentifier'.
 list_resource_record_sets(Client, HostedZoneId)
   when is_map(Client) ->
@@ -2622,10 +2942,12 @@ list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap)
 list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2641,7 +2963,8 @@ list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the reusable delegation sets that are associated
-%% with the current Amazon Web Services account.
+%% with the current
+%% Amazon Web Services account.
 list_reusable_delegation_sets(Client)
   when is_map(Client) ->
     list_reusable_delegation_sets(Client, #{}, #{}).
@@ -2653,10 +2976,12 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap)
 list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/delegationset"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2672,7 +2997,8 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists tags for one health check or hosted zone.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags:
+%% Allocation
+%% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
 list_tags_for_resource(Client, ResourceId, ResourceType)
@@ -2686,10 +3012,12 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2700,7 +3028,8 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, O
 %% @doc Lists tags for up to 10 health checks or hosted zones.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags:
+%% Allocation
+%% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
 list_tags_for_resources(Client, ResourceType, Input) ->
@@ -2708,11 +3037,13 @@ list_tags_for_resources(Client, ResourceType, Input) ->
 list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2726,12 +3057,15 @@ list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the latest version for every traffic policy
-%% that is associated with the current Amazon Web Services account.
+%% that is associated
+%% with the current Amazon Web Services account.
 %%
-%% Policies are listed in the order that they were created in.
+%% Policies are listed in the order that they
+%% were created in.
 %%
 %% For information about how of deleting a traffic policy affects the
-%% response from `ListTrafficPolicies', see DeleteTrafficPolicy:
+%% response from
+%% `ListTrafficPolicies', see DeleteTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
 list_traffic_policies(Client)
   when is_map(Client) ->
@@ -2744,10 +3078,12 @@ list_traffic_policies(Client, QueryMap, HeadersMap)
 list_traffic_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicies"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2761,16 +3097,21 @@ list_traffic_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the traffic policy instances that you created
-%% by using the current Amazon Web Services account.
+%% by using the
+%% current Amazon Web Services account.
 %%
 %% After you submit an `UpdateTrafficPolicyInstance' request, there's
-%% a brief delay while Amazon Route 53 creates the resource record sets that
-%% are specified in the traffic policy definition. For more information, see
-%% the `State' response element.
+%% a
+%% brief delay while Amazon Route 53 creates the resource record sets that
+%% are
+%% specified in the traffic policy definition. For more information, see the
+%% `State' response element.
 %%
 %% Route 53 returns a maximum of 100 items in each response. If you have a
-%% lot of traffic policy instances, you can use the `MaxItems' parameter
-%% to list them in groups of up to 100.
+%% lot of traffic
+%% policy instances, you can use the `MaxItems' parameter to list them in
+%% groups
+%% of up to 100.
 list_traffic_policy_instances(Client)
   when is_map(Client) ->
     list_traffic_policy_instances(Client, #{}, #{}).
@@ -2782,10 +3123,12 @@ list_traffic_policy_instances(Client, QueryMap, HeadersMap)
 list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2801,17 +3144,21 @@ list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the traffic policy instances that you created
-%% in a specified hosted zone.
+%% in a specified
+%% hosted zone.
 %%
 %% After you submit a `CreateTrafficPolicyInstance' or an
 %% `UpdateTrafficPolicyInstance' request, there's a brief delay while
 %% Amazon Route 53 creates the resource record sets that are specified in the
-%% traffic policy definition. For more information, see the `State'
-%% response element.
+%% traffic
+%% policy definition. For more information, see the `State' response
+%% element.
 %%
 %% Route 53 returns a maximum of 100 items in each response. If you have a
-%% lot of traffic policy instances, you can use the `MaxItems' parameter
-%% to list them in groups of up to 100.
+%% lot of traffic
+%% policy instances, you can use the `MaxItems' parameter to list them in
+%% groups
+%% of up to 100.
 list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId)
   when is_map(Client) ->
     list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, #{}, #{}).
@@ -2823,10 +3170,12 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, Hea
 list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances/hostedzone"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2842,17 +3191,21 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the traffic policy instances that you created
-%% by using a specify traffic policy version.
+%% by using a
+%% specify traffic policy version.
 %%
 %% After you submit a `CreateTrafficPolicyInstance' or an
 %% `UpdateTrafficPolicyInstance' request, there's a brief delay while
 %% Amazon Route 53 creates the resource record sets that are specified in the
-%% traffic policy definition. For more information, see the `State'
-%% response element.
+%% traffic
+%% policy definition. For more information, see the `State' response
+%% element.
 %%
 %% Route 53 returns a maximum of 100 items in each response. If you have a
-%% lot of traffic policy instances, you can use the `MaxItems' parameter
-%% to list them in groups of up to 100.
+%% lot of traffic
+%% policy instances, you can use the `MaxItems' parameter to list them in
+%% groups
+%% of up to 100.
 list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion)
   when is_map(Client) ->
     list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, #{}, #{}).
@@ -2864,10 +3217,12 @@ list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVe
 list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances/trafficpolicy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2900,10 +3255,12 @@ list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap)
 list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicies/", aws_util:encode_uri(Id), "/versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2917,11 +3274,12 @@ list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of the VPCs that were created by other accounts and that
-%% can be associated with a specified hosted zone because you've
-%% submitted one or more `CreateVPCAssociationAuthorization' requests.
+%% can be associated
+%% with a specified hosted zone because you've submitted one or more
+%% `CreateVPCAssociationAuthorization' requests.
 %%
-%% The response includes a `VPCs' element with a `VPC' child element
-%% for each VPC that can be associated with the hosted zone.
+%% The response includes a `VPCs' element with a `VPC' child
+%% element for each VPC that can be associated with the hosted zone.
 list_vpc_association_authorizations(Client, HostedZoneId)
   when is_map(Client) ->
     list_vpc_association_authorizations(Client, HostedZoneId, #{}, #{}).
@@ -2933,10 +3291,12 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap)
 list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2950,17 +3310,20 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the value that Amazon Route 53 returns in response to a DNS
-%% request for a specified record name and type.
+%% request for a
+%% specified record name and type.
 %%
-%% You can optionally specify the IP address of a DNS resolver, an EDNS0
-%% client subnet IP address, and a subnet mask.
+%% You can optionally specify the IP address of a DNS
+%% resolver, an EDNS0 client subnet IP address, and a subnet mask.
 %%
 %% This call only supports querying public hosted zones.
 %%
 %% The `TestDnsAnswer ' returns information similar to what you would
-%% expect from the answer section of the `dig' command. Therefore, if you
-%% query for the name servers of a subdomain that point to the parent name
-%% servers, those will not be returned.
+%% expect from the answer
+%% section of the `dig' command. Therefore, if you query for the name
+%% servers of a subdomain that point to the parent name servers, those will
+%% not be
+%% returned.
 test_dns_answer(Client, HostedZoneId, RecordName, RecordType)
   when is_map(Client) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, #{}, #{}).
@@ -2972,10 +3335,12 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
 test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/testdnsanswer"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2996,20 +3361,23 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
 %%
 %% Note that some values can't be updated.
 %%
-%% For more information about updating health checks, see Creating, Updating,
-%% and Deleting Health Checks:
+%% For more information about updating health checks, see Creating,
+%% Updating, and Deleting Health Checks:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html
-%% in the Amazon Route 53 Developer Guide.
+%% in the Amazon Route 53
+%% Developer Guide.
 update_health_check(Client, HealthCheckId, Input) ->
     update_health_check(Client, HealthCheckId, Input, []).
 update_health_check(Client, HealthCheckId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3028,11 +3396,13 @@ update_hosted_zone_comment(Client, Id, Input) ->
 update_hosted_zone_comment(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3051,11 +3421,13 @@ update_traffic_policy_comment(Client, Id, Version, Input) ->
 update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3068,46 +3440,55 @@ update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc After you submit a `UpdateTrafficPolicyInstance' request,
-%% there's a brief delay while Route 53 creates the resource record sets
+%% @doc
+%% After you submit a `UpdateTrafficPolicyInstance' request, there's
+%% a brief delay while Route 53 creates the resource record sets
 %% that are specified in the traffic policy definition.
 %%
 %% Use `GetTrafficPolicyInstance' with the `id' of updated traffic
-%% policy instance confirm that the `UpdateTrafficPolicyInstance' request
-%% completed successfully. For more information, see the `State' response
-%% element.
+%% policy instance confirm
+%% that the
+%% `UpdateTrafficPolicyInstance' request completed successfully. For more
+%% information, see the `State' response element.
 %%
 %% Updates the resource record sets in a specified hosted zone that were
-%% created based on the settings in a specified traffic policy version.
+%% created based on
+%% the settings in a specified traffic policy version.
 %%
 %% When you update a traffic policy instance, Amazon Route 53 continues to
+%% respond to DNS
+%% queries for the root resource record set name (such as example.com) while
+%% it replaces
+%% one group of resource record sets with another. Route 53 performs the
+%% following
+%% operations:
+%%
+%% Route 53 creates a new group of resource record sets based on the
+%% specified
+%% traffic policy. This is true regardless of how significant the differences
+%% are
+%% between the existing resource record sets and the new resource record
+%% sets.
+%%
+%% When all of the new resource record sets have been created, Route 53
+%% starts to
 %% respond to DNS queries for the root resource record set name (such as
-%% example.com) while it replaces one group of resource record sets with
-%% another. Route 53 performs the following operations:
+%% example.com) by using the new resource record sets.
 %%
-%% <ol> <li> Route 53 creates a new group of resource record sets based on
-%% the specified traffic policy. This is true regardless of how significant
-%% the differences are between the existing resource record sets and the new
-%% resource record sets.
-%%
-%% </li> <li> When all of the new resource record sets have been created,
-%% Route 53 starts to respond to DNS queries for the root resource record set
-%% name (such as example.com) by using the new resource record sets.
-%%
-%% </li> <li> Route 53 deletes the old group of resource record sets that are
-%% associated with the root resource record set name.
-%%
-%% </li> </ol>
+%% Route 53 deletes the old group of resource record sets that are associated
+%% with the root resource record set name.
 update_traffic_policy_instance(Client, Id, Input) ->
     update_traffic_policy_instance(Client, Id, Input, []).
 update_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -3123,6 +3504,11 @@ update_traffic_policy_instance(Client, Id, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

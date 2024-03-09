@@ -5,17 +5,17 @@
 %% programmatically your Free Tier usage data.
 %%
 %% Free Tier tracks your monthly usage data for all free tier offers that are
-%% associated with your Amazon Web Services account. You can use the Free
-%% Tier API to filter and show only the data that you want.
+%% associated with your
+%% Amazon Web Services account. You can use the Free Tier API to filter and
+%% show only the data that you want.
 %%
 %% Service endpoint
 %%
 %% The Free Tier API provides the following endpoint:
 %%
-%% <ul> <li> https://freetier.us-east-1.api.aws
+%% https://freetier.us-east-1.api.aws
 %%
-%% </li> </ul> For more information, see Using the Amazon Web Services Free
-%% Tier:
+%% For more information, see Using the Amazon Web Services Free Tier:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html
 %% in the Billing User Guide.
 -module(aws_freetier).

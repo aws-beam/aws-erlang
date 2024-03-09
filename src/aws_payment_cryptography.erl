@@ -106,15 +106,13 @@
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DeleteAlias'
+%% `DeleteAlias'
 %%
-%% </li> <li> `GetAlias'
+%% `GetAlias'
 %%
-%% </li> <li> `ListAliases'
+%% `ListAliases'
 %%
-%% </li> <li> `UpdateAlias'
-%%
-%% </li> </ul>
+%% `UpdateAlias'
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -155,13 +153,11 @@ create_alias(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DeleteKey'
+%% `DeleteKey'
 %%
-%% </li> <li> `GetKey'
+%% `GetKey'
 %%
-%% </li> <li> `ListKeys'
-%%
-%% </li> </ul>
+%% `ListKeys'
 create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
@@ -182,15 +178,13 @@ create_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateAlias'
+%% `CreateAlias'
 %%
-%% </li> <li> `GetAlias'
+%% `GetAlias'
 %%
-%% </li> <li> `ListAliases'
+%% `ListAliases'
 %%
-%% </li> <li> `UpdateAlias'
-%%
-%% </li> </ul>
+%% `UpdateAlias'
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -223,13 +217,11 @@ delete_alias(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `RestoreKey'
+%% `RestoreKey'
 %%
-%% </li> <li> `StartKeyUsage'
+%% `StartKeyUsage'
 %%
-%% </li> <li> `StopKeyUsage'
-%%
-%% </li> </ul>
+%% `StopKeyUsage'
 delete_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_key(Client, Input, []).
@@ -306,28 +298,28 @@ delete_key(Client, Input, Options)
 %%
 %% Set the following parameters:
 %%
-%% <ul> <li> `ExportAttributes': Specify export attributes in case of
-%% IPEK export. This parameter is optional for KEK export.
+%% `ExportAttributes': Specify export attributes in case of IPEK export.
+%% This parameter is optional for KEK export.
 %%
-%% </li> <li> `ExportKeyIdentifier': The `KeyARN' of the KEK or BDK
-%% (in case of IPEK) under export.
+%% `ExportKeyIdentifier': The `KeyARN' of the KEK or BDK (in case of
+%% IPEK) under export.
 %%
-%% </li> <li> `KeyMaterial': Use `Tr34KeyBlock' parameters.
+%% `KeyMaterial': Use `Tr34KeyBlock' parameters.
 %%
-%% </li> <li> `CertificateAuthorityPublicKeyIdentifier': The `KeyARN'
-%% of the certificate chain that signed the KRD wrapping key certificate.
+%% `CertificateAuthorityPublicKeyIdentifier': The `KeyARN' of the
+%% certificate chain that signed the KRD wrapping key certificate.
 %%
-%% </li> <li> `ExportToken': Obtained from KDH by calling
+%% `ExportToken': Obtained from KDH by calling
 %% `GetParametersForImport'.
 %%
-%% </li> <li> `WrappingKeyCertificate': The public key certificate in PEM
-%% format (base64 encoded) of the KRD wrapping key Amazon Web Services
-%% Payment Cryptography uses for encryption of the TR-34 export payload. This
+%% `WrappingKeyCertificate': The public key certificate in PEM format
+%% (base64 encoded) of the KRD wrapping key Amazon Web Services Payment
+%% Cryptography uses for encryption of the TR-34 export payload. This
 %% certificate must be signed by the root certificate
 %% (CertificateAuthorityPublicKeyIdentifier) imported into Amazon Web
 %% Services Payment Cryptography.
 %%
-%% </li> </ul> When this operation is successful, Amazon Web Services Payment
+%% When this operation is successful, Amazon Web Services Payment
 %% Cryptography returns the KEK or IPEK as a TR-34 WrappedKeyBlock.
 %%
 %% To export initial keys (KEK) or IPEK using RSA Wrap and Unwrap
@@ -342,18 +334,18 @@ delete_key(Client, Input, Options)
 %%
 %% Next call `ExportKey' and set the following parameters:
 %%
-%% <ul> <li> `CertificateAuthorityPublicKeyIdentifier': The `KeyARN'
-%% of the certificate chain that signed wrapping key certificate.
+%% `CertificateAuthorityPublicKeyIdentifier': The `KeyARN' of the
+%% certificate chain that signed wrapping key certificate.
 %%
-%% </li> <li> `KeyMaterial': Set to `KeyCryptogram'.
+%% `KeyMaterial': Set to `KeyCryptogram'.
 %%
-%% </li> <li> `WrappingKeyCertificate': The public key certificate in PEM
-%% format (base64 encoded) obtained by the receiving HSM and signed by the
-%% root certificate (CertificateAuthorityPublicKeyIdentifier) imported into
-%% Amazon Web Services Payment Cryptography. The receiving HSM uses its
-%% private key component to unwrap the WrappedKeyCryptogram.
+%% `WrappingKeyCertificate': The public key certificate in PEM format
+%% (base64 encoded) obtained by the receiving HSM and signed by the root
+%% certificate (CertificateAuthorityPublicKeyIdentifier) imported into Amazon
+%% Web Services Payment Cryptography. The receiving HSM uses its private key
+%% component to unwrap the WrappedKeyCryptogram.
 %%
-%% </li> </ul> When this operation is successful, Amazon Web Services Payment
+%% When this operation is successful, Amazon Web Services Payment
 %% Cryptography returns the WrappedKeyCryptogram.
 %%
 %% To export working keys or IPEK using TR-31
@@ -365,15 +357,15 @@ delete_key(Client, Input, Options)
 %%
 %% Set the following parameters:
 %%
-%% <ul> <li> `ExportAttributes': Specify export attributes in case of
-%% IPEK export. This parameter is optional for KEK export.
+%% `ExportAttributes': Specify export attributes in case of IPEK export.
+%% This parameter is optional for KEK export.
 %%
-%% </li> <li> `ExportKeyIdentifier': The `KeyARN' of the KEK or BDK
-%% (in case of IPEK) under export.
+%% `ExportKeyIdentifier': The `KeyARN' of the KEK or BDK (in case of
+%% IPEK) under export.
 %%
-%% </li> <li> `KeyMaterial': Use `Tr31KeyBlock' parameters.
+%% `KeyMaterial': Use `Tr31KeyBlock' parameters.
 %%
-%% </li> </ul> When this operation is successful, Amazon Web Services Payment
+%% When this operation is successful, Amazon Web Services Payment
 %% Cryptography returns the working key or IPEK as a TR-31 WrappedKeyBlock.
 %%
 %% Cross-account use: This operation can't be used across different
@@ -381,11 +373,9 @@ delete_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `GetParametersForExport'
+%% `GetParametersForExport'
 %%
-%% </li> <li> `ImportKey'
-%%
-%% </li> </ul>
+%% `ImportKey'
 export_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_key(Client, Input, []).
@@ -401,15 +391,13 @@ export_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateAlias'
+%% `CreateAlias'
 %%
-%% </li> <li> `DeleteAlias'
+%% `DeleteAlias'
 %%
-%% </li> <li> `ListAliases'
+%% `ListAliases'
 %%
-%% </li> <li> `UpdateAlias'
-%%
-%% </li> </ul>
+%% `UpdateAlias'
 get_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_alias(Client, Input, []).
@@ -426,13 +414,11 @@ get_alias(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateKey'
+%% `CreateKey'
 %%
-%% </li> <li> `DeleteKey'
+%% `DeleteKey'
 %%
-%% </li> <li> `ListKeys'
-%%
-%% </li> </ul>
+%% `ListKeys'
 get_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key(Client, Input, []).
@@ -454,11 +440,9 @@ get_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `ExportKey'
+%% `ExportKey'
 %%
-%% </li> <li> `GetParametersForImport'
-%%
-%% </li> </ul>
+%% `GetParametersForImport'
 get_parameters_for_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_export(Client, Input, []).
@@ -480,11 +464,9 @@ get_parameters_for_export(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `GetParametersForExport'
+%% `GetParametersForExport'
 %%
-%% </li> <li> `ImportKey'
-%%
-%% </li> </ul>
+%% `ImportKey'
 get_parameters_for_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_import(Client, Input, []).
@@ -557,36 +539,35 @@ get_public_key_certificate(Client, Input, Options)
 %%
 %% Set the following parameters:
 %%
-%% <ul> <li> `KeyMaterial': `RootCertificatePublicKey'
+%% `KeyMaterial': `RootCertificatePublicKey'
 %%
-%% </li> <li> `KeyClass': `PUBLIC_KEY'
+%% `KeyClass': `PUBLIC_KEY'
 %%
-%% </li> <li> `KeyModesOfUse': `Verify'
+%% `KeyModesOfUse': `Verify'
 %%
-%% </li> <li> `KeyUsage':
-%% `TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE'
+%% `KeyUsage': `TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE'
 %%
-%% </li> <li> `PublicKeyCertificate': The public key certificate in PEM
-%% format (base64 encoded) of the private root key under import.
+%% `PublicKeyCertificate': The public key certificate in PEM format
+%% (base64 encoded) of the private root key under import.
 %%
-%% </li> </ul> To import a trusted public key certificate
+%% To import a trusted public key certificate
 %%
 %% The root public key certificate must be in place and operational before
 %% you import a trusted public key certificate. Set the following parameters:
 %%
-%% <ul> <li> `KeyMaterial': `TrustedCertificatePublicKey'
+%% `KeyMaterial': `TrustedCertificatePublicKey'
 %%
-%% </li> <li> `CertificateAuthorityPublicKeyIdentifier': `KeyArn' of
-%% the `RootCertificatePublicKey'.
+%% `CertificateAuthorityPublicKeyIdentifier': `KeyArn' of the
+%% `RootCertificatePublicKey'.
 %%
-%% </li> <li> `KeyModesOfUse' and `KeyUsage': Corresponding to the
-%% cryptographic operations such as wrap, sign, or encrypt that you will
-%% allow the trusted public key certificate to perform.
+%% `KeyModesOfUse' and `KeyUsage': Corresponding to the cryptographic
+%% operations such as wrap, sign, or encrypt that you will allow the trusted
+%% public key certificate to perform.
 %%
-%% </li> <li> `PublicKeyCertificate': The trusted public key certificate
-%% in PEM format (base64 encoded) under import.
+%% `PublicKeyCertificate': The trusted public key certificate in PEM
+%% format (base64 encoded) under import.
 %%
-%% </li> </ul> To import initial keys (KEK or ZMK or similar) using TR-34
+%% To import initial keys (KEK or ZMK or similar) using TR-34
 %%
 %% Using this operation, you can import initial key using TR-34 asymmetric
 %% key exchange. In TR-34 terminology, the sending party of the key is called
@@ -615,27 +596,26 @@ get_public_key_certificate(Client, Input, Options)
 %%
 %% Set the following parameters:
 %%
-%% <ul> <li> `KeyMaterial': Use `Tr34KeyBlock' parameters.
+%% `KeyMaterial': Use `Tr34KeyBlock' parameters.
 %%
-%% </li> <li> `CertificateAuthorityPublicKeyIdentifier': The `KeyARN'
-%% of the certificate chain that signed the KDH signing key certificate.
+%% `CertificateAuthorityPublicKeyIdentifier': The `KeyARN' of the
+%% certificate chain that signed the KDH signing key certificate.
 %%
-%% </li> <li> `ImportToken': Obtained from KRD by calling
+%% `ImportToken': Obtained from KRD by calling
 %% `GetParametersForImport'.
 %%
-%% </li> <li> `WrappedKeyBlock': The TR-34 wrapped key material from KDH.
-%% It contains the KDH key under import, wrapped with KRD wrapping
-%% certificate and signed by KDH signing private key. This TR-34 key block is
-%% typically generated by the KDH Hardware Security Module (HSM) outside of
-%% Amazon Web Services Payment Cryptography.
+%% `WrappedKeyBlock': The TR-34 wrapped key material from KDH. It
+%% contains the KDH key under import, wrapped with KRD wrapping certificate
+%% and signed by KDH signing private key. This TR-34 key block is typically
+%% generated by the KDH Hardware Security Module (HSM) outside of Amazon Web
+%% Services Payment Cryptography.
 %%
-%% </li> <li> `SigningKeyCertificate': The public key certificate in PEM
-%% format (base64 encoded) of the KDH signing key generated under the root
+%% `SigningKeyCertificate': The public key certificate in PEM format
+%% (base64 encoded) of the KDH signing key generated under the root
 %% certificate (CertificateAuthorityPublicKeyIdentifier) imported in Amazon
 %% Web Services Payment Cryptography.
 %%
-%% </li> </ul> To import initial keys (KEK or ZMK or similar) using RSA Wrap
-%% and Unwrap
+%% To import initial keys (KEK or ZMK or similar) using RSA Wrap and Unwrap
 %%
 %% Using this operation, you can import initial key using asymmetric RSA wrap
 %% and unwrap key exchange method. To initiate import, call
@@ -660,27 +640,24 @@ get_public_key_certificate(Client, Input, Options)
 %% `CreateKey'. To initiate a TR-31 key import, set the following
 %% parameters:
 %%
-%% <ul> <li> `KeyMaterial': Use `Tr31KeyBlock' parameters.
+%% `KeyMaterial': Use `Tr31KeyBlock' parameters.
 %%
-%% </li> <li> `WrappedKeyBlock': The TR-31 wrapped key material. It
-%% contains the key under import, encrypted using KEK. The TR-31 key block is
-%% typically generated by a HSM outside of Amazon Web Services Payment
-%% Cryptography.
+%% `WrappedKeyBlock': The TR-31 wrapped key material. It contains the key
+%% under import, encrypted using KEK. The TR-31 key block is typically
+%% generated by a HSM outside of Amazon Web Services Payment Cryptography.
 %%
-%% </li> <li> `WrappingKeyIdentifier': The `KeyArn' of the KEK that
-%% Amazon Web Services Payment Cryptography uses to decrypt or unwrap the key
-%% under import.
+%% `WrappingKeyIdentifier': The `KeyArn' of the KEK that Amazon Web
+%% Services Payment Cryptography uses to decrypt or unwrap the key under
+%% import.
 %%
-%% </li> </ul> Cross-account use: This operation can't be used across
-%% different Amazon Web Services accounts.
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `ExportKey'
+%% `ExportKey'
 %%
-%% </li> <li> `GetParametersForImport'
-%%
-%% </li> </ul>
+%% `GetParametersForImport'
 import_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key(Client, Input, []).
@@ -698,25 +675,23 @@ import_key(Client, Input, Options)
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the aliases. When the response contains only
-%% a subset of aliases, it includes a `NextToken' value. Use this value
-%% in a subsequent `ListAliases' request to get more aliases. When you
-%% receive a response with no NextToken (or an empty or null value), that
-%% means there are no more aliases to get.
+%% a subset of aliases, it includes a `NextToken' value.
+%% Use this value in a subsequent `ListAliases' request to get more
+%% aliases. When you receive a response with no NextToken (or an empty or
+%% null value), that means there are no more aliases to get.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateAlias'
+%% `CreateAlias'
 %%
-%% </li> <li> `DeleteAlias'
+%% `DeleteAlias'
 %%
-%% </li> <li> `GetAlias'
+%% `GetAlias'
 %%
-%% </li> <li> `UpdateAlias'
-%%
-%% </li> </ul>
+%% `UpdateAlias'
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
@@ -730,24 +705,23 @@ list_aliases(Client, Input, Options)
 %% You can filter the list of keys.
 %%
 %% This is a paginated operation, which means that each response might
-%% contain only a subset of all the keys. When the response contains only a
-%% subset of keys, it includes a `NextToken' value. Use this value in a
-%% subsequent `ListKeys' request to get more keys. When you receive a
-%% response with no NextToken (or an empty or null value), that means there
-%% are no more keys to get.
+%% contain only a subset of all the keys.
+%% When the response contains only a subset of keys, it includes a
+%% `NextToken' value. Use this value in a subsequent `ListKeys'
+%% request to get more keys.
+%% When you receive a response with no NextToken (or an empty or null value),
+%% that means there are no more keys to get.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateKey'
+%% `CreateKey'
 %%
-%% </li> <li> `DeleteKey'
+%% `DeleteKey'
 %%
-%% </li> <li> `GetKey'
-%%
-%% </li> </ul>
+%% `GetKey'
 list_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keys(Client, Input, []).
@@ -758,22 +732,21 @@ list_keys(Client, Input, Options)
 %% @doc Lists the tags for an Amazon Web Services resource.
 %%
 %% This is a paginated operation, which means that each response might
-%% contain only a subset of all the tags. When the response contains only a
-%% subset of tags, it includes a `NextToken' value. Use this value in a
-%% subsequent `ListTagsForResource' request to get more tags. When you
-%% receive a response with no NextToken (or an empty or null value), that
-%% means there are no more tags to get.
+%% contain only a subset of all the tags.
+%% When the response contains only a subset of tags, it includes a
+%% `NextToken' value. Use this value in a subsequent
+%% `ListTagsForResource' request to get more tags.
+%% When you receive a response with no NextToken (or an empty or null value),
+%% that means there are no more tags to get.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `TagResource'
+%% `TagResource'
 %%
-%% </li> <li> `UntagResource'
-%%
-%% </li> </ul>
+%% `UntagResource'
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -787,22 +760,20 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% During the waiting period, the `KeyState' is `DELETE_PENDING' and
 %% `deletePendingTimestamp' contains the date and time after which the
-%% `Key' will be deleted. After `Key' is restored, the `KeyState'
-%% is `CREATE_COMPLETE', and the value for `deletePendingTimestamp'
-%% is removed.
+%% `Key' will be deleted.
+%% After `Key' is restored, the `KeyState' is `CREATE_COMPLETE',
+%% and the value for `deletePendingTimestamp' is removed.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DeleteKey'
+%% `DeleteKey'
 %%
-%% </li> <li> `StartKeyUsage'
+%% `StartKeyUsage'
 %%
-%% </li> <li> `StopKeyUsage'
-%%
-%% </li> </ul>
+%% `StopKeyUsage'
 restore_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_key(Client, Input, []).
@@ -819,9 +790,7 @@ restore_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `StopKeyUsage'
-%%
-%% </li> </ul>
+%% `StopKeyUsage'
 start_key_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_key_usage(Client, Input, []).
@@ -840,11 +809,9 @@ start_key_usage(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `DeleteKey'
+%% `DeleteKey'
 %%
-%% </li> <li> `StartKeyUsage'
-%%
-%% </li> </ul>
+%% `StartKeyUsage'
 stop_key_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_key_usage(Client, Input, []).
@@ -870,11 +837,9 @@ stop_key_usage(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `ListTagsForResource'
+%% `ListTagsForResource'
 %%
-%% </li> <li> `UntagResource'
-%%
-%% </li> </ul>
+%% `UntagResource'
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -892,11 +857,9 @@ tag_resource(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `ListTagsForResource'
+%% `ListTagsForResource'
 %%
-%% </li> <li> `TagResource'
-%%
-%% </li> </ul>
+%% `TagResource'
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -917,15 +880,13 @@ untag_resource(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% <ul> <li> `CreateAlias'
+%% `CreateAlias'
 %%
-%% </li> <li> `DeleteAlias'
+%% `DeleteAlias'
 %%
-%% </li> <li> `GetAlias'
+%% `GetAlias'
 %%
-%% </li> <li> `ListAliases'
-%%
-%% </li> </ul>
+%% `ListAliases'
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
@@ -948,7 +909,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"payment-cryptography">>},
+    Client1 = Client#{service => <<"controlplane.payment-cryptography">>},
     Host = build_host(<<"controlplane.payment-cryptography">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

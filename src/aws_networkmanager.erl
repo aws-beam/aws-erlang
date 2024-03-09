@@ -219,17 +219,20 @@
 %% @doc Accepts a core network attachment request.
 %%
 %% Once the attachment request is accepted by a core network owner, the
-%% attachment is created and connected to a core network.
+%% attachment is
+%% created and connected to a core network.
 accept_attachment(Client, AttachmentId, Input) ->
     accept_attachment(Client, AttachmentId, Input, []).
 accept_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = post,
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/accept"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -246,18 +249,22 @@ accept_attachment(Client, AttachmentId, Input0, Options0) ->
 %% with a link.
 %%
 %% If you specify a link, it must be associated with the specified device.
-%% You can only associate core network Connect peers that have been created
-%% on a core network Connect attachment on a core network.
+%% You can only
+%% associate core network Connect peers that have been created on a core
+%% network Connect
+%% attachment on a core network.
 associate_connect_peer(Client, GlobalNetworkId, Input) ->
     associate_connect_peer(Client, GlobalNetworkId, Input, []).
 associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -273,16 +280,21 @@ associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
 %% @doc Associates a customer gateway with a device and optionally, with a
 %% link.
 %%
-%% If you specify a link, it must be associated with the specified device.
+%% If you
+%% specify a link, it must be associated with the specified device.
 %%
 %% You can only associate customer gateways that are connected to a VPN
-%% attachment on a transit gateway or core network registered in your global
-%% network. When you register a transit gateway or core network, customer
-%% gateways that are connected to the transit gateway are automatically
-%% included in the global network. To list customer gateways that are
-%% connected to a transit gateway, use the DescribeVpnConnections:
+%% attachment on a
+%% transit gateway or core network registered in your global network. When
+%% you register a
+%% transit gateway or core network, customer gateways that are connected to
+%% the transit
+%% gateway are automatically included in the global network. To list customer
+%% gateways
+%% that are connected to a transit gateway, use the DescribeVpnConnections:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html
-%% EC2 API and filter by `transit-gateway-id'.
+%% EC2 API and filter by
+%% `transit-gateway-id'.
 %%
 %% You cannot associate a customer gateway with more than one device and
 %% link.
@@ -291,11 +303,13 @@ associate_customer_gateway(Client, GlobalNetworkId, Input) ->
 associate_customer_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -318,11 +332,13 @@ associate_link(Client, GlobalNetworkId, Input) ->
 associate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -338,10 +354,12 @@ associate_link(Client, GlobalNetworkId, Input0, Options0) ->
 %% @doc Associates a transit gateway Connect peer with a device, and
 %% optionally, with a link.
 %%
-%% If you specify a link, it must be associated with the specified device.
+%% If you
+%% specify a link, it must be associated with the specified device.
 %%
 %% You can only associate transit gateway Connect peers that have been
-%% created on a transit gateway that's registered in your global network.
+%% created on a
+%% transit gateway that's registered in your global network.
 %%
 %% You cannot associate a transit gateway Connect peer with more than one
 %% device and link.
@@ -350,11 +368,13 @@ associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input) ->
 associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -371,19 +391,23 @@ associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options0
 %% network attachment.
 %%
 %% A core network Connect attachment is a GRE-based tunnel attachment that
-%% you can use to establish a connection between a core network and an
-%% appliance. A core network Connect attachment uses an existing VPC
-%% attachment as the underlying transport mechanism.
+%% you can use to
+%% establish a connection between a core network and an appliance. A core
+%% network Connect
+%% attachment uses an existing VPC attachment as the underlying transport
+%% mechanism.
 create_connect_attachment(Client, Input) ->
     create_connect_attachment(Client, Input, []).
 create_connect_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connect-attachments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -406,11 +430,13 @@ create_connect_peer(Client, Input) ->
 create_connect_peer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connect-peers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -433,11 +459,13 @@ create_connection(Client, GlobalNetworkId, Input) ->
 create_connection(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -457,11 +485,13 @@ create_core_network(Client, Input) ->
 create_core_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -476,18 +506,21 @@ create_core_network(Client, Input0, Options0) ->
 
 %% @doc Creates a new device in a global network.
 %%
-%% If you specify both a site ID and a location, the location of the site is
-%% used for visualization in the Network Manager console.
+%% If you specify both a site ID and a
+%% location, the location of the site is used for visualization in the
+%% Network Manager console.
 create_device(Client, GlobalNetworkId, Input) ->
     create_device(Client, GlobalNetworkId, Input, []).
 create_device(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -506,11 +539,13 @@ create_global_network(Client, Input) ->
 create_global_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -529,11 +564,13 @@ create_link(Client, GlobalNetworkId, Input) ->
 create_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -552,11 +589,13 @@ create_site(Client, GlobalNetworkId, Input) ->
 create_site(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -576,11 +615,13 @@ create_site_to_site_vpn_attachment(Client, Input) ->
 create_site_to_site_vpn_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/site-to-site-vpn-attachments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -599,11 +640,13 @@ create_transit_gateway_peering(Client, Input) ->
 create_transit_gateway_peering(Client, Input0, Options0) ->
     Method = post,
     Path = ["/transit-gateway-peerings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -622,11 +665,13 @@ create_transit_gateway_route_table_attachment(Client, Input) ->
 create_transit_gateway_route_table_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/transit-gateway-route-table-attachments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -645,11 +690,13 @@ create_vpc_attachment(Client, Input) ->
 create_vpc_attachment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/vpc-attachments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -670,11 +717,13 @@ delete_attachment(Client, AttachmentId, Input) ->
 delete_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -693,11 +742,13 @@ delete_connect_peer(Client, ConnectPeerId, Input) ->
 delete_connect_peer(Client, ConnectPeerId, Input0, Options0) ->
     Method = delete,
     Path = ["/connect-peers/", aws_util:encode_uri(ConnectPeerId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -716,11 +767,13 @@ delete_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
 delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -741,11 +794,13 @@ delete_core_network(Client, CoreNetworkId, Input) ->
 delete_core_network(Client, CoreNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -766,11 +821,13 @@ delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input
 delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -785,18 +842,20 @@ delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input
 
 %% @doc Deletes an existing device.
 %%
-%% You must first disassociate the device from any links and customer
-%% gateways.
+%% You must first disassociate the device from any links and
+%% customer gateways.
 delete_device(Client, DeviceId, GlobalNetworkId, Input) ->
     delete_device(Client, DeviceId, GlobalNetworkId, Input, []).
 delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -811,18 +870,21 @@ delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
 
 %% @doc Deletes an existing global network.
 %%
-%% You must first delete all global network objects (devices, links, and
-%% sites), deregister all transit gateways, and delete any core networks.
+%% You must first delete all global network objects
+%% (devices, links, and sites), deregister all transit gateways, and delete
+%% any core networks.
 delete_global_network(Client, GlobalNetworkId, Input) ->
     delete_global_network(Client, GlobalNetworkId, Input, []).
 delete_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -837,18 +899,20 @@ delete_global_network(Client, GlobalNetworkId, Input0, Options0) ->
 
 %% @doc Deletes an existing link.
 %%
-%% You must first disassociate the link from any devices and customer
-%% gateways.
+%% You must first disassociate the link from any devices and
+%% customer gateways.
 delete_link(Client, GlobalNetworkId, LinkId, Input) ->
     delete_link(Client, GlobalNetworkId, LinkId, Input, []).
 delete_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -867,11 +931,13 @@ delete_peering(Client, PeeringId, Input) ->
 delete_peering(Client, PeeringId, Input0, Options0) ->
     Method = delete,
     Path = ["/peerings/", aws_util:encode_uri(PeeringId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -893,11 +959,13 @@ delete_resource_policy(Client, ResourceArn, Input) ->
 delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -918,11 +986,13 @@ delete_site(Client, GlobalNetworkId, SiteId, Input) ->
 delete_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -937,18 +1007,21 @@ delete_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
 
 %% @doc Deregisters a transit gateway from your global network.
 %%
-%% This action does not delete your transit gateway, or modify any of its
-%% attachments. This action removes any customer gateway associations.
+%% This action does not delete
+%% your transit gateway, or modify any of its attachments. This action
+%% removes any customer gateway associations.
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input) ->
     deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input, []).
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations/", aws_util:encode_uri(TransitGatewayArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -963,10 +1036,12 @@ deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, O
 
 %% @doc Describes one or more global networks.
 %%
-%% By default, all global networks are described. To describe the objects in
-%% your global network, you must use the appropriate `Get*' action. For
-%% example, to list the transit gateways in your global network, use
-%% `GetTransitGatewayRegistrations'.
+%% By default, all global networks are
+%% described. To describe the objects in your global network, you must use
+%% the appropriate
+%% `Get*' action. For example, to list the transit gateways in your
+%% global
+%% network, use `GetTransitGatewayRegistrations'.
 describe_global_networks(Client)
   when is_map(Client) ->
     describe_global_networks(Client, #{}, #{}).
@@ -978,10 +1053,12 @@ describe_global_networks(Client, QueryMap, HeadersMap)
 describe_global_networks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1001,11 +1078,13 @@ disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input) ->
 disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations/", aws_util:encode_uri(ConnectPeerId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1024,11 +1103,13 @@ disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input
 disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations/", aws_util:encode_uri(CustomerGatewayArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1043,18 +1124,20 @@ disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input
 
 %% @doc Disassociates an existing device from a link.
 %%
-%% You must first disassociate any customer gateways that are associated with
-%% the link.
+%% You must first disassociate any customer
+%% gateways that are associated with the link.
 disassociate_link(Client, GlobalNetworkId, Input) ->
     disassociate_link(Client, GlobalNetworkId, Input, []).
 disassociate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1075,11 +1158,13 @@ disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewa
 disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations/", aws_util:encode_uri(TransitGatewayConnectPeerArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1100,11 +1185,13 @@ execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input) -
 execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-sets/", aws_util:encode_uri(PolicyVersionId), "/execute"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1129,10 +1216,12 @@ get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap)
 get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-attachments/", aws_util:encode_uri(AttachmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1152,10 +1241,12 @@ get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap)
 get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-peers/", aws_util:encode_uri(ConnectPeerId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1175,10 +1266,12 @@ get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1205,10 +1298,12 @@ get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1235,10 +1330,12 @@ get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap)
 get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1258,10 +1355,12 @@ get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap,
 get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-events/", aws_util:encode_uri(PolicyVersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1287,10 +1386,12 @@ get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, He
 get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-sets/", aws_util:encode_uri(PolicyVersionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1318,10 +1419,12 @@ get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap)
 get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1335,7 +1438,8 @@ get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the association information for customer gateways that are
-%% associated with devices and links in your global network.
+%% associated with
+%% devices and links in your global network.
 get_customer_gateway_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_customer_gateway_associations(Client, GlobalNetworkId, #{}, #{}).
@@ -1347,10 +1451,12 @@ get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1377,10 +1483,12 @@ get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1397,7 +1505,8 @@ get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the link associations for a device or a link.
 %%
-%% Either the device ID or the link ID must be specified.
+%% Either the device ID or the link ID
+%% must be specified.
 get_link_associations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_link_associations(Client, GlobalNetworkId, #{}, #{}).
@@ -1409,10 +1518,12 @@ get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1443,10 +1554,12 @@ get_links(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1476,10 +1589,12 @@ get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resource-count"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1506,10 +1621,12 @@ get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap
 get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resource-relationships"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1543,10 +1660,12 @@ get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resources"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1571,11 +1690,13 @@ get_network_routes(Client, GlobalNetworkId, Input) ->
 get_network_routes(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-routes"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1600,10 +1721,12 @@ get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-telemetry"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1634,10 +1757,12 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1657,10 +1782,12 @@ get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMa
 get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses/", aws_util:encode_uri(RouteAnalysisId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1680,10 +1807,12 @@ get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap)
 get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/site-to-site-vpn-attachments/", aws_util:encode_uri(AttachmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1703,10 +1832,12 @@ get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1733,10 +1864,12 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap,
 get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1762,10 +1895,12 @@ get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap)
 get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/transit-gateway-peerings/", aws_util:encode_uri(PeeringId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1774,7 +1909,8 @@ get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the transit gateway registrations in a
-%% specified global network.
+%% specified
+%% global network.
 get_transit_gateway_registrations(Client, GlobalNetworkId)
   when is_map(Client) ->
     get_transit_gateway_registrations(Client, GlobalNetworkId, #{}, #{}).
@@ -1786,10 +1922,12 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap)
 get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1815,10 +1953,12 @@ get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, Heade
 get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/transit-gateway-route-table-attachments/", aws_util:encode_uri(AttachmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1838,10 +1978,12 @@ get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap)
 get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/vpc-attachments/", aws_util:encode_uri(AttachmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1861,10 +2003,12 @@ list_attachments(Client, QueryMap, HeadersMap)
 list_attachments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attachments"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1893,10 +2037,12 @@ list_connect_peers(Client, QueryMap, HeadersMap)
 list_connect_peers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/connect-peers"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1923,10 +2069,12 @@ list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap)
 list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1951,10 +2099,12 @@ list_core_networks(Client, QueryMap, HeadersMap)
 list_core_networks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/core-networks"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1980,10 +2130,12 @@ list_organization_service_access_status(Client, QueryMap, HeadersMap)
 list_organization_service_access_status(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organizations/service-access"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2008,10 +2160,12 @@ list_peerings(Client, QueryMap, HeadersMap)
 list_peerings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/peerings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2040,10 +2194,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2060,11 +2216,13 @@ put_core_network_policy(Client, CoreNetworkId, Input) ->
 put_core_network_policy(Client, CoreNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2083,11 +2241,13 @@ put_resource_policy(Client, ResourceArn, Input) ->
 put_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2102,24 +2262,28 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Registers a transit gateway in your global network.
 %%
-%% Not all Regions support transit gateways for global networks. For a list
-%% of the supported Regions, see Region Availability:
+%% Not all Regions support transit
+%% gateways for global networks. For a list of the supported Regions, see
+%% Region Availability:
 %% https://docs.aws.amazon.com/network-manager/latest/tgwnm/what-are-global-networks.html#nm-available-regions
-%% in the Amazon Web Services Transit Gateways for Global Networks User
-%% Guide. The transit gateway can be in any of the supported Amazon Web
-%% Services Regions, but it must be owned by the same Amazon Web Services
-%% account that owns the global network. You cannot register a transit
-%% gateway in more than one global network.
+%% in the Amazon Web Services Transit Gateways for Global
+%% Networks User Guide. The transit gateway can be in any of the supported
+%% Amazon Web Services Regions, but it must be owned by the same Amazon Web
+%% Services account that owns the global
+%% network. You cannot register a transit gateway in more than one global
+%% network.
 register_transit_gateway(Client, GlobalNetworkId, Input) ->
     register_transit_gateway(Client, GlobalNetworkId, Input, []).
 register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2138,11 +2302,13 @@ reject_attachment(Client, AttachmentId, Input) ->
 reject_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = post,
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/reject"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2165,11 +2331,13 @@ restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Inpu
 restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), "/restore"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2191,11 +2359,13 @@ start_organization_service_access_update(Client, Input) ->
 start_organization_service_access_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organizations/service-access"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2211,18 +2381,21 @@ start_organization_service_access_update(Client, Input0, Options0) ->
 %% @doc Starts analyzing the routing path between the specified source and
 %% destination.
 %%
-%% For more information, see Route Analyzer:
+%% For more information,
+%% see Route Analyzer:
 %% https://docs.aws.amazon.com/vpc/latest/tgw/route-analyzer.html.
 start_route_analysis(Client, GlobalNetworkId, Input) ->
     start_route_analysis(Client, GlobalNetworkId, Input, []).
 start_route_analysis(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2241,11 +2414,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2264,11 +2439,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2284,17 +2461,20 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the information for an existing connection.
 %%
-%% To remove information for any of the parameters, specify an empty string.
+%% To remove information for any of the parameters,
+%% specify an empty string.
 update_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
     update_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
 update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2313,11 +2493,13 @@ update_core_network(Client, CoreNetworkId, Input) ->
 update_core_network(Client, CoreNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2332,17 +2514,20 @@ update_core_network(Client, CoreNetworkId, Input0, Options0) ->
 
 %% @doc Updates the details for an existing device.
 %%
-%% To remove information for any of the parameters, specify an empty string.
+%% To remove information for any of the
+%% parameters, specify an empty string.
 update_device(Client, DeviceId, GlobalNetworkId, Input) ->
     update_device(Client, DeviceId, GlobalNetworkId, Input, []).
 update_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2357,17 +2542,20 @@ update_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
 
 %% @doc Updates an existing global network.
 %%
-%% To remove information for any of the parameters, specify an empty string.
+%% To remove information for any of the parameters,
+%% specify an empty string.
 update_global_network(Client, GlobalNetworkId, Input) ->
     update_global_network(Client, GlobalNetworkId, Input, []).
 update_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2382,17 +2570,20 @@ update_global_network(Client, GlobalNetworkId, Input0, Options0) ->
 
 %% @doc Updates the details for an existing link.
 %%
-%% To remove information for any of the parameters, specify an empty string.
+%% To remove information for any of the
+%% parameters, specify an empty string.
 update_link(Client, GlobalNetworkId, LinkId, Input) ->
     update_link(Client, GlobalNetworkId, LinkId, Input, []).
 update_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2411,11 +2602,13 @@ update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input) ->
 update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resources/", aws_util:encode_uri(ResourceArn), "/metadata"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2430,17 +2623,20 @@ update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input0, O
 
 %% @doc Updates the information for an existing site.
 %%
-%% To remove information for any of the parameters, specify an empty string.
+%% To remove information for any of the
+%% parameters, specify an empty string.
 update_site(Client, GlobalNetworkId, SiteId, Input) ->
     update_site(Client, GlobalNetworkId, SiteId, Input, []).
 update_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2459,11 +2655,13 @@ update_vpc_attachment(Client, AttachmentId, Input) ->
 update_vpc_attachment(Client, AttachmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/vpc-attachments/", aws_util:encode_uri(AttachmentId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2479,6 +2677,11 @@ update_vpc_attachment(Client, AttachmentId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

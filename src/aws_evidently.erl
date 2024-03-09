@@ -2,18 +2,23 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use Amazon CloudWatch Evidently to safely validate new
-%% features by serving them to a specified percentage of your users while you
-%% roll out the feature.
+%% features by serving
+%% them to a specified percentage
+%% of your users while you roll out the feature.
 %%
-%% You can monitor the performance of the new feature to help you decide when
-%% to ramp up traffic to your users. This helps you reduce risk and identify
-%% unintended consequences before you fully launch the feature.
+%% You can monitor the performance of the new feature
+%% to help you decide when to ramp up traffic to your users. This helps you
+%% reduce risk and identify unintended consequences before you fully launch
+%% the feature.
 %%
 %% You can also conduct A/B experiments to make feature design decisions
-%% based on evidence and data. An experiment can test as many as five
-%% variations at once. Evidently collects experiment data and analyzes it
-%% using statistical methods. It also provides clear recommendations about
-%% which variations perform better. You can test both user-facing features
+%% based on evidence
+%% and data. An experiment can test as many as five variations at once.
+%% Evidently collects
+%% experiment data and analyzes it using statistical methods. It also
+%% provides clear
+%% recommendations about which variations perform better. You can test both
+%% user-facing features
 %% and backend features.
 -module(aws_evidently).
 
@@ -114,26 +119,32 @@
 
 %% @doc This operation assigns feature variation to user sessions.
 %%
-%% For each user session, you pass in an `entityID' that represents the
-%% user. Evidently then checks the evaluation rules and assigns the
-%% variation.
+%% For each user session, you pass
+%% in an `entityID' that represents the user. Evidently then checks the
+%% evaluation
+%% rules and assigns the variation.
 %%
 %% The first rules that are evaluated are the override rules. If the
-%% user's `entityID' matches an override rule, the user is served the
-%% variation specified by that rule.
+%% user's
+%% `entityID' matches an override rule, the user is served the variation
+%% specified
+%% by that rule.
 %%
 %% Next, if there is a launch of the feature, the user might be assigned to a
-%% variation in the launch. The chance of this depends on the percentage of
-%% users that are allocated to that launch. If the user is enrolled in the
-%% launch, the variation they are served depends on the allocation of the
-%% various feature variations used for the launch.
+%% variation in
+%% the launch. The chance of this depends on the percentage of users that are
+%% allocated to that
+%% launch. If the user is enrolled in the launch, the variation they are
+%% served depends on the
+%% allocation of the various feature variations used for the launch.
 %%
 %% If the user is not assigned to a launch, and there is an ongoing
-%% experiment for this feature, the user might be assigned to a variation in
-%% the experiment. The chance of this depends on the percentage of users that
-%% are allocated to that experiment. If the user is enrolled in the
-%% experiment, the variation they are served depends on the allocation of the
-%% various feature variations used for the experiment.
+%% experiment for this feature, the user might
+%% be assigned to a variation in the experiment. The chance of this
+%% depends on the percentage of users that are allocated to that experiment.
+%% If the user is enrolled in the experiment,
+%% the variation they are served depends on the allocation of the various
+%% feature variations used for the experiment.
 %%
 %% If the user is not assigned to a launch or experiment, they are served the
 %% default variation.
@@ -143,10 +154,12 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/evaluations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -161,20 +174,23 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
 
 %% @doc Creates an Evidently experiment.
 %%
-%% Before you create an experiment, you must create the feature to use for
-%% the experiment.
+%% Before you create an experiment,
+%% you must create the feature to use for the experiment.
 %%
-%% An experiment helps you make feature design decisions based on evidence
-%% and data. An experiment can test as many as five variations at once.
-%% Evidently collects experiment data and analyzes it by statistical methods,
-%% and provides clear recommendations about which variations perform better.
+%% An experiment helps you make feature design
+%% decisions based on evidence and data. An experiment can test as
+%% many as five variations at once. Evidently collects experiment data and
+%% analyzes it by statistical methods, and provides
+%% clear recommendations about which variations perform better.
 %%
 %% You can optionally specify a `segment' to have the experiment consider
-%% only certain audience types in the experiment, such as using only user
-%% sessions from a certain location or who use a certain internet browser.
+%% only certain audience
+%% types in the experiment, such as using only user sessions from a certain
+%% location or who use a certain internet browser.
 %%
 %% Don't use this operation to update an existing experiment. Instead,
-%% use UpdateExperiment:
+%% use
+%% UpdateExperiment:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateExperiment.html.
 create_experiment(Client, Project, Input) ->
     create_experiment(Client, Project, Input, []).
@@ -182,10 +198,12 @@ create_experiment(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -200,8 +218,9 @@ create_experiment(Client, Project, Input0, Options0) ->
 
 %% @doc Creates an Evidently feature that you want to launch or test.
 %%
-%% You can define up to five variations of a feature, and use these
-%% variations in your launches and experiments. A feature must be created in
+%% You can define up to
+%% five variations of a feature, and use these variations in your launches
+%% and experiments. A feature must be created in
 %% a project. For information about creating a project, see CreateProject:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateProject.html.
 %%
@@ -214,10 +233,12 @@ create_feature(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/features"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -232,14 +253,17 @@ create_feature(Client, Project, Input0, Options0) ->
 
 %% @doc Creates a launch of a given feature.
 %%
-%% Before you create a launch, you must create the feature to use for the
-%% launch.
+%% Before you create a launch, you
+%% must create the feature to use for the launch.
 %%
 %% You can use a launch to safely validate new features by serving them to a
-%% specified percentage of your users while you roll out the feature. You can
-%% monitor the performance of the new feature to help you decide when to ramp
-%% up traffic to more users. This helps you reduce risk and identify
-%% unintended consequences before you fully launch the feature.
+%% specified
+%% percentage of your users while you roll out the feature. You can monitor
+%% the performance of
+%% the new feature to help you decide when to ramp up traffic to more users.
+%% This helps you
+%% reduce risk and identify unintended consequences before you fully launch
+%% the feature.
 %%
 %% Don't use this operation to update an existing launch. Instead, use
 %% UpdateLaunch:
@@ -250,10 +274,12 @@ create_launch(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -267,7 +293,8 @@ create_launch(Client, Project, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a project, which is the logical object in Evidently that can
-%% contain features, launches, and experiments.
+%% contain features, launches, and
+%% experiments.
 %%
 %% Use projects to group similar features together.
 %%
@@ -279,10 +306,12 @@ create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -297,35 +326,42 @@ create_project(Client, Input0, Options0) ->
 
 %% @doc Use this operation to define a segment of your audience.
 %%
-%% A segment is a portion of your audience that share one or more
-%% characteristics. Examples could be Chrome browser users, users in Europe,
-%% or Firefox browser users in Europe who also fit other criteria that your
-%% application collects, such as age.
+%% A segment
+%% is a portion of your audience that share one or more characteristics.
+%% Examples could be Chrome browser users,
+%% users in Europe, or Firefox browser users in Europe who also fit other
+%% criteria that your application collects,
+%% such as age.
 %%
 %% Using a segment in an experiment limits that experiment to evaluate only
-%% the users who match the segment criteria. Using one or more segments in a
-%% launch allows you to define different traffic splits for the different
+%% the users who match the segment
+%% criteria. Using one or more segments in a launch allows you to define
+%% different traffic splits for the different
 %% audience segments.
 %%
-%% For more information about segment pattern syntax, see Segment rule
-%% pattern syntax:
+%% For more information about segment pattern syntax, see
+%%
+%% Segment rule pattern syntax:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html.
 %%
 %% The pattern that you define for a segment is matched against the value of
-%% `evaluationContext', which is passed into Evidently in the
-%% EvaluateFeature:
+%% `evaluationContext', which
+%% is passed into Evidently in the EvaluateFeature:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html
-%% operation, when Evidently assigns a feature variation to a user.
+%% operation,
+%% when Evidently assigns a feature variation to a user.
 create_segment(Client, Input) ->
     create_segment(Client, Input, []).
 create_segment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/segments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -350,10 +386,12 @@ delete_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -373,10 +411,12 @@ delete_feature(Client, Feature, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -401,10 +441,12 @@ delete_launch(Client, Launch, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -419,8 +461,9 @@ delete_launch(Client, Launch, Project, Input0, Options0) ->
 
 %% @doc Deletes an Evidently project.
 %%
-%% Before you can delete a project, you must delete all the features that the
-%% project contains. To delete a feature, use DeleteFeature:
+%% Before you can delete a project, you must delete all the
+%% features that the project contains. To delete a feature, use
+%% DeleteFeature:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_DeleteFeature.html.
 delete_project(Client, Project, Input) ->
     delete_project(Client, Project, Input, []).
@@ -428,10 +471,12 @@ delete_project(Client, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -447,17 +492,20 @@ delete_project(Client, Project, Input0, Options0) ->
 %% @doc Deletes a segment.
 %%
 %% You can't delete a segment that is being used in a launch or
-%% experiment, even if that launch or experiment is not currently running.
+%% experiment, even if that
+%% launch or experiment is not currently running.
 delete_segment(Client, Segment, Input) ->
     delete_segment(Client, Segment, Input, []).
 delete_segment(Client, Segment, Input0, Options0) ->
     Method = delete,
     Path = ["/segments/", aws_util:encode_uri(Segment), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -472,40 +520,50 @@ delete_segment(Client, Segment, Input0, Options0) ->
 
 %% @doc This operation assigns a feature variation to one given user session.
 %%
-%% You pass in an `entityID' that represents the user. Evidently then
-%% checks the evaluation rules and assigns the variation.
+%% You pass in an
+%% `entityID' that represents the user. Evidently then checks the
+%% evaluation rules
+%% and assigns the variation.
 %%
 %% The first rules that are evaluated are the override rules. If the
-%% user's `entityID' matches an override rule, the user is served the
-%% variation specified by that rule.
+%% user's
+%% `entityID' matches an override rule, the user is served the variation
+%% specified
+%% by that rule.
 %%
 %% If there is a current launch with this feature that uses segment
-%% overrides, and if the user session's `evaluationContext' matches a
-%% segment rule defined in a segment override, the configuration in the
-%% segment overrides is used. For more information about segments, see
-%% CreateSegment:
+%% overrides, and
+%% if the user session's `evaluationContext' matches a segment rule
+%% defined in a
+%% segment override, the configuration in the segment overrides is used. For
+%% more information
+%% about segments, see CreateSegment:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html
-%% and Use segments to focus your audience:
+%% and
+%% Use segments to focus your
+%% audience:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html.
 %%
 %% If there is a launch with no segment overrides, the user might be assigned
-%% to a variation in the launch. The chance of this depends on the percentage
-%% of users that are allocated to that launch. If the user is enrolled in the
-%% launch, the variation they are served depends on the allocation of the
-%% various feature variations used for the launch.
+%% to a variation in
+%% the launch. The chance of this depends on the percentage of users that are
+%% allocated to that
+%% launch. If the user is enrolled in the launch, the variation they are
+%% served depends on the
+%% allocation of the various feature variations used for the launch.
 %%
 %% If the user is not assigned to a launch, and there is an ongoing
-%% experiment for this feature, the user might be assigned to a variation in
-%% the experiment. The chance of this depends on the percentage of users that
-%% are allocated to that experiment.
+%% experiment for this feature, the user might
+%% be assigned to a variation in the experiment. The chance of this
+%% depends on the percentage of users that are allocated to that experiment.
 %%
-%% If the experiment uses a segment, then only user sessions with
-%% `evaluationContext' values that match the segment rule are used in the
-%% experiment.
+%% If the experiment uses a segment, then only
+%% user sessions with `evaluationContext' values that match the segment
+%% rule are used in the experiment.
 %%
-%% If the user is enrolled in the experiment, the variation they are served
-%% depends on the allocation of the various feature variations used for the
-%% experiment.
+%% If the user is enrolled in the experiment,
+%% the variation they are served depends on the allocation of the various
+%% feature variations used for the experiment.
 %%
 %% If the user is not assigned to a launch or experiment, they are served the
 %% default variation.
@@ -515,10 +573,12 @@ evaluate_feature(Client, Feature, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/evaluations/", aws_util:encode_uri(Feature), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -533,8 +593,9 @@ evaluate_feature(Client, Feature, Project, Input0, Options0) ->
 
 %% @doc Returns the details about one experiment.
 %%
-%% You must already know the experiment name. To retrieve a list of
-%% experiments in your account, use ListExperiments:
+%% You must already know the
+%% experiment name. To retrieve a list of experiments in your account, use
+%% ListExperiments:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListExperiments.html.
 get_experiment(Client, Experiment, Project)
   when is_map(Client) ->
@@ -548,9 +609,11 @@ get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -560,27 +623,31 @@ get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the results of a running or completed experiment.
 %%
-%% No results are available until there have been 100 events for each
-%% variation and at least 10 minutes have passed since the start of the
-%% experiment. To increase the statistical power, Evidently performs an
-%% additional offline p-value analysis at the end of the experiment. Offline
-%% p-value analysis can detect statistical significance in some cases where
-%% the anytime p-values used during the experiment do not find statistical
-%% significance.
+%% No results are available until
+%% there have been 100 events for each variation and at least 10 minutes have
+%% passed since the start of the experiment.
+%% To increase the statistical power, Evidently performs an additional
+%% offline p-value analysis at the end of the experiment.
+%% Offline p-value analysis can detect statistical significance in some cases
+%% where the anytime p-values used during
+%% the experiment do not find statistical significance.
 %%
-%% Experiment results are available up to 63 days after the start of the
-%% experiment. They are not available after that because of CloudWatch data
-%% retention policies.
+%% Experiment
+%% results are available up to 63 days after the start of the experiment.
+%% They are not available after that because
+%% of CloudWatch data retention policies.
 get_experiment_results(Client, Experiment, Project, Input) ->
     get_experiment_results(Client, Experiment, Project, Input, []).
 get_experiment_results(Client, Experiment, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/results"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -595,8 +662,8 @@ get_experiment_results(Client, Experiment, Project, Input0, Options0) ->
 
 %% @doc Returns the details about one feature.
 %%
-%% You must already know the feature name. To retrieve a list of features in
-%% your account, use ListFeatures:
+%% You must already know the feature name. To
+%% retrieve a list of features in your account, use ListFeatures:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListFeatures.html.
 get_feature(Client, Feature, Project)
   when is_map(Client) ->
@@ -610,9 +677,11 @@ get_feature(Client, Feature, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -622,8 +691,9 @@ get_feature(Client, Feature, Project, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the details about one launch.
 %%
-%% You must already know the launch name. To retrieve a list of launches in
-%% your account, use ListLaunches:
+%% You must already know the
+%% launch name. To retrieve a list of launches in your account, use
+%% ListLaunches:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListLaunches.html.
 get_launch(Client, Launch, Project)
   when is_map(Client) ->
@@ -637,9 +707,11 @@ get_launch(Client, Launch, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -649,8 +721,9 @@ get_launch(Client, Launch, Project, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the details about one launch.
 %%
-%% You must already know the project name. To retrieve a list of projects in
-%% your account, use ListProjects:
+%% You must already know the
+%% project name. To retrieve a list of projects in your account, use
+%% ListProjects:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListProjects.html.
 get_project(Client, Project)
   when is_map(Client) ->
@@ -664,9 +737,11 @@ get_project(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -676,7 +751,8 @@ get_project(Client, Project, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about the specified segment.
 %%
-%% Specify the segment you want to view by specifying its ARN.
+%% Specify the segment you want to view
+%% by specifying its ARN.
 get_segment(Client, Segment)
   when is_map(Client) ->
     get_segment(Client, Segment, #{}, #{}).
@@ -689,9 +765,11 @@ get_segment(Client, Segment, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/segments/", aws_util:encode_uri(Segment), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -713,9 +791,11 @@ list_experiments(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -743,9 +823,11 @@ list_features(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/features"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -772,9 +854,11 @@ list_launches(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -789,7 +873,8 @@ list_launches(Client, Project, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns configuration details about all the projects in the current
-%% Region in your account.
+%% Region in your
+%% account.
 list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
@@ -802,9 +887,11 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -831,9 +918,11 @@ list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/segments/", aws_util:encode_uri(Segment), "/references"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -861,9 +950,11 @@ list_segments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/segments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -889,9 +980,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -901,17 +994,20 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Sends performance events to Evidently.
 %%
-%% These events can be used to evaluate a launch or an experiment.
+%% These events can be used to evaluate a launch or
+%% an experiment.
 put_project_events(Client, Project, Input) ->
     put_project_events(Client, Project, Input, []).
 put_project_events(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/events/projects/", aws_util:encode_uri(Project), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -926,7 +1022,8 @@ put_project_events(Client, Project, Input0, Options0) ->
 
 %% @doc Starts an existing experiment.
 %%
-%% To create an experiment, use CreateExperiment:
+%% To create an experiment,
+%% use CreateExperiment:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateExperiment.html.
 start_experiment(Client, Experiment, Project, Input) ->
     start_experiment(Client, Experiment, Project, Input, []).
@@ -934,10 +1031,12 @@ start_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -952,7 +1051,8 @@ start_experiment(Client, Experiment, Project, Input0, Options0) ->
 
 %% @doc Starts an existing launch.
 %%
-%% To create a launch, use CreateLaunch:
+%% To create a launch,
+%% use CreateLaunch:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateLaunch.html.
 start_launch(Client, Launch, Project, Input) ->
     start_launch(Client, Launch, Project, Input, []).
@@ -960,10 +1060,12 @@ start_launch(Client, Launch, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), "/start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -978,17 +1080,20 @@ start_launch(Client, Launch, Project, Input0, Options0) ->
 
 %% @doc Stops an experiment that is currently running.
 %%
-%% If you stop an experiment, you can't resume it or restart it.
+%% If you stop an experiment, you can't
+%% resume it or restart it.
 stop_experiment(Client, Experiment, Project, Input) ->
     stop_experiment(Client, Experiment, Project, Input, []).
 stop_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/cancel"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1004,20 +1109,24 @@ stop_experiment(Client, Experiment, Project, Input0, Options0) ->
 %% @doc Stops a launch that is currently running.
 %%
 %% After you stop a launch, you will not be able to resume it or restart it.
-%% Also, it will not be evaluated as a rule for traffic allocation, and the
-%% traffic that was allocated to the launch will instead be available to the
-%% feature's experiment, if there is one. Otherwise, all traffic will be
-%% served the default variation after the launch is stopped.
+%% Also, it
+%% will not be evaluated as a rule for traffic allocation, and the traffic
+%% that was allocated to the launch
+%% will instead be available to the feature's experiment, if there is
+%% one. Otherwise, all traffic
+%% will be served the default variation after the launch is stopped.
 stop_launch(Client, Launch, Project, Input) ->
     stop_launch(Client, Launch, Project, Input, []).
 stop_launch(Client, Launch, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), "/cancel"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1033,20 +1142,24 @@ stop_launch(Client, Launch, Project, Input0, Options0) ->
 %% @doc Assigns one or more tags (key-value pairs) to the specified
 %% CloudWatch Evidently resource.
 %%
-%% Projects, features, launches, and experiments can be tagged.
+%% Projects,
+%% features, launches, and experiments can be tagged.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions by granting a user permission to access or
-%% change only resources with certain tag values.
+%% them to scope user
+%% permissions by granting a user
+%% permission to access or change only resources with certain tag values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
 %% You can use the `TagResource' action with a resource that already has
-%% tags. If you specify a new tag key for the resource, this tag is appended
-%% to the list of tags associated with the alarm. If you specify a tag key
-%% that is already associated with the resource, the new tag value that you
-%% specify replaces the previous value for that tag.
+%% tags.
+%% If you specify a new tag key for the resource,
+%% this tag is appended to the list of tags associated
+%% with the alarm. If you specify a tag key that is already associated with
+%% the resource, the new tag value that you specify replaces
+%% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
 %%
@@ -1058,10 +1171,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1085,10 +1200,12 @@ test_segment_pattern(Client, Input0, Options0) ->
     Method = post,
     Path = ["/test-segment-pattern"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1108,10 +1225,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1128,7 +1247,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates an Evidently experiment.
 %%
 %% Don't use this operation to update an experiment's tag. Instead,
-%% use TagResource:
+%% use
+%% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
 update_experiment(Client, Experiment, Project, Input) ->
     update_experiment(Client, Experiment, Project, Input, []).
@@ -1136,10 +1256,12 @@ update_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1155,7 +1277,8 @@ update_experiment(Client, Experiment, Project, Input0, Options0) ->
 %% @doc Updates an existing feature.
 %%
 %% You can't use this operation to update the tags of an existing
-%% feature. Instead, use TagResource:
+%% feature. Instead, use
+%% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
 update_feature(Client, Feature, Project, Input) ->
     update_feature(Client, Feature, Project, Input, []).
@@ -1163,10 +1286,12 @@ update_feature(Client, Feature, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1182,7 +1307,8 @@ update_feature(Client, Feature, Project, Input0, Options0) ->
 %% @doc Updates a launch of a given feature.
 %%
 %% Don't use this operation to update the tags of an existing launch.
-%% Instead, use TagResource:
+%% Instead, use
+%% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
 update_launch(Client, Launch, Project, Input) ->
     update_launch(Client, Launch, Project, Input, []).
@@ -1190,10 +1316,12 @@ update_launch(Client, Launch, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1212,7 +1340,8 @@ update_launch(Client, Launch, Project, Input0, Options0) ->
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateProject.html.
 %%
 %% Don't use this operation to update the data storage options of a
-%% project. Instead, use UpdateProjectDataDelivery:
+%% project. Instead, use
+%% UpdateProjectDataDelivery:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateProjectDataDelivery.html.
 %%
 %% Don't use this operation to update the tags of a project. Instead, use
@@ -1224,10 +1353,12 @@ update_project(Client, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1242,10 +1373,12 @@ update_project(Client, Project, Input0, Options0) ->
 
 %% @doc Updates the data storage options for this project.
 %%
-%% If you store evaluation events, you an keep them and analyze them on your
-%% own. If you choose not to store evaluation events, Evidently deletes them
-%% after using them to produce metrics and other experiment results that you
-%% can view.
+%% If you store evaluation events, you an
+%% keep them and analyze them on your own. If you choose not to store
+%% evaluation events,
+%% Evidently deletes them after using them to produce metrics and other
+%% experiment results that
+%% you can view.
 %%
 %% You can't specify both `cloudWatchLogs' and `s3Destination' in
 %% the same operation.
@@ -1255,10 +1388,12 @@ update_project_data_delivery(Client, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/data-delivery"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1274,6 +1409,11 @@ update_project_data_delivery(Client, Project, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -5,12 +5,14 @@
 %% Profiler API.
 %%
 %% The AWS Application Cost Profiler API provides programmatic access to
-%% view, create, update, and delete application cost report definitions, as
-%% well as to import your usage data into the Application Cost Profiler
+%% view, create, update, and delete
+%% application cost report definitions, as well as to import your usage data
+%% into the Application Cost Profiler
 %% service.
 %%
 %% For more information about using this service, see the AWS Application
-%% Cost Profiler User Guide:
+%% Cost
+%% Profiler User Guide:
 %% https://docs.aws.amazon.com/application-cost-profiler/latest/userguide/introduction.html.
 -module(aws_applicationcostprofiler).
 
@@ -38,17 +40,20 @@
 %% @doc Deletes the specified report definition in AWS Application Cost
 %% Profiler.
 %%
-%% This stops the report from being generated.
+%% This stops the report from being
+%% generated.
 delete_report_definition(Client, ReportId, Input) ->
     delete_report_definition(Client, ReportId, Input, []).
 delete_report_definition(Client, ReportId, Input0, Options0) ->
     Method = delete,
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -74,10 +79,12 @@ get_report_definition(Client, ReportId, QueryMap, HeadersMap)
 get_report_definition(Client, ReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -89,18 +96,22 @@ get_report_definition(Client, ReportId, QueryMap, HeadersMap, Options0)
 %% (Amazon S3).
 %%
 %% The data must already exist in the S3 location. As part of the action, AWS
-%% Application Cost Profiler copies the object from your S3 bucket to an S3
-%% bucket owned by Amazon for processing asynchronously.
+%% Application Cost Profiler
+%% copies the object from your S3 bucket to an S3 bucket owned by Amazon for
+%% processing
+%% asynchronously.
 import_application_usage(Client, Input) ->
     import_application_usage(Client, Input, []).
 import_application_usage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/importApplicationUsage"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -128,10 +139,12 @@ list_report_definitions(Client, QueryMap, HeadersMap)
 list_report_definitions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reportDefinition"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -151,11 +164,13 @@ put_report_definition(Client, Input) ->
 put_report_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reportDefinition"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -174,11 +189,13 @@ update_report_definition(Client, ReportId, Input) ->
 update_report_definition(Client, ReportId, Input0, Options0) ->
     Method = put,
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -194,6 +211,11 @@ update_report_definition(Client, ReportId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

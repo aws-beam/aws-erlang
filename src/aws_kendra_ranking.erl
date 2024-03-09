@@ -1,8 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Kendra Intelligent Ranking uses Amazon Kendra semantic search
-%% capabilities to intelligently re-rank a search service's results.
+%% @doc Amazon Kendra Intelligent Ranking uses Amazon Kendra
+%% semantic search capabilities to intelligently re-rank a search
+%% service's results.
 -module(aws_kendra_ranking).
 
 -export([create_rescore_execution_plan/2,
@@ -32,14 +33,17 @@
 
 %% @doc Creates a rescore execution plan.
 %%
-%% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' API. You set the number of
-%% capacity units that you require for Amazon Kendra Intelligent Ranking to
-%% rescore or re-rank a search service's results.
+%% A rescore execution
+%% plan is an Amazon Kendra Intelligent Ranking resource
+%% used for provisioning the `Rescore' API. You set
+%% the number of capacity units that you require for
+%% Amazon Kendra Intelligent Ranking to rescore or re-rank
+%% a search service's results.
 %%
-%% For an example of using the `CreateRescoreExecutionPlan' API,
-%% including using the Python and Java SDKs, see Semantically ranking a
-%% search service's results:
+%% For an example of using the
+%% `CreateRescoreExecutionPlan' API, including using
+%% the Python and Java SDKs, see Semantically
+%% ranking a search service's results:
 %% https://docs.aws.amazon.com/kendra/latest/dg/search-service-rerank.html.
 create_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -50,7 +54,8 @@ create_rescore_execution_plan(Client, Input, Options)
 
 %% @doc Deletes a rescore execution plan.
 %%
-%% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
+%% A rescore execution
+%% plan is an Amazon Kendra Intelligent Ranking resource
 %% used for provisioning the `Rescore' API.
 delete_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -61,8 +66,9 @@ delete_rescore_execution_plan(Client, Input, Options)
 
 %% @doc Gets information about a rescore execution plan.
 %%
-%% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' API.
+%% A rescore
+%% execution plan is an Amazon Kendra Intelligent Ranking
+%% resource used for provisioning the `Rescore' API.
 describe_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rescore_execution_plan(Client, Input, []).
@@ -72,8 +78,9 @@ describe_rescore_execution_plan(Client, Input, Options)
 
 %% @doc Lists your rescore execution plans.
 %%
-%% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' API.
+%% A rescore execution plan
+%% is an Amazon Kendra Intelligent Ranking resource used for
+%% provisioning the `Rescore' API.
 list_rescore_execution_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rescore_execution_plans(Client, Input, []).
@@ -83,8 +90,8 @@ list_rescore_execution_plans(Client, Input, Options)
 
 %% @doc Gets a list of tags associated with a specified resource.
 %%
-%% A rescore execution plan is an example of a resource that can have tags
-%% associated with it.
+%% A rescore execution plan is an example of a resource that
+%% can have tags associated with it.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -92,11 +99,12 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Rescores or re-ranks search results from a search service such as
-%% OpenSearch (self managed).
+%% @doc Rescores or re-ranks search results from a search service
+%% such as OpenSearch (self managed).
 %%
-%% You use the semantic search capabilities of Amazon Kendra Intelligent
-%% Ranking to improve the search service's results.
+%% You use the semantic search
+%% capabilities of Amazon Kendra Intelligent Ranking to
+%% improve the search service's results.
 rescore(Client, Input)
   when is_map(Client), is_map(Input) ->
     rescore(Client, Input, []).
@@ -104,10 +112,12 @@ rescore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Rescore">>, Input, Options).
 
-%% @doc Adds a specified tag to a specified rescore execution plan.
+%% @doc Adds a specified tag to a specified rescore execution
+%% plan.
 %%
-%% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' API. If the tag already exists,
+%% A rescore execution plan is an Amazon Kendra
+%% Intelligent Ranking resource used for provisioning the
+%% `Rescore' API. If the tag already exists,
 %% the existing value is replaced with the new value.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -118,8 +128,10 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes a tag from a rescore execution plan.
 %%
-%% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' operation.
+%% A rescore
+%% execution plan is an Amazon Kendra Intelligent
+%% Ranking resource used for provisioning the
+%% `Rescore' operation.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -129,10 +141,12 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates a rescore execution plan.
 %%
-%% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' API. You can update the number of
-%% capacity units you require for Amazon Kendra Intelligent Ranking to
-%% rescore or re-rank a search service's results.
+%% A rescore execution plan
+%% is an Amazon Kendra Intelligent Ranking resource used for
+%% provisioning the `Rescore' API. You can update the
+%% number of capacity units you require for Amazon Kendra
+%% Intelligent Ranking to rescore or re-rank a search service's
+%% results.
 update_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rescore_execution_plan(Client, Input, []).

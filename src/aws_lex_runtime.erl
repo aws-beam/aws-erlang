@@ -3,17 +3,19 @@
 
 %% @doc Amazon Lex provides both build and runtime endpoints.
 %%
-%% Each endpoint provides a set of operations (API). Your conversational bot
-%% uses the runtime API to understand user utterances (user input text or
-%% voice). For example, suppose a user says &quot;I want pizza&quot;, your
-%% bot sends this input to Amazon Lex using the runtime API. Amazon Lex
-%% recognizes that the user request is for the OrderPizza intent (one of the
-%% intents defined in the bot). Then Amazon Lex engages in user conversation
-%% on behalf of the bot to elicit required information (slot values, such as
-%% pizza size and crust type), and then performs fulfillment activity (that
-%% you configured when you created the bot). You use the build-time API to
-%% create and manage your Amazon Lex bot. For a list of build-time
-%% operations, see the build-time API, .
+%% Each endpoint
+%% provides a set of operations (API). Your conversational bot uses the
+%% runtime API to understand user utterances (user input text or voice). For
+%% example, suppose a user says &quot;I want pizza&quot;, your bot sends this
+%% input to
+%% Amazon Lex using the runtime API. Amazon Lex recognizes that the user
+%% request is for the OrderPizza intent (one of the intents defined in the
+%% bot). Then Amazon Lex engages in user conversation on behalf of the bot to
+%% elicit required information (slot values, such as pizza size and crust
+%% type), and then performs fulfillment activity (that you configured when
+%% you created the bot). You use the build-time API to create and manage your
+%% Amazon Lex bot. For a list of build-time operations, see the build-time
+%% API, .
 -module(aws_lex_runtime).
 
 -export([delete_session/5,
@@ -40,11 +42,13 @@ delete_session(Client, BotAlias, BotName, UserId, Input) ->
 delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -57,7 +61,8 @@ delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns session information for a specified bot, alias, and user ID.
+%% @doc Returns session information for a specified bot, alias, and user
+%% ID.
 get_session(Client, BotAlias, BotName, UserId)
   when is_map(Client) ->
     get_session(Client, BotAlias, BotName, UserId, #{}, #{}).
@@ -68,11 +73,13 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap)
 
 get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -86,73 +93,82 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
 
 %% @doc Sends user input (text or speech) to Amazon Lex.
 %%
-%% Clients use this API to send text and audio requests to Amazon Lex at
-%% runtime. Amazon Lex interprets the user input using the machine learning
-%% model that it built for the bot.
+%% Clients use this API to
+%% send text and audio requests to Amazon Lex at runtime. Amazon Lex
+%% interprets the
+%% user input using the machine learning model that it built for the bot.
 %%
-%% The `PostContent' operation supports audio input at 8kHz and 16kHz.
-%% You can use 8kHz audio to achieve higher speech recognition accuracy in
-%% telephone audio applications.
+%% The `PostContent' operation supports audio input at 8kHz
+%% and 16kHz. You can use 8kHz audio to achieve higher speech recognition
+%% accuracy in telephone audio applications.
 %%
 %% In response, Amazon Lex returns the next message to convey to the user.
 %% Consider the following example messages:
 %%
-%% <ul> <li> For a user input &quot;I would like a pizza,&quot; Amazon Lex
-%% might return a response with a message eliciting slot data (for example,
+%% For a user input &quot;I would like a pizza,&quot; Amazon Lex might return
+%% a
+%% response with a message eliciting slot data (for example,
 %% `PizzaSize'): &quot;What size pizza would you like?&quot;.
 %%
-%% </li> <li> After the user provides all of the pizza order information,
-%% Amazon Lex might return a response with a message to get user
-%% confirmation: &quot;Order the pizza?&quot;.
+%% After the user provides all of the pizza order information, Amazon Lex
+%% might return a response with a message to get user confirmation:
+%% &quot;Order the pizza?&quot;.
 %%
-%% </li> <li> After the user replies &quot;Yes&quot; to the confirmation
-%% prompt, Amazon Lex might return a conclusion statement: &quot;Thank you,
-%% your cheese pizza has been ordered.&quot;.
+%% After the user replies &quot;Yes&quot; to the confirmation prompt, Amazon
+%% Lex
+%% might return a conclusion statement: &quot;Thank you, your cheese pizza
+%% has
+%% been ordered.&quot;.
 %%
-%% </li> </ul> Not all Amazon Lex messages require a response from the user.
-%% For example, conclusion statements do not require a response. Some
-%% messages require only a yes or no response. In addition to the
-%% `message', Amazon Lex provides additional context about the message in
-%% the response that you can use to enhance client behavior, such as
-%% displaying the appropriate client user interface. Consider the following
-%% examples:
+%% Not all Amazon Lex messages require a response from the user. For example,
+%% conclusion statements do not require a response. Some messages require
+%% only a yes or no response. In addition to the `message', Amazon Lex
+%% provides additional context about the message in the response that you can
+%% use to enhance client behavior, such as displaying the appropriate client
+%% user interface. Consider the following examples:
 %%
-%% <ul> <li> If the message is to elicit slot data, Amazon Lex returns the
+%% If the message is to elicit slot data, Amazon Lex returns the
 %% following context information:
 %%
-%% <ul> <li> `x-amz-lex-dialog-state' header set to `ElicitSlot'
+%% `x-amz-lex-dialog-state' header set to
+%% `ElicitSlot'
 %%
-%% </li> <li> `x-amz-lex-intent-name' header set to the intent name in
-%% the current context
+%% `x-amz-lex-intent-name' header set to the intent name
+%% in the current context
 %%
-%% </li> <li> `x-amz-lex-slot-to-elicit' header set to the slot name for
-%% which the `message' is eliciting information
+%% `x-amz-lex-slot-to-elicit' header set to the slot name
+%% for which the `message' is eliciting information
 %%
-%% </li> <li> `x-amz-lex-slots' header set to a map of slots configured
-%% for the intent with their current values
+%% `x-amz-lex-slots' header set to a map of slots
+%% configured for the intent with their current values
 %%
-%% </li> </ul> </li> <li> If the message is a confirmation prompt, the
-%% `x-amz-lex-dialog-state' header is set to `Confirmation' and the
+%% If the message is a confirmation prompt, the
+%% `x-amz-lex-dialog-state' header is set to
+%% `Confirmation' and the
 %% `x-amz-lex-slot-to-elicit' header is omitted.
 %%
-%% </li> <li> If the message is a clarification prompt configured for the
+%% If the message is a clarification prompt configured for the
 %% intent, indicating that the user intent is not understood, the
-%% `x-amz-dialog-state' header is set to `ElicitIntent' and the
-%% `x-amz-slot-to-elicit' header is omitted.
+%% `x-amz-dialog-state' header is set to
+%% `ElicitIntent' and the `x-amz-slot-to-elicit'
+%% header is omitted.
 %%
-%% </li> </ul> In addition, Amazon Lex also returns your application-specific
-%% `sessionAttributes'. For more information, see Managing Conversation
-%% Context: https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
+%% In addition, Amazon Lex also returns your application-specific
+%% `sessionAttributes'. For more information, see Managing
+%% Conversation Context:
+%% https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
 post_content(Client, BotAlias, BotName, UserId, Input) ->
     post_content(Client, BotAlias, BotName, UserId, Input, []).
 post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/content"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>},
@@ -205,70 +221,78 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 
 %% @doc Sends user input to Amazon Lex.
 %%
-%% Client applications can use this API to send requests to Amazon Lex at
-%% runtime. Amazon Lex then interprets the user input using the machine
-%% learning model it built for the bot.
+%% Client applications can use this API to
+%% send requests to Amazon Lex at runtime. Amazon Lex then interprets the
+%% user input
+%% using the machine learning model it built for the bot.
 %%
-%% In response, Amazon Lex returns the next `message' to convey to the
-%% user an optional `responseCard' to display. Consider the following
-%% example messages:
+%% In response, Amazon Lex returns the next `message' to convey to
+%% the user an optional `responseCard' to display. Consider the
+%% following example messages:
 %%
-%% <ul> <li> For a user input &quot;I would like a pizza&quot;, Amazon Lex
-%% might return a response with a message eliciting slot data (for example,
-%% PizzaSize): &quot;What size pizza would you like?&quot;
+%% For a user input &quot;I would like a pizza&quot;, Amazon Lex might return
+%% a
+%% response with a message eliciting slot data (for example, PizzaSize):
+%% &quot;What size pizza would you like?&quot;
 %%
-%% </li> <li> After the user provides all of the pizza order information,
+%% After the user provides all of the pizza order information,
 %% Amazon Lex might return a response with a message to obtain user
 %% confirmation &quot;Proceed with the pizza order?&quot;.
 %%
-%% </li> <li> After the user replies to a confirmation prompt with a
-%% &quot;yes&quot;, Amazon Lex might return a conclusion statement:
-%% &quot;Thank you, your cheese pizza has been ordered.&quot;.
+%% After the user replies to a confirmation prompt with a &quot;yes&quot;,
+%% Amazon Lex might return a conclusion statement: &quot;Thank you, your
+%% cheese
+%% pizza has been ordered.&quot;.
 %%
-%% </li> </ul> Not all Amazon Lex messages require a user response. For
-%% example, a conclusion statement does not require a response. Some messages
-%% require only a &quot;yes&quot; or &quot;no&quot; user response. In
-%% addition to the `message', Amazon Lex provides additional context
-%% about the message in the response that you might use to enhance client
-%% behavior, for example, to display the appropriate client user interface.
-%% These are the `slotToElicit', `dialogState', `intentName', and
-%% `slots' fields in the response. Consider the following examples:
+%% Not all Amazon Lex messages require a user response. For example, a
+%% conclusion statement does not require a response. Some messages require
+%% only a &quot;yes&quot; or &quot;no&quot; user response. In addition to the
+%% `message', Amazon Lex provides additional context about the
+%% message in the response that you might use to enhance client behavior, for
+%% example, to display the appropriate client user interface. These are the
+%% `slotToElicit', `dialogState',
+%% `intentName', and `slots' fields in the response.
+%% Consider the following examples:
 %%
-%% <ul> <li> If the message is to elicit slot data, Amazon Lex returns the
+%% If the message is to elicit slot data, Amazon Lex returns the
 %% following context information:
 %%
-%% <ul> <li> `dialogState' set to ElicitSlot
+%% `dialogState' set to ElicitSlot
 %%
-%% </li> <li> `intentName' set to the intent name in the current context
+%% `intentName' set to the intent name in the current
+%% context
 %%
-%% </li> <li> `slotToElicit' set to the slot name for which the
+%% `slotToElicit' set to the slot name for which the
 %% `message' is eliciting information
 %%
-%% </li> <li> `slots' set to a map of slots, configured for the intent,
-%% with currently known values
+%% `slots' set to a map of slots, configured for the
+%% intent, with currently known values
 %%
-%% </li> </ul> </li> <li> If the message is a confirmation prompt, the
-%% `dialogState' is set to ConfirmIntent and `SlotToElicit' is set to
-%% null.
+%% If the message is a confirmation prompt, the
+%% `dialogState' is set to ConfirmIntent and
+%% `SlotToElicit' is set to null.
 %%
-%% </li> <li> If the message is a clarification prompt (configured for the
+%% If the message is a clarification prompt (configured for the
 %% intent) that indicates that user intent is not understood, the
-%% `dialogState' is set to ElicitIntent and `slotToElicit' is set to
-%% null.
+%% `dialogState' is set to ElicitIntent and
+%% `slotToElicit' is set to null.
 %%
-%% </li> </ul> In addition, Amazon Lex also returns your application-specific
-%% `sessionAttributes'. For more information, see Managing Conversation
-%% Context: https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
+%% In addition, Amazon Lex also returns your application-specific
+%% `sessionAttributes'. For more information, see Managing
+%% Conversation Context:
+%% https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
 post_text(Client, BotAlias, BotName, UserId, Input) ->
     post_text(Client, BotAlias, BotName, UserId, Input, []).
 post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/text"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -282,22 +306,26 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new session or modifies an existing session with an Amazon
-%% Lex bot.
+%% Lex
+%% bot.
 %%
-%% Use this operation to enable your application to set the state of the bot.
+%% Use this operation to enable your application to set the state of the
+%% bot.
 %%
-%% For more information, see Managing Sessions:
-%% https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html.
+%% For more information, see Managing
+%% Sessions: https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html.
 put_session(Client, BotAlias, BotName, UserId, Input) ->
     put_session(Client, BotAlias, BotName, UserId, Input, []).
 put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>}
@@ -341,6 +369,11 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

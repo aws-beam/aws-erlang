@@ -27,30 +27,34 @@
 
 %% @doc Removes session information for a specified bot, alias, and user ID.
 %%
-%% You can use this operation to restart a conversation with a bot. When you
-%% remove a session, the entire history of the session is removed so that you
-%% can start again.
+%% You can use this operation to restart a conversation with a bot.
+%% When you remove a session, the entire history of the session is removed
+%% so that you can start again.
 %%
 %% You don't need to delete a session. Sessions have a time limit and
 %% will expire. Set the session time limit when you create the bot. The
-%% default is 5 minutes, but you can specify anything between 1 minute and 24
-%% hours.
+%% default is 5 minutes, but you can specify anything between 1 minute and
+%% 24 hours.
 %%
 %% If you specify a bot or alias ID that doesn't exist, you receive a
 %% `BadRequestException.'
 %%
 %% If the locale doesn't exist in the bot, or if the locale hasn't
-%% been enables for the alias, you receive a `BadRequestException'.
+%% been
+%% enables for the alias, you receive a
+%% `BadRequestException'.
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -63,14 +67,17 @@ delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns session information for a specified bot, alias, and user.
+%% @doc Returns session information for a specified bot, alias, and
+%% user.
 %%
-%% For example, you can use this operation to retrieve session information
-%% for a user that has left a long-running session in use.
+%% For example, you can use this operation to retrieve session
+%% information for a user that has left a long-running session in
+%% use.
 %%
 %% If the bot, alias, or session identifier doesn't exist, Amazon Lex V2
-%% returns a `BadRequestException'. If the locale doesn't exist or is
-%% not enabled for the alias, you receive a `BadRequestException'.
+%% returns a `BadRequestException'. If the locale doesn't exist
+%% or is not enabled for the alias, you receive a
+%% `BadRequestException'.
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId)
   when is_map(Client) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, #{}, #{}).
@@ -82,10 +89,12 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -94,19 +103,23 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates a new session or modifies an existing session with an Amazon
-%% Lex V2 bot.
+%% Lex V2
+%% bot.
 %%
-%% Use this operation to enable your application to set the state of the bot.
+%% Use this operation to enable your application to set the state of
+%% the bot.
 put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"ResponseContentType">>, <<"responseContentType">>}
@@ -143,43 +156,48 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
 
 %% @doc Sends user input to Amazon Lex V2.
 %%
-%% Client applications use this API to send requests to Amazon Lex V2 at
-%% runtime. Amazon Lex V2 then interprets the user input using the machine
-%% learning model that it build for the bot.
+%% Client applications use this API to send
+%% requests to Amazon Lex V2 at runtime. Amazon Lex V2 then interprets the
+%% user input
+%% using the machine learning model that it build for the bot.
 %%
 %% In response, Amazon Lex V2 returns the next message to convey to the user
 %% and an optional response card to display.
 %%
-%% If the optional post-fulfillment response is specified, the messages are
-%% returned as follows. For more information, see
+%% If the optional post-fulfillment response is specified, the messages
+%% are returned as follows. For more information, see
 %% PostFulfillmentStatusSpecification:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/API_PostFulfillmentStatusSpecification.html.
 %%
-%% <ul> <li> Success message - Returned if the Lambda function completes
-%% successfully and the intent state is fulfilled or ready fulfillment if the
-%% message is present.
+%% Success message - Returned if
+%% the Lambda function completes successfully and the intent state is
+%% fulfilled or ready fulfillment if the message is present.
 %%
-%% </li> <li> Failed message - The failed message is returned if the Lambda
-%% function throws an exception or if the Lambda function returns a failed
-%% intent state without a message.
+%% Failed message - The failed
+%% message is returned if the Lambda function throws an exception or
+%% if the Lambda function returns a failed intent state without a
+%% message.
 %%
-%% </li> <li> Timeout message - If you don't configure a timeout message
-%% and a timeout, and the Lambda function doesn't return within 30
-%% seconds, the timeout message is returned. If you configure a timeout, the
-%% timeout message is returned when the period times out.
+%% Timeout message - If you
+%% don't configure a timeout message and a timeout, and the Lambda
+%% function doesn't return within 30 seconds, the timeout message is
+%% returned. If you configure a timeout, the timeout message is
+%% returned when the period times out.
 %%
-%% </li> </ul> For more information, see Completion message:
+%% For more information, see Completion message:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/text"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -194,65 +212,71 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 
 %% @doc Sends user input to Amazon Lex V2.
 %%
-%% You can send text or speech. Clients use this API to send text and audio
-%% requests to Amazon Lex V2 at runtime. Amazon Lex V2 interprets the user
-%% input using the machine learning model built for the bot.
+%% You can send text or speech. Clients use
+%% this API to send text and audio requests to Amazon Lex V2 at runtime.
+%% Amazon Lex V2
+%% interprets the user input using the machine learning model built for
+%% the bot.
 %%
-%% The following request fields must be compressed with gzip and then base64
-%% encoded before you send them to Amazon Lex V2.
+%% The following request fields must be compressed with gzip and then
+%% base64 encoded before you send them to Amazon Lex V2.
 %%
-%% <ul> <li> requestAttributes
+%% requestAttributes
 %%
-%% </li> <li> sessionState
+%% sessionState
 %%
-%% </li> </ul> The following response fields are compressed using gzip and
-%% then base64 encoded by Amazon Lex V2. Before you can use these fields, you
-%% must decode and decompress them.
+%% The following response fields are compressed using gzip and then
+%% base64 encoded by Amazon Lex V2. Before you can use these fields, you must
+%% decode and decompress them.
 %%
-%% <ul> <li> inputTranscript
+%% inputTranscript
 %%
-%% </li> <li> interpretations
+%% interpretations
 %%
-%% </li> <li> messages
+%% messages
 %%
-%% </li> <li> requestAttributes
+%% requestAttributes
 %%
-%% </li> <li> sessionState
+%% sessionState
 %%
-%% </li> </ul> The example contains a Java application that compresses and
-%% encodes a Java object to send to Amazon Lex V2, and a second that decodes
-%% and decompresses a response from Amazon Lex V2.
+%% The example contains a Java application that compresses and encodes
+%% a Java object to send to Amazon Lex V2, and a second that decodes and
+%% decompresses a response from Amazon Lex V2.
 %%
-%% If the optional post-fulfillment response is specified, the messages are
-%% returned as follows. For more information, see
+%% If the optional post-fulfillment response is specified, the messages
+%% are returned as follows. For more information, see
 %% PostFulfillmentStatusSpecification:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/API_PostFulfillmentStatusSpecification.html.
 %%
-%% <ul> <li> Success message - Returned if the Lambda function completes
-%% successfully and the intent state is fulfilled or ready fulfillment if the
-%% message is present.
+%% Success message - Returned if
+%% the Lambda function completes successfully and the intent state is
+%% fulfilled or ready fulfillment if the message is present.
 %%
-%% </li> <li> Failed message - The failed message is returned if the Lambda
-%% function throws an exception or if the Lambda function returns a failed
-%% intent state without a message.
+%% Failed message - The failed
+%% message is returned if the Lambda function throws an exception or
+%% if the Lambda function returns a failed intent state without a
+%% message.
 %%
-%% </li> <li> Timeout message - If you don't configure a timeout message
-%% and a timeout, and the Lambda function doesn't return within 30
-%% seconds, the timeout message is returned. If you configure a timeout, the
-%% timeout message is returned when the period times out.
+%% Timeout message - If you
+%% don't configure a timeout message and a timeout, and the Lambda
+%% function doesn't return within 30 seconds, the timeout message is
+%% returned. If you configure a timeout, the timeout message is
+%% returned when the period times out.
 %%
-%% </li> </ul> For more information, see Completion message:
+%% For more information, see Completion message:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/utterance"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-lex-request-attributes">>, <<"requestAttributes">>},
@@ -297,65 +321,71 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %% @doc Starts an HTTP/2 bidirectional event stream that enables you to send
 %% audio, text, or DTMF input in real time.
 %%
-%% After your application starts a conversation, users send input to Amazon
-%% Lex V2 as a stream of events. Amazon Lex V2 processes the incoming events
-%% and responds with streaming text or audio events.
+%% After your application starts
+%% a conversation, users send input to Amazon Lex V2 as a stream of events.
+%% Amazon Lex V2
+%% processes the incoming events and responds with streaming text or audio
+%% events.
 %%
-%% Audio input must be in the following format: `audio/lpcm sample-rate=8000
-%% sample-size-bits=16 channel-count=1; is-big-endian=false'.
+%% Audio input must be in the following format:
+%% ```
+%% audio/lpcm sample-rate=8000 sample-size-bits=16 channel-count=1;
+%% is-big-endian=false'''.
 %%
-%% If the optional post-fulfillment response is specified, the messages are
-%% returned as follows. For more information, see
+%% If the optional post-fulfillment response is specified, the messages
+%% are returned as follows. For more information, see
 %% PostFulfillmentStatusSpecification:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/API_PostFulfillmentStatusSpecification.html.
 %%
-%% <ul> <li> Success message - Returned if the Lambda function completes
-%% successfully and the intent state is fulfilled or ready fulfillment if the
-%% message is present.
+%% Success message - Returned if
+%% the Lambda function completes successfully and the intent state is
+%% fulfilled or ready fulfillment if the message is present.
 %%
-%% </li> <li> Failed message - The failed message is returned if the Lambda
-%% function throws an exception or if the Lambda function returns a failed
-%% intent state without a message.
+%% Failed message - The failed
+%% message is returned if the Lambda function throws an exception or
+%% if the Lambda function returns a failed intent state without a
+%% message.
 %%
-%% </li> <li> Timeout message - If you don't configure a timeout message
-%% and a timeout, and the Lambda function doesn't return within 30
-%% seconds, the timeout message is returned. If you configure a timeout, the
-%% timeout message is returned when the period times out.
+%% Timeout message - If you
+%% don't configure a timeout message and a timeout, and the Lambda
+%% function doesn't return within 30 seconds, the timeout message is
+%% returned. If you configure a timeout, the timeout message is
+%% returned when the period times out.
 %%
-%% </li> </ul> For more information, see Completion message:
+%% For more information, see Completion message:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
 %%
 %% If the optional update message is configured, it is played at the
 %% specified frequency while the Lambda function is running and the update
-%% message state is active. If the fulfillment update message is not active,
-%% the Lambda function runs with a 30 second timeout.
+%% message state is active. If the fulfillment update message is not
+%% active, the Lambda function runs with a 30 second timeout.
 %%
 %% For more information, see Update message :
 %% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-update.html
 %%
-%% The `StartConversation' operation is supported only in the following
-%% SDKs:
+%% The `StartConversation' operation is supported only in
+%% the following SDKs:
 %%
-%% <ul> <li> AWS SDK for C++:
+%% AWS SDK for C++:
 %% https://docs.aws.amazon.com/goto/SdkForCpp/runtime.lex.v2-2020-08-07/StartConversation
 %%
-%% </li> <li> AWS SDK for Java V2:
+%% AWS SDK for Java V2:
 %% https://docs.aws.amazon.com/goto/SdkForJavaV2/runtime.lex.v2-2020-08-07/StartConversation
 %%
-%% </li> <li> AWS SDK for Ruby V3:
+%% AWS SDK for Ruby V3:
 %% https://docs.aws.amazon.com/goto/SdkForRubyV3/runtime.lex.v2-2020-08-07/StartConversation
-%%
-%% </li> </ul>
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/conversation"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-lex-conversation-mode">>, <<"conversationMode">>}
@@ -373,6 +403,11 @@ start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Optio
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

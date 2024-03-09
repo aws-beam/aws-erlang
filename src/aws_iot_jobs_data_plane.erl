@@ -2,23 +2,27 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc AWS IoT Jobs is a service that allows you to define a set of jobs —
-%% remote operations that are sent to and executed on one or more devices
-%% connected to AWS IoT.
+%% remote operations that are sent to
+%% and executed on one or more devices connected to AWS IoT.
 %%
-%% For example, you can define a job that instructs a set of devices to
-%% download and install application or firmware updates, reboot, rotate
-%% certificates, or perform remote troubleshooting operations.
+%% For example, you can define a job that instructs a
+%% set of devices to download and install application or firmware updates,
+%% reboot, rotate certificates, or perform
+%% remote troubleshooting operations.
 %%
 %% To create a job, you make a job document which is a description of the
-%% remote operations to be performed, and you specify a list of targets that
-%% should perform the operations. The targets can be individual things, thing
-%% groups or both.
+%% remote operations to be
+%% performed, and you specify a list of targets that should perform the
+%% operations. The targets can be individual
+%% things, thing groups or both.
 %%
 %% AWS IoT Jobs sends a message to inform the targets that a job is
-%% available. The target starts the execution of the job by downloading the
-%% job document, performing the operations it specifies, and reporting its
+%% available. The target starts the
+%% execution of the job by downloading the job document, performing the
+%% operations it specifies, and reporting its
 %% progress to AWS IoT. The Jobs service provides commands to track the
-%% progress of a job on a specific target and for all the targets of the job
+%% progress of a job on a specific target and
+%% for all the targets of the job
 -module(aws_iot_jobs_data_plane).
 
 -export([describe_job_execution/3,
@@ -50,10 +54,12 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
 describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -79,10 +85,12 @@ get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap)
 get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -97,11 +105,13 @@ start_next_pending_job_execution(Client, ThingName, Input) ->
 start_next_pending_job_execution(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/$next"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -120,11 +130,13 @@ update_job_execution(Client, JobId, ThingName, Input) ->
 update_job_execution(Client, JobId, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -140,6 +152,11 @@ update_job_execution(Client, JobId, ThingName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -3,134 +3,157 @@
 
 %% @doc This is the AWS HealthImaging API Reference.
 %%
-%% AWS HealthImaging is a HIPAA-eligible service that helps health care
-%% providers and their medical imaging ISV partners store, transform, and
-%% apply machine learning to medical images. For an introduction to the
-%% service, see the AWS HealthImaging Developer Guide :
-%% https://docs.aws.amazon.com/healthimaging/latest/devguide/what-is.html.
+%% AWS HealthImaging is a HIPAA-eligible service that helps health
+%% care providers and their medical imaging ISV partners store, transform,
+%% and apply machine learning to medical images. For
+%% an introduction to the service, see the
+%% AWS HealthImaging Developer Guide
+%% : https://docs.aws.amazon.com/healthimaging/latest/devguide/what-is.html.
 %%
 %% We recommend using one of the AWS Software Development Kits (SDKs) for
-%% your programming language, as they take care of request authentication,
-%% serialization, and connection management. For more information, see Tools
-%% to build on AWS: http://aws.amazon.com/developer/tools.
+%% your programming language, as
+%% they take care of request authentication, serialization, and connection
+%% management. For more information,
+%% see Tools to build on AWS: http://aws.amazon.com/developer/tools.
 %%
 %% For information about using HealthImaging API actions in one of the
-%% language-specific AWS SDKs, refer to the See Also link at the end of each
-%% section that describes an API action or data type.
+%% language-specific AWS SDKs, refer to the
+%% See Also link at the end of each section that describes an API action or
+%% data type.
 %%
 %% The following sections list AWS HealthImaging API actions categorized
-%% according to functionality. Links are provided to actions within this
-%% Reference, along with links back to corresponding sections in the AWS
-%% HealthImaging Developer Guide where you can view console procedures and
-%% CLI/SDK code examples.
+%% according to functionality. Links are
+%% provided to actions within this Reference, along with links back to
+%% corresponding sections in the
+%% AWS HealthImaging Developer Guide where you can view console procedures
+%% and CLI/SDK code examples.
 %%
 %% == Data store actions ==
 %%
-%% <ul> <li> CreateDatastore:
+%% CreateDatastore:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_CreateDatastore.html
-%% – See Creating a data store:
+%% – See
+%% Creating a data store:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/create-data-store.html.
 %%
-%% </li> <li> GetDatastore:
+%% GetDatastore:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetDatastore.html
-%% – See Getting data store properties:
+%% – See
+%% Getting data store properties:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-data-store.html.
 %%
-%% </li> <li> ListDatastores:
+%% ListDatastores:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListDatastores.html
-%% – See Listing data stores:
+%% – See
+%% Listing data stores:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/list-data-stores.html.
 %%
-%% </li> <li> DeleteDatastore:
+%% DeleteDatastore:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_DeleteDatastore.html
-%% – See Deleting a data store:
+%% – See
+%% Deleting a data store:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/delete-data-store.html.
 %%
-%% </li> </ul> == Import job actions ==
+%% == Import job actions ==
 %%
-%% <ul> <li> StartDICOMImportJob:
+%% StartDICOMImportJob:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_StartDICOMImportJob.html
-%% – See Starting an import job:
+%% – See
+%% Starting an import job:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/start-dicom-import-job.html.
 %%
-%% </li> <li> GetDICOMImportJob:
+%% GetDICOMImportJob:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetDICOMImportJob.html
-%% – See Getting import job properties:
+%% – See
+%% Getting import job properties:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-dicom-import-job.html.
 %%
-%% </li> <li> ListDICOMImportJobs:
+%% ListDICOMImportJobs:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListDICOMImportJobs.html
-%% – See Listing import jobs:
+%% – See
+%% Listing import jobs:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/list-dicom-import-jobs.html.
 %%
-%% </li> </ul> == Image set access actions ==
+%% == Image set access actions ==
 %%
-%% <ul> <li> SearchImageSets:
+%% SearchImageSets:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_SearchImageSets.html
-%% – See Searching image sets:
+%% – See
+%% Searching image sets:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/search-image-sets.html.
 %%
-%% </li> <li> GetImageSet:
+%% GetImageSet:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetImageSet.html
-%% – See Getting image set properties:
+%% – See
+%% Getting image set properties:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-image-set-properties.html.
 %%
-%% </li> <li> GetImageSetMetadata:
+%% GetImageSetMetadata:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetImageSetMetadata.html
-%% – See Getting image set metadata:
+%% – See
+%% Getting image set metadata:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-image-set-metadata.html.
 %%
-%% </li> <li> GetImageFrame:
+%% GetImageFrame:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetImageFrame.html
-%% – See Getting image set pixel data:
+%% – See
+%% Getting image set pixel data:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-image-frame.html.
 %%
-%% </li> </ul> == Image set modification actions ==
+%% == Image set modification actions ==
 %%
-%% <ul> <li> ListImageSetVersions:
+%% ListImageSetVersions:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListImageSetVersions.html
-%% – See Listing image set versions:
+%% – See
+%% Listing image set versions:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/list-image-set-versions.html.
 %%
-%% </li> <li> UpdateImageSetMetadata:
+%% UpdateImageSetMetadata:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_UpdateImageSetMetadata.html
-%% – See Updating image set metadata:
+%% – See
+%% Updating image set metadata:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/update-image-set-metadata.html.
 %%
-%% </li> <li> CopyImageSet:
+%% CopyImageSet:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_CopyImageSet.html
-%% – See Copying an image set:
+%% – See
+%% Copying an image set:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/copy-image-set.html.
 %%
-%% </li> <li> DeleteImageSet:
+%% DeleteImageSet:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_DeleteImageSet.html
-%% – See Deleting an image set:
+%% – See
+%% Deleting an image set:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/delete-image-set.html.
 %%
-%% </li> </ul> == Tagging actions ==
+%% == Tagging actions ==
 %%
-%% <ul> <li> TagResource:
+%% TagResource:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_TagResource.html
-%% – See Tagging a data store:
+%% – See
+%% Tagging a data store:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-data-store.html
-%% and Tagging an image set:
+%% and
+%% Tagging an image set:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-image-set.html.
 %%
-%% </li> <li> ListTagsForResource:
+%% ListTagsForResource:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListTagsForResource.html
-%% – See Tagging a data store:
+%% – See
+%% Tagging a data store:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-data-store.html
-%% and Tagging an image set:
+%% and
+%% Tagging an image set:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-image-set.html.
 %%
-%% </li> <li> UntagResource:
+%% UntagResource:
 %% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_UntagResource.html
-%% – See Tagging a data store:
+%% – See
+%% Tagging a data store:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-data-store.html
-%% and Tagging an image set:
+%% and
+%% Tagging an image set:
 %% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-image-set.html.
-%%
-%% </li> </ul>
 -module(aws_medical_imaging).
 
 -export([copy_image_set/4,
@@ -188,10 +211,12 @@ copy_image_set(Client, DatastoreId, SourceImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(SourceImageSetId), "/copyImageSet"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -211,10 +236,12 @@ create_datastore(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datastore"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -237,10 +264,12 @@ delete_datastore(Client, DatastoreId, Input0, Options0) ->
     Method = delete,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +289,12 @@ delete_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/deleteImageSet"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -290,9 +321,11 @@ get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getDICOMImportJob/datastore/", aws_util:encode_uri(DatastoreId), "/job/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -313,9 +346,11 @@ get_datastore(Client, DatastoreId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -330,10 +365,12 @@ get_image_frame(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/getImageFrame"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -369,10 +406,12 @@ get_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/getImageSet"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -393,10 +432,12 @@ get_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/getImageSetMetadata"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -440,9 +481,11 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listDICOMImportJobs/datastore/", aws_util:encode_uri(DatastoreId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -469,9 +512,11 @@ list_datastores(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datastore"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -492,10 +537,12 @@ list_image_set_versions(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/listImageSetVersions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -523,9 +570,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -535,22 +584,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Search image sets based on defined input attributes.
 %%
-%% `SearchImageSets' accepts a single search query parameter and returns
-%% a paginated response of all image sets that have the matching criteria.
-%% All range queries must be input as `(lowerBound, upperBound)'.
+%% `SearchImageSets' accepts a single search
+%% query parameter and returns a paginated response of all image sets that
+%% have the
+%% matching criteria. All range queries must be input as `(lowerBound,
+%% upperBound)'.
 %%
-%% `SearchImageSets' uses the `updatedAt' field for sorting in
-%% decreasing order from latest to oldest.
+%% `SearchImageSets' uses the `updatedAt' field for sorting
+%% in decreasing order from latest to oldest.
 search_image_sets(Client, DatastoreId, Input) ->
     search_image_sets(Client, DatastoreId, Input, []).
 search_image_sets(Client, DatastoreId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/searchImageSets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -567,19 +620,23 @@ search_image_sets(Client, DatastoreId, Input0, Options0) ->
 
 %% @doc Start importing bulk data into an `ACTIVE' data store.
 %%
-%% The import job imports DICOM P10 files found in the S3 prefix specified by
-%% the `inputS3Uri' parameter. The import job stores processing results
-%% in the file specified by the `outputS3Uri' parameter.
+%% The import job imports DICOM P10 files
+%% found in the S3 prefix specified by the `inputS3Uri' parameter. The
+%% import job stores
+%% processing results in the file specified by the `outputS3Uri'
+%% parameter.
 start_d_i_c_o_m_import_job(Client, DatastoreId, Input) ->
     start_d_i_c_o_m_import_job(Client, DatastoreId, Input, []).
 start_d_i_c_o_m_import_job(Client, DatastoreId, Input0, Options0) ->
     Method = post,
     Path = ["/startDICOMImportJob/datastore/", aws_util:encode_uri(DatastoreId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -599,10 +656,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -622,10 +681,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -646,10 +707,12 @@ update_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     Method = post,
     Path = ["/datastore/", aws_util:encode_uri(DatastoreId), "/imageSet/", aws_util:encode_uri(ImageSetId), "/updateImageSetMetadata"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -666,6 +729,11 @@ update_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

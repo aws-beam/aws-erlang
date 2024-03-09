@@ -6,30 +6,38 @@
 %% A load balancer can distribute incoming traffic across your EC2 instances.
 %%
 %% This enables you to increase the availability of your application. The
-%% load balancer also monitors the health of its registered instances and
-%% ensures that it routes traffic only to healthy instances. You configure
-%% your load balancer to accept incoming traffic by specifying one or more
-%% listeners, which are configured with a protocol and port number for
-%% connections from clients to the load balancer and a protocol and port
-%% number for connections from the load balancer to the instances.
+%% load balancer
+%% also monitors the health of its registered instances and ensures that it
+%% routes traffic
+%% only to healthy instances. You configure your load balancer to accept
+%% incoming traffic
+%% by specifying one or more listeners, which are configured with a protocol
+%% and port
+%% number for connections from clients to the load balancer and a protocol
+%% and port number
+%% for connections from the load balancer to the instances.
 %%
 %% Elastic Load Balancing supports three types of load balancers: Application
-%% Load Balancers, Network Load Balancers, and Classic Load Balancers. You
-%% can select a load balancer based on your application needs. For more
+%% Load Balancers, Network Load Balancers,
+%% and Classic Load Balancers. You can select a load balancer based on your
+%% application needs. For more
 %% information, see the Elastic Load Balancing User Guide:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/.
 %%
 %% This reference covers the 2012-06-01 API, which supports Classic Load
-%% Balancers. The 2015-12-01 API supports Application Load Balancers and
-%% Network Load Balancers.
+%% Balancers.
+%% The 2015-12-01 API supports Application Load Balancers and Network Load
+%% Balancers.
 %%
 %% To get started, create a load balancer with one or more listeners using
-%% `CreateLoadBalancer'. Register your instances with the load balancer
-%% using `RegisterInstancesWithLoadBalancer'.
+%% `CreateLoadBalancer'.
+%% Register your instances with the load balancer using
+%% `RegisterInstancesWithLoadBalancer'.
 %%
-%% All Elastic Load Balancing operations are idempotent, which means that
-%% they complete at most one time. If you repeat an operation, it succeeds
-%% with a 200 OK response code.
+%% All Elastic Load Balancing operations are idempotent, which means
+%% that they complete at most one time. If you repeat an operation, it
+%% succeeds with a 200 OK
+%% response code.
 -module(aws_elastic_load_balancing).
 
 -export([add_tags/2,
@@ -102,8 +110,8 @@
 %% Each load balancer can have a maximum of 10 tags.
 %%
 %% Each tag consists of a key and an optional value. If a tag with the same
-%% key is already associated with the load balancer, `AddTags' updates
-%% its value.
+%% key is already associated
+%% with the load balancer, `AddTags' updates its value.
 %%
 %% For more information, see Tag Your Classic Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html
@@ -135,8 +143,9 @@ apply_security_groups_to_load_balancer(Client, Input, Options)
 %% specified load balancer.
 %%
 %% The load balancer evenly distributes requests across all registered
-%% subnets. For more information, see Add or Remove Subnets for Your Load
-%% Balancer in a VPC:
+%% subnets.
+%% For more information, see Add or Remove Subnets for Your Load Balancer in
+%% a VPC:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html
 %% in the Classic Load Balancers Guide.
 attach_load_balancer_to_subnets(Client, Input)
@@ -165,11 +174,14 @@ configure_health_check(Client, Input, Options)
 %% This policy can be associated only with HTTP/HTTPS listeners.
 %%
 %% This policy is similar to the policy created by
-%% `CreateLBCookieStickinessPolicy', except that the lifetime of the
-%% special Elastic Load Balancing cookie, `AWSELB', follows the lifetime
-%% of the application-generated cookie specified in the policy configuration.
+%% `CreateLBCookieStickinessPolicy',
+%% except that the lifetime of the special Elastic Load Balancing cookie,
+%% `AWSELB',
+%% follows the lifetime of the application-generated cookie specified in the
+%% policy configuration.
 %% The load balancer only inserts a new stickiness cookie when the
-%% application response includes a new application cookie.
+%% application response
+%% includes a new application cookie.
 %%
 %% If the application cookie is explicitly removed or expires, the session
 %% stops being sticky until a new application cookie is issued.
@@ -193,10 +205,10 @@ create_app_cookie_stickiness_policy(Client, Input, Options)
 %% When a load balancer implements this policy, the load balancer uses a
 %% special cookie to track the instance for each request. When the load
 %% balancer receives a request, it first checks to see if this cookie is
-%% present in the request. If so, the load balancer sends the request to the
-%% application server specified in the cookie. If not, the load balancer
-%% sends the request to a server that is chosen based on the existing
-%% load-balancing algorithm.
+%% present in the request.
+%% If so, the load balancer sends the request to the application server
+%% specified in the cookie. If not, the load balancer sends the request to a
+%% server that is chosen based on the existing load-balancing algorithm.
 %%
 %% A cookie is inserted into the response for binding subsequent requests
 %% from the same user to that server. The validity of the cookie is based on
@@ -216,18 +228,20 @@ create_lb_cookie_stickiness_policy(Client, Input, Options)
 %% @doc Creates a Classic Load Balancer.
 %%
 %% You can add listeners, security groups, subnets, and tags when you create
-%% your load balancer, or you can add them later using
-%% `CreateLoadBalancerListeners',
+%% your load balancer,
+%% or you can add them later using `CreateLoadBalancerListeners',
 %% `ApplySecurityGroupsToLoadBalancer',
-%% `AttachLoadBalancerToSubnets', and `AddTags'.
+%% `AttachLoadBalancerToSubnets',
+%% and `AddTags'.
 %%
 %% To describe your current load balancers, see `DescribeLoadBalancers'.
 %% When you are finished with a load balancer, you can delete it using
 %% `DeleteLoadBalancer'.
 %%
-%% You can create up to 20 load balancers per region per account. You can
-%% request an increase for the number of load balancers for your account. For
-%% more information, see Limits for Your Classic Load Balancer:
+%% You can create up to 20 load balancers per region per account.
+%% You can request an increase for the number of load balancers for your
+%% account.
+%% For more information, see Limits for Your Classic Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html
 %% in the Classic Load Balancers Guide.
 create_load_balancer(Client, Input)
@@ -275,7 +289,8 @@ create_load_balancer_policy(Client, Input, Options)
 %% longer delivered to your instances.
 %%
 %% If the load balancer does not exist or has already been deleted, the call
-%% to `DeleteLoadBalancer' still succeeds.
+%% to
+%% `DeleteLoadBalancer' still succeeds.
 delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
@@ -358,12 +373,13 @@ describe_load_balancer_attributes(Client, Input, Options)
 %% @doc Describes the specified policies.
 %%
 %% If you specify a load balancer name, the action returns the descriptions
-%% of all policies created for the load balancer. If you specify a policy
-%% name associated with your load balancer, the action returns the
-%% description of that policy. If you don't specify a load balancer name,
-%% the action returns descriptions of the specified sample policies, or
-%% descriptions of all sample policies. The names of the sample policies have
-%% the `ELBSample-' prefix.
+%% of all policies created for the load balancer.
+%% If you specify a policy name associated with your load balancer, the
+%% action returns the description of that policy.
+%% If you don't specify a load balancer name, the action returns
+%% descriptions of the specified sample policies, or descriptions of all
+%% sample policies.
+%% The names of the sample policies have the `ELBSample-' prefix.
 describe_load_balancer_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_policies(Client, Input, []).
@@ -375,13 +391,14 @@ describe_load_balancer_policies(Client, Input, Options)
 %% balancer policy types.
 %%
 %% The description of each type indicates how it can be used. For example,
-%% some policies can be used only with layer 7 listeners, some policies can
-%% be used only with layer 4 listeners, and some policies can be used only
-%% with your EC2 instances.
+%% some policies can be used only with layer 7 listeners,
+%% some policies can be used only with layer 4 listeners,
+%% and some policies can be used only with your EC2 instances.
 %%
 %% You can use `CreateLoadBalancerPolicy' to create a policy
-%% configuration for any of these policy types. Then, depending on the policy
-%% type, use either `SetLoadBalancerPoliciesOfListener' or
+%% configuration for any of these policy types.
+%% Then, depending on the policy type, use either
+%% `SetLoadBalancerPoliciesOfListener' or
 %% `SetLoadBalancerPoliciesForBackendServer' to set the policy.
 describe_load_balancer_policy_types(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -413,7 +430,8 @@ describe_tags(Client, Input, Options)
 %% the load balancer.
 %%
 %% After a subnet is removed, all EC2 instances registered with the load
-%% balancer in the removed subnet go into the `OutOfService' state. Then,
+%% balancer
+%% in the removed subnet go into the `OutOfService' state. Then,
 %% the load balancer balances the traffic among the remaining routable
 %% subnets.
 detach_load_balancer_from_subnets(Client, Input)
@@ -424,17 +442,19 @@ detach_load_balancer_from_subnets(Client, Input, Options)
     request(Client, <<"DetachLoadBalancerFromSubnets">>, Input, Options).
 
 %% @doc Removes the specified Availability Zones from the set of Availability
-%% Zones for the specified load balancer in EC2-Classic or a default VPC.
+%% Zones for the specified load balancer
+%% in EC2-Classic or a default VPC.
 %%
 %% For load balancers in a non-default VPC, use
 %% `DetachLoadBalancerFromSubnets'.
 %%
 %% There must be at least one Availability Zone registered with a load
-%% balancer at all times. After an Availability Zone is removed, all
-%% instances registered with the load balancer that are in the removed
+%% balancer at all times.
+%% After an Availability Zone is removed, all instances registered with the
+%% load balancer that are in the removed
 %% Availability Zone go into the `OutOfService' state. Then, the load
-%% balancer attempts to equally balance the traffic among its remaining
-%% Availability Zones.
+%% balancer attempts to equally balance
+%% the traffic among its remaining Availability Zones.
 %%
 %% For more information, see Add or Remove Availability Zones:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html
@@ -447,14 +467,16 @@ disable_availability_zones_for_load_balancer(Client, Input, Options)
     request(Client, <<"DisableAvailabilityZonesForLoadBalancer">>, Input, Options).
 
 %% @doc Adds the specified Availability Zones to the set of Availability
-%% Zones for the specified load balancer in EC2-Classic or a default VPC.
+%% Zones for the specified load balancer
+%% in EC2-Classic or a default VPC.
 %%
 %% For load balancers in a non-default VPC, use
 %% `AttachLoadBalancerToSubnets'.
 %%
 %% The load balancer evenly distributes requests across all its registered
-%% Availability Zones that contain instances. For more information, see Add
-%% or Remove Availability Zones:
+%% Availability Zones
+%% that contain instances. For more information, see Add or Remove
+%% Availability Zones:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html
 %% in the Classic Load Balancers Guide.
 enable_availability_zones_for_load_balancer(Client, Input)
@@ -467,27 +489,26 @@ enable_availability_zones_for_load_balancer(Client, Input, Options)
 %% @doc Modifies the attributes of the specified load balancer.
 %%
 %% You can modify the load balancer attributes, such as `AccessLogs',
-%% `ConnectionDraining', and `CrossZoneLoadBalancing' by either
-%% enabling or disabling them. Or, you can modify the load balancer attribute
+%% `ConnectionDraining', and
+%% `CrossZoneLoadBalancing' by either enabling or disabling them. Or, you
+%% can modify the load balancer attribute
 %% `ConnectionSettings' by specifying an idle connection timeout value
 %% for your load balancer.
 %%
 %% For more information, see the following in the Classic Load Balancers
 %% Guide:
 %%
-%% <ul> <li> Cross-Zone Load Balancing:
+%% Cross-Zone Load Balancing:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html
 %%
-%% </li> <li> Connection Draining:
+%% Connection Draining:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html
 %%
-%% </li> <li> Access Logs:
+%% Access Logs:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html
 %%
-%% </li> <li> Idle Connection Timeout:
+%% Idle Connection Timeout:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html
-%%
-%% </li> </ul>
 modify_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_load_balancer_attributes(Client, Input, []).
@@ -504,16 +525,17 @@ modify_load_balancer_attributes(Client, Input, Options)
 %% instances with the load balancer in the VPC.
 %%
 %% Note that `RegisterInstanceWithLoadBalancer' completes when the
-%% request has been registered. Instance registration takes a little time to
-%% complete. To check the state of the registered instances, use
+%% request has been registered.
+%% Instance registration takes a little time to complete. To check the state
+%% of the registered instances, use
 %% `DescribeLoadBalancers' or `DescribeInstanceHealth'.
 %%
-%% After the instance is registered, it starts receiving traffic and requests
-%% from the load balancer. Any instance that is not in one of the
-%% Availability Zones registered for the load balancer is moved to the
-%% `OutOfService' state. If an Availability Zone is added to the load
-%% balancer later, any instances registered with the load balancer move to
-%% the `InService' state.
+%% After the instance is registered, it starts receiving traffic
+%% and requests from the load balancer. Any instance that is not
+%% in one of the Availability Zones registered for the load balancer
+%% is moved to the `OutOfService' state. If an Availability Zone
+%% is added to the load balancer later, any instances registered with the
+%% load balancer move to the `InService' state.
 %%
 %% To deregister instances from a load balancer, use
 %% `DeregisterInstancesFromLoadBalancer'.
@@ -542,8 +564,8 @@ remove_tags(Client, Input, Options)
 %% The specified certificate replaces any prior certificate that was used on
 %% the same load balancer and port.
 %%
-%% For more information about updating your SSL certificate, see Replace the
-%% SSL Certificate for Your Load Balancer:
+%% For more information about updating your SSL certificate, see
+%% Replace the SSL Certificate for Your Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html
 %% in the Classic Load Balancers Guide.
 set_load_balancer_listener_ssl_certificate(Client, Input)
@@ -561,18 +583,20 @@ set_load_balancer_listener_ssl_certificate(Client, Input, Options)
 %% public key policies.
 %%
 %% Each time you use `SetLoadBalancerPoliciesForBackendServer' to enable
-%% the policies, use the `PolicyNames' parameter to list the policies
-%% that you want to enable.
+%% the policies,
+%% use the `PolicyNames' parameter to list the policies that you want to
+%% enable.
 %%
 %% You can use `DescribeLoadBalancers' or
-%% `DescribeLoadBalancerPolicies' to verify that the policy is associated
-%% with the EC2 instance.
+%% `DescribeLoadBalancerPolicies' to verify that the policy
+%% is associated with the EC2 instance.
 %%
 %% For more information about enabling back-end instance authentication, see
 %% Configure Back-end Instance Authentication:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt
 %% in the Classic Load Balancers Guide. For more information about Proxy
-%% Protocol, see Configure Proxy Protocol Support:
+%% Protocol, see
+%% Configure Proxy Protocol Support:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html
 %% in the Classic Load Balancers Guide.
 set_load_balancer_policies_for_backend_server(Client, Input)
@@ -588,12 +612,13 @@ set_load_balancer_policies_for_backend_server(Client, Input, Options)
 %% To enable back-end server authentication, use
 %% `SetLoadBalancerPoliciesForBackendServer'.
 %%
-%% For more information about setting policies, see Update the SSL
-%% Negotiation Configuration:
+%% For more information about setting policies, see
+%% Update the SSL Negotiation Configuration:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html,
 %% Duration-Based Session Stickiness:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration,
-%% and Application-Controlled Session Stickiness:
+%% and
+%% Application-Controlled Session Stickiness:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application
 %% in the Classic Load Balancers Guide.
 set_load_balancer_policies_of_listener(Client, Input)

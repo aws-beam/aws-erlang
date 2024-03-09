@@ -2,14 +2,16 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Web Services Snow Family provides a petabyte-scale data
-%% transport solution that uses secure devices to transfer large amounts of
-%% data between your on-premises data centers and Amazon Simple Storage
-%% Service (Amazon S3).
+%% transport solution that uses
+%% secure devices to transfer large amounts of data between your on-premises
+%% data centers and
+%% Amazon Simple Storage Service (Amazon S3).
 %%
 %% The Snow Family commands described here provide access to the same
 %% functionality that is available in the Amazon Web Services Snow Family
-%% Management Console, which enables you to create and manage jobs for a Snow
-%% Family device. To transfer data locally with a Snow Family device,
+%% Management Console, which enables you to create
+%% and manage jobs for a Snow Family device. To transfer data locally with a
+%% Snow Family device,
 %% you'll need to use the Snowball Edge client or the Amazon S3 API
 %% Interface for Snowball or OpsHub for Snow Family. For more information,
 %% see the User Guide:
@@ -81,7 +83,8 @@
 %%
 %% You can only cancel a cluster job while it's in the
 %% `AwaitingQuorum' status. You'll have at least an hour after
-%% creating a cluster job to cancel it.
+%% creating a cluster
+%% job to cancel it.
 cancel_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_cluster(Client, Input, []).
@@ -91,8 +94,9 @@ cancel_cluster(Client, Input, Options)
 
 %% @doc Cancels the specified job.
 %%
-%% You can only cancel a job before its `JobState' value changes to
-%% `PreparingAppliance'. Requesting the `ListJobs' or
+%% You can only cancel a job before its `JobState'
+%% value changes to `PreparingAppliance'. Requesting the `ListJobs'
+%% or
 %% `DescribeJob' action returns a job's `JobState' as part of the
 %% response element data returned.
 cancel_job(Client, Input)
@@ -104,10 +108,12 @@ cancel_job(Client, Input, Options)
 
 %% @doc Creates an address for a Snow device to be shipped to.
 %%
-%% In most regions, addresses are validated at the time of creation. The
-%% address you provide must be located within the serviceable area of your
-%% region. If the address is invalid or unsupported, then an exception is
-%% thrown. If providing an address as a JSON file through the
+%% In most regions,
+%% addresses are validated at the time of creation. The address you provide
+%% must be located
+%% within the serviceable area of your region. If the address is invalid or
+%% unsupported, then an
+%% exception is thrown. If providing an address as a JSON file through the
 %% `cli-input-json' option, include the full file path. For example,
 %% `--cli-input-json file://create-address.json'.
 create_address(Client, Input)
@@ -120,8 +126,8 @@ create_address(Client, Input, Options)
 %% @doc Creates an empty cluster.
 %%
 %% Each cluster supports five nodes. You use the `CreateJob' action
-%% separately to create the jobs for each of these nodes. The cluster does
-%% not ship until these five node jobs have been created.
+%% separately to create the jobs for each of these nodes. The
+%% cluster does not ship until these five node jobs have been created.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -130,13 +136,16 @@ create_cluster(Client, Input, Options)
     request(Client, <<"CreateCluster">>, Input, Options).
 
 %% @doc Creates a job to import or export data between Amazon S3 and your
-%% on-premises data center.
+%% on-premises data
+%% center.
 %%
 %% Your Amazon Web Services account must have the right trust policies and
-%% permissions in place to create a job for a Snow device. If you're
-%% creating a job for a node in a cluster, you only need to provide the
-%% `clusterId' value; the other job attributes are inherited from the
-%% cluster.
+%% permissions in
+%% place to create a job for a Snow device. If you're creating a job for
+%% a node in a cluster, you
+%% only need to provide the `clusterId' value; the other job attributes
+%% are inherited
+%% from the cluster.
 %%
 %% Only the Snowball; Edge device type is supported when ordering clustered
 %% jobs.
@@ -144,96 +153,79 @@ create_cluster(Client, Input, Options)
 %% The device capacity is optional.
 %%
 %% Availability of device types differ by Amazon Web Services Region. For
-%% more information about Region availability, see Amazon Web Services
-%% Regional Services:
+%% more information
+%% about Region availability, see Amazon Web Services Regional Services:
 %% https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?p=ngi&amp;loc=4.
 %%
 %% == Snow Family devices and their capacities. ==
 %%
-%% <ul> <li> Device type: SNC1_SSD
+%% Device type: SNC1_SSD
 %%
-%% <ul> <li> Capacity: T14
+%% Capacity: T14
 %%
-%% </li> <li> Description: Snowcone
+%% Description: Snowcone
 %%
-%% </li> </ul>
+%% Device type: SNC1_HDD
 %%
-%% </li> <li> Device type: SNC1_HDD
+%% Capacity: T8
 %%
-%% <ul> <li> Capacity: T8
+%% Description: Snowcone
 %%
-%% </li> <li> Description: Snowcone
+%% Device type: EDGE_S
 %%
-%% </li> </ul>
+%% Capacity: T98
 %%
-%% </li> <li> Device type: EDGE_S
+%% Description: Snowball Edge Storage Optimized for data transfer only
 %%
-%% <ul> <li> Capacity: T98
+%% Device type: EDGE_CG
 %%
-%% </li> <li> Description: Snowball Edge Storage Optimized for data transfer
-%% only
+%% Capacity: T42
 %%
-%% </li> </ul>
+%% Description: Snowball Edge Compute Optimized with GPU
 %%
-%% </li> <li> Device type: EDGE_CG
+%% Device type: EDGE_C
 %%
-%% <ul> <li> Capacity: T42
+%% Capacity: T42
 %%
-%% </li> <li> Description: Snowball Edge Compute Optimized with GPU
+%% Description: Snowball Edge Compute Optimized without GPU
 %%
-%% </li> </ul>
+%% Device type: EDGE
 %%
-%% </li> <li> Device type: EDGE_C
+%% Capacity: T100
 %%
-%% <ul> <li> Capacity: T42
+%% Description: Snowball Edge Storage Optimized with EC2 Compute
 %%
-%% </li> <li> Description: Snowball Edge Compute Optimized without GPU
+%% This device is replaced with T98.
 %%
-%% </li> </ul>
+%% Device type: STANDARD
 %%
-%% </li> <li> Device type: EDGE
+%% Capacity: T50
 %%
-%% <ul> <li> Capacity: T100
-%%
-%% </li> <li> Description: Snowball Edge Storage Optimized with EC2 Compute
-%%
-%% </li> </ul> This device is replaced with T98.
-%%
-%% </li> <li> Device type: STANDARD
-%%
-%% <ul> <li> Capacity: T50
-%%
-%% </li> <li> Description: Original Snowball device
+%% Description: Original Snowball device
 %%
 %% This device is only available in the Ningxia, Beijing, and Singapore
 %% Amazon Web Services Region
 %%
-%% </li> </ul>
+%% Device type: STANDARD
 %%
-%% </li> <li> Device type: STANDARD
+%% Capacity: T80
 %%
-%% <ul> <li> Capacity: T80
-%%
-%% </li> <li> Description: Original Snowball device
+%% Description: Original Snowball device
 %%
 %% This device is only available in the Ningxia, Beijing, and Singapore
 %% Amazon Web Services Region.
 %%
-%% </li> </ul>
+%% Snow Family device type: RACK_5U_C
 %%
-%% </li> <li> Snow Family device type: RACK_5U_C
+%% Capacity: T13
 %%
-%% <ul> <li> Capacity: T13
+%% Description: Snowblade.
 %%
-%% </li> <li> Description: Snowblade.
+%% Device type: V3_5S
 %%
-%% </li> </ul> </li> <li> Device type: V3_5S
+%% Capacity: T240
 %%
-%% <ul> <li> Capacity: T240
-%%
-%% </li> <li> Description: Snowball Edge Storage Optimized 210TB
-%%
-%% </li> </ul> </li> </ul>
+%% Description: Snowball Edge Storage Optimized 210TB
 create_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_job(Client, Input, []).
@@ -243,9 +235,9 @@ create_job(Client, Input, Options)
 
 %% @doc Creates a job with the long-term usage option for a device.
 %%
-%% The long-term usage is a 1-year or 3-year long-term pricing type for the
-%% device. You are billed upfront, and Amazon Web Services provides discounts
-%% for long-term pricing.
+%% The long-term usage is a
+%% 1-year or 3-year long-term pricing type for the device. You are billed
+%% upfront, and Amazon Web Services provides discounts for long-term pricing.
 create_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_long_term_pricing(Client, Input, []).
@@ -263,7 +255,8 @@ create_return_shipping_label(Client, Input, Options)
     request(Client, <<"CreateReturnShippingLabel">>, Input, Options).
 
 %% @doc Takes an `AddressId' and returns specific details about that
-%% address in the form of an `Address' object.
+%% address in the
+%% form of an `Address' object.
 describe_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_address(Client, Input, []).
@@ -273,8 +266,10 @@ describe_address(Client, Input, Options)
 
 %% @doc Returns a specified number of `ADDRESS' objects.
 %%
-%% Calling this API in one of the US regions will return addresses from the
-%% list of all addresses associated with this account in all US regions.
+%% Calling this API in one of
+%% the US regions will return addresses from the list of all addresses
+%% associated with this
+%% account in all US regions.
 describe_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_addresses(Client, Input, []).
@@ -283,7 +278,8 @@ describe_addresses(Client, Input, Options)
     request(Client, <<"DescribeAddresses">>, Input, Options).
 
 %% @doc Returns information about a specific cluster including shipping
-%% information, cluster status, and other important metadata.
+%% information, cluster
+%% status, and other important metadata.
 describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
@@ -292,7 +288,8 @@ describe_cluster(Client, Input, Options)
     request(Client, <<"DescribeCluster">>, Input, Options).
 
 %% @doc Returns information about a specific job including shipping
-%% information, job status, and other important metadata.
+%% information, job status,
+%% and other important metadata.
 describe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_job(Client, Input, []).
@@ -310,27 +307,36 @@ describe_return_shipping_label(Client, Input, Options)
     request(Client, <<"DescribeReturnShippingLabel">>, Input, Options).
 
 %% @doc Returns a link to an Amazon S3 presigned URL for the manifest file
-%% associated with the specified `JobId' value.
+%% associated with the
+%% specified `JobId' value.
 %%
-%% You can access the manifest file for up to 60 minutes after this request
-%% has been made. To access the manifest file after 60 minutes have passed,
+%% You can access the manifest file for up to 60 minutes
+%% after this request has been made. To access the manifest file after 60
+%% minutes have passed,
 %% you'll have to make another call to the `GetJobManifest' action.
 %%
 %% The manifest is an encrypted file that you can download after your job
-%% enters the `WithCustomer' status. This is the only valid status for
-%% calling this API as the manifest and `UnlockCode' code value are used
-%% for securing your device and should only be used when you have the device.
-%% The manifest is decrypted by using the `UnlockCode' code value, when
-%% you pass both values to the Snow device through the Snowball client when
-%% the client is started for the first time.
+%% enters the
+%% `WithCustomer' status. This is the only valid status for calling this
+%% API as the
+%% manifest and `UnlockCode' code value are used for securing your device
+%% and should
+%% only be used when you have the device. The manifest is decrypted by using
+%% the
+%% `UnlockCode' code value, when you pass both values to the Snow device
+%% through the
+%% Snowball client when the client is started for the first time.
 %%
 %% As a best practice, we recommend that you don't save a copy of an
 %% `UnlockCode' value in the same location as the manifest file for that
-%% job. Saving these separately helps prevent unauthorized parties from
-%% gaining access to the Snow device associated with that job.
+%% job. Saving
+%% these separately helps prevent unauthorized parties from gaining access to
+%% the Snow device
+%% associated with that job.
 %%
 %% The credentials of a given job, including its manifest file and unlock
-%% code, expire 360 days after the job is created.
+%% code, expire 360
+%% days after the job is created.
 get_job_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_manifest(Client, Input, []).
@@ -340,21 +346,27 @@ get_job_manifest(Client, Input, Options)
 
 %% @doc Returns the `UnlockCode' code value for the specified job.
 %%
-%% A particular `UnlockCode' value can be accessed for up to 360 days
-%% after the associated job has been created.
+%% A particular
+%% `UnlockCode' value can be accessed for up to 360 days after the
+%% associated job
+%% has been created.
 %%
 %% The `UnlockCode' value is a 29-character code with 25 alphanumeric
 %% characters and 4 hyphens. This code is used to decrypt the manifest file
-%% when it is passed along with the manifest to the Snow device through the
-%% Snowball client when the client is started for the first time. The only
-%% valid status for calling this API is `WithCustomer' as the manifest
-%% and `Unlock' code values are used for securing your device and should
-%% only be used when you have the device.
+%% when it is passed
+%% along with the manifest to the Snow device through the Snowball client
+%% when the client is
+%% started for the first time. The only valid status for calling this API is
+%% `WithCustomer' as the manifest and `Unlock' code values are used
+%% for
+%% securing your device and should only be used when you have the device.
 %%
 %% As a best practice, we recommend that you don't save a copy of the
 %% `UnlockCode' in the same location as the manifest file for that job.
-%% Saving these separately helps prevent unauthorized parties from gaining
-%% access to the Snow device associated with that job.
+%% Saving these
+%% separately helps prevent unauthorized parties from gaining access to the
+%% Snow device
+%% associated with that job.
 get_job_unlock_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_unlock_code(Client, Input, []).
@@ -363,11 +375,13 @@ get_job_unlock_code(Client, Input, Options)
     request(Client, <<"GetJobUnlockCode">>, Input, Options).
 
 %% @doc Returns information about the Snow Family service limit for your
-%% account, and also the number of Snow devices your account has in use.
+%% account, and also the
+%% number of Snow devices your account has in use.
 %%
 %% The default service limit for the number of Snow devices that you can have
-%% at one time is 1. If you want to increase your service limit, contact
-%% Amazon Web Services Support.
+%% at one time
+%% is 1. If you want to increase your service limit, contact Amazon Web
+%% Services Support.
 get_snowball_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snowball_usage(Client, Input, []).
@@ -376,7 +390,8 @@ get_snowball_usage(Client, Input, Options)
     request(Client, <<"GetSnowballUsage">>, Input, Options).
 
 %% @doc Returns an Amazon S3 presigned URL for an update file associated with
-%% a specified `JobId'.
+%% a specified
+%% `JobId'.
 get_software_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_software_updates(Client, Input, []).
@@ -387,8 +402,10 @@ get_software_updates(Client, Input, Options)
 %% @doc Returns an array of `JobListEntry' objects of the specified
 %% length.
 %%
-%% Each `JobListEntry' object is for a job in the specified cluster and
-%% contains a job's state, a job's ID, and other information.
+%% Each
+%% `JobListEntry' object is for a job in the specified cluster and
+%% contains a job's
+%% state, a job's ID, and other information.
 list_cluster_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cluster_jobs(Client, Input, []).
@@ -399,8 +416,10 @@ list_cluster_jobs(Client, Input, Options)
 %% @doc Returns an array of `ClusterListEntry' objects of the specified
 %% length.
 %%
-%% Each `ClusterListEntry' object contains a cluster's state, a
-%% cluster's ID, and other important status information.
+%% Each
+%% `ClusterListEntry' object contains a cluster's state, a
+%% cluster's ID, and other
+%% important status information.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
@@ -409,14 +428,16 @@ list_clusters(Client, Input, Options)
     request(Client, <<"ListClusters">>, Input, Options).
 
 %% @doc This action returns a list of the different Amazon EC2-compatible
-%% Amazon Machine Images (AMIs) that are owned by your Amazon Web Services
-%% accountthat would be supported for use on a Snow device.
+%% Amazon Machine Images (AMIs)
+%% that are owned by your Amazon Web Services accountthat would be supported
+%% for use on a Snow
+%% device.
 %%
 %% Currently, supported AMIs are based on the Amazon Linux-2, Ubuntu 20.04
-%% LTS - Focal, or Ubuntu 22.04 LTS - Jammy images, available on the Amazon
-%% Web Services Marketplace. Ubuntu 16.04 LTS - Xenial (HVM) images are no
-%% longer supported in the Market, but still supported for use on devices
-%% through Amazon EC2 VM Import/Export and running locally in AMIs.
+%% LTS - Focal, or Ubuntu 22.04 LTS - Jammy images, available on the
+%% Amazon Web Services Marketplace. Ubuntu 16.04 LTS - Xenial (HVM) images
+%% are no longer supported in the Market, but still supported for use on
+%% devices through Amazon EC2 VM Import/Export and running locally in AMIs.
 list_compatible_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compatible_images(Client, Input, []).
@@ -427,11 +448,14 @@ list_compatible_images(Client, Input, Options)
 %% @doc Returns an array of `JobListEntry' objects of the specified
 %% length.
 %%
-%% Each `JobListEntry' object contains a job's state, a job's ID,
-%% and a value that indicates whether the job is a job part, in the case of
-%% export jobs. Calling this API action in one of the US regions will return
-%% jobs from the list of all jobs associated with this account in all US
-%% regions.
+%% Each
+%% `JobListEntry' object contains a job's state, a job's ID, and
+%% a value that
+%% indicates whether the job is a job part, in the case of export jobs.
+%% Calling this API action
+%% in one of the US regions will return jobs from the list of all jobs
+%% associated with this
+%% account in all US regions.
 list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
@@ -458,8 +482,9 @@ list_pickup_locations(Client, Input, Options)
 
 %% @doc Lists all supported versions for Snow on-device services.
 %%
-%% Returns an array of `ServiceVersion' object containing the supported
-%% versions for a particular service.
+%% Returns an
+%% array of `ServiceVersion' object containing the supported versions for
+%% a particular service.
 list_service_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_versions(Client, Input, []).
@@ -468,11 +493,13 @@ list_service_versions(Client, Input, Options)
     request(Client, <<"ListServiceVersions">>, Input, Options).
 
 %% @doc While a cluster's `ClusterState' value is in the
-%% `AwaitingQuorum' state, you can update some of the information
-%% associated with a cluster.
+%% `AwaitingQuorum'
+%% state, you can update some of the information associated with a cluster.
 %%
-%% Once the cluster changes to a different job state, usually 60 minutes
-%% after the cluster being created, this action is no longer available.
+%% Once the cluster
+%% changes to a different job state, usually 60 minutes after the cluster
+%% being created, this
+%% action is no longer available.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
@@ -481,10 +508,12 @@ update_cluster(Client, Input, Options)
     request(Client, <<"UpdateCluster">>, Input, Options).
 
 %% @doc While a job's `JobState' value is `New', you can update
-%% some of the information associated with a job.
+%% some of
+%% the information associated with a job.
 %%
-%% Once the job changes to a different job state, usually within 60 minutes
-%% of the job being created, this action is no longer available.
+%% Once the job changes to a different job state, usually
+%% within 60 minutes of the job being created, this action is no longer
+%% available.
 update_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job(Client, Input, []).

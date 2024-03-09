@@ -4,18 +4,22 @@
 %% @doc Amazon Web Services Migration Hub Refactor Spaces
 %%
 %% This API reference provides descriptions, syntax, and other details about
-%% each of the actions and data types for Amazon Web Services Migration Hub
-%% Refactor Spaces (Refactor Spaces).
+%% each of the
+%% actions and data types for Amazon Web Services Migration Hub Refactor
+%% Spaces (Refactor Spaces).
 %%
-%% The topic for each action shows the API request parameters and the
-%% response. Alternatively, you can use one of the Amazon Web Services SDKs
-%% to access an API that is tailored to the programming language or platform
-%% that you're using. For more information, see Amazon Web Services SDKs:
+%% The topic for each action shows the API
+%% request parameters and the response. Alternatively, you can use one of the
+%% Amazon Web Services SDKs to
+%% access an API that is tailored to the programming language or platform
+%% that you're using. For
+%% more information, see Amazon Web Services SDKs:
 %% https://aws.amazon.com/tools/#SDKs.
 %%
 %% To share Refactor Spaces environments with other Amazon Web Services
-%% accounts or with Organizations and their OUs, use Resource Access
-%% Manager's `CreateResourceShare' API. See CreateResourceShare:
+%% accounts or with Organizations
+%% and their OUs, use Resource Access Manager's `CreateResourceShare'
+%% API. See CreateResourceShare:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
 %% in the Amazon Web Services RAM API Reference.
 -module(aws_migration_hub_refactor_spaces).
@@ -89,19 +93,23 @@
 %% @doc Creates an Amazon Web Services Migration Hub Refactor Spaces
 %% application.
 %%
-%% The account that owns the environment also owns the applications created
-%% inside the environment, regardless of the account that creates the
+%% The account that owns the environment also owns the
+%% applications created inside the environment, regardless of the account
+%% that creates the
 %% application. Refactor Spaces provisions an Amazon API Gateway, API Gateway
-%% VPC link, and Network Load Balancer for the application proxy inside your
-%% account.
+%% VPC link, and
+%% Network Load Balancer for the application proxy inside your account.
 %%
 %% In environments created with a CreateEnvironment:NetworkFabricType:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
-%% of `NONE' you need to configure VPC to VPC connectivity:
+%% of `NONE' you need to configure
+%% VPC to VPC connectivity:
 %% https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/amazon-vpc-to-amazon-vpc-connectivity-options.html
-%% between your service VPC and the application proxy VPC to route traffic
-%% through the application proxy to a service with a private URL endpoint.
-%% For more information, see Create an application:
+%% between your service VPC and the application proxy VPC to
+%% route traffic through the application proxy to a service with a private
+%% URL endpoint. For more
+%% information, see
+%% Create an application:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-application.html
 %% in the Refactor Spaces User Guide.
 create_application(Client, EnvironmentIdentifier, Input) ->
@@ -110,10 +118,12 @@ create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -129,32 +139,37 @@ create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
 %% @doc Creates an Amazon Web Services Migration Hub Refactor Spaces
 %% environment.
 %%
-%% The caller owns the environment resource, and all Refactor Spaces
-%% applications, services, and routes created within the environment. They
-%% are referred to as the environment owner. The environment owner has
-%% cross-account visibility and control of Refactor Spaces resources that are
-%% added to the environment by other accounts that the environment is shared
-%% with.
+%% The caller owns the environment resource, and all
+%% Refactor Spaces applications, services, and routes created within the
+%% environment. They are referred
+%% to as the environment owner. The environment owner has cross-account
+%% visibility and control of Refactor Spaces resources that are added to the
+%% environment by other
+%% accounts that the environment is shared with.
 %%
 %% When creating an environment with a CreateEnvironment:NetworkFabricType:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
-%% of `TRANSIT_GATEWAY', Refactor Spaces provisions a transit gateway to
-%% enable services in VPCs to communicate directly across accounts. If
-%% CreateEnvironment:NetworkFabricType:
+%% of `TRANSIT_GATEWAY', Refactor Spaces
+%% provisions a transit gateway to enable services in VPCs to communicate
+%% directly across
+%% accounts. If CreateEnvironment:NetworkFabricType:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
-%% is `NONE', Refactor Spaces does not create a transit gateway and you
-%% must use your network infrastructure to route traffic to services with
-%% private URL endpoints.
+%% is `NONE', Refactor Spaces does not create
+%% a transit gateway and you must use your network infrastructure to route
+%% traffic to services
+%% with private URL endpoints.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 create_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/environments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -169,88 +184,116 @@ create_environment(Client, Input0, Options0) ->
 
 %% @doc Creates an Amazon Web Services Migration Hub Refactor Spaces route.
 %%
-%% The account owner of the service resource is always the environment owner,
-%% regardless of which account creates the route. Routes target a service in
+%% The account owner of the service resource is always the
+%% environment owner, regardless of which account creates the route. Routes
+%% target a service in
 %% the application. If an application does not have any routes, then the
-%% first route must be created as a `DEFAULT' `RouteType'.
+%% first route must be
+%% created as a `DEFAULT'
+%% `RouteType'.
 %%
 %% When created, the default route defaults to an active state so state is
-%% not a required input. However, like all other state values the state of
-%% the default route can be updated after creation, but only when all other
-%% routes are also inactive. Conversely, no route can be active without the
-%% default route also being active.
+%% not a required
+%% input. However, like all other state values the state of the default route
+%% can be updated
+%% after creation, but only when all other routes are also inactive.
+%% Conversely, no route can be
+%% active without the default route also being active.
 %%
 %% When you create a route, Refactor Spaces configures the Amazon API Gateway
-%% to send traffic to the target service as follows:
+%% to send traffic
+%% to the target service as follows:
 %%
-%% <ul> <li> URL Endpoints
+%% URL Endpoints
 %%
 %% If the service has a URL endpoint, and the endpoint resolves to a private
-%% IP address, Refactor Spaces routes traffic using the API Gateway VPC link.
-%% If a service endpoint resolves to a public IP address, Refactor Spaces
-%% routes traffic over the public internet. Services can have HTTP or HTTPS
-%% URL endpoints. For HTTPS URLs, publicly-signed certificates are supported.
-%% Private Certificate Authorities (CAs) are permitted only if the CA's
-%% domain is also publicly resolvable.
+%% IP address,
+%% Refactor Spaces routes traffic using the API Gateway VPC link. If a
+%% service endpoint
+%% resolves to a public IP address, Refactor Spaces routes traffic over the
+%% public internet.
+%% Services can have HTTP or HTTPS URL endpoints. For HTTPS URLs,
+%% publicly-signed
+%% certificates are supported. Private Certificate Authorities (CAs) are
+%% permitted only if
+%% the CA's domain is also publicly resolvable.
 %%
 %% Refactor Spaces automatically resolves the public Domain Name System (DNS)
-%% names that are set in `CreateService:UrlEndpoint 'when you create a
-%% service. The DNS names resolve when the DNS time-to-live (TTL) expires, or
-%% every 60 seconds for TTLs less than 60 seconds. This periodic DNS
-%% resolution ensures that the route configuration remains up-to-date.
+%% names that are
+%% set in `CreateService:UrlEndpoint 'when you create a service. The DNS
+%% names
+%% resolve when the DNS time-to-live (TTL) expires, or every 60 seconds for
+%% TTLs less than 60
+%% seconds. This periodic DNS resolution ensures that the route configuration
+%% remains
+%% up-to-date.
 %%
 %% One-time health check
 %%
 %% A one-time health check is performed on the service when either the route
-%% is updated from inactive to active, or when it is created with an active
-%% state. If the health check fails, the route transitions the route state to
-%% `FAILED', an error code of `SERVICE_ENDPOINT_HEALTH_CHECK_FAILURE'
-%% is provided, and no traffic is sent to the service.
+%% is updated
+%% from inactive to active, or when it is created with an active state. If
+%% the health check
+%% fails, the route transitions the route state to `FAILED', an error
+%% code of
+%% `SERVICE_ENDPOINT_HEALTH_CHECK_FAILURE' is provided, and no traffic is
+%% sent
+%% to the service.
 %%
 %% For private URLs, a target group is created on the Network Load Balancer
-%% and the load balancer target group runs default target health checks. By
-%% default, the health check is run against the service endpoint URL.
-%% Optionally, the health check can be performed against a different
-%% protocol, port, and/or path using the CreateService:UrlEndpoint:
+%% and the load
+%% balancer target group runs default target health checks. By default, the
+%% health check is
+%% run against the service endpoint URL. Optionally, the health check can be
+%% performed
+%% against a different protocol, port, and/or path using the
+%% CreateService:UrlEndpoint:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateService.html#migrationhubrefactorspaces-CreateService-request-UrlEndpoint
-%% parameter. All other health check settings for the load balancer use the
-%% default values described in the Health checks for your target groups:
+%% parameter. All other health check settings for the
+%% load balancer use the default values described in the Health
+%% checks for your target groups:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html
-%% in the Elastic Load Balancing guide. The health check is considered
-%% successful if at least one target within the target group transitions to a
-%% healthy state.
+%% in the Elastic Load Balancing
+%% guide. The health check is considered successful if at least one target
+%% within the target group transitions to a healthy state.
 %%
-%% </li> <li> Lambda function endpoints
+%% Lambda function endpoints
 %%
 %% If the service has an Lambda function endpoint, then Refactor Spaces
 %% configures the Lambda function's resource policy to allow the
-%% application's API Gateway to invoke the function.
+%% application's
+%% API Gateway to invoke the function.
 %%
 %% The Lambda function state is checked. If the function is not active, the
 %% function configuration is updated so that Lambda resources are
-%% provisioned. If the Lambda state is `Failed', then the route creation
-%% fails. For more information, see the GetFunctionConfiguration's State
-%% response parameter:
+%% provisioned. If
+%% the Lambda state is `Failed', then the route creation fails. For
+%% more information, see the GetFunctionConfiguration's State response
+%% parameter:
 %% https://docs.aws.amazon.com/lambda/latest/dg/API_GetFunctionConfiguration.html#SSS-GetFunctionConfiguration-response-State
 %% in the Lambda Developer Guide.
 %%
 %% A check is performed to determine that a Lambda function with the
-%% specified ARN exists. If it does not exist, the health check fails. For
-%% public URLs, a connection is opened to the public endpoint. If the URL is
-%% not reachable, the health check fails.
+%% specified ARN
+%% exists. If it does not exist, the health check fails. For public URLs, a
+%% connection is
+%% opened to the public endpoint. If the URL is not reachable, the health
+%% check fails.
 %%
-%% </li> </ul> Environments without a network bridge
+%% Environments without a network bridge
 %%
 %% When you create environments without a network bridge
 %% (CreateEnvironment:NetworkFabricType:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
-%% is `NONE)' and you use your own networking infrastructure, you need to
-%% configure VPC to VPC connectivity:
+%% is `NONE)' and you use your own
+%% networking infrastructure, you need to configure VPC to VPC connectivity:
 %% https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/amazon-vpc-to-amazon-vpc-connectivity-options.html
-%% between your network and the application proxy VPC. Route creation from
-%% the application proxy to service endpoints will fail if your network is
-%% not configured to connect to the application proxy VPC. For more
-%% information, see Create a route:
+%% between your network and the application proxy VPC. Route
+%% creation from the application proxy to service endpoints will fail if your
+%% network is not
+%% configured to connect to the application proxy VPC. For more information,
+%% see Create
+%% a route:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-role.html
 %% in the Refactor Spaces User Guide.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
@@ -259,10 +302,12 @@ create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Optio
     Method = post,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -277,26 +322,32 @@ create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Optio
 
 %% @doc Creates an Amazon Web Services Migration Hub Refactor Spaces service.
 %%
-%% The account owner of the service is always the environment owner,
-%% regardless of which account in the environment creates the service.
+%% The account owner of the service is always the
+%% environment owner, regardless of which account in the environment creates
+%% the service.
 %% Services have either a URL endpoint in a virtual private cloud (VPC), or a
-%% Lambda function endpoint.
+%% Lambda
+%% function endpoint.
 %%
 %% If an Amazon Web Services resource is launched in a service VPC, and you
-%% want it to be accessible to all of an environment’s services with VPCs and
-%% routes, apply the `RefactorSpacesSecurityGroup' to the resource.
-%% Alternatively, to add more cross-account constraints, apply your own
-%% security group.
+%% want it to be
+%% accessible to all of an environment’s services with VPCs and routes, apply
+%% the
+%% `RefactorSpacesSecurityGroup' to the resource. Alternatively, to add
+%% more
+%% cross-account constraints, apply your own security group.
 create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -312,18 +363,20 @@ create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Opt
 %% @doc Deletes an Amazon Web Services Migration Hub Refactor Spaces
 %% application.
 %%
-%% Before you can delete an application, you must first delete any services
-%% or routes within the application.
+%% Before you can delete an application, you must first
+%% delete any services or routes within the application.
 delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -339,18 +392,20 @@ delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0,
 %% @doc Deletes an Amazon Web Services Migration Hub Refactor Spaces
 %% environment.
 %%
-%% Before you can delete an environment, you must first delete any
-%% applications and services within the environment.
+%% Before you can delete an environment, you must first
+%% delete any applications and services within the environment.
 delete_environment(Client, EnvironmentIdentifier, Input) ->
     delete_environment(Client, EnvironmentIdentifier, Input, []).
 delete_environment(Client, EnvironmentIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -370,10 +425,12 @@ delete_resource_policy(Client, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/resourcepolicy/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -393,10 +450,12 @@ delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifi
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes/", aws_util:encode_uri(RouteIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -416,10 +475,12 @@ delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIden
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services/", aws_util:encode_uri(ServiceIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -446,9 +507,11 @@ get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -470,9 +533,11 @@ get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -494,9 +559,11 @@ get_resource_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resourcepolicy/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -517,9 +584,11 @@ get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes/", aws_util:encode_uri(RouteIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -540,9 +609,11 @@ get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentif
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services/", aws_util:encode_uri(ServiceIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -564,9 +635,11 @@ list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -580,7 +653,8 @@ list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all Amazon Web Services Migration Hub Refactor Spaces service
-%% virtual private clouds (VPCs) that are part of the environment.
+%% virtual private clouds (VPCs) that are part of the
+%% environment.
 list_environment_vpcs(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     list_environment_vpcs(Client, EnvironmentIdentifier, #{}, #{}).
@@ -593,9 +667,11 @@ list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/vpcs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -609,7 +685,8 @@ list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon Web Services Migration Hub Refactor Spaces environments
-%% owned by a caller account or shared with the caller account.
+%% owned by a caller account or shared with the caller
+%% account.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
@@ -622,9 +699,11 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -651,9 +730,11 @@ list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -680,9 +761,11 @@ list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -711,9 +794,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -724,8 +809,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Attaches a resource-based permission policy to the Amazon Web
 %% Services Migration Hub Refactor Spaces environment.
 %%
-%% The policy must contain the same actions and condition statements as the
+%% The policy
+%% must contain the same actions and condition statements as the
 %% `arn:aws:ram::aws:permission/AWSRAMDefaultPermissionRefactorSpacesEnvironment'
+%%
 %% permission in Resource Access Manager. The policy must not contain new
 %% lines or blank lines.
 put_resource_policy(Client, Input) ->
@@ -734,10 +821,12 @@ put_resource_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/resourcepolicy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -752,23 +841,27 @@ put_resource_policy(Client, Input0, Options0) ->
 
 %% @doc Removes the tags of a given resource.
 %%
-%% Tags are metadata which can be used to manage a resource. To tag a
-%% resource, the caller account must be the same as the resource’s
+%% Tags are metadata which can be used to manage a
+%% resource. To tag a resource, the caller account must be the same as the
+%% resource’s
 %% `OwnerAccountId'. Tagging resources in other accounts is not
 %% supported.
 %%
 %% Amazon Web Services Migration Hub Refactor Spaces does not propagate tags
-%% to orchestrated resources, such as an environment’s transit gateway.
+%% to orchestrated resources, such as an
+%% environment’s transit gateway.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -783,8 +876,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Adds to or modifies the tags of the given resource.
 %%
-%% Tags are metadata which can be used to manage a resource. To untag a
-%% resource, the caller account must be the same as the resource’s
+%% Tags are metadata which can be used to
+%% manage a resource. To untag a resource, the caller account must be the
+%% same as the resource’s
 %% `OwnerAccountId'. Untagging resources across accounts is not
 %% supported.
 untag_resource(Client, ResourceArn, Input) ->
@@ -793,10 +887,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -817,10 +913,12 @@ update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifi
     Method = patch,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes/", aws_util:encode_uri(RouteIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -836,6 +934,11 @@ update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifi
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -4,19 +4,24 @@
 %% @doc Welcome to the Entity Resolution API Reference.
 %%
 %% Entity Resolution is an Amazon Web Services service that provides
-%% pre-configured entity resolution capabilities that enable developers and
-%% analysts at advertising and marketing companies to build an accurate and
-%% complete view of their consumers.
+%% pre-configured entity
+%% resolution capabilities that enable developers and analysts at advertising
+%% and marketing
+%% companies to build an accurate and complete view of their consumers.
 %%
 %% With Entity Resolution, you can match source records containing consumer
-%% identifiers, such as name, email address, and phone number. This is true
-%% even when these records have incomplete or conflicting identifiers. For
-%% example, Entity Resolution can effectively match a source record from a
-%% customer relationship management (CRM) system with a source record from a
-%% marketing system containing campaign information.
+%% identifiers,
+%% such as name, email address, and phone number. This is true even when
+%% these records have
+%% incomplete or conflicting identifiers. For example, Entity Resolution can
+%% effectively match
+%% a source record from a customer relationship management (CRM) system with
+%% a source record
+%% from a marketing system containing campaign information.
 %%
 %% To learn more about Entity Resolution concepts, procedures, and best
-%% practices, see the Entity Resolution User Guide:
+%% practices, see the
+%% Entity Resolution User Guide:
 %% https://docs.aws.amazon.com/entityresolution/latest/userguide/what-is-service.html.
 -module(aws_entityresolution).
 
@@ -46,6 +51,9 @@
          get_matching_workflow/2,
          get_matching_workflow/4,
          get_matching_workflow/5,
+         get_provider_service/3,
+         get_provider_service/5,
+         get_provider_service/6,
          get_schema_mapping/2,
          get_schema_mapping/4,
          get_schema_mapping/5,
@@ -92,20 +100,25 @@
 %%====================================================================
 
 %% @doc Creates an `IdMappingWorkflow' object which stores the
-%% configuration of the data processing job to be run.
+%% configuration of the
+%% data processing job to be run.
 %%
-%% Each `IdMappingWorkflow' must have a unique workflow name. To modify
-%% an existing workflow, use the `UpdateIdMappingWorkflow' API.
+%% Each `IdMappingWorkflow' must have a unique
+%% workflow name. To modify an existing workflow, use the
+%% `UpdateIdMappingWorkflow'
+%% API.
 create_id_mapping_workflow(Client, Input) ->
     create_id_mapping_workflow(Client, Input, []).
 create_id_mapping_workflow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/idmappingworkflows"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -119,21 +132,25 @@ create_id_mapping_workflow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a `MatchingWorkflow' object which stores the
-%% configuration of the data processing job to be run.
+%% configuration of the
+%% data processing job to be run.
 %%
-%% It is important to note that there should not be a pre-existing
-%% `MatchingWorkflow' with the same name. To modify an existing workflow,
-%% utilize the `UpdateMatchingWorkflow' API.
+%% It is important to note that there should not be a
+%% pre-existing `MatchingWorkflow' with the same name. To modify an
+%% existing
+%% workflow, utilize the `UpdateMatchingWorkflow' API.
 create_matching_workflow(Client, Input) ->
     create_matching_workflow(Client, Input, []).
 create_matching_workflow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/matchingworkflows"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -150,18 +167,21 @@ create_matching_workflow(Client, Input0, Options0) ->
 %% customer records table.
 %%
 %% The `SchemaMapping' also provides Entity Resolution with some metadata
-%% about the table, such as the attribute types of the columns and which
-%% columns to match on.
+%% about the
+%% table, such as the attribute types of the columns and which columns to
+%% match on.
 create_schema_mapping(Client, Input) ->
     create_schema_mapping(Client, Input, []).
 create_schema_mapping(Client, Input0, Options0) ->
     Method = post,
     Path = ["/schemas"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -176,18 +196,20 @@ create_schema_mapping(Client, Input0, Options0) ->
 
 %% @doc Deletes the `IdMappingWorkflow' with a given name.
 %%
-%% This operation will succeed even if a workflow with the given name does
-%% not exist.
+%% This operation will
+%% succeed even if a workflow with the given name does not exist.
 delete_id_mapping_workflow(Client, WorkflowName, Input) ->
     delete_id_mapping_workflow(Client, WorkflowName, Input, []).
 delete_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
     Method = delete,
     Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -202,18 +224,20 @@ delete_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
 
 %% @doc Deletes the `MatchingWorkflow' with a given name.
 %%
-%% This operation will succeed even if a workflow with the given name does
-%% not exist.
+%% This operation will succeed
+%% even if a workflow with the given name does not exist.
 delete_matching_workflow(Client, WorkflowName, Input) ->
     delete_matching_workflow(Client, WorkflowName, Input, []).
 delete_matching_workflow(Client, WorkflowName, Input0, Options0) ->
     Method = delete,
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -228,20 +252,23 @@ delete_matching_workflow(Client, WorkflowName, Input0, Options0) ->
 
 %% @doc Deletes the `SchemaMapping' with a given name.
 %%
-%% This operation will succeed even if a schema with the given name does not
-%% exist. This operation will fail if there is a `MatchingWorkflow'
-%% object that references the `SchemaMapping' in the workflow's
-%% `InputSourceConfig'.
+%% This operation will succeed
+%% even if a schema with the given name does not exist. This operation will
+%% fail if there is a
+%% `MatchingWorkflow' object that references the `SchemaMapping' in
+%% the workflow's `InputSourceConfig'.
 delete_schema_mapping(Client, SchemaName, Input) ->
     delete_schema_mapping(Client, SchemaName, Input, []).
 delete_schema_mapping(Client, SchemaName, Input0, Options0) ->
     Method = delete,
     Path = ["/schemas/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -255,7 +282,8 @@ delete_schema_mapping(Client, SchemaName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the status, metrics, and errors (if there are any) that are
-%% associated with a job.
+%% associated with a
+%% job.
 get_id_mapping_job(Client, JobId, WorkflowName)
   when is_map(Client) ->
     get_id_mapping_job(Client, JobId, WorkflowName, #{}, #{}).
@@ -268,9 +296,11 @@ get_id_mapping_job(Client, JobId, WorkflowName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -291,9 +321,11 @@ get_id_mapping_workflow(Client, WorkflowName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -302,17 +334,20 @@ get_id_mapping_workflow(Client, WorkflowName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the corresponding Match ID of a customer record if the record
-%% has been processed.
+%% has been
+%% processed.
 get_match_id(Client, WorkflowName, Input) ->
     get_match_id(Client, WorkflowName, Input, []).
 get_match_id(Client, WorkflowName, Input0, Options0) ->
     Method = post,
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), "/matches"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -326,7 +361,8 @@ get_match_id(Client, WorkflowName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the status, metrics, and errors (if there are any) that are
-%% associated with a job.
+%% associated with a
+%% job.
 get_matching_job(Client, JobId, WorkflowName)
   when is_map(Client) ->
     get_matching_job(Client, JobId, WorkflowName, #{}, #{}).
@@ -339,9 +375,11 @@ get_matching_job(Client, JobId, WorkflowName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -362,9 +400,36 @@ get_matching_workflow(Client, WorkflowName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the `ProviderService' of a given name.
+get_provider_service(Client, ProviderName, ProviderServiceName)
+  when is_map(Client) ->
+    get_provider_service(Client, ProviderName, ProviderServiceName, #{}, #{}).
+
+get_provider_service(Client, ProviderName, ProviderServiceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_provider_service(Client, ProviderName, ProviderServiceName, QueryMap, HeadersMap, []).
+
+get_provider_service(Client, ProviderName, ProviderServiceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/providerservices/", aws_util:encode_uri(ProviderName), "/", aws_util:encode_uri(ProviderServiceName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -385,9 +450,11 @@ get_schema_mapping(Client, SchemaName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schemas/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -408,9 +475,11 @@ list_id_mapping_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -424,7 +493,8 @@ list_id_mapping_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `IdMappingWorkflows' that have been
-%% created for an Amazon Web Services account.
+%% created for an
+%% Amazon Web Services account.
 list_id_mapping_workflows(Client)
   when is_map(Client) ->
     list_id_mapping_workflows(Client, #{}, #{}).
@@ -437,9 +507,11 @@ list_id_mapping_workflows(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/idmappingworkflows"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -465,9 +537,11 @@ list_matching_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -481,7 +555,8 @@ list_matching_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `MatchingWorkflows' that have been
-%% created for an Amazon Web Services account.
+%% created for an
+%% Amazon Web Services account.
 list_matching_workflows(Client)
   when is_map(Client) ->
     list_matching_workflows(Client, #{}, #{}).
@@ -494,9 +569,11 @@ list_matching_workflows(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/matchingworkflows"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -510,7 +587,8 @@ list_matching_workflows(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `ProviderServices' that are available
-%% in this Amazon Web Services Region.
+%% in this
+%% Amazon Web Services Region.
 list_provider_services(Client)
   when is_map(Client) ->
     list_provider_services(Client, #{}, #{}).
@@ -523,9 +601,11 @@ list_provider_services(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/providerservices"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -540,7 +620,8 @@ list_provider_services(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `SchemaMappings' that have been created
-%% for an Amazon Web Services account.
+%% for an
+%% Amazon Web Services account.
 list_schema_mappings(Client)
   when is_map(Client) ->
     list_schema_mappings(Client, #{}, #{}).
@@ -553,9 +634,11 @@ list_schema_mappings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schemas"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -570,8 +653,8 @@ list_schema_mappings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Displays the tags associated with an Entity Resolution resource.
 %%
-%% In Entity Resolution, `SchemaMapping', and `MatchingWorkflow' can
-%% be tagged.
+%% In Entity Resolution,
+%% `SchemaMapping', and `MatchingWorkflow' can be tagged.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -584,9 +667,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -596,18 +681,20 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts the `IdMappingJob' of a workflow.
 %%
-%% The workflow must have previously been created using the
-%% `CreateIdMappingWorkflow' endpoint.
+%% The workflow must have previously
+%% been created using the `CreateIdMappingWorkflow' endpoint.
 start_id_mapping_job(Client, WorkflowName, Input) ->
     start_id_mapping_job(Client, WorkflowName, Input, []).
 start_id_mapping_job(Client, WorkflowName, Input0, Options0) ->
     Method = post,
     Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -622,18 +709,20 @@ start_id_mapping_job(Client, WorkflowName, Input0, Options0) ->
 
 %% @doc Starts the `MatchingJob' of a workflow.
 %%
-%% The workflow must have previously been created using the
-%% `CreateMatchingWorkflow' endpoint.
+%% The workflow must have previously
+%% been created using the `CreateMatchingWorkflow' endpoint.
 start_matching_job(Client, WorkflowName, Input) ->
     start_matching_job(Client, WorkflowName, Input, []).
 start_matching_job(Client, WorkflowName, Input0, Options0) ->
     Method = post,
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -650,26 +739,33 @@ start_matching_job(Client, WorkflowName, Input0, Options0) ->
 %% Resolution resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions by granting a user permission to access or
-%% change only resources with certain tag values. In Entity Resolution,
-%% `SchemaMapping' and `MatchingWorkflow' can be tagged. Tags
-%% don't have any semantic meaning to Amazon Web Services and are
-%% interpreted strictly as strings of characters. You can use the
-%% `TagResource' action with a resource that already has tags. If you
-%% specify a new tag key, this tag is appended to the list of tags associated
-%% with the resource. If you specify a tag key that is already associated
-%% with the resource, the new tag value that you specify replaces the
-%% previous value for that tag.
+%% them to scope
+%% user permissions by granting a user permission to access or change only
+%% resources with
+%% certain tag values. In Entity Resolution, `SchemaMapping' and
+%% `MatchingWorkflow' can be tagged. Tags don't have any semantic
+%% meaning to
+%% Amazon Web Services and are interpreted strictly as strings of characters.
+%% You can use
+%% the `TagResource' action with a resource that already has tags. If you
+%% specify a
+%% new tag key, this tag is appended to the list of tags associated with the
+%% resource. If you
+%% specify a tag key that is already associated with the resource, the new
+%% tag value that you
+%% specify replaces the previous value for that tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -686,17 +782,20 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% resource.
 %%
 %% In Entity Resolution, `SchemaMapping', and `MatchingWorkflow' can
-%% be tagged.
+%% be
+%% tagged.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -712,19 +811,23 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an existing `IdMappingWorkflow'.
 %%
-%% This method is identical to `CreateIdMappingWorkflow', except it uses
-%% an HTTP `PUT' request instead of a `POST' request, and the
-%% `IdMappingWorkflow' must already exist for the method to succeed.
+%% This method is identical to
+%% `CreateIdMappingWorkflow', except it uses an HTTP `PUT' request
+%% instead of a `POST' request, and the `IdMappingWorkflow' must
+%% already
+%% exist for the method to succeed.
 update_id_mapping_workflow(Client, WorkflowName, Input) ->
     update_id_mapping_workflow(Client, WorkflowName, Input, []).
 update_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
     Method = put,
     Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -739,19 +842,23 @@ update_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
 
 %% @doc Updates an existing `MatchingWorkflow'.
 %%
-%% This method is identical to `CreateMatchingWorkflow', except it uses
-%% an HTTP `PUT' request instead of a `POST' request, and the
-%% `MatchingWorkflow' must already exist for the method to succeed.
+%% This method is identical to
+%% `CreateMatchingWorkflow', except it uses an HTTP `PUT' request
+%% instead of a `POST' request, and the `MatchingWorkflow' must
+%% already
+%% exist for the method to succeed.
 update_matching_workflow(Client, WorkflowName, Input) ->
     update_matching_workflow(Client, WorkflowName, Input, []).
 update_matching_workflow(Client, WorkflowName, Input0, Options0) ->
     Method = put,
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -767,17 +874,20 @@ update_matching_workflow(Client, WorkflowName, Input0, Options0) ->
 %% @doc Updates a schema mapping.
 %%
 %% A schema is immutable if it is being used by a workflow. Therefore, you
-%% can't update a schema mapping if it's associated with a workflow.
+%% can't update
+%% a schema mapping if it's associated with a workflow.
 update_schema_mapping(Client, SchemaName, Input) ->
     update_schema_mapping(Client, SchemaName, Input, []).
 update_schema_mapping(Client, SchemaName, Input0, Options0) ->
     Method = put,
     Path = ["/schemas/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -793,6 +903,11 @@ update_schema_mapping(Client, SchemaName, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

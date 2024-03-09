@@ -1,31 +1,38 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Keyspaces (for Apache Cassandra) is a scalable, highly
-%% available, and managed Apache Cassandra-compatible database service.
+%% @doc Amazon Keyspaces (for Apache Cassandra) is a scalable,
+%% highly available, and managed Apache Cassandra-compatible database
+%% service.
 %%
-%% Amazon Keyspaces makes it easy to migrate, run, and scale Cassandra
-%% workloads in the Amazon Web Services Cloud. With just a few clicks on the
-%% Amazon Web Services Management Console or a few lines of code, you can
-%% create keyspaces and tables in Amazon Keyspaces, without deploying any
-%% infrastructure or installing software.
+%% Amazon Keyspaces makes it easy to migrate,
+%% run, and scale Cassandra workloads in the Amazon Web Services Cloud. With
+%% just a few clicks on the Amazon Web Services Management Console or a few
+%% lines of code,
+%% you can create keyspaces and tables in Amazon Keyspaces, without deploying
+%% any infrastructure or installing software.
 %%
 %% In addition to supporting Cassandra Query Language (CQL) requests via
-%% open-source Cassandra drivers, Amazon Keyspaces supports data definition
-%% language (DDL) operations to manage keyspaces and tables using the Amazon
-%% Web Services SDK and CLI, as well as infrastructure as code (IaC) services
-%% and tools such as CloudFormation and Terraform. This API reference
-%% describes the supported DDL operations in detail.
+%% open-source Cassandra drivers,
+%% Amazon Keyspaces supports data definition language (DDL) operations to
+%% manage keyspaces and tables using the Amazon Web Services SDK and CLI, as
+%% well as
+%% infrastructure as code (IaC) services and tools such as CloudFormation and
+%% Terraform. This API reference describes
+%% the supported DDL operations in detail.
 %%
 %% For the list of all supported CQL APIs, see Supported Cassandra APIs,
-%% operations, and data types in Amazon Keyspaces:
+%% operations, and data types
+%% in Amazon Keyspaces:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/cassandra-apis.html
-%% in the Amazon Keyspaces Developer Guide.
+%% in the Amazon Keyspaces Developer
+%% Guide.
 %%
 %% To learn how Amazon Keyspaces API actions are recorded with CloudTrail,
 %% see Amazon Keyspaces information in CloudTrail:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html#service-name-info-in-cloudtrail
-%% in the Amazon Keyspaces Developer Guide.
+%% in the Amazon Keyspaces Developer
+%% Guide.
 %%
 %% For more information about Amazon Web Services APIs, for example how to
 %% implement retry logic or how to sign Amazon Web Services API requests, see
@@ -72,16 +79,17 @@
 %% @doc The `CreateKeyspace' operation adds a new keyspace to your
 %% account.
 %%
-%% In an Amazon Web Services account, keyspace names must be unique within
-%% each Region.
+%% In an Amazon Web Services account, keyspace names
+%% must be unique within each Region.
 %%
 %% `CreateKeyspace' is an asynchronous operation. You can monitor the
-%% creation status of the new keyspace by using the `GetKeyspace'
-%% operation.
+%% creation status of the new keyspace
+%% by using the `GetKeyspace' operation.
 %%
 %% For more information, see Creating keyspaces:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-keyspaces.html#keyspaces-create
-%% in the Amazon Keyspaces Developer Guide.
+%% in the Amazon Keyspaces Developer
+%% Guide.
 create_keyspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_keyspace(Client, Input, []).
@@ -92,17 +100,20 @@ create_keyspace(Client, Input, Options)
 %% @doc The `CreateTable' operation adds a new table to the specified
 %% keyspace.
 %%
-%% Within a keyspace, table names must be unique.
+%% Within a keyspace, table names
+%% must be unique.
 %%
 %% `CreateTable' is an asynchronous operation. When the request is
-%% received, the status of the table is set to `CREATING'. You can
-%% monitor the creation status of the new table by using the `GetTable'
+%% received, the status of the table is set to `CREATING'.
+%% You can monitor the creation status of the new table by using the
+%% `GetTable'
 %% operation, which returns the current `status' of the table. You can
 %% start using a table when the status is `ACTIVE'.
 %%
 %% For more information, see Creating tables:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-tables.html#tables-create
-%% in the Amazon Keyspaces Developer Guide.
+%% in the Amazon Keyspaces Developer
+%% Guide.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
@@ -121,13 +132,14 @@ delete_keyspace(Client, Input, Options)
 
 %% @doc The `DeleteTable' operation deletes a table and all of its data.
 %%
-%% After a `DeleteTable' request is received, the specified table is in
-%% the `DELETING' state until Amazon Keyspaces completes the deletion. If
-%% the table is in the `ACTIVE' state, you can delete it. If a table is
-%% either in the `CREATING' or `UPDATING' states, then Amazon
-%% Keyspaces returns a `ResourceInUseException'. If the specified table
-%% does not exist, Amazon Keyspaces returns a
-%% `ResourceNotFoundException'. If the table is already in the
+%% After a `DeleteTable' request is received,
+%% the specified table is in the `DELETING' state until Amazon Keyspaces
+%% completes the deletion. If the table
+%% is in the `ACTIVE' state, you can delete it. If a table is either in
+%% the `CREATING' or `UPDATING' states, then
+%% Amazon Keyspaces returns a `ResourceInUseException'. If the specified
+%% table does not exist, Amazon Keyspaces returns
+%% a `ResourceNotFoundException'. If the table is already in the
 %% `DELETING' state, no error is returned.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -146,8 +158,8 @@ get_keyspace(Client, Input, Options)
     request(Client, <<"GetKeyspace">>, Input, Options).
 
 %% @doc Returns information about the table, including the table's name
-%% and current status, the keyspace name, configuration settings, and
-%% metadata.
+%% and current status, the keyspace name,
+%% configuration settings, and metadata.
 %%
 %% To read table metadata using `GetTable', `Select' action
 %% permissions for the table and system tables are required to complete the
@@ -162,16 +174,18 @@ get_table(Client, Input, Options)
 %% @doc Returns auto scaling related settings of the specified table in JSON
 %% format.
 %%
-%% If the table is a multi-Region table, the Amazon Web Services Region
-%% specific auto scaling settings of the table are included.
+%% If the table is a multi-Region table, the
+%% Amazon Web Services Region specific auto scaling settings of the table are
+%% included.
 %%
 %% Amazon Keyspaces auto scaling helps you provision throughput capacity for
-%% variable workloads efficiently by increasing and decreasing your
-%% table's read and write capacity automatically in response to
+%% variable workloads efficiently by increasing and decreasing
+%% your table's read and write capacity automatically in response to
 %% application traffic. For more information, see Managing throughput
 %% capacity automatically with Amazon Keyspaces auto scaling:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html in
-%% the Amazon Keyspaces Developer Guide.
+%% the Amazon Keyspaces Developer
+%% Guide.
 %%
 %% `GetTableAutoScalingSettings' can't be used as an action in an IAM
 %% policy.
@@ -180,11 +194,9 @@ get_table(Client, Input, Options)
 %% allow the following two actions in the IAM policy statement's
 %% `Action' element:
 %%
-%% <ul> <li> `application-autoscaling:DescribeScalableTargets'
+%% `application-autoscaling:DescribeScalableTargets'
 %%
-%% </li> <li> `application-autoscaling:DescribeScalingPolicies'
-%%
-%% </li> </ul>
+%% `application-autoscaling:DescribeScalingPolicies'
 get_table_auto_scaling_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_auto_scaling_settings(Client, Input, []).
@@ -220,52 +232,57 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Restores the table to the specified point in time within the
 %% `earliest_restorable_timestamp' and the current time.
 %%
-%% For more information about restore points, see Time window for PITR
-%% continuous backups:
+%% For more information about restore points, see
+%%
+%% Time window for PITR continuous backups:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window
 %% in the Amazon Keyspaces Developer Guide.
 %%
 %% Any number of users can execute up to 4 concurrent restores (any type of
 %% restore) in a given account.
 %%
-%% When you restore using point in time recovery, Amazon Keyspaces restores
-%% your source table's schema and data to the state based on the selected
-%% timestamp `(day:hour:minute:second)' to a new table. The Time to Live
-%% (TTL) settings are also restored to the state based on the selected
-%% timestamp.
+%% When you restore using point in time recovery,
+%% Amazon Keyspaces restores your source table's schema and data to the
+%% state
+%% based on the selected timestamp `(day:hour:minute:second)' to a new
+%% table. The Time to Live (TTL) settings
+%% are also restored to the state based on the selected timestamp.
 %%
 %% In addition to the table's schema, data, and TTL settings,
 %% `RestoreTable' restores the capacity mode, auto scaling settings,
-%% encryption settings, and point-in-time recovery settings from the source
-%% table. Unlike the table's schema data and TTL settings, which are
-%% restored based on the selected timestamp, these settings are always
-%% restored based on the table's settings as of the current time or when
-%% the table was deleted.
+%% encryption settings, and
+%% point-in-time recovery settings from the source table.
+%% Unlike the table's schema data and TTL settings, which are restored
+%% based on the selected timestamp,
+%% these settings are always restored based on the table's settings as of
+%% the current time or when the table was deleted.
 %%
-%% You can also overwrite these settings during restore:
+%% You can also overwrite
+%% these settings during restore:
 %%
-%% <ul> <li> Read/write capacity mode
+%% Read/write capacity mode
 %%
-%% </li> <li> Provisioned throughput capacity units
+%% Provisioned throughput capacity units
 %%
-%% </li> <li> Auto scaling settings
+%% Auto scaling settings
 %%
-%% </li> <li> Point-in-time (PITR) settings
+%% Point-in-time (PITR) settings
 %%
-%% </li> <li> Tags
+%% Tags
 %%
-%% </li> </ul> For more information, see PITR restore settings:
+%% For more
+%% information, see PITR restore settings:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_settings
-%% in the Amazon Keyspaces Developer Guide.
+%% in the Amazon Keyspaces Developer
+%% Guide.
 %%
 %% Note that the following settings are not restored, and you must configure
-%% them manually for the new table:
+%% them manually for
+%% the new table:
 %%
-%% <ul> <li> Identity and Access Management (IAM) policies
+%% Identity and Access Management (IAM) policies
 %%
-%% </li> <li> Amazon CloudWatch metrics and alarms
-%%
-%% </li> </ul>
+%% Amazon CloudWatch metrics and alarms
 restore_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table(Client, Input, []).
@@ -275,15 +292,18 @@ restore_table(Client, Input, Options)
 
 %% @doc Associates a set of tags with a Amazon Keyspaces resource.
 %%
-%% You can then activate these user-defined tags so that they appear on the
-%% Cost Management Console for cost allocation tracking. For more
-%% information, see Adding tags and labels to Amazon Keyspaces resources:
+%% You can then
+%% activate these user-defined tags so that they appear on the Cost
+%% Management Console for cost allocation tracking.
+%% For more information, see Adding tags and labels to Amazon Keyspaces
+%% resources:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html
-%% in the Amazon Keyspaces Developer Guide.
+%% in the Amazon Keyspaces Developer
+%% Guide.
 %%
 %% For IAM policy examples that show how to control access to Amazon
-%% Keyspaces resources based on tags, see Amazon Keyspaces resource access
-%% based on tags:
+%% Keyspaces resources based on tags,
+%% see Amazon Keyspaces resource access based on tags:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-tags
 %% in the Amazon Keyspaces Developer Guide.
 tag_resource(Client, Input)
@@ -302,8 +322,9 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Adds new columns to the table or updates one of the table's
-%% settings, for example capacity mode, auto scaling, encryption,
-%% point-in-time recovery, or ttl settings.
+%% settings, for example
+%% capacity mode, auto scaling, encryption, point-in-time recovery, or ttl
+%% settings.
 %%
 %% Note that you can only update one specific table setting per update
 %% operation.

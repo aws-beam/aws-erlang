@@ -13,40 +13,45 @@
 %% API
 %%====================================================================
 
-%% @doc Join the ongoing one way-video and/or multi-way audio WebRTC session
-%% as a video producing device for an input channel.
+%% @doc
+%% Join the ongoing one way-video and/or multi-way audio WebRTC session as
+%% a video producing device for an input channel.
 %%
-%% If there’s no existing session for the channel, a new streaming session
-%% needs to be created, and the Amazon Resource Name (ARN) of the signaling
-%% channel must be provided.
+%% If there’s no existing
+%% session for the channel, a new streaming session needs to be created, and
+%% the
+%% Amazon Resource Name (ARN) of the signaling channel must be provided.
 %%
-%% Currently for the `SINGLE_MASTER' type, a video producing device is
-%% able to ingest both audio and video media into a stream, while viewers can
-%% only ingest audio. Both a video producing device and viewers can join the
-%% session first, and wait for other participants.
+%% Currently for the `SINGLE_MASTER' type, a video producing
+%% device is able to ingest both audio and video media into a stream,
+%% while viewers can only ingest audio. Both a video producing device
+%% and viewers can join the session first, and wait for other participants.
 %%
 %% While participants are having peer to peer conversations through webRTC,
 %% the ingested media session will be stored into the Kinesis Video Stream.
 %% Multiple viewers are able to playback real-time media.
 %%
 %% Customers can also use existing Kinesis Video Streams features like
-%% `HLS' or `DASH' playback, Image generation, and more with ingested
-%% WebRTC media.
+%% `HLS' or `DASH' playback, Image generation, and more
+%% with ingested WebRTC media.
 %%
-%% Assume that only one video producing device client can be associated with
-%% a session for the channel. If more than one client joins the session of a
-%% specific channel as a video producing device, the most recent client
-%% request takes precedence.
+%% Assume that only one video producing device client
+%% can be associated with a session for the channel. If more than one
+%% client joins the session of a specific channel as a video producing
+%% device,
+%% the most recent client request takes precedence.
 join_storage_session(Client, Input) ->
     join_storage_session(Client, Input, []).
 join_storage_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/joinStorageSession"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -62,6 +67,11 @@ join_storage_session(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

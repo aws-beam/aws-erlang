@@ -7,10 +7,8 @@
 %% Use these APIs to put and retrieve (get) features related to your training
 %% run.
 %%
-%% <ul> <li> BatchPutMetrics:
+%% BatchPutMetrics:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_metrics_BatchPutMetrics.html
-%%
-%% </li> </ul>
 -module(aws_sagemaker_metrics).
 
 -export([batch_put_metrics/2,
@@ -24,18 +22,20 @@
 
 %% @doc Used to ingest training metrics into SageMaker.
 %%
-%% These metrics can be visualized in SageMaker Studio and retrieved with the
-%% `GetMetrics' API.
+%% These metrics can be visualized in SageMaker Studio and
+%% retrieved with the `GetMetrics' API.
 batch_put_metrics(Client, Input) ->
     batch_put_metrics(Client, Input, []).
 batch_put_metrics(Client, Input0, Options0) ->
     Method = put,
     Path = ["/BatchPutMetrics"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -51,6 +51,11 @@ batch_put_metrics(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -8,8 +8,8 @@
 %% such as units of measure and communication protocols.
 %%
 %% AWS IoT Things Graph makes it possible to build IoT applications with
-%% little to no code by connecting devices and services and defining how they
-%% interact at an abstract level.
+%% little to no code by connecting devices and services
+%% and defining how they interact at an abstract level.
 %%
 %% For more information about how AWS IoT Things Graph works, see the User
 %% Guide:
@@ -110,9 +110,10 @@ associate_entity_to_thing(Client, Input, Options)
 %% @doc Creates a workflow template.
 %%
 %% Workflows can be created only in the user's namespace. (The public
-%% namespace contains only entities.) The workflow can contain only entities
-%% in the specified namespace. The workflow is validated against the entities
-%% in the latest version of the user's namespace unless another namespace
+%% namespace contains only
+%% entities.) The workflow can contain only entities in the specified
+%% namespace. The workflow is validated against the entities in the
+%% latest version of the user's namespace unless another namespace
 %% version is specified in the request.
 create_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -125,19 +126,22 @@ create_flow_template(Client, Input, Options)
 %%
 %% This action validates the system instance, prepares the deployment-related
 %% resources. For Greengrass deployments, it updates the Greengrass group
-%% that is specified by the `greengrassGroupName' parameter. It also adds
-%% a file to the S3 bucket specified by the `s3BucketName' parameter. You
-%% need to call `DeploySystemInstance' after running this action.
+%% that is
+%% specified by the `greengrassGroupName' parameter. It also adds a file
+%% to the S3 bucket specified by the `s3BucketName' parameter. You need
+%% to
+%% call `DeploySystemInstance' after running this action.
 %%
 %% For Greengrass deployments, since this action modifies and adds resources
 %% to a Greengrass group and an S3 bucket on the caller's behalf, the
-%% calling identity must have write permissions to both the specified
-%% Greengrass group and S3 bucket. Otherwise, the call will fail with an
-%% authorization error.
+%% calling identity must have write permissions
+%% to both the specified Greengrass group and S3 bucket. Otherwise, the call
+%% will fail with an authorization error.
 %%
 %% For cloud deployments, this action requires a `flowActionsRoleArn'
-%% value. This is an IAM role that has permissions to access AWS services,
-%% such as AWS Lambda and AWS IoT, that the flow uses when it executes.
+%% value. This is an IAM role
+%% that has permissions to access AWS services, such as AWS Lambda and AWS
+%% IoT, that the flow uses when it executes.
 %%
 %% If the definition document doesn't specify a version of the user's
 %% namespace, the latest version will be used by default.
@@ -150,9 +154,9 @@ create_system_instance(Client, Input, Options)
 
 %% @doc Creates a system.
 %%
-%% The system is validated against the entities in the latest version of the
-%% user's namespace unless another namespace version is specified in the
-%% request.
+%% The system is validated against the entities in the
+%% latest version of the user's namespace unless another namespace
+%% version is specified in the request.
 create_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_system_template(Client, Input, []).
@@ -163,9 +167,9 @@ create_system_template(Client, Input, Options)
 %% @doc Deletes a workflow.
 %%
 %% Any new system or deployment that contains this workflow will fail to
-%% update or deploy. Existing deployments that contain the workflow will
-%% continue to run (since they use a snapshot of the workflow taken at the
-%% time of deployment).
+%% update or deploy.
+%% Existing deployments that contain the workflow will continue to run (since
+%% they use a snapshot of the workflow taken at the time of deployment).
 delete_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flow_template(Client, Input, []).
@@ -177,7 +181,8 @@ delete_flow_template(Client, Input, Options)
 %%
 %% This action deletes all of the entities in the namespace. Delete the
 %% systems and flows that use entities in the namespace before performing
-%% this action. This action takes no request parameters.
+%% this action. This action takes no
+%% request parameters.
 delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
@@ -201,9 +206,9 @@ delete_system_instance(Client, Input, Options)
 
 %% @doc Deletes a system.
 %%
-%% New deployments can't contain the system after its deletion. Existing
-%% deployments that contain the system will continue to work because they use
-%% a snapshot of the system that is taken when it is deployed.
+%% New deployments can't contain the system after its deletion.
+%% Existing deployments that contain the system will continue to work because
+%% they use a snapshot of the system that is taken when it is deployed.
 delete_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_system_template(Client, Input, []).
@@ -211,7 +216,8 @@ delete_system_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSystemTemplate">>, Input, Options).
 
-%% @doc Greengrass and Cloud Deployments
+%% @doc
+%% Greengrass and Cloud Deployments
 %%
 %% Deploys the system instance to the target specified in
 %% `CreateSystemInstance'.
@@ -220,12 +226,13 @@ delete_system_template(Client, Input, Options)
 %%
 %% If the system or any workflows and entities have been updated before this
 %% action is called, then the deployment will create a new Amazon Simple
-%% Storage Service resource file and then deploy it.
+%% Storage Service
+%% resource file and then deploy it.
 %%
 %% Since this action creates a Greengrass deployment on the caller's
-%% behalf, the calling identity must have write permissions to the specified
-%% Greengrass group. Otherwise, the call will fail with an authorization
-%% error.
+%% behalf, the calling identity must have write permissions
+%% to the specified Greengrass group. Otherwise, the call will fail with an
+%% authorization error.
 %%
 %% For information about the artifacts that get added to your Greengrass core
 %% device when you use this API, see AWS IoT Things Graph and AWS IoT
@@ -269,8 +276,8 @@ describe_namespace(Client, Input, Options)
 %% @doc Dissociates a device entity from a concrete thing.
 %%
 %% The action takes only the type of the entity that you need to dissociate
-%% because only one entity of a particular type can be associated with a
-%% thing.
+%% because only
+%% one entity of a particular type can be associated with a thing.
 dissociate_entity_from_thing(Client, Input)
   when is_map(Client), is_map(Input) ->
     dissociate_entity_from_thing(Client, Input, []).
@@ -281,28 +288,29 @@ dissociate_entity_from_thing(Client, Input, Options)
 %% @doc Gets definitions of the specified entities.
 %%
 %% Uses the latest version of the user's namespace by default. This API
-%% returns the following TDM entities.
+%% returns the
+%% following TDM entities.
 %%
-%% <ul> <li> Properties
+%% Properties
 %%
-%% </li> <li> States
+%% States
 %%
-%% </li> <li> Events
+%% Events
 %%
-%% </li> <li> Actions
+%% Actions
 %%
-%% </li> <li> Capabilities
+%% Capabilities
 %%
-%% </li> <li> Mappings
+%% Mappings
 %%
-%% </li> <li> Devices
+%% Devices
 %%
-%% </li> <li> Device Models
+%% Device Models
 %%
-%% </li> <li> Services
+%% Services
 %%
-%% </li> </ul> This action doesn't return definitions for systems, flows,
-%% and deployments.
+%% This action doesn't return definitions for systems, flows, and
+%% deployments.
 get_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entities(Client, Input, []).
@@ -322,9 +330,9 @@ get_flow_template(Client, Input, Options)
 %% @doc Gets revisions of the specified workflow.
 %%
 %% Only the last 100 revisions are stored. If the workflow has been
-%% deprecated, this action will return revisions that occurred before the
-%% deprecation. This action won't work for workflows that have been
-%% deleted.
+%% deprecated,
+%% this action will return revisions that occurred before the deprecation.
+%% This action won't work for workflows that have been deleted.
 get_flow_template_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_flow_template_revisions(Client, Input, []).
@@ -359,9 +367,9 @@ get_system_template(Client, Input, Options)
 %% @doc Gets revisions made to the specified system template.
 %%
 %% Only the previous 100 revisions are stored. If the system has been
-%% deprecated, this action will return the revisions that occurred before its
-%% deprecation. This action won't work with systems that have been
-%% deleted.
+%% deprecated, this action will return
+%% the revisions that occurred before its deprecation. This action won't
+%% work with systems that have been deleted.
 get_system_template_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_system_template_revisions(Client, Input, []).
@@ -447,7 +455,8 @@ search_system_templates(Client, Input, Options)
 %%
 %% For example, if two different devices, camera1 and camera2, implement the
 %% camera device model, the user can associate thing1 to camera1 and thing2
-%% to camera2. `SearchThings(camera2)' will return only thing2, but
+%% to camera2.
+%% `SearchThings(camera2)' will return only thing2, but
 %% `SearchThings(camera)' will return both thing1 and thing2.
 %%
 %% This action searches for exact matches and doesn't perform partial
@@ -512,19 +521,21 @@ update_system_template(Client, Input, Options)
 %% @doc Asynchronously uploads one or more entity definitions to the
 %% user's namespace.
 %%
-%% The `document' parameter is required if `syncWithPublicNamespace'
-%% and `deleteExistingEntites' are false. If the
-%% `syncWithPublicNamespace' parameter is set to `true', the
-%% user's namespace will synchronize with the latest version of the
-%% public namespace. If `deprecateExistingEntities' is set to true, all
-%% entities in the latest version will be deleted before the new
+%% The `document' parameter is required if
+%% `syncWithPublicNamespace' and `deleteExistingEntites' are false.
+%% If the `syncWithPublicNamespace' parameter is set to
+%% `true', the user's namespace will synchronize with the latest
+%% version of the public namespace. If `deprecateExistingEntities' is set
+%% to true,
+%% all entities in the latest version will be deleted before the new
 %% `DefinitionDocument' is uploaded.
 %%
 %% When a user uploads entity definitions for the first time, the service
 %% creates a new namespace for the user. The new namespace tracks the public
-%% namespace. Currently users can have only one namespace. The namespace
-%% version increments whenever a user uploads entity definitions that are
-%% backwards-incompatible and whenever a user sets the
+%% namespace. Currently users
+%% can have only one namespace. The namespace version increments whenever a
+%% user uploads entity definitions that are backwards-incompatible and
+%% whenever a user sets the
 %% `syncWithPublicNamespace' parameter or the
 %% `deprecateExistingEntities' parameter to `true'.
 %%

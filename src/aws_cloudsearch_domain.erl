@@ -36,15 +36,17 @@
 %% How you specify the search criteria depends on which query parser you use.
 %% Amazon CloudSearch supports four query parsers:
 %%
-%% <ul> <li>`simple': search all `text' and `text-array' fields
-%% for the specified string. Search for phrases, individual terms, and
-%% prefixes. </li> <li>`structured': search specific fields, construct
-%% compound queries using Boolean operators, and use advanced features such
-%% as term boosting and proximity searching.</li> <li>`lucene': specify
-%% search criteria using the Apache Lucene query parser syntax.</li>
-%% <li>`dismax': specify search criteria using the simplified subset of
-%% the Apache Lucene query parser syntax defined by the DisMax query
-%% parser.</li> </ul> For more information, see Searching Your Data:
+%% `simple': search all `text' and `text-array' fields for the
+%% specified string. Search for phrases, individual terms, and prefixes.
+%% `structured': search specific fields, construct compound queries using
+%% Boolean operators, and use advanced features such as term boosting and
+%% proximity searching.
+%% `lucene': specify search criteria using the Apache Lucene query parser
+%% syntax.
+%% `dismax': specify search criteria using the simplified subset of the
+%% Apache Lucene query parser syntax defined by the DisMax query parser.
+%%
+%% For more information, see Searching Your Data:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html
 %% in the Amazon CloudSearch Developer Guide.
 %%
@@ -64,10 +66,12 @@ search(Client, Query, QueryMap, HeadersMap)
 search(Client, Query, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-01-01/search?format=sdk&pretty=true"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -122,10 +126,12 @@ suggest(Client, Query, Suggester, QueryMap, HeadersMap)
 suggest(Client, Query, Suggester, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-01-01/suggest?format=sdk&pretty=true"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -162,8 +168,9 @@ suggest(Client, Query, Suggester, QueryMap, HeadersMap, Options0)
 %% For more information about formatting your data for Amazon CloudSearch,
 %% see Preparing Your Data:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html
-%% in the Amazon CloudSearch Developer Guide. For more information about
-%% uploading data for indexing, see Uploading Data:
+%% in the Amazon CloudSearch Developer Guide.
+%% For more information about uploading data for indexing, see Uploading
+%% Data:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html
 %% in the Amazon CloudSearch Developer Guide.
 upload_documents(Client, Input) ->
@@ -171,11 +178,13 @@ upload_documents(Client, Input) ->
 upload_documents(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-01-01/documents/batch?format=sdk"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"Content-Type">>, <<"contentType">>}
@@ -193,6 +202,11 @@ upload_documents(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -2,7 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The WorkMail Message Flow API provides access to email messages as
-%% they are being sent and received by a WorkMail organization.
+%% they are
+%% being
+%% sent and received by
+%% a
+%% WorkMail organization.
 -module(aws_workmailmessageflow).
 
 -export([get_raw_message_content/2,
@@ -30,10 +34,12 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap)
 get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -45,28 +51,34 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
 %% format.
 %%
 %% This example describes how to update in-transit email message. For more
-%% information and examples for using this API, see Updating message content
-%% with AWS Lambda:
+%% information and examples for using this API, see
+%%
+%% Updating message content with AWS Lambda:
 %% https://docs.aws.amazon.com/workmail/latest/adminguide/update-with-lambda.html.
 %%
 %% Updates to an in-transit message only appear when you call
-%% `PutRawMessageContent' from an AWS Lambda function configured with a
-%% synchronous Run Lambda:
+%% `PutRawMessageContent' from an AWS Lambda function
+%% configured with a synchronous
+%% Run Lambda:
 %% https://docs.aws.amazon.com/workmail/latest/adminguide/lambda.html#synchronous-rules
 %% rule. If you call `PutRawMessageContent' on a delivered or sent
-%% message, the message remains unchanged, even though GetRawMessageContent:
+%% message, the message remains unchanged,
+%% even though GetRawMessageContent:
 %% https://docs.aws.amazon.com/workmail/latest/APIReference/API_messageflow_GetRawMessageContent.html
-%% returns an updated message.
+%% returns an updated
+%% message.
 put_raw_message_content(Client, MessageId, Input) ->
     put_raw_message_content(Client, MessageId, Input, []).
 put_raw_message_content(Client, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -82,6 +94,11 @@ put_raw_message_content(Client, MessageId, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

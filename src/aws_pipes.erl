@@ -4,11 +4,13 @@
 %% @doc Amazon EventBridge Pipes connects event sources to targets.
 %%
 %% Pipes reduces the need for specialized knowledge and integration code when
-%% developing event driven architectures. This helps ensures consistency
-%% across your company’s applications. With Pipes, the target can be any
-%% available EventBridge target. To set up a pipe, you select the event
-%% source, add optional event filtering, define optional enrichment, and
-%% select the target for the event data.
+%% developing
+%% event driven architectures. This helps ensures consistency across your
+%% company’s applications. With Pipes, the target can be any available
+%% EventBridge target.
+%% To set up a pipe, you select the event source, add optional event
+%% filtering, define optional enrichment, and select the target for the event
+%% data.
 -module(aws_pipes).
 
 -export([create_pipe/3,
@@ -51,10 +53,12 @@ create_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -78,10 +82,12 @@ delete_pipe(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -111,9 +117,11 @@ describe_pipe(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -138,9 +146,11 @@ list_pipes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/pipes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -171,9 +181,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -188,10 +200,12 @@ start_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), "/start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -211,10 +225,12 @@ stop_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), "/stop"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -229,18 +245,24 @@ stop_pipe(Client, Name, Input0, Options0) ->
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified pipe.
 %%
-%% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user permissions by granting a user permission to access or
-%% change only resources with certain tag values.
+%% Tags can
+%% help you organize and categorize your resources. You can also use them to
+%% scope user
+%% permissions by granting a user permission to access or change only
+%% resources with certain tag
+%% values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
-%% interpreted strictly as strings of characters.
+%% interpreted strictly as strings of
+%% characters.
 %%
 %% You can use the `TagResource' action with a pipe that already has
-%% tags. If you specify a new tag key, this tag is appended to the list of
-%% tags associated with the pipe. If you specify a tag key that is already
-%% associated with the pipe, the new tag value that you specify replaces the
-%% previous value for that tag.
+%% tags. If
+%% you specify a new tag key, this tag is appended to the list of tags
+%% associated with the
+%% pipe. If you specify a tag key that is already associated with the pipe,
+%% the new tag
+%% value that you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a pipe.
 tag_resource(Client, ResourceArn, Input) ->
@@ -249,10 +271,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -272,10 +296,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -292,18 +318,20 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Update an existing pipe.
 %%
 %% When you call `UpdatePipe', EventBridge only the updates fields you
-%% have specified in the request; the rest remain unchanged. The exception to
-%% this is if you modify any Amazon Web Services-service specific fields in
-%% the `SourceParameters', `EnrichmentParameters', or
+%% have specified in the request; the rest remain unchanged.
+%% The exception to this is if you modify any Amazon Web Services-service
+%% specific fields in the `SourceParameters', `EnrichmentParameters',
+%% or
 %% `TargetParameters' objects. For example,
 %% `DynamoDBStreamParameters' or `EventBridgeEventBusParameters'.
 %% EventBridge updates the fields in these objects atomically as one and
-%% overrides existing values. This is by design, and means that if you
-%% don't specify an optional field in one of these `Parameters'
-%% objects, EventBridge sets that field to its system-default value during
-%% the update.
+%% overrides existing values.
+%% This is by design, and means that if you don't specify an optional
+%% field in one of these `Parameters' objects, EventBridge sets that
+%% field to its system-default value during the update.
 %%
-%% For more information about pipes, see Amazon EventBridge Pipes:
+%% For more information about pipes, see
+%% Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
 update_pipe(Client, Name, Input) ->
@@ -312,10 +340,12 @@ update_pipe(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -331,6 +361,11 @@ update_pipe(Client, Name, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

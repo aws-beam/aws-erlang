@@ -2,18 +2,22 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Web Services AppFabric quickly connects software as a service
-%% (SaaS) applications across your organization.
+%% (SaaS) applications across your
+%% organization.
 %%
 %% This allows IT and security teams to easily manage and secure applications
 %% using a standard schema, and employees can complete everyday tasks faster
-%% using generative artificial intelligence (AI). You can use these APIs to
-%% complete AppFabric tasks, such as setting up audit log ingestions or
-%% viewing user access. For more information about AppFabric, including the
-%% required permissions to use the service, see the Amazon Web Services
-%% AppFabric Administration Guide:
+%% using generative
+%% artificial intelligence (AI). You can use these APIs to complete AppFabric
+%% tasks, such as
+%% setting up audit log ingestions or viewing user access. For more
+%% information about AppFabric,
+%% including the required permissions to use the service, see the Amazon Web
+%% Services AppFabric Administration Guide:
 %% https://docs.aws.amazon.com/appfabric/latest/adminguide/. For more
 %% information about using the Command Line Interface (CLI) to manage your
-%% AppFabric resources, see the AppFabric section of the CLI Reference:
+%% AppFabric resources, see the AppFabric section of the CLI
+%% Reference:
 %% https://docs.aws.amazon.com/cli/latest/reference/appfabric/index.html.
 -module(aws_appfabric).
 
@@ -95,10 +99,12 @@ batch_get_user_access_tasks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/useraccess/batchget"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -112,17 +118,20 @@ batch_get_user_access_tasks(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Establishes a connection between Amazon Web Services AppFabric and an
-%% application, which allows AppFabric to call the APIs of the application.
+%% application, which allows AppFabric to
+%% call the APIs of the application.
 connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), "/connect"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -136,17 +145,20 @@ connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifie
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an app authorization within an app bundle, which allows
-%% AppFabric to connect to an application.
+%% AppFabric to connect to an
+%% application.
 create_app_authorization(Client, AppBundleIdentifier, Input) ->
     create_app_authorization(Client, AppBundleIdentifier, Input, []).
 create_app_authorization(Client, AppBundleIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -167,10 +179,12 @@ create_app_bundle(Client, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -190,10 +204,12 @@ create_ingestion(Client, AppBundleIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -207,18 +223,20 @@ create_ingestion(Client, AppBundleIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an ingestion destination, which specifies how an
-%% application's ingested data is processed by Amazon Web Services
-%% AppFabric and where it's delivered.
+%% application's ingested data is
+%% processed by Amazon Web Services AppFabric and where it's delivered.
 create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -233,18 +251,20 @@ create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, I
 
 %% @doc Deletes an app authorization.
 %%
-%% You must delete the associated ingestion before you can delete an app
-%% authorization.
+%% You must delete the associated ingestion before you can
+%% delete an app authorization.
 delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -259,18 +279,20 @@ delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier
 
 %% @doc Deletes an app bundle.
 %%
-%% You must delete all associated app authorizations before you can delete an
-%% app bundle.
+%% You must delete all associated app authorizations before you can
+%% delete an app bundle.
 delete_app_bundle(Client, AppBundleIdentifier, Input) ->
     delete_app_bundle(Client, AppBundleIdentifier, Input, []).
 delete_app_bundle(Client, AppBundleIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -285,18 +307,20 @@ delete_app_bundle(Client, AppBundleIdentifier, Input0, Options0) ->
 
 %% @doc Deletes an ingestion.
 %%
-%% You must stop (disable) the ingestion and you must delete all associated
-%% ingestion destinations before you can delete an app ingestion.
+%% You must stop (disable) the ingestion and you must delete all
+%% associated ingestion destinations before you can delete an app ingestion.
 delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -312,20 +336,25 @@ delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Optio
 %% @doc Deletes an ingestion destination.
 %%
 %% This deletes the association between an ingestion and it's
-%% destination. It doesn't delete previously ingested data or the storage
-%% destination, such as the Amazon S3 bucket where the data is delivered. If
-%% the ingestion destination is deleted while the associated ingestion is
-%% enabled, the ingestion will fail and is eventually disabled.
+%% destination. It doesn't
+%% delete previously ingested data or the storage destination, such as the
+%% Amazon S3
+%% bucket where the data is delivered. If the ingestion destination is
+%% deleted while the
+%% associated ingestion is enabled, the ingestion will fail and is eventually
+%% disabled.
 delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input) ->
     delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input, []).
 delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations/", aws_util:encode_uri(IngestionDestinationIdentifier), ""],
     SuccessStatusCode = 204,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -351,9 +380,11 @@ get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -374,9 +405,11 @@ get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -397,9 +430,11 @@ get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -420,9 +455,11 @@ get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdent
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations/", aws_util:encode_uri(IngestionDestinationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -444,9 +481,11 @@ list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap, Optio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -472,9 +511,11 @@ list_app_bundles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -501,9 +542,11 @@ list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -529,9 +572,11 @@ list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -557,9 +602,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -575,10 +622,12 @@ start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Option
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/start"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -595,17 +644,20 @@ start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Option
 %% address.
 %%
 %% The tasks are stopped when the user access status data is found. The tasks
-%% are terminated when the API calls to the application time out.
+%% are
+%% terminated when the API calls to the application time out.
 start_user_access_tasks(Client, Input) ->
     start_user_access_tasks(Client, Input, []).
 start_user_access_tasks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/useraccess/start"],
     SuccessStatusCode = 201,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -625,10 +677,12 @@ stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options
     Method = post,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/stop"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -648,10 +702,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -671,10 +727,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -689,7 +747,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an app authorization within an app bundle, which allows
-%% AppFabric to connect to an application.
+%% AppFabric to connect to an
+%% application.
 %%
 %% If the app authorization was in a `connected' state, updating the app
 %% authorization will set it back to a `PendingConnect' state.
@@ -699,10 +758,12 @@ update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier
     Method = patch,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/appauthorizations/", aws_util:encode_uri(AppAuthorizationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -716,18 +777,20 @@ update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an ingestion destination, which specifies how an
-%% application's ingested data is processed by Amazon Web Services
-%% AppFabric and where it's delivered.
+%% application's ingested data is
+%% processed by Amazon Web Services AppFabric and where it's delivered.
 update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input) ->
     update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input, []).
 update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/appbundles/", aws_util:encode_uri(AppBundleIdentifier), "/ingestions/", aws_util:encode_uri(IngestionIdentifier), "/ingestiondestinations/", aws_util:encode_uri(IngestionDestinationIdentifier), ""],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -743,6 +806,11 @@ update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationId
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

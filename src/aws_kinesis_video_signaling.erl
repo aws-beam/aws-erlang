@@ -2,9 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Kinesis Video Streams Signaling Service is a intermediate service
-%% that establishes a communication channel for discovering peers,
-%% transmitting offers and answers in order to establish peer-to-peer
-%% connection in webRTC technology.
+%% that establishes a
+%% communication channel for discovering peers, transmitting offers and
+%% answers in order to
+%% establish peer-to-peer connection in webRTC technology.
 -module(aws_kinesis_video_signaling).
 
 -export([get_ice_server_config/2,
@@ -19,34 +20,45 @@
 %%====================================================================
 
 %% @doc Gets the Interactive Connectivity Establishment (ICE) server
-%% configuration information, including URIs, username, and password which
-%% can be used to configure the WebRTC connection.
+%% configuration
+%% information, including URIs, username, and password which can be used to
+%% configure the
+%% WebRTC connection.
 %%
-%% The ICE component uses this configuration information to setup the WebRTC
-%% connection, including authenticating with the Traversal Using Relays
-%% around NAT (TURN) relay server.
+%% The ICE component uses this configuration information to setup the
+%% WebRTC connection, including authenticating with the Traversal Using
+%% Relays around NAT
+%% (TURN) relay server.
 %%
 %% TURN is a protocol that is used to improve the connectivity of
-%% peer-to-peer applications. By providing a cloud-based relay service, TURN
-%% ensures that a connection can be established even when one or more peers
-%% are incapable of a direct peer-to-peer connection. For more information,
-%% see A REST API For Access To TURN Services:
+%% peer-to-peer
+%% applications. By providing a cloud-based relay service, TURN ensures that
+%% a connection
+%% can be established even when one or more peers are incapable of a direct
+%% peer-to-peer
+%% connection. For more information, see A REST API For
+%% Access To TURN Services:
 %% https://tools.ietf.org/html/draft-uberti-rtcweb-turn-rest-00.
 %%
 %% You can invoke this API to establish a fallback mechanism in case either
-%% of the peers is unable to establish a direct peer-to-peer connection over
-%% a signaling channel. You must specify either a signaling channel ARN or
-%% the client ID in order to invoke this API.
+%% of the peers
+%% is unable to establish a direct peer-to-peer connection over a signaling
+%% channel. You
+%% must specify either a signaling channel ARN or the client ID in order to
+%% invoke this
+%% API.
 get_ice_server_config(Client, Input) ->
     get_ice_server_config(Client, Input, []).
 get_ice_server_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/get-ice-server-config"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -62,21 +74,28 @@ get_ice_server_config(Client, Input0, Options0) ->
 %% @doc This API allows you to connect WebRTC-enabled devices with Alexa
 %% display devices.
 %%
-%% When invoked, it sends the Alexa Session Description Protocol (SDP) offer
-%% to the master peer. The offer is delivered as soon as the master is
-%% connected to the specified signaling channel. This API returns the SDP
-%% answer from the connected master. If the master is not connected to the
-%% signaling channel, redelivery requests are made until the message expires.
+%% When
+%% invoked, it sends the Alexa Session Description Protocol (SDP) offer to
+%% the master peer.
+%% The offer is delivered as soon as the master is connected to the specified
+%% signaling
+%% channel. This API returns the SDP answer from the connected master. If the
+%% master is not
+%% connected to the signaling channel, redelivery requests are made until the
+%% message
+%% expires.
 send_alexa_offer_to_master(Client, Input) ->
     send_alexa_offer_to_master(Client, Input, []).
 send_alexa_offer_to_master(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/send-alexa-offer-to-master"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -92,6 +111,11 @@ send_alexa_offer_to_master(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

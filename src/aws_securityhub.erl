@@ -2,94 +2,107 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Security Hub provides you with a comprehensive view of your security
-%% state in Amazon Web Services and helps you assess your Amazon Web Services
-%% environment against security industry standards and best practices.
+%% state in Amazon Web Services and helps
+%% you assess your Amazon Web Services environment against security industry
+%% standards and best practices.
 %%
 %% Security Hub collects security data across Amazon Web Services accounts,
-%% Amazon Web Services, and supported third-party products and helps you
-%% analyze your security trends and identify the highest priority security
+%% Amazon Web Services, and
+%% supported third-party products and helps you analyze your security trends
+%% and identify the highest priority security
 %% issues.
 %%
 %% To help you manage the security state of your organization, Security Hub
-%% supports multiple security standards. These include the Amazon Web
-%% Services Foundational Security Best Practices (FSBP) standard developed by
-%% Amazon Web Services, and external compliance frameworks such as the Center
-%% for Internet Security (CIS), the Payment Card Industry Data Security
-%% Standard (PCI DSS), and the National Institute of Standards and Technology
-%% (NIST). Each standard includes several security controls, each of which
-%% represents a security best practice. Security Hub runs checks against
+%% supports multiple security standards.
+%% These include the Amazon Web Services Foundational Security Best Practices
+%% (FSBP) standard developed by Amazon Web Services,
+%% and external compliance frameworks such as the Center for Internet
+%% Security (CIS), the Payment Card Industry Data
+%% Security Standard (PCI DSS), and the National Institute of Standards and
+%% Technology (NIST). Each standard includes
+%% several security controls, each of which represents a security best
+%% practice. Security Hub runs checks against
 %% security controls and generates control findings to help you assess your
 %% compliance against security best practices.
 %%
 %% In addition to generating control findings, Security Hub also receives
-%% findings from other Amazon Web Services, such as Amazon GuardDuty and
-%% Amazon Inspector, and supported third-party products. This gives you a
-%% single pane of glass into a variety of security-related issues. You can
-%% also send Security Hub findings to other Amazon Web Services and supported
-%% third-party products.
+%% findings from other Amazon Web Services,
+%% such as Amazon GuardDuty and Amazon Inspector, and
+%% supported third-party products. This gives you a single pane of glass into
+%% a variety of security-related issues. You
+%% can also send Security Hub findings to other Amazon Web Services and
+%% supported third-party products.
 %%
 %% Security Hub offers automation features that help you triage and remediate
-%% security issues. For example, you can use automation rules to
-%% automatically update critical findings when a security check fails. You
-%% can also leverage the integration with Amazon EventBridge to trigger
-%% automatic responses to specific findings.
+%% security issues. For example,
+%% you can use automation rules to automatically update critical findings
+%% when a security check fails. You can also leverage the integration with
+%% Amazon EventBridge to trigger automatic responses to specific findings.
 %%
-%% This guide, the Security Hub API Reference, provides information about the
-%% Security Hub API. This includes supported resources, HTTP methods,
-%% parameters, and schemas. If you're new to Security Hub, you might find
-%% it helpful to also review the Security Hub User Guide :
+%% This guide, the Security Hub API Reference, provides
+%% information about the Security Hub API. This includes supported resources,
+%% HTTP methods, parameters,
+%% and schemas. If you're new to Security Hub, you might find it helpful
+%% to also review the
+%% Security Hub User Guide
+%% :
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html.
-%% The user guide explains key concepts and provides procedures that
-%% demonstrate how to use Security Hub features. It also provides information
-%% about topics such as integrating Security Hub with other Amazon Web
-%% Services.
+%% The
+%% user guide explains key concepts and provides procedures
+%% that demonstrate how to use Security Hub features. It also provides
+%% information about topics such as
+%% integrating Security Hub with other Amazon Web Services.
 %%
 %% In addition to interacting with Security Hub by making calls to the
-%% Security Hub API, you can use a current version of an Amazon Web Services
-%% command line tool or SDK. Amazon Web Services provides tools and SDKs that
-%% consist of libraries and sample code for various languages and platforms,
-%% such as PowerShell, Java, Go, Python, C++, and .NET. These tools and SDKs
-%% provide convenient, programmatic access to Security Hub and other Amazon
-%% Web Services . They also handle tasks such as signing requests, managing
-%% errors, and retrying requests automatically. For information about
-%% installing and using the Amazon Web Services tools and SDKs, see Tools to
-%% Build on Amazon Web Services: http://aws.amazon.com/developer/tools/.
+%% Security Hub API, you can
+%% use a current version of an Amazon Web Services command line tool or SDK.
+%% Amazon Web Services provides tools
+%% and SDKs that consist of libraries and sample code for various languages
+%% and platforms, such as PowerShell,
+%% Java, Go, Python, C++, and .NET. These tools and SDKs provide convenient,
+%% programmatic access to
+%% Security Hub and other Amazon Web Services . They also handle tasks such
+%% as signing requests,
+%% managing errors, and retrying requests automatically. For information
+%% about installing and using the Amazon Web Services tools
+%% and SDKs, see Tools to Build on Amazon Web Services:
+%% http://aws.amazon.com/developer/tools/.
 %%
 %% With the exception of operations that are related to central
-%% configuration, Security Hub API requests are executed only in the Amazon
-%% Web Services Region that is currently active or in the specific Amazon Web
-%% Services Region that you specify in your request. Any configuration or
-%% settings change that results from the operation is applied only to that
-%% Region. To make the same change in other Regions, call the same API
-%% operation in each Region in which you want to apply the change. When you
-%% use central configuration, API requests for enabling Security Hub,
-%% standards, and controls are executed in the home Region and all linked
-%% Regions. For a list of central configuration operations, see the Central
-%% configuration terms and concepts:
+%% configuration, Security Hub API requests are executed only in
+%% the Amazon Web Services Region that is currently active or in the specific
+%% Amazon Web Services Region that you specify in your request. Any
+%% configuration or settings change
+%% that results from the operation is applied only to that Region. To make
+%% the same change in
+%% other Regions, call the same API operation in each Region in which you
+%% want to apply the change. When you use central configuration,
+%% API requests for enabling Security Hub, standards, and controls are
+%% executed in the home Region and all linked Regions. For a list of
+%% central configuration operations, see the Central configuration
+%% terms and concepts:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html#central-configuration-concepts
 %% section of the Security Hub User Guide.
 %%
 %% The following throttling limits apply to Security Hub API operations.
 %%
-%% <ul> <li> `BatchEnableStandards' - `RateLimit' of 1 request per
+%% `BatchEnableStandards' - `RateLimit' of 1 request per
 %% second. `BurstLimit' of 1 request per second.
 %%
-%% </li> <li> `GetFindings' - `RateLimit' of 3 requests per second.
+%% `GetFindings' - `RateLimit' of 3 requests per second.
 %% `BurstLimit' of 6 requests per second.
 %%
-%% </li> <li> `BatchImportFindings' - `RateLimit' of 10 requests per
-%% second. `BurstLimit' of 30 requests per second.
+%% `BatchImportFindings' - `RateLimit' of 10 requests per second.
+%% `BurstLimit' of 30 requests per second.
 %%
-%% </li> <li> `BatchUpdateFindings' - `RateLimit' of 10 requests per
-%% second. `BurstLimit' of 30 requests per second.
+%% `BatchUpdateFindings' - `RateLimit' of 10 requests per second.
+%% `BurstLimit' of 30 requests per second.
 %%
-%% </li> <li> `UpdateStandardsControl' - `RateLimit' of 1 request per
+%% `UpdateStandardsControl' - `RateLimit' of 1 request per
 %% second. `BurstLimit' of 5 requests per second.
 %%
-%% </li> <li> All other operations - `RateLimit' of 10 requests per
-%% second. `BurstLimit' of 30 requests per second.
-%%
-%% </li> </ul>
+%% All other operations - `RateLimit' of 10 requests per second.
+%% `BurstLimit' of 30 requests per second.
 -module(aws_securityhub).
 
 -export([accept_administrator_invitation/2,
@@ -280,24 +293,27 @@
 %%====================================================================
 
 %% @doc Accepts the invitation to be a member account and be monitored by the
-%% Security Hub administrator account that the invitation was sent from.
+%% Security Hub administrator
+%% account that the invitation was sent from.
 %%
 %% This operation is only used by member accounts that are not added through
 %% Organizations.
 %%
 %% When the member account accepts the invitation, permission is granted to
-%% the administrator account to view findings generated in the member
-%% account.
+%% the administrator
+%% account to view findings generated in the member account.
 accept_administrator_invitation(Client, Input) ->
     accept_administrator_invitation(Client, Input, []).
 accept_administrator_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/administrator"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -323,24 +339,27 @@ accept_administrator_invitation(Client, Input0, Options0) ->
 %% `AcceptAdministratorInvitation'.
 %%
 %% Accepts the invitation to be a member account and be monitored by the
-%% Security Hub administrator account that the invitation was sent from.
+%% Security Hub administrator
+%% account that the invitation was sent from.
 %%
 %% This operation is only used by member accounts that are not added through
 %% Organizations.
 %%
 %% When the member account accepts the invitation, permission is granted to
-%% the administrator account to view findings generated in the member
-%% account.
+%% the administrator
+%% account to view findings generated in the member account.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 accept_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -353,17 +372,20 @@ accept_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes one or more automation rules.
+%% @doc
+%% Deletes one or more automation rules.
 batch_delete_automation_rules(Client, Input) ->
     batch_delete_automation_rules(Client, Input, []).
 batch_delete_automation_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/automationrules/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -381,17 +403,20 @@ batch_delete_automation_rules(Client, Input0, Options0) ->
 %%
 %% For more information, see Security Standards:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html
-%% section of the Security Hub User Guide.
+%% section of the Security Hub User
+%% Guide.
 batch_disable_standards(Client, Input) ->
     batch_disable_standards(Client, Input, []).
 batch_disable_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/deregister"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -406,7 +431,8 @@ batch_disable_standards(Client, Input0, Options0) ->
 
 %% @doc Enables the standards specified by the provided `StandardsArn'.
 %%
-%% To obtain the ARN for a standard, use the `DescribeStandards'
+%% To obtain the
+%% ARN for a standard, use the `DescribeStandards'
 %% operation.
 %%
 %% For more information, see the Security Standards:
@@ -417,11 +443,13 @@ batch_enable_standards(Client, Input) ->
 batch_enable_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/register"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -434,18 +462,22 @@ batch_enable_standards(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of details for automation rules based on rule Amazon
-%% Resource Names (ARNs).
+%% @doc
+%% Retrieves a list of details for automation rules based on rule Amazon
+%% Resource Names
+%% (ARNs).
 batch_get_automation_rules(Client, Input) ->
     batch_get_automation_rules(Client, Input, []).
 batch_get_automation_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/automationrules/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -458,22 +490,25 @@ batch_get_automation_rules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns associations between an Security Hub configuration and a
-%% batch of target accounts, organizational units, or the root.
+%% @doc
+%% Returns associations between an Security Hub configuration and a batch of
+%% target accounts, organizational units, or the root.
 %%
 %% Only the Security Hub delegated administrator can invoke this operation
-%% from the home Region. A configuration can refer to a configuration policy
-%% or to a self-managed configuration.
+%% from the home Region. A configuration
+%% can refer to a configuration policy or to a self-managed configuration.
 batch_get_configuration_policy_associations(Client, Input) ->
     batch_get_configuration_policy_associations(Client, Input, []).
 batch_get_configuration_policy_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/batchget"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -486,18 +521,21 @@ batch_get_configuration_policy_associations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Provides details about a batch of security controls for the current
-%% Amazon Web Services account and Amazon Web Services Region.
+%% @doc
+%% Provides details about a batch of security controls for the current Amazon
+%% Web Services account and Amazon Web Services Region.
 batch_get_security_controls(Client, Input) ->
     batch_get_security_controls(Client, Input, []).
 batch_get_security_controls(Client, Input0, Options0) ->
     Method = post,
     Path = ["/securityControls/batchGet"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -510,18 +548,21 @@ batch_get_security_controls(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc For a batch of security controls and standards, identifies whether
-%% each control is currently enabled or disabled in a standard.
+%% @doc
+%% For a batch of security controls and standards, identifies whether each
+%% control is currently enabled or disabled in a standard.
 batch_get_standards_control_associations(Client, Input) ->
     batch_get_standards_control_associations(Client, Input, []).
 batch_get_standards_control_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associations/batchGet"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -538,63 +579,74 @@ batch_get_standards_control_associations(Client, Input0, Options0) ->
 %% Security Hub.
 %%
 %% This action is requested by the finding provider to import its findings
-%% into Security Hub.
+%% into
+%% Security Hub.
 %%
 %% `BatchImportFindings' must be called by one of the following:
 %%
-%% <ul> <li> The Amazon Web Services account that is associated with a
-%% finding if you are using the default product ARN:
+%% The Amazon Web Services account that is associated with a finding if you
+%% are using
+%% the default product ARN:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-custom-providers.html#securityhub-custom-providers-bfi-reqs
 %% or are a partner sending findings from within a customer's Amazon Web
-%% Services account. In these cases, the identifier of the account that you
-%% are calling `BatchImportFindings' from needs to be the same as the
-%% `AwsAccountId' attribute for the finding.
+%% Services account.
+%% In these cases, the identifier of the account that you are calling
+%% `BatchImportFindings'
+%% from needs to be the same as the `AwsAccountId' attribute for the
+%% finding.
 %%
-%% </li> <li> An Amazon Web Services account that Security Hub has
-%% allow-listed for an official partner integration. In this case, you can
-%% call `BatchImportFindings' from the allow-listed account and send
-%% findings from different customer accounts in the same batch.
+%% An Amazon Web Services account that Security Hub has allow-listed for an
+%% official partner
+%% integration. In this case, you can call `BatchImportFindings' from the
+%% allow-listed
+%% account and send findings from different customer accounts in the same
+%% batch.
 %%
-%% </li> </ul> The maximum allowed size for a finding is 240 Kb. An error is
-%% returned for any finding larger than 240 Kb.
+%% The maximum allowed size for a finding is 240 Kb. An error is returned for
+%% any finding
+%% larger than 240 Kb.
 %%
 %% After a finding is created, `BatchImportFindings' cannot be used to
-%% update the following finding fields and objects, which Security Hub
-%% customers use to manage their investigation workflow.
+%% update
+%% the following finding fields and objects, which Security Hub customers use
+%% to manage their
+%% investigation workflow.
 %%
-%% <ul> <li> `Note'
+%% `Note'
 %%
-%% </li> <li> `UserDefinedFields'
+%% `UserDefinedFields'
 %%
-%% </li> <li> `VerificationState'
+%% `VerificationState'
 %%
-%% </li> <li> `Workflow'
+%% `Workflow'
 %%
-%% </li> </ul> Finding providers also should not use
-%% `BatchImportFindings' to update the following attributes.
+%% Finding providers also should not use `BatchImportFindings' to update
+%% the following attributes.
 %%
-%% <ul> <li> `Confidence'
+%% `Confidence'
 %%
-%% </li> <li> `Criticality'
+%% `Criticality'
 %%
-%% </li> <li> `RelatedFindings'
+%% `RelatedFindings'
 %%
-%% </li> <li> `Severity'
+%% `Severity'
 %%
-%% </li> <li> `Types'
+%% `Types'
 %%
-%% </li> </ul> Instead, finding providers use `FindingProviderFields' to
-%% provide values for these attributes.
+%% Instead, finding providers use `FindingProviderFields' to provide
+%% values for these attributes.
 batch_import_findings(Client, Input) ->
     batch_import_findings(Client, Input, []).
 batch_import_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings/import"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -607,18 +659,22 @@ batch_import_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates one or more automation rules based on rule Amazon Resource
-%% Names (ARNs) and input parameters.
+%% @doc
+%% Updates one or more automation rules based on rule Amazon Resource Names
+%% (ARNs)
+%% and input parameters.
 batch_update_automation_rules(Client, Input) ->
     batch_update_automation_rules(Client, Input, []).
 batch_update_automation_rules(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/automationrules/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -635,49 +691,56 @@ batch_update_automation_rules(Client, Input0, Options0) ->
 %% investigation into a finding.
 %%
 %% Requested by administrator accounts or member accounts. Administrator
-%% accounts can update findings for their account and their member accounts.
-%% Member accounts can update findings for their account.
+%% accounts can update findings for
+%% their account and their member accounts. Member accounts can update
+%% findings for their
+%% account.
 %%
 %% Updates from `BatchUpdateFindings' do not affect the value of
 %% `UpdatedAt' for a finding.
 %%
 %% Administrator and member accounts can use `BatchUpdateFindings' to
-%% update the following finding fields and objects.
+%% update the
+%% following finding fields and objects.
 %%
-%% <ul> <li> `Confidence'
+%% `Confidence'
 %%
-%% </li> <li> `Criticality'
+%% `Criticality'
 %%
-%% </li> <li> `Note'
+%% `Note'
 %%
-%% </li> <li> `RelatedFindings'
+%% `RelatedFindings'
 %%
-%% </li> <li> `Severity'
+%% `Severity'
 %%
-%% </li> <li> `Types'
+%% `Types'
 %%
-%% </li> <li> `UserDefinedFields'
+%% `UserDefinedFields'
 %%
-%% </li> <li> `VerificationState'
+%% `VerificationState'
 %%
-%% </li> <li> `Workflow'
+%% `Workflow'
 %%
-%% </li> </ul> You can configure IAM policies to restrict access to fields
-%% and field values. For example, you might not want member accounts to be
-%% able to suppress findings or change the finding severity. See Configuring
-%% access to BatchUpdateFindings:
+%% You can configure IAM policies to restrict access to fields and field
+%% values. For
+%% example, you might not want member accounts to be able to suppress
+%% findings or change the
+%% finding severity. See Configuring access to BatchUpdateFindings:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access
-%% in the Security Hub User Guide.
+%% in the
+%% Security Hub User Guide.
 batch_update_findings(Client, Input) ->
     batch_update_findings(Client, Input, []).
 batch_update_findings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findings/batchupdate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -690,18 +753,21 @@ batch_update_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc For a batch of security controls and standards, this operation
-%% updates the enablement status of a control in a standard.
+%% @doc
+%% For a batch of security controls and standards, this operation updates the
+%% enablement status of a control in a standard.
 batch_update_standards_control_associations(Client, Input) ->
     batch_update_standards_control_associations(Client, Input, []).
 batch_update_standards_control_associations(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -717,17 +783,20 @@ batch_update_standards_control_associations(Client, Input0, Options0) ->
 %% @doc Creates a custom action target in Security Hub.
 %%
 %% You can use custom actions on findings and insights in Security Hub to
-%% trigger target actions in Amazon CloudWatch Events.
+%% trigger target actions
+%% in Amazon CloudWatch Events.
 create_action_target(Client, Input) ->
     create_action_target(Client, Input, []).
 create_action_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actionTargets"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -740,17 +809,20 @@ create_action_target(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an automation rule based on input parameters.
+%% @doc
+%% Creates an automation rule based on input parameters.
 create_automation_rule(Client, Input) ->
     create_automation_rule(Client, Input, []).
 create_automation_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/automationrules/create"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -763,20 +835,23 @@ create_automation_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a configuration policy with the defined configuration.
+%% @doc
+%% Creates a configuration policy with the defined configuration.
 %%
-%% Only the Security Hub delegated administrator can invoke this operation
-%% from the home Region.
+%% Only the Security Hub delegated administrator
+%% can invoke this operation from the home Region.
 create_configuration_policy(Client, Input) ->
     create_configuration_policy(Client, Input, []).
 create_configuration_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicy/create"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -802,11 +877,13 @@ create_finding_aggregator(Client, Input) ->
 create_finding_aggregator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingAggregator/create"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -821,8 +898,8 @@ create_finding_aggregator(Client, Input0, Options0) ->
 
 %% @doc Creates a custom insight in Security Hub.
 %%
-%% An insight is a consolidation of findings that relate to a security issue
-%% that requires attention or remediation.
+%% An insight is a consolidation of findings that relate
+%% to a security issue that requires attention or remediation.
 %%
 %% To group the related findings in the insight, use the
 %% `GroupByAttribute'.
@@ -831,11 +908,13 @@ create_insight(Client, Input) ->
 create_insight(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -849,49 +928,55 @@ create_insight(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a member association in Security Hub between the specified
-%% accounts and the account used to make the request, which is the
-%% administrator account.
+%% accounts and the account
+%% used to make the request, which is the administrator account.
 %%
-%% If you are integrated with Organizations, then the administrator account
-%% is designated by the organization management account.
+%% If you are integrated with
+%% Organizations, then the administrator account is designated by the
+%% organization management account.
 %%
 %% `CreateMembers' is always used to add accounts that are not
-%% organization members.
+%% organization
+%% members.
 %%
 %% For accounts that are managed using Organizations, `CreateMembers' is
-%% only used in the following cases:
+%% only used
+%% in the following cases:
 %%
-%% <ul> <li> Security Hub is not configured to automatically add new
-%% organization accounts.
+%% Security Hub is not configured to automatically add new organization
+%% accounts.
 %%
-%% </li> <li> The account was disassociated or deleted in Security Hub.
+%% The account was disassociated or deleted in Security Hub.
 %%
-%% </li> </ul> This action can only be used by an account that has Security
-%% Hub enabled. To enable Security Hub, you can use the
-%% `EnableSecurityHub' operation.
+%% This action can only be used by an account that has Security Hub enabled.
+%% To enable Security Hub, you
+%% can use the `EnableSecurityHub' operation.
 %%
 %% For accounts that are not organization members, you create the account
-%% association and then send an invitation to the member account. To send the
-%% invitation, you use the `InviteMembers' operation. If the account
-%% owner accepts the invitation, the account becomes a member account in
-%% Security Hub.
+%% association and
+%% then send an invitation to the member account. To send the invitation, you
+%% use the
+%% `InviteMembers' operation. If the account owner accepts
+%% the invitation, the account becomes a member account in Security Hub.
 %%
 %% Accounts that are managed using Organizations do not receive an
-%% invitation. They automatically become a member account in Security Hub.
+%% invitation. They
+%% automatically become a member account in Security Hub.
 %%
-%% <ul> <li> If the organization account does not have Security Hub enabled,
-%% then Security Hub and the default standards are automatically enabled.
-%% Note that Security Hub cannot be enabled automatically for the
-%% organization management account. The organization management account must
-%% enable Security Hub before the administrator account enables it as a
-%% member account.
+%% If the organization account does not have Security Hub enabled, then
+%% Security Hub and the default standards are automatically enabled. Note
+%% that Security Hub cannot be enabled automatically for the organization
+%% management account. The organization management account must enable
+%% Security Hub before the administrator account enables it as a member
+%% account.
 %%
-%% </li> <li> For organization accounts that already have Security Hub
-%% enabled, Security Hub does not make any other changes to those accounts.
-%% It does not change their enabled standards or controls.
+%% For organization accounts that already have Security Hub enabled, Security
+%% Hub does not make any other changes to those accounts. It does not change
+%% their enabled standards or controls.
 %%
-%% </li> </ul> A permissions policy is added that permits the administrator
-%% account to view the findings generated in the member account.
+%% A permissions policy is added that permits the administrator account to
+%% view the findings
+%% generated in the member account.
 %%
 %% To remove the association between the administrator and member accounts,
 %% use the `DisassociateFromMasterAccount' or `DisassociateMembers'
@@ -901,11 +986,13 @@ create_members(Client, Input) ->
 create_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -924,17 +1011,20 @@ create_members(Client, Input0, Options0) ->
 %% to become a member.
 %%
 %% This operation is only called by member accounts that aren't part of
-%% an organization. Organization accounts don't receive invitations.
+%% an organization.
+%% Organization accounts don't receive invitations.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/decline"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -950,18 +1040,20 @@ decline_invitations(Client, Input0, Options0) ->
 %% @doc Deletes a custom action target from Security Hub.
 %%
 %% Deleting a custom action target does not affect any findings or insights
-%% that were already sent to Amazon CloudWatch Events using the custom
-%% action.
+%% that were
+%% already sent to Amazon CloudWatch Events using the custom action.
 delete_action_target(Client, ActionTargetArn, Input) ->
     delete_action_target(Client, ActionTargetArn, Input, []).
 delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = delete,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -974,23 +1066,26 @@ delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a configuration policy.
+%% @doc
+%% Deletes a configuration policy.
 %%
 %% Only the Security Hub delegated administrator can invoke this operation
 %% from the home Region. For the deletion to succeed, you must first
-%% disassociate a configuration policy from target accounts, organizational
-%% units, or the root by invoking the
+%% disassociate a configuration policy from target accounts,
+%% organizational units, or the root by invoking the
 %% `StartConfigurationPolicyDisassociation' operation.
 delete_configuration_policy(Client, Identifier, Input) ->
     delete_configuration_policy(Client, Identifier, Input, []).
 delete_configuration_policy(Client, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/configurationPolicy/", aws_util:encode_uri(Identifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1015,11 +1110,13 @@ delete_finding_aggregator(Client, FindingAggregatorArn, Input) ->
 delete_finding_aggregator(Client, FindingAggregatorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/findingAggregator/delete/", aws_util:encode_multi_segment_uri(FindingAggregatorArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1038,11 +1135,13 @@ delete_insight(Client, InsightArn, Input) ->
 delete_insight(Client, InsightArn, Input0, Options0) ->
     Method = delete,
     Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1062,18 +1161,20 @@ delete_insight(Client, InsightArn, Input0, Options0) ->
 %% invitations sent to one or more member accounts.
 %%
 %% This operation is only used to delete invitations that are sent to member
-%% accounts that aren't part of an organization. Organization accounts
-%% don't receive invitations.
+%% accounts that aren't part of an organization.
+%% Organization accounts don't receive invitations.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1089,18 +1190,20 @@ delete_invitations(Client, Input0, Options0) ->
 %% @doc Deletes the specified member accounts from Security Hub.
 %%
 %% You can invoke this API only to delete accounts that became members
-%% through invitation. You can't invoke this API to delete accounts that
-%% belong to an Organizations organization.
+%% through invitation. You can't invoke this
+%% API to delete accounts that belong to an Organizations organization.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 delete_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/delete"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1120,11 +1223,13 @@ describe_action_targets(Client, Input) ->
 describe_action_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actionTargets/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1150,10 +1255,12 @@ describe_hub(Client, QueryMap, HeadersMap)
 describe_hub(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1168,7 +1275,8 @@ describe_hub(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about the way your organization is configured in
 %% Security Hub.
 %%
-%% Only the Security Hub administrator account can invoke this operation.
+%% Only the
+%% Security Hub administrator account can invoke this operation.
 describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
@@ -1180,10 +1288,12 @@ describe_organization_configuration(Client, QueryMap, HeadersMap)
 describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1194,10 +1304,12 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about product integrations in Security Hub.
 %%
 %% You can optionally provide an integration ARN. If you provide an
-%% integration ARN, then the results only include that integration.
+%% integration ARN, then
+%% the results only include that integration.
 %%
 %% If you do not provide an integration ARN, then the results include all of
-%% the available product integrations.
+%% the available
+%% product integrations.
 describe_products(Client)
   when is_map(Client) ->
     describe_products(Client, #{}, #{}).
@@ -1209,10 +1321,12 @@ describe_products(Client, QueryMap, HeadersMap)
 describe_products(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/products"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1241,10 +1355,12 @@ describe_standards(Client, QueryMap, HeadersMap)
 describe_standards(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/standards"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1260,7 +1376,8 @@ describe_standards(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of security standards controls.
 %%
 %% For each control, the results include information about whether it is
-%% currently enabled, the severity, and a link to remediation information.
+%% currently enabled,
+%% the severity, and a link to remediation information.
 describe_standards_controls(Client, StandardsSubscriptionArn)
   when is_map(Client) ->
     describe_standards_controls(Client, StandardsSubscriptionArn, #{}, #{}).
@@ -1272,10 +1389,12 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
 describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/standards/controls/", aws_util:encode_multi_segment_uri(StandardsSubscriptionArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1290,18 +1409,20 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
 
 %% @doc Disables the integration of the specified product with Security Hub.
 %%
-%% After the integration is disabled, findings from that product are no
-%% longer sent to Security Hub.
+%% After the integration is
+%% disabled, findings from that product are no longer sent to Security Hub.
 disable_import_findings_for_product(Client, ProductSubscriptionArn, Input) ->
     disable_import_findings_for_product(Client, ProductSubscriptionArn, Input, []).
 disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Options0) ->
     Method = delete,
     Path = ["/productSubscriptions/", aws_util:encode_multi_segment_uri(ProductSubscriptionArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1316,17 +1437,20 @@ disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Opti
 
 %% @doc Disables a Security Hub administrator account.
 %%
-%% Can only be called by the organization management account.
+%% Can only be called by the organization
+%% management account.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/admin/disable"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1342,29 +1466,35 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% @doc Disables Security Hub in your account only in the current Amazon Web
 %% Services Region.
 %%
-%% To disable Security Hub in all Regions, you must submit one request per
-%% Region where you have enabled Security Hub.
+%% To disable Security Hub in all
+%% Regions, you must submit one request per Region where you have enabled
+%% Security Hub.
 %%
 %% You can't disable Security Hub in an account that is currently the
 %% Security Hub administrator.
 %%
 %% When you disable Security Hub, your existing findings and insights and any
-%% Security Hub configuration settings are deleted after 90 days and cannot
-%% be recovered. Any standards that were enabled are disabled, and your
-%% administrator and member account associations are removed.
+%% Security Hub configuration
+%% settings are deleted after 90 days and cannot be recovered. Any standards
+%% that were enabled
+%% are disabled, and your administrator and member account associations are
+%% removed.
 %%
 %% If you want to save your existing findings, you must export them before
-%% you disable Security Hub.
+%% you disable
+%% Security Hub.
 disable_security_hub(Client, Input) ->
     disable_security_hub(Client, Input, []).
 disable_security_hub(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1378,21 +1508,25 @@ disable_security_hub(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates the current Security Hub member account from the
-%% associated administrator account.
+%% associated administrator
+%% account.
 %%
 %% This operation is only used by accounts that are not part of an
-%% organization. For organization accounts, only the administrator account
-%% can disassociate a member account.
+%% organization. For
+%% organization accounts, only the administrator account can
+%% disassociate a member account.
 disassociate_from_administrator_account(Client, Input) ->
     disassociate_from_administrator_account(Client, Input, []).
 disassociate_from_administrator_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/administrator/disassociate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1419,21 +1553,25 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 %% `DisassociateFromAdministratorAccount'.
 %%
 %% Disassociates the current Security Hub member account from the associated
-%% administrator account.
+%% administrator
+%% account.
 %%
 %% This operation is only used by accounts that are not part of an
-%% organization. For organization accounts, only the administrator account
-%% can disassociate a member account.
+%% organization. For
+%% organization accounts, only the administrator account can
+%% disassociate a member account.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 disassociate_from_master_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/master/disassociate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1450,17 +1588,20 @@ disassociate_from_master_account(Client, Input0, Options0) ->
 %% administrator account.
 %%
 %% Can be used to disassociate both accounts that are managed using
-%% Organizations and accounts that were invited manually.
+%% Organizations and accounts that
+%% were invited manually.
 disassociate_members(Client, Input) ->
     disassociate_members(Client, Input, []).
 disassociate_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/disassociate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1475,20 +1616,24 @@ disassociate_members(Client, Input0, Options0) ->
 
 %% @doc Enables the integration of a partner product with Security Hub.
 %%
-%% Integrated products send findings to Security Hub.
+%% Integrated products send
+%% findings to Security Hub.
 %%
 %% When you enable a product integration, a permissions policy that grants
-%% permission for the product to send findings to Security Hub is applied.
+%% permission for
+%% the product to send findings to Security Hub is applied.
 enable_import_findings_for_product(Client, Input) ->
     enable_import_findings_for_product(Client, Input, []).
 enable_import_findings_for_product(Client, Input0, Options0) ->
     Method = post,
     Path = ["/productSubscriptions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1504,17 +1649,20 @@ enable_import_findings_for_product(Client, Input0, Options0) ->
 %% @doc Designates the Security Hub administrator account for an
 %% organization.
 %%
-%% Can only be called by the organization management account.
+%% Can only be called by
+%% the organization management account.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/admin/enable"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1528,21 +1676,23 @@ enable_organization_admin_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables Security Hub for your account in the current Region or the
-%% Region you specify in the request.
+%% Region you specify in the
+%% request.
 %%
 %% When you enable Security Hub, you grant to Security Hub the permissions
-%% necessary to gather findings from other services that are integrated with
-%% Security Hub.
+%% necessary to gather findings
+%% from other services that are integrated with Security Hub.
 %%
 %% When you use the `EnableSecurityHub' operation to enable Security Hub,
-%% you also automatically enable the following standards:
+%% you also
+%% automatically enable the following standards:
 %%
-%% <ul> <li> Center for Internet Security (CIS) Amazon Web Services
-%% Foundations Benchmark v1.2.0
+%% Center for Internet Security (CIS) Amazon Web Services Foundations
+%% Benchmark v1.2.0
 %%
-%% </li> <li> Amazon Web Services Foundational Security Best Practices
+%% Amazon Web Services Foundational Security Best Practices
 %%
-%% </li> </ul> Other standards are not automatically enabled.
+%% Other standards are not automatically enabled.
 %%
 %% To opt out of automatically enabled standards, set
 %% `EnableDefaultStandards' to `false'.
@@ -1559,11 +1709,13 @@ enable_security_hub(Client, Input) ->
 enable_security_hub(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1580,7 +1732,8 @@ enable_security_hub(Client, Input0, Options0) ->
 %% the current member account.
 %%
 %% Can be used by both member accounts that are managed using Organizations
-%% and accounts that were invited manually.
+%% and accounts that were
+%% invited manually.
 get_administrator_account(Client)
   when is_map(Client) ->
     get_administrator_account(Client, #{}, #{}).
@@ -1592,10 +1745,12 @@ get_administrator_account(Client, QueryMap, HeadersMap)
 get_administrator_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/administrator"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1603,10 +1758,11 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about a configuration policy.
+%% @doc
+%% Provides information about a configuration policy.
 %%
-%% Only the Security Hub delegated administrator can invoke this operation
-%% from the home Region.
+%% Only the Security Hub delegated administrator can invoke
+%% this operation from the home Region.
 get_configuration_policy(Client, Identifier)
   when is_map(Client) ->
     get_configuration_policy(Client, Identifier, #{}, #{}).
@@ -1618,10 +1774,12 @@ get_configuration_policy(Client, Identifier, QueryMap, HeadersMap)
 get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configurationPolicy/get/", aws_util:encode_uri(Identifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1629,22 +1787,26 @@ get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the association between a configuration and a target account,
+%% @doc
+%% Returns the association between a configuration and a target account,
 %% organizational unit, or the root.
 %%
-%% The configuration can be a configuration policy or self-managed behavior.
-%% Only the Security Hub delegated administrator can invoke this operation
-%% from the home Region.
+%% The
+%% configuration can be a configuration policy or self-managed behavior. Only
+%% the Security Hub delegated administrator can
+%% invoke this operation from the home Region.
 get_configuration_policy_association(Client, Input) ->
     get_configuration_policy_association(Client, Input, []).
 get_configuration_policy_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1663,11 +1825,13 @@ get_enabled_standards(Client, Input) ->
 get_enabled_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1692,10 +1856,12 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap)
 get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingAggregator/get/", aws_util:encode_multi_segment_uri(FindingAggregatorArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1703,20 +1869,23 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns history for a Security Hub finding in the last 90 days.
+%% @doc
+%% Returns history for a Security Hub finding in the last 90 days.
 %%
-%% The history includes changes made to any fields in the Amazon Web Services
-%% Security Finding Format (ASFF).
+%% The history includes changes made to any fields in
+%% the Amazon Web Services Security Finding Format (ASFF).
 get_finding_history(Client, Input) ->
     get_finding_history(Client, Input, []).
 get_finding_history(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingHistory/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1739,11 +1908,13 @@ get_findings(Client, Input) ->
 get_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1769,10 +1940,12 @@ get_insight_results(Client, InsightArn, QueryMap, HeadersMap)
 get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/insights/results/", aws_util:encode_multi_segment_uri(InsightArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1786,11 +1959,13 @@ get_insights(Client, Input) ->
 get_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1804,8 +1979,8 @@ get_insights(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the count of all Security Hub membership invitations that
-%% were sent to the current member account, not including the currently
-%% accepted invitation.
+%% were sent to the
+%% current member account, not including the currently accepted invitation.
 get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
@@ -1817,10 +1992,12 @@ get_invitations_count(Client, QueryMap, HeadersMap)
 get_invitations_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations/count"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1843,7 +2020,8 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 %% current member account.
 %%
 %% Can be used by both member accounts that are managed using Organizations
-%% and accounts that were invited manually.
+%% and accounts that were
+%% invited manually.
 get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, #{}, #{}).
@@ -1855,10 +2033,12 @@ get_master_account(Client, QueryMap, HeadersMap)
 get_master_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/master"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1870,21 +2050,25 @@ get_master_account(Client, QueryMap, HeadersMap, Options0)
 %% specified account IDs.
 %%
 %% An administrator account can be either the delegated Security Hub
-%% administrator account for an organization or an administrator account that
-%% enabled Security Hub manually.
+%% administrator account for an
+%% organization or an administrator account that enabled Security Hub
+%% manually.
 %%
 %% The results include both member accounts that are managed using
-%% Organizations and accounts that were invited manually.
+%% Organizations and accounts that
+%% were invited manually.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/get"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1897,7 +2081,8 @@ get_members(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the definition of a security control.
+%% @doc
+%% Retrieves the definition of a security control.
 %%
 %% The definition includes the control title, description, Region
 %% availability, parameter definitions, and other details.
@@ -1912,10 +2097,12 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap)
 get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/securityControl/definition"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1928,28 +2115,32 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Invites other Amazon Web Services accounts to become member accounts
-%% for the Security Hub administrator account that the invitation is sent
-%% from.
+%% for the Security Hub administrator account that
+%% the invitation is sent from.
 %%
 %% This operation is only used to invite accounts that do not belong to an
-%% organization. Organization accounts do not receive invitations.
+%% organization.
+%% Organization accounts do not receive invitations.
 %%
 %% Before you can use this action to invite a member, you must first use the
 %% `CreateMembers' action to create the member account in Security Hub.
 %%
 %% When the account owner enables Security Hub and accepts the invitation to
-%% become a member account, the administrator account can view the findings
-%% generated from the member account.
+%% become a member
+%% account, the administrator account can view the findings generated from
+%% the member account.
 invite_members(Client, Input) ->
     invite_members(Client, Input, []).
 invite_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/invite"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1962,8 +2153,8 @@ invite_members(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc A list of automation rules and their metadata for the calling
-%% account.
+%% @doc
+%% A list of automation rules and their metadata for the calling account.
 list_automation_rules(Client)
   when is_map(Client) ->
     list_automation_rules(Client, #{}, #{}).
@@ -1975,10 +2166,12 @@ list_automation_rules(Client, QueryMap, HeadersMap)
 list_automation_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/automationrules/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -1991,8 +2184,10 @@ list_automation_rules(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the configuration policies that the Security Hub delegated
-%% administrator has created for your organization.
+%% @doc
+%% Lists the configuration policies that the Security Hub delegated
+%% administrator has created for your
+%% organization.
 %%
 %% Only the delegated administrator can invoke this operation from the home
 %% Region.
@@ -2007,10 +2202,12 @@ list_configuration_policies(Client, QueryMap, HeadersMap)
 list_configuration_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configurationPolicy/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2023,21 +2220,25 @@ list_configuration_policies(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the associations for your configuration
+%% @doc
+%% Provides information about the associations for your configuration
 %% policies and self-managed behavior.
 %%
-%% Only the Security Hub delegated administrator can invoke this operation
-%% from the home Region.
+%% Only the
+%% Security Hub delegated administrator can invoke this operation from the
+%% home Region.
 list_configuration_policy_associations(Client, Input) ->
     list_configuration_policy_associations(Client, Input, []).
 list_configuration_policy_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2051,7 +2252,8 @@ list_configuration_policy_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all findings-generating solutions (products) that you are
-%% subscribed to receive findings from in Security Hub.
+%% subscribed to receive
+%% findings from in Security Hub.
 list_enabled_products_for_import(Client)
   when is_map(Client) ->
     list_enabled_products_for_import(Client, #{}, #{}).
@@ -2063,10 +2265,12 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap)
 list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/productSubscriptions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2094,10 +2298,12 @@ list_finding_aggregators(Client, QueryMap, HeadersMap)
 list_finding_aggregators(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingAggregator/list"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2127,10 +2333,12 @@ list_invitations(Client, QueryMap, HeadersMap)
 list_invitations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2144,10 +2352,12 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details about all member accounts for the current Security Hub
-%% administrator account.
+%% administrator
+%% account.
 %%
 %% The results include both member accounts that belong to an organization
-%% and member accounts that were invited manually.
+%% and member
+%% accounts that were invited manually.
 list_members(Client)
   when is_map(Client) ->
     list_members(Client, #{}, #{}).
@@ -2159,10 +2369,12 @@ list_members(Client, QueryMap, HeadersMap)
 list_members(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/members"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2178,7 +2390,8 @@ list_members(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Security Hub administrator accounts.
 %%
-%% Can only be called by the organization management account.
+%% Can only be called by the organization
+%% management account.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -2190,10 +2403,12 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
 list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/organization/admin"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2206,8 +2421,8 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all of the security controls that apply to a specified
-%% standard.
+%% @doc
+%% Lists all of the security controls that apply to a specified standard.
 list_security_control_definitions(Client)
   when is_map(Client) ->
     list_security_control_definitions(Client, #{}, #{}).
@@ -2219,10 +2434,12 @@ list_security_control_definitions(Client, QueryMap, HeadersMap)
 list_security_control_definitions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/securityControls/definitions"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2236,7 +2453,8 @@ list_security_control_definitions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Specifies whether a control is currently enabled or disabled in each
+%% @doc
+%% Specifies whether a control is currently enabled or disabled in each
 %% enabled standard in the calling account.
 list_standards_control_associations(Client, SecurityControlId)
   when is_map(Client) ->
@@ -2249,10 +2467,12 @@ list_standards_control_associations(Client, SecurityControlId, QueryMap, Headers
 list_standards_control_associations(Client, SecurityControlId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/associations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2278,10 +2498,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -2289,22 +2511,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Associates a target account, organizational unit, or the root with a
+%% @doc
+%% Associates a target account, organizational unit, or the root with a
 %% specified configuration.
 %%
-%% The target can be associated with a configuration policy or self-managed
-%% behavior. Only the Security Hub delegated administrator can invoke this
-%% operation from the home Region.
+%% The target can be
+%% associated with a configuration policy or self-managed behavior. Only the
+%% Security Hub delegated administrator can
+%% invoke this operation from the home Region.
 start_configuration_policy_association(Client, Input) ->
     start_configuration_policy_association(Client, Input, []).
 start_configuration_policy_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/associate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2317,25 +2543,30 @@ start_configuration_policy_association(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a target account, organizational unit, or the root from
-%% a specified configuration.
+%% @doc
+%% Disassociates a target account, organizational unit, or the root from a
+%% specified configuration.
 %%
-%% When you disassociate a configuration from its target, the target inherits
-%% the configuration of the closest parent. If there’s no configuration to
-%% inherit, the target retains its settings but becomes a self-managed
-%% account. A target can be disassociated from a configuration policy or
-%% self-managed behavior. Only the Security Hub delegated administrator can
-%% invoke this operation from the home Region.
+%% When you
+%% disassociate a configuration from its target, the target inherits the
+%% configuration of the closest parent. If there’s no
+%% configuration to inherit, the target retains its settings but becomes a
+%% self-managed account. A target can be disassociated from
+%% a configuration policy or self-managed behavior. Only the Security Hub
+%% delegated administrator can invoke this
+%% operation from the home Region.
 start_configuration_policy_disassociation(Client, Input) ->
     start_configuration_policy_disassociation(Client, Input, []).
 start_configuration_policy_disassociation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/disassociate"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2354,11 +2585,13 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2377,11 +2610,13 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2402,11 +2637,13 @@ update_action_target(Client, ActionTargetArn, Input) ->
 update_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = patch,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2419,20 +2656,23 @@ update_action_target(Client, ActionTargetArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a configuration policy.
+%% @doc
+%% Updates a configuration policy.
 %%
-%% Only the Security Hub delegated administrator can invoke this operation
-%% from the home Region.
+%% Only the Security Hub delegated
+%% administrator can invoke this operation from the home Region.
 update_configuration_policy(Client, Identifier, Input) ->
     update_configuration_policy(Client, Identifier, Input, []).
 update_configuration_policy(Client, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/configurationPolicy/", aws_util:encode_uri(Identifier), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2458,11 +2698,13 @@ update_finding_aggregator(Client, Input) ->
 update_finding_aggregator(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findingAggregator/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2475,23 +2717,29 @@ update_finding_aggregator(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc `UpdateFindings' is deprecated.
+%% @doc
+%% `UpdateFindings' is deprecated.
 %%
-%% Instead of `UpdateFindings', use `BatchUpdateFindings'.
+%% Instead of `UpdateFindings', use
+%% `BatchUpdateFindings'.
 %%
 %% Updates the `Note' and `RecordState' of the Security
-%% Hub-aggregated findings that the filter attributes specify. Any member
-%% account that can view the finding also sees the update to the finding.
+%% Hub-aggregated
+%% findings that the filter attributes specify. Any member account that can
+%% view the finding
+%% also sees the update to the finding.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
 update_findings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/findings"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2511,11 +2759,13 @@ update_insight(Client, InsightArn, Input) ->
 update_insight(Client, InsightArn, Input0, Options0) ->
     Method = patch,
     Path = ["/insights/", aws_util:encode_multi_segment_uri(InsightArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2530,17 +2780,20 @@ update_insight(Client, InsightArn, Input0, Options0) ->
 
 %% @doc Updates the configuration of your organization in Security Hub.
 %%
-%% Only the Security Hub administrator account can invoke this operation.
+%% Only the
+%% Security Hub administrator account can invoke this operation.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/configuration"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2553,17 +2806,20 @@ update_organization_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the properties of a security control.
+%% @doc
+%% Updates the properties of a security control.
 update_security_control(Client, Input) ->
     update_security_control(Client, Input, []).
 update_security_control(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/securityControl/update"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2582,11 +2838,13 @@ update_security_hub_configuration(Client, Input) ->
 update_security_hub_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/accounts"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2600,17 +2858,20 @@ update_security_hub_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to control whether an individual security standard control is
-%% enabled or disabled.
+%% enabled or
+%% disabled.
 update_standards_control(Client, StandardsControlArn, Input) ->
     update_standards_control(Client, StandardsControlArn, Input, []).
 update_standards_control(Client, StandardsControlArn, Input0, Options0) ->
     Method = patch,
     Path = ["/standards/control/", aws_util:encode_multi_segment_uri(StandardsControlArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -2626,6 +2887,11 @@ update_standards_control(Client, StandardsControlArn, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

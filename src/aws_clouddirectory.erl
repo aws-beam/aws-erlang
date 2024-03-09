@@ -4,12 +4,15 @@
 %% @doc Amazon Cloud Directory
 %%
 %% Amazon Cloud Directory is a component of the AWS Directory Service that
-%% simplifies the development and management of cloud-scale web, mobile, and
-%% IoT applications.
+%% simplifies the
+%% development and management of cloud-scale web, mobile, and IoT
+%% applications.
 %%
-%% This guide describes the Cloud Directory operations that you can call
-%% programmatically and includes detailed information on data types and
-%% errors. For information about Cloud Directory features, see AWS Directory
+%% This guide
+%% describes the Cloud Directory operations that you can call
+%% programmatically and includes
+%% detailed information on data types and errors. For information about Cloud
+%% Directory features, see AWS Directory
 %% Service: https://aws.amazon.com/directoryservice/ and the Amazon Cloud
 %% Directory Developer Guide:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html.
@@ -163,10 +166,12 @@ add_facet_to_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/facets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -182,18 +187,20 @@ add_facet_to_object(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Copies the input published schema, at the specified version, into the
-%% `Directory' with the same name and version as that of the published
-%% schema.
+%% `Directory' with the same
+%% name and version as that of the published schema.
 apply_schema(Client, Input) ->
     apply_schema(Client, Input, []).
 apply_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/apply"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -210,23 +217,24 @@ apply_schema(Client, Input0, Options0) ->
 
 %% @doc Attaches an existing object to another object.
 %%
-%% An object can be accessed in two ways:
+%% An object can be accessed in two
+%% ways:
 %%
-%% <ol> <li> Using the path
+%% Using the path
 %%
-%% </li> <li> Using `ObjectIdentifier'
-%%
-%% </li> </ol>
+%% Using `ObjectIdentifier'
 attach_object(Client, Input) ->
     attach_object(Client, Input, []).
 attach_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/attach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -243,17 +251,20 @@ attach_object(Client, Input0, Options0) ->
 
 %% @doc Attaches a policy object to a regular object.
 %%
-%% An object can have a limited number of attached policies.
+%% An object can have a limited number of attached
+%% policies.
 attach_policy(Client, Input) ->
     attach_policy(Client, Input, []).
 attach_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/policy/attach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -275,10 +286,12 @@ attach_to_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index/attach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -303,10 +316,12 @@ attach_typed_link(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -328,10 +343,12 @@ batch_read(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/batchread"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -349,17 +366,20 @@ batch_read(Client, Input0, Options0) ->
 
 %% @doc Performs all the write operations in a batch.
 %%
-%% Either all the operations succeed or none.
+%% Either all the operations succeed or
+%% none.
 batch_write(Client, Input) ->
     batch_write(Client, Input, []).
 batch_write(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/batchwrite"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -389,10 +409,12 @@ create_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/create"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -409,17 +431,20 @@ create_directory(Client, Input0, Options0) ->
 
 %% @doc Creates a new `Facet' in a schema.
 %%
-%% Facet creation is allowed only in development or applied schemas.
+%% Facet creation is allowed only
+%% in development or applied schemas.
 create_facet(Client, Input) ->
     create_facet(Client, Input, []).
 create_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet/create"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -445,10 +470,12 @@ create_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -465,20 +492,25 @@ create_index(Client, Input0, Options0) ->
 
 %% @doc Creates an object in a `Directory'.
 %%
-%% Additionally attaches the object to a parent, if a parent reference and
-%% `LinkName' is specified. An object is simply a collection of
-%% `Facet' attributes. You can also use this API call to create a policy
-%% object, if the facet from which you create the object is a policy facet.
+%% Additionally attaches the object to
+%% a parent, if a parent reference and `LinkName' is specified. An object
+%% is simply a
+%% collection of `Facet' attributes. You can also use this API call to
+%% create a
+%% policy object, if the facet from which you create the object is a policy
+%% facet.
 create_object(Client, Input) ->
     create_object(Client, Input, []).
 create_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -495,31 +527,33 @@ create_object(Client, Input0, Options0) ->
 
 %% @doc Creates a new schema in a development state.
 %%
-%% A schema can exist in three phases:
+%% A schema can exist in three
+%% phases:
 %%
-%% <ul> <li> Development: This is a mutable phase of the schema. All new
+%% Development: This is a mutable phase of the schema. All new
 %% schemas are in the development phase. Once the schema is finalized, it can
-%% be published.
+%% be
+%% published.
 %%
-%% </li> <li> Published: Published schemas are immutable and have a version
+%% Published: Published schemas are immutable and have a version
 %% associated with them.
 %%
-%% </li> <li> Applied: Applied schemas are mutable in a way that allows you
+%% Applied: Applied schemas are mutable in a way that allows you
 %% to add new schema facets. You can also add new, nonrequired attributes to
-%% existing schema facets. You can apply only published schemas to
-%% directories.
-%%
-%% </li> </ul>
+%% existing schema
+%% facets. You can apply only published schemas to directories.
 create_schema(Client, Input) ->
     create_schema(Client, Input, []).
 create_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/create"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -542,10 +576,12 @@ create_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/create"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -563,17 +599,21 @@ create_typed_link_facet(Client, Input0, Options0) ->
 %% @doc Deletes a directory.
 %%
 %% Only disabled directories can be deleted. A deleted directory cannot be
-%% undone. Exercise extreme caution when deleting directories.
+%% undone. Exercise extreme
+%% caution
+%% when deleting directories.
 delete_directory(Client, Input) ->
     delete_directory(Client, Input, []).
 delete_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -590,18 +630,22 @@ delete_directory(Client, Input0, Options0) ->
 
 %% @doc Deletes a given `Facet'.
 %%
-%% All attributes and `Rule's that are associated with the facet will be
-%% deleted. Only development schema facets are allowed deletion.
+%% All attributes and `Rule's
+%% that are associated with the facet will be deleted. Only development
+%% schema facets are allowed
+%% deletion.
 delete_facet(Client, Input) ->
     delete_facet(Client, Input, []).
 delete_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -618,9 +662,10 @@ delete_facet(Client, Input0, Options0) ->
 
 %% @doc Deletes an object and its associated attributes.
 %%
-%% Only objects with no children and no parents can be deleted. The maximum
-%% number of attributes that can be deleted during an object deletion is 30.
-%% For more information, see Amazon Cloud Directory Limits:
+%% Only objects with no children and no
+%% parents can be deleted. The maximum number of attributes that can be
+%% deleted during an object deletion is 30. For more information, see Amazon
+%% Cloud Directory Limits:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html.
 delete_object(Client, Input) ->
     delete_object(Client, Input, []).
@@ -628,10 +673,12 @@ delete_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -655,10 +702,12 @@ delete_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -683,10 +732,12 @@ delete_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -708,10 +759,12 @@ detach_from_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index/detach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -728,18 +781,20 @@ detach_from_index(Client, Input0, Options0) ->
 
 %% @doc Detaches a given object from the parent object.
 %%
-%% The object that is to be detached from the parent is specified by the link
-%% name.
+%% The object that is to be detached from the
+%% parent is specified by the link name.
 detach_object(Client, Input) ->
     detach_object(Client, Input, []).
 detach_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/detach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -761,10 +816,12 @@ detach_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/policy/detach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -789,10 +846,12 @@ detach_typed_link(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/detach"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -809,18 +868,21 @@ detach_typed_link(Client, Input0, Options0) ->
 
 %% @doc Disables the specified directory.
 %%
-%% Disabled directories cannot be read or written to. Only enabled
-%% directories can be disabled. Disabled directories may be reenabled.
+%% Disabled directories cannot be read or written to.
+%% Only enabled directories can be disabled. Disabled directories may be
+%% reenabled.
 disable_directory(Client, Input) ->
     disable_directory(Client, Input, []).
 disable_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/disable"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -837,18 +899,20 @@ disable_directory(Client, Input0, Options0) ->
 
 %% @doc Enables the specified directory.
 %%
-%% Only disabled directories can be enabled. Once enabled, the directory can
-%% then be read and written to.
+%% Only disabled directories can be enabled. Once
+%% enabled, the directory can then be read and written to.
 enable_directory(Client, Input) ->
     enable_directory(Client, Input, []).
 enable_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/enable"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -871,10 +935,12 @@ get_applied_schema_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/getappliedschema"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -894,10 +960,12 @@ get_directory(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/directory/get"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -915,18 +983,20 @@ get_directory(Client, Input0, Options0) ->
 %% @doc Gets details of the `Facet', such as facet name, attributes,
 %% `Rule's, or `ObjectType'.
 %%
-%% You can call this on all kinds of schema facets -- published, development,
-%% or applied.
+%% You can call this on all kinds of schema
+%% facets -- published, development, or applied.
 get_facet(Client, Input) ->
     get_facet(Client, Input, []).
 get_facet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -948,10 +1018,12 @@ get_link_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/get"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -974,10 +1046,12 @@ get_object_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes/get"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1000,10 +1074,12 @@ get_object_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/information"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1030,10 +1106,12 @@ get_schema_as_json(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1059,10 +1137,12 @@ get_typed_link_facet_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/get"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1086,10 +1166,12 @@ list_applied_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/applied"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1109,10 +1191,12 @@ list_attached_indices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/indices"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1129,17 +1213,20 @@ list_attached_indices(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves each Amazon Resource Name (ARN) of schemas in the
-%% development state.
+%% development
+%% state.
 list_development_schema_arns(Client, Input) ->
     list_development_schema_arns(Client, Input, []).
 list_development_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/development"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1159,10 +1246,12 @@ list_directories(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/directory/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1182,10 +1271,12 @@ list_facet_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet/attributes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1207,10 +1298,12 @@ list_facet_names(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1228,8 +1321,8 @@ list_facet_names(Client, Input0, Options0) ->
 %% @doc Returns a paginated list of all the incoming `TypedLinkSpecifier'
 %% information for an object.
 %%
-%% It also supports filtering by typed link facet and identity attributes.
-%% For more information, see Typed Links:
+%% It also supports filtering by typed link facet and identity
+%% attributes. For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 list_incoming_typed_links(Client, Input) ->
     list_incoming_typed_links(Client, Input, []).
@@ -1237,10 +1330,12 @@ list_incoming_typed_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/incoming"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1262,10 +1357,12 @@ list_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/index/targets"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1291,10 +1388,12 @@ list_managed_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/managed"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1314,10 +1413,12 @@ list_object_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1334,17 +1435,20 @@ list_object_attributes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of child objects that are associated with a
-%% given object.
+%% given
+%% object.
 list_object_children(Client, Input) ->
     list_object_children(Client, Input, []).
 list_object_children(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/children"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1361,28 +1465,35 @@ list_object_children(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves all available parent paths for any object type such as
-%% node, leaf node, policy node, and index node objects.
+%% node, leaf node,
+%% policy node, and index node objects.
 %%
 %% For more information about objects, see Directory Structure:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html.
 %%
 %% Use this API to evaluate all parents for an object. The call returns all
-%% objects from the root of the directory up to the requested object. The API
-%% returns the number of paths based on user-defined `MaxResults', in
-%% case there are multiple paths to the parent. The order of the paths and
-%% nodes returned is consistent among multiple API calls unless the objects
-%% are deleted or moved. Paths not leading to the directory root are ignored
-%% from the target object.
+%% objects from
+%% the root of the directory up to the requested object. The API returns the
+%% number of paths
+%% based on user-defined `MaxResults', in case there are multiple paths
+%% to the parent.
+%% The order of the paths and nodes returned is consistent among multiple API
+%% calls unless the
+%% objects are deleted or moved. Paths not leading to the directory root are
+%% ignored from the
+%% target object.
 list_object_parent_paths(Client, Input) ->
     list_object_parent_paths(Client, Input, []).
 list_object_parent_paths(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/parentpaths"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1398,17 +1509,20 @@ list_object_parent_paths(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists parent objects that are associated with a given object in
-%% pagination fashion.
+%% pagination
+%% fashion.
 list_object_parents(Client, Input) ->
     list_object_parents(Client, Input, []).
 list_object_parents(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/parent"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1431,10 +1545,12 @@ list_object_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/policy"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1453,8 +1569,8 @@ list_object_policies(Client, Input0, Options0) ->
 %% @doc Returns a paginated list of all the outgoing `TypedLinkSpecifier'
 %% information for an object.
 %%
-%% It also supports filtering by typed link facet and identity attributes.
-%% For more information, see Typed Links:
+%% It also supports filtering by typed link facet and identity
+%% attributes. For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 list_outgoing_typed_links(Client, Input) ->
     list_outgoing_typed_links(Client, Input, []).
@@ -1462,10 +1578,12 @@ list_outgoing_typed_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/outgoing"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1488,10 +1606,12 @@ list_policy_attachments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/policy/attachment"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1517,10 +1637,12 @@ list_published_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/published"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1535,19 +1657,22 @@ list_published_schema_arns(Client, Input0, Options0) ->
 
 %% @doc Returns tags for a resource.
 %%
-%% Tagging is currently supported only for directories with a limit of 50
-%% tags per directory. All 50 tags are returned for a given directory with
-%% this API call.
+%% Tagging is currently supported only for directories with a
+%% limit of 50 tags per directory. All 50 tags are returned for a given
+%% directory with this API
+%% call.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/tags"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1571,10 +1696,12 @@ list_typed_link_facet_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/attributes"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1600,10 +1727,12 @@ list_typed_link_facet_names(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/list"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1622,11 +1751,14 @@ list_typed_link_facet_names(Client, Input0, Options0) ->
 %% specified.
 %%
 %% If there are no policies present, an empty list is returned. If policies
-%% are present, and if some objects don't have the policies attached, it
-%% returns the `ObjectIdentifier' for such objects. If policies are
-%% present, it returns `ObjectIdentifier', `policyId', and
+%% are
+%% present, and if some objects don't have the policies attached, it
+%% returns the `ObjectIdentifier'
+%% for such objects. If policies are present, it returns
+%% `ObjectIdentifier', `policyId', and
 %% `policyType'. Paths that don't lead to the root from the target
-%% object are ignored. For more information, see Policies:
+%% object are ignored. For more
+%% information, see Policies:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies.
 lookup_policy(Client, Input) ->
     lookup_policy(Client, Input, []).
@@ -1634,10 +1766,12 @@ lookup_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/policy/lookup"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1660,10 +1794,12 @@ publish_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/publish"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DevelopmentSchemaArn">>}
@@ -1689,10 +1825,12 @@ put_schema_from_json(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1714,10 +1852,12 @@ remove_facet_from_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/facets/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1739,10 +1879,12 @@ tag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/tags/add"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1762,10 +1904,12 @@ untag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/tags/remove"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1780,25 +1924,23 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Does the following:
 %%
-%% <ol> <li> Adds new `Attributes', `Rules', or `ObjectTypes'.
+%% Adds new `Attributes', `Rules', or `ObjectTypes'.
 %%
-%% </li> <li> Updates existing `Attributes', `Rules', or
-%% `ObjectTypes'.
+%% Updates existing `Attributes', `Rules', or `ObjectTypes'.
 %%
-%% </li> <li> Deletes existing `Attributes', `Rules', or
-%% `ObjectTypes'.
-%%
-%% </li> </ol>
+%% Deletes existing `Attributes', `Rules', or `ObjectTypes'.
 update_facet(Client, Input) ->
     update_facet(Client, Input, []).
 update_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1823,10 +1965,12 @@ update_link_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/update"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1848,10 +1992,12 @@ update_object_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/update"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1868,17 +2014,20 @@ update_object_attributes(Client, Input0, Options0) ->
 
 %% @doc Updates the schema name with a new name.
 %%
-%% Only development schema names can be updated.
+%% Only development schema names can be
+%% updated.
 update_schema(Client, Input) ->
     update_schema(Client, Input, []).
 update_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/update"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1903,10 +2052,12 @@ update_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1935,10 +2086,12 @@ upgrade_applied_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradeapplied"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1959,10 +2112,12 @@ upgrade_published_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradepublished"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -1978,6 +2133,11 @@ upgrade_published_schema(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

@@ -2,14 +2,16 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc IoT Events monitors your equipment or device fleets for failures or
-%% changes in operation, and triggers actions when such events occur.
+%% changes in operation, and
+%% triggers actions when such events occur.
 %%
-%% You can use IoT Events Data API commands to send inputs to detectors, list
-%% detectors, and view or update a detector's status.
+%% You can use IoT Events Data API commands to send inputs to
+%% detectors, list detectors, and view or update a detector's status.
 %%
 %% For more information, see What is IoT Events?:
 %% https://docs.aws.amazon.com/iotevents/latest/developerguide/what-is-iotevents.html
-%% in the IoT Events Developer Guide.
+%% in the
+%% IoT Events Developer Guide.
 -module(aws_iot_events_data).
 
 -export([batch_acknowledge_alarm/2,
@@ -49,18 +51,20 @@
 
 %% @doc Acknowledges one or more alarms.
 %%
-%% The alarms change to the `ACKNOWLEDGED' state after you acknowledge
-%% them.
+%% The alarms change to the `ACKNOWLEDGED' state
+%% after you acknowledge them.
 batch_acknowledge_alarm(Client, Input) ->
     batch_acknowledge_alarm(Client, Input, []).
 batch_acknowledge_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/acknowledge"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -86,10 +90,12 @@ batch_delete_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detectors/delete"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -104,17 +110,20 @@ batch_delete_detector(Client, Input0, Options0) ->
 
 %% @doc Disables one or more alarms.
 %%
-%% The alarms change to the `DISABLED' state after you disable them.
+%% The alarms change to the `DISABLED' state after
+%% you disable them.
 batch_disable_alarm(Client, Input) ->
     batch_disable_alarm(Client, Input, []).
 batch_disable_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/disable"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -129,17 +138,20 @@ batch_disable_alarm(Client, Input0, Options0) ->
 
 %% @doc Enables one or more alarms.
 %%
-%% The alarms change to the `NORMAL' state after you enable them.
+%% The alarms change to the `NORMAL' state after you
+%% enable them.
 batch_enable_alarm(Client, Input) ->
     batch_enable_alarm(Client, Input, []).
 batch_enable_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/enable"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -154,21 +166,26 @@ batch_enable_alarm(Client, Input0, Options0) ->
 
 %% @doc Sends a set of messages to the IoT Events system.
 %%
-%% Each message payload is transformed into the input you specify
-%% (`&quot;inputName&quot;') and ingested into any detectors that monitor
+%% Each message payload is transformed into
+%% the input you specify (`&quot;inputName&quot;') and ingested into any
+%% detectors that monitor
 %% that input. If multiple messages are sent, the order in which the messages
-%% are processed isn't guaranteed. To guarantee ordering, you must send
-%% messages one at a time and wait for a successful response.
+%% are processed isn't
+%% guaranteed. To guarantee ordering, you must send messages one at a time
+%% and wait for a
+%% successful response.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
 batch_put_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/inputs/messages"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -183,17 +200,20 @@ batch_put_message(Client, Input0, Options0) ->
 
 %% @doc Resets one or more alarms.
 %%
-%% The alarms return to the `NORMAL' state after you reset them.
+%% The alarms return to the `NORMAL' state after you
+%% reset them.
 batch_reset_alarm(Client, Input) ->
     batch_reset_alarm(Client, Input, []).
 batch_reset_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/reset"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -208,18 +228,20 @@ batch_reset_alarm(Client, Input0, Options0) ->
 
 %% @doc Changes one or more alarms to the snooze mode.
 %%
-%% The alarms change to the `SNOOZE_DISABLED' state after you set them to
-%% the snooze mode.
+%% The alarms change to the
+%% `SNOOZE_DISABLED' state after you set them to the snooze mode.
 batch_snooze_alarm(Client, Input) ->
     batch_snooze_alarm(Client, Input, []).
 batch_snooze_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/snooze"],
     SuccessStatusCode = 202,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -233,17 +255,20 @@ batch_snooze_alarm(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the state, variable values, and timer settings of one or more
-%% detectors (instances) of a specified detector model.
+%% detectors
+%% (instances) of a specified detector model.
 batch_update_detector(Client, Input) ->
     batch_update_detector(Client, Input, []).
 batch_update_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detectors"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -267,11 +292,13 @@ describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap)
 
 describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/alarms/", aws_util:encode_uri(AlarmModelName), "/keyValues/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/alarms/", aws_util:encode_uri(AlarmModelName), "/keyValues"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -294,11 +321,13 @@ describe_detector(Client, DetectorModelName, QueryMap, HeadersMap)
 
 describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), "/keyValues/"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), "/keyValues"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -312,7 +341,8 @@ describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists one or more alarms.
 %%
-%% The operation returns only the metadata associated with each alarm.
+%% The operation returns only the metadata associated with each
+%% alarm.
 list_alarms(Client, AlarmModelName)
   when is_map(Client) ->
     list_alarms(Client, AlarmModelName, #{}, #{}).
@@ -324,10 +354,12 @@ list_alarms(Client, AlarmModelName, QueryMap, HeadersMap)
 list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarms/", aws_util:encode_uri(AlarmModelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -352,10 +384,12 @@ list_detectors(Client, DetectorModelName, QueryMap, HeadersMap)
 list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
 
     Headers = [],
 
@@ -372,6 +406,11 @@ list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->

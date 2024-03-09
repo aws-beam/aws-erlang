@@ -4,39 +4,41 @@
 %% @doc Amazon Web Services Support App in Slack
 %%
 %% You can use the Amazon Web Services Support App in Slack API to manage
-%% your support cases in Slack for your Amazon Web Services account.
+%% your support cases in Slack for your
+%% Amazon Web Services account.
 %%
 %% After you configure your Slack workspace and channel with the Amazon Web
-%% Services Support App, you can perform the following tasks directly in your
-%% Slack channel:
+%% Services Support App, you can
+%% perform the following tasks directly in your Slack channel:
 %%
-%% <ul> <li> Create, search, update, and resolve your support cases
+%% Create, search, update, and resolve your support cases
 %%
-%% </li> <li> Request service quota increases for your account
+%% Request service quota increases for your account
 %%
-%% </li> <li> Invite Amazon Web Services Support agents to your channel so
-%% that you can chat directly about your support cases
+%% Invite Amazon Web Services Support agents to your channel so that you can
+%% chat directly about your
+%% support cases
 %%
-%% </li> </ul> For more information about how to perform these actions in
-%% Slack, see the following documentation in the Amazon Web Services Support
-%% User Guide:
+%% For more information about how to perform these actions in Slack, see the
+%% following
+%% documentation in the Amazon Web Services Support User Guide:
 %%
-%% <ul> <li> Amazon Web Services Support App in Slack:
+%% Amazon Web Services Support App in Slack:
 %% https://docs.aws.amazon.com/awssupport/latest/user/aws-support-app-for-slack.html
 %%
-%% </li> <li> Joining a live chat session with Amazon Web Services Support:
+%% Joining a live chat session with Amazon Web Services Support:
 %% https://docs.aws.amazon.com/awssupport/latest/user/joining-a-live-chat-session.html
 %%
-%% </li> <li> Requesting service quota increases:
+%% Requesting service quota increases:
 %% https://docs.aws.amazon.com/awssupport/latest/user/service-quota-increase.html
 %%
-%% </li> <li> Amazon Web Services Support App commands in Slack:
+%% Amazon Web Services Support App commands in Slack:
 %% https://docs.aws.amazon.com/awssupport/latest/user/support-app-commands.html
 %%
-%% </li> </ul> You can also use the Amazon Web Services Management Console
-%% instead of the Amazon Web Services Support App API to manage your Slack
-%% configurations. For more information, see Authorize a Slack workspace to
-%% enable the Amazon Web Services Support App:
+%% You can also use the Amazon Web Services Management Console instead of the
+%% Amazon Web Services Support App API to manage your Slack
+%% configurations. For more information, see Authorize a
+%% Slack workspace to enable the Amazon Web Services Support App:
 %% https://docs.aws.amazon.com/awssupport/latest/user/authorize-slack-workspace.html.
 %%
 %% You must have a Business or Enterprise Support plan to use the Amazon Web
@@ -45,7 +47,8 @@
 %% For more information about the Amazon Web Services Support App endpoints,
 %% see the Amazon Web Services Support App in Slack endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/awssupport.html#awssupport_app_region
-%% in the Amazon Web Services General Reference.
+%% in the Amazon Web Services General
+%% Reference.
 -module(aws_support_app).
 
 -export([create_slack_channel_configuration/2,
@@ -83,26 +86,32 @@
 %% You can add up to 20 Slack channels for your account.
 %%
 %% A Slack channel can have up to 100 Amazon Web Services accounts. This
-%% means that only 100 accounts can add the same Slack channel to the Amazon
-%% Web Services Support App. We recommend that you only add the accounts that
+%% means that only 100 accounts can
+%% add the same Slack channel to the Amazon Web Services Support App. We
+%% recommend that you only add the accounts that
 %% you need to manage support cases for your organization. This can reduce
-%% the notifications about case updates that you receive in the Slack
-%% channel.
+%% the notifications
+%% about case updates that you receive in the Slack channel.
 %%
 %% We recommend that you choose a private Slack channel so that only members
-%% in that channel have read and write access to your support cases. Anyone
-%% in your Slack channel can create, update, or resolve support cases for
-%% your account. Users require an invitation to join private channels.
+%% in that
+%% channel have read and write access to your support cases. Anyone in your
+%% Slack channel can
+%% create, update, or resolve support cases for your account. Users require
+%% an invitation to
+%% join private channels.
 create_slack_channel_configuration(Client, Input) ->
     create_slack_channel_configuration(Client, Input, []).
 create_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/create-slack-channel-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -126,10 +135,12 @@ delete_account_alias(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/delete-account-alias"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -145,17 +156,20 @@ delete_account_alias(Client, Input0, Options0) ->
 %% @doc Deletes a Slack channel configuration from your Amazon Web Services
 %% account.
 %%
-%% This operation doesn't delete your Slack channel.
+%% This operation doesn't
+%% delete your Slack channel.
 delete_slack_channel_configuration(Client, Input) ->
     delete_slack_channel_configuration(Client, Input, []).
 delete_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/delete-slack-channel-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -171,17 +185,20 @@ delete_slack_channel_configuration(Client, Input0, Options0) ->
 %% @doc Deletes a Slack workspace configuration from your Amazon Web Services
 %% account.
 %%
-%% This operation doesn't delete your Slack workspace.
+%% This operation doesn't
+%% delete your Slack workspace.
 delete_slack_workspace_configuration(Client, Input) ->
     delete_slack_workspace_configuration(Client, Input, []).
 delete_slack_workspace_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/delete-slack-workspace-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -196,8 +213,8 @@ delete_slack_workspace_configuration(Client, Input0, Options0) ->
 
 %% @doc Retrieves the alias from an Amazon Web Services account ID.
 %%
-%% The alias appears in the Amazon Web Services Support App page of the
-%% Amazon Web Services Support Center. The alias also appears in Slack
+%% The alias appears in the Amazon Web Services Support App page of
+%% the Amazon Web Services Support Center. The alias also appears in Slack
 %% messages from the Amazon Web Services Support App.
 get_account_alias(Client, Input) ->
     get_account_alias(Client, Input, []).
@@ -205,10 +222,12 @@ get_account_alias(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/get-account-alias"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -229,10 +248,12 @@ list_slack_channel_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/list-slack-channel-configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -253,10 +274,12 @@ list_slack_workspace_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/list-slack-workspace-configurations"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -272,19 +295,22 @@ list_slack_workspace_configurations(Client, Input0, Options0) ->
 %% @doc Creates or updates an individual alias for each Amazon Web Services
 %% account ID.
 %%
-%% The alias appears in the Amazon Web Services Support App page of the
-%% Amazon Web Services Support Center. The alias also appears in Slack
-%% messages from the Amazon Web Services Support App.
+%% The alias appears in the
+%% Amazon Web Services Support App page of the Amazon Web Services Support
+%% Center. The alias also appears in Slack messages from the
+%% Amazon Web Services Support App.
 put_account_alias(Client, Input) ->
     put_account_alias(Client, Input, []).
 put_account_alias(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/put-account-alias"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -299,52 +325,55 @@ put_account_alias(Client, Input0, Options0) ->
 
 %% @doc Registers a Slack workspace for your Amazon Web Services account.
 %%
-%% To call this API, your account must be part of an organization in
-%% Organizations.
+%% To call this API, your account must be
+%% part of an organization in Organizations.
 %%
 %% If you're the management account and you want to register Slack
 %% workspaces for your organization, you must complete the following tasks:
 %%
-%% <ol> <li> Sign in to the Amazon Web Services Support Center:
-%% https://console.aws.amazon.com/support/app and authorize the Slack
-%% workspaces where you want your organization to have access to. See
+%% Sign in to the Amazon Web Services Support Center:
+%% https://console.aws.amazon.com/support/app and
+%% authorize the Slack workspaces where you want your organization to have
+%% access to. See
 %% Authorize a Slack workspace:
 %% https://docs.aws.amazon.com/awssupport/latest/user/authorize-slack-workspace.html
-%% in the Amazon Web Services Support User Guide.
+%% in the Amazon Web Services Support User
+%% Guide.
 %%
-%% </li> <li> Call the `RegisterSlackWorkspaceForOrganization' API to
-%% authorize each Slack workspace for the organization.
+%% Call the `RegisterSlackWorkspaceForOrganization' API to authorize each
+%% Slack workspace for the organization.
 %%
-%% </li> </ol> After the management account authorizes the Slack workspace,
-%% member accounts can call this API to authorize the same Slack workspace
-%% for their individual accounts. Member accounts don't need to authorize
-%% the Slack workspace manually through the Amazon Web Services Support
-%% Center: https://console.aws.amazon.com/support/app.
+%% After the management account authorizes the Slack workspace, member
+%% accounts can call this
+%% API to authorize the same Slack workspace for their individual accounts.
+%% Member accounts don't
+%% need to authorize the Slack workspace manually through the Amazon Web
+%% Services Support Center: https://console.aws.amazon.com/support/app.
 %%
 %% To use the Amazon Web Services Support App, each account must then
 %% complete the following tasks:
 %%
-%% <ul> <li> Create an Identity and Access Management (IAM) role with the
-%% required permission. For more information, see Managing access to the
-%% Amazon Web Services Support App:
+%% Create an Identity and Access Management (IAM) role with the required
+%% permission. For more information,
+%% see Managing access to the Amazon Web Services Support App:
 %% https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html.
 %%
-%% </li> <li> Configure a Slack channel to use the Amazon Web Services
-%% Support App for support cases for that account. For more information, see
-%% Configuring a Slack channel:
+%% Configure a Slack channel to use the Amazon Web Services Support App for
+%% support cases for that account. For
+%% more information, see Configuring a Slack channel:
 %% https://docs.aws.amazon.com/awssupport/latest/user/add-your-slack-channel.html.
-%%
-%% </li> </ul>
 register_slack_workspace_for_organization(Client, Input) ->
     register_slack_workspace_for_organization(Client, Input, []).
 register_slack_workspace_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/register-slack-workspace-for-organization"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -365,10 +394,12 @@ update_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/update-slack-channel-configuration"],
     SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
                {append_sha256_content_hash, false}
-               | Options0],
+               | Options2],
 
     Headers = [],
     Input1 = Input0,
@@ -384,6 +415,11 @@ update_slack_channel_configuration(Client, Input0, Options0) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+-spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+proplists_take(Key, Proplist, Default) ->
+  Value = proplists:get_value(Key, Proplist, Default),
+  {Value, proplists:delete(Key, Proplist)}.
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
