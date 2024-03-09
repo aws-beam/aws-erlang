@@ -1,7 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Bedrock Agent
+%% @doc Contains APIs related to model invocation and querying of knowledge
+%% bases.
 -module(aws_bedrock_agent_runtime).
 
 -export([invoke_agent/5,
@@ -17,8 +18,38 @@
 %% API
 %%====================================================================
 
-%% @doc Invokes the specified Bedrock model to run inference using the input
-%% provided in the request body.
+%% @doc Sends a prompt for the agent to process and respond to.
+%%
+%% The CLI doesn't support `InvokeAgent'.
+%%
+%% <ul> <li> To continue the same conversation with an agent, use the same
+%% `sessionId' value in the request.
+%%
+%% </li> <li> To activate trace enablement, turn `enableTrace' to
+%% `true'. Trace enablement helps you follow the agent's reasoning
+%% process that led it to the information it processed, the actions it took,
+%% and the final result it yielded. For more information, see Trace
+%% enablement:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events.
+%%
+%% </li> <li> End a conversation by setting `endSession' to `true'.
+%%
+%% </li> <li> Include attributes for the session or prompt in the
+%% `sessionState' object.
+%%
+%% </li> </ul> The response is returned in the `bytes' field of the
+%% `chunk' object.
+%%
+%% <ul> <li> The `attribution' object contains citations for parts of the
+%% response.
+%%
+%% </li> <li> If you set `enableTrace' to `true' in the request, you
+%% can trace the agent's steps and reasoning process that led it to the
+%% response.
+%%
+%% </li> <li> Errors are also surfaced in the response.
+%%
+%% </li> </ul>
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input) ->
     invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input, []).
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
@@ -58,7 +89,7 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
         Result
     end.
 
-%% @doc Retrieve from knowledge base.
+%% @doc Queries a knowledge base and retrieves information from it.
 retrieve(Client, KnowledgeBaseId, Input) ->
     retrieve(Client, KnowledgeBaseId, Input, []).
 retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -81,7 +112,17 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc RetrieveAndGenerate API
+%% @doc Queries a knowledge base and generates responses based on the
+%% retrieved results.
+%%
+%% The response cites up to five sources but only selects the ones that are
+%% relevant to the query.
+%%
+%% The `numberOfResults' field is currently unsupported for
+%% `RetrieveAndGenerate'. Don't include it in the
+%% vectorSearchConfiguration:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_KnowledgeBaseVectorSearchConfiguration.html
+%% object.
 retrieve_and_generate(Client, Input) ->
     retrieve_and_generate(Client, Input, []).
 retrieve_and_generate(Client, Input0, Options0) ->

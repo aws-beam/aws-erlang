@@ -810,6 +810,11 @@ admin_remove_user_from_group(Client, Input, Options)
 %%
 %% Works on any user.
 %%
+%% To use this API operation, your user pool must have self-service account
+%% recovery configured. Use AdminSetUserPassword:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserPassword.html
+%% if you manage passwords as an administrator.
+%%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
@@ -1679,6 +1684,11 @@ forget_device(Client, Input, Options)
 %% returns `InvalidParameterException'. If your app client has a client
 %% secret and you don't provide a `SECRET_HASH' parameter, this API
 %% returns `NotAuthorizedException'.
+%%
+%% To use this API operation, your user pool must have self-service account
+%% recovery configured. Use AdminSetUserPassword:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserPassword.html
+%% if you manage passwords as an administrator.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you

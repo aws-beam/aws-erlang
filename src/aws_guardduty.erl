@@ -269,12 +269,28 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a single Amazon GuardDuty detector.
+%% @doc Creates a single GuardDuty detector.
 %%
 %% A detector is a resource that represents the GuardDuty service. To start
 %% using GuardDuty, you must create a detector in each Region where you
 %% enable the service. You can have only one detector per account per Region.
 %% All data sources are enabled in a new detector by default.
+%%
+%% <ul> <li> When you don't specify any `features', with an exception
+%% to `RUNTIME_MONITORING', all the optional features are enabled by
+%% default.
+%%
+%% </li> <li> When you specify some of the `features', any feature that
+%% is not specified in the API call gets enabled by default, with an
+%% exception to `RUNTIME_MONITORING'.
+%%
+%% </li> </ul> Specifying both EKS Runtime Monitoring
+%% (`EKS_RUNTIME_MONITORING') and Runtime Monitoring
+%% (`RUNTIME_MONITORING') will cause an error. You can add only one of
+%% these two features because Runtime Monitoring already includes the threat
+%% detection for Amazon EKS resources. For more information, see Runtime
+%% Monitoring:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
@@ -1258,14 +1274,14 @@ get_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves how many active member accounts in your Amazon Web Services
-%% organization have each feature enabled within GuardDuty.
+%% @doc Retrieves how many active member accounts have each feature enabled
+%% within GuardDuty.
 %%
 %% Only a delegated GuardDuty administrator of an organization can run this
 %% API.
 %%
-%% When you create a new Amazon Web Services organization, it might take up
-%% to 24 hours to generate the statistics for the entire organization.
+%% When you create a new organization, it might take up to 24 hours to
+%% generate the statistics for the entire organization.
 get_organization_statistics(Client)
   when is_map(Client) ->
     get_organization_statistics(Client, #{}, #{}).
@@ -1746,9 +1762,13 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Initiates the malware scan.
 %%
-%% Invoking this API will automatically create the Service-linked role :
+%% Invoking this API will automatically create the Service-linked role:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html
 %% in the corresponding account.
+%%
+%% When the malware scan starts, you can use the associated scan ID to track
+%% the status of the scan. For more information, see DescribeMalwareScans:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeMalwareScans.html.
 start_malware_scan(Client, Input) ->
     start_malware_scan(Client, Input, []).
 start_malware_scan(Client, Input0, Options0) ->
@@ -1899,7 +1919,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the GuardDuty detector specified by the detectorId.
+%% @doc Updates the GuardDuty detector specified by the detector ID.
+%%
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
+%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
+%% add only one of these two features because Runtime Monitoring already
+%% includes the threat detection for Amazon EKS resources. For more
+%% information, see Runtime Monitoring:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
@@ -2026,6 +2053,13 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Contains information on member accounts to be updated.
 %%
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
+%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
+%% add only one of these two features because Runtime Monitoring already
+%% includes the threat detection for Amazon EKS resources. For more
+%% information, see Runtime Monitoring:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
+%%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
 %% presently supported. For more information, see Regions and endpoints:
@@ -2057,6 +2091,13 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 %%
 %% You must provide a value for either `autoEnableOrganizationMembers' or
 %% `autoEnable', but not both.
+%%
+%% Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING') and
+%% Runtime Monitoring (`RUNTIME_MONITORING') will cause an error. You can
+%% add only one of these two features because Runtime Monitoring already
+%% includes the threat detection for Amazon EKS resources. For more
+%% information, see Runtime Monitoring:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
