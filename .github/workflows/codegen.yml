@@ -31,7 +31,7 @@ jobs:
       - name: Get latest AWS SDK Go tag
         id: latest-tag
         run: |
-          wget https://api.github.com/repos/aws/aws-sdk-go/releases/latest
+          wget https://api.github.com/repos/aws/aws-sdk-go-v2/releases/latest
           tag_name=$(cat latest | jq -r '.tag_name')
           echo "::set-output name=LATEST_TAG::${tag_name}"
 
@@ -62,11 +62,11 @@ jobs:
           elixir-version: ${{ env.ELIXIR_VERSION }}
           rebar3-version: ${{ env.REBAR3_VERSION }}
 
-      - name: Checkout aws/aws-sdk-go (official Go SDK)
+      - name: Checkout aws/aws-sdk-go-v2 (official Go SDK)
         uses: actions/checkout@v3
         with:
-          repository: aws/aws-sdk-go
-          path: tmp/aws-sdk-go
+          repository: aws/aws-sdk-go-v2
+          path: tmp/aws-sdk-go-v2
           ref: ${{ env.LATEST_AWS_SDK_GO_TAG }}
 
       - name: Checkout aws-codegen
@@ -83,7 +83,7 @@ jobs:
 
       - name: Generate aws-erlang
         env:
-          SPEC_PATH: ../aws-sdk-go/models/apis
+          SPEC_PATH: ../aws-sdk-go-v2/codegen/sdk-codegen/aws-models
           TEMPLATE_PATH: priv
           ERLANG_OUTPUT_PATH: ../../src
         run: |
@@ -109,7 +109,7 @@ jobs:
           git add .latest-tag-aws-sdk-go
           echo "Update services based on ${{ env.LATEST_AWS_SDK_GO_TAG }} of AWS Go SDK" >> commit-msg
           echo >> commit-msg
-          echo "Reference: https://github.com/aws/aws-sdk-go/releases/tag/${{ env.LATEST_AWS_SDK_GO_TAG }}" >> commit-msg
+          echo "Reference: https://github.com/aws/aws-sdk-go-v2/releases/tag/${{ env.LATEST_AWS_SDK_GO_TAG }}" >> commit-msg
           git commit -F commit-msg
 
       - name: Push changes
